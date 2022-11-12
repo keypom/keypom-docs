@@ -6,13 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Keypom',
   tagline: 'Web3 Onboarding',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://minqianlu.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/moon.png',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'minqianlu', // Usually your GitHub org/user name.
+  projectName: 'minqianlu.github.io', // Usually your repo name.
+  trailingSlash: false,
 
   presets: [
     [

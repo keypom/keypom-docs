@@ -47,7 +47,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             type: 'doc',
-            docId: 'Github ReadMe/Introduction/Introduction',
+            docId: './Github ReadMe/Introduction/Introduction',
             position: 'left',
             label: 'Tutorial',
           },
@@ -70,7 +70,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Tutorial',
-                to: 'Github ReadMe/Introduction/Introduction',
+                to: './Github ReadMe/Introduction/Introduction',
               },
             ],
           },

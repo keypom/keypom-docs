@@ -45,12 +45,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           src: 'img/moon.png',
         },
         items: [
-          {
-            type: 'doc',
-            docId: './Github ReadMe/Introduction/Introduction',
-            position: 'left',
-            label: 'Tutorial',
-          },
+          // {
+          //   type: 'doc',
+          //   docId: './Github ReadMe/Introduction/Introduction',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          // },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -67,12 +67,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         links: [
           {
             title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: './Github ReadMe/Introduction/Introduction',
-              },
-            ],
+            // items: [
+            //   {
+            //     label: 'Tutorial',
+            //     to: './Github ReadMe/Introduction/Introduction',
+            //   },
+            // ],
           },
           {
             title: 'Community',

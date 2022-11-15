@@ -2,6 +2,8 @@
 sidebar_label: 'Configs'
 sidebar_position: 3
 ---
+# Configuration Tests
+These features pretain to configuring the drops. Items such as start and end timestamps, throttle timestamps, custom drop roots etc.  
 ## Tests contained in Config-Tests
 1) Testing Delete on Empty Config
 2) Testing Start Timestamp

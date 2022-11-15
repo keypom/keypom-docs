@@ -2,6 +2,9 @@
 sidebar_label: 'Internals'
 sidebar_position: 2
 ---
+# Internals
+Contains tests regarding internal features. Primarily dealing with Keypom's internal settings such as changing the linkdrop contract, setting contract-wide gas prices and depositing/withdrawing user balances.  
+
 ## Tests Contained in Internals
 1) Initial nonce (drop id) is 0
 2) Changing linkdrop contract (root account)

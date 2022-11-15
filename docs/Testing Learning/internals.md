@@ -2,8 +2,18 @@
 sidebar_label: 'Internals'
 sidebar_position: 2
 ---
+## Tests Contained in Internals
+1) Initial nonce (drop id) is 0
+2) Changing linkdrop contract (root account)
+3) Setting contract metadata
+4) Setting gas prices
+5) Deposit and Withdraw to Keypom user balance
+6) Withdrawing fees earned
+7) Setting custom fees per user
+
 
 ## Notes from Internal Tests
+- When testing, ensure every step is carried out properly unless previously tested.
 - First drop ID is zero, and is then incremented for each drop created on the Keypom contract.  
 - The default root, based on our config setup for NEAR-Workspaces is testnet.  
 - Contract metadata is seperate from drop metadata and others, it specifies properties of the *actual Keypom contract*.  
@@ -14,5 +24,6 @@ sidebar_position: 2
 - Fees can be incurred by adding keys to the drop or by creating new drops. This cost is paid for by the drop owner. These fees are both controled by the Keypom contract owner.  
 - Fees can be withdrawn but must be called by the Keypom contract and withdrawn to the drop owner. It automatically withdraws all of it but does nothing if the owner account ID provided does not exist.  ❗️*CLARIFY WHY YOU WOULD NEED TO WITHDRAW TO A DIFFERENT ACCOUNT*❗️  
 - You can set fees per user as well.
+- accountID.availableBalance() returns NEAR wallet balance. add_to_balance adds from NEAR wallet to keypom debit balance.
 
 

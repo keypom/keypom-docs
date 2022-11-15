@@ -5,18 +5,18 @@ sidebar_position: 3
 # Configuration Tests
 These features pretain to configuring the drops. Items such as start and end timestamps, throttle timestamps, custom drop roots etc.  
 ## Tests contained in Config-Tests
-1) Testing Delete on Empty Config
-2) Testing Start Timestamp
-3) Testing Throttle Timestamp
-4) Testing On Claim Refund Deposit
-5) Testing Custom Drop Root
-6) Testing Auto Withdraw
-7) Testing Custom Drop ID
-8) Testing Valid Config
-9) Testing End Timestamp
-10) Testing End Timestamp Key Drainage
-11) Testing Claim Interval
-12) Testing All Time Based Configs
+1) Testing Delete on Empty Config  
+2) Testing Start Timestamp  
+3) Testing Throttle Timestamp  
+4) Testing On Claim Refund Deposit  
+5) Testing Custom Drop Root  
+6) Testing Auto Withdraw  
+7) Testing Custom Drop ID  
+8) Testing Valid Config  
+9) Testing End Timestamp  
+10) Testing End Timestamp Key Drainage  
+11) Testing Claim Interval  
+12) Testing All Time Based Configs   
 
 
 ## Notes from Config Tests

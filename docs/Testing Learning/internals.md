@@ -6,13 +6,13 @@ sidebar_position: 2
 Contains tests regarding internal features. Primarily dealing with Keypom's internal settings such as changing the linkdrop contract, setting contract-wide gas prices and depositing/withdrawing user balances.  
 
 ## Tests Contained in Internals
-1) Initial nonce (drop id) is 0
-2) Changing linkdrop contract (root account)
-3) Setting contract metadata
-4) Setting gas prices
-5) Deposit and Withdraw to Keypom user balance
-6) Withdrawing fees earned
-7) Setting custom fees per user
+1) Initial nonce (drop id) is 0  
+2) Changing linkdrop contract (root account)  
+3) Setting contract metadata  
+4) Setting gas prices  
+5) Deposit and Withdraw to Keypom user balance  
+6) Withdrawing fees earned  
+7) Setting custom fees per user  
 
 
 ## Notes from Internal Tests

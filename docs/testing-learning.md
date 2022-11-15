@@ -21,7 +21,7 @@ This setup process can be specified to occur for each defined test, in order to 
 - Balance changes can be found using BalanceChage and inserting starting and ending balance. This should be equal to your expected value within 1% precision.  
 - Fees collected by the contracted can be set using *set_fees* and be monitored with *get_fees_collected* BY KEYPOM CONTRACT OWNER. ❗️*FIND OUT DEFAULT FEES*❗️  
 - Fees can be incurred by adding keys to the drop or by creating new drops. This cost is paid for by the drop owner. These fees are both controled by the Keypom contract owner.  
-- Fees can be withdrawn but must be called by the Keypom contract and withdrawn to the drop owner. It automatically withdraws all of it but does nothing if the owner account ID provided does not exist.  ❗️*CLARIFY WHY YOU WOULD NEED TO WITHDRAW TO A DIFF ACCOUNT*❗️  
+- Fees can be withdrawn but must be called by the Keypom contract and withdrawn to the drop owner. It automatically withdraws all of it but does nothing if the owner account ID provided does not exist.  ❗️*CLARIFY WHY YOU WOULD NEED TO WITHDRAW TO A DIFFERENT ACCOUNT*❗️  
 - You can set fees per user as well.
 
 

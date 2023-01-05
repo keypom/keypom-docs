@@ -21,6 +21,7 @@ Contains tests regarding internal features. Primarily dealing with Keypom's inte
 - The default root, based on our config setup for NEAR-Workspaces is testnet.  
 - Contract metadata is seperate from drop metadata and others, it specifies properties of the *actual Keypom contract*.  
 - Default gas price on Keypom contract (seen through get_gas_price) is 100,000,000 yocto. This can be changed using set_gas_price.  
+- drop fees and key fees are fees for the Keypom contract. These are fees that drop owners will need to pay Keypom. i.e if they add keys to their drops, or create drops. deposit_per_use defines the amount of $NEAR deposited to the person who claimed the key
 - Accounts are initialized with 0 NEAR. This can be changed with add_to_balance and other functions.  
 - Balance changes can be found using BalanceChage and inserting starting and ending balance. This should be equal to your expected value within 1% precision.  
 - Fees collected by the contracted can be set using *set_fees* and be monitored with *get_fees_collected* BY KEYPOM CONTRACT OWNER. ❗️*FIND OUT DEFAULT FEES*❗️  

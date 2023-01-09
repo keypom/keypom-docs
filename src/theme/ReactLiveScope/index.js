@@ -20,7 +20,7 @@ const ButtonExample = (props) => (
 );
 
 function myFunc(){
-  return TRUE;
+  return isWds("abc");
 }
 
 // Add react-live imports you need here

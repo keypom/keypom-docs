@@ -7,8 +7,7 @@ export default function ReactLiveScopeWrapper(props) {
   return (
     <>
       <ReactLiveScope {
-        ...props,
-        testImport} />
+        ...testImport} />
     </>
   );
 }

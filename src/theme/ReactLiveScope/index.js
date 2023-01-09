@@ -19,11 +19,11 @@ const ButtonExample = (props) => (
   />
 );
 
-export default function ReactLiveScopeWrapper(props) {
-  return (
-    <>
-      <ReactLiveScope {
-        ...ButtonExample} />
-    </>
-  );
-}
+// Add react-live imports you need here
+const ReactLiveScope = {
+  React,
+  ...React,
+  ButtonExample,
+};
+
+export default ReactLiveScope;

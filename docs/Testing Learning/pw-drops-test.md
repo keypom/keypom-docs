@@ -15,5 +15,6 @@ This section tests the functionality of the password protected drops. They can b
 ## Notes from Password Tests
 - Passwords are classified as Global (password_per_key) and local (password_per_use). Password per use allows owner to create diff passwords for diff claims. Password per key sets a universal pw for all uses of a particular key
 - both password_per_key and password_per_use need to be the same length as the number of public keys. Otherwise, they cannot be mapped to eachother
+- password_per_use is an array (llength: number of keys in drop) of arrays (length: number of uses)
 - if there is no password on the key use, any password given will just claim and ignore the password given.
 - If there IS a password and none is passed in, the claim should fail

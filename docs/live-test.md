@@ -5,7 +5,7 @@ function Clock(props) {
 
   return (
     <div>
-    <ButtonExample onClick={() => alert('hey!')}>Click me</ButtonExample>
+    <ButtonExample onClick={() => alert('hey1!')}>Click me</ButtonExample>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 ```jsx live
 function Clock(props) {
-  let result = testImport.isWDS("WDS");
+  let result = isWDS("WDS");
   
   return (
     <div>

@@ -22,7 +22,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
+          // routeBasePath: '/',
           //homePageId: 'Github ReadMe/Introduction/Introduction',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -40,12 +40,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Keypom',
+        title: 'KEYPOM',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'MOON',
           src: 'img/moon.png',
         },
         items: [
+          // {
+          //   to: "/docs/SDK Notes/General",
+          //   label: "📖 Concepts",
+          //   position: "left",
+          // },
           // {
           //   type: 'doc',
           //   docId: './Github ReadMe/Introduction/Introduction',

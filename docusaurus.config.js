@@ -46,11 +46,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           src: 'img/moon.png',
         },
         items: [
-          // {
-          //   to: "/docs/SDK Notes/General",
-          //   label: "📖 Concepts",
-          //   position: "left",
-          // },
+          {
+            to: "docs/next/Concepts/welcome",
+            label: "📖 Concepts",
+            position: "left",
+          },
+          {
+            to: "docs/next/Tutorials/welcome",
+            label: "📚Tutorials",
+            position: "left",
+          },
+          {
+            to: "docs/next/KeypomV2/welcome",
+            label: "🤖Keypom V2",
+            position: "left",
+          },
           // {
           //   type: 'doc',
           //   docId: './Github ReadMe/Introduction/Introduction',
@@ -63,23 +73,34 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'GitHub',
             position: 'right',
           },
-          {
-            type: 'docsVersionDropdown',
-          },
+          // {
+          //   type: 'docsVersionDropdown',
+          // },
         ],
       },
       footer: {
         style: 'dark',
+        //position: 'center',
         links: [
+          //docs
           {
             title: 'Docs',
-            // items: [
-            //   {
-            //     label: 'Tutorial',
-            //     to: './Github ReadMe/Introduction/Introduction',
-            //   },
-            // ],
+            items: [
+              {
+                label: '📖Concepts',
+                to: 'docs/next/Concepts/welcome',
+              },
+              {
+                label: '📚Tutorials',
+                to: 'docs/next/Tutorials/welcome',
+              },
+              {
+                label: "🤖Keypom V2",
+                to: "docs/next/KeypomV2/welcome",
+              },
+            ],
           },
+          //community
           {
             title: 'Community',
             items: [
@@ -97,6 +118,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
             ],
           },
+          //more
           {
             title: 'More',
             items: [

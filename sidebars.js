@@ -54,51 +54,45 @@ const sidebars = {
       // },
       collapsed: false,
       items: [
-            {
-              type: 'category',
-              label: 'Github Readme',
-              collapsed: true,
-              items: [
-                    {
-                      type: 'category',
-                      label: 'Introduction',
-                      // link: {
-                      //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
-                      // },
-                      collapsed: true,
-                      items: [
-                        'Concepts/Keypom Protocol/Github Readme/Introduction/Introduction',
-                        'Concepts/Keypom Protocol/Github Readme/Introduction/our-solution',
-                      ],
-                    },
-                    {
-                      type: 'category',
-                      label: 'Types of Drops',
-                      // link: {
-                      //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
-                      // },
-                      collapsed: true,
-                      items: [
-                        'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
-                        'Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops',
-                        'Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops',
-                        'Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops',
-                        'Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops',
-                      ],
-                    },
-                    'Concepts/Keypom Protocol/Github Readme/passwordprotect',
+                'Concepts/Keypom Protocol/overview',
+                'Concepts/Keypom Protocol/balances',
+                {
+                  type: 'category',
+                  label: 'Types of Drops',
+                  // link: {
+                  //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+                  // },
+                  collapsed: true,
+                  items: [
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops',
+                  ],
+                },
+                'Concepts/Keypom Protocol/Github Readme/passwordprotect',
+                {
+                  type: 'category',
+                  label: 'Overhead Items',
+                  // link: {
+                  //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+                  // },
+                  collapsed: true,
+                  items: [
                     'Concepts/Keypom Protocol/Github Readme/costs',
                     'Concepts/Keypom Protocol/Github Readme/Querying',
                     'Concepts/Keypom Protocol/Github Readme/testing',
                     'Concepts/Keypom Protocol/Github Readme/contribute',
                     'Concepts/Keypom Protocol/Github Readme/Licenses',
+                  ],
+                  },
+                    
                     
               ],
             },
-            'Concepts/Keypom Protocol/overview',
+            
       ],
-    },
-  ],
   Tutorials: [
     "Tutorials/welcome",
     {
@@ -106,7 +100,23 @@ const sidebars = {
       label: 'Basics',
       collapsed: false,
       items: [
-            'Tutorials/Basics/creating-drop',
+            'Tutorials/Basics/getting-started',
+            {
+              type: 'category',
+              label: 'Creating a drop',
+              link: {
+                type: 'doc',
+                id: 'Tutorials/Basics/creating-drop',
+              },
+              collapsed: false,
+              items: [
+                    'Tutorials/Basics/simple-drops',
+                    'Tutorials/Basics/nft-drops',
+                    'Tutorials/Basics/ft-drops',
+                    'Tutorials/Basics/fc-drops',
+                    
+              ],
+            },
       ],
     },
     {
@@ -114,7 +124,86 @@ const sidebars = {
       label: 'Advanced',
       collapsed: false,
       items: [
-            'Tutorials/Advanced/ticketing',
+            {
+              type: 'category',
+              label: 'Ticketing',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/ticketing/concept',
+                    'Tutorials/Advanced/ticketing/skeleton',
+                    'Tutorials/Advanced/ticketing/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Customizable Onboarding',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/customized-onboarding/concept',
+                    'Tutorials/Advanced/customized-onboarding/skeleton',
+                    'Tutorials/Advanced/customized-onboarding/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Multi-Sig Contracts',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/multi-sig/concept',
+                    'Tutorials/Advanced/multi-sig/skeleton',
+                    'Tutorials/Advanced/multi-sig/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Subscriptions',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/subscriptions/concept',
+                    'Tutorials/Advanced/subscriptions/skeleton',
+                    'Tutorials/Advanced/subscriptions/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Reward Gating',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/reward-gating/concept',
+                    'Tutorials/Advanced/reward-gating/skeleton',
+                    'Tutorials/Advanced/reward-gating/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'DAOs',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/daos/concept',
+                    'Tutorials/Advanced/daos/skeleton',
+                    'Tutorials/Advanced/daos/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Access Key Marketplace',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/access-key-marketplace/concept',
+                    'Tutorials/Advanced/access-key-marketplace/skeleton',
+                    'Tutorials/Advanced/access-key-marketplace/final',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Custom Receiver Contracts',
+              collapsed: true,
+              items: [
+                    'Tutorials/Advanced/receiver-contracts/concept',
+                    'Tutorials/Advanced/receiver-contracts/skeleton',
+                    'Tutorials/Advanced/receiver-contracts/final',
+              ],
+            },
       ],
     },
   ],

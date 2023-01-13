@@ -48,12 +48,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             to: "docs/next/Concepts/welcome",
-            label: "📖 Concepts",
+            label: "📚Concepts",
             position: "left",
           },
           {
             to: "docs/next/Tutorials/welcome",
-            label: "📚Tutorials",
+            label: "💻Tutorials",
             position: "left",
           },
           {
@@ -61,21 +61,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: "🤖Keypom V2",
             position: "left",
           },
-          // {
-          //   type: 'doc',
-          //   docId: './Github ReadMe/Introduction/Introduction',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          // },
-          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
             position: 'right',
           },
-          // {
-          //   type: 'docsVersionDropdown',
-          // },
+          {
+            type: 'docsVersionDropdown',
+          },
         ],
       },
       footer: {
@@ -87,11 +80,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Docs',
             items: [
               {
-                label: '📖Concepts',
+                label: '📚Concepts',
                 to: 'docs/next/Concepts/welcome',
               },
               {
-                label: '📚Tutorials',
+                label: '💻Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
               {
@@ -134,6 +127,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust', 'java'],
       },
     }),
 });

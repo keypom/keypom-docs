@@ -2,7 +2,7 @@
 Version 1.2 (OUTDATED) available at https://minqianlu.github.io/ for the time being
 
 # Building and Viewing Current Version
-Clone repo, then open a new terminal instance and run the following
+Clone repo (for latest WIP version, use min/dev branch), then open a new terminal instance and run the following
 1. yarn run build
 2. yarn run serve
 

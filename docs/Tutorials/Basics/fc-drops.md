@@ -1,67 +1,99 @@
 ---
-sidebar_label: 'FC Drop'
+sidebar_label: 'Function Call Drop'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Simple Drops
-*insert CLI stuff here*  
+# Function Call Drop
+Function call drops, relative to Fungible and Non Funcgible Token Drops, are relatively simple and bear a closer resemblance to [Simple Drops](simple-drops.md). As the function parameters are the only thing that require to be passed in, and there is no token transfering to the Keypom contract, both approaches can be done in a relatively short manner, 
 
-Using NEAR-API-JS, the first step is to initialize a NEAR connection. Then, the keys must be generated using the 'KeyPair' function from the API. Finally a function call, in this case 'create_drop', can be made to the Keypom contract.
-
-Using our Keypom-JS SDK, the NEAR connection and Keypom contract are initialized in one call. The rest of the drop creation can be done in ONE function call and will create the keys for you. 
-
-Note that MY_PRVK is the variable representing the ed25519 private key associated with minqi.testnet.
+Similar to Simple Drops, the only major difference between the two approaches is that using NEAR-API-JS requires you to generate the keys manually and call the Keypom by way of a `functionCall`. 
 
 <Tabs>
-<TabItem value="KPJS" label="💡Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js
-const { initKeypom, createDrop } = require("keypom-js");
-
+console.log("Initiating NEAR connection");
 initKeypom({
     network: 'testnet', 
     funder: {
-        accountId: minqi.testnet, 
+        accountId: "minqi.testnet", 
         secretKey: MY_PRVK
     }
 });
 
-createDrop({
-    account: 'minqi.testnet.',
-    numKeys: 10,
-    depositPerUseNEAR: 1,
+await createDrop({
+    numKeys: 1,
+    depositPerUseNEAR: "1",
+    fcData: {
+	    methods: [
+			[{
+				receiverId: "nft.examples.testnet",
+				methodName: "nft_mint",
+				args: JSON.stringify({
+	                token_id: "my-function-call-token",
+	                receiver_id: "minqi.testnet",
+	                metadata: {
+					    title: "My Keypom NFT",
+					    description: "Keypom is lit fam",
+					    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+					}
+				}),
+				attachedDeposit: parseNearAmount("1"),
+				accountIdField: "minqi.testnet"
+			}]
+		]
+	},
 });
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="☕️NEAR-API-JS">
+<TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js
-const { KeyPair } = require("near-api-js");
+// Initiate connection to the NEAR blockchain.
+console.log("Initiating NEAR connection");
+let near = await initiateNearConnection("testnet");
+const fundingAccount = await near.account("minqi.testnet");
 
-let near = await initiateNearConnection('testnet');
-const fundingAccount = await near.account('minqi.testnet');
-
-// arrays to keep track of keypairs and public keys we create
+// Keep track of an array of the keyPairs we create
 let keyPairs = [];
+// Keep track of the public keys to pass into the contract
 let pubKeys = [];
 console.log("Creating keypairs");
-for(var i = 0; i < 10; i++) {
-	let keyPair = await KeyPair.fromRandom('ed25519'); 
-	keyPairs.push(keyPair);   
-	pubKeys.push(keyPair.publicKey.toString());   
-}
+let keyPair = await KeyPair.fromRandom('ed25519'); 
+keyPairs.push(keyPair);   
+pubKeys.push(keyPair.publicKey.toString());   
 
+
+// Create FC drop with pubkkeys from above and fc data
 try {
 	await fundingAccount.functionCall(
 		"v1-3.keypom.testnet", 
 		'create_drop', 
 		{
 			public_keys: pubKeys,
-			deposit_per_use: 1,
+			deposit_per_use: parseNearAmount("1"),
+			fc: {
+				methods: [[{
+					receiver_id: 'nft.examples.testnet',
+					method_name: "nft_mint",
+					args: JSON.stringify({
+            		    token_id: "my-function-call-token",
+            		    receiver_id: "minqi.testnet",
+            		    metadata: {
+						    title: "My Keypom NFT",
+						    description: "Keypom is lit fam",
+						    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+						}
+					}),,
+					attached_deposit: parseNearAmount("1"),
+					account_id_field: "miniqi.testnet"
+				}]]
+			}
 		}, 
-		"300000000000000"
+		"300000000000000",
+		parseNearAmount("2")
 	);
 } catch(e) {
 	console.log('error creating drop: ', e);

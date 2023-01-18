@@ -25,6 +25,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // routeBasePath: '/',
           //homePageId: 'Github ReadMe/Introduction/Introduction',
           sidebarPath: require.resolve('./sidebars.js'),
+          // remarkPlugins: [
+          //   [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          // ],
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         },

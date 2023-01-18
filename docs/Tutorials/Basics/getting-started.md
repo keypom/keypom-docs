@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem'; 
+
 # Getting Started
 
 There are several ways to get started using Keypom. You can use the NEAR CLI, our Keypom application, our Keypom SDK and more. In this section, we will go over how you can interact with Keypom and create drops using the NEAR-API-JS library and write simple node scripts.
@@ -25,18 +28,72 @@ Once the `configurations.js` file has been modified to your liking, navigate bac
 root directory and run the deploy script.
 
 For simple drops:
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```bash
+yarn simple-sdk
 ```
+
+</TabItem>
+<TabItem value="NRJS" label="💻NEAR-API-JS">
+
+```bash
 yarn simple
 ```
+
+</TabItem>
+</Tabs>
+
 For FT drops:
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```bash
+yarn ft-sdk
 ```
+
+</TabItem>
+<TabItem value="NRJS" label="💻NEAR-API-JS">
+
+```bash
 yarn ft
 ```
+
+</TabItem>
+</Tabs>
+
 For NFT drops:
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```bash
+yarn NFT-minted-sdk
 ```
-yarn nft
+
+</TabItem>
+<TabItem value="NRJS" label="💻NEAR-API-JS">
+
+```bash
+yarn NFT
 ```
+
+</TabItem>
+</Tabs>
 For Function Call drops:
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```bash
+yarn fc-sdk
 ```
+
+</TabItem>
+<TabItem value="NRJS" label="💻NEAR-API-JS">
+
+```bash
 yarn fc
 ```
+
+</TabItem>
+</Tabs>

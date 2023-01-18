@@ -60,10 +60,11 @@ const sidebars = {
                   type: 'category',
                   label: 'Types of Drops',
                   // link: {
-                  //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+                  //   item: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
                   // },
                   collapsed: true,
                   items: [
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops',
@@ -110,6 +111,7 @@ const sidebars = {
               },
               collapsed: false,
               items: [
+                    'Tutorials/Basics/preface',
                     'Tutorials/Basics/simple-drops',
                     'Tutorials/Basics/nft-drops',
                     'Tutorials/Basics/ft-drops',

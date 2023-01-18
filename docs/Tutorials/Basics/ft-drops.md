@@ -5,7 +5,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Fungible Token Drop
-Similar to the NFT Drop example, the two approaches share some common code to start. In this case, we are ensuring that the drop funder has enough of the desired Fungible Token to fund the drop. This can be done by quickly calling `ft_balance_of` using a `viewFunction` on the desired FT contract.
+Similar to the NFT Drop example, the two approaches share some common code to start. In this case, we are ensuring that the drop funder has enough of the desired Fungible Token to fund the drop. 
+
+This can be done by quickly calling `ft_balance_of` using a `viewFunction` on the desired FT contract and comparing it to the total amount of Fungible Tokens that need to be transfered, `amountToTransfer`. 
+
+Typically, `amountToTransfer` is calculated by *FT per use* X *number of keys* X *uses per key*. For the sake of simplicity, we've assumed a value of 1 FT for a single key with one use.
 
 :::note
 With our Fungible Token used in the example, it has a `decimal` parameter value of 24, making it equivalent to 1 $NEAR -> 10<sup>24</sup> Yocto NEAR. This allows us to use [`parseNearAmount`](https://docs.near.org/tools/near-api-js/utils) to convert between the two. Read more on the decimal parameter [here](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals).

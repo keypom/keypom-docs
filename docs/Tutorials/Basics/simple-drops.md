@@ -10,13 +10,13 @@ The code contained in the code blocks are not full scripts but instead excerpts 
 :::
 
 
-When interacting with the NEAR blockchain, the first thing that you must do is initialize a NEAR connection. This must be manually done with NEAR-API-JS but is done automatically with our Keypom-JS SDK through the use of the `initKeypom` function, which initializes a NEAR connection and intitializes the Keypom contract.
+When interacting with the NEAR blockchain, the first thing that you must do is initialize a NEAR connection. This must be manually done with NEAR-API-JS but is done automatically with our Keypom-JS SDK through the use of the `initKeypom` function.
 
-Next, keypairs must be generated. Similar to initializing a NEAR conection, this must be done manually with the NEAR-API but is done automatically through the Keypom-JS SDK when creating a drop.
+Next, keypairs must be generated. Similar to initializing a NEAR conection, this must be done manually with the NEAR-API-JS but is done automatically through our Keypom-JS SDK when creating a drop.
 
 Finally, to create the drop we use `createDrop` with our Keypom JS SDK or `create_drop` in NEAR-API-JS. 
 
-Note that with NEAR-API-JS, an attached deposit `parseNearAmount("2")` must be added to the `functionCall` function in order to fund the drop.
+Note that with NEAR-API-JS, an attached deposit `parseNearAmount("1")` must be added to the `functionCall` in order to fund the drop.
 
 <Tabs>
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">

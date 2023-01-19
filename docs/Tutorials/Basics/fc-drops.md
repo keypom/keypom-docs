@@ -14,7 +14,7 @@ Similar to Simple Drops, the only major difference between the two approaches is
 
 ```js
 console.log("Initiating NEAR connection");
-initKeypom({
+await initKeypom({
     network: 'testnet', 
     funder: {
         accountId: "minqi.testnet", 
@@ -102,3 +102,5 @@ try {
 
 </TabItem>
 </Tabs>
+
+The data structure `methods` that is passed into the drop creation is a *2D vector*. Each individual key use can call multiple functions and these sets of functions can change between each key use. For more on this data structure and the incredibly powerful use cases this can unlock, see the [Function Call Drops Concepts page](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md#key-uses).

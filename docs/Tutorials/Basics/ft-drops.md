@@ -55,7 +55,7 @@ await initKeypom({
 });
 
 // Creates the FT drop based on data from config file. Keys are automatically generated within the function based on `NUM_KEYS`. Since there is no entropy, all keys are completely random.
- await createDrop({
+await createDrop({
     numKeys: NUM_KEYS,
     depositPerUseNEAR: DEPOSIT_PER_USE_NEAR,
     metadata: DROP_METADATA,

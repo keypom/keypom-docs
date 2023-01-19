@@ -209,9 +209,9 @@ const sidebars = {
       ],
     },
   ],
-  KeypomV2: [
-    "KeypomV2/welcome"
-  ]
+  // KeypomV2: [
+  //   "KeypomV2/welcome"
+  // ]
 };
 module.exports = sidebars;
 

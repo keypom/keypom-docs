@@ -59,11 +59,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: "💻Tutorials",
             position: "left",
           },
-          {
-            to: "docs/next/KeypomV2/welcome",
-            label: "🤖Keypom V2",
-            position: "left",
-          },
+          // {
+          //   to: "docs/next/KeypomV2/welcome",
+          //   label: "🤖Keypom V2",
+          //   position: "left",
+          // },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -90,10 +90,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: '💻Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
-              {
-                label: "🤖Keypom V2",
-                to: "docs/next/KeypomV2/welcome",
-              },
+              // {
+              //   label: "🤖Keypom V2",
+              //   to: "docs/next/KeypomV2/welcome",
+              // },
             ],
           },
           //community

@@ -40,7 +40,6 @@ await createDrop({
 					}
 				}),
 				attachedDeposit: parseNearAmount("1"),
-				accountIdField: "minqi.testnet"
 			}]
 		]
 	},
@@ -88,7 +87,6 @@ try {
 						}
 					}),,
 					attached_deposit: parseNearAmount("1"),
-					account_id_field: "miniqi.testnet"
 				}]]
 			}
 		}, 

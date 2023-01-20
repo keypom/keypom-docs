@@ -12,90 +12,15 @@ Similar to Simple Drops, the only major difference between the two approaches is
 <Tabs>
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
-```js
-console.log("Initiating NEAR connection");
-await initKeypom({
-    network: 'testnet', 
-    funder: {
-        accountId: "minqi.testnet", 
-        secretKey: MY_PRVK
-    }
-});
-
-await createDrop({
-    numKeys: 1,
-    depositPerUseNEAR: "1",
-    fcData: {
-	    methods: [
-			[{
-				receiverId: "nft.examples.testnet",
-				methodName: "nft_mint",
-				args: JSON.stringify({
-	                token_id: "my-function-call-token",
-	                receiver_id: "minqi.testnet",
-	                metadata: {
-					    title: "My Keypom NFT",
-					    description: "Keypom is lit fam",
-					    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-					}
-				}),
-				attachedDeposit: parseNearAmount("1"),
-			}]
-		]
-	},
-});
+```js reference
+https://github.com/keypom/keypom-js/blob/e50d6abfb17e9183e42de237257962a1dc4b4e36/docs-examples/keypom-js%20sdk/fc-example.js#L17-L56
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
-```js
-// Initiate connection to the NEAR blockchain.
-console.log("Initiating NEAR connection");
-let near = await initiateNearConnection("testnet");
-const fundingAccount = await near.account("minqi.testnet");
-
-// Keep track of an array of the keyPairs we create
-let keyPairs = [];
-// Keep track of the public keys to pass into the contract
-let pubKeys = [];
-console.log("Creating keypairs");
-let keyPair = await KeyPair.fromRandom('ed25519'); 
-keyPairs.push(keyPair);   
-pubKeys.push(keyPair.publicKey.toString());   
-
-
-// Create FC drop with pubkkeys from above and fc data
-try {
-	await fundingAccount.functionCall(
-		"v1-3.keypom.testnet", 
-		'create_drop', 
-		{
-			public_keys: pubKeys,
-			deposit_per_use: parseNearAmount("1"),
-			fc: {
-				methods: [[{
-					receiver_id: 'nft.examples.testnet',
-					method_name: "nft_mint",
-					args: JSON.stringify({
-            		    token_id: "my-function-call-token",
-            		    receiver_id: "minqi.testnet",
-            		    metadata: {
-						    title: "My Keypom NFT",
-						    description: "Keypom is lit fam",
-						    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-						}
-					}),,
-					attached_deposit: parseNearAmount("1"),
-				}]]
-			}
-		}, 
-		"300000000000000",
-		parseNearAmount("2")
-	);
-} catch(e) {
-	console.log('error creating drop: ', e);
-}
+```js reference
+https://github.com/keypom/keypom-js/blob/e50d6abfb17e9183e42de237257962a1dc4b4e36/docs-examples/near-api-js/fc-near-example.js#L6-L58
 ```
 
 </TabItem>

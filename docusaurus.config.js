@@ -14,7 +14,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   organizationName: 'minqianlu', // Usually your GitHub org/user name.
   projectName: 'minqianlu.github.io', // Usually your repo name.
   trailingSlash: false,
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock'],
 
   presets: [
     [

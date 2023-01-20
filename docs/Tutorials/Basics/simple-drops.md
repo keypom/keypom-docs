@@ -16,27 +16,15 @@ When interacting with the NEAR blockchain, the first thing that you must do is i
 <Tabs>
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
-```js
-const { initKeypom, createDrop } = require("keypom-js");
-
-await initKeypom({
-    network: 'testnet', 
-    funder: {
-        accountId: "minqi.testnet", 
-        secretKey: MY_PRVK
-    }
-});
-// MY_PRVK is the variable representing the ed25519 private key associated with minqi.testnet. This can be found in your ~/.near-credentials folder
+```js reference
+https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/simple-example.js#L17-L23
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
-```js
-// Initiate connection to the NEAR blockchain.
-console.log("Initiating NEAR connection");
-let near = await initiateNearConnection('testnet');
-const fundingAccount = await near.account('minqi.testnet');
+```js reference
+https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/simple-near-example.js#L6-L9
 
 ```
 
@@ -53,43 +41,15 @@ Note that with NEAR-API-JS, an attached deposit `parseNearAmount("1")` must be a
 <Tabs>
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
-```js
-await createDrop({
-    account: 'minqi.testnet.',
-    numKeys: 1,
-    depositPerUseNEAR: "1",
-});
+```js reference
+https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/simple-example.js#L25-L32
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
-```js
-// Keep track of an array of the keyPairs we create
-let keyPairs = [];
-// Keep track of the public keys to pass into the contract
-let pubKeys = [];
-console.log("Creating keypair");
-let keyPair = await KeyPair.fromRandom('ed25519'); 
-keyPairs.push(keyPair);   
-pubKeys.push(keyPair.publicKey.toString());   
-
-// Create drop with pub keys, deposit_per_use
-try {
-	await fundingAccount.functionCall(
-		'v1-3.keypom.testnet', 
-		'create_drop', 
-		{
-			public_keys: pubKeys,
-			deposit_per_use: parseNearAmount('1'),
-		}, 
-		"300000000000000",
-		// Change this deposit value to whatever is needed to fund your drop; this will be added to your balance...?
-		parseNearAmount("1"),
-	);
-} catch(e) {
-	console.log('error creating drop: ', e);
-}
+```js reference
+https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/simple-near-example.js#L11-L37
 ```
 
 </TabItem>

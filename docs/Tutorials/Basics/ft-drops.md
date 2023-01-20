@@ -17,7 +17,7 @@ With our Fungible Token used in the example, it has a `decimal` parameter value 
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/ft-example.js#L17-L35
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/ft-example.js#L19-L37
 ```
 
 Following the initialization and Fungible Token balance check, the two approaches diverge. 
@@ -30,14 +30,14 @@ Using NEAR-API-JS to create the drop means doing this manually, all with `functi
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/ft-example.js#L37-L61
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/ft-example.js#L39-L64
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/ft-near-example.js#L26-L92
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/ft-near-example.js#L27-L93
 ```
 
 </TabItem>

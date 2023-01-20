@@ -17,14 +17,14 @@ When interacting with the NEAR blockchain, the first thing that you must do is i
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/simple-example.js#L17-L23
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/simple-example.js#L17-L26
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/simple-near-example.js#L6-L9
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/simple-near-example.js#L6-L9
 
 ```
 
@@ -42,14 +42,14 @@ Note that with NEAR-API-JS, an attached deposit `parseNearAmount("1")` must be a
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/simple-example.js#L25-L32
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/simple-example.js#L33-L39
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/simple-near-example.js#L11-L37
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/simple-near-example.js#L11-L37
 ```
 
 </TabItem>

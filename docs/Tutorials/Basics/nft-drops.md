@@ -10,7 +10,7 @@ When creating an NFT drop, it is important to ensure that the NFT is minted and 
 We will start with initializing the NEAR connection and then make the function call. We will only be minting 1 NFT in this example.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/nft-example.js#L17-L37 
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/nft-example.js#L17-L37
 ```
 
 The next step is where we create the drop and transfer the newly minted NFT to the Keypom smart contract. Recall from [NFT drop concepts](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md), the funder must transfer the NFT to the Keypom contract in order for the NFT to be added to the drop. This is where the two approaches diverge. 
@@ -21,14 +21,14 @@ With NEAR-API-JS, this must be done manually. Conversely, with the Keypom-JS SDK
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/keypom-js%20sdk/nft-example.js#L39-L62
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/nft-example.js#L39-L62
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/b60893fd51d73aebb2b474eb3c82510914192d22/docs-examples/near-api-js/nft-near-example.js#L29-L79
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/nft-near-example.js#L29-L79
 ```
 
 </TabItem>

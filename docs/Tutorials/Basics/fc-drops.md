@@ -13,14 +13,14 @@ Similar to Simple Drops, the only major difference between the two approaches is
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/e50d6abfb17e9183e42de237257962a1dc4b4e36/docs-examples/keypom-js%20sdk/fc-example.js#L17-L56
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/fc-example.js#L17-L56
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/e50d6abfb17e9183e42de237257962a1dc4b4e36/docs-examples/near-api-js/fc-near-example.js#L6-L58
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/fc-near-example.js#L6-L58
 ```
 
 </TabItem>

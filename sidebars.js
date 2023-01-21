@@ -65,11 +65,23 @@ const sidebars = {
                   collapsed: true,
                   items: [
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Configuring Your Drop',
+                  // link: {
+                  //   item: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
+                  // },
+                  collapsed: true,
+                  items: [
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/time-customization',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/usage-customization',
                   ],
                 },
                 'Concepts/Keypom Protocol/Github Readme/passwordprotect',

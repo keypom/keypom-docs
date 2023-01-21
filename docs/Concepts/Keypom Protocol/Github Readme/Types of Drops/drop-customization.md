@@ -1,71 +1,51 @@
 ---
-sidebar_label: 'General Drop Customization'
-sidebar_position: 2
+sidebar_label: 'Drop Configurations'
 ---
-# Shared Drop Customization
+# Drop Configurations
 
-While each *type* of drop has its own set of customizable features, there are some that are shared by **all drops**
-These are outlined below.
+Drop Customization via the `DropConfig` object can help cater the properties of the drop to exactly what you want! From changing the amount of $NEAR received by your users, to being able to set up a subscription service, understanding the power of `DropConfig` is crucial to making the most of Keypom!
 
+# Understanding `DropConfig`
 ```rust
-/// Each time a key is used, how much $NEAR should be sent to the claiming account (can be 0).
-pub deposit_per_use: u128,
+pub struct DropConfig {
+    /// How many uses can each key have before it's deleted. If None, default to 1.
+    pub uses_per_key: Option<u64>,
 
-/// How much Gas should be attached when the key is used. The default is 100 TGas as this is
-/// what's used by the NEAR wallet.
-pub required_gas: Gas,
+    // Any time based configurations
+    pub time: Option<TimeConfig>,
+    
+    // Any usage specific configurations
+    pub usage: Option<UsageConfig>,
 
-/// The drop as a whole can have a config as well
-pub config: Option<DropConfig>,
-
-/// Metadata for the drop in the form of stringified JSON. The format is completely up to the
-/// user and there are no standards for format.
-pub metadata: LazyOption<DropMetadata>,
+    /// Override the global root account that sub-accounts will have (near or testnet). This allows
+    /// users to create specific drops that can create sub-accounts of a predefined root.
+    pub root_account_id: Option<AccountId>,
+}
 ```
+For now, lets focus on `uses_per_key` and `root_account_id`. [`TimeConfig`](time-customization.md) and [`UsageConfig`](usage-customization.md) are covered later.
 
-Within the config, there are a suite of features that can be customized as well:
+## `uses_per_key`
+*Default: 1*  
+This parameter allows you to set the number of times your users can claim your linkdrop.
 
-```rust
-/// How many uses can each key have before it's deleted. If None, default to 1.
-pub uses_per_key: Option<u64>,
+### Use cases
+This parameter is incredibly versatile; it can be used in numerous ways. Some excellent examples are:  
+1. A counter, similar to a loyalty program punch card or a set number of [Recurring Payments](../../Github%20Readme/Types%20of%20Drops/simpledrops.md#recurring-payments) 
+2. A tool to track progress of your users; like checkpoints
+3. A method to accurately track retention, such as [Event Turnout](../../Github%20Readme/Types%20of%20Drops/fcdrops.md#nft-ticketing)
 
-/// Minimum block timestamp before keys can be used. If None, keys can be used immediately
-/// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-pub start_timestamp: Option<u64>,
 
-/// Block timestamp that keys must be before. If None, keys can be used indefinitely
-/// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-pub end_timestamp: Option<u64>,
+Used in tandem with [function call drops](fcdrops.md), some more complex use cases can be created, such as [Customizable Multi-Phase Onboardings](../../../../Tutorials/Advanced/customized-onboarding/concept.md) and [Auto DAO-Registration](../../../../Tutorials/Advanced/daos/concept.md)
 
-/// How often can a key be used. This specifies the time between each use.
-/// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-pub throttle_timestamp: Option<u64>,
 
-/// Interval of time after the `start_timestamp` that must pass before a key can be used.
-/// If multiple intervals pass, the key can be used multiple times. This has nothing to do
-/// With the throttle timestamp. It only pertains to the start timestamp and the current 
-/// timestamp. The last_used timestamp is not taken into account.
-/// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-pub claim_interval: Option<u64>,
+Note that this parameter changes the number of uses for all keys in your drop; this will change the upfront cost for the drop creator. As with all aspects of Keypom linkdrops, it is imparative for the drop owner to understand the needs of their drop in order to reduce upfront costs and avoid uneccesary complexity. 
 
-/// If claim is called, refund the `deposit_per_use` to the owner's account directly. If None,
-/// default to false.
-pub on_claim_refund_deposit: Option<bool>,
+## `root_account_id`
+*Default: "near" or "testnet"*  
+Changing the `root_account_id` parameter will change the root of any accounts that call `create_account_and_claim` on your linkdrops.
 
-/// What permissions does the key have? Can it call both `claim` and `create_account_and_claim`
-/// or just one of the two?
-/// This defaults to the key being able to call both methods.
-pub claim_permission: Option<ClaimPermissions>,
+### Use cases
+Let's say you have an organization called Moonpom (totally not secretly run by our beloved Pomeranian, Moon) and you and your users want to proudly represent Moonpom! 
 
-/// Override the global root account that sub-accounts will have (near or testnet). This allows
-/// users to create specific drops that can create sub-accounts of a predefined root.
-/// For example, Fayyr could specify a root of `fayyr.near` By which all sub-accounts will then
-/// be `ACCOUNT.fayyr.near`
-pub drop_root: Option<AccountId>,
+You set `root_account_id = "moonpom.near"` and now any account created using your linkdrops will take on the form `$username.moonpom.near`
 
-/// Should the drop be automatically deleted when all the keys are used? This is defaulted to false and
-/// Must be overwritten
-pub delete_on_empty: Option<bool>,
-
-/// When this drop is deleted and it is the owner's *last* drop, automatically withdraw their balance.
-pub auto_withdraw: Option<bool>,

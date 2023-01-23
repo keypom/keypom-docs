@@ -120,6 +120,9 @@ const sidebars = {
   ],
   KeypomV2: [
     "KeypomV2/welcome"
+  ],
+  API: [
+    "api/modules"
   ]
 };
 module.exports = sidebars;

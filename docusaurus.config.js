@@ -16,6 +16,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock'],
 
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc',
+
+      // Plugin / TypeDoc options
+      {
+        entryPoints: ['../keypom-js/src/index.ts'],
+        tsconfig: '../keypom-js/tsconfig.json',
+      },
+    ],
+  ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -53,12 +65,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             to: "docs/next/Tutorials/welcome",
-            label: "📚Tutorials",
+            label: "📚 Tutorials",
             position: "left",
           },
           {
             to: "docs/next/KeypomV2/welcome",
-            label: "🤖Keypom V2",
+            label: "🤖 Keypom V2",
+            position: "left",
+          },
+          {
+            to: "docs/next/api/index",
+            label: "💻 SDK TypeDocs",
             position: "left",
           },
           // {

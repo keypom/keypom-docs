@@ -24,6 +24,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       {
         entryPoints: ['../keypom-js/src/index.ts'],
         tsconfig: '../keypom-js/tsconfig.json',
+        includeVersion: true,
+        entryPointStrategy: 'expand',
+        excludeNotDocumented: false,
+        out: '.',
+        hideGenerator: false,
+        entryDocument: 'welcome.md',
+        hideMembersSymbol: true,
+
+        out: 'keypom-sdk',
+        sidebar: {
+          categoryLabel: 'SDK TypeDocs',
+          collapsed: false,
+          position: 0,
+          fullNames: true,
+        },
       },
     ],
   ],
@@ -74,7 +89,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            to: "docs/next/api/index",
+            to: "docs/next/keypom-sdk/welcome",
             label: "💻 SDK TypeDocs",
             position: "left",
           },
@@ -86,7 +101,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
             position: 'right',
           },

@@ -20,7 +20,7 @@ Example: transferring one wNEAR should be passed in as "100000000000000000000000
 
 #### Defined in
 
-[src/lib/types/protocol.ts:171](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L171)
+[src/lib/types/protocol.ts:171](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L171)
 
 ___
 
@@ -32,7 +32,7 @@ Which contract do the FTs belong to?
 
 #### Defined in
 
-[src/lib/types/protocol.ts:162](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L162)
+[src/lib/types/protocol.ts:162](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L162)
 
 ___
 
@@ -44,4 +44,4 @@ Which account ID will be sending the fungible tokens to the Keypom contract in o
 
 #### Defined in
 
-[src/lib/types/protocol.ts:166](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L166)
+[src/lib/types/protocol.ts:166](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L166)

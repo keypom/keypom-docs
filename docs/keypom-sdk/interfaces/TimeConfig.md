@@ -19,7 +19,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:95](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/drops.ts#L95)
+[src/lib/types/drops.ts:95](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/drops.ts#L95)
 
 ___
 
@@ -33,7 +33,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:108](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/drops.ts#L108)
+[src/lib/types/drops.ts:108](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/drops.ts#L108)
 
 ___
 
@@ -46,7 +46,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:89](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/drops.ts#L89)
+[src/lib/types/drops.ts:89](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/drops.ts#L89)
 
 ___
 
@@ -59,4 +59,4 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:101](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/drops.ts#L101)
+[src/lib/types/drops.ts:101](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/drops.ts#L101)

@@ -14,4 +14,4 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/types/protocol.ts:140](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L140)
+[src/lib/types/protocol.ts:140](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L140)

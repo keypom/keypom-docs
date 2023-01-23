@@ -19,7 +19,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[src/lib/types/protocol.ts:131](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L131)
+[src/lib/types/protocol.ts:131](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L131)
 
 ___
 
@@ -31,7 +31,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[src/lib/types/protocol.ts:135](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L135)
+[src/lib/types/protocol.ts:135](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L135)
 
 ___
 
@@ -43,7 +43,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[src/lib/types/protocol.ts:122](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L122)
+[src/lib/types/protocol.ts:122](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L122)
 
 ___
 
@@ -56,4 +56,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:127](https://github.com/keypom/keypom-js/blob/f1161c8/src/lib/types/protocol.ts#L127)
+[src/lib/types/protocol.ts:127](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L127)

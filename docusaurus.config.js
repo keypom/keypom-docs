@@ -16,6 +16,33 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock'],
 
+  // plugins: [
+  //   [
+  //     'docusaurus-plugin-typedoc',
+
+  //     // Plugin / TypeDoc options
+  //     {
+  //       entryPoints: ['../keypom-js/src/index.ts'],
+  //       tsconfig: '../keypom-js/tsconfig.json',
+  //       includeVersion: true,
+  //       entryPointStrategy: 'expand',
+  //       excludeNotDocumented: false,
+  //       out: '.',
+  //       hideGenerator: false,
+  //       entryDocument: 'welcome.md',
+  //       hideMembersSymbol: true,
+
+  //       out: 'keypom-sdk',
+  //       sidebar: {
+  //         categoryLabel: 'SDK TypeDocs',
+  //         collapsed: false,
+  //         position: 0,
+  //         fullNames: true,
+  //       },
+  //     },
+  //   ],
+  // ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -53,12 +80,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             to: "docs/next/Tutorials/welcome",
-            label: "📚Tutorials",
+            label: "📚 Tutorials",
             position: "left",
           },
           {
             to: "docs/next/KeypomV2/welcome",
-            label: "🤖Keypom V2",
+            label: "🤖 Keypom V2",
+            position: "left",
+          },
+          {
+            to: "docs/next/keypom-sdk/welcome",
+            label: "💻 SDK TypeDocs",
             position: "left",
           },
           // {
@@ -69,7 +101,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
             position: 'right',
           },

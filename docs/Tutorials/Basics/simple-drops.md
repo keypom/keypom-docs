@@ -135,7 +135,7 @@ https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246
 </Tabs>
 
 ## Conclusion
-In this tutorial, you learned the basic [steps of creating a simple drop](simple-drops.md#introduction), how to [initialize a NEAR blockchain connection](simple-drops.md#initialization), and how to [create the keys and the drop](simple-drops.md#creating-keypairs-and-simple-drop). 
+In this tutorial, you learned the basic [steps of creating a simple drop](simple-drops.md#introduction), how to [initialize a NEAR blockchain connection](simple-drops.md#initialization), and how to [create the keys and the drop](simple-drops.md#creating-keypairs-and-simple-drop). You also learned the meaning of "funding a drop" as well as the purpose of the `initKeypom` function and when to use it. 
 
 In the next tutorial, you'll be learning how to create and fund and NFT drop using the Keypom SDK and NEAR-API-JS.
 

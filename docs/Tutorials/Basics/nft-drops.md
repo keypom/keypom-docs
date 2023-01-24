@@ -139,3 +139,28 @@ https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246
 
 </TabItem>
 </Tabs>
+
+## Full Solution
+With all the steps completed, all the code can be placed into the skeleton from the [introduction](nft-drops.md#introduction). 
+
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```js reference
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/nft-example.js#L39-L62
+```
+
+</TabItem>
+<TabItem value="NRJS" label="💻NEAR-API-JS">
+
+```js reference
+https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/nft-near-example.js#L29-L79
+```
+
+</TabItem>
+</Tabs>
+
+## Conclusion
+In this NFT tutorial, you learned about the steps needed while [initializing an NFT drop](nft-drops.md#initialization) and the process of [creating the NFT drop](nft-drops.md#creating-drop-and-transfering-nfts).
+
+With the NFT drop under your belt, the next tutorial will be the FT drop tutorial. The process is similar to the NFT drop tutorial but with a few different steps. 

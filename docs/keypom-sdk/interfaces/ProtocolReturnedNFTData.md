@@ -19,7 +19,7 @@ The account ID that the NFT contract is deployed to. This contract is where all 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:149](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L149)
+[src/lib/types/protocol.ts:169](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L169)
 
 ___
 
@@ -31,4 +31,4 @@ The account ID that will be sending any NFTs to the Keypom contract for the spec
 
 #### Defined in
 
-[src/lib/types/protocol.ts:151](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L151)
+[src/lib/types/protocol.ts:171](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L171)

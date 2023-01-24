@@ -10,28 +10,11 @@ custom_edit_url: null
 
 ### config
 
- `Optional` **config**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `root_account_id?` | `string` |
-| `time?` | { `end?`: `number` ; `interval?`: `number` ; `start?`: `number` ; `throttle?`: `number`  } |
-| `time.end?` | `number` |
-| `time.interval?` | `number` |
-| `time.start?` | `number` |
-| `time.throttle?` | `number` |
-| `usage?` | { `auto_delete_drop?`: `boolean` ; `auto_withdraw?`: `boolean` ; `permission?`: `string` ; `refund_deposit?`: `boolean`  } |
-| `usage.auto_delete_drop?` | `boolean` |
-| `usage.auto_withdraw?` | `boolean` |
-| `usage.permission?` | `string` |
-| `usage.refund_deposit?` | `boolean` |
-| `uses_per_key?` | `number` |
+ `Optional` **config**: [`ProtocolReturnedDropConfig`](ProtocolReturnedDropConfig.md)
 
 #### Defined in
 
-[src/lib/types/params.ts:43](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L43)
+[src/lib/types/params.ts:44](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L44)
 
 ___
 
@@ -41,7 +24,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:40](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L40)
+[src/lib/types/params.ts:41](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L41)
 
 ___
 
@@ -51,43 +34,27 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:42](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L42)
+[src/lib/types/params.ts:43](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L43)
 
 ___
 
 ### fc
 
- `Optional` **fc**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `config?` | { `attached_gas?`: `string`  } |
-| `config.attached_gas?` | `string` |
-| `methods` | `Maybe`<{ `account_id_field?`: `string` ; `args`: `string` ; `attached_deposit`: `string` ; `drop_id_field?`: `string` ; `key_id_field?`: `string` ; `method_name`: `string` ; `receiver_id`: `string`  }[]\>[] |
+ `Optional` **fc**: [`ProtocolReturnedFCData`](ProtocolReturnedFCData.md)
 
 #### Defined in
 
-[src/lib/types/params.ts:73](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L73)
+[src/lib/types/params.ts:49](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L49)
 
 ___
 
 ### ft
 
- `Optional` **ft**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `balance_per_use?` | `string` |
-| `contract_id?` | `string` |
-| `sender_id?` | `string` |
+ `Optional` **ft**: [`ProtocolReturnedFTData`](ProtocolReturnedFTData.md)
 
 #### Defined in
 
-[src/lib/types/params.ts:64](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L64)
+[src/lib/types/params.ts:47](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L47)
 
 ___
 
@@ -97,24 +64,17 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:59](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L59)
+[src/lib/types/params.ts:45](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L45)
 
 ___
 
 ### nft
 
- `Optional` **nft**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `contract_id?` | `string` |
-| `sender_id?` | `string` |
+ `Optional` **nft**: [`ProtocolReturnedNFTData`](ProtocolReturnedNFTData.md)
 
 #### Defined in
 
-[src/lib/types/params.ts:69](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L69)
+[src/lib/types/params.ts:48](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L48)
 
 ___
 
@@ -124,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:88](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L88)
+[src/lib/types/params.ts:50](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L50)
 
 ___
 
@@ -134,20 +94,14 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:39](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L39)
+[src/lib/types/params.ts:40](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L40)
 
 ___
 
 ### simple
 
- `Optional` **simple**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `lazy_register?` | `boolean` |
+ `Optional` **simple**: [`ProtocolReturnedSimpleData`](ProtocolReturnedSimpleData.md)
 
 #### Defined in
 
-[src/lib/types/params.ts:61](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/params.ts#L61)
+[src/lib/types/params.ts:46](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/params.ts#L46)

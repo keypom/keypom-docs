@@ -11,6 +11,27 @@ snake cased instead of camel cased due to what the Protocol returns.
 
 ## Properties
 
+### account\_creation\_fields
+
+ `Optional` **account\_creation\_fields**: `Object`
+
+When calling `create_account` on the root account, which keypom args should be attached to the payload.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `account_id_field?` | `string` | Specifies what field Keypom should auto-inject the account that claimed the drop's ID into when calling the `create_account` function. |
+| `drop_id_field?` | `string` | Specifies what field Keypom should auto-inject the drop's ID into when calling the `create_account` function. |
+| `funder_id_field?` | `string` | Specifies what field Keypom should auto-inject the drop funder's account ID into when calling the `create_account` function. |
+| `key_id_field?` | `string` | Specifies what field Keypom should auto-inject the key's ID into when calling the `create_account` function. |
+
+#### Defined in
+
+[src/lib/types/protocol.ts:138](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L138)
+
+___
+
 ### auto\_delete\_drop
 
  `Optional` **auto\_delete\_drop**: `boolean`
@@ -19,7 +40,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[src/lib/types/protocol.ts:131](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L131)
+[src/lib/types/protocol.ts:131](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L131)
 
 ___
 
@@ -31,7 +52,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[src/lib/types/protocol.ts:135](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L135)
+[src/lib/types/protocol.ts:135](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L135)
 
 ___
 
@@ -43,7 +64,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[src/lib/types/protocol.ts:122](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L122)
+[src/lib/types/protocol.ts:122](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L122)
 
 ___
 
@@ -56,4 +77,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:127](https://github.com/keypom/keypom-js/blob/bf39909/src/lib/types/protocol.ts#L127)
+[src/lib/types/protocol.ts:127](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/protocol.ts#L127)

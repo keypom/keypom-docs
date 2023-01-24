@@ -5,6 +5,12 @@ sidebar_label: 'Drop Configurations'
 
 Drop Customization via the `DropConfig` object can help cater the properties of the drop to exactly what you want! From changing the amount of $NEAR received by your users, to being able to set up a subscription service, understanding the power of `DropConfig` is crucial to making the most of Keypom!
 
+:::tip
+A configuration applies to **ALL KEYS** accross a drop!  
+
+This means that if you want keys with different configurations, you must create multiple drops with their respective configurations.
+:::
+
 # Understanding `DropConfig`
 ```rust
 pub struct DropConfig {

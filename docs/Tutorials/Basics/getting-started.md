@@ -3,18 +3,39 @@ import TabItem from '@theme/TabItem';
 
 # Getting Started
 
-There are several ways to get started using Keypom. You can use the NEAR CLI, our Keypom application, our Keypom SDK and more. In this section, we will go over how you can interact with Keypom and create drops using the NEAR-API-JS library and write simple node scripts.
+There are several ways to get started using Keypom.  
+
+1) [Basic Tutorials](simple-drops.md) for a full tutorial starting from scratch.  
+2) [Existing Node Scripts](getting-started.md#deploy-scripts), known as Deploy Scripts, for working examples with more [configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/drop-customization.md).  
+3) [Advanced Tutorials](../Advanced/ticketing/concept.md) for more advanced use cases.  
+
+In the basic tutorials, you will be shwon how to create [the four types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops. Two methods will be shown.
+
+1) [NEAR-API-JS](https://docs.near.org/tools/near-api-js/reference)  
+2) [Keypom-JS SDK](https://github.com/keypom/keypom-js) <-- currently linked to github, change this to typedocs or smth else once ready)
+
+In the Deploy scripts, the same four types of Keypom drops will be created, but you will be able to customize the configurations to your needs. 
 
 ## Prerequisites
+For the basic tutorials, you can choose to run the scripts on your own machine. To do son, you must have the following:
 
-In order to successfully interact with this contract using the deploy scripts, you should have the following: 
+1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
+2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
+3. To install the SDK, simply run the following in your command prompt.  
+```bash
+npm -i keypom-js
+```
 
-- [NEAR account](https://docs.near.org/concepts/basics/account)
-- [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+At this point, you are ready to start the tutorials. To interact with the deploy scripts, you can continue reading this page.  
+
+For the Deploy Scripts, you should have a [NEAR account](https://docs.near.org/concepts/basics/account). It can be either `testnet` or `mainnet`.
+:::note
+If you choose to use mainnet, you will be using real $NEAR to fund your drops.
+:::
 
 ## Deploy Scripts
 
-There are 4 deploy scripts that have been made available for you to use and easily create Keypom links. These are for:
+There are [4 deploy scripts](https://github.com/keypom/keypom/tree/main/deploy) that have been made available for you to use and easily create Keypom links. These are for:
 - Simple Drops
 - NFT Drops
 - FT Drops

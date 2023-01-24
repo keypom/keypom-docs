@@ -114,23 +114,12 @@ const sidebars = {
       collapsed: false,
       items: [
             'Tutorials/Basics/getting-started',
-            {
-              type: 'category',
-              label: 'Creating a drop',
-              link: {
-                type: 'doc',
-                id: 'Tutorials/Basics/creating-drop',
-              },
-              collapsed: false,
-              items: [
-                    'Tutorials/Basics/preface',
-                    'Tutorials/Basics/simple-drops',
-                    'Tutorials/Basics/nft-drops',
-                    'Tutorials/Basics/ft-drops',
-                    'Tutorials/Basics/fc-drops',
+            'Tutorials/Basics/simple-drops',
+            'Tutorials/Basics/nft-drops',
+            'Tutorials/Basics/ft-drops',
+            'Tutorials/Basics/fc-drops',
                     
-              ],
-            },
+            
       ],
     },
     {
@@ -218,6 +207,16 @@ const sidebars = {
                     'Tutorials/Advanced/receiver-contracts/final',
               ],
             },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Others',
+      collapsed: true,
+      items: [
+            'Tutorials/Misc/sign-txn',
+                    
+            
       ],
     },
   ],

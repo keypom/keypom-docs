@@ -29,13 +29,21 @@ pub struct TimeConfig {
 
 ## `start` 
 *Default: none, Keys can be used anytime*
+Start time is useful for any drops where you intend to restrict access until a certain time. Setting a start time effectively sets an activation time; a time where the keys become usable afterwards. Prior to that, if a user is to try and  `claim` the key or use `create_account_and_claim`, it will not work. 
 
 ### Use case
+Let's say I am running a concert, and we want to give fans exclusive access using prefered and general admission tickets. Those with prefered admission tickets can enter anytime, even when the band is setting up! General admission, on the other hand, may only enter once the band is set up. 
+
+In this case, I would hand out general admission tickets with a start time in the time configurations and another set of prefered admission tickets with and earlier start time in the time configurations.
+
+To do this, I would need to create two drops, one for prefered admission and another for general admission. This is because, as covered in the [Drop Configurations](drop-customization.md) page, one set of configurations will apply to ALL keys in that drop. 
 
 ## `end` 
 *Default: none, Keys can be used anytime*
+Contrary to the start parameter, the end parameter acts as a de-activation time. This means that once the end time is reached, all the keys in the drop will be de-activated and can no longer be used. 
 
 ### Use case
+Let's pretend that we are at NEARCON and I am an NFT marketplace looking to onboard users into my platform! My strategy is to offer an exclusive NFT to users that sign up during NEARCON. To do this, an to ensure that the users that sign up were actually at NEARCON, I can give out the keys in person and set an end time such that those that claim 
 
 ## `throttle` 
 *Default: none, Keys can be used anytime*

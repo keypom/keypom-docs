@@ -10,7 +10,12 @@ import TabItem from '@theme/TabItem';
 In this tutorial, you are going to learn how to create a simple drop from scratch. To learn what a simple drop is, [click here](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md)
 :::
 
-First, the skeleton code will be defined. 
+Creating a simple drop is a two step process:  
+
+1) Initialization, which includes setting up a connection to the NEAR blockchain.  
+2) Creating keypairs and the simple drop.  
+
+To do this, the skeleton code will first be defined. 
 ``` js
 // Each of the two methods to create this drop will have their own unique set of imports
 
@@ -36,15 +41,16 @@ simpleDropKeypom()
 
 ```
 
-Creating a simple drop is a two step process:  
-
-1) Initialization, which includes setting up a connection to the NEAR blockchain.  
-2) Creating keypairs and the simple drop.  
-
 ## Initialization
 In this tutorial, our goal for initialization to set up our connection to the NEAR blockchain.
 
 Using the SDK, the NEAR connection is done using the `initKeypom` function. Note that the current method of initialization requires exposing the private key. There are alternative ways to [sign transactions](../Misc/sign-txn.md).
+
+:::info
+The `initKeypom` function is the first function you need to call in order to interact with the SDk. It will initialize all tools needed to interact with the SDK, including a NEAR connection if it is not already connected. 
+
+Note that there will be instances where the NEAR connection is already connected but `initKeypom` will still be called to initalize other tools to interact with the SDK.
+:::
 
 Using NEAR-API-JS, the connection process is more complicated. It consists of creating a unecrypted local keystore and, creating a NEAR configurations, and then using that to initialize a connection with the NEAR-API-JS library. More information about this process can be found [here](https://docs.near.org/tools/near-api-js/quick-reference#key-store) 
 

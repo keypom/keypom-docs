@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 # Fungible Token Drop
 ## Introduction
 :::tip
-It's recommended you understand the basics of how to create a [Simple Drop](simple-drops.md) first before moving to NFT drops. Many of the concepts in this tutorials are extensions on the Simple Drop. 
+It's recommended you understand the basics of how to create a [Simple Drop](simple-drops.md) first before moving to FT drops. Many of the concepts in this tutorials are extensions on the Simple Drop. 
 
 It's also important to understand the workings of the [Fungible Token drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md) as many concepts will be referenced from there.
 :::

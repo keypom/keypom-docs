@@ -19,4 +19,4 @@ The amount of Gas cannot exceed 90 TGas.
 
 #### Defined in
 
-[src/lib/types/fc.ts:54](https://github.com/keypom/keypom-js/blob/6117f24/src/lib/types/fc.ts#L54)
+[src/lib/types/fc.ts:54](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L54)

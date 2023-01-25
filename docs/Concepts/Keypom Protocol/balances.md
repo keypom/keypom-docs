@@ -12,7 +12,7 @@ This is where the concept of a **Keypom Balance** comes in real handy!
 
 Every account that uses Keypom carries an internal balance (in $NEAR) on the Keypom contract. Effectively, the Keypom balance is similar to a debit card. You can overload your balance and sip from it as you interact with the contract.  
 
-Let's go back to your event organizer persona; this Keypom Balance allows you to simply preload your "debit card" with loads of $NEAR and then go about your business without needing to worry about transfering $NEAR for ever function call!
+Let's go back to your event organizer persona; this Keypom Balance allows you to simply preload your "debit card" with loads of $NEAR and then go about your business without needing to worry about transferring $NEAR for ever function call!
 ## Interacting with Balances
 There are a few functions that you can use to interact with your Keypom balance. Let's quickly run through their meanings, and then show some examples!
 ```rust

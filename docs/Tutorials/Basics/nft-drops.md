@@ -38,20 +38,26 @@ const homedir = require("os").homedir();
 
 
 async function NFTDropKeypom(){
-// STEP 1: Initiate a NEAR connection.
+// INITIALIZATION
 
-// STEP 2: Mint NFTs
+//      STEP 1: Initiate a NEAR connection.
 
-// STEP 3: Create NFT drop
+//      STEP 2: Mint NFTs
 
-// STEP 4: Transfer NFTs to Keypom
+// CREATING DROP AND TRANSFERRING NFTs
+
+//      STEP 3: Create NFT drop
+
+//      STEP 4: Transfer NFTs to Keypom
 }
 
 NFTDropKeypom()
 ```
 
+For this tutorial, steps 1 and 2 will be grouped under "[Initialization](nft-drops.md#initialization)" and steps 3 and 4 will be grouped under "[Creating drops and transferring NFTs](nft-drops.md#creating-drop-and-transferring-nfts)"
+
 ## Initialization
-In this section, the NEAR blockchain connection is set up and the NFTs will be minted to ensure you are transfering NFTs that *you* own. This will serve as the foundation for creating the drop and transfering ownership of the NFTs to Keypom.
+In this section, the NEAR blockchain connection is set up and the NFTs will be minted to ensure you are transferring NFTs that *you* own. This will serve as the foundation for creating the drop and transferring ownership of the NFTs to Keypom.
 
 The NEAR connection process is identical to the one seen in the creating a [Simple Drop](simple-drops.md#initialization). If you already own the NFTs you wish to add to the drop, there is no need to mint them here. 
 
@@ -105,7 +111,7 @@ In the SDK approach, `initKeypom` will not be used to **initialize a NEAR connec
 Function arguments for `functionCall` can be found [here](https://docs.near.org/tools/near-api-js/reference/modules/transaction#functioncall)
 :::
 
-## Creating Drop and Transfering NFTs
+## Creating Drop and Transferring NFTs
 
 The next step is where the drop is created and transfer of your NFTs to the Keypom smart contract occur. 
 
@@ -161,6 +167,6 @@ https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246
 </Tabs>
 
 ## Conclusion
-In this NFT tutorial, you learned about the steps needed while [initializing an NFT drop](nft-drops.md#initialization) and the process of [creating the NFT drop](nft-drops.md#creating-drop-and-transfering-nfts).
+In this NFT tutorial, you learned about the steps needed while [initializing an NFT drop](nft-drops.md#initialization) and the process of [creating the NFT drop](nft-drops.md#creating-drop-and-transferring-nfts).
 
 With the NFT drop under your belt, the next tutorial will be the FT drop tutorial. The process is similar to the NFT drop tutorial but with a few different steps. 

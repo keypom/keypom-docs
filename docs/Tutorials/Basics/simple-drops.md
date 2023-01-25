@@ -64,14 +64,14 @@ If you do not have your account credentials and Keypairs stored in your `~./near
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/simple-example.js#L17-L26
+https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/keypom-js-sdk/simple-example.js#L6-L14
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/simple-near-example.js#L6-L9
+https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/near-api-js/simple-near-example.js#L8-L25
 
 ```
 

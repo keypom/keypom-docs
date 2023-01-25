@@ -27,7 +27,6 @@ To start, the skeleton code is created.
 
 // Imports used in the Keypom SDK method:
 const keypom = require("../../lib");
-const { updateFunder } = require("../../lib/lib/keypom");
 const { initKeypom, getEnv, createDrop } = keypom
 
 // Imports used in the NEAR-API-JS method:
@@ -65,44 +64,8 @@ In this section, you'll notice that both the SDK and NEAR-API-JS share the same 
 
 The code for setting up the NEAR connection and minting the NFT is shown below. In the skeleton code, these are steps 1 and 2.
 
-``` js
-// Initiate connection to the NEAR testnet blockchain.
-const network = "testnet"
-
-const CREDENTIALS_DIR = ".near-credentials";
-const credentialsPath =  path.join(homedir, CREDENTIALS_DIR);
-
-let keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-
-let nearConfig = {
-	networkId: network,
-	keyStore: keyStore,
-	nodeUrl: `https://rpc.${network}.near.org`,
-	walletUrl: `https://wallet.${network}.near.org`,
-	helperUrl: `https://helper.${network}.near.org`,
-	explorerUrl: `https://explorer.${network}.near.org`,
-};
-
-let near = await connect(nearConfig);
-const fundingAccount = await near.account("keypom-docs-demo.testnet");
-
-// Mint 1 NFT for the funder from the NFT contract outlined in the NFT_DATA
-await fundingAccount.functionCall(
-	"nft.examples.testnet", 
-	'nft_mint', 
-	{
-		receiver_id: "keypom-docs-demo.testnet",
-		metadata: {
-		    title: "My Keypom NFT",
-		    description: "Keypom is lit fam :D",
-		    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-		},
-		token_id: "near-api-token-01",
-	},
-	"300000000000000",
-	// Attached deposit of 0.1 $NEAR
-	parseNearAmount("0.1")
-);
+``` js reference
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/nft-example.js#L6-L40
 ```
 
 :::note
@@ -133,14 +96,14 @@ It's important to ensure you own the NFTs before calling `createDrop` as otherwi
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/nft-example.js#L39-L62
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/nft-example.js#L42-L65
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/nft-near-example.js#L29-L79
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/nft-near-example.js#L44-L93
 ```
 
 </TabItem>
@@ -153,14 +116,14 @@ With all the steps completed, all the code can be placed into the skeleton from 
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/nft-example.js#L39-L62
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/nft-example.js#L1-L67
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/nft-near-example.js#L29-L79
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/nft-near-example.js#L1-L96
 ```
 
 </TabItem>

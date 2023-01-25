@@ -31,7 +31,6 @@ This translated to the following skeleton code.
 
 // Imports used in the Keypom SDK method:
 const keypom = require("../../lib");
-const { updateFunder } = require("../../lib/lib/keypom");
 const { initKeypom, getEnv, createDrop } = keypom
 
 // Imports used in the NEAR-API-JS method:
@@ -61,14 +60,14 @@ The code for the initialization can be found below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/keypom-js-sdk/simple-example.js#L6-L14
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L6-L14
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/near-api-js/simple-near-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L7-L24
 
 ```
 
@@ -95,14 +94,14 @@ All of these arguments are wrapped up in a `fcData` or `fc` object that is passe
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/fc-example.js#L17-L56
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L16-L45
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/fc-near-example.js#L6-L58
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L26-L75
 ```
 
 </TabItem>
@@ -115,14 +114,14 @@ Taking the code snippets from the [initialization](fc-drops.md#initialization) a
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/fc-example.js#L17-L56
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L1-L47
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/fc-near-example.js#L6-L58
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L1-L77
 ```
 
 </TabItem>

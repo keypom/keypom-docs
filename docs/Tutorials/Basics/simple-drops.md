@@ -21,8 +21,7 @@ To do this, the skeleton code will first be defined.
 
 // Imports used in the Keypom SDK method:
 const keypom = require("../../lib");
-const { updateFunder } = require("../../lib/lib/keypom");
-const { initKeypom, getEnv, createDrop } = keypom
+const { initKeypom, createDrop } = keypom
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -64,14 +63,14 @@ If you do not have your account credentials and Keypairs stored in your `~./near
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/keypom-js-sdk/simple-example.js#L6-L14
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L5-L13
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/71d7b81b3819a921de741586b2542bf5fa9e4873/docs-examples/near-api-js/simple-near-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L7-L24
 
 ```
 
@@ -92,6 +91,7 @@ In the SDK, these two tasks are combined into one function, `createDrop`. This f
 
 With NEAR-API-JS, these two tasks are seperate, as the `create_drop` function only creates the drop. The keys that are passed into it must be generated seperately.
 
+### Cost to Fund Simple Drop
 Note that with NEAR-API-JS, an attached deposit must be added to the `functionCall`. This is to cover the cost of creaating the drop. With simple drops, the costs are just the total sum of $NEAR needed for the collective sum of all the linkdrops. 
 
 In this example, a single key that has one use of the default 1 $NEAR per use cost is being funded. If there were 5 keys that had 2 uses each and had a 10 $NEAR per use cost, the total cost to fund the drop would be `5 keys * 2 uses * 10 $NEAR per use` = `100 $NEAR`
@@ -101,14 +101,14 @@ In this example, a single key that has one use of the default 1 $NEAR per use co
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/simple-example.js#L33-L39
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L15-L21
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/simple-near-example.js#L11-L37
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L26-L51
 ```
 
 </TabItem>
@@ -121,18 +121,81 @@ Placing all the code code into the skeleton from the [introduction](simple-drops
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/simple-example.js#L33-L39
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L1-L24
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/simple-near-example.js#L11-L37
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L1-L53
 ```
 
 </TabItem>
 </Tabs>
+
+## Testing
+### Running the Script and Expected Console Logs
+Here, you'll learn how to run the code that was just covered, and what to expect.
+
+To access the code, clone the code from this repo. Then open a terminal and cd to the directory where the code is located and run the following to install all the necesasry packages. 
+```bash
+npm install
+```
+From there, you are able to run this Simple Drop script that was made in this tutorial using the following command:
+``` bash
+npm run simple-keypom
+```
+This should return a successful drop creation and console log a Public Key and Linkdrop
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/console-output.png").default} alt="console output" width="100%"/> </p>
+To see the full console log from this drop creation, see the expandable section below.
+
+<details>
+<summary>Console Log of Test</summary>
+<p>
+
+``` bash
+yarn simple-keypom
+yarn run v1.22.19
+warning ../../../package.json: No license field
+$ node docs-examples/keypom-js-sdk/simple-example.js
+Receipts: HLaPfsxpvU8SKAczYM9NfBtuvPjx5UGvJ4t6bgM9K9TU, 5on8FEqcHgf5iy15KafL2B8bzMTGTnTijgmmf2BiuQGQ
+        Log [v1-3.keypom.testnet]: Current Block Timestamp: 1674673033871504065
+        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v1-3.keypom.testnet]: Total required storage Yocto 11110000000000000000000
+        Log [v1-3.keypom.testnet]: Current balance: 1.0512189, 
+            Required Deposit: 1.0308726, 
+            total_required_storage: 0.01111,
+            Drop Fee: 0, 
+            Key Fee: 0 Total Key Fee: 0,
+            allowance: 0.0187626 total allowance: 0.0187626,
+            access key storage: 0.001 total access key storage: 0.001,
+            deposits less none FCs: 1 total deposits: 1 lazy registration: false,
+            deposits for FCs: 0 total deposits for FCs: 0,
+            uses per key: 1
+            None FCs: 0,
+            length: 1
+            GAS to attach: 100000000000000
+        Log [v1-3.keypom.testnet]: New user balance 0.0203462
+        Log [v1-3.keypom.testnet]: Fees collected 0
+Public Keys and Linkdrops:  {
+  'ed25519:CoNw7z7fZQhVtb3mXyxj2tJ3A18X61dAKpJLpEFaX69W': 'https://testnet.mynearwallet.com/linkdrop/v1-3.keypom.testnet/4wnfxw9w1pYuEhZW5NSvrgbKE1UxudU669bwxMTgw3Kgjyp39eUsjsa9GSwYX4mJXwmjBkEQMYRr7Hwaf1ovAX6G'
+}
+✨  Done in 4.45s.
+```
+
+</p>
+</details>
+
+### Claiming and Explorer Transactions
+Once you have the link, you are able to claim it the linkdrop you've just created. The output link will take you to the following MyNearWallet page, where you will have the choice to call claim to an existing account or a new one. 
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/mnw-claim.png").default} alt="MyNearWallet claim" width="80%"/> </p>
+
+After the claim transaction succeeds, you can check the transactions on the [NEAR Explorer](https://explorer.near.org/). Ensure you are select `testnet` from the dropdown in the top left if you are using testnet to conduct these tests.
+
+To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop` and `claim` transactions. 
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
+
 
 ## Conclusion
 In this tutorial, you learned the basic [steps of creating a simple drop](simple-drops.md#introduction), how to [initialize a NEAR blockchain connection](simple-drops.md#initialization), and how to [create the keys and the drop](simple-drops.md#creating-keypairs-and-simple-drop). You also learned the meaning of "funding a drop" as well as the purpose of the `initKeypom` function and when to use it. 

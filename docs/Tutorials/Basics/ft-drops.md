@@ -28,8 +28,8 @@ With this, the following skeleton code can be created.
 
 // Imports used in the Keypom SDK method:
 const keypom = require("../../lib");
-const { updateFunder } = require("../../lib/lib/keypom");
 const { initKeypom, getEnv, createDrop } = keypom
+const { BN } = require("bn.js");
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -76,7 +76,7 @@ With the Fungible Token used in the example, it has a `decimal` parameter value 
 Similar to the NFT drop tutorial, a NEAR-API-JS function was used in the SDK approach, meaning the SDK approach will need to use NEAR-API-JS methods to initialize a NEAR connection. To read futher on this, see the [NFT drop tutorial](nft-drops.md#initialization). This means the two approaches will share the same code for steps 1 and 2. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/ft-example.js#L19-L37
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/ft-example.js#L7-L39
 ```
 ## Creating Drop and Transferring FTs
 In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom. 
@@ -103,14 +103,14 @@ The code for this section can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/ft-example.js#L39-L64
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/ft-example.js#L41-L66
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/ft-near-example.js#L27-L93
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/ft-near-example.js#L43-L108
 ```
 
 </TabItem>
@@ -123,14 +123,14 @@ Inserting the above code blocks into the skeleton code from the [introduction](f
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/keypom-js-sdk/ft-example.js#L39-L64
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/ft-example.js#L1-L69
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/ae49a716c579fd849b6238772f570db5e636246a/docs-examples/near-api-js/ft-near-example.js#L27-L93
+https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/ft-near-example.js#L1-L110
 ```
 
 </TabItem>

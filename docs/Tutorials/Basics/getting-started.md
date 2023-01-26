@@ -16,6 +16,8 @@ In the basic tutorials, you will be shwon how to create [the four types](/Concep
 
 In the Deploy scripts, the same four types of Keypom drops will be created, but you will be able to customize the configurations to your needs. 
 
+---
+
 ## Prerequisites
 For the basic tutorials, you can choose to run the scripts on your own machine. To do son, you must have the following:
 
@@ -32,6 +34,8 @@ For the Deploy Scripts, you should have a [NEAR account](https://docs.near.org/c
 :::note
 If you choose to use mainnet, you will be using real $NEAR to fund your drops.
 :::
+
+---
 
 ## Deploy Scripts
 

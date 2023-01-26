@@ -30,8 +30,7 @@ This translated to the following skeleton code.
 // Each of the two methods to create this drop will have their own unique set of imports
 
 // Imports used in the Keypom SDK method:
-const keypom = require("../../lib");
-const { initKeypom, getEnv, createDrop } = keypom
+const { initKeypom, createDrop } = require("keypom-js");
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -60,14 +59,14 @@ The code for the initialization can be found below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L6-L14
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/fc-example.js#L5-L13
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L7-L24
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/fc-near-example.js#L7-L24
 
 ```
 
@@ -94,14 +93,14 @@ All of these arguments are wrapped up in a `fcData` or `fc` object that is passe
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L16-L45
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/fc-example.js#L15-L44
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L26-L75
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/fc-near-example.js#L26-L75
 ```
 
 </TabItem>
@@ -114,18 +113,93 @@ Taking the code snippets from the [initialization](fc-drops.md#initialization) a
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/fc-example.js#L1-L47
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/fc-example.js#L1-L57
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/fc-near-example.js#L1-L77
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/fc-near-example.js#L1-L77
 ```
 
 </TabItem>
 </Tabs>
+
+---
+
+## Testing
+### Running the Script and Expected Console Logs
+Here, you'll learn how to run the code that was just covered, and what to expect.
+
+To access the code, clone the code from [this repo](https://github.com/keypom/keypom-js). Then open a terminal and cd to the directory where the code is located and run the following to install all the necesasry packages. 
+```bash
+npm install
+```
+:::caution
+Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
+:::
+
+From there, you are able to run this Simple Drop script that was made in this tutorial using the following command:
+``` bash
+npm run fc-keypom
+```
+:::note
+The SDK script is being tested here; use `npm run fc-near` to test the NEAR-API-JS script instead.
+:::
+This should return a successful drop creation and console log a Public Key and Linkdrop
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/fc/console-output.png").default} alt="console output" width="100%"/> </p>
+To see the full console log from this drop creation, see the expandable section below.
+
+<details>
+<summary>Console Log of Test</summary>
+<p>
+
+``` bash
+yarn run v1.22.19
+warning ../../../package.json: No license field
+$ node docs-examples/keypom-js-sdk/fc-example.js
+Receipts: 9U5t7Y7UJvVBm7XB3rJm5jbtz3RsvCKmDS7tkYqNKmfN, BvnzbtZJwmL6HhZeyhhSa962mKJ9LoTJkGnbqRKLLenU
+        Log [v1-3.keypom.testnet]: Current Block Timestamp: 1674703753206707126
+        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v1-3.keypom.testnet]: Total required storage Yocto 14280000000000000000000
+        Log [v1-3.keypom.testnet]: Current balance: 2.1800656, 
+            Required Deposit: 2.0340426, 
+            total_required_storage: 0.01428,
+            Drop Fee: 0, 
+            Key Fee: 0 Total Key Fee: 0,
+            allowance: 0.0187626 total allowance: 0.0187626,
+            access key storage: 0.001 total access key storage: 0.001,
+            deposits less none FCs: 1 total deposits: 1 lazy registration: false,
+            deposits for FCs: 1 total deposits for FCs: 1,
+            uses per key: 1
+            None FCs: 0,
+            length: 1
+            GAS to attach: 100000000000000
+        Log [v1-3.keypom.testnet]: New user balance 0.146023
+        Log [v1-3.keypom.testnet]: Fees collected 0
+Public Keys and Linkdrops:  {
+  'ed25519:6cgHrrGVfkmfBwznoFVMAxT2iBV7h9nixzq4nAYr8Qcc': 'https://testnet.mynearwallet.com/linkdrop/v1-3.keypom.testnet/5vfa1fTbyrki4yy969pxB4yqzjLPKps5U22Lj47PBFA7zNYAi66tyAH6hP9ZAJgHzHUc3ciFQSjW9Nu1jDyLwiha'
+}
+✨  Done in 4.27s.
+```
+
+</p>
+</details>
+
+### Claiming and Explorer Transactions
+Once you have the link, you are able to claim it the linkdrop you've just created. The output link will take you to the following MyNearWallet page, where you will have the choice to call claim to an existing account or a new one. 
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/fc/mnw-claim.png").default} alt="MyNearWallet claim" width="80%"/> </p>
+
+After the claim transaction succeeds, you can check the transactions on the [NEAR Explorer](https://explorer.near.org/). Ensure you are select `testnet` from the dropdown in the top left if you are using testnet to conduct these tests.
+
+To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop` and `claim` transactions. 
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/fc/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
+
+You can also view the function call that was called when the drop was claimed. In this case, the function was `nft_mint` on the `nft.examples.testnet` contract. 
+<p align="center"> <img src={require("/static/img/docs/basic-tutorials/fc/explorer-nft.png").default} alt="explorer transactions" width="80%"/> </p>
+
+---
 
 ## Conclusion
 In this tutorial, you learned the how to create a function call drop [using the Function Call Data](fc-drops.md#creating-drop-with-function-call-data) parameter. 

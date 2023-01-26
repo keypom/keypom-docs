@@ -20,8 +20,7 @@ To do this, the skeleton code will first be defined.
 // Each of the two methods to create this drop will have their own unique set of imports
 
 // Imports used in the Keypom SDK method:
-const keypom = require("../../lib");
-const { initKeypom, createDrop } = keypom
+const { initKeypom, createDrop } = require("keypom-js");
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -39,6 +38,8 @@ async function simpleDropKeypom(){
 simpleDropKeypom()
 
 ```
+
+---
 
 ## Initialization
 In this tutorial, our goal for initialization to set up our connection to the NEAR blockchain.
@@ -63,14 +64,14 @@ If you do not have your account credentials and Keypairs stored in your `~./near
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L5-L13
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/simple-example.js#L4-L12
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L7-L24
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/simple-near-example.js#L7-L24
 
 ```
 
@@ -80,6 +81,8 @@ https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd0
 :::note
 All function parameters and default values for SDK and Keypom functions can be found in the SDK Typedocs (LINK THIS). For NEAR-API-JS functions, their arguments can be found [here](https://docs.near.org/tools/near-api-js/reference)
 :::
+
+---
 
 ## Creating Keypairs and Simple Drop
 Now that the connection to the NEAR blockchain is set up, the next step is to create the Keypairs and then create the drop.  
@@ -101,18 +104,20 @@ In this example, a single key that has one use of the default 1 $NEAR per use co
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L15-L21
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/simple-example.js#L14-L20
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L26-L51
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/simple-near-example.js#L26-L51
 ```
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Full Solution
 Placing all the code code into the skeleton from the [introduction](simple-drops.md#introduction), the following full code is the final result.
@@ -121,31 +126,40 @@ Placing all the code code into the skeleton from the [introduction](simple-drops
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/keypom-js-sdk/simple-example.js#L1-L24
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/keypom-js-sdk/simple-example.js#L1-L34
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63a7e1d18671ea0165add88d5e7356329e03cd07/docs-examples/near-api-js/simple-near-example.js#L1-L53
+https://github.com/keypom/keypom-js/blob/4e3aeb7cce7e50ee1bb27c3384d46fd6536f502a/docs-examples/near-api-js/simple-near-example.js#L1-L53
 ```
 
 </TabItem>
 </Tabs>
 
+---
+
 ## Testing
 ### Running the Script and Expected Console Logs
 Here, you'll learn how to run the code that was just covered, and what to expect.
 
-To access the code, clone the code from this repo. Then open a terminal and cd to the directory where the code is located and run the following to install all the necesasry packages. 
+To access the code, clone the code from [this repo](https://github.com/keypom/keypom-js). Then open a terminal and cd to the directory where the code is located and run the following to install all the necesasry packages. 
 ```bash
 npm install
 ```
+:::caution
+Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
+:::
+
 From there, you are able to run this Simple Drop script that was made in this tutorial using the following command:
 ``` bash
 npm run simple-keypom
 ```
+:::note
+The SDK script is being tested here; use `npm run simple-near` to test the NEAR-API-JS script instead.
+:::
 This should return a successful drop creation and console log a Public Key and Linkdrop
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/console-output.png").default} alt="console output" width="100%"/> </p>
 To see the full console log from this drop creation, see the expandable section below.
@@ -155,7 +169,6 @@ To see the full console log from this drop creation, see the expandable section 
 <p>
 
 ``` bash
-yarn simple-keypom
 yarn run v1.22.19
 warning ../../../package.json: No license field
 $ node docs-examples/keypom-js-sdk/simple-example.js
@@ -196,6 +209,7 @@ After the claim transaction succeeds, you can check the transactions on the [NEA
 To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop` and `claim` transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
+---
 
 ## Conclusion
 In this tutorial, you learned the basic [steps of creating a simple drop](simple-drops.md#introduction), how to [initialize a NEAR blockchain connection](simple-drops.md#initialization), and how to [create the keys and the drop](simple-drops.md#creating-keypairs-and-simple-drop). You also learned the meaning of "funding a drop" as well as the purpose of the `initKeypom` function and when to use it. 

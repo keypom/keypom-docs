@@ -16,32 +16,32 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock'],
 
-  plugins: [
-    [
-      'docusaurus-plugin-typedoc',
+  // plugins: [
+  //   [
+  //     'docusaurus-plugin-typedoc',
 
-      // Plugin / TypeDoc options
-      {
-        entryPoints: ['../keypom-js/src/index.ts'],
-        tsconfig: '../keypom-js/tsconfig.json',
-        includeVersion: true,
-        entryPointStrategy: 'expand',
-        excludeNotDocumented: false,
-        out: '.',
-        hideGenerator: false,
-        entryDocument: 'welcome.md',
-        hideMembersSymbol: true,
+  //     // Plugin / TypeDoc options
+  //     {
+  //       entryPoints: ['../keypom-js/src/index.ts'],
+  //       tsconfig: '../keypom-js/tsconfig.json',
+  //       includeVersion: true,
+  //       entryPointStrategy: 'expand',
+  //       excludeNotDocumented: false,
+  //       out: '.',
+  //       hideGenerator: false,
+  //       entryDocument: 'welcome.md',
+  //       hideMembersSymbol: true,
 
-        out: 'keypom-sdk',
-        sidebar: {
-          categoryLabel: 'SDK TypeDocs',
-          collapsed: false,
-          position: 0,
-          fullNames: true,
-        },
-      },
-    ],
-  ],
+  //       out: 'keypom-sdk',
+  //       sidebar: {
+  //         categoryLabel: 'SDK TypeDocs',
+  //         collapsed: false,
+  //         position: 0,
+  //         fullNames: true,
+  //       },
+  //     },
+  //   ],
+  // ],
 
   presets: [
     [

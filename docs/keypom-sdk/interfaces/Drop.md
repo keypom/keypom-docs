@@ -18,7 +18,7 @@ All drops regardless of their type can have a suite of configurations such as ho
 
 #### Defined in
 
-[src/lib/types/drops.ts:50](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L50)
+[src/lib/types/drops.ts:50](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L50)
 
 ___
 
@@ -30,7 +30,7 @@ How much $yoctoNEAR will be transferred anytime a key is used that is part of th
 
 #### Defined in
 
-[src/lib/types/drops.ts:40](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L40)
+[src/lib/types/drops.ts:40](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L40)
 
 ___
 
@@ -42,7 +42,7 @@ Drop ID for this specific drop.
 
 #### Defined in
 
-[src/lib/types/drops.ts:36](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L36)
+[src/lib/types/drops.ts:36](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L36)
 
 ___
 
@@ -54,7 +54,7 @@ For Function-Call drops, important information needs to be stored such as which 
 
 #### Defined in
 
-[src/lib/types/drops.ts:48](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L48)
+[src/lib/types/drops.ts:48](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L48)
 
 ___
 
@@ -66,7 +66,7 @@ For Fungible Token drops, important information such as the amount of tokens to 
 
 #### Defined in
 
-[src/lib/types/drops.ts:46](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L46)
+[src/lib/types/drops.ts:46](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L46)
 
 ___
 
@@ -78,7 +78,7 @@ Any extra information about the drop can be stored as metadata. This is up to th
 
 #### Defined in
 
-[src/lib/types/drops.ts:52](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L52)
+[src/lib/types/drops.ts:52](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L52)
 
 ___
 
@@ -90,7 +90,7 @@ What is the next unique ID that will be given to the next access key added to th
 
 #### Defined in
 
-[src/lib/types/drops.ts:58](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L58)
+[src/lib/types/drops.ts:58](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L58)
 
 ___
 
@@ -102,7 +102,7 @@ For NFT drops, important information such as the token IDs, or contract need to 
 
 #### Defined in
 
-[src/lib/types/drops.ts:44](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L44)
+[src/lib/types/drops.ts:44](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L44)
 
 ___
 
@@ -114,7 +114,7 @@ Which account created this drop.
 
 #### Defined in
 
-[src/lib/types/drops.ts:38](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L38)
+[src/lib/types/drops.ts:38](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L38)
 
 ___
 
@@ -126,7 +126,7 @@ How many key uses are registered for this drop? This is only applicable to simpl
 
 #### Defined in
 
-[src/lib/types/drops.ts:54](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L54)
+[src/lib/types/drops.ts:54](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L54)
 
 ___
 
@@ -138,7 +138,7 @@ In order to use an access key that's part of this drop, how much Gas *needs* to 
 
 #### Defined in
 
-[src/lib/types/drops.ts:56](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L56)
+[src/lib/types/drops.ts:56](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L56)
 
 ___
 
@@ -150,4 +150,4 @@ For simple drops, there are specific, optional configurations.
 
 #### Defined in
 
-[src/lib/types/drops.ts:42](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/drops.ts#L42)
+[src/lib/types/drops.ts:42](https://github.com/keypom/keypom-js/blob/54096de/src/lib/types/drops.ts#L42)

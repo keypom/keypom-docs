@@ -16,6 +16,33 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock'],
 
+  // plugins: [
+  //   [
+  //     'docusaurus-plugin-typedoc',
+
+  //     // Plugin / TypeDoc options
+  //     {
+  //       entryPoints: ['../keypom-js/src/index.ts'],
+  //       tsconfig: '../keypom-js/tsconfig.json',
+  //       includeVersion: true,
+  //       entryPointStrategy: 'expand',
+  //       excludeNotDocumented: false,
+  //       out: '.',
+  //       hideGenerator: false,
+  //       entryDocument: 'welcome.md',
+  //       hideMembersSymbol: true,
+
+  //       out: 'keypom-sdk',
+  //       sidebar: {
+  //         categoryLabel: 'SDK TypeDocs',
+  //         collapsed: false,
+  //         position: 0,
+  //         fullNames: true,
+  //       },
+  //     },
+  //   ],
+  // ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -51,12 +78,22 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             to: "docs/next/Concepts/welcome",
-            label: "📚Concepts",
+            label: "📖Concepts",
             position: "left",
           },
           {
             to: "docs/next/Tutorials/welcome",
-            label: "💻Tutorials",
+            label: "💻 Tutorials",
+            position: "left",
+          },
+          // {
+          //   to: "docs/next/KeypomV2/welcome",
+          //   label: "🤖 Keypom V2",
+          //   position: "left",
+          // },
+          {
+            to: "docs/next/keypom-sdk/welcome",
+            label: "📚 SDK TypeDocs",
             position: "left",
           },
           // {
@@ -65,7 +102,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   position: "left",
           // },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
             position: 'right',
           },
@@ -90,6 +127,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: '💻Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
+              {
+                label: "📚 SDK TypeDocs",
+                to: "docs/next/keypom-sdk/welcome",
+              }
               // {
               //   label: "🤖Keypom V2",
               //   to: "docs/next/KeypomV2/welcome",

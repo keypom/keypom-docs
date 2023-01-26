@@ -1,5 +1,6 @@
-# Website
-Version 1.2 available at https://minqianlu.github.io/ for the time being
+# Keypom Docs
+Version 1.2 (OUTDATED) available at https://minqianlu.github.io/ for the time being
+
 # Building and Viewing Current Version
 Clone repo (for latest WIP version, use min/dev branch), then open a new terminal instance and run the following
 1. yarn run build

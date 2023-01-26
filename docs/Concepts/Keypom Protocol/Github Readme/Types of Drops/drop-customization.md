@@ -1,7 +1,7 @@
 ---
 sidebar_label: 'Drop Configurations'
 ---
-# Drop Configurations
+# Drop Configurations AAA
 
 Drop Customization via the `DropConfig` object can help cater the properties of the drop to exactly what you want! From changing the amount of $NEAR received by your users, to being able to set up a subscription service, understanding the power of `DropConfig` is crucial to making the most of Keypom!
 

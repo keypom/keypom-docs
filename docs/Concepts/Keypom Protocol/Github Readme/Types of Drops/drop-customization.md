@@ -32,6 +32,8 @@ pub struct DropConfig {
 ```
 For now, the focus will be `uses_per_key` and `root_account_id`. [`TimeConfig`](time-customization.md) and [`UsageConfig`](usage-customization.md) are covered later.
 
+---
+
 ## Uses per Key
 *Default: 1*  
 This parameter allows you to set the number of times your users can claim your linkdrop.
@@ -47,6 +49,8 @@ Used in tandem with [function call drops](fcdrops.md), some more complex use cas
 
 
 Note that this parameter changes the number of uses for all keys in your drop; this will change the upfront cost for the drop creator. As with all aspects of Keypom linkdrops, it is imparative for the drop owner to understand the needs of their drop in order to reduce upfront costs and avoid uneccesary complexity. 
+
+---
 
 ## Root Account ID
 *Default: "near" or "testnet"*  

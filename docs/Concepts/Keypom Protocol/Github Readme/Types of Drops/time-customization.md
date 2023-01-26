@@ -26,9 +26,12 @@ pub struct TimeConfig {
     pub interval: Option<u64>,
 }
 ```
-::: tip
-All these time parameters are measured in non-leap-nanoseconds and can be tricky to work with. An example struct has been provided [below](time-customization.md)
-:::
+:::tip
+All these time parameters are measured in non-leap-nanoseconds and can be tricky to work with. An example struct has been provided [below](time-customization.md).
+:::  
+
+
+---
 
 ## Start 
 *Default: none, Keys can be used anytime*
@@ -41,6 +44,8 @@ In this case, you would hand out general admission tickets with a start time in 
 
 To do this, you would need to create two drops, one for prefered admission and another for general admission. This is because, as covered in [Drop Configurations Introduction](customization-homepage.md), one set of configurations will apply to ALL keys in that drop. 
 
+---
+
 ## End
 *Default: none, Keys can be used anytime*
 The end parameter acts as a de-activation time. This means that once the end time is reached, all the keys in the drop will be de-activated and can no longer be used. 
@@ -49,6 +54,8 @@ The end parameter acts as a de-activation time. This means that once the end tim
 Let's pretend that you are at NEARCON representing an NFT marketplace looking to onboard users onto your platform! Your strategy is to offer an exclusive NFT to users that sign up during NEARCON. 
 
 To do this, you hand out QR codes with an NFT drop embedded in the QR code during NEARCON. To ensure that the users sign up during NEARCON, you set the drop configuration's `end` parameter to be the end of NEARCON. 
+
+---
 
 ## Throttle
 *Default: none, Keys can be used anytime*
@@ -61,6 +68,8 @@ With Keypom, you can give Moon a multi-use simple drop with a `throttle` paramet
 
 The massive benefit here is that you never need to expose any of your private information. There is no need to trust Moon with any of your credit cards or private keys.
 
+---
+
 ## Interval
 *Default: none, Keys can be used anytime*
 The `interval` parameter controls how much time must pass after a start before a key can be used. It is important to note that this works hand in hand with the `throttle` parameter but does not override it. 
@@ -69,6 +78,8 @@ The combination of the two can create the concept of an initial grace period.
 
 ### Use case
 Let's return to the subscription example from above. If Moon says you can delay your first payment by 1 week, you can use AHHHHHHHHHHHHHH
+
+---
 
 # Example Time Struct
 

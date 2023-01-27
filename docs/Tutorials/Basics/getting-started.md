@@ -3,12 +3,6 @@ import TabItem from '@theme/TabItem';
 
 # Getting Started
 
-There are several ways to get started using Keypom.  
-
-1) [Basic Tutorials](simple-drops.md) for a full tutorial starting from scratch.  
-2) [Existing Node Scripts](getting-started.md#deploy-scripts), known as Deploy Scripts, for working examples with more [configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/drop-customization.md).  
-3) [Advanced Tutorials](../Advanced/ticketing/concept.md) for more advanced use cases.  
-
 In the basic tutorials, you will be shwon how to create [the four types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops. Two methods will be shown.
 
 1) [NEAR-API-JS](https://docs.near.org/tools/near-api-js/reference)  

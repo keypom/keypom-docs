@@ -33,11 +33,39 @@ If you choose to use mainnet, you will be using real $NEAR to fund your drops.
 
 ## Deploy Scripts
 
-There are [4 deploy scripts](https://github.com/keypom/keypom/tree/main/deploy) that have been made available for you to use and easily create Keypom links. These are for:
+There are [4 deploy scripts in the Protocol Repository](https://github.com/keypom/keypom/tree/main/deploy) that have been made available for you to use and easily create Keypom links. These are for:
 - Simple Drops
 - NFT Drops
 - FT Drops
 - Function Call Drops
+
+The file tree for these scripts is shown below. 
+
+```bash
+/deploy
+├── ft
+│   └── configurations.js
+│   └── ft-create-sdk.js
+│   └── ft-create.js
+│
+├── function-call
+│   └── configurations.js
+│   └── fc-create-sdk.js
+│   └── fc-create.js
+│
+├── nft
+│   └── configurations.js
+│   └── nft-create-sdk-minted.js
+│   └── nft-create-sdk-owned.js
+│   └── nft-create.js
+│
+├── simple
+│   └── configurations.js
+│   └── simple-create-sdk.js
+│   └── simple-create.js
+│
+├── utils
+```
 
 In order to use these scripts, open the `deploy/` directory and modify the `configurations.js` file for the drop you want to create. In this file, you can specify important information such as the number of keys you wish to create, the amount of $NEAR you want to send, how many uses per key etc.
 

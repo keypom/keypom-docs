@@ -66,8 +66,7 @@ This is done with NEAR-API-JS and consists of creating an unecrypted local keyst
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/666f09935eecbbd6323b121bc60078b3830e8f56/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
-
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
 ```
 
 ---
@@ -78,6 +77,7 @@ Now that the connection to the NEAR blockchain is set up, the next step is to cr
 Recall that the Keypairs that are being generated are the ones that will be embedded in the link given to the user. 
 :::
 
+### The Keypom SDK Approach
 In the SDK, this process starts with calling the `initKeypom` function. This function will always be the first function you need to call to interact with the SDK. 
 
 :::info
@@ -85,6 +85,8 @@ The `initKeypom` function is the first function you need to call in order to int
 :::
 
 After `initKeypom` is called, the key generation and drop creation can be done. These two tasks are combined into one function, `createDrop`. This function can be either given a set of pre-created keypairs, **or** it can create them automatically.
+
+### The NEAR-API-JS Approach
 
 With NEAR-API-JS, these two tasks are seperate, as the `create_drop` function only creates the drop. The keys that are passed into it must be generated seperately.These two tasks are separate and pre-created keys *must* be passed into create_drop
 
@@ -98,14 +100,14 @@ In these tutorials, a generous deposit is attached and any unused $NEAR is simpl
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/666f09935eecbbd6323b121bc60078b3830e8f56/docs-examples/keypom-js-sdk/simple-example.js#L27-L41
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/simple-example.js#L27-L41
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/d6fccdbec8223393468bdf5b31d93688690bbf93/docs-examples/near-api-js/simple-near-example.js#L26-L51
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/simple-near-example.js#L26-L51
 ```
 
 </TabItem>
@@ -124,14 +126,14 @@ The final code, using the skeleton defined in the [introduction](simple-drops.md
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/666f09935eecbbd6323b121bc60078b3830e8f56/docs-examples/keypom-js-sdk/simple-example.js#L1-L55
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/simple-example.js#L1-L55
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/d6fccdbec8223393468bdf5b31d93688690bbf93/docs-examples/near-api-js/simple-near-example.js#L1-L53
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/simple-near-example.js#L1-L53
 ```
 
 </TabItem>
@@ -212,7 +214,7 @@ Once you have the link, you are able to claim the linkdrop you've just created. 
 
 After the claim transaction succeeds, you can check the transactions on the [NEAR Explorer](https://explorer.near.org/).
 
-To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop` and `claim` transactions. 
+To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/f5HHxMyUELD8oGFpMCQAKcYVhyLAfKyjmXAeFG68FCB#AJ5so8mEDh9XEYNcB7vomTxUDV3BAMyLVA7QMguHuscA) and [`claim`](https://explorer.testnet.near.org/transactions/BApV2YJh8yHUGJ5c4KUnBPNyjAt4znxAFUxPzDXognu5) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 ---
@@ -221,4 +223,3 @@ To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom
 In this tutorial, you learned the basic [steps of creating a simple drop](simple-drops.md#introduction), how to [initialize a NEAR blockchain connection](simple-drops.md#getting-started---connecting-to-near), and how to [create the keys and the drop](simple-drops.md#creating-the-simple-drop). You also learned the purpose of the `initKeypom` function and when to use it.
 
 In the next tutorial, you'll be learning how to create and fund an NFT drop using the Keypom SDK and NEAR-API-JS.
-

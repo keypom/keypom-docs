@@ -41,6 +41,10 @@ The following skeleton code can be used as a starting point:
 
 // Imports used in the Keypom SDK method:
 const { initKeypom, createDrop } = require("keypom-js");
+const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
+const { KeyPair, keyStores, connect } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -76,7 +80,7 @@ In this section, the NEAR blockchain connection is set up and the NFTs will be m
 The code for setting up the NEAR connection and minting the NFT is shown below. In the skeleton code, these are steps 1 and 2.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/eed27ce4904595c1cb9eaef98827e3899b3bf650/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
 ```
 
 :::note
@@ -117,14 +121,14 @@ It's important to ensure you own the NFTs before calling `createDrop` as otherwi
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eed27ce4904595c1cb9eaef98827e3899b3bf650/docs-examples/keypom-js-sdk/nft-example.js#L45-L67
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/nft-example.js#L45-L67
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eed27ce4904595c1cb9eaef98827e3899b3bf650/docs-examples/near-api-js/nft-near-example.js#L44-L93
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/nft-near-example.js#L44-L93
 ```
 
 </TabItem>
@@ -139,14 +143,14 @@ With all the steps completed, all the code can be placed into the skeleton from 
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eed27ce4904595c1cb9eaef98827e3899b3bf650/docs-examples/keypom-js-sdk/nft-example.js#L1-L80
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/nft-example.js#L1-L80
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eed27ce4904595c1cb9eaef98827e3899b3bf650/docs-examples/near-api-js/nft-near-example.js#L1-L96
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/nft-near-example.js#L1-L96
 ```
 
 </TabItem>
@@ -239,7 +243,7 @@ After the claim transaction succeeds, you can view the NFT in your collectibles 
 
 You can check the transactions on the [NEAR Explorer](https://explorer.near.org/).
 
-To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop`, `nft_transfer_call` and `claim` transactions. 
+To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/973w2aW112VuxA5CLhiqVo46bCchJAWovMQcp1F56zwj#5tAUYno3BKpjEu8TQ1WEdBE4m3HxBvm9Z4W3zZ5xzS87), [`nft_transfer_call`](https://explorer.testnet.near.org/transactions/4EPqp1kU6a8cJ2ST1CPjJc7FTHbNZE8jqCGEpKxHCcE8#CtmXr16yuuV4KAPZm2ZNbXNKcXundTUSNAggzVgi7N59) and [`claim`](https://explorer.testnet.near.org/transactions/ERqgjZMrQsu7Z8m58iE7KL63yDAz77Fgfkr4Y14spTZH) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 :::note

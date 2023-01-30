@@ -32,13 +32,17 @@ The process of creating an FT drop can again be broken down into the following s
 4) Registering the Keypom contract on the FT contract.  
 5) Transferring  Keypom the necessary Fungible Tokens.  
 
-With this, the following skeleton code can be created. 
+The following skeleton code can be used as a starting point:
 ```js
 // Each of the two methods to create this drop will have their own unique set of imports
 
 // Imports used in the Keypom SDK method:
 const { initKeypom, createDrop } = require("keypom-js");
 const { BN } = require("bn.js");
+const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
+const { KeyPair, keyStores, connect } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
 
 // Imports used in the NEAR-API-JS method:
 const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
@@ -92,7 +96,7 @@ With the Fungible Token used in the example, it has a `decimal` parameter value 
 The code for setting up the NEAR connection and ensuring sufficient funder FT balance is shown below. In the skeleton code, these are steps 1 and 2.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7267b48750b204c2c4d9672ff1a7f5f46c53b371/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
 ```
 
 ---
@@ -143,14 +147,14 @@ The code for both approaches to this section can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7267b48750b204c2c4d9672ff1a7f5f46c53b371/docs-examples/keypom-js-sdk/ft-example.js#L43-L64
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/ft-example.js#L43-L64
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7267b48750b204c2c4d9672ff1a7f5f46c53b371/docs-examples/near-api-js/ft-near-example.js#L43-L108
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/ft-near-example.js#L43-L108
 ```
 
 </TabItem>
@@ -165,14 +169,14 @@ Inserting the above code blocks into the skeleton code from the [introduction](f
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7267b48750b204c2c4d9672ff1a7f5f46c53b371/docs-examples/keypom-js-sdk/ft-example.js#L1-L79
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/keypom-js-sdk/ft-example.js#L1-L79
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7267b48750b204c2c4d9672ff1a7f5f46c53b371/docs-examples/near-api-js/ft-near-example.js#L1-L110
+https://github.com/keypom/keypom-js/blob/49244d227f23535ae8962707183d1eca59280d29/docs-examples/near-api-js/ft-near-example.js#L1-L110
 ```
 
 </TabItem>
@@ -264,7 +268,7 @@ Once you have the link, you are able to claim the linkdrop you've just created. 
 
 You can check the transactions on the [NEAR Explorer](https://explorer.near.org/).
 
-To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the `create_drop`, `ft_transfer_call` and `claim` transactions. 
+To view the transactions, you can search up the Keypom contract ID: `v1-3.keypom.testnet`. You should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/6ipZEMFU8zQWupZg66gDkngBP3XzZuq5q2QqsTqab3j#7rapjpGF8DMhc7rZt5cD3Y291jo44qKMBZHQUGHmttVG), [`ft_transfer_call`](https://explorer.testnet.near.org/transactions/JrpKU5uhsmsoe2qxcCieKJyhhBLsq2YvVaduHE6xC8w#HHpoyVk6JCTdm3nRx81QgJNHKjfzkpXWcykEcFPUohrv) and [`claim`](https://explorer.testnet.near.org/transactions/67dsn2WAz69CHiwNqqZJdNpkj7nErWBL6Hcek5abj94y) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 :::note

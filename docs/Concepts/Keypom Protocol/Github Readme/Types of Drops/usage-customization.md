@@ -2,7 +2,7 @@
 sidebar_label: 'Usage Configurations'
 ---
 # Usage Configurations
-Usage configurations are the nitty grity, they dictate more administrative aspects of the drop such as permissions given to the keys and what to do when all the keys in a drop are used. 
+Usage configurations dictate the administrative aspects of the drop such as permissions given to the keys and what to do when all the keys in a drop are used. 
 
 ``` rust
 pub struct UsageConfig {
@@ -21,21 +21,23 @@ pub struct UsageConfig {
 ---
 
 ## Permissions
-*Default: `claim` AND `create_account_and_claim`*
-The `permissions` parameter assigns which claim methods the user can use with the key you give them. They can either call both, or just one. 
+*Default: `claim` AND `create_account_and_claim`*  
+
+The `permissions` parameter assigns which claim methods the user can call with the key you give them. They can either call both, or just one. 
 
 ### Use case
-Pretend you are hosting a talk and are onboarding a bunch of new user from the audience for you dApp, Kramerly. You wish to make sure that all these audience member who are onboarded onto your dApp have accounts that take the form `${YOUR_ACCOUNT}.kramerly.near`.
+Pretend you are hosting a talk about your NEAR dApp, Kramerly, and are onboarding a bunch of new user from the audience. You wish to make sure that all these audience member who are onboarded onto your dApp have accounts that take the form `${YOUR_ACCOUNT}.kramerly.near` so that they can receive exclusive rewards when interacting with your dApp.
 
-To do this, you can use the `permissions` parameter set to `create_account_and_claim`. Together with the `root_account_id` parameter you can ensure that everybody must create a new account `${YOUR_ACCOUNT}.kramerly.near` to interact with your dApp.  
+To do this, you can set the `permissions` parameter to `create_account_and_claim` and set the `root_account_id` parameter to `kramerly.near`. This way, you can ensure that everybody must create a new account with the form of `${YOUR_ACCOUNT}.kramerly.near` to interact with your dApp.  
 
 ---
 
 ## Refund Deposit
-*Default: False*
-This `refund_deposit` parameter defines whether or not a storage deposit for creating a new wallet should be refunded to the drop owner if a new wallet is not created.
+*Default: False*  
 
-Part of funding a drop is covering the cost for creating a new wallet. However, if both `create_account_and_claim` and `claim` methods are accessible to the access key and the user choose to `claim` to an existing wallet, the deposit will be unused. If left as false, the deposit will be given to the user.
+This `refund_deposit` parameter defines whether or not a storage deposit for creating a new wallet should be refunded to the drop owner if a new account is not created.
+
+Part of funding a drop is covering the cost for creating a new named account. However, if the `claim` method is called, the deposit will be unused. If left as false, the deposit will be given to the user.
 
 ### Use case
 This parameter is usually a helpful mechanism when onboarding large numbers of users into NEAR. Pretend you are onboarding 100,000 new users onto NEAR. Since they are new, you factor in the storage deposit needed to create all the new wallets into your funding costs. However, it turns out half of the users had existing wallets. 
@@ -45,21 +47,23 @@ If `refund_deposit` was true, you would be refunded the deposit for creating 50,
 ---
 
 ## Auto-Delete Drop 
-*Default: False*
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used. This means every key has used all of its `uses_per_key`.
+*Default: False*  
+
+If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for particular drop anymore.
+A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
 
 Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
 
 ---
 
 ## Auto-Withdraw
-*Default: False*
+*Default: False*  
+
 This parameter is used to automatically withdraw your Keypom balance once you delete your last drop.
 
 ### Use case
-Pretend we are at NEARCON again, and over-fund your Keypom balance for the sake of simplicity when creating numerous drops. After the event, you know you won't be using Keypom for a while😢 and wish to withdraw your Keypom balance into your NEAR wallet in order to stake your $NEAR. 
+Pretend you are at NEARCON again, and you over-fund your Keypom balance. This is to allow you to create drops without needing to trasnfer NEAR to Keypom every time. After the event, you know you won't be using Keypom for a while😢 and wish to withdraw your Keypom balance into your NEAR wallet in order to stake your $NEAR. 
 
-Rather than confirming all the drops are deleted before withdrawing your balance, you can create all the drops with `auto-withdraw` set to true and rest assured knowing that once everything is claimed and deleted, you will have your $NEAR to stake. 
+Rather than confirming all the drops are deleted before withdrawing your balance, you can create all the drops with `auto-withdraw` set to true and know that once everything is claimed and deleted, you will have your $NEAR to stake. 

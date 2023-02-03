@@ -7,9 +7,8 @@ import TabItem from '@theme/TabItem';
 # Non Fungible Token Drop
 
 ## Introduction
-In this tutorial, you will learn how to create an NFT Drop. This will allow you to onboard users using a simple Web2 style link. Alternatively, if the user has a wallet already, the assets can be sent there instead.
+In this tutorial, you will learn how to create a non-fungible token drop from scratch. By allowing you to send an NFT using a simple Web2 style link, an NFT drop is great for onboarding both new and existing users. An excellent use case can be offering exclusive POAPs to your community members for attending your event.
 
-In the NFT drop, the assets consist of $NEAR and an NFT.  
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/collectibles-claimed2.png").default} alt="MyNearWallet claim" width="65%"/> </p>
 
@@ -21,26 +20,131 @@ To learn more about the NFT drop, see the [concepts page](../../Concepts/Keypom%
 For the basic tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-2. [`NEAR-API-JS`](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. To [install the SDK](https://github.com/keypom/keypom-js#installation), simply run the following in your command prompt.  
+2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+
+### Creating your Project
+In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](simple-drops.md#breaking-down-the-problem).
+
+First, you need to give your project a home.
+
 ```bash
-npm -i keypom-js
+mkdir my-keypom-project && cd my-keypom-project
 ```
+
+Next, you'll want to create a default `package.json` file using the following command. You can accept all default values.
+```bash
+npm init
+```
+
+At this point, your project structure should look like this. 
+```bash
+/my-keypom-project
+├── package.json
+```
+
+If you open `package.json`, you should see this.
+
+<details>
+<summary>Default package.json</summary>
+<p>
+
+``` bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+</p>
+</details>
+
+The next step is to create an empty Javascript file.
+<Tabs>
+<TabItem value="Mac/Lnx" label="Mac OS/Linux">
+
+```bash
+touch nft-keypom.js
+```
+
+</TabItem>
+<TabItem value="WNDS" label="Windows">
+
+```bash
+fsutil file createnew nft-keypom.js 0
+```
+
+</TabItem>
+</Tabs>
+
+Finally, the last step is to install the Keypom JS SDK.
+```bash
+npm install keypom-js
+```
+
+After installing the SDK, your `package.json` file should now look slightly different.
+
+<details>
+<summary>package.json after installing the SDK</summary>
+<p>
+
+```bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  # highlight-start
+  "dependencies": {
+    "keypom-js": "^1.2.0-rc.1"
+  }
+  # highlight-end
+}
+```
+
+</p>
+</details>
+
+With these steps complete, your project folder should look like this. 
+
+```bash
+/my-keypom-project
+├── nft-keypom.js
+├── package.json
+├── package-lock.json
+├── node_modules
+│   └── keypom-js
+│   └── ...
+```
+
+You are now ready to begin creating your drop!
 
 ---
 
 ## Breaking Down the Problem
 
-When creating an NFT drop, the steps are very similar to creating a simple drop with an added layer of complexity. The major difference is that the NFTs must be added to drop. This is done by transferring the NFTs to Keypom.
+The process of creating an NFT drop can be broken down into the following steps.  
 
-1) Initialization, which includes setting up a connection to the NEAR blockchain  
-2) If you don't own the NFT, mint it using the `nft_mint` function   
-3) Create the keys and the drop with the NFT metadata   
-4) Transfer the ownership of the NFTs to Keypom  
-5) Create linkdrops  
+1) Establish a connection to the NEAR blockchain. 
+2) If you don't own the NFT, mint it using the `nft_mint` function.   
+3) Create the keys and the drop with the NFT metadata.   
+4) Transfer the ownership of the NFTs to Keypom.  
+5) Create linkdrops.  
 
 :::info
-The NFT must be transfered to Keypom so that it can transfer the NFT to the user when they claim their drop. 
+The NFT ownership must be transfered to Keypom so that it can send the NFT to the user when they claim their drop. 
 :::
 
 The following skeleton code can be used as a starting point:
@@ -83,7 +187,7 @@ async function NFTDropKeypom(){
 NFTDropKeypom()
 ```
 
-For this tutorial, steps 1 and 2 will be grouped under "[Getting Started](nft-drops.md#getting-started)" and steps 3 and 4 will be grouped under "[Creating drop and transferring NFT](nft-drops.md#creating-drop-and-transferring-nft)" and step 5 will have its own section called "[Creating Linkrops](nft-drops.md#creating-linkdrops)".
+For this tutorial, steps 1 and 2 will be grouped under "[Getting Started](nft-drops.md#getting-started)", steps 3 and 4 will be grouped under "[Creating drop and transferring NFT](nft-drops.md#creating-drop-and-transferring-nft)", and step 5 will have its own section called "[Creating Linkrops](nft-drops.md#creating-linkdrops)".
 
 ---
 
@@ -92,9 +196,9 @@ In this section, the NEAR blockchain connection is set up and the NFTs will be m
 
 Connecting to the NEAR blockchain will be done using `NEAR-API-JS` and consists of the following steps:
 
-1) Create an Keystore, which stores your access keys used to sign transactions   
+1) Create a Keystore, which stores your access keys used to sign transactions   
   * select a network, either `testnet` or `mainnet`  
-  * choose a location for the Keystore, either a folder on your local machine, or an in-memory keystore   
+  * choose a location where the keypairs live, either a folder on your local machine, or in-memory      
 
 2) Define a NEAR configuration using the Keystore  
 3) Use the configuration to initialize a connection to NEAR   
@@ -121,22 +225,18 @@ Function arguments for `functionCall` can be found [here](https://docs.near.org/
 
 ## Creating Drop and Transferring NFT
 
-In this section of the tutorial, you'll be creating the NFT drop and transferring the NFT to Keypom using the Keypom SDK.
+In this section of the tutorial, you'll be creating the NFT drop and transferring the NFT to Keypom using the SDK.
 
-In the SDK, this process starts with calling the `initKeypom` function. This function will always be the first function you need to call to interact with the SDK. 
+This process starts with calling the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom Protocol. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present,it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
-
-:::info
-The `initKeypom` function is the first function you need to call in order to interact with the SDK.
-:::
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
 After calling `initKeypom`, the NFT Drop is created. This is done by calling `createDrop` and adding an `nftData` parameter.
 
 :::tip
 Recall that the private keys being generated using `createDrop` are used to store the assets. These keys are then embedded within a link.
 
-In an NFT Drop, the assest consist of $NEAR and an NFT.
+In an NFT Drop, the assets consist of an NFT and optional $NEAR.
 :::
 
 `nftData` is an object with the following properties.
@@ -152,7 +252,7 @@ nftData
 - `senderId`: The current owner of the NFTs that will be sent to Keypom
 - `tokenIds`: A list of all the token IDs to be sent to Keypom during the NFT drop creation process. 
 
-Including the `nftData` parameter makes this drop an NFT drop. Without it, the Keypom Protocol would treat this drop as a Simple Drop.
+Including the `nftData` parameter categorizes this as an NFT drop. Without it, the Keypom Protocol would treat this drop as a Simple Drop.
 
 More information on the `nftData` parameter can be found [here](../../keypom-sdk/interfaces/NFTData.md).
 
@@ -184,20 +284,20 @@ All function parameters and default values for the SDK and Keypom functions can 
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the link for a linkdrop has the following standardized format:
+Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
 ```bash
 wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
 ```
 
-Using this format, the following code can be written to generate a set of links for the drop.
+With this format, the following code can be written to generate a set of links for the drop.
 
 ```js 
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
 const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
-// Creating list of pk's and linkdrops; copied from orignal simple-create.js
+// Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
     dropInfo[pubKeys[i]] = linkdropUrl;
@@ -308,7 +408,7 @@ Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.k
 </details>
 
 ### Claiming and Explorer Transactions
-Once you have the link, you are able to claim the linkdrop you've just created. Once clicked, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one. 
+Once you click the link, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one.  
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/nw-claim.png").default} alt="Near Wallet claim" width="80%"/> </p>
 
 After the claim transaction succeeds, you can view the NFT in your collectibles tab.

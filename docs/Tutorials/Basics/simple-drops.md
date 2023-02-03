@@ -7,10 +7,9 @@ import TabItem from '@theme/TabItem';
 # Simple Drop
 
 ## Introduction
-In this tutorial, you will learn how to create a Simple $NEAR Drop. This will allow you to onboard users using a simple Web2 style link. Alternatively, if the user has a wallet already, the assets can be sent there instead.
+In this tutorial, you will learn how to create a simple $NEAR drop from scratch. By embedding $NEAR in a Web2 style link, the simple drop allows you to onboard both existing and new users. 
 
-In a simple drop, the assets consist of $NEAR. 
-
+Being the simplest Keypom drop type, it acts as the foundation for the other 3 kinds of Keypom drops. Despite this, the simple drop opens the door to more complex use cases such as [subscription services](../../Tutorials/Advanced/subscriptions/concept.md).
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/nw-claim.png").default} alt="Near Wallet claim" width="100%"/> </p>
 
@@ -22,11 +21,116 @@ To learn more about the Simple Drop, see the [concepts page](../../Concepts/Keyp
 For the basic tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-2. [`NEAR-API-JS`](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. To [install the SDK](https://github.com/keypom/keypom-js#installation), simply run the following in your command prompt.  
+2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+
+### Creating your Project
+In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](simple-drops.md#breaking-down-the-problem).
+
+First, you need to give your project a home.
+
 ```bash
-npm -i keypom-js
+mkdir my-keypom-project && cd my-keypom-project
 ```
+
+Next, you'll want to create a default `package.json` file using the following command. You can accept all default values.
+```bash
+npm init
+```
+
+At this point, your project structure should look like this. 
+```bash
+/my-keypom-project
+├── package.json
+```
+
+If you open `package.json`, you should see this.
+
+<details>
+<summary>Default package.json</summary>
+<p>
+
+``` bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+</p>
+</details>
+
+The next step is to create an empty Javascript file.
+<Tabs>
+<TabItem value="Mac/Lnx" label="Mac OS/Linux">
+
+```bash
+touch simple-keypom.js
+```
+
+</TabItem>
+<TabItem value="WNDS" label="Windows">
+
+```bash
+fsutil file createnew simple-keypom.js 0
+```
+
+</TabItem>
+</Tabs>
+
+Finally, the last step is to install the Keypom JS SDK.
+```bash
+npm install keypom-js
+```
+
+After installing the SDK, your `package.json` file should now look slightly different.
+
+<details>
+<summary>package.json after installing the SDK</summary>
+<p>
+
+```bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  # highlight-start
+  "dependencies": {
+    "keypom-js": "^1.2.0-rc.1"
+  }
+  # highlight-end
+}
+```
+
+</p>
+</details>
+
+With these steps complete, your project folder should look like this. 
+
+```bash
+/my-keypom-project
+├── simple-keypom.js
+├── package.json
+├── package-lock.json
+├── node_modules
+│   └── keypom-js
+│   └── ...
+```
+
+You are now ready to begin creating your drop!
 
 ---
 
@@ -34,10 +138,10 @@ npm -i keypom-js
 
 Creating a simple drop is a four step process:  
 
-1) Establishing a connection to the NEAR blockchain.  
+1) Establish a connection to the NEAR blockchain.  
 2) Create a set of access keys where the assets will be stored.  
-3) Use the Keypom SDK to create the drop  
-4) Create linkdrops  
+3) Use the Keypom SDK to create the drop.  
+4) Create linkdrops.  
 
 The following skeleton code can be used as a starting point:
 ``` js
@@ -73,13 +177,13 @@ simpleDropKeypom()
 ---
 
 ## Getting Started - Connecting to NEAR
-The first step of creating an Keypom drop is to connect to the NEAR blockchain.
+The first step to create a Keypom drop is connecting to the NEAR blockchain.
 
 This is done with `NEAR-API-JS` and consists of the following steps:
 
-1) Create an Keystore, which stores your access keys used to sign transactions   
+1) Create a Keystore, which stores your access keys used to sign transactions   
   * select a network, either `testnet` or `mainnet`  
-  * choose a location for the Keystore, either a folder on your local machine, or an in-memory keystore   
+  * choose a location where the keypairs live, either a folder on your local machine, or in-memory      
 
 2) Define a NEAR configuration using the Keystore  
 3) Use the configuration to initialize a connection to NEAR  
@@ -101,20 +205,15 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 Now that the connection to the NEAR blockchain is set up, the next step is to create the Keypairs and the drop using the Keypom SDK.
 
 
-In the SDK, this process starts with calling the `initKeypom` function. This function will always be the first function you need to call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom Protocol. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present,it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
-:::info
-The `initKeypom` function is the first function you need to call in order to interact with the SDK.
-:::
-
-After `initKeypom` is called, the key generation and drop creation can be done. These two tasks are combined into one function, `createDrop`. This function can be either given a set of pre-created keypairs, **or** it can create them automatically with the `numKeys` parameter.
+After `initKeypom` is called, the key generation and drop creation can be done. These two tasks are combined into one function, `createDrop`. This function can be either given a set of pre-created keypairs, **or** it can generate them automatically based on the `numKeys` parameter.
 
 :::tip
 Recall that the private keys being generated are used to store the assets. These keys are then embedded within a link.
 
-In a Simple Drop, the assest consist of $NEAR.
+In a Simple Drop, the assest is $NEAR.
 :::
 
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.
@@ -146,20 +245,20 @@ All function parameters and default values for the SDK and Keypom functions can 
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the link for a linkdrop has the following standardized format:
+Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
 ```bash
 wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
 ```
 
-Using this format, the following code can be written to generate a set of links for the drop.
+With this format, the following code can be written to generate a set of links for the drop.
 
 ```js 
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
 const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
-// Creating list of pk's and linkdrops; copied from orignal simple-create.js
+// Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
     dropInfo[pubKeys[i]] = linkdropUrl;
@@ -261,7 +360,7 @@ Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.k
 </details>
 
 ### Claiming and Explorer Transactions
-Once you have the link, you are able to claim the linkdrop you've just created. Once clicked, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one. 
+Once you click the link, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one.  
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/nw-claim.png").default} alt="Near Wallet claim" width="80%"/> </p>
 
 To check the transactions, click the final link in the console log when you run the script.
@@ -275,6 +374,6 @@ From there, you should be able to see the [`create_drop`](https://explorer.testn
 ---
 
 ## Conclusion
-In this tutorial, you learned the basic steps of [creating a simple drop](simple-drops.md#introduction), how to [initialize](simple-drops.md#getting-started---connecting-to-near) a NEAR blockchain connection, and how to [create](simple-drops.md#creating-the-simple-drop) the keys and drop. You also learned the purpose of the `initKeypom` function and when to use it.
+In this tutorial, you learned the basic steps of [creating a simple drop](simple-drops.md#introduction), steps to [initialize](simple-drops.md#getting-started---connecting-to-near) a NEAR blockchain connection, and how to [create](simple-drops.md#creating-the-simple-drop) the keys and drop. You also learned the purpose of the `initKeypom` function and when to use it.
 
 In the next tutorial, you'll be learning how to create and fund an NFT drop using the Keypom SDK.

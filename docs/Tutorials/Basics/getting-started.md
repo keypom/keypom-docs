@@ -2,27 +2,28 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'; 
 
 # Getting Started
-The primary goal of a Keypom drop is to send assets to new *or* existing users. These assets can take on many forms.
+The primary goal of a Keypom drop is to send assets to users with the click of a link regardless of whether they have a wallet or not. These assets can come in many forms which will be broken down below.
 
-The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops and the assets they send. 
+The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops and the assets they contain. 
 
-There are **four** types of Keypom drops. Each drop type holds different types of assets and can be sent to new **or** existing users.
-
-| Drop Type                 | Assets Embedded in Web2 Style Link                                                                                     |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md)             | $NEAR                              |
-| [Non-Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md)    | $NEAR and an NFT                   |
-| [Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md)         | $NEAR and FTs                      |
-| [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md)          | $NEAR and a set of callable methods|
+There are **four** types of drops, each with different types of assets. These drops can be claimed either with a brand new NEAR account or an existing one.
 
 
-The [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md) is the most basic type of drop, it allows you to $NEAR to new or existing users. 
+| Drop Type                 | Assets                                                                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md)             | $NEAR                                      |
+| [Non-Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md)    | NFT and optionally $NEAR                   |
+| [Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md)         | Fungible Tokens and optionally $NEAR       |
+| [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md)          | Set of function-calls and optionally $NEAR |
 
-[NFT Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md) and [FT Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md) are extensions of the Simple drop, they allow you to send NFTs and FTs in addition to $NEAR. 
 
-The [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) is Keypom's most powerful type of drop. They allow you send a link that is capable of calling almost any function on any smart contract that you predefine. A simple example of this is lazy-minting NFTs, where the NFT is minted once the user claims their key. 
+The [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md) is the most basic type of drop, it allows you to send $NEAR via a link to new or existing users. 
 
-While there are many [drop configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) that can be used to extract the full potential of Keypom, in these basic tutorials, a single use key with no additional configurations will be created.
+[NFT Drops](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md) and [FT Drops](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md) are extensions of the Simple drop, they allow you to send NFTs and FTs in addition to $NEAR. 
+
+The [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) is Keypom's most powerful type of drop. It allows you send a link that is capable of calling almost any function on any smart contract that you predefine. A simple example of this is auto-registering users into a DAO as part of the onboarding process.
+
+While there are many [drop configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) available to developers such as multi-use keys or time-based restrictions, in these basic tutorials, a single use key with no additional configurations will be created.
 
 Throughout each tutorial, two simple NodeJS scripts will be created that use both NEAR's native [NEAR-API-JS](https://docs.near.org/tools/near-api-js/reference) library, and Keypom's [JS-SDK](https://github.com/keypom/keypom-js).
 
@@ -33,10 +34,7 @@ For the basic tutorials, you can choose to run the scripts on your own machine. 
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. To [install the SDK](https://github.com/keypom/keypom-js#installation), simply run the following in your command prompt.  
-```bash
-npm -i keypom-js
-```
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
 At this point, you are ready to start the tutorials.
 

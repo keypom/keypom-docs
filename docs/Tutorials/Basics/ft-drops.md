@@ -7,9 +7,7 @@ import TabItem from '@theme/TabItem';
 # Fungible Token Drop
 
 ## Introduction
-In this tutorial, you will learn how to create an FT Drop. This will allow you to onboard users using a simple Web2 style link. Alternatively, if the user has a wallet already, the assets can be sent there instead.
-
-In the FT drop, the assets consist of $NEAR and Fungible Tokens. 
+In this tutorial, you will learn how to create a fungible token drop from scratch. By allowing you to send fungible tokens using a simple Web2 style link, an FT drop is great for onboarding both new and existing users. An excellent use case can be seamlessly offering in-game currency to players.
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/ft.png").default} alt="ft claim" width="80%"/> </p>
 
@@ -22,25 +20,130 @@ To learn more about the FT drop, see the [concepts page](../../Concepts/Keypom%2
 For the basic tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-2. [`NEAR-API-JS`](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. To [install the SDK](https://github.com/keypom/keypom-js#installation), simply run the following in your command prompt.  
+2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+
+### Creating your Project
+In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](simple-drops.md#breaking-down-the-problem).
+
+First, you need to give your project a home.
+
 ```bash
-npm -i keypom-js
+mkdir my-keypom-project && cd my-keypom-project
 ```
+
+Next, you'll want to create a default `package.json` file using the following command. You can accept all default values.
+```bash
+npm init
+```
+
+At this point, your project structure should look like this. 
+```bash
+/my-keypom-project
+├── package.json
+```
+
+If you open `package.json`, you should see this.
+
+<details>
+<summary>Default package.json</summary>
+<p>
+
+``` bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+</p>
+</details>
+
+The next step is to create an empty Javascript file.
+<Tabs>
+<TabItem value="Mac/Lnx" label="Mac OS/Linux">
+
+```bash
+touch ft-keypom.js
+```
+
+</TabItem>
+<TabItem value="WNDS" label="Windows">
+
+```bash
+fsutil file createnew ft-keypom.js 0
+```
+
+</TabItem>
+</Tabs>
+
+Finally, the last step is to install the Keypom JS SDK.
+```bash
+npm install keypom-js
+```
+
+After installing the SDK, your `package.json` file should now look slightly different.
+
+<details>
+<summary>package.json after installing the SDK</summary>
+<p>
+
+```bash
+{
+  "name": "my-keypom-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  # highlight-start
+  "dependencies": {
+    "keypom-js": "^1.2.0-rc.1"
+  }
+  # highlight-end
+}
+```
+
+</p>
+</details>
+
+With these steps complete, your project folder should look like this. 
+
+```bash
+/my-keypom-project
+├── ft-keypom.js
+├── package.json
+├── package-lock.json
+├── node_modules
+│   └── keypom-js
+│   └── ...
+```
+
+You are now ready to begin creating your drop!
 
 ---
 
 
 ## Breaking Down the Problem
 
-The process of creating an FT drop can again be broken down into the following steps.  
+The process of creating an FT drop can be broken down into the following steps.  
 
-1) Connecting to the NEAR blockchain.  
-2) Ensuring the funder has enough FTs to fund the drop.  
-3) Creating the drop.  
-4) Registering Keypom on the FT contract.  
-5) Transferring  Keypom the necessary Fungible Tokens.  
-6) Creating linkdrops.   
+1) Connect to the NEAR blockchain.  
+2) Ensure the funder has enough FTs to fund the drop.  
+3) Create the drop.  
+4) Register Keypom on the FT contract.  
+5) Transfer  Keypom the necessary Fungible Tokens.  
+6) Create linkdrops.   
 
 The following skeleton code can be used as a starting point:
 ```js
@@ -64,21 +167,21 @@ const homedir = require("os").homedir();
 async function FTDropKeypom(){
 // GETTING STARTED
 
-//      STEP 1 Initializing NEAR blockchain connection.
+//      STEP 1 Initialize NEAR blockchain connection.
 
 //      STEP 2 Ensure the funder has enough FTs to fund the drop.
 
 // CREATING DROP AND TRANSFERRING FTs
 
-//      STEP 3 Creating the drop.
+//      STEP 3 Create the drop.
 
-//      STEP 4 Registering Keypom on the FT contract.
+//      STEP 4 Register Keypom on the FT contract.
 
-//      STEP 5 Transferring  Keypom the necessary Fungible Tokens.
+//      STEP 5 Transfer Keypom the necessary Fungible Tokens.
 
 // CREATING LINKDROPS
 
-//      STEP 6 Creating Linkdrops
+//      STEP 6 Create Linkdrops
 }
 
 FTDropKeypom()
@@ -92,9 +195,9 @@ In this section, you'll be addressing the first two steps: connecting to NEAR an
 
 Connecting to the NEAR blockchain will be done using `NEAR-API-JS` and consists of the following steps: 
 
-1) Create an Keystore, which stores your access keys used to sign transactions   
+1) Create a Keystore, which stores your access keys used to sign transactions   
   * select a network, either `testnet` or `mainnet`  
-  * choose a location for the Keystore, either a folder on your local machine, or an in-memory keystore   
+  * choose a location where the keypairs live, either a folder on your local machine, or in-memory      
 
 2) Define a NEAR configuration using the Keystore  
 3) Use the configuration to initialize a connection to NEAR  
@@ -108,10 +211,10 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 To ensure the funder has enough FTs to fund the drop, a new concept is to be defined.
 
 :::info
-The funder must have enough Fungible Tokens to cover the `amountToTransfer` = *FT per use* X *number of keys* X *uses per key*.
+`amountToTransfer` = *FT per use* X *number of keys* X *uses per key*.
 :::
 
-Using `NEAR-API-JS`, a `viewFunction` to the FT contract can be made to call `ft_balance_of`. This will return the funder's FT balance and can be compared with `amountToTransfer` to ensure the funder has enough FTs to fund the drop. 
+Using `NEAR-API-JS`, a `viewFunction` to the FT contract can be made to call `ft_balance_of`. This will return the funder's FT balance, which can be compared with `amountToTransfer` to ensure the funder has enough FTs to fund the drop. 
 
 
 
@@ -121,37 +224,33 @@ The code for setting up the NEAR connection and ensuring sufficient funder FT ba
 https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
 ```
 :::note
-In the code, you may notice the balances defined using `BN`. These are simply *Big Numbers* and is a library built to handle numbers beyond Javascript's [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). This is necessary as the FTs in this example have a decimal of 24.
+In the code, you may notice the balances defined using `BN`. These are simply *Big Numbers* and is a library built to handle numbers beyond Javascript's [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). 
 
-With the Fungible Token used in the example, it has a `decimal` parameter value of 24, making it equivalent to 1 $NEAR -> 10<sup>24</sup> Yocto NEAR. This allows us to use [`parseNearAmount`](https://docs.near.org/tools/near-api-js/utils) to convert between the two. Read more on the decimal parameter [here](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals).
+The FTs in this example have a `decimal` of 24. This is the same as 1 $NEAR -> 10<sup>24</sup> YoctoNEAR, which allows the use of [`parseNearAmount`](https://docs.near.org/tools/near-api-js/utils) to convert between the two. Read more on the decimal parameter [here](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals).
 :::
 
 ---
 
 ## Creating Drop and Transferring FTs
-In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom using the Keypom SDK. 
+In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom using the SDK. 
 
 As outlined in to introduction, there are 3 tasks to complete in this section.  
 
-- Creating the drop  
-- Registering Keypom on the FT contract  
-- Transferring the FTs to Keypom  
+- Create the drop  
+- Register Keypom on the FT contract  
+- Transfer the FTs to Keypom  
 
 
-In the SDK, this process starts with calling the `initKeypom` function. This function will always be the first function you need to call to interact with the SDK. 
+This process starts with calling the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom Protocol. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present,it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
-:::info
-The `initKeypom` function is the first function you need to call in order to interact with the SDK.
-:::
-
-Following the `initKeypom` call, the FT Drop is created. This is done by calling `createDrop` and adding a `ftData` parameter. 
+Following the `initKeypom` call, the FT Drop is created. This is done by calling `createDrop` and adding an `ftData` parameter. 
 
 :::tip
 Recall that the private keys being generated using `createDrop` are used to store the assets. These keys are then embedded within a link.
 
-In an FT Drop, the assest consist of $NEAR and FTs.
+In an FT Drop, the assets consist of FTs and optional $NEAR.
 :::
 
 
@@ -164,20 +263,18 @@ ftData
 ```
 
 
-- `contractId`: the FT contract ID
-- `senderId`: the account from which the FTs will be sent to Keypom.
+- `contractId`: The FT contract ID
+- `senderId`: The account from which the FTs will be sent to Keypom.
 - `amount`: This is the human readable amount of FT, based on the [decimals value](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals) of the token
 
-Including the `ftData` parameter makes this drop a FT drop. Without it, the Keypom Protocol would treat this drop as a Simple Drop.
+Including the `ftData` parameter categorizes this as an FT drop. Without it, the Keypom Protocol would treat this drop as a Simple Drop.
 
 More information on the `ftData` parameter can be found [here](../../keypom-sdk/interfaces/FTData.md).
-
-Calling `createDrop` will **automatically** register Keypom on the FT contract. In addition, it will also transfer the Fungible Tokens to Keypom. 
 
 :::info
 So long as the funder has an adaquette FT balance, all you need to do is call `createDrop` with `ftData` to create the drop.
 
-The SDK will do all the necessary checks and transfer the FTs to Keypom for you. 
+The SDK will **automatically** register Keypom on the FT contract and transfer the FTs to Keypom for you. 
 :::
 
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.
@@ -204,20 +301,20 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the link for a linkdrop has the following standardized format:
+Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
 ```bash
 wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
 ```
 
-Using this format, the following code can be written to generate a set of links for the drop.
+With this format, the following code can be written to generate a set of links for the drop.
 
 ```js 
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
 const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
-// Creating list of pk's and linkdrops; copied from orignal simple-create.js
+// Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
     dropInfo[pubKeys[i]] = linkdropUrl;
@@ -329,10 +426,10 @@ Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.k
 </details>
 
 ### Claiming and Explorer Transactions
-Once you have the link, you are able to claim the linkdrop you've just created. Once clicked, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one.  
+Once you click the link, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/nw-claim.png").default} alt="NEAR Wallet claim" width="80%"/> </p>
 
-In your NEAR wallet, you should now be able to see your FT tokens that were claimed. 
+In your NEAR wallet, you should now be able to see the FT tokens that were transfered to you. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/ft.png").default} alt="ft claim" width="80%"/> </p>
 
 To check the transactions, click the final link in the console log when you run the script.

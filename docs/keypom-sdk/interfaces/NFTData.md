@@ -18,19 +18,19 @@ The account ID that the NFT contract is deployed to. This contract is where all 
 
 #### Defined in
 
-[src/lib/types/nft.ts:6](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/nft.ts#L6)
+[src/lib/types/nft.ts:6](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/nft.ts#L6)
 
 ___
 
 ### senderId
 
- **senderId**: `string`
+ `Optional` **senderId**: `string`
 
-The account ID that will be sending any NFTs to the Keypom contract for the specific drop. Most times, this is simply the funder / drop owner.
+By default, anyone can fund your drop with NFTs. This field allows you to set a specific account ID that will be locked into sending the NFTs.
 
 #### Defined in
 
-[src/lib/types/nft.ts:8](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/nft.ts#L8)
+[src/lib/types/nft.ts:8](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/nft.ts#L8)
 
 ___
 
@@ -44,4 +44,4 @@ the `nftTransferCall` method separately.
 
 #### Defined in
 
-[src/lib/types/nft.ts:14](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/nft.ts#L14)
+[src/lib/types/nft.ts:14](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/nft.ts#L14)

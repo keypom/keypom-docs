@@ -20,4 +20,4 @@ The amount of Gas cannot exceed 90 TGas.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L241)
+[src/lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L241)

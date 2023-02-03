@@ -20,7 +20,7 @@ Example: transferring one wNEAR should be passed in as "100000000000000000000000
 
 #### Defined in
 
-[src/lib/types/protocol.ts:191](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L191)
+[src/lib/types/protocol.ts:191](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L191)
 
 ___
 
@@ -32,16 +32,16 @@ Which contract do the FTs belong to?
 
 #### Defined in
 
-[src/lib/types/protocol.ts:182](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L182)
+[src/lib/types/protocol.ts:182](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L182)
 
 ___
 
 ### sender\_id
 
- **sender\_id**: `string`
+ `Optional` **sender\_id**: `string`
 
-Which account ID will be sending the fungible tokens to the Keypom contract in order to register key uses?
+By default, anyone can fund your drop with FTs. This field allows you to set a specific account ID that will be locked into sending the FTs.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:186](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L186)
+[src/lib/types/protocol.ts:186](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L186)

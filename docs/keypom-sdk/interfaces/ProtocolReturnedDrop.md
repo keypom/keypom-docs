@@ -19,7 +19,7 @@ All drops regardless of their type can have a suite of configurations such as ho
 
 #### Defined in
 
-[src/lib/types/protocol.ts:49](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L49)
+[src/lib/types/protocol.ts:49](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L49)
 
 ___
 
@@ -31,7 +31,7 @@ How much $yoctoNEAR will be transferred anytime a key is used that is part of th
 
 #### Defined in
 
-[src/lib/types/protocol.ts:39](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L39)
+[src/lib/types/protocol.ts:39](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L39)
 
 ___
 
@@ -43,7 +43,7 @@ Drop ID for this specific drop.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:35](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L35)
+[src/lib/types/protocol.ts:35](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L35)
 
 ___
 
@@ -55,7 +55,7 @@ For Function-Call drops, important information needs to be stored such as which 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:47](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L47)
+[src/lib/types/protocol.ts:47](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L47)
 
 ___
 
@@ -67,7 +67,7 @@ For Fungible Token drops, important information such as the amount of tokens to 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:45](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L45)
+[src/lib/types/protocol.ts:45](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L45)
 
 ___
 
@@ -79,7 +79,7 @@ If calling `getDrops` or `getDropInformation` and `withKeys` is passed in as tru
 
 #### Defined in
 
-[src/lib/types/protocol.ts:59](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L59)
+[src/lib/types/protocol.ts:59](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L59)
 
 ___
 
@@ -91,7 +91,7 @@ Any extra information about the drop can be stored as metadata. This is up to th
 
 #### Defined in
 
-[src/lib/types/protocol.ts:51](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L51)
+[src/lib/types/protocol.ts:51](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L51)
 
 ___
 
@@ -103,7 +103,7 @@ What is the next unique ID that will be given to the next access key added to th
 
 #### Defined in
 
-[src/lib/types/protocol.ts:57](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L57)
+[src/lib/types/protocol.ts:57](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L57)
 
 ___
 
@@ -115,7 +115,7 @@ For NFT drops, important information such as the token IDs, or contract need to 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:43](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L43)
+[src/lib/types/protocol.ts:43](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L43)
 
 ___
 
@@ -127,7 +127,7 @@ Which account created this drop.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:37](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L37)
+[src/lib/types/protocol.ts:37](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L37)
 
 ___
 
@@ -139,7 +139,7 @@ How many key uses are registered for this drop? This is only applicable to simpl
 
 #### Defined in
 
-[src/lib/types/protocol.ts:53](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L53)
+[src/lib/types/protocol.ts:53](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L53)
 
 ___
 
@@ -151,7 +151,7 @@ In order to use an access key that's part of this drop, how much Gas *needs* to 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:55](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L55)
+[src/lib/types/protocol.ts:55](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L55)
 
 ___
 
@@ -163,4 +163,4 @@ For simple drops, there are specific, optional configurations.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:41](https://github.com/keypom/keypom-js/blob/fe2cd80/src/lib/types/protocol.ts#L41)
+[src/lib/types/protocol.ts:41](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L41)

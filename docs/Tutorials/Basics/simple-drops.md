@@ -67,7 +67,7 @@ If you open `package.json`, you should see this.
 </p>
 </details>
 
-The next step is to create an empty Javascript file.
+The next step is to create an empty JavaScript file.
 <Tabs>
 <TabItem value="Mac/Lnx" label="Mac OS/Linux">
 
@@ -243,7 +243,7 @@ All function parameters and default values for the SDK and Keypom functions can 
 ---
 
 ## Creating Linkdrops
-The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
+The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
 Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
@@ -257,7 +257,7 @@ With this format, the following code can be written to generate a set of links f
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
-const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
+const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
@@ -374,6 +374,6 @@ From there, you should be able to see the [`create_drop`](https://explorer.testn
 ---
 
 ## Conclusion
-In this tutorial, you learned the basic steps of [creating a simple drop](simple-drops.md#introduction), steps to [initialize](simple-drops.md#getting-started---connecting-to-near) a NEAR blockchain connection, and how to [create](simple-drops.md#creating-the-simple-drop) the keys and drop. You also learned the purpose of the `initKeypom` function and when to use it.
+In this tutorial, you learned the basic steps of [creating a simple drop](simple-drops.md#introduction), steps to [initialize](simple-drops.md#getting-started---connecting-to-near) a NEAR blockchain connection, and how to [create](simple-drops.md#creating-the-simple-drop) the keys and drop. You also learned the purpose of the `initKeypom` function and when to use it. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
 In the next tutorial, you'll be learning how to create and fund an NFT drop using the Keypom SDK.

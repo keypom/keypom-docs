@@ -69,7 +69,7 @@ If you open `package.json`, you should see this.
 </p>
 </details>
 
-The next step is to create an empty Javascript file.
+The next step is to create an empty JavaScript file.
 <Tabs>
 <TabItem value="Mac/Lnx" label="Mac OS/Linux">
 
@@ -141,23 +141,22 @@ You are now ready to begin creating your drop!
 
 A Function Call Drop is Keypom's most powerful drop type. A brief breakdown of how an FC drop works is as follows:
 
-:::info
-For every key-use, a vector of functions is called in the order that they are defined. This vector can vary for each individual claim.
+For every key-use, a set of functions is called in the order that they are defined. For multi-use keys, this set can vary across different key uses.
 
-This means for each key use, a different set of functions can be called. An example can be seen below. 
-:::
+An example scenario for a multi-use key can be seen below.
+
 
 | Key Use    | Functions called during n<sup>th</sup> Key Use |
 | -----------| ---------------------------------------------- |
 | Key Use 1  | `nft_mint`                                     |
-| Key Use 2  | `my_nft_function_1`, `my_nft_function_2`       |
-| Key Use 3  | `nft_transfer_call`                            |
+| Key Use 2  | `sign_message`, `update_message`               |
+| Key Use 3  | `mint_fungible_tokens`                         |
 
 :::note
-In this tutorial, the key will only call `nft_mint`.
+In this tutorial, the key will be single use and only call `nft_mint`.
 :::
 
-With the power of function call drops understood, the process of creating one can be broken down.
+The process of creating an FC drop is similar to the other drop types:
 
 1) Connect to the NEAR blockchain  
 2) Create drop with function call data  
@@ -212,9 +211,9 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 ```
 
 ## Creating Drop with Function Call Data
-In this section, you'll learn about the process of creating a FC drop using the SDK. 
+In this section, you'll learn about the process of creating an FC drop using the SDK. 
 
-This process starts with calling the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
+This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
 
 `initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
@@ -230,11 +229,11 @@ The primary task in creating the Function Call Drop is to define `fcData`. It is
 
 ```bash
 fcData
-├── FCConfig
+├── FCConfig?
 ├── methods
 ```
 
-- `FCConfig`: [Specific configuratrions](../../keypom-sdk/interfaces/FCConfig.md) for the FC Drop.  
+- `FCConfig`: [Specific configurations](../../keypom-sdk/interfaces/FCConfig.md) for the FC Drop.  
 - `methods`: A vector of all the functions to be called for each key use.  
 
 In this example, only the `methods` parameter will be defined for the sake of simplicity.
@@ -274,7 +273,7 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 ---
 
 ## Creating Linkdrops
-The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.   
+The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
 Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
@@ -288,7 +287,7 @@ With this format, the following code can be written to generate a set of links f
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
-const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
+const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
@@ -411,6 +410,6 @@ This can be confirmed by visiting the "Collectibles" tab in your NEAR wallet. Yo
 ---
 
 ## Conclusion
-In this tutorial, you learned the how to [create a function call drop](fc-drops.md#creating-drop-with-function-call-data) using the `fcData` parameter. 
+In this tutorial, you learned the how to [create a function call drop](fc-drops.md#creating-drop-with-function-call-data) using the `fcData` parameter. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
-Now that you've had a good introduction to creating all 4 Keypom drop types, you can tinker with existing code in the [Deploy Scripts](getting-started.md#deploy-scripts) or move on to the [Advanced Tutorials](../Advanced/ticketing/concept.md) for more challenging and practical examples.
+Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/ticketing/concept.md) for more challenging and practical examples.

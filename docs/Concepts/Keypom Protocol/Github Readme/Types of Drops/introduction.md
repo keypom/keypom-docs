@@ -10,5 +10,5 @@ There are FOUR linkdrop types using Keypom.
 4) [Function Call Drops](fcdrops.md)  
 
 
-Add those big boy blocks here
+<!-- Add those big boy blocks here -->
 

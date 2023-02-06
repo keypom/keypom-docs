@@ -14,7 +14,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   organizationName: 'minqianlu', // Usually your GitHub org/user name.
   projectName: 'minqianlu.github.io', // Usually your repo name.
   trailingSlash: false,
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock'],
 
   // plugins: [
   //   [
@@ -52,6 +52,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // routeBasePath: '/',
           //homePageId: 'Github ReadMe/Introduction/Introduction',
           sidebarPath: require.resolve('./sidebars.js'),
+          // remarkPlugins: [
+          //   [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          // ],
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         },
@@ -75,39 +78,37 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             to: "docs/next/Concepts/welcome",
-            label: "📖 Concepts",
+            label: "📖Concepts",
             position: "left",
           },
           {
             to: "docs/next/Tutorials/welcome",
-            label: "📚 Tutorials",
-            position: "left",
-          },
-          {
-            to: "docs/next/KeypomV2/welcome",
-            label: "🤖 Keypom V2",
-            position: "left",
-          },
-          {
-            to: "docs/next/keypom-sdk/welcome",
-            label: "💻 SDK TypeDocs",
+            label: "💻 Tutorials",
             position: "left",
           },
           // {
-          //   type: 'doc',
-          //   docId: './Github ReadMe/Introduction/Introduction',
-          //   position: 'left',
-          //   label: 'Tutorial',
+          //   to: "docs/next/KeypomV2/welcome",
+          //   label: "🤖 Keypom V2",
+          //   position: "left",
           // },
-          // {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            to: "docs/next/keypom-sdk/welcome",
+            label: "📚 SDK TypeDocs",
+            position: "left",
+          },
+          // {
+          //   to: "docs/next/KeypomV2/welcome",
+          //   label: "🤖Keypom V2",
+          //   position: "left",
+          // },
           {
             href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
             position: 'right',
           },
-          // {
-          //   type: 'docsVersionDropdown',
-          // },
+          {
+            type: 'docsVersionDropdown',
+          },
         ],
       },
       footer: {
@@ -119,17 +120,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Docs',
             items: [
               {
-                label: '📖Concepts',
+                label: '📚Concepts',
                 to: 'docs/next/Concepts/welcome',
               },
               {
-                label: '📚Tutorials',
+                label: '💻Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
               {
-                label: "🤖Keypom V2",
-                to: "docs/next/KeypomV2/welcome",
-              },
+                label: "📚 SDK TypeDocs",
+                to: "docs/next/keypom-sdk/welcome",
+              }
+              // {
+              //   label: "🤖Keypom V2",
+              //   to: "docs/next/KeypomV2/welcome",
+              // },
             ],
           },
           //community
@@ -166,6 +171,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust', 'java'],
       },
     }),
 });

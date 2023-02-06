@@ -78,7 +78,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
   <Column title="Developer Documentation" size="3">
     <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="moon.png" />
-    <Feature url="https://github.com/keypom/keypom-js" title="Javascript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.png" />
+    <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.png" />
     <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Learn to interact with NEAR using Javascript" image="docs/icons/near-api-js.png" />
   </Column>
 
@@ -108,7 +108,7 @@ Explore Keypom's source code in the Github Repos.
       <a href="https://github.com/keypom/keypom-js">
         <div class="card h-100">
           <div class="card__body">
-            <h3>Keypom Javascript SDK</h3>
+            <h3>Keypom JavaScript SDK</h3>
               See how the SDK interacts with NEAR.
           </div>
         </div>

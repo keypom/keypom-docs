@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 # Fungible Token Drop
 
 ## Introduction
-In this tutorial, you will learn how to create a fungible token drop from scratch. By allowing you to send fungible tokens using a simple Web2 style link, an FT drop is great for onboarding both new and existing users. An excellent use case can be seamlessly offering in-game currency to players.
+In this tutorial, you will learn how to create a fungible token drop from scratch. This allows you onboard users both with $NEAR and a set of FTs with the click of a link. An excellent use case can be seamlessly offering in-game currency to players.
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/ft.png").default} alt="ft claim" width="80%"/> </p>
 
@@ -66,7 +66,7 @@ If you open `package.json`, you should see this.
 </p>
 </details>
 
-The next step is to create an empty Javascript file.
+The next step is to create an empty JavaScript file.
 <Tabs>
 <TabItem value="Mac/Lnx" label="Mac OS/Linux">
 
@@ -140,10 +140,9 @@ The process of creating an FT drop can be broken down into the following steps.
 
 1) Connect to the NEAR blockchain.  
 2) Ensure the funder has enough FTs to fund the drop.  
-3) Create the drop.  
-4) Register Keypom on the FT contract.  
-5) Transfer  Keypom the necessary Fungible Tokens.  
-6) Create linkdrops.   
+3) Create the drop.    
+4) Transfer  Keypom the necessary Fungible Tokens.  
+5) Create linkdrops.   
 
 The following skeleton code can be used as a starting point:
 ```js
@@ -175,13 +174,11 @@ async function FTDropKeypom(){
 
 //      STEP 3 Create the drop.
 
-//      STEP 4 Register Keypom on the FT contract.
-
-//      STEP 5 Transfer Keypom the necessary Fungible Tokens.
+//      STEP 4 Transfer Keypom the necessary Fungible Tokens.
 
 // CREATING LINKDROPS
 
-//      STEP 6 Create Linkdrops
+//      STEP 5 Create Linkdrops
 }
 
 FTDropKeypom()
@@ -211,7 +208,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 To ensure the funder has enough FTs to fund the drop, a new concept is to be defined.
 
 :::info
-`amountToTransfer` = *FT per use* X *number of keys* X *uses per key*.
+`amountToTransfer` = *FT per use* * *number of keys* * *uses per key*.
 :::
 
 Using `NEAR-API-JS`, a `viewFunction` to the FT contract can be made to call `ft_balance_of`. This will return the funder's FT balance, which can be compared with `amountToTransfer` to ensure the funder has enough FTs to fund the drop. 
@@ -224,7 +221,7 @@ The code for setting up the NEAR connection and ensuring sufficient funder FT ba
 https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
 ```
 :::note
-In the code, you may notice the balances defined using `BN`. These are simply *Big Numbers* and is a library built to handle numbers beyond Javascript's [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). 
+In the code, you may notice the balances defined using `BN`. These are simply *Big Numbers* and is a library built to handle numbers beyond JavaScript's [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). 
 
 The FTs in this example have a `decimal` of 24. This is the same as 1 $NEAR -> 10<sup>24</sup> YoctoNEAR, which allows the use of [`parseNearAmount`](https://docs.near.org/tools/near-api-js/utils) to convert between the two. Read more on the decimal parameter [here](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals).
 :::
@@ -234,14 +231,13 @@ The FTs in this example have a `decimal` of 24. This is the same as 1 $NEAR -> 1
 ## Creating Drop and Transferring FTs
 In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom using the SDK. 
 
-As outlined in to introduction, there are 3 tasks to complete in this section.  
+As outlined in to introduction, there are 2 tasks to complete in this section.  
 
 - Create the drop  
-- Register Keypom on the FT contract  
 - Transfer the FTs to Keypom  
 
 
-This process starts with calling the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
+This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK.  
 
 `initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
@@ -299,7 +295,7 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 ---
 
 ## Creating Linkdrops
-The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
+The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
 Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
@@ -313,7 +309,7 @@ With this format, the following code can be written to generate a set of links f
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
-const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
+const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
@@ -450,6 +446,6 @@ This is the SDK in action!
 ---
 
 ## Conclusion
-In this tutorial, you've learned to ensure the funder has a [sufficient FT balance](ft-drops.md#getting-started) for the drop, [create an FT drop](ft-drops.md#creating-drop-and-transferring-fts) with the SDK, and to [transfer FTs](ft-drops.md#creating-drop-and-transferring-fts) to Keypom. 
+In this tutorial, you've learned to ensure the funder has a [sufficient FT balance](ft-drops.md#getting-started) for the drop, [create an FT drop](ft-drops.md#creating-drop-and-transferring-fts) with the SDK, and to [transfer FTs](ft-drops.md#creating-drop-and-transferring-fts) to Keypom. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
 In the next tutorial, you will learn to create a function call drop. 

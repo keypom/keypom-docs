@@ -20,7 +20,7 @@ As an example, if the methodName was `nft_mint` and it expected a field `receive
 
 #### Defined in
 
-[src/lib/types/protocol.ts:219](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L219)
+[src/lib/types/protocol.ts:219](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L219)
 
 ___
 
@@ -32,7 +32,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[src/lib/types/protocol.ts:210](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L210)
+[src/lib/types/protocol.ts:210](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L210)
 
 ___
 
@@ -44,7 +44,7 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:214](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L214)
+[src/lib/types/protocol.ts:214](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L214)
 
 ___
 
@@ -57,7 +57,7 @@ As an example, if an NFT contract expected the Keypom drop ID to be passed in as
 
 #### Defined in
 
-[src/lib/types/protocol.ts:224](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L224)
+[src/lib/types/protocol.ts:224](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L224)
 
 ___
 
@@ -70,7 +70,7 @@ As an example, if an NFT contract wanted to gate only users with an odd key ID t
 
 #### Defined in
 
-[src/lib/types/protocol.ts:229](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L229)
+[src/lib/types/protocol.ts:229](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L229)
 
 ___
 
@@ -82,7 +82,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:206](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L206)
+[src/lib/types/protocol.ts:206](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L206)
 
 ___
 
@@ -94,4 +94,4 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[src/lib/types/protocol.ts:202](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L202)
+[src/lib/types/protocol.ts:202](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L202)

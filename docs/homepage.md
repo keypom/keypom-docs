@@ -1,3 +1,0 @@
-# Keypom Docs
-
-Welcome home!

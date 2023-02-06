@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 # Non Fungible Token Drop
 
 ## Introduction
-In this tutorial, you will learn how to create a non-fungible token drop from scratch. By allowing you to send an NFT using a simple Web2 style link, an NFT drop is great for onboarding both new and existing users. An excellent use case can be offering exclusive POAPs to your community members for attending your event.
+In this tutorial, you will learn how to create a non-fungible token drop from scratch. This allows you onboard users both with $NEAR and an existing NFT with the click of a link. This is great for sending an NFT that you own to your friends without needing to worry about whether or not they have a NEAR wallet.
 
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/collectibles-claimed2.png").default} alt="MyNearWallet claim" width="65%"/> </p>
@@ -66,7 +66,7 @@ If you open `package.json`, you should see this.
 </p>
 </details>
 
-The next step is to create an empty Javascript file.
+The next step is to create an empty JavaScript file.
 <Tabs>
 <TabItem value="Mac/Lnx" label="Mac OS/Linux">
 
@@ -137,10 +137,10 @@ You are now ready to begin creating your drop!
 
 The process of creating an NFT drop can be broken down into the following steps.  
 
-1) Establish a connection to the NEAR blockchain. 
+1) Establish a connection to the NEAR blockchain.  
 2) If you don't own the NFT, mint it using the `nft_mint` function.   
-3) Create the keys and the drop with the NFT metadata.   
-4) Transfer the ownership of the NFTs to Keypom.  
+3) Create the keys and the drop with the NFT information.   
+4) Transfer ownership of the NFTs to Keypom.  
 5) Create linkdrops.  
 
 :::info
@@ -227,7 +227,7 @@ Function arguments for `functionCall` can be found [here](https://docs.near.org/
 
 In this section of the tutorial, you'll be creating the NFT drop and transferring the NFT to Keypom using the SDK.
 
-This process starts with calling the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
+This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
 
 `initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
 
@@ -282,7 +282,7 @@ All function parameters and default values for the SDK and Keypom functions can 
 ---
 
 ## Creating Linkdrops
-The last step in this process is to create the links themselves so that you can share the drop you just created. This is done by embedding the private key, which containing the assets, into the link along with the Keypom contract ID.  
+The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
 Using the NEAR wallet, the linkdrop URL has the following standardized format:
 
@@ -296,7 +296,7 @@ With this format, the following code can be written to generate a set of links f
 pubKeys = keys.publicKeys
 
 var dropInfo = {};
-const KEYPOM_CONTRACT = "v1-3.keypom.testnet"
+const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
     let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
@@ -431,6 +431,6 @@ This is the SDK in action!
 ---
 
 ## Conclusion
-In this NFT tutorial, you learned about the steps needed while [initializing an NFT drop](nft-drops.md#getting-started) and the process of [creating the NFT drop](nft-drops.md#creating-drop-and-transferring-nft).
+In this NFT tutorial, you learned about the steps needed while [initializing an NFT drop](nft-drops.md#getting-started) and the process of [creating the NFT drop](nft-drops.md#creating-drop-and-transferring-nft). Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
-With the NFT drop under your belt, the next tutorial will be the FT drop tutorial. The process is similar to the NFT drop tutorial but with a few different steps. 
+In the next tutorial, you will learn how to create a Fungible Token drop, which is similar to the NFT drop, but transfers FTs instead of NFTs.

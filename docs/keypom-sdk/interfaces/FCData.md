@@ -18,7 +18,7 @@ Specific configurations for the Function-Call drop.
 
 #### Defined in
 
-[src/lib/types/fc.ts:69](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L69)
+[src/lib/types/fc.ts:69](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L69)
 
 ___
 
@@ -31,4 +31,4 @@ If a given key use does not have an undefined set of methods, when it is used, a
 
 #### Defined in
 
-[src/lib/types/fc.ts:65](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L65)
+[src/lib/types/fc.ts:65](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L65)

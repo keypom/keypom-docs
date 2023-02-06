@@ -20,7 +20,7 @@ As an example, if the methodName was `nft_mint` and it expected a field `receive
 
 #### Defined in
 
-[src/lib/types/fc.ts:28](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L28)
+[src/lib/types/fc.ts:28](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L28)
 
 ___
 
@@ -32,7 +32,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[src/lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L19)
+[src/lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L19)
 
 ___
 
@@ -44,7 +44,7 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[src/lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L23)
+[src/lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L23)
 
 ___
 
@@ -57,7 +57,7 @@ As an example, if an NFT contract expected the Keypom drop ID to be passed in as
 
 #### Defined in
 
-[src/lib/types/fc.ts:33](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L33)
+[src/lib/types/fc.ts:33](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L33)
 
 ___
 
@@ -70,7 +70,7 @@ As an example, if an NFT contract wanted to gate only users that had a key comin
 
 #### Defined in
 
-[src/lib/types/fc.ts:43](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L43)
+[src/lib/types/fc.ts:43](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L43)
 
 ___
 
@@ -83,7 +83,7 @@ As an example, if an NFT contract wanted to gate only users with an odd key ID t
 
 #### Defined in
 
-[src/lib/types/fc.ts:38](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L38)
+[src/lib/types/fc.ts:38](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L38)
 
 ___
 
@@ -95,7 +95,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[src/lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L15)
+[src/lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L15)
 
 ___
 
@@ -107,4 +107,4 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[src/lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/fc.ts#L11)
+[src/lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/fc.ts#L11)

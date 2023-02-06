@@ -56,7 +56,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           // ],
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          editUrl: 'https://github.com/keypom/keypom-docs',
         },
         blog: false,
         theme: {
@@ -120,7 +120,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Docs',
             items: [
               {
-                label: '📚Concepts',
+                label: '📖Concepts',
                 to: 'docs/next/Concepts/welcome',
               },
               {
@@ -142,16 +142,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/keypomxyz',
               },
             ],
           },
@@ -160,13 +152,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Protocol Github',
+                href: 'https://github.com/keypom/keypom',
+              },
+              {
+                label: 'Javascript SDK Github',
+                href: 'https://github.com/keypom/keypom-js',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

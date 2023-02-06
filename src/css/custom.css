@@ -23,6 +23,22 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+.pink-main-header-text {
+  font-weight: bold;
+  color: #f990d4;
+  font-size: 4rem;
+}
+
+.pink-h1-text {
+  font-weight: bold;
+  color: #f990d4;
+  font-size:3rem;
+}
+.white-main-subheader-text {
+  font-weight: bold;
+  font-size:3rem;
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

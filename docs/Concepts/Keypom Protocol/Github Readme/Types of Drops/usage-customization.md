@@ -23,17 +23,25 @@ pub struct UsageConfig {
 
 ### Use case
 
+<!-- pending use case -->
+
 ## `refund_deposit` 
 *Default: False*
 
 ### Use case
+
+<!-- pending use case -->
 
 ## `auto_delete_drop` 
 *Default: False*
 
 ### Use case
 
+<!-- pending use case -->
+
 ## `auto_withdraw` 
 *Default: False*
 
 ### Use case
+
+<!-- pending use case -->

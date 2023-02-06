@@ -2,123 +2,42 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'; 
 
 # Getting Started
+The primary goal of a Keypom drop is to send assets to users with the click of a link regardless of whether they have a wallet or not. These assets can come in many forms which will be broken down below.
 
-There are several ways to get started using Keypom.  
+The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops and the assets they contain. 
 
-1) [Basic Tutorials](simple-drops.md) for a full tutorial starting from scratch.  
-2) [Existing Node Scripts](getting-started.md#deploy-scripts), known as Deploy Scripts, for working examples with more [configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/drop-customization.md).  
-3) [Advanced Tutorials](../Advanced/ticketing/concept.md) for more advanced use cases.  
+There are **four** types of drops, each with different types of assets. These drops can be claimed either with a brand new NEAR account or an existing one.
 
-In the basic tutorials, you will be shwon how to create [the four types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops. Two methods will be shown.
 
-1) [NEAR-API-JS](https://docs.near.org/tools/near-api-js/reference)  
-2) [Keypom-JS SDK](https://github.com/keypom/keypom-js) <-- currently linked to github, change this to typedocs or smth else once ready)
+| Drop Type                 | Assets                                                                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md)             | $NEAR                                      |
+| [Non-Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md)    | NFT and optionally $NEAR                   |
+| [Fungible Token Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md)         | Fungible Tokens and optionally $NEAR       |
+| [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md)          | Set of function-calls and optionally $NEAR |
 
-In the Deploy scripts, the same four types of Keypom drops will be created, but you will be able to customize the configurations to your needs. 
+
+The [Simple Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md) is the most basic type of drop, it allows you to send $NEAR via a link to new or existing users. 
+
+[NFT Drops](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md) and [FT Drops](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md) are extensions of the Simple drop, they allow you to send NFTs and FTs in addition to $NEAR. 
+
+The [Function Call Drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) is Keypom's most powerful type of drop. It allows you send a link that is capable of calling almost any function on any smart contract that you predefine. A simple example of this is auto-registering users into a DAO as part of the onboarding process.
+
+While there are many [drop configurations](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) available to developers such as multi-use keys or time-based restrictions, in these basic tutorials, a single use key with no additional configurations will be created.
+
+Throughout each tutorial, two simple NodeJS scripts will be created that use both NEAR's native [NEAR-API-JS](https://docs.near.org/tools/near-api-js/reference) library, and Keypom's [JS-SDK](https://github.com/keypom/keypom-js).
 
 ---
 
 ## Prerequisites
-For the basic tutorials, you can choose to run the scripts on your own machine. To do son, you must have the following:
+For the basic tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. To install the SDK, simply run the following in your command prompt.  
-```bash
-npm -i keypom-js
-```
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
-At this point, you are ready to start the tutorials. To interact with the deploy scripts, you can continue reading this page.  
+At this point, you are ready to start the tutorials.
 
-For the Deploy Scripts, you should have a [NEAR account](https://docs.near.org/concepts/basics/account). It can be either `testnet` or `mainnet`.
-:::note
-If you choose to use mainnet, you will be using real $NEAR to fund your drops.
-:::
+Alternatively, if you wish to use ready-to-use scripts that can be customized to your liking in order to quickly create Keypom drops, visit the [Keypom Protocol](https://github.com/keypom/keypom#deploy-scripts). 
 
----
 
-## Deploy Scripts
-
-There are [4 deploy scripts](https://github.com/keypom/keypom/tree/main/deploy) that have been made available for you to use and easily create Keypom links. These are for:
-- Simple Drops
-- NFT Drops
-- FT Drops
-- Function Call Drops
-
-In order to use these scripts, open the `deploy/` directory and modify the `configurations.js` file for the drop you want to create. In this file, you can specify important information such as the number of keys you wish to create, the amount of $NEAR you want to send, how many uses per key etc.
-
-You must specify the account that you will fund the drops with under the `FUNDING_ACCOUNT_ID` variable. This account needs to have keys stored in your `~/.near-credentials` folder. To do this, simply run `near login` on your terminal and follow the prompts using the NEAR CLI.
-
-Once the `configurations.js` file has been modified to your liking, navigate back to the
-root directory and run the deploy script.
-
-For simple drops:
-<Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
-
-```bash
-yarn simple-sdk
-```
-
-</TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
-
-```bash
-yarn simple
-```
-
-</TabItem>
-</Tabs>
-
-For FT drops:
-<Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
-
-```bash
-yarn ft-sdk
-```
-
-</TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
-
-```bash
-yarn ft
-```
-
-</TabItem>
-</Tabs>
-
-For NFT drops:
-<Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
-
-```bash
-yarn NFT-minted-sdk
-```
-
-</TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
-
-```bash
-yarn NFT
-```
-
-</TabItem>
-</Tabs>
-For Function Call drops:
-<Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
-
-```bash
-yarn fc-sdk
-```
-
-</TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
-
-```bash
-yarn fc
-```
-
-</TabItem>
-</Tabs>

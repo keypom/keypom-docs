@@ -21,7 +21,7 @@ It's important to note that this root account *MUST* have a smart contract deplo
 
 #### Defined in
 
-[src/lib/types/protocol.ts:80](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L80)
+[src/lib/types/protocol.ts:80](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L80)
 
 ___
 
@@ -33,7 +33,7 @@ Any information related to time-based configurations such as a starting date for
 
 #### Defined in
 
-[src/lib/types/protocol.ts:71](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L71)
+[src/lib/types/protocol.ts:71](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L71)
 
 ___
 
@@ -45,7 +45,7 @@ Any information related to how access keys are used such as which methods they c
 
 #### Defined in
 
-[src/lib/types/protocol.ts:74](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L74)
+[src/lib/types/protocol.ts:74](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L74)
 
 ___
 
@@ -57,4 +57,4 @@ How many uses can each key have before it's deleted. If this isn't specified, it
 
 #### Defined in
 
-[src/lib/types/protocol.ts:68](https://github.com/keypom/keypom-js/blob/f5507ba/src/lib/types/protocol.ts#L68)
+[src/lib/types/protocol.ts:68](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L68)

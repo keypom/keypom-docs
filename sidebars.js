@@ -126,98 +126,19 @@ const sidebars = {
       label: 'Advanced',
       collapsed: false,
       items: [
-            {
-              type: 'category',
-              label: 'Ticketing',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/ticketing/concept',
-                    'Tutorials/Advanced/ticketing/skeleton',
-                    'Tutorials/Advanced/ticketing/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Customizable Onboarding',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/customized-onboarding/concept',
-                    'Tutorials/Advanced/customized-onboarding/skeleton',
-                    'Tutorials/Advanced/customized-onboarding/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Multi-Sig Contracts',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/multi-sig/concept',
-                    'Tutorials/Advanced/multi-sig/skeleton',
-                    'Tutorials/Advanced/multi-sig/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Subscriptions',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/subscriptions/concept',
-                    'Tutorials/Advanced/subscriptions/skeleton',
-                    'Tutorials/Advanced/subscriptions/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Reward Gating',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/reward-gating/concept',
-                    'Tutorials/Advanced/reward-gating/skeleton',
-                    'Tutorials/Advanced/reward-gating/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'DAOs',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/daos/concept',
-                    'Tutorials/Advanced/daos/skeleton',
-                    'Tutorials/Advanced/daos/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Access Key Marketplace',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/access-key-marketplace/concept',
-                    'Tutorials/Advanced/access-key-marketplace/skeleton',
-                    'Tutorials/Advanced/access-key-marketplace/final',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Custom Receiver Contracts',
-              collapsed: true,
-              items: [
-                    'Tutorials/Advanced/receiver-contracts/concept',
-                    'Tutorials/Advanced/receiver-contracts/skeleton',
-                    'Tutorials/Advanced/receiver-contracts/final',
-              ],
-            },
+            'Tutorials/Advanced/homepage',
       ],
     },
-    {
-      type: 'category',
-      label: 'Others',
-      collapsed: true,
-      items: [
-            'Tutorials/Misc/sign-txn',
+    // {
+    //   type: 'category',
+    //   label: 'Others',
+    //   collapsed: true,
+    //   items: [
+    //         'Tutorials/Misc/sign-txn',
                     
             
-      ],
-    },
+    //   ],
+    // },
   ],
   // KeypomV2: [
   //   "KeypomV2/welcome"

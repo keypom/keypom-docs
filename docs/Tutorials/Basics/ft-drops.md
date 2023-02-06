@@ -268,7 +268,7 @@ Including the `ftData` parameter categorizes this as an FT drop. Without it, the
 More information on the `ftData` parameter can be found [here](../../keypom-sdk/interfaces/FTData.md).
 
 :::info
-So long as the funder has an adaquette FT balance, all you need to do is call `createDrop` with `ftData` to create the drop.
+So long as the funder has an adequate FT balance, all you need to do is call `createDrop` with `ftData` to create the drop.
 
 The SDK will **automatically** register Keypom on the FT contract and transfer the FTs to Keypom for you. 
 :::

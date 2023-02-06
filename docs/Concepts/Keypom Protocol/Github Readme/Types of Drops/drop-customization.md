@@ -3,7 +3,7 @@ sidebar_label: 'Drop Configurations'
 ---
 # Drop Configurations
 
-Drop Customization via the `DropConfig` object can help cater the properties of the drop to exactly what you want! From changing the amount of $NEAR received by your users, to being able to set up a subscription service, understanding the power of `DropConfig` is crucial to making the most of Keypom!
+Drop Customization via the `DropConfig` object can help adjust the properties of a drop to exactly what you want. From changing the amount of $NEAR received by your users, to being able to set up a subscription service, understanding the power of `DropConfig` is crucial to making the most of Keypom!
 
 :::tip
 A configuration applies to **ALL KEYS** accross a drop!  
@@ -47,7 +47,7 @@ Used in tandem with [function call drops](fcdrops.md), some more complex use cas
 Note that this parameter changes the number of uses for all keys in your drop; this will change the upfront cost for the drop creator. As with all aspects of Keypom linkdrops, it is imparative for the drop owner to understand the needs of their drop in order to reduce upfront costs and avoid uneccesary complexity. 
 
 ## `root_account_id`
-*Default: "near" or "testnet"*  
+*Default: `near` or `testnet`*  
 Changing the `root_account_id` parameter will change the root of any accounts that call `create_account_and_claim` on your linkdrops.
 
 ### Use cases

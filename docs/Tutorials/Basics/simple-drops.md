@@ -213,7 +213,7 @@ After `initKeypom` is called, the key generation and drop creation can be done. 
 :::tip
 Recall that the private keys being generated are used to store the assets. These keys are then embedded within a link.
 
-In a Simple Drop, the assest is $NEAR.
+In a Simple Drop, the asset is $NEAR.
 :::
 
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.

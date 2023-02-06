@@ -2,7 +2,7 @@
 sidebar_label: "Overview"
 ---
 # Types of Drops
-There are FOUR linkdrop types using Keypom. 
+There are **four** linkdrop types using Keypom. 
 
 1) [Simple Drops](simpledrops.md)  
 2) [Non Fungible Token Drops](nftdrops.md)  

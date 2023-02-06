@@ -36,7 +36,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
       <a href="/docs/next/Tutorials/welcome">
         <div class="card mb-3">
           <div class="card__image">
-            <img src={require("/static/img/moon-crop.png").default} alt="Examples and Tutorials" />
+            <img src={require("/static/img/docs/homepage-banner-2.png").default} alt="Examples and Tutorials" />
             <div class="card__body">
               <h3>Build with Keypom</h3>
                 Learn how to use Keypom for your Web3 needs.
@@ -71,15 +71,15 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
    <Column title="Advanced Tutorials" size="3">
     <Feature url="../../docs/next/Tutorials/Advanced/ticketing/concept" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/customized-onboarding/concept" title="Customized Onboarding" subtitle="Create a custom and interactive onboarding" image="moon.png" />
+    <Feature url="../../docs/next/Tutorials/Advanced/customized-onboarding/concept" title="Customized Onboarding" subtitle="Create a custom and interactive onboarding" image="docs/icons/onboarding.png" />
     <Feature url="../../docs/next/Tutorials/Advanced/dao/concept" title="DAO Onboarding" subtitle="Create a seamless DAO experience" image="docs/icons/dao.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/subscriptions/concept" title="Subscriptions using Web3" subtitle="Make a Web3 subscription service" image="moon.png" />
+    <Feature url="../../docs/next/Tutorials/Advanced/subscriptions/concept" title="Subscriptions using Web3" subtitle="Make a Web3 subscription service" image="docs/icons/subscription.png" />
   </Column>
 
   <Column title="Developer Documentation" size="3">
-    <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="moon.png" />
+    <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
     <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.png" />
-    <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Learn to interact with NEAR using Javascript" image="docs/icons/near-api-js.png" />
+    <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Learn to interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />
   </Column>
 
 

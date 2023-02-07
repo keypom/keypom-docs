@@ -20,7 +20,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="/docs/next/Concepts/welcome">
+      <a href="/docs/next/exec-summary">
         <div class="card mb-3">
           <div class="card__image">
             <img src={require("/static/img/moon-crop.png").default} alt="Learn" />

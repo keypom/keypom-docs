@@ -2,7 +2,7 @@
 sidebar_label: 'Home'
 ---
 # Concepts
-Welcome to the concepts section of Keypom's developer documentation. Here you'll learn all about Keypom!
+Welcome to the concepts section of Keypom's developer documentation. Here you'll learn all about Keypom.
 
 ## Major Concepts
 
@@ -12,7 +12,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       <a href="Keypom Protocol/Github Readme/Types of Drops/introduction">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Types of Drop</h3>
+            <h3>Types of Drops</h3>
             Learn about types of Keypom drops.
           </div>
         </div>

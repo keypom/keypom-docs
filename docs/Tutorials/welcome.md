@@ -2,13 +2,13 @@
 sidebar_label: 'Home'
 ---
 # Examples and Tutorials
-Welcome to the examples and tutorials section of Keypom's developer documentation. Here you'll learn how to use the power of Keypom to make your life easier!
+Welcome to the examples and tutorials section of Keypom's developer documentation. Here you'll learn how to use the power of Keypom to creating some awesome user onboarding experiences.
 
 There are several ways to get started using Keypom.  
 
 ## Basic Tutorials
 
-The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of Keypom drops and the assets they contain. All drops created in these tutorials forgo [drop congfigurations](../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) to keep it simple.
+The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of drops and the assets they contain. All drops created in these tutorials skip [drop congfigurations](../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) to keep it simple.
 
 
 It is recommended you read through the [Getting Started](Basics/getting-started.md) guide before going into the tutorials.

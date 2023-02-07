@@ -248,7 +248,7 @@ nftData
 ├── tokenIds
 ```
 
-- `contactId`: The contract ID where the NFTs for this drop are coming from
+- `contractId`: The contract ID where the NFTs for this drop are coming from
 - `senderId`: The current owner of the NFTs that will be sent to Keypom
 - `tokenIds`: A list of all the token IDs to be sent to Keypom during the NFT drop creation process. 
 

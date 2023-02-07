@@ -43,7 +43,7 @@ Let's say you are running a concert, and you want to give fans exclusive access 
 
 In this case, you would hand out general admission tickets with a start time in the time configurations and another set of prefered admission tickets with an earlier start time in the time configurations.
 
-To do this, you would need to create two drops, one for prefered admission and another for general admission. This is because, as covered in the [Drop Configurations Introduction](customization-homepage.md), one set of configurations will apply to ALL keys in that drop. 
+To do this, you would need to create two drops, one for prefered admission and another for general admission. This is because, as covered in the [Drop Configurations Introduction](customization-homepage.md), one set of configurations will apply to **all** keys in that drop. 
 
 ---
 

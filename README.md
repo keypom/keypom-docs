@@ -1,5 +1,5 @@
 # Keypom Docs
-Version 1.2 (OUTDATED) available at https://minqianlu.github.io/ for the time being
+Official docs available at docs.keypom.xyz
 
 # Building and Viewing Current Version
 Clone repo (for latest WIP version, use min/dev branch), then open a new terminal instance and run the following

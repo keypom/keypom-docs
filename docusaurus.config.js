@@ -72,9 +72,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     ],
   ],
 
-  themeConfig:
+  themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
       navbar: {
         title: 'KEYPOM',
         logo: {
@@ -179,5 +178,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         darkTheme: darkCodeTheme,
         additionalLanguages: ['rust', 'java'],
       },
-    }),
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
+  },
 });

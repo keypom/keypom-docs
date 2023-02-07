@@ -40,85 +40,121 @@ pub struct PublicSaleConfig {
 ## Maximum Number of Keys
 *Default: None*  
 
-The `max_num_keys` parameter dictates 
+The `max_num_keys` parameter dictates the maximum number of keys that can be added to a drop. By default, there is no maximum. Using this can help create scarcity, or abide by venue maximum capcities. 
 
 ### Use case
-Pretend you are hosting a talk about your NEAR dApp, Kramerly, and are onboarding a bunch of new user from the audience. You wish to make sure that all these audience member who are onboarded onto your dApp have accounts that take the form `${YOUR_ACCOUNT}.kramerly.near` so that they can receive exclusive rewards when interacting with your dApp.
+Pretend you are hosting an exclusive talk for your dApp and want to limit the attendance to the first 1000 people that get tickets. 
 
-To do this, you can set the `permissions` parameter to `create_account_and_claim` and set the `root_account_id` parameter to `kramerly.near`. This way, you can ensure that everybody must create a new account with the form of `${YOUR_ACCOUNT}.kramerly.near` to interact with your dApp.  
+In this scenario, you could configure the drop to have `max_num_keys = 1000` in order to ensrue any keys beyond 1000 cannot be bought and added to the drop.  
 
 ---
 
 ## Price per Key
 *Default: None, the keys are free*  
 
-This `refund_deposit` parameter defines whether or not a storage deposit for creating a new wallet should be refunded to the drop owner if a new account is not created.
-
-Part of funding a drop is covering the cost for creating a new named account. However, if the `claim` method is called, the deposit will be unused. If left as false, the deposit will be given to the user.
+This `refund_deposit` parameter defines the price for purchasing a key. 
 
 ### Use case
-This parameter is usually a helpful mechanism when onboarding large numbers of users into NEAR. Pretend you are onboarding 100,000 new users onto NEAR. Since they are new, you factor in the storage deposit needed to create all the new wallets into your funding costs. However, it turns out half of the users had existing wallets. 
+This parameter can be changed based on your needs. For example, if you are running a charity event and want to garner as many attendees as possible, you would leave both `price_per_key = 0` and  `max_num_keys` undefined. This would mean there is no limit on the number of *free* keys that can be added to the drop. 
 
-If `refund_deposit` was true, you would be refunded the deposit for creating 50,000 new wallets. With a cost of 0.2 $NEAR, you would be refunded 10,000 $NEAR.   
+Alternatively, if you are looking to earn money with your event, you can choose to set `price_per_key` to whatever you see fit.  
 
 ---
 
 ## Allowlist 
 *Default: None, anyone can add keys to the drop*  
 
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
+`Allowlist` specifies specific people that can be added to the drop using their accountID. For example, if `allowlist =[benji.testnet, minqi.testnet]`, then only `benji.testnet` and `minqi.testnet` can add keys to the drop. 
+
+If left undefinted, anybody can add keys to the drop.
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
-
-Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
+In this example, lets say you are running a concert for only you and your closest friends. In this scenario, you would set `allowlist` to be only your friends. This way, you can take comfort in knowing that your friends will be the only ones with tickets to the event and thus.  
 
 ---
 
 ## Blocklist
 *Default: None, nobody is blocked*  
 
-This parameter is used to automatically withdraw your Keypom balance once you delete your last drop.
+Contrary to the `allowlist`, the `blocklist` specifies those that are blocked from adding keys to the drop. This is empty by default, meaning nobody is blocked.
+
+Note that the `blocklist` takes prescedent over the `allowlist`. This means that if you are on both lists, you will be blocked. 
 
 ### Use case
-Pretend you are at NEARCON again, and you over-fund your Keypom balance. This is to allow you to create drops without needing to trasnfer NEAR to Keypom every time. After the event, you know you won't be using Keypom for a while😢 and wish to withdraw your Keypom balance into your NEAR wallet in order to stake your $NEAR. 
-
-Rather than confirming all the drops are deleted before withdrawing your balance, you can create all the drops with `auto-withdraw` set to true and know that once everything is claimed and deleted, you will have your $NEAR to stake. 
+Lets pretend that you are running a concert but there are known ticket scalpers in the community. To prevent keys from being scalped and to ensure your true fans get tickets to your concert, you can add these scalpers to the `blocklist`.   
 
 ---
 
 ## Auto-Withdraw Funds  
 *Default: False, revenues go to Keypom Balance*  
 
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
+The `auto_withdraw_funds` parameter dictates where revenue from key sales will go. Every time a key is sold, the revenue will automatically be sent to one of two places.
+
+1. the funder's Keypom balance  
+2. the funder's NEAR wallet  
+
+By default, the revenue will go to the funder's Keypom balance. If `auto_withdraw_funds = true`, the revenue generated will be sent to the funder's NEAR wallet. 
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
+Let's say you are an event promoter who is new to NEAR. You realize that you are only going to use Keypom for a single event.
 
-Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
+In this scenario, rather than sending revenues to your Keypom balance amd then needing to manually withdraw it once the event is over, you can set `auto_withdraw_funds = true` while creating the drop, in order to guarenetee that teh revenues will go to your NEAR wallet automatically.  
 
 ---
 
 ## Start
 *Default: False, keys can be added immidiately*  
 
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
+The `start` parameter dictates when keys can be purhcased and added to the drop. Similar to [time configurations](time-customization.md), this is measured in non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. A sample configuration is made available below. 
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
+Pretend you are an event coordinator for a popular event and only have a limited capacity. To ensure fairness, you set a date and time for the sale to begin and let all your users know.
 
-Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
+To do this, you can configure the `start` parameter.  
 
 ---
 
 ## End 
 *Default: None, keys can be added indefinitely*  
 
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
+The `end` parameter defines when keys can no longer be purchased and added to the drop. 
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
+Pretend you are an event coordinator and want to create early bird tickets for dedicated fans. To do this, you can create a drop, sepearate from general admission, that begins early and ends before the general admission tickets go on sale. 
 
-Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
+To do this, you can configure the `end` parameter.
+
+---
+
+
+# Example Public Sale Configuration
+
+```ts
+const ONE_SECOND_NS = 1e9;
+
+pub_sale: {
+    // Maximum of 100 Keys
+    max_num_key: 100,
+
+    // 1 $NEAR per key
+    price_per_key: parseNearAmount("1"),
+
+    // only allow benji.testnet and minqi.testnet to add keys
+    allowlist: ["benji.testnet", "minqi.testnet"],
+
+    // don't allow boogieman.testnet to add keys
+    blocklist: ["boogieman.testnet"],
+
+    // send revenue back to funder's NEAR wallet
+    auto_withdraw_funds: true,
+
+    // start 5 minutes from now
+    start: (Date.now() * 1000000) + ONE_SECOND_NS * 300,
+
+    // end 15 minutes from now
+    end: (Date.now() * 1000000) + ONE_SECOND_NS * 900
+}
+
+```
 
 

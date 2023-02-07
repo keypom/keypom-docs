@@ -84,6 +84,7 @@ const sidebars = {
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/time-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/usage-customization',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/sale-customization',
                   ],
                 },
                 'Concepts/Keypom Protocol/Github Readme/passwordprotect',

@@ -21,6 +21,8 @@ Any customization will apply to ALL keys in that drop.
 
 [**UsageConfig**](usage-customization.md) - Administrative configurations, such as whether to delete the drop when all keys are used.  
 
+[**PublicSaleConfig**](sale-customization.md) - Configurations that allow the funder to create a public sale. Public sales are done by allowing users to add keys to the drop at a fee. 
+
 The structure for all the configurations can be seen in the tree below.
 
 ## Drop Configuration Structure
@@ -39,6 +41,15 @@ DropConfig
 │   └── refund_deposit
 │   └── auto_delete_drop
 │   └── auto_withdraw
+│
+├── PublicSaleConfig
+│   └── max_num_keys
+│   └── price_per_key
+│   └── allowlist
+│   └── blocklist
+│   └── auto_withdraw_funds
+│   └── start
+│   └── end
 │
 ├── root_account_id
 ```

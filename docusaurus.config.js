@@ -102,11 +102,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: "📚 SDK TypeDocs",
             position: "left",
           },
-          // {
-          //   to: "docs/next/KeypomV2/welcome",
-          //   label: "🤖Keypom V2",
-          //   position: "left",
-          // },
+          {
+            to: "docs/next/exec-summary",
+            label: "💡 Executive Summary",
+            position: "left",
+          },
           {
             href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
@@ -136,6 +136,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: "📚 SDK TypeDocs",
                 to: "docs/next/keypom-sdk/welcome",
+              },
+              {
+                label: "💡 Keypom Executive Summary",
+                to: "docs/next/exec-summary",
               }
               // {
               //   label: "🤖Keypom V2",

@@ -34,6 +34,7 @@
 const sidebars = {
   Concepts: [
     "Concepts/welcome",
+    "exec-summary",
     {
       type: 'category',
       label: 'Linkdrops and Access Keys',

@@ -86,7 +86,7 @@ The massive benefit here is that you can have a subcription service in the NEAR 
 
 ---
 
-# Example Time Struct
+## Example Time Configuration
 
 ```ts
 const ONE_SECOND_NS = 1e9;

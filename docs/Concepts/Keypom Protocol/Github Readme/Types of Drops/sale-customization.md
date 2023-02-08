@@ -40,10 +40,10 @@ pub struct PublicSaleConfig {
 ## Maximum Number of Keys
 *Default: None*  
 
-The `max_num_keys` parameter dictates the maximum number of keys that can be added to a drop. By default, there is no maximum. Using this can help create scarcity, or abide by venue maximum capcities. 
+The `max_num_keys` parameter dictates the maximum number of keys that can be added to a drop. By default, there is no limit. Using this can help create scarcity, or abide by venue capcities. 
 
 ### Use case
-Pretend you are hosting an exclusive talk for your dApp and want to limit the attendance to the first 1000 people that get tickets. 
+Pretend you are hosting an exclusive talk for your dApp and want to limit the attendance 1000 people. 
 
 In this scenario, you could configure the drop to have `max_num_keys = 1000` in order to ensrue any keys beyond 1000 cannot be bought and added to the drop.  
 
@@ -52,24 +52,24 @@ In this scenario, you could configure the drop to have `max_num_keys = 1000` in 
 ## Price per Key
 *Default: None, the keys are free*  
 
-This `refund_deposit` parameter defines the price for purchasing a key. 
+This `price_per_key` parameter defines the price for purchasing a key. 
 
 ### Use case
-This parameter can be changed based on your needs. For example, if you are running a charity event and want to garner as many attendees as possible, you would leave both `price_per_key = 0` and  `max_num_keys` undefined. This would mean there is no limit on the number of *free* keys that can be added to the drop. 
+This parameter can be changed based on your needs. For example, if you are running a charity event and want to bring in as many attendees as possible, you would leave both `price_per_key = 0` and  `max_num_keys` undefined. This would mean there is no limit on the number of *free* keys that can be added to the drop. 
 
-Alternatively, if you are looking to earn money with your event, you can choose to set `price_per_key` to whatever you see fit.  
+Alternatively, if you are looking to earn money with your event, you can choose to set `price_per_key` to whatever you see fit. This value is expressed in yoctoNEAR.
 
 ---
 
 ## Allowlist 
 *Default: None, anyone can add keys to the drop*  
 
-`Allowlist` specifies specific people that can be added to the drop using their accountID. For example, if `allowlist =[benji.testnet, minqi.testnet]`, then only `benji.testnet` and `minqi.testnet` can add keys to the drop. 
+`Allowlist` specifies a group of users that can add keys to the drop using their `accountID`. For example, if `allowlist = [benji.testnet, minqi.testnet]`, then only `benji.testnet` and `minqi.testnet` can add keys to the drop. 
 
-If left undefinted, anybody can add keys to the drop.
+If left undefined, anybody can add keys to the drop.
 
 ### Use case
-In this example, lets say you are running a concert for only you and your closest friends. In this scenario, you would set `allowlist` to be only your friends. This way, you can take comfort in knowing that your friends will be the only ones with tickets to the event and thus.  
+In this example, pretend you are running a concert for only your closest friends. To do this, you would set `allowlist` to be a vector of their NEAR `accountID`'s. This way, you can take comfort in knowing that your friends will be the only ones with tickets to the event.  
 
 ---
 
@@ -81,14 +81,14 @@ Contrary to the `allowlist`, the `blocklist` specifies those that are blocked fr
 Note that the `blocklist` takes prescedent over the `allowlist`. This means that if you are on both lists, you will be blocked. 
 
 ### Use case
-Lets pretend that you are running a concert but there are known ticket scalpers in the community. To prevent keys from being scalped and to ensure your true fans get tickets to your concert, you can add these scalpers to the `blocklist`.   
+Lets pretend that you are running a concert but there are known ticket scalpers in the community. To prevent keys from being scalped and ensure your true fans get tickets to your concert, you can add the NEAR `accountID`'s of the scalpers to the `blocklist` vector.   
 
 ---
 
 ## Auto-Withdraw Funds  
-*Default: False, revenues go to Keypom Balance*  
+*Default: False, revenues go to funder's Keypom Balance*  
 
-The `auto_withdraw_funds` parameter dictates where revenue from key sales will go. Every time a key is sold, the revenue will automatically be sent to one of two places.
+The `auto_withdraw_funds` parameter dictates where revenue from key sales will go. Every time a key is sold, the revenue will automatically be sent to one of two places:
 
 1. the funder's Keypom balance  
 2. the funder's NEAR wallet  
@@ -98,17 +98,17 @@ By default, the revenue will go to the funder's Keypom balance. If `auto_withdra
 ### Use case
 Let's say you are an event promoter who is new to NEAR. You realize that you are only going to use Keypom for a single event.
 
-In this scenario, rather than sending revenues to your Keypom balance amd then needing to manually withdraw it once the event is over, you can set `auto_withdraw_funds = true` while creating the drop, in order to guarenetee that teh revenues will go to your NEAR wallet automatically.  
+In this scenario, rather than sending revenues to your Keypom balance and then needing to manually withdraw it once the event is over, you can set `auto_withdraw_funds = true` while creating the drop in order to guarenetee that the revenues will go to your NEAR wallet automatically.  
 
 ---
 
 ## Start
-*Default: False, keys can be added immidiately*  
+*Default: None, keys can be added immidiately*  
 
 The `start` parameter dictates when keys can be purhcased and added to the drop. Similar to [time configurations](time-customization.md), this is measured in non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. A sample configuration is made available below. 
 
 ### Use case
-Pretend you are an event coordinator for a popular event and only have a limited capacity. To ensure fairness, you set a date and time for the sale to begin and let all your users know.
+Pretend you are an event coordinator for a popular event and have a limited capacity. To ensure fairness, you set a date and time for the sale to begin and let all your users know.
 
 To do this, you can configure the `start` parameter.  
 
@@ -120,14 +120,14 @@ To do this, you can configure the `start` parameter.
 The `end` parameter defines when keys can no longer be purchased and added to the drop. 
 
 ### Use case
-Pretend you are an event coordinator and want to create early bird tickets for dedicated fans. To do this, you can create a drop, sepearate from general admission, that begins early and ends before the general admission tickets go on sale. 
+For an upcoming event, you want to create a pre-sale of tickets for dedicated fans. To do this you can create a drop, seperate from the main ticket sale, that begins early and ends before the general admission tickets go on sale. 
 
 To do this, you can configure the `end` parameter.
 
 ---
 
 
-# Example Public Sale Configuration
+## Example Public Sale Configuration
 
 ```ts
 const ONE_SECOND_NS = 1e9;

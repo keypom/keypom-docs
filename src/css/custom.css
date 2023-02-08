@@ -39,6 +39,10 @@
   font-size: min(4vw, 2rem);
 }
 
+.card { 
+  margin-bottom: 20px !important;
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

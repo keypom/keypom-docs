@@ -32,11 +32,11 @@
 .pink-h1-text {
   font-weight: bold;
   color: #f990d4;
-  font-size:3vw;
+  font-size:4vw;
 }
 .white-main-subheader-text {
   font-weight: bold;
-  font-size:3vw;
+  font-size:4vw;
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {

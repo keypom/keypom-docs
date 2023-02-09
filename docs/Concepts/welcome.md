@@ -46,7 +46,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3>Costs</h3>
-              Find out about Keypom's low costs
+              Find out about Keypom's low costs.
           </div>
         </div>
       </a>
@@ -65,7 +65,7 @@ Here are some additional resources, and references. These may help you deepen yo
       <a href="https://github.com/keypom/keypom">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Types of Drop</h3>
+            <h3>Source Code</h3>
             Explore Keypom's smart contracts.
           </div>
         </div>
@@ -99,7 +99,7 @@ Here are some additional resources, and references. These may help you deepen yo
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3>Nomicon</h3>
-              Concepts and Standards on NEAR
+              Concepts and Standards on NEAR.
           </div>
         </div>
       </a>

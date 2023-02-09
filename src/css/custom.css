@@ -26,17 +26,21 @@
 .pink-main-header-text {
   font-weight: bold;
   color: #f990d4;
-  font-size: 4rem;
+  font-size: min(7vw, 4rem);
 }
 
 .pink-h1-text {
   font-weight: bold;
   color: #f990d4;
-  font-size:3rem;
+  font-size: min(4vw, 2rem);
 }
 .white-main-subheader-text {
   font-weight: bold;
-  font-size:3rem;
+  font-size: min(4vw, 2rem);
+}
+
+.card { 
+  margin-bottom: 20px !important;
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {

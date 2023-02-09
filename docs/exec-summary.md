@@ -62,7 +62,6 @@ Learn more about Keypom's Drop types below
       </a>
     </div>
   </div>
-  <br></br>
   <div class="row">
     <div class="col">
       <a href="Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops">
@@ -86,7 +85,6 @@ Learn more about Keypom's Drop types below
     </div>
   </div>
 </div>
-<br></br>
 
 ## Use Cases
 

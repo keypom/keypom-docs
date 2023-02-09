@@ -2,8 +2,16 @@
 sidebar_label: 'Public Sale Configurations'
 ---
 # Public Sale Configurations
-Public sale configurations give the funder the ability to create a public sale for the access keys in a drop.
-The funder can create a drop and let people add keys to it on an as-needed basis. The sale configurations are outlined below.
+The public sale configuration gives the funder the ability to sell access keys in their drop with a variety of configurable behaviours such as the price, or a dedicated allowlist.  
+
+## Use cases
+Public sales of access keys allow for a wide range of easier to create and more interactive events. This is done by letting you:  
+* Set up an extremely cheap, exclusive event. This event can host an infinite amount of people and the cost of ticketing would be ~0.05 $NEAR.
+* Sell access to gated function calls. For example, you can have an exclusive guest-book contract where users that signed it gained access to a VIP meet and greet with a famous artist.  
+* Introduce FIAT payments for your users when they purchase an access key; opening up your tickets, onboardings, and NFT drops to a whole new audience.  
+
+
+The sale configurations are outlined below.
 
 ```rust
 pub struct PublicSaleConfig {
@@ -40,12 +48,12 @@ pub struct PublicSaleConfig {
 ## Maximum Number of Keys
 *Default: None*  
 
-The `max_num_keys` parameter dictates the maximum number of keys that can be added to a drop. By default, there is no limit. Using this can help create scarcity, or abide by venue capcities. 
+The `max_num_keys` parameter dictates the maximum number of keys that can be added to a drop. By default, there is no limit. Using this can help create scarcity, or abide by venue capacities. 
 
 ### Use case
 Pretend you are hosting an exclusive talk for your dApp and want to limit the attendance 1000 people. 
 
-In this scenario, you could configure the drop to have `max_num_keys = 1000` in order to ensrue any keys beyond 1000 cannot be bought and added to the drop.  
+In this scenario, you could configure the drop to have `max_num_keys = 1000` in order to ensure any keys beyond 1000 cannot be bought and added to the drop.  
 
 ---
 
@@ -98,12 +106,12 @@ By default, the revenue will go to the funder's Keypom balance. If `auto_withdra
 ### Use case
 Let's say you are an event promoter who is new to NEAR. You realize that you are only going to use Keypom for a single event.
 
-In this scenario, rather than sending revenues to your Keypom balance and then needing to manually withdraw it once the event is over, you can set `auto_withdraw_funds = true` while creating the drop in order to guarenetee that the revenues will go to your NEAR wallet automatically.  
+In this scenario, rather than sending revenues to your Keypom balance and then needing to manually withdraw it once the event is over, you can set `auto_withdraw_funds = true` while creating the drop in order to guarantee that the revenues will go to your NEAR wallet automatically.  
 
 ---
 
 ## Start
-*Default: None, keys can be added immidiately*  
+*Default: None, keys can be added immediately*  
 
 The `start` parameter dictates when keys can be purhcased and added to the drop. Similar to [time configurations](time-customization.md), this is measured in non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. A sample configuration is made available below. 
 

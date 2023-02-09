@@ -2,7 +2,7 @@
 sidebar_label: 'Usage Configurations'
 ---
 # Usage Configurations
-Usage configurations dictate the administrative aspects of the drop such as permissions given to the keys and what to do when all the keys in a drop are used. 
+Usage configurations control behaviours surrounding *how* a key can be used. For example, dictating whether a key can be used to call only `claim`, or `create_account_and_claim`.  
 
 ``` rust
 pub struct UsageConfig {
@@ -15,6 +15,8 @@ pub struct UsageConfig {
     pub auto_delete_drop: Option<bool>,
     /// When this drop is deleted and it is the owner's *last* drop, automatically withdraw their balance.
     pub auto_withdraw: Option<bool>,
+    /// When calling `create_account` on the root account, which keypom args should be attached to the payload.
+    pub account_creation_fields: Option<KeypomArgs>,
 }
 ```  
 
@@ -26,35 +28,33 @@ pub struct UsageConfig {
 The `permissions` parameter assigns which claim methods the user can call with the key you give them. They can either call both, or just one. 
 
 ### Use case
-Pretend you are hosting a talk about your NEAR dApp, Kramerly, and are onboarding a bunch of new user from the audience. You wish to make sure that all these audience member who are onboarded onto your dApp have accounts that take the form `${YOUR_ACCOUNT}.kramerly.near` so that they can receive exclusive rewards when interacting with your dApp.
+Pretend you are hosting a talk about your NEAR dApp: `Kramerly`. Your only goal is to onboard as many *new* users from the audience as possible. If the user already has a NEAR wallet, they shouldn't be able to claim assets and onboard. This is similar to free-trials in Web2 whereby only new users are able to participate.
 
-To do this, you can set the `permissions` parameter to `create_account_and_claim` and set the `root_account_id` parameter to `kramerly.near`. This way, you can ensure that everybody must create a new account with the form of `${YOUR_ACCOUNT}.kramerly.near` to interact with your dApp.  
+To do this, you can set the `permissions` parameter to `create_account_and_claim`.
 
 ---
 
 ## Refund Deposit
 *Default: False*  
 
-This `refund_deposit` parameter defines whether or not a storage deposit for creating a new wallet should be refunded to the drop owner if a new account is not created.
+This `refund_deposit` parameter defines whether or not the `deposit_for_use` amount should be refunded to the drop owner if `claim` is called rather than `create_account_and_claim`.
 
-Part of funding a drop is covering the cost for creating a new named account. However, if the `claim` method is called, the deposit will be unused. If left as false, the deposit will be given to the user.
+Part of funding a drop is *optionally* covering the cost for creating a new named account. Sometimes, you might want to sponsor a small amount of $NEAR to cover that cost but it should only be used for account creation. If an account is *not* being created (through calling `create_account_and_claim`, the `deposit_per_use` should be sent back to the funder.
 
 ### Use case
-This parameter is usually a helpful mechanism when onboarding large numbers of users into NEAR. Pretend you are onboarding 100,000 new users onto NEAR. Since they are new, you factor in the storage deposit needed to create all the new wallets into your funding costs. However, it turns out half of the users had existing wallets. 
+This parameter is usually a helpful mechanism when onboarding large numbers of users onto NEAR. Pretend you are onboarding 100,000 new users. Since they are new, you factor in the storage deposit needed to create the new wallets into your funding costs. After the event, however, it turns out half of the users had existing wallets.  
 
-If `refund_deposit` was true, you would be refunded the deposit for creating 50,000 new wallets. With a cost of 0.2 $NEAR, you would be refunded 10,000 $NEAR.   
+If `refund_deposit` was true, you would be refunded the `deposit_per_use` that normally would have been sent to the existing NEAR wallets.  
 
 ---
 
 ## Auto-Delete Drop 
 *Default: False*  
 
-If `auto_delete_drop` is `true`, the drop to deleted once all the keys have been fully used (every key has used all of its `uses_per_key`).
+If `auto_delete_drop` is set to `true`, the drop will be deleted once all the keys have been used and deleted.
 
 ### Use case
-A great use case for auto-deleting a drop would be drops created for certain events. Pretend you are at NEARCON and create an NFT drop for [ticketing](../../../../Tutorials/Advanced/ticketing/concept.md). Once the event is over, there is no need for that particular drop anymore.
-
-Rather than needing to make sure all the keys are used and then deleting it, this configuration will automatically delete it for you.  
+A great use case is for one-off drops where you don't plan on adding more keys to. By setting `auto_delete_drop` to true, the drop will automatically be deleted once all the keys are used.   
 
 ---
 
@@ -64,6 +64,18 @@ Rather than needing to make sure all the keys are used and then deleting it, thi
 This parameter is used to automatically withdraw your Keypom balance once you delete your last drop.
 
 ### Use case
-Pretend you are at NEARCON again, and you over-fund your Keypom balance. This is to allow you to create drops without needing to trasnfer NEAR to Keypom every time. After the event, you know you won't be using Keypom for a while😢 and wish to withdraw your Keypom balance into your NEAR wallet in order to stake your $NEAR. 
+This parameter is useful for users that create 1-off drops and don't want to worry about deleting their drop once it's used or having to manually withdraw their Keypom balance.  
 
-Rather than confirming all the drops are deleted before withdrawing your balance, you can create all the drops with `auto-withdraw` set to true and know that once everything is claimed and deleted, you will have your $NEAR to stake. 
+A funder could create a drop and give out keys without ever needing to return back to Keypom. Once the drop is exhausted, it is deleted and the funder's balance is automatically withdrawn. 
+
+Note that this must be used together with `auto_delete_drop`.
+
+## Account Creation Fields
+*Default: None*
+
+The `account_creation_fields` allows you to specify any arguments to be passed in to `create_account` when creating your account
+
+### Use case
+Pretend you are looking to use Keypom to onboard users and give them custom subaccounts. To ensure that only the people  using your drop can create a subaccount, you can add a secret `account_creation_fields` argument to your drop.
+
+This way, if someone outside of the drop were to try to call `create_account` on your contract, they would need to pass in the secret `account_creation_field` that they would not know.   

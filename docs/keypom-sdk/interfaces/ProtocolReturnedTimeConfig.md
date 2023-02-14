@@ -20,7 +20,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:98](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L98)
+[src/lib/types/protocol.ts:101](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L101)
 
 ___
 
@@ -34,7 +34,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:111](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L111)
+[src/lib/types/protocol.ts:114](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L114)
 
 ___
 
@@ -47,7 +47,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:92](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L92)
+[src/lib/types/protocol.ts:95](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L95)
 
 ___
 
@@ -60,4 +60,4 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:104](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L104)
+[src/lib/types/protocol.ts:107](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L107)

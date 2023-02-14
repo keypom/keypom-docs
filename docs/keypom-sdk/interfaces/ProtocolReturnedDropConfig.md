@@ -11,9 +11,9 @@ snake cased instead of camel cased due to what the Protocol returns.
 
 ## Properties
 
-### drop\_root
+### root\_account\_id
 
- `Optional` **drop\_root**: `string`
+ `Optional` **root\_account\_id**: `string`
 
 Override the global root account that all created sub-accounts will have (currently `near` or `testnet`). This allows users to drops that have a custom root.
 For example, Fayyr could specify a root of `fayyr.near` By which all sub-accounts will then be `ACCOUNT.fayyr.near`. 
@@ -21,7 +21,17 @@ It's important to note that this root account *MUST* have a smart contract deplo
 
 #### Defined in
 
-[src/lib/types/protocol.ts:80](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L80)
+[src/lib/types/protocol.ts:83](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L83)
+
+___
+
+### sale
+
+ `Optional` **sale**: [`ProtocolReturnedPublicSaleConfig`](ProtocolReturnedPublicSaleConfig.md)
+
+#### Defined in
+
+[src/lib/types/protocol.ts:76](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L76)
 
 ___
 
@@ -33,7 +43,7 @@ Any information related to time-based configurations such as a starting date for
 
 #### Defined in
 
-[src/lib/types/protocol.ts:71](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L71)
+[src/lib/types/protocol.ts:71](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L71)
 
 ___
 
@@ -45,7 +55,7 @@ Any information related to how access keys are used such as which methods they c
 
 #### Defined in
 
-[src/lib/types/protocol.ts:74](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L74)
+[src/lib/types/protocol.ts:74](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L74)
 
 ___
 
@@ -57,4 +67,4 @@ How many uses can each key have before it's deleted. If this isn't specified, it
 
 #### Defined in
 
-[src/lib/types/protocol.ts:68](https://github.com/keypom/keypom-js/blob/ffd9284/src/lib/types/protocol.ts#L68)
+[src/lib/types/protocol.ts:68](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L68)

@@ -1,6 +1,6 @@
 ---
 id: "welcome"
-title: "keypom-js - v1.2.0-rc.1"
+title: "keypom-js - v1.3.1-rc.1"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null

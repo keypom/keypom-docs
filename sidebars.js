@@ -80,6 +80,7 @@ const sidebars = {
                   // },
                   collapsed: true,
                   items: [
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/customization-homepage',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/time-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/usage-customization',

@@ -130,7 +130,20 @@ const sidebars = {
       label: 'Advanced',
       collapsed: false,
       items: [
-            'Tutorials/Advanced/homepage',
+            {
+              type: 'category',
+              label: 'Ticketing',
+              // link: {
+              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+              // },
+              collapsed: true,
+              items: [
+                'Tutorials/Advanced/ticketing/introduction',
+                'Tutorials/Advanced/ticketing/architecture',
+
+              ],
+              },
+              'Tutorials/Advanced/homepage',
       ],
     },
     // {

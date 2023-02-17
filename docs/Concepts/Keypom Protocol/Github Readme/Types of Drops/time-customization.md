@@ -2,7 +2,7 @@
 sidebar_label: 'Time Configurations'
 ---
 # Time Configurations
-Time configurations are particularly useful in defining limits on ***when*** a key may be used. This can have a wide range of applicaitons from [Subcriptions](../../../../Tutorials/Advanced/subscriptions/concept.md) to [Ticketing](../../../../Tutorials/Advanced/ticketing/concept.md).
+Time configurations are particularly useful in defining limits on ***when*** a key may be used. This can have a wide range of applicaitons from [Subcriptions](../../../../Tutorials/Advanced/subscriptions/concept.md) to [Ticketing](../../../../Tutorials/Advanced/ticketing/introduction.md).
 
 ```rust
 pub struct TimeConfig {

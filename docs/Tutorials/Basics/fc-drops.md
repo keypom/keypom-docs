@@ -412,4 +412,4 @@ This can be confirmed by visiting the "Collectibles" tab in your NEAR wallet. Yo
 ## Conclusion
 In this tutorial, you learned the how to [create a function call drop](fc-drops.md#creating-drop-with-function-call-data) using the `fcData` parameter. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
-Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/ticketing/concept.md) for more challenging and practical examples.
+Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/ticketing/introduction.md) for more challenging and practical examples.

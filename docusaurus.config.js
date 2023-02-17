@@ -83,7 +83,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             to: "docs/next/Concepts/welcome",
-            label: "📖Concepts",
+            label: "📖 Concepts",
             position: "left",
           },
           {
@@ -120,16 +120,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         style: 'dark',
         //position: 'center',
         links: [
+          // empty for spacing
+          {
+          },
           //docs
           {
             title: 'Docs',
             items: [
               {
-                label: '📖Concepts',
+                label: '📖 Concepts',
                 to: 'docs/next/Concepts/welcome',
               },
               {
-                label: '💻Tutorials',
+                label: '💻 Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
               {
@@ -137,9 +140,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 to: "docs/next/keypom-sdk/welcome",
               },
               {
-                label: "💡 Keypom Executive Summary",
+                label: "💡 Executive Summary",
                 to: "docs/next/exec-summary",
-              }
+              },
+              
               // {
               //   label: "🤖Keypom V2",
               //   to: "docs/next/KeypomV2/welcome",
@@ -170,6 +174,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
             ],
           },
+          {}
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc. Built with Docusaurus.`,
       },

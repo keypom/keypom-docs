@@ -43,6 +43,27 @@
   margin-bottom: 20px !important;
 }
 
+.column {
+  float: left;
+  width: 37.5%;
+}
+
+.left{
+  float: left;
+  width: 37.5%;
+}
+
+.right {
+  float: left;
+  width: 20%;
+}
+
+.empty{
+  width: 2.5%
+}
+
+
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

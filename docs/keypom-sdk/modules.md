@@ -1,10 +1,14 @@
 ---
 id: "modules"
-title: "keypom-js - v1.3.1-rc.1"
+title: "keypom-js - v1.3.6-rc.1"
 sidebar_label: "Exports"
 sidebar_position: 0.5
 custom_edit_url: null
 ---
+
+## Classes
+
+- [KeypomWallet](classes/KeypomWallet.md)
 
 ## Interfaces
 
@@ -14,7 +18,6 @@ custom_edit_url: null
 - [Drop](interfaces/Drop.md)
 - [DropConfig](interfaces/DropConfig.md)
 - [EnvVars](interfaces/EnvVars.md)
-- [FCConfig](interfaces/FCConfig.md)
 - [FCData](interfaces/FCData.md)
 - [FTData](interfaces/FTData.md)
 - [Funder](interfaces/Funder.md)
@@ -27,7 +30,6 @@ custom_edit_url: null
 - [PasswordPerUse](interfaces/PasswordPerUse.md)
 - [ProtocolReturnedDrop](interfaces/ProtocolReturnedDrop.md)
 - [ProtocolReturnedDropConfig](interfaces/ProtocolReturnedDropConfig.md)
-- [ProtocolReturnedFCConfig](interfaces/ProtocolReturnedFCConfig.md)
 - [ProtocolReturnedFCData](interfaces/ProtocolReturnedFCData.md)
 - [ProtocolReturnedFTData](interfaces/ProtocolReturnedFTData.md)
 - [ProtocolReturnedKeyInfo](interfaces/ProtocolReturnedKeyInfo.md)
@@ -52,7 +54,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/params.ts#L9)
+[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/params.ts#L9)
 
 ___
 
@@ -62,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/general.ts#L5)
+[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/general.ts#L5)
 
 ## Variables
 
@@ -72,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:29](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L29)
+[src/lib/keypom-utils.ts:29](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L29)
 
 ## Keypom SDK Environment
 
@@ -110,7 +112,7 @@ The environment variables used by the Keypom library.
 
 #### Defined in
 
-[src/lib/keypom.ts:97](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom.ts#L97)
+[src/lib/keypom.ts:104](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L104)
 
 ___
 
@@ -200,7 +202,7 @@ If a funder is passed in, its account object is returned. Otherwise, it null is 
 
 #### Defined in
 
-[src/lib/keypom.ts:184](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom.ts#L184)
+[src/lib/keypom.ts:198](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L198)
 
 ___
 
@@ -254,7 +256,7 @@ The funder's account object is returned.
 
 #### Defined in
 
-[src/lib/keypom.ts:283](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom.ts#L283)
+[src/lib/keypom.ts:297](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L297)
 
 ___
 
@@ -303,7 +305,7 @@ const { initKeypom, updateKeypomContractId, getDrops } = require("keypom-js");
 
 #### Defined in
 
-[src/lib/keypom.ts:334](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom.ts#L334)
+[src/lib/keypom.ts:348](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L348)
 
 ___
 
@@ -317,7 +319,7 @@ ___
 
 #### Defined in
 
-[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/components/KeypomContext.tsx#L42)
+[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/ba635c9/src/components/KeypomContext.tsx#L42)
 
 ## Utility
 
@@ -348,7 +350,7 @@ console.log(accountExists); // true
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:85](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L85)
+[src/lib/keypom-utils.ts:85](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L85)
 
 ___
 
@@ -427,7 +429,7 @@ Send 3 NFTs using the funder account (not passing in any accounts into the call)
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:215](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L215)
+[src/lib/keypom-utils.ts:215](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L215)
 
 ___
 
@@ -458,7 +460,7 @@ Initiate the connection to the NEAR blockchain.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:899](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L899)
+[src/lib/keypom-utils.ts:912](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L912)
 
 ___
 
@@ -478,7 +480,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom.ts:107](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom.ts#L107)
+[src/lib/keypom.ts:114](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L114)
 
 ___
 
@@ -531,16 +533,14 @@ console.log('1st Secret Key: ', secretKey1)
 Generating 1 keypair based on entropy:
 ```js
 // Generate 1 key with the given entropy
-let keys = await generateKeys({
+let {publicKeys, secretKeys} = await generateKeys({
     numKeys: 1,
-    entropy: {
-        rootKey: "my-global-password",
-        meta: "user-password-123",
-    } // In this case, since there is only 1 key, the entropy can be an array of size 1 as well.
+    rootEntropy: "my-global-password",
+    metaEntropy: "user-password-123" // In this case, since there is only 1 key, the entropy can be an array of size 1 as well.
 })
 
-let pubKey = keys.publicKeys[0];
-let secretKey = keys.secretKeys[0];
+let pubKey = publicKeys[0];
+let secretKey = secretKeys[0];
 
 console.log('Public Key: ', pubKey);
 console.log('Secret Key: ', secretKey)
@@ -553,18 +553,29 @@ Generating 2 keypairs each with their own entropy:
 // Generate 2 keys each with their own unique entropy
 let keys = await generateKeys({
     numKeys: 2,
-    entropy: [
-        {
-            rootKey: "my-global-password",
-            meta: "first-password",
-            nonce: 1
-        },
-        {
-            rootKey: "my-global-password",
-            meta: "second-password",
-            nonce: 2
-        }
-    ]
+    rootEntropy: "my-global-password",
+    metaEntropy: [
+       `first-password:0`,
+       `second-password:1`
+   ]
+})
+
+console.log('Pub Keys ', keys.publicKeys);
+console.log('Secret Keys ', keys.secretKeys);
+```
+ *
+
+**`Example`**
+
+Generate 50 keys exactly how the auto key generation would in createDrop and addKeys:
+```js
+const dropId = '1676913490360';
+const basePassword = "my-password";
+// Generate 50 keys each with their own unique entropy
+let keys = await generateKeys({
+    numKeys: 50,
+    rootEntropy: `${basePassword}-${dropId}`,
+    autoMetaNonceStart: 0
 })
 
 console.log('Pub Keys ', keys.publicKeys);
@@ -576,6 +587,7 @@ console.log('Secret Keys ', keys.secretKeys);
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | - |
+| › `autoMetaNonceStart?` | `number` | - |
 | › `metaEntropy?` | `string` \| `string`[] | An array of entropies to use in conjunction with a base rootEntropy to deterministically generate the private keys. For single key generation, you can either pass in a string array with a single element, or simply pass in the string itself directly (not within an array). |
 | › `numKeys` | `number` | The number of keys to generate. |
 | › `rootEntropy?` | `string` | A root string that will be used as a baseline for all keys in conjunction with different metaEntropies (if provided) to deterministically generate a keypair. If not provided, the keypair will be completely random. |
@@ -588,7 +600,7 @@ console.log('Secret Keys ', keys.secretKeys);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:413](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L413)
+[src/lib/keypom-utils.ts:420](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L420)
 
 ___
 
@@ -622,7 +634,7 @@ console.log(ft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:148](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L148)
+[src/lib/keypom-utils.ts:148](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L148)
 
 ___
 
@@ -658,7 +670,7 @@ console.log(nft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:118](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L118)
+[src/lib/keypom-utils.ts:118](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L118)
 
 ___
 
@@ -689,7 +701,7 @@ console.log(pubKey);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:66](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L66)
+[src/lib/keypom-utils.ts:66](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L66)
 
 ___
 
@@ -709,7 +721,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:823](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L823)
+[src/lib/keypom-utils.ts:836](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L836)
 
 ___
 
@@ -743,7 +755,7 @@ let passwordForClaim = await hashPassword(basePassword + publicKey + currentUse.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:338](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L338)
+[src/lib/keypom-utils.ts:338](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L338)
 
 ___
 
@@ -912,7 +924,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keys.ts#L139)
+[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keys.ts#L139)
 
 ___
 
@@ -1037,7 +1049,67 @@ await claim({
 
 #### Defined in
 
-[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/claims.ts#L109)
+[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/claims.ts#L109)
+
+___
+
+### claimTrialAccountDrop
+
+**claimTrialAccountDrop**(`«destructured»`): `Promise`<`any`\>
+
+Claim a Keypom trial account drop which will create a new account, deploy and initialize the trial account contract, and setup the account with initial conditions as specified in the drop.
+
+**`Example`**
+
+Creating a trial account with any callable methods, an amount of 0.5 $NEAR and 5 keys.
+```js
+const {keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} = await createTrialAccountDrop({
+    contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+    trialFundsNEAR: 0.5,
+    callableContracts: ['dev-1676298343226-57701595703433'],
+    callableMethods: ['*'],
+    amounts: ['0.5'],
+    numKeys: 5,
+    config: {
+        dropRoot: "linkdrop-beta.keypom.testnet"
+    }
+})
+
+const newAccountId = `${Date.now().toString()}.linkdrop-beta.keypom.testnet`
+await claimTrialAccountDrop({
+    secretKey: trialSecretKeys[0],
+    desiredAccountId: newAccountId,
+})
+
+console.log(`
+
+${JSON.stringify({
+    account_id: newAccountId,
+    public_key: trialPublicKeys[0],
+    private_key: trialSecretKeys[0]
+})}
+
+`)
+
+console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[0]}`)
+
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `desiredAccountId` | `string` | The account ID that will be created for the trial |
+| › `secretKey` | `string` | The private key associated with the Keypom link. This can either contain the `ed25519:` prefix or not. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/trial-accounts.ts:392](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/trial-accounts.ts#L392)
 
 ___
 
@@ -1201,7 +1273,91 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/drops.ts#L154)
+[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/drops.ts#L154)
+
+___
+
+### createTrialAccountDrop
+
+**createTrialAccountDrop**(`«destructured»`): `Promise`<[`CreateOrAddReturn`](interfaces/CreateOrAddReturn.md)\>
+
+Creates a new trial account drop which can be used to instantly sign users into decentralized applications that support the Keypom wallet selector plugin.
+
+The trial account is locked into certain behaviors depending on what is passed into `createTrialAccountDrop`. These behaviors include callable contracts, methods on
+those contracts, the maximum amount of $NEAR that can be spent on each contract as well as an exit condition. Once the trial account has run out of funds, the only way to
+retain any assets from the trial or continue using the account ID, is to repay the specific account ID for the amount of $NEAR specified.
+
+**`Example`**
+
+Creating a trial account with any callable methods, an amount of 0.5 $NEAR and 5 keys.
+```js
+const {keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} = await createTrialAccountDrop({
+    contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+    trialFundsNEAR: 0.5,
+    callableContracts: ['dev-1676298343226-57701595703433'],
+    callableMethods: ['*'],
+    amounts: ['0.5'],
+    numKeys: 5,
+    config: {
+        dropRoot: "linkdrop-beta.keypom.testnet"
+    }
+})
+
+const newAccountId = `${Date.now().toString()}.linkdrop-beta.keypom.testnet`
+await claimTrialAccountDrop({
+    secretKey: trialSecretKeys[0],
+    desiredAccountId: newAccountId,
+})
+
+console.log(`
+
+${JSON.stringify({
+    account_id: newAccountId,
+    public_key: trialPublicKeys[0],
+    private_key: trialSecretKeys[0]
+})}
+
+`)
+
+console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[0]}`)
+
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `amounts` | `string`[] | The upper bound of $NEAR that trial account is able to attach to calls associated with each contract passed in. For no upper limit, pass in `*`. Units are in $NEAR (i.e `1` = 1 $NEAR). |
+| › `callableContracts` | `string`[] | The contracts that the trial account should be able to call. |
+| › `callableMethods` | `string`[] | The list of methods that the trial account should be able to call on each respective contract. For multiple methods on a contract, pass in a comma separated string with no spaces (`nft_mint,nft_transfer,nft_approve`). To allow any methods to be called on the receiver contract, pass in `*`. |
+| › `config?` | [`DropConfig`](interfaces/DropConfig.md) | Allows specific drop behaviors to be configured such as the number of uses each key / link will have. |
+| › `contractBytes` | `number`[] | Bytes of the trial account smart contract |
+| › `dropId?` | `string` | Specify a custom drop ID rather than using the incrementing nonce on the contract. |
+| › `metadata?` | `string` | String of metadata to attach to the drop. This can be whatever you would like and is optional. Often this is stringified JSON. |
+| › `numKeys` | `number` | Specify how many keys should be generated for the drop. If the funder has rootEntropy set OR rootEntropy is passed in, the keys will be * deterministically generated using the drop ID, key nonce, and entropy. Otherwise, each key will be generated randomly. |
+| › `publicKeys?` | `string`[] | Pass in a custom set of publicKeys to add to the drop. If this is not passed in, keys will be generated based on the numKeys parameter. |
+| › `repayAmountNEAR?` | `Number` | How much $NEAR should be paid back to the specified funder in order to unlock the trial account. Unit in $NEAR (i.e `1` = 1 $NEAR) |
+| › `repayAmountYocto?` | `string` | How much $NEAR should be paid back to the specified funder in order to unlock the trial account. Unit in yoctoNEAR (1 yoctoNEAR = 1e-24 $NEAR) |
+| › `repayTo?` | `string` | The account that should receive the repayment of the trial account. If not specified, the drop funder will be used. |
+| › `returnTransactions?` | `boolean` | If true, the transaction will be returned instead of being signed and sent. This is useful for getting the requiredDeposit from the return value without actually signing the transaction. |
+| › `rootEntropy?` | `string` | Specify an entropy to use for generating keys (will overload the funder's rootEntropy if applicable). This parameter only matters if the publicKeys variable is not passed in. |
+| › `successUrl?` | `string` | When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. |
+| › `trialFundsNEAR?` | `Number` | How much $NEAR should the trial account be able to spend before the trial is exhausted. Unit in $NEAR (i.e `1` = 1 $NEAR) |
+| › `trialFundsYocto?` | `string` | How much $NEAR should the trial account be able to spend before the trial is exhausted. Unit in yoctoNEAR (1 yoctoNEAR = 1e-24 $NEAR) |
+| › `useBalance?` | `boolean` | If the account has a balance within the Keypom contract, set this to true to avoid the need to attach a deposit. If the account doesn't have enough balance, an error will throw. |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<[`CreateOrAddReturn`](interfaces/CreateOrAddReturn.md)\>
+
+Object containing: the drop ID, the responses of the execution, as well as any auto generated keys (if any).
+
+#### Defined in
+
+[src/lib/trial-accounts.ts:75](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/trial-accounts.ts#L75)
 
 ## User Balance Functions
 
@@ -1235,9 +1391,10 @@ await addToBalance({
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | - |
-| › `absoluteAmount?` | `string` | Amount of tokens to add but considering the decimal amount (non human-readable). **`Example`** ```ts Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" ``` |
 | › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `amount?` | `string` | Human readable format for the amount of tokens to add. **`Example`** ```ts Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" ``` |
+| › `amountNear?` | `string` | Human readable format for the amount of tokens to add. **`Example`** ```ts Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" ``` |
+| › `amountYocto?` | `string` | Amount of tokens to add but considering the decimal amount (non human-readable). **`Example`** ```ts Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" ``` |
+| › `successUrl?` | `string` | When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. |
 | › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
 
 #### Returns
@@ -1246,7 +1403,7 @@ await addToBalance({
 
 #### Defined in
 
-[src/lib/balances.ts:32](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/balances.ts#L32)
+[src/lib/balances.ts:32](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/balances.ts#L32)
 
 ___
 
@@ -1290,7 +1447,7 @@ await withdrawBalance({});
 
 #### Defined in
 
-[src/lib/balances.ts:109](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/balances.ts#L109)
+[src/lib/balances.ts:112](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/balances.ts#L112)
 
 ## Public Sale Functions
 
@@ -1338,7 +1495,7 @@ const {dropId} = await createDrop({
 
 #### Defined in
 
-[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/sales.ts#L36)
+[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L36)
 
 ___
 
@@ -1386,7 +1543,7 @@ Add a list of account IDs to a drop's sale blocklist. The sale object must exist
 
 #### Defined in
 
-[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/sales.ts#L190)
+[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L190)
 
 ___
 
@@ -1442,7 +1599,7 @@ Remove a list of account IDs from a drop's sale allowlist. If the allowlist is e
 
 #### Defined in
 
-[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/sales.ts#L117)
+[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L117)
 
 ___
 
@@ -1494,7 +1651,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/sales.ts#L267)
+[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L267)
 
 ___
 
@@ -1545,7 +1702,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/sales.ts#L339)
+[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L339)
 
 ## View Functions
 
@@ -1589,7 +1746,7 @@ Whether or not the user can add keys to the drop
 
 #### Defined in
 
-[src/lib/views.ts:796](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L796)
+[src/lib/views.ts:795](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L795)
 
 ___
 
@@ -1623,7 +1780,7 @@ The contract's source metadata
 
 #### Defined in
 
-[src/lib/views.ts:834](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L834)
+[src/lib/views.ts:833](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L833)
 
 ___
 
@@ -1709,7 +1866,7 @@ The current method data for the key
 
 #### Defined in
 
-[src/lib/views.ts:745](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L745)
+[src/lib/views.ts:744](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L744)
 
 ___
 
@@ -1801,7 +1958,7 @@ Drop information which may or may not have a keys field of type `KeyInfo` depend
 
 #### Defined in
 
-[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L314)
+[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L314)
 
 ___
 
@@ -1852,7 +2009,7 @@ Amount of drops
 
 #### Defined in
 
-[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L478)
+[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L478)
 
 ___
 
@@ -1902,7 +2059,7 @@ console.log('dropsAndKeys: ', dropsAndKeys)
 
 #### Defined in
 
-[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L521)
+[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L521)
 
 ___
 
@@ -1955,7 +2112,7 @@ The amount of yoctoNEAR that is contained within the key
 
 #### Defined in
 
-[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L48)
+[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L48)
 
 ___
 
@@ -2008,7 +2165,7 @@ Key information struct for that specific key.
 
 #### Defined in
 
-[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L169)
+[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L169)
 
 ___
 
@@ -2061,7 +2218,7 @@ Array of Key information structs for the keys passed in
 
 #### Defined in
 
-[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L222)
+[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L222)
 
 ___
 
@@ -2113,7 +2270,7 @@ Number of active keys
 
 #### Defined in
 
-[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L383)
+[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L383)
 
 ___
 
@@ -2147,7 +2304,7 @@ The amount of keys.
 
 #### Defined in
 
-[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L87)
+[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L87)
 
 ___
 
@@ -2192,7 +2349,7 @@ Vector of KeyInfo.
 
 #### Defined in
 
-[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L121)
+[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L121)
 
 ___
 
@@ -2246,7 +2403,7 @@ Vector of KeyInfo objects returned from pagination
 
 #### Defined in
 
-[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L430)
+[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L430)
 
 ___
 
@@ -2288,7 +2445,7 @@ The amount of token IDs on the drop
 
 #### Defined in
 
-[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L589)
+[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L589)
 
 ___
 
@@ -2332,7 +2489,7 @@ Vector of token IDs
 
 #### Defined in
 
-[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L626)
+[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L626)
 
 ___
 
@@ -2352,12 +2509,11 @@ network: "testnet",
 });
 
 // Query for the drop information for a specific drop
-const dropInfo = await getDropInformation({
-dropId: "1669840629120",
-withKeys: true
+const userBal = await getUserBalance({
+accountId: "benjiman.testnet",
 })
 
-console.log('dropInfo: ', dropInfo)
+console.log('userBal: ', userBal)
 ```
 
 #### Parameters
@@ -2375,7 +2531,7 @@ The user's current balance
 
 #### Defined in
 
-[src/lib/views.ts:666](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/views.ts#L666)
+[src/lib/views.ts:665](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L665)
 
 ## Deleting State
 
@@ -2443,7 +2599,7 @@ console.log('numDrops: ', numDrops)
 
 #### Defined in
 
-[src/lib/drops.ts:480](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/drops.ts#L480)
+[src/lib/drops.ts:479](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/drops.ts#L479)
 
 ___
 
@@ -2495,7 +2651,7 @@ await deleteKeys({
 
 #### Defined in
 
-[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keys.ts#L375)
+[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keys.ts#L375)
 
 ## Functions
 
@@ -2531,7 +2687,27 @@ const linkdropUrl = formatLinkdropUrl({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:292](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L292)
+[src/lib/keypom-utils.ts:292](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L292)
+
+___
+
+### setupKeypom
+
+**setupKeypom**(`«destructured»`): `WalletModuleFactory`<`KeypomWalletType`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | `KeypomSetupParams` |
+
+#### Returns
+
+`WalletModuleFactory`<`KeypomWalletType`\>
+
+#### Defined in
+
+[src/lib/selector/core/setup.ts:23](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/selector/core/setup.ts#L23)
 
 ## Registering Key Uses
 
@@ -2581,7 +2757,7 @@ await ftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:568](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L568)
+[src/lib/keypom-utils.ts:581](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L581)
 
 ___
 
@@ -2630,4 +2806,4 @@ await nftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:663](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/keypom-utils.ts#L663)
+[src/lib/keypom-utils.ts:676](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L676)

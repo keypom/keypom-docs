@@ -21,7 +21,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[src/lib/types/fc.ts:29](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L29)
+[src/lib/types/fc.ts:34](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L34)
 
 ___
 
@@ -33,7 +33,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[src/lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L19)
+[src/lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L19)
 
 ___
 
@@ -45,7 +45,20 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[src/lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L23)
+[src/lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L23)
+
+___
+
+### attachedGas
+
+ `Optional` **attachedGas**: `string`
+
+How much gas to attach to this method call. If none, all the gas is split between the parallel method calls in a given claim.
+If this is specified, the key can ONLY be used to call `claim` and no `deposit_per_use` can be specified. This leads the key to act like a method calling proxy instead of a linkdrop.
+
+#### Defined in
+
+[src/lib/types/fc.ts:28](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L28)
 
 ___
 
@@ -59,7 +72,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[src/lib/types/fc.ts:35](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L35)
+[src/lib/types/fc.ts:40](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L40)
 
 ___
 
@@ -73,7 +86,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[src/lib/types/fc.ts:47](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L47)
+[src/lib/types/fc.ts:52](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L52)
 
 ___
 
@@ -87,7 +100,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[src/lib/types/fc.ts:41](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L41)
+[src/lib/types/fc.ts:46](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L46)
 
 ___
 
@@ -99,7 +112,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[src/lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L15)
+[src/lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L15)
 
 ___
 
@@ -111,7 +124,20 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[src/lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L11)
+[src/lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L11)
+
+___
+
+### receiverToClaimer
+
+ `Optional` **receiverToClaimer**: `boolean`
+
+If set to true, the claiming account ID will be the receiver ID of the method call.
+This receiver must be a valid account and non-malicious (cannot be set to the keypom contract)
+
+#### Defined in
+
+[src/lib/types/fc.ts:57](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L57)
 
 ___
 
@@ -124,4 +150,4 @@ By default, the user cannot provide any custom arguments
 
 #### Defined in
 
-[src/lib/types/fc.ts:52](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L52)
+[src/lib/types/fc.ts:62](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L62)

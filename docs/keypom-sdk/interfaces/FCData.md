@@ -10,18 +10,6 @@ Information pertaining to all Function-Call drops. This should be passed in if t
 
 ## Properties
 
-### config
-
- `Optional` **config**: [`FCConfig`](FCConfig.md)
-
-Specific configurations for the Function-Call drop.
-
-#### Defined in
-
-[src/lib/types/fc.ts:78](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L78)
-
-___
-
 ### methods
 
  **methods**: `Maybe`<[`Method`](Method.md)[]\>[]
@@ -31,4 +19,4 @@ If a given key use does not have an undefined set of methods, when it is used, a
 
 #### Defined in
 
-[src/lib/types/fc.ts:74](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/fc.ts#L74)
+[src/lib/types/fc.ts:73](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/fc.ts#L73)

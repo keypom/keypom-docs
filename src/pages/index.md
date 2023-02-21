@@ -54,16 +54,15 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
 <FeatureList width = "100%">
 
-  <div class="column empty"></div>
 
-  <div class= "column left">
+  <div class= "col col--5">
     <h3>Beginner Tutorials</h3>
     <Feature url="../../docs/next/Concepts/Keypom%20Protocol/overview" title="What is Keypom?" subtitle="Learn the Basics of Keypom" image="docs/icons/key.png" />
     <Feature url="../../docs/next/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction" title="Types of Drops" subtitle="Find out what you can send using Keypom" image="docs/icons/tutorials.png" />
     <Feature url="../../docs/next/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
   </div>
 
-  <div class= "column">
+  <div class= "col col--4">
     <h3>Beginner Tutorials</h3>
     <Feature url="../../docs/next/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
     <Feature url="../../docs/next/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
@@ -71,14 +70,12 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most powerful drop" image="docs/icons/oracle.png" />
   </div>
 
-  <div class= "column right">
+  <div class= "col col--3">
     <h3>Developer Documnetation</h3>
     <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
     <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.png" />
     <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />
   </div>
-
-  <div class="column empty"></div>
   
 </FeatureList>
 

@@ -63,6 +63,8 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L8-L25
 ```
 
+---
+
 ## Creating Drop with Function Call Data
 In this section, you'll create the function call drop to meet the functional requirements defined earlier.
 
@@ -87,7 +89,6 @@ The primary task in creating the Function Call Drop is to define `fcData`. It is
 
 ```bash
 fcData
-├── FCConfig?
 ├── methods
 ```
 
@@ -133,9 +134,6 @@ On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit`
 
 These parameters will be used alongisde the `createNFTSeries` SDK method.  
 
-
-
-
 ```js reference
 https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L29-L60
 ```
@@ -147,4 +145,131 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 
 - `dropId`: The drop ID for the drop that should have the NFT series associated with it.  
 - `metadata`: 	The metadata that all minted NFTs will have.  
+
+The `metadata` is an object with these properties:
+* `title`: The title for the NFTs in the series
+* `description`: Description for all NFTs in the series
+* `media`: link to the media for the NFTs
+* `copies`: Number of NFTs in the series
+
+The code for creating the series is shown below. 
+
+```js reference
+https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L63-L72
+```
+
+---
+
+## Creating Linkdrops
+The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
+
+Using the NEAR wallet, the linkdrop URL has the following standardized format:
+
+```bash
+wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
+```
+
+With this format, the following code can be written to generate a set of links for the drop.
+
+```js 
+pubKeys = keys.publicKeys
+
+var dropInfo = {};
+const {contractId: KEYPOM_CONTRACT} = getEnv()
+// Creating list of pk's and linkdrops
+for(var i = 0; i < keys.keyPairs.length; i++) {
+    let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
+    dropInfo[pubKeys[i]] = linkdropUrl;
+}
+// Write file of all pk's and their respective linkdrops
+console.log('Public Keys and Linkdrops: ', dropInfo)
+```
+
+---
+
+## Full Code
+Now that everything has been put together, the final code can be seen below.
+
+```js reference
+https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L1-L85
+```
+
+---
+
+## Running the Script
+Here, you'll learn how to run the code that was just covered, and what to expect.
+
+To view the completed code, clone the Keypom SDK repo and visit the examples directory:
+``` bash
+git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-advanced-tutorial/
+```
+To run the code you just cloned, install all the necesasry packages. 
+```bash
+npm install
+```
+
+:::caution
+Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
+:::
+
+From there, you are able to run this FC Drop script that was made in this tutorial using the following command:
+``` bash
+npm run fc-keypom
+```
+:::note
+The SDK script is being tested here; use `npm run fc-near` to test the `NEAR-API-JS` script instead.
+:::
+This should return a successful drop creation and console log a Public Key and Linkdrop
+
+```bash
+node src/utils/createTickDrop
+```
+
+
+
+```bash
+Receipts: FYGRwDNQCqfXYZjKZHXW4xxJK2Yu7t9ZocyYrcMx2b2U, Aor9Twk2ptEzqQRcZz5AnpSzJryKz4H2K3KmaRprgoev
+        Log [v1-4.keypom.testnet]: Current Block Timestamp: 1677011501641230759
+        Log [v1-4.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v1-4.keypom.testnet]: Total required storage Yocto 109940000000000000000000
+        Log [v1-4.keypom.testnet]: Current balance: 47.616488, 
+            Required Deposit: 2.4951926, 
+            total_required_storage: 0.10994,
+            Drop Fee: 0, 
+            Key Fee: 0 Total Key Fee: 0,
+            allowance: 0.0375252 total allowance: 0.3752526,
+            access key storage: 0.001 total access key storage: 0.01,
+            deposits less none FCs: 0.1 total deposits: 1 lazy registration: false,
+            deposits for FCs: 0.1 total deposits for FCs: 1,
+            uses per key: 2
+            None FCs: 1,
+            length: 10
+            GAS to attach: 100000000000000
+        Log [v1-4.keypom.testnet]: New user balance 45.1212954
+        Log [v1-4.keypom.testnet]: Fees collected 0
+Public Keys and Linkdrops:  {
+  'ed25519:4aR5UP5K7F81EJhSWdkUyKvG1tn2uaG9Q19LNGjBgTpA': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/2WjpzSDEghzQ5YdzpJ6n76hsRUUP4FMzCmqZbEunUeUzPomswXGy3ovaG5oen8ZCmSq82Q5TBnobn9b3nBzu3AhC',
+  'ed25519:4gB4AWKcFYa8ZQMcm1Pvk5RxSPRDjoJQjNUbG8jMWZ88': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5pn4DkNULgMmRReooRVtz4iTDHQes7GcKGsF8END693WHwJrbZPFKeFxhjHcymMvFSbyRAXqhx6mzUxeiZWNPg3N',
+  'ed25519:5a8pFZn18qya6yYvA3AEKEK1VXcWX171ujRt1pQK7UKE': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4PbuT4unmKHb1GnnHB1oBLKwpjts176HAU9YwSYhyznps861i6UwGb6Ls4MJZMsUwADLcxVD7WehhD5rXiyESfX2',
+  'ed25519:3tj8FmL9idnwbRW7uqZfaJGaLSeEW98cbrUHFFqTn9CG': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/3P4wWQXmJxuh4vVtS89DrWu8G9u6f1LNFpo3Rj83RSjDLRvwTryYxRq6oL4jmsnc4Y2SuSegG8T8UZyUcHQm4sy6',
+  'ed25519:D7HtsoXRtFrgoS945nzHeXGnQsrEJRAAA3mtbATZw5i4': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5uRKgeEjVVv1osfcs3ySPxkHs1SceouTf5pNEo1hAZB5C1tJwTT45eV7uMFnMP2NyNe3pNET1WnWqpCjWEM7Lzvp',
+  'ed25519:5ipGZMy8amfESzJS7sdRdP1nADX1bMAAfZgF7UvWbg7R': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4fmEuktYBLzAu2LoUxk279XWqa8t2AEia5kjK3pAgqvtckavgTDga3a39g19Un88HPoKbwHRStiULk5q6kum7XKu',
+  'ed25519:BrtuHmGJjQ2eAz8HkwLLKrdGwH9ApRJmM52Q2J7tgaKw': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/3RUN8ZTzsJ5Y4bUj9q9BphiNNuQ2MsRtNWVmVcDuLgMHUXGdojgeXwQy5sgYaxYXGoE3jZ92iVWUaohftQcxDv4d',
+  'ed25519:BtkaELtDDBKRWQKdPf4vongBsksq9Yqkxbx8sJyPzewv': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5TDEuKVusLhLVs239KVgY27G7qNz2uTQPqgaoqPNmnLw2E2kbMvNy1nxkASR8aAQkeERP4xJYPrD6148rpg3yDEC',
+  'ed25519:4nqAzfJbypBnZzPWu9JnJgCRGNUvt2q4khTCu3zDjrZn': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4rXeSVbobWSNV5rLoJdXVF6dWwhm8xCpW5f44bPiBZJQizXqyubJxVbij3aZDoZxqjXtdrPniRHBZ1Z1Feegszcp',
+  'ed25519:2ecoFo7d3M5svEbGEA6dx2oMPkBaMxbqf7aEJfqQBEdP': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/WEXXgM4JrG9mQx4zzJovkdRH7PyYeH3UCGdpsc9bKKcqnHyVaJhcZfUEPzy46G5M8eD4XWZE2eaoot9BaL4Jszh'
+}
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v1-4.keypom.testnet.com
+```
+
+
+---
+
+## Project Status
+
+---
+
+## Conclusion
+
+---
 

@@ -229,7 +229,6 @@ The primary task in creating the Function Call Drop is to define `fcData`. It is
 
 ```bash
 fcData
-├── FCConfig?
 ├── methods
 ```
 

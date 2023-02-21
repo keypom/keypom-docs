@@ -76,13 +76,16 @@ const sidebars = {
                   type: 'category',
                   label: 'Configuring Your Drop',
                   // link: {
-                  //   item: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
+                  //   type: 'doc',
+                  //   id: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/customization-homepage',
                   // },
                   collapsed: true,
                   items: [
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/customization-homepage',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/time-customization',
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/usage-customization',
+                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/sale-customization',
                   ],
                 },
                 'Concepts/Keypom Protocol/Github Readme/passwordprotect',

@@ -2,8 +2,9 @@
 sidebar_label: 'Introduction'
 ---
 # Introduction
+In this tutorial, you'll learn how to create an unparalleled ticketing experience. You'll be able to garner a large audience for your events by creating a seamless admission and onboarding experience for your community. 
 ## Background
-NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, they currently require the attendees to have an existing wallet. This is a massive barrier to entry and limits the event to a highly technical crowd. 
+NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, they currently require the attendees to have an existing wallet. This is a massive barrier to entry and limits the event to a more technical crowd. 
 
 Keypom aims to solve these problems by allwoing for a ticketing system that has the following features.
 
@@ -45,6 +46,31 @@ Lastly, you can create the following folders and files.
 mkdir state && mv App.js state/App.js
 mkdir components && mkdir utils
 touch utils/configurations.js && touch state/keyInfo.js && touch components/scanner.js && touch components/qrcode.js && touch utils/createTickDrop.js
+```
+
+With these steps complete, your project folder should look like this. 
+
+```bash
+/my-keypom-ticketing-project
+├── public
+│   └── ...
+├── src
+│   └── components
+│   │    └── scanner.js
+│   │    └── qrcode.js
+│   └── state
+│   │    └── App.js
+│   │    └── keyInfo.js
+│   └── utils
+│   │    └── configurations.js
+│   │    └── createTickDrop.js
+├── node_modules
+│   └── keypom-js
+│   └── qrcode.react
+│   └── react-zxing
+│   └── ...
+├── package.json
+├── package-lock.json
 ```
 
 ### Hiccups

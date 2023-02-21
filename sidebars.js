@@ -140,6 +140,7 @@ const sidebars = {
               items: [
                 'Tutorials/Advanced/ticketing/introduction',
                 'Tutorials/Advanced/ticketing/architecture',
+                'Tutorials/Advanced/ticketing/drop',
 
               ],
               },

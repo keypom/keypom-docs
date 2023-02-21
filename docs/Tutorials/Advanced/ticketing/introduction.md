@@ -15,7 +15,7 @@ Keypom aims to solve these problems by allwoing for a ticketing system that has 
 
 These features allow for an entirely new class of non-technical attendees and create a smoother experience than traditional NFT ticketing;
 
-In this tutorial, we'll be creating that ticketing system, and incorporating a POAP as well to further reward your community members that come out to your events. 
+In this tutorial, you'll be creating that ticketing system, and incorporating a POAP as well to further reward your community members that come out to your events. 
 
 ## Prerequisites
 For the advanced tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:

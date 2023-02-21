@@ -109,7 +109,7 @@ After installing the SDK, your `package.json` file should now look slightly diff
   "license": "ISC",
   # highlight-start
   "dependencies": {
-    "keypom-js": "^1.2.0-rc.1"
+    "keypom-js": "^1.4.0-rc.1"
   }
   # highlight-end
 }
@@ -196,7 +196,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
 ```
 
 ---
@@ -223,7 +223,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/simple-example.js#L27-L41
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
 ```
 
 </TabItem>
@@ -276,7 +276,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/simple-example.js#L1-L57
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L1-L57
 ```
 
 </TabItem>
@@ -308,9 +308,9 @@ npm install
 Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` in the script with the credentials of your account found in your `~/.near-credentials` folder
 :::
 
-From there, you are able to run this Simple Drop script that was made in this tutorial using the following command:
+From there, you can navigate back to the root directory and run this Simple Drop script that was made in this tutorial using the following command:
 ``` bash
-npm run simple-keypom
+cd .. && npm run simple-keypom
 ```
 :::note
 The SDK script is being tested here; use `npm run simple-near` to test the `NEAR-API-JS` script instead.
@@ -318,7 +318,7 @@ The SDK script is being tested here; use `npm run simple-near` to test the `NEAR
 This should return a successful drop creation and console log a Public Key and Linkdrop: 
 ```bash
 Public Keys and Linkdrops:  {
-  'ed25519:8nCdZ32nRUdZRXs4dSgjq2FiJnsgMSJYpxNJ4cg7Z1iz': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/5gzHZeLFDyDJHeCVtACwQxbMj8BRTeuu1WVd7eSNhjtc89uZjCoxXW3vh8R1RwEK44w3rb7sBAqMg5hR1MCHsC6e'
+  'ed25519:JEGExQ4ARMh9tDLkYR2xDiZr5w6PLmQUCUwutGPuxCT6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3L9bZD5TMi4ajrxkAdUg2ffXpwZoudcaYmxN6Nzgoatdvubew4aWBguvyquygDDRZGvr5uwgMpvvj5PVuDW77AaY'
 }
 ```
 To see the full console log from this drop creation, see the expandable section below.
@@ -328,16 +328,13 @@ To see the full console log from this drop creation, see the expandable section 
 <p>
 
 ``` bash
-yarn run v1.22.19
-warning ../../../package.json: No license field
-$ node docs-examples/keypom-js-sdk/simple-example.js
-Receipts: AJ5so8mEDh9XEYNcB7vomTxUDV3BAMyLVA7QMguHuscA, 4YyHuHyMh1gZimE2Ep3Y4boasFj5cbXr9TmL2qkNkG6Z
-        Log [v1-3.keypom.testnet]: Current Block Timestamp: 1674847726484923818
-        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v1-3.keypom.testnet]: Total required storage Yocto 11110000000000000000000
-        Log [v1-3.keypom.testnet]: Current balance: 1.2083208, 
-            Required Deposit: 1.0308726, 
-            total_required_storage: 0.01111,
+Receipts: AuLnQ8kdjoww8TnaNHkYezyVoALzgw7gPDqapQipuS2G, FSJnsG2NF3hoUdvPADtAeDqy9HdxRC3zKf1NCGi5LLR3
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1677014682302742186
+        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v2.keypom.testnet]: Total required storage Yocto 11130000000000000000000
+        Log [v2.keypom.testnet]: Current balance: 1.0891783, 
+            Required Deposit: 1.0308926, 
+            total_required_storage: 0.01113,
             Drop Fee: 0, 
             Key Fee: 0 Total Key Fee: 0,
             allowance: 0.0187626 total allowance: 0.0187626,
@@ -348,12 +345,12 @@ Receipts: AJ5so8mEDh9XEYNcB7vomTxUDV3BAMyLVA7QMguHuscA, 4YyHuHyMh1gZimE2Ep3Y4boa
             None FCs: 0,
             length: 1
             GAS to attach: 100000000000000
-        Log [v1-3.keypom.testnet]: New user balance 0.1774482
-        Log [v1-3.keypom.testnet]: Fees collected 0
+        Log [v2.keypom.testnet]: New user balance 0.0582857
+        Log [v2.keypom.testnet]: Fees collected 0
 Public Keys and Linkdrops:  {
-  'ed25519:8nCdZ32nRUdZRXs4dSgjq2FiJnsgMSJYpxNJ4cg7Z1iz': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/5gzHZeLFDyDJHeCVtACwQxbMj8BRTeuu1WVd7eSNhjtc89uZjCoxXW3vh8R1RwEK44w3rb7sBAqMg5hR1MCHsC6e'
+  'ed25519:JEGExQ4ARMh9tDLkYR2xDiZr5w6PLmQUCUwutGPuxCT6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3L9bZD5TMi4ajrxkAdUg2ffXpwZoudcaYmxN6Nzgoatdvubew4aWBguvyquygDDRZGvr5uwgMpvvj5PVuDW77AaY'
 }
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet 
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
 ```
 
 </p>
@@ -365,10 +362,10 @@ Once you click the link, it will take you to the following NEAR Wallet page, whe
 
 To check the transactions, click the final link in the console log when you run the script.
 ``` md
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
 ```
 
-From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/f5HHxMyUELD8oGFpMCQAKcYVhyLAfKyjmXAeFG68FCB#AJ5so8mEDh9XEYNcB7vomTxUDV3BAMyLVA7QMguHuscA) and [`claim`](https://explorer.testnet.near.org/transactions/BApV2YJh8yHUGJ5c4KUnBPNyjAt4znxAFUxPzDXognu5) transactions. 
+From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/6cQGRMJhmn16LCEDLKWYnFJrz3cAP7zSW36jhFwwk5sT) and [`claim`](https://explorer.testnet.near.org/transactions/BkNe1Dwzer22WW6vVBbCY75qHbkDitYYca7e4cjPTBsJ) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 ---

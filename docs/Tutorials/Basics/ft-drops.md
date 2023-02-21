@@ -348,7 +348,7 @@ Here, you'll learn how to run the code that was just covered, and what to expect
 
 To view the completed code, clone the Keypom SDK repo and visit the examples directory:
 ``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk/n]ft-example.js
+git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples
 ```
 To run the code you just cloned, install all the necesasry packages. 
 ```bash

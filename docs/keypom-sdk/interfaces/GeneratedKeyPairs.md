@@ -19,7 +19,7 @@ Actual KeyPair objects that can be used to sign messages, verify signatures, and
 
 #### Defined in
 
-[src/lib/types/general.ts:13](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/general.ts#L13)
+[src/lib/types/general.ts:13](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/general.ts#L13)
 
 ___
 
@@ -31,7 +31,7 @@ Set of public keys that were generated
 
 #### Defined in
 
-[src/lib/types/general.ts:15](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/general.ts#L15)
+[src/lib/types/general.ts:15](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/general.ts#L15)
 
 ___
 
@@ -43,4 +43,4 @@ Set of private keys that were generated
 
 #### Defined in
 
-[src/lib/types/general.ts:17](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/general.ts#L17)
+[src/lib/types/general.ts:17](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/general.ts#L17)

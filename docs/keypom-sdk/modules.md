@@ -54,7 +54,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/params.ts#L9)
+[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L9)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/types/general.ts#L5)
+[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/general.ts#L5)
 
 ## Variables
 
@@ -74,7 +74,28 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:29](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L29)
+[src/lib/keypom-utils.ts:29](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L29)
+
+___
+
+### supportedLinkdropClaimPages
+
+ `Const` **supportedLinkdropClaimPages**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `mainnet` | { `keypom`: `string` = "https://keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY"; `mynearwallet`: `string`  } |
+| `mainnet.keypom` | `string` |
+| `mainnet.mynearwallet` | `string` |
+| `testnet` | { `keypom`: `string` = "https://testnet.keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY"; `mynearwallet`: `string` = "https://testnet.mynearwallet.com/linkdrop/CONTRACT\_ID/SECRET\_KEY" } |
+| `testnet.keypom` | `string` |
+| `testnet.mynearwallet` | `string` |
+
+#### Defined in
+
+[src/lib/keypom.ts:71](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L71)
 
 ## Keypom SDK Environment
 
@@ -112,7 +133,7 @@ The environment variables used by the Keypom library.
 
 #### Defined in
 
-[src/lib/keypom.ts:104](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L104)
+[src/lib/keypom.ts:104](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L104)
 
 ___
 
@@ -202,7 +223,7 @@ If a funder is passed in, its account object is returned. Otherwise, it null is 
 
 #### Defined in
 
-[src/lib/keypom.ts:198](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L198)
+[src/lib/keypom.ts:198](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L198)
 
 ___
 
@@ -256,7 +277,7 @@ The funder's account object is returned.
 
 #### Defined in
 
-[src/lib/keypom.ts:297](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L297)
+[src/lib/keypom.ts:297](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L297)
 
 ___
 
@@ -305,7 +326,7 @@ const { initKeypom, updateKeypomContractId, getDrops } = require("keypom-js");
 
 #### Defined in
 
-[src/lib/keypom.ts:348](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L348)
+[src/lib/keypom.ts:348](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L348)
 
 ___
 
@@ -319,7 +340,7 @@ ___
 
 #### Defined in
 
-[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/ba635c9/src/components/KeypomContext.tsx#L42)
+[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/9d8244ce/src/components/KeypomContext.tsx#L42)
 
 ## Utility
 
@@ -350,7 +371,7 @@ console.log(accountExists); // true
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:85](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L85)
+[src/lib/keypom-utils.ts:85](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L85)
 
 ___
 
@@ -429,7 +450,7 @@ Send 3 NFTs using the funder account (not passing in any accounts into the call)
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:215](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L215)
+[src/lib/keypom-utils.ts:215](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L215)
 
 ___
 
@@ -460,7 +481,7 @@ Initiate the connection to the NEAR blockchain.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:912](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L912)
+[src/lib/keypom-utils.ts:992](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L992)
 
 ___
 
@@ -480,7 +501,114 @@ ___
 
 #### Defined in
 
-[src/lib/keypom.ts:114](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom.ts#L114)
+[src/lib/keypom.ts:114](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom.ts#L114)
+
+___
+
+### formatLinkdropUrl
+
+**formatLinkdropUrl**(`«destructured»`): `string`[]
+
+Constructs a valid linkdrop URL for a given claim page or custom URL. To view the list of supported claim pages, see the exported `supportedLinkdropClaimPages` variable.
+
+**`Example`**
+
+Use the keypom claim page:
+```js
+await initKeypom({
+    network: 'testnet',
+    funder: {
+        accountId,
+        secretKey,
+    }
+})
+
+const {keys} = await createDrop({
+    numKeys: 1,
+    depositPerUseNEAR: 1
+});
+
+const linkdropUrl = formatLinkdropUrl({
+    claimPage: "keypom", 
+    contractId: "v2.keypom.testnet",
+    secretKeys: keys.secretKeys[0] // Can be either the array or individual secret key string
+})
+
+console.log('linkdropUrl: ', linkdropUrl)
+```
+
+**`Example`**
+
+Use a custom claim page with ONLY the secret key
+```js
+await initKeypom({
+    network: 'testnet',
+    funder: {
+        accountId,
+        secretKey,
+    }
+})
+
+const {keys} = await createDrop({
+    numKeys: 1,
+    depositPerUseNEAR: 1
+});
+
+const linkdropUrl = formatLinkdropUrl({
+    customURL: "foobar/SECRET_KEY/barfoo", 
+    contractId: "v2.keypom.testnet",
+    secretKeys: keys.secretKeys[0] // Can be either the array or individual secret key string
+})
+
+console.log('linkdropUrl: ', linkdropUrl)
+```
+
+**`Example`**
+
+Use a custom claim page with both the secret key and contract ID
+```js
+await initKeypom({
+    network: 'testnet',
+    funder: {
+        accountId,
+        secretKey,
+    }
+})
+
+const {keys} = await createDrop({
+    numKeys: 1,
+    depositPerUseNEAR: 1
+});
+
+const linkdropUrl = formatLinkdropUrl({
+    customURL: "foobar/SECRET_KEY/barfoo/CONTRACT_ID", 
+    contractId: "v2.keypom.testnet",
+    secretKeys: keys.secretKeys[0] // Can be either the array or individual secret key string
+})
+
+console.log('linkdropUrl: ', linkdropUrl)
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | `Object` |
+| › `claimPage?` | `string` |
+| › `contractId?` | `string` |
+| › `customURL?` | `string` |
+| › `networkId?` | `string` |
+| › `secretKeys` | `string` \| `string`[] |
+
+#### Returns
+
+`string`[]
+
+- An array of the linkdrop URLs
+
+#### Defined in
+
+[src/lib/keypom-utils.ts:360](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L360)
 
 ___
 
@@ -600,7 +728,7 @@ console.log('Secret Keys ', keys.secretKeys);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:420](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L420)
+[src/lib/keypom-utils.ts:500](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L500)
 
 ___
 
@@ -634,7 +762,7 @@ console.log(ft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:148](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L148)
+[src/lib/keypom-utils.ts:148](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L148)
 
 ___
 
@@ -670,7 +798,7 @@ console.log(nft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:118](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L118)
+[src/lib/keypom-utils.ts:118](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L118)
 
 ___
 
@@ -701,7 +829,7 @@ console.log(pubKey);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:66](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L66)
+[src/lib/keypom-utils.ts:66](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L66)
 
 ___
 
@@ -721,7 +849,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:836](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L836)
+[src/lib/keypom-utils.ts:916](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L916)
 
 ___
 
@@ -755,7 +883,7 @@ let passwordForClaim = await hashPassword(basePassword + publicKey + currentUse.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:338](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L338)
+[src/lib/keypom-utils.ts:418](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L418)
 
 ___
 
@@ -924,7 +1052,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keys.ts#L139)
+[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keys.ts#L139)
 
 ___
 
@@ -1049,7 +1177,7 @@ await claim({
 
 #### Defined in
 
-[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/claims.ts#L109)
+[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/claims.ts#L109)
 
 ___
 
@@ -1109,7 +1237,7 @@ console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[
 
 #### Defined in
 
-[src/lib/trial-accounts.ts:392](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/trial-accounts.ts#L392)
+[src/lib/trial-accounts.ts:392](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/trial-accounts.ts#L392)
 
 ___
 
@@ -1273,7 +1401,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/drops.ts#L154)
+[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/drops.ts#L154)
 
 ___
 
@@ -1357,7 +1485,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/trial-accounts.ts:75](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/trial-accounts.ts#L75)
+[src/lib/trial-accounts.ts:75](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/trial-accounts.ts#L75)
 
 ## User Balance Functions
 
@@ -1403,7 +1531,7 @@ await addToBalance({
 
 #### Defined in
 
-[src/lib/balances.ts:32](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/balances.ts#L32)
+[src/lib/balances.ts:32](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/balances.ts#L32)
 
 ___
 
@@ -1447,7 +1575,7 @@ await withdrawBalance({});
 
 #### Defined in
 
-[src/lib/balances.ts:112](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/balances.ts#L112)
+[src/lib/balances.ts:112](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/balances.ts#L112)
 
 ## Public Sale Functions
 
@@ -1495,7 +1623,7 @@ const {dropId} = await createDrop({
 
 #### Defined in
 
-[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L36)
+[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/sales.ts#L36)
 
 ___
 
@@ -1543,7 +1671,7 @@ Add a list of account IDs to a drop's sale blocklist. The sale object must exist
 
 #### Defined in
 
-[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L190)
+[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/sales.ts#L190)
 
 ___
 
@@ -1599,7 +1727,7 @@ Remove a list of account IDs from a drop's sale allowlist. If the allowlist is e
 
 #### Defined in
 
-[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L117)
+[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/sales.ts#L117)
 
 ___
 
@@ -1651,7 +1779,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L267)
+[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/sales.ts#L267)
 
 ___
 
@@ -1702,7 +1830,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/sales.ts#L339)
+[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/sales.ts#L339)
 
 ## View Functions
 
@@ -1746,7 +1874,7 @@ Whether or not the user can add keys to the drop
 
 #### Defined in
 
-[src/lib/views.ts:795](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L795)
+[src/lib/views.ts:795](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L795)
 
 ___
 
@@ -1780,7 +1908,7 @@ The contract's source metadata
 
 #### Defined in
 
-[src/lib/views.ts:833](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L833)
+[src/lib/views.ts:833](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L833)
 
 ___
 
@@ -1866,7 +1994,7 @@ The current method data for the key
 
 #### Defined in
 
-[src/lib/views.ts:744](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L744)
+[src/lib/views.ts:744](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L744)
 
 ___
 
@@ -1958,7 +2086,7 @@ Drop information which may or may not have a keys field of type `KeyInfo` depend
 
 #### Defined in
 
-[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L314)
+[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L314)
 
 ___
 
@@ -2009,7 +2137,7 @@ Amount of drops
 
 #### Defined in
 
-[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L478)
+[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L478)
 
 ___
 
@@ -2059,7 +2187,7 @@ console.log('dropsAndKeys: ', dropsAndKeys)
 
 #### Defined in
 
-[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L521)
+[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L521)
 
 ___
 
@@ -2112,7 +2240,7 @@ The amount of yoctoNEAR that is contained within the key
 
 #### Defined in
 
-[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L48)
+[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L48)
 
 ___
 
@@ -2165,7 +2293,7 @@ Key information struct for that specific key.
 
 #### Defined in
 
-[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L169)
+[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L169)
 
 ___
 
@@ -2218,7 +2346,7 @@ Array of Key information structs for the keys passed in
 
 #### Defined in
 
-[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L222)
+[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L222)
 
 ___
 
@@ -2270,7 +2398,7 @@ Number of active keys
 
 #### Defined in
 
-[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L383)
+[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L383)
 
 ___
 
@@ -2304,7 +2432,7 @@ The amount of keys.
 
 #### Defined in
 
-[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L87)
+[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L87)
 
 ___
 
@@ -2349,7 +2477,7 @@ Vector of KeyInfo.
 
 #### Defined in
 
-[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L121)
+[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L121)
 
 ___
 
@@ -2403,7 +2531,7 @@ Vector of KeyInfo objects returned from pagination
 
 #### Defined in
 
-[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L430)
+[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L430)
 
 ___
 
@@ -2445,7 +2573,7 @@ The amount of token IDs on the drop
 
 #### Defined in
 
-[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L589)
+[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L589)
 
 ___
 
@@ -2489,7 +2617,7 @@ Vector of token IDs
 
 #### Defined in
 
-[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L626)
+[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L626)
 
 ___
 
@@ -2531,7 +2659,7 @@ The user's current balance
 
 #### Defined in
 
-[src/lib/views.ts:665](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/views.ts#L665)
+[src/lib/views.ts:665](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/views.ts#L665)
 
 ## Deleting State
 
@@ -2599,7 +2727,7 @@ console.log('numDrops: ', numDrops)
 
 #### Defined in
 
-[src/lib/drops.ts:479](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/drops.ts#L479)
+[src/lib/drops.ts:479](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/drops.ts#L479)
 
 ___
 
@@ -2651,63 +2779,7 @@ await deleteKeys({
 
 #### Defined in
 
-[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keys.ts#L375)
-
-## Functions
-
-### formatLinkdropUrl
-
-**formatLinkdropUrl**(`«destructured»`): `string`[]
-
-Constructs a valid linkdrop URL for a given claim page or custom base URL.
-
-**`Example`**
-
-```js
-const linkdropUrl = formatLinkdropUrl({
-
-@group Utility
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `Object` |
-| › `baseUrl?` | `string` |
-| › `claimPage?` | `string` |
-| › `contractId?` | `string` |
-| › `networkId?` | `string` |
-| › `secretKeys` | `string`[] |
-
-#### Returns
-
-`string`[]
-
-- An array of the linkdrop URLs
-
-#### Defined in
-
-[src/lib/keypom-utils.ts:292](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L292)
-
-___
-
-### setupKeypom
-
-**setupKeypom**(`«destructured»`): `WalletModuleFactory`<`KeypomWalletType`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `KeypomSetupParams` |
-
-#### Returns
-
-`WalletModuleFactory`<`KeypomWalletType`\>
-
-#### Defined in
-
-[src/lib/selector/core/setup.ts:23](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/selector/core/setup.ts#L23)
+[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keys.ts#L375)
 
 ## Registering Key Uses
 
@@ -2757,7 +2829,7 @@ await ftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:581](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L581)
+[src/lib/keypom-utils.ts:661](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L661)
 
 ___
 
@@ -2806,4 +2878,24 @@ await nftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:676](https://github.com/keypom/keypom-js/blob/ba635c9/src/lib/keypom-utils.ts#L676)
+[src/lib/keypom-utils.ts:756](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/keypom-utils.ts#L756)
+
+## Functions
+
+### setupKeypom
+
+**setupKeypom**(`«destructured»`): `WalletModuleFactory`<`KeypomWalletType`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | `KeypomSetupParams` |
+
+#### Returns
+
+`WalletModuleFactory`<`KeypomWalletType`\>
+
+#### Defined in
+
+[src/lib/selector/core/setup.ts:23](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/selector/core/setup.ts#L23)

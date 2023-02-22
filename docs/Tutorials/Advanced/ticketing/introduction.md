@@ -110,7 +110,11 @@ import { Buffer } from "buffer"; global.Buffer = Buffer;
 #### Webpack configurations
 The following was added to `node_modules/react-scripts/config/webpack.config.js`
 ```js
-fallback: { "crypto": require.resolve("crypto-browserify") },
+fallback: { 
+  "crypto": require.resolve("crypto-browserify"), 
+  "fs": false,
+  "path": false
+},,
 ```
 This was done according to [this error](https://www.mongodb.com/community/forums/t/cant-resolve-crypto-in-node-modules-bson-dist-react/143227/2)
 

@@ -228,13 +228,13 @@ node src/utils/createTickDrop
 
 
 ```bash
-Receipts: FYGRwDNQCqfXYZjKZHXW4xxJK2Yu7t9ZocyYrcMx2b2U, Aor9Twk2ptEzqQRcZz5AnpSzJryKz4H2K3KmaRprgoev
-        Log [v1-4.keypom.testnet]: Current Block Timestamp: 1677011501641230759
-        Log [v1-4.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v1-4.keypom.testnet]: Total required storage Yocto 109940000000000000000000
-        Log [v1-4.keypom.testnet]: Current balance: 47.616488, 
-            Required Deposit: 2.4951926, 
-            total_required_storage: 0.10994,
+Receipts: tWcTTDEULKaYnj8p2jXaqxJuUj4SNTJ2ZnRjWGGmXBf, HGXUzZTq2Sb88GCeBRn3X8WQ3aYvkTA8jh3VcuuGp2L9
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1677087279025680682
+        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v2.keypom.testnet]: Total required storage Yocto 109950000000000000000000
+        Log [v2.keypom.testnet]: Current balance: 2.6436194, 
+            Required Deposit: 2.4952026, 
+            total_required_storage: 0.10995,
             Drop Fee: 0, 
             Key Fee: 0 Total Key Fee: 0,
             allowance: 0.0375252 total allowance: 0.3752526,
@@ -245,31 +245,32 @@ Receipts: FYGRwDNQCqfXYZjKZHXW4xxJK2Yu7t9ZocyYrcMx2b2U, Aor9Twk2ptEzqQRcZz5AnpSz
             None FCs: 1,
             length: 10
             GAS to attach: 100000000000000
-        Log [v1-4.keypom.testnet]: New user balance 45.1212954
-        Log [v1-4.keypom.testnet]: Fees collected 0
+        Log [v2.keypom.testnet]: New user balance 0.1484168
+        Log [v2.keypom.testnet]: Fees collected 0
 Public Keys and Linkdrops:  {
-  'ed25519:4aR5UP5K7F81EJhSWdkUyKvG1tn2uaG9Q19LNGjBgTpA': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/2WjpzSDEghzQ5YdzpJ6n76hsRUUP4FMzCmqZbEunUeUzPomswXGy3ovaG5oen8ZCmSq82Q5TBnobn9b3nBzu3AhC',
-  'ed25519:4gB4AWKcFYa8ZQMcm1Pvk5RxSPRDjoJQjNUbG8jMWZ88': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5pn4DkNULgMmRReooRVtz4iTDHQes7GcKGsF8END693WHwJrbZPFKeFxhjHcymMvFSbyRAXqhx6mzUxeiZWNPg3N',
-  'ed25519:5a8pFZn18qya6yYvA3AEKEK1VXcWX171ujRt1pQK7UKE': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4PbuT4unmKHb1GnnHB1oBLKwpjts176HAU9YwSYhyznps861i6UwGb6Ls4MJZMsUwADLcxVD7WehhD5rXiyESfX2',
-  'ed25519:3tj8FmL9idnwbRW7uqZfaJGaLSeEW98cbrUHFFqTn9CG': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/3P4wWQXmJxuh4vVtS89DrWu8G9u6f1LNFpo3Rj83RSjDLRvwTryYxRq6oL4jmsnc4Y2SuSegG8T8UZyUcHQm4sy6',
-  'ed25519:D7HtsoXRtFrgoS945nzHeXGnQsrEJRAAA3mtbATZw5i4': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5uRKgeEjVVv1osfcs3ySPxkHs1SceouTf5pNEo1hAZB5C1tJwTT45eV7uMFnMP2NyNe3pNET1WnWqpCjWEM7Lzvp',
-  'ed25519:5ipGZMy8amfESzJS7sdRdP1nADX1bMAAfZgF7UvWbg7R': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4fmEuktYBLzAu2LoUxk279XWqa8t2AEia5kjK3pAgqvtckavgTDga3a39g19Un88HPoKbwHRStiULk5q6kum7XKu',
-  'ed25519:BrtuHmGJjQ2eAz8HkwLLKrdGwH9ApRJmM52Q2J7tgaKw': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/3RUN8ZTzsJ5Y4bUj9q9BphiNNuQ2MsRtNWVmVcDuLgMHUXGdojgeXwQy5sgYaxYXGoE3jZ92iVWUaohftQcxDv4d',
-  'ed25519:BtkaELtDDBKRWQKdPf4vongBsksq9Yqkxbx8sJyPzewv': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/5TDEuKVusLhLVs239KVgY27G7qNz2uTQPqgaoqPNmnLw2E2kbMvNy1nxkASR8aAQkeERP4xJYPrD6148rpg3yDEC',
-  'ed25519:4nqAzfJbypBnZzPWu9JnJgCRGNUvt2q4khTCu3zDjrZn': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/4rXeSVbobWSNV5rLoJdXVF6dWwhm8xCpW5f44bPiBZJQizXqyubJxVbij3aZDoZxqjXtdrPniRHBZ1Z1Feegszcp',
-  'ed25519:2ecoFo7d3M5svEbGEA6dx2oMPkBaMxbqf7aEJfqQBEdP': 'https://testnet.mynearwallet.com/linkdrop/v1-4.keypom.testnet/WEXXgM4JrG9mQx4zzJovkdRH7PyYeH3UCGdpsc9bKKcqnHyVaJhcZfUEPzy46G5M8eD4XWZE2eaoot9BaL4Jszh'
+  'ed25519:ALok8t1PyC1k6GBC5Z3N1jKEMatFg1abJPpUQpFtQCzW': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/ws8gshPtT5zJBc6FfoiKXHfaQ2qey8q4n1Y91aW6q6m94UWFTMoL45NwMwtEZTXBrQ4BhLScB1K8JFVabgMj1mt',
+  'ed25519:AgfdThFSgH4Zna8ovq8q97By1od2NXn6paYPiqvyEqp6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/6DzXXf4mbCYgZiojP73js28wm6rhtWnnPduAiT5jzWQhCXaM7owvZLJKbsgYA8fZYvikHnxYXDH1zii9c1fzJPk',
+  'ed25519:Hz5ppag9ezqFGFR7ZzUXHiCP8idsvqJGjAH6k1BHN7mE': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/38iHRqVW3YKobv5PQ37fFNtyQjH5CdC53c7FacCfFwb8HHvdcBJDZWRucnm75WY9PFEgA3DHrugtdFsgUMoo7LUC',
+  'ed25519:7XTb2rFhEetv59NVYNz6jgfVXeHPG4Yq24nUdVGRG7CW': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3VvdAgpv9u23CUeyb2MLud3qu3gzEPbLGHHG3iajPdnRp8b2RxgpwhVxzbrNDqA6yegi7oGbmdGYWa9cjiuTgPK8',
+  'ed25519:7Sb5RrbC7hkcPZoH5eutyKYjj5jvdPd8WFonoAfRRzbS': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/5wkgUSKhe2YKNjBYK6njuJnwkVy2AUZvWiAfkUkutuPpsKb4iKmURnMMSB19qDhGih4a2CKp1vND8rDneSUh2MXn',
+  'ed25519:BUpvErX7wXAd16ji76yUh14Mo9eFh1cNzd3nKipinFPN': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/bsC7zHMruhK8CJ6pxyj82AHvJH3har6Ubq28HNJj1xuLzVZiAhE3uTSREMdJwzygoK8ic6gsRU4yA2vspftnZgt',
+  'ed25519:Baiqh6ezL6rJoUbJCSPWw9qXTMe2jaTzZF1DQTx1ScYj': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2rzVcJ6CbfM23Cf6o6UTHPVdist2M745YZeJWf595yUipe2Yuya95ZBSoz8sMYquAGVsEy7HhFmXKXbBn1cnKHU7',
+  'ed25519:58Q7NfdwHeDfSPEoUHiSeisQcTrgXZa25duKc18Re8Fc': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/21peaxNv5gpYy1s71VRUivkMLyM43DqBqpuZq99FQDFFWyJ3wzD7rP4VLCnQ2DLxfjVFsGEtzikZqaPGqw1gMdZL',
+  'ed25519:9qwkPn7krvqEx3RqujPLqxJBdP3bmvzhjBCsjgZUhoer': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2s9u1HttZwdgwbwYs3N61G3XnAxEz2NSSttz9usWVfxocHyQ1cid5mW1nMoDsd5j6iWXRNkJz7iymK4RSeTztkEv',
+  'ed25519:Era5gnMWVoxbJWuGBSXN377w28qrs4niEZY1K7A7NnPs': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2Sor9GN5xvwDPRWBnosg8Snn6hcxGm4Kf9gkpcDXZkXMu7SGcBj1vpoQ92pxX2ncdqs4bTCHx6H8qgB7Tm7dfXzy'
 }
-Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v1-4.keypom.testnet.com
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
 ```
-
-
----
-
-## Project Status
 
 ---
 
 ## Conclusion
 
+So far, you've learned how to set up your React app, as well as break down the ticketing system into functional requirments. You then took those requirements and wrote a script to create the drop.
+
+In the next tutorial, the ticketing process will be broken down into stages. From there, the react app to reflect those states will be created.
 ---
+
+to add:
+progress tracker of tasks; i.e table of tasks at start
 

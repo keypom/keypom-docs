@@ -269,8 +269,5 @@ Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.test
 So far, you've learned how to set up your React app, as well as break down the ticketing system into functional requirments. You then took those requirements and wrote a script to create the drop.
 
 In the next tutorial, the ticketing process will be broken down into stages. From there, the react app to reflect those states will be created.
----
 
-to add:
-progress tracker of tasks; i.e table of tasks at start
 

@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-In this tutorial, you are going to learn how to create a Function Call Drop from scratch. Similar to how the other drops can be claimed by both new and existing users, FC drops are a great onboarding tool. The difference, is that FC drops can invoke methods on external smart contracts when the link is claimed. This allows for a ton of flexibility and use-cases such as [auto-registering users into a DAO](../../Tutorials/Advanced/daos/concept.md) as part of the onboarding process.
+In this tutorial, you are going to learn how to create a Function Call Drop from scratch. Similar to how the other drops can be claimed by both new and existing users, FC drops are a great onboarding tool. The difference, is that FC drops can invoke methods on external smart contracts when the link is claimed. This allows for a ton of flexibility and use-cases such as [auto-registering users into a DAO](../../Tutorials/Advanced/daos/introduction.md) as part of the onboarding process.
 
 In this tutorial, the function call will be to Lazy Mint an NFT.
 
@@ -407,4 +407,4 @@ This can be confirmed by visiting the "Collectibles" tab in your NEAR wallet. Yo
 ## Conclusion
 In this tutorial, you learned the how to [create a function call drop](fc-drops.md#creating-drop-with-function-call-data) using the `fcData` parameter. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
-Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/ticketing/concept.md) for more challenging and practical examples.
+Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/homepage.md) for more challenging and practical examples.

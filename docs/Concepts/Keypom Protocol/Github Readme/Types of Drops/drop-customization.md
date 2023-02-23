@@ -49,7 +49,7 @@ This parameter is incredibly versatile and can be used in numerous ways. Some ex
 3. A method to accurately track retention, such as [Event Turnout](../../Github%20Readme/Types%20of%20Drops/fcdrops.md#nft-ticketing)
 
 
-When used with [function call drops](fcdrops.md), some more complex use cases can be created, such as [Customizable Multi-Phase Onboarding](../../../../Tutorials/Advanced/customized-onboarding/concept.md) and [Auto DAO-Registration](../../../../Tutorials/Advanced/daos/concept.md)
+When used with [function call drops](fcdrops.md), some more complex use cases can be created, such as [Customizable Multi-Phase Onboarding](../../../../Tutorials/Advanced/customized-onboarding/introduction.md) and [Auto DAO-Registration](../../../../Tutorials/Advanced/daos/introduction.md)
 
 ---
 

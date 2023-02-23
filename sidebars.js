@@ -130,6 +130,50 @@ const sidebars = {
       label: 'Advanced',
       collapsed: false,
       items: [
+            {
+              type: 'category',
+              label: 'Ticketing',
+              // link: {
+              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+              // },
+              collapsed: true,
+              items: [
+                'Tutorials/Advanced/ticketing/introduction',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Progressive Onboarding',
+              // link: {
+              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+              // },
+              collapsed: true,
+              items: [
+                'Tutorials/Advanced/customized-onboarding/introduction',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'DAO Onboarding',
+              // link: {
+              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+              // },
+              collapsed: true,
+              items: [
+                'Tutorials/Advanced/daos/introduction',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Recurring Payments',
+              // link: {
+              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+              // },
+              collapsed: true,
+              items: [
+                'Tutorials/Advanced/subscriptions/introduction',
+              ],
+            },
             'Tutorials/Advanced/homepage',
       ],
     },

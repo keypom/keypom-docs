@@ -141,17 +141,17 @@ const sidebars = {
                 'Tutorials/Advanced/ticketing/introduction',
               ],
             },
-            {
-              type: 'category',
-              label: 'Progressive Onboarding',
-              // link: {
-              //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
-              // },
-              collapsed: true,
-              items: [
-                'Tutorials/Advanced/customized-onboarding/introduction',
-              ],
-            },
+            // {
+            //   type: 'category',
+            //   label: 'Progressive Onboarding',
+            //   // link: {
+            //   //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
+            //   // },
+            //   collapsed: true,
+            //   items: [
+            //     'Tutorials/Advanced/customized-onboarding/introduction',
+            //   ],
+            // },
             {
               type: 'category',
               label: 'DAO Onboarding',

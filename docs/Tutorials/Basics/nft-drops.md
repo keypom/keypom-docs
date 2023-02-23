@@ -108,7 +108,7 @@ After installing the SDK, your `package.json` file should now look slightly diff
   "license": "ISC",
   # highlight-start
   "dependencies": {
-    "keypom-js": "^1.2.0-rc.1"
+    "keypom-js": "^1.4.0-rc.1"
   }
   # highlight-end
 }
@@ -212,7 +212,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 The code for setting up the NEAR connection and minting the NFT is shown below. In the skeleton code, these are steps 1 and 2.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
 ```
 
 :::note
@@ -262,7 +262,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/nft-example.js#L45-L67
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L45-L67
 ```
 
 </TabItem>
@@ -315,7 +315,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/nft-example.js#L1-L82
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L1-L82
 ```
 
 </TabItem>
@@ -346,9 +346,9 @@ npm install
 Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` in the script with the credentials of your account found in your `~/.near-credentials` folder
 :::
 
-From there, you are able to run this NFT Drop script that was made in this tutorial using the following command:
+From there, you can navigate back to the root directory and run this NFT Drop script that was made in this tutorial using the following command:
 ``` bash
-npm run nft-keypom
+cd .. &&  npm run nft-keypom
 ```
 :::note
 The SDK script is being tested here; use `npm run nft-near` to test the `NEAR-API-JS` script instead.
@@ -357,7 +357,7 @@ This should return a successful drop creation and console log a Public Key and L
  b 
 ```bash
 Public Keys and Linkdrops:  {
-  'ed25519:Gw5Lkkts1qHUEXvkcX6H3hkxNFQrC6cnLNtDApxie2p3': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/3amoAemhXqvbCf7Ufu8gXnySE8dmTjJqjBntaUZQLeRsicEd1VsfRSCauMS8abGbzxbmDiPgtGcm6efs4Qfcj4xb'
+  'ed25519:EvU5agA98DDSo1kZj76voGoxLD93YSR7T2zGHz7HSyko': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3R7wFXRNsRmrCaSrGEwqAhRYFzLuSUn215iX216bQijv4e1a9BEMZ7tWsQsT6zejYzWWU5CbzLnBxQiVKmDmZ9iB'
 }
 ```
 
@@ -368,19 +368,15 @@ To see the full console log from this drop creation, see the expandable section 
 <p>
 
 ``` bash
-yarn run v1.22.19
-warning ../../../package.json: No license field
-$ node docs-examples/keypom-js-sdk/nft-example.js
-Account.functionCall(contractId, methodName, args, gas, amount) deprecated use `Account.functionCall(FunctionCallOptions)` instead docs-examples/keypom-js-sdk/nft-example.js:28:23
-Receipts: CZ2FN99DCY2VSEp3PtGg8A7DAu6gb6cbM3vsypU9XJkB, fCfRujBXDPgdMhPEFkw6eiJBcAsWCpcXcHHL6wDgj52
-        Log [nft.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"keypom-docs-demo.testnet","token_ids":["keypom-sdk-token-01"]}]}
-Receipts: 5tAUYno3BKpjEu8TQ1WEdBE4m3HxBvm9Z4W3zZ5xzS87, BZkWwC9bVaMnbmChHr49bymqUomKeXGsGC7ZgzUZpW2b
-        Log [v1-3.keypom.testnet]: Current Block Timestamp: 1674846627051314306
-        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v1-3.keypom.testnet]: Total required storage Yocto 12070000000000000000000
-        Log [v1-3.keypom.testnet]: Current balance: 1.1821351, 
-            Required Deposit: 1.0318326, 
-            total_required_storage: 0.01207,
+Receipts: E7xuBkgGVLv6svL53u6nKMekgb8LxBDjAQhDSXPnXhSq, 3EgesDrZk4SVB31UqPPbCno2hrV9RMAKmsjuiJcYETfY
+        Log [nft.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"keypom-docs-demo.testnet","token_ids":["keypom-sdk-token-000001"]}]}
+Receipts: 5jZZh5DtnZSjJ2YhCLWYT3nZkGnq6bpKcP3o8RbNr125, 3t8917bAD64781hikJRY14A7AJvg1V8HuY67pByjgRS9
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1677015171609336996
+        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v2.keypom.testnet]: Total required storage Yocto 12100000000000000000000
+        Log [v2.keypom.testnet]: Current balance: 1.1085114, 
+            Required Deposit: 1.0318626, 
+            total_required_storage: 0.0121,
             Drop Fee: 0, 
             Key Fee: 0 Total Key Fee: 0,
             allowance: 0.0187626 total allowance: 0.0187626,
@@ -391,17 +387,18 @@ Receipts: 5tAUYno3BKpjEu8TQ1WEdBE4m3HxBvm9Z4W3zZ5xzS87, BZkWwC9bVaMnbmChHr49bymq
             None FCs: 0,
             length: 1
             GAS to attach: 100000000000000
-        Log [v1-3.keypom.testnet]: New user balance 0.1503024
-        Log [v1-3.keypom.testnet]: Fees collected 0
-Receipts: CtmXr16yuuV4KAPZm2ZNbXNKcXundTUSNAggzVgi7N59, Cr9QM9FefBf9bGcuHavWUwj2utwAkdpaXM4xeVTrMMA, FsFwnM7WCFZswC4bZkjwi1CdbsKeuS7BTerptBJtVMnK
-        Log [nft.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_transfer","data":[{"old_owner_id":"keypom-docs-demo.testnet","new_owner_id":"v1-3.keypom.testnet","token_ids":["keypom-sdk-token-01"]}]}
-Receipt: 6gVMGoupyoJKL7RjnaEjHzR2nLaGZpT6nGTp6HMCmafz
+        Log [v2.keypom.testnet]: New user balance 0.0766488
+        Log [v2.keypom.testnet]: Fees collected 0
+Receipts: 2c1XZeovz9NtsxArPiph48gf1jms562gswjeJoBk9E8h, 93sWKYqJuMje9oZZcCJUbe1bQmhWQCapiowXjQw1NukV, 6F1Z3Xxn8eAyUZ4K9U7vknBysH3fVHHE7NbCMPcrgVrU
+        Log [nft.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_transfer","data":[{"old_owner_id":"keypom-docs-demo.testnet","new_owner_id":"v2.keypom.testnet","token_ids":["keypom-sdk-token-000001"]}]}
+Receipt: 49j1GTSBQV7oY1W7pWsbYK71bpkghdauyLWdKsXXf2Va
         Log [nft.examples.testnet]: drop.registered_uses 1
-        Log [nft.examples.testnet]: Subtracting 1040000000000000000000 from funder to cover storage. New balance is 149262478807229311000000
+        Log [nft.examples.testnet]: Subtracting 1080000000000000000000 from funder to cover storage. New balance is 75568866517858604000000
 Public Keys and Linkdrops:  {
-  'ed25519:Gw5Lkkts1qHUEXvkcX6H3hkxNFQrC6cnLNtDApxie2p3': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/3amoAemhXqvbCf7Ufu8gXnySE8dmTjJqjBntaUZQLeRsicEd1VsfRSCauMS8abGbzxbmDiPgtGcm6efs4Qfcj4xb'
+  'ed25519:EvU5agA98DDSo1kZj76voGoxLD93YSR7T2zGHz7HSyko': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3R7wFXRNsRmrCaSrGEwqAhRYFzLuSUn215iX216bQijv4e1a9BEMZ7tWsQsT6zejYzWWU5CbzLnBxQiVKmDmZ9iB'
 }
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet 
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
+}
 ```
 
 </p>
@@ -416,10 +413,10 @@ After the claim transaction succeeds, you can view the NFT in your collectibles 
 
 To check the transactions, click the final link in the console log when you run the script.
 ```bash
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet 
+Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v2.keypom.testnet 
 ```
 
-From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/973w2aW112VuxA5CLhiqVo46bCchJAWovMQcp1F56zwj#5tAUYno3BKpjEu8TQ1WEdBE4m3HxBvm9Z4W3zZ5xzS87), [`nft_transfer_call`](https://explorer.testnet.near.org/transactions/4EPqp1kU6a8cJ2ST1CPjJc7FTHbNZE8jqCGEpKxHCcE8#CtmXr16yuuV4KAPZm2ZNbXNKcXundTUSNAggzVgi7N59) and [`claim`](https://explorer.testnet.near.org/transactions/ERqgjZMrQsu7Z8m58iE7KL63yDAz77Fgfkr4Y14spTZH) transactions. 
+From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/9rR6mPjoQFKC2Euuvn5yh5e6hPv3WTrMYjwja3ppkjaD), [`nft_transfer_call`](https://explorer.testnet.near.org/transactions/A2hdnm6mHQNLupFLP1vMNZ1J8QHkxLqDLqocUnQxNC5F) and [`claim`](https://explorer.testnet.near.org/transactions/5Kx9F5nxjbWpq8qUr7rRuDun8zipvR7TFbVuPoP5qwBW) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 :::note

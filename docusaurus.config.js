@@ -20,6 +20,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     ({
       hashed: true,
       language: ["en"],
+      ignoreFiles: ["docs/1.1/nothing-page", "docs/nothing-page", "docs/1.2/nothing-page"]
     }),
   ],
   ],

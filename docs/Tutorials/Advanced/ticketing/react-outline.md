@@ -19,22 +19,44 @@ With this tutorial, 2 React apps will be created; one for the attendees and the 
 ---
 
 ## Ticket App Flow
-The ticket app is for the attendees and will only consist of 2 stages. 
+The ticket app is for the attendees and will only consist of 3 stages.
 
 <p align="center">
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/ticket-flow.png").default} width="100%" height="100%" alt="ticketing"/>
 </p>
 
-1. A page showing their unique QR code, corresponding to their private key from the drop that they received from the organizers.  
-2. After the QR code page has been scanned and claimed, a page where the user may optionally onboard to NEAR and receive a POAP will 
+* **Stage 1:** A page showing their unique QR code, corresponding to their private key from the drop that they received from the organizers.  
+* **Stage 2:** After the QR code has been scanned and claimed, a page where the user can chose receive a POAP will appear.
+* **Stage 3:** If the user chooses to claim their POAP, the third stage will show additional resources to learn more about NEAR.
+
+To transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events occur:
+1. From stages 1 &rarr; 2: The doorman must scan the QR code. This calls claim with the event password. Nobody else is able to call this claim as the password is only known by the doorman/event organizers. If the claim fails, the page will stay at stage 1.
+2. The transition between stage 2 &rarr; 3 occurs when the user chooses to claim their POAP. Once the claim is complete and the POAP is in their wallet, the page will transition to stage 3.
 
 ---
 
 ## Scanner App Flow
 
+The scanner app is for the doorman and consists of 3 stages.
+
 <p align="center">
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/scanner-flow.png").default} width="100%" height="100%" alt="ticketing"/>
 </p>
+
+* **Stage 1:** A page with the camera viewport open, constantly scanning for QR codes  
+* **Stage 2:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code and claim using the event password. During this time, the app will indicate it is in the process of claiming.
+* **Stage 3:** After the claim is processed, the page will return either as successful or a failed claim.
+
+To transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events occur:
+
+1. From stages 1 &rarr; 2: Data must be read in; this is done with a QR code reader library which indicates when that occurs. As soon as data is read in, the app will transition from stage 1 &rarr; 2.
+2. The transition between stage 2 &rarr; 3 occurs when the `claim` function call returns. It will either return as successful or failed.
+
+After stage 3, the entire cycle will loop back to stage 1 after two seconds. 
+
+:::info Event Password
+The event password will only be prompted once and before any scanning starts. If the doorman wishes to enter a different password once scanning starts, they can simply refresh the page and be prompted again. 
+:::
 
 ---
 

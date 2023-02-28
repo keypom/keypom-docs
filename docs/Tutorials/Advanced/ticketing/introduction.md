@@ -4,7 +4,7 @@ sidebar_label: 'Introduction'
 # Introduction
 The problem with current Web3 ticketing systems is that it requires users to have a wallet. You receive an NFT as your ticket and when you enter the venue, it is burnt. This is a huge barrier to entry for people that are either non crypto-native or use ledgers. In addition, there is often no proof of attendance for the event as the NFT is burnt (which also requires an internet connection).
 
-With Keypom, instead of your ticket being an NFT, users can now get into events by using an access key embedded with a simple Web2 style link. When clicked, a QR code is exposed which will be scanned by the bouncers. Only a screenshot of the QR code is exposed which means no wifi is needed to get into the event. With this new system in mind:
+With Keypom, instead of your ticket being an NFT, users can now get into events by using an access key embedded in a simple Web2 style link. When clicked a QR code containing the access key, which can only be scanned and claimed by the doorman, is exposed. Only a screenshot of the QR code is exposed which means no wifi is needed to get into the event. With this new system in mind:
 * No wallet is needed to enter the event or receive a POAP.
 * No wifi is needed at the door.
 * An NFT is minted on-demand for each user that attends the event.

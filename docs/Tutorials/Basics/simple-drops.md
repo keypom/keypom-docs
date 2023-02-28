@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 ## Introduction
 In this tutorial, you will learn how to create a simple $NEAR drop from scratch. By embedding $NEAR in a Web2 style link, the simple drop allows you to onboard both existing and new users. 
 
-Being the simplest Keypom drop type, it acts as the foundation for the other 3 kinds of Keypom drops. Despite this, the simple drop opens the door to more complex use cases such as [subscription services](../../Tutorials/Advanced/subscriptions/concept.md).
+Being the simplest Keypom drop type, it acts as the foundation for the other 3 kinds of Keypom drops. Despite this, the simple drop opens the door to more complex use cases such as [subscription services](../../Tutorials/Advanced/subscriptions/introduction.md).
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/nw-claim.png").default} alt="Near Wallet claim" width="100%"/> </p>
 

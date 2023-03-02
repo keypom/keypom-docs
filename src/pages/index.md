@@ -67,13 +67,10 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most powerful drop" image="docs/icons/oracle.png" />
   </Column>
 
-
-
-   <Column title="Advanced Tutorials" size="3">
-    <Feature url="../../docs/next/Tutorials/Advanced/ticketing/concept" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/customized-onboarding/concept" title="Customized Onboarding" subtitle="Create a custom and interactive onboarding" image="docs/icons/onboarding.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/dao/concept" title="DAO Onboarding" subtitle="Create a seamless DAO experience" image="docs/icons/dao.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/subscriptions/concept" title="Subscriptions using Web3" subtitle="Make a Web3 subscription service" image="docs/icons/subscription.png" />
+  <Column title="Advanced Tutorials" size="3">
+    <Feature url="../../docs/next/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
+    <Feature url="../../docs/next/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with a seamless onboarding experience" image="docs/icons/dao.png" />
+    <Feature url="../../docs/next/Tutorials/Advanced/subscriptions/introduction" title="Subscriptions using Web3" subtitle="Make a Web3 subscription service" image="docs/icons/subscription.png" />
   </Column>
 
   <Column title="Developer Documentation" size="3">

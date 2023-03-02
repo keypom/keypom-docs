@@ -21,7 +21,7 @@ As an example, if the methodName was `nft_mint` and it expected a field `receive
 
 #### Defined in
 
-[src/lib/types/protocol.ts:255](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L255)
+[src/lib/types/protocol.ts:260](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L260)
 
 ___
 
@@ -33,7 +33,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[src/lib/types/protocol.ts:245](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L245)
+[src/lib/types/protocol.ts:245](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L245)
 
 ___
 
@@ -45,7 +45,20 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:249](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L249)
+[src/lib/types/protocol.ts:249](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L249)
+
+___
+
+### attached\_gas
+
+ `Optional` **attached\_gas**: `string`
+
+How much gas to attach to this method call. If none, all the gas is split between the parallel method calls in a given claim.
+If this is specified, the key can ONLY be used to call `claim` and no `deposit_per_use` can be specified. This leads the key to act like a method calling proxy instead of a linkdrop.
+
+#### Defined in
+
+[src/lib/types/protocol.ts:254](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L254)
 
 ___
 
@@ -59,7 +72,7 @@ As an example, if an NFT contract expected the Keypom drop ID to be passed in as
 
 #### Defined in
 
-[src/lib/types/protocol.ts:261](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L261)
+[src/lib/types/protocol.ts:266](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L266)
 
 ___
 
@@ -73,7 +86,7 @@ As an example, if an NFT contract wanted to gate only users with an odd key ID t
 
 #### Defined in
 
-[src/lib/types/protocol.ts:273](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L273)
+[src/lib/types/protocol.ts:278](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L278)
 
 ___
 
@@ -87,7 +100,7 @@ As an example, if an NFT contract wanted to gate only users with an odd key ID t
 
 #### Defined in
 
-[src/lib/types/protocol.ts:267](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L267)
+[src/lib/types/protocol.ts:272](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L272)
 
 ___
 
@@ -99,7 +112,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L241)
+[src/lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L241)
 
 ___
 
@@ -111,7 +124,20 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[src/lib/types/protocol.ts:237](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L237)
+[src/lib/types/protocol.ts:237](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L237)
+
+___
+
+### receiver\_to\_claimer
+
+ `Optional` **receiver\_to\_claimer**: `boolean`
+
+If set to true, the claiming account ID will be the receiver ID of the method call.
+This receiver must be a valid account and non-malicious (cannot be set to the keypom contract)
+
+#### Defined in
+
+[src/lib/types/protocol.ts:283](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L283)
 
 ___
 
@@ -124,4 +150,4 @@ By default, the user cannot provide any custom arguments
 
 #### Defined in
 
-[src/lib/types/protocol.ts:278](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L278)
+[src/lib/types/protocol.ts:288](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L288)

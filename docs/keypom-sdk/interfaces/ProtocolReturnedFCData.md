@@ -11,18 +11,6 @@ snake cased instead of camel cased due to what the Protocol returns.
 
 ## Properties
 
-### config
-
- `Optional` **config**: [`ProtocolReturnedFCConfig`](ProtocolReturnedFCConfig.md)
-
-Specific configurations for the Function-Call drop.
-
-#### Defined in
-
-[src/lib/types/protocol.ts:306](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L306)
-
-___
-
 ### methods
 
  **methods**: `Maybe`<[`ProtocolReturnedMethod`](ProtocolReturnedMethod.md)[]\>[]
@@ -32,4 +20,4 @@ If a given key use does not have an undefined set of methods, when it is used, a
 
 #### Defined in
 
-[src/lib/types/protocol.ts:302](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/protocol.ts#L302)
+[src/lib/types/protocol.ts:300](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L300)

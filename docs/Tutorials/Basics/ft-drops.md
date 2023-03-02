@@ -108,7 +108,7 @@ After installing the SDK, your `package.json` file should now look slightly diff
   "license": "ISC",
   # highlight-start
   "dependencies": {
-    "keypom-js": "^1.2.0-rc.1"
+    "keypom-js": "^1.4.0-rc.1"
   }
   # highlight-end
 }
@@ -218,7 +218,7 @@ Using `NEAR-API-JS`, a `viewFunction` to the FT contract can be made to call `ft
 The code for setting up the NEAR connection and ensuring sufficient funder FT balance is shown below. In the skeleton code, these are steps 1 and 2.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/ft-example.js#L9-L41
 ```
 :::note
 In the code, you may notice the balances defined using `BN`. These are simply *Big Numbers* and is a library built to handle numbers beyond JavaScript's [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). 
@@ -279,7 +279,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/ft-example.js#L43-L64
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/ft-example.js#L43-L65
 ```
 
 </TabItem>
@@ -327,7 +327,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/keypom-js-sdk/ft-example.js#L1-L80
+https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/ft-example.js#L1-L81
 ```
 
 </TabItem>
@@ -348,7 +348,7 @@ Here, you'll learn how to run the code that was just covered, and what to expect
 
 To view the completed code, clone the Keypom SDK repo and visit the examples directory:
 ``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk/n]ft-example.js
+git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples
 ```
 To run the code you just cloned, install all the necesasry packages. 
 ```bash
@@ -358,9 +358,9 @@ npm install
 Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` in the script with the credentials of your account found in your `~/.near-credentials` folder
 :::
 
-From there, you are able to run this FT Drop script that was made in this tutorial using the following command:
+From there, you can navigate back to the root directory and run this FT Drop script that was made in this tutorial using the following command:
 ``` bash
-npm run ft-keypom
+cd .. && npm run ft-keypom
 ```
 :::note
 The SDK script is being tested here; use `npm run ft-near` to test the `NEAR-API-JS` script instead.
@@ -369,7 +369,7 @@ This should return a successful drop creation and console log a Public Key and L
 
 ```bash
 Public Keys and Linkdrops:  {
-  'ed25519:BwHf7aPaXWRQKj4YDqU67qRwJ9sGPhiNH5TSdBUWbeox': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/5Dvd5UzvVDtrfYJLB8SLGh9tWdiz7oUwhxUNvuu3TjRS54W9vNnVUYbuJ9zzrXaZc8gFPuXMAAAH6NqnxMkMHpaa'
+  'ed25519:5BGPkbc7L2TDjZJKXMpwp212C8htvbVrrJVxnqdW4wzD': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2EiALoL2b31Ys2K4YtPZvCoDFUB6SwcHHdqzKnyyUQjXekoxHPybWahHSwmtQYytyaZp9ScakMtma7zfFoT4Uctu'
 }
 ```
 
@@ -380,17 +380,14 @@ To see the full console log from this drop creation, see the expandable section 
 <p>
 
 ``` bash
-yarn run v1.22.19
-warning ../../../package.json: No license field
-$ node docs-examples/keypom-js-sdk/ft-example.js
-Receipts: 7rapjpGF8DMhc7rZt5cD3Y291jo44qKMBZHQUGHmttVG, BanoHX6yNjTzX9mdxyRffdqHaQzz2BxipTC1SHGWYrCj, 3Mra6c4pifoXLHEGyQMRwuCBRaHQdrysfKdF1j9ydFzK
-        Log [v1-3.keypom.testnet]: Current Block Timestamp: 1674866893166668038
-        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v1-3.keypom.testnet]: was_ft_registered: true
-        Log [v1-3.keypom.testnet]: Total required storage Yocto 11910000000000000000000
-        Log [v1-3.keypom.testnet]: Current balance: 1.2394966, 
-            Required Deposit: 1.0316726, 
-            total_required_storage: 0.01191,
+Receipts: Deh44Xf8VhtDUmotqXyNaRgwGH66D6xMkzc2z4C2Zbst, 4sgjdBC4ZVsWRr3cwnGqTsSjDcGUaShQsWzgtVXUTzSn, 3wMFSsnLRFpeKdJFsLnHZfDfNAp4GffWFmBtKJpbxov5
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1677015598581427999
+        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v2.keypom.testnet]: was_ft_registered: true
+        Log [v2.keypom.testnet]: Total required storage Yocto 11940000000000000000000
+        Log [v2.keypom.testnet]: Current balance: 1.1296246, 
+            Required Deposit: 1.0317026, 
+            total_required_storage: 0.01194,
             Drop Fee: 0, 
             Key Fee: 0 Total Key Fee: 0,
             allowance: 0.0187626 total allowance: 0.0187626,
@@ -401,21 +398,21 @@ Receipts: 7rapjpGF8DMhc7rZt5cD3Y291jo44qKMBZHQUGHmttVG, BanoHX6yNjTzX9mdxyRffdqH
             None FCs: 0,
             length: 1
             GAS to attach: 100000000000000
-        Log [v1-3.keypom.testnet]: New user balance 0.207824
-        Log [v1-3.keypom.testnet]: Fees collected 0
-        Log [v1-3.keypom.testnet]: Performing CCC to get storage from FT contract
-Receipts: 9NQFrjxffX2KfGtkwS9T1Fg9qZotUgoR9JSmZYPPNUkL, 4M3Q9VNBKCMxcnPWBsgrQyDEs5sf98zLibFXSK9FjrhB
-        Log [v1-3.keypom.testnet]: User has enough balance to cover FT storage. Subtracting 0.0025 from user balance. User balance is now 0.205324
-        Log [v1-3.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v1-3.keypom.testnet]: FT contract already registered. Refunding user balance for 0.00125. Balance is now 0.206574
-Receipts: HHpoyVk6JCTdm3nRx81QgJNHKjfzkpXWcykEcFPUohrv, Ck44W2Qt9JxUni3Zuhb4bFLs8eL84Sc3kKWRc3hiVoWN, 4esPCtbCixj7TDixkiAvsFZJdjjodKRFwAwyRe2TArtP
-        Log [ft.keypom.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_transfer","data":[{"old_owner_id":"keypom-docs-demo.testnet","new_owner_id":"v1-3.keypom.testnet","amount":"1000000000000000000000000"}]}
-Receipt: CWvpXcfg41HBP1e6gD7GXgTEehT1QeybTRMT1j4iANSh
+        Log [v2.keypom.testnet]: New user balance 0.097922
+        Log [v2.keypom.testnet]: Fees collected 0
+        Log [v2.keypom.testnet]: Performing CCC to get storage from FT contract
+Receipts: B8QZN8mAQrZWEepaaxWNp1Zv1ikom6mMTDrBV4t17c6e, CiBcYbMsq5YYB5i4FmJPKhG97XtZtUmJFBBedTaDEdKy
+        Log [v2.keypom.testnet]: User has enough balance to cover FT storage. Subtracting 0.0025 from user balance. User balance is now 0.095422
+        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
+        Log [v2.keypom.testnet]: FT contract already registered. Refunding user balance for 0.00125. Balance is now 0.096672
+Receipts: HnrB7sWQMcDUhLrcsqfNkyN7dsLHQ754iTaJGppap7w3, 4X6yRXCFciXp7SGhmkzHxTmqbaSdGV5a9SVUAFkxpkLo, 7eRbRqnqeU9DweWHvkZQBo9BMMZHEAAMypChZybDYP6C
+        Log [ft.keypom.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_transfer","data":[{"old_owner_id":"keypom-docs-demo.testnet","new_owner_id":"v2.keypom.testnet","amount":"1"}]}
+Receipt: B9CFNtKN6eWwdFeTBBwW29zcZ7TWVpVgh8B4c6DiQc8T
         Log [ft.keypom.testnet]: New uses registered 1
 Public Keys and Linkdrops:  {
-  'ed25519:BwHf7aPaXWRQKj4YDqU67qRwJ9sGPhiNH5TSdBUWbeox': 'https://wallet.testnet.near.org/linkdrop/v1-3.keypom.testnet/5Dvd5UzvVDtrfYJLB8SLGh9tWdiz7oUwhxUNvuu3TjRS54W9vNnVUYbuJ9zzrXaZc8gFPuXMAAAH6NqnxMkMHpaa'
+  'ed25519:5BGPkbc7L2TDjZJKXMpwp212C8htvbVrrJVxnqdW4wzD': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2EiALoL2b31Ys2K4YtPZvCoDFUB6SwcHHdqzKnyyUQjXekoxHPybWahHSwmtQYytyaZp9ScakMtma7zfFoT4Uctu'
 }
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet 
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com 
 ```
 
 </p>
@@ -430,10 +427,10 @@ In your NEAR wallet, you should now be able to see the FT tokens that were trans
 
 To check the transactions, click the final link in the console log when you run the script.
 ```bash
-Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v1-3.keypom.testnet 
+Keypom Contract Explorer Link: https://explorer.testnet.near.org/accounts/v2.keypom.testnet 
 ```
 
-From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/6ipZEMFU8zQWupZg66gDkngBP3XzZuq5q2QqsTqab3j#7rapjpGF8DMhc7rZt5cD3Y291jo44qKMBZHQUGHmttVG), [`ft_transfer_call`](https://explorer.testnet.near.org/transactions/JrpKU5uhsmsoe2qxcCieKJyhhBLsq2YvVaduHE6xC8w#HHpoyVk6JCTdm3nRx81QgJNHKjfzkpXWcykEcFPUohrv) and [`claim`](https://explorer.testnet.near.org/transactions/67dsn2WAz69CHiwNqqZJdNpkj7nErWBL6Hcek5abj94y) transactions. 
+From there, you should be able to see the [`create_drop`](https://explorer.testnet.near.org/transactions/6HkwpwWVA7m1tAGj75JGpF975toStWRF1y8FSRDMPPfT), [`ft_transfer_call`](https://explorer.testnet.near.org/transactions/47HmGKAHx4TDp6vNbnBAb9ifS1gTXrC58o7svFmZDYzk) and [`claim`](https://explorer.testnet.near.org/transactions/62gQiyQjx9z9WJsVQNaaa4fje9PeeTpCuHun2PZ8WjNm) transactions. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 

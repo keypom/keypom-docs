@@ -18,7 +18,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[src/lib/types/drops.ts:150](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/drops.ts#L150)
+[src/lib/types/drops.ts:150](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L150)
 
 ___
 
@@ -30,7 +30,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[src/lib/types/drops.ts:154](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/drops.ts#L154)
+[src/lib/types/drops.ts:154](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L154)
 
 ___
 
@@ -42,7 +42,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[src/lib/types/drops.ts:141](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/drops.ts#L141)
+[src/lib/types/drops.ts:141](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L141)
 
 ___
 
@@ -55,4 +55,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[src/lib/types/drops.ts:146](https://github.com/keypom/keypom-js/blob/5eb1fcc/src/lib/types/drops.ts#L146)
+[src/lib/types/drops.ts:146](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L146)

@@ -14,33 +14,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   organizationName: 'minqianlu', // Usually your GitHub org/user name.
   projectName: 'minqianlu.github.io', // Usually your repo name.
   trailingSlash: false,
-  themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock'],
+  themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock',
+  [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+    ({
+      hashed: true,
+      language: ["en"],
+      ignoreFiles: ["docs/1.1/nothing-page", "docs/nothing-page", "docs/1.2/nothing-page", "docs/next/Tutorials/Misc/sign-txn"]
+    }),
+  ],
+  ],
 
   // plugins: [
-  //   [
-  //     'docusaurus-plugin-typedoc',
-
-  //     // Plugin / TypeDoc options
-  //     {
-  //       entryPoints: ['../keypom-js/src/index.ts'],
-  //       tsconfig: '../keypom-js/tsconfig.json',
-  //       includeVersion: true,
-  //       entryPointStrategy: 'expand',
-  //       excludeNotDocumented: false,
-  //       out: '.',
-  //       hideGenerator: false,
-  //       entryDocument: 'welcome.md',
-  //       hideMembersSymbol: true,
-
-  //       out: 'keypom-sdk',
-  //       sidebar: {
-  //         categoryLabel: 'SDK TypeDocs',
-  //         collapsed: false,
-  //         position: 0,
-  //         fullNames: true,
-  //       },
-  //     },
-  //   ],
+  //   require.resolve('docusaurus-lunr-search')
   // ],
 
   presets: [
@@ -181,5 +167,22 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      // algolia: {
+      //   // The application ID provided by Algolia
+      //   appId: "KWAT5GJATX",
+      //   // Public API key: it is safe to commit it
+      //   apiKey: "2e5d96bd04a718b0ae636859f5478336",
+      //   indexName: "keypom",
+      //   // Optional: see doc section below
+      //   contextualSearch: true,
+      //   // Optional: Algolia search parameters
+      //   searchParameters: {
+      //     clickAnalytics: true,
+      //     analytics: true,
+      //     enableReRanking: true,
+      //   },
+      //   //... other Algolia params
+      //   placeholder: "Search the Docs...",
+      // },
   },
 });

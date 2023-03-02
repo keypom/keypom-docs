@@ -10,14 +10,19 @@ Keypom aims to solve these problems by allwoing for a ticketing system that has 
 
 * No wallet is needed to enter the event or receive a POAP.
 * No wifi is needed at the door.
-* An NFT is minted on-demand for each user that attends the event.
 * Users can optionally onboard onto NEAR if they don't have a wallet.
+* Users that choose to onboard can receive a Proof-of-Attendence NFT, although this is optional
 
 These features allow for an entirely new class of non-technical attendees and create a smoother experience than traditional NFT ticketing;
 
 In this tutorial, you'll be creating that ticketing system, and incorporating a POAP as well to further reward your community members that come out to your events. 
 
 ## Prerequisites
+:::danger IMPORTANT
+MUST MATCH SDK NAJ VERSION WITH REACT APP NAJ VERSION!
+:::
+
+
 For the advanced tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  

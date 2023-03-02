@@ -79,9 +79,8 @@ https://github.com/keypom/keypom-js/blob/b1ff9af4cf4bdef03e27c59717e771864ea412c
 You can see lines 1, 22, and 43 hold conditions on the current key uses.
 * **`curUse` is 1**: The ticket app should show a QR code representing the linkdrop link. The `QrCode` component is rendered by passing in the `link` state variable created earlier. 
 * **`curUse` is 2**: The first claim was done by the bouncer, and thus should give the user the option to claim their POAP. This is done with the same linkdrop link. 
-* **`curUse` is anything else**: Currently this is used as a problem shooting page, just to see what the key use is. If the key use is 0, that means the key is depleted and deleted. 
-
-**ADD CURUSE 3 TO ONBOARD TO NEAR AND TEST**
+* **`curUse` is 0**: The second claim was used, and thus the key was depleted and deleted. Here, the user will be given resources to continue learning about NEAR. 
+* **`curUse` is anything else**: Currently this is used as a problem shooting page, just to see what the key use is.
 
 ### Full Code
 The full code, including the set up and the rendering, can be seen below.

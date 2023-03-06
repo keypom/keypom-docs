@@ -284,13 +284,7 @@ All function parameters and default values for the SDK and Keypom functions can 
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the linkdrop URL has the following standardized format:
-
-```bash
-wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
-```
-
-With this format, the following code can be written to generate a set of links for the drop.
+With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
 ```js 
 pubKeys = keys.publicKeys
@@ -299,7 +293,10 @@ var dropInfo = {};
 const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
-    let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
+    let linkdropUrl = formatLinkdropUrl({
+        customURL: "https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY",
+        secretKeys: keys.secretKeys[i]
+      })
     dropInfo[pubKeys[i]] = linkdropUrl;
 }
 // Write file of all pk's and their respective linkdrops

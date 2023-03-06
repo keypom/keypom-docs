@@ -196,7 +196,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
 ```
 
 ---
@@ -223,7 +223,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
 ```
 
 </TabItem>
@@ -273,7 +273,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L1-L57
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L1-L60
 ```
 
 </TabItem>

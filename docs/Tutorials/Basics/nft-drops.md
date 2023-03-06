@@ -212,7 +212,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 The code for setting up the NEAR connection and minting the NFT is shown below. In the skeleton code, these are steps 1 and 2.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/nft-example.js#L8-L43
 ```
 
 :::note
@@ -262,7 +262,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L45-L67
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/nft-example.js#L45-L68
 ```
 
 </TabItem>
@@ -312,7 +312,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/nft-example.js#L1-L82
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/nft-example.js#L1-L85
 ```
 
 </TabItem>

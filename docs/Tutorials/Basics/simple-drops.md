@@ -196,7 +196,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
 ```
 
 ---
@@ -223,7 +223,7 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
 ```
 
 </TabItem>
@@ -245,13 +245,7 @@ All function parameters and default values for the SDK and Keypom functions can 
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the linkdrop URL has the following standardized format:
-
-```bash
-wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
-```
-
-With this format, the following code can be written to generate a set of links for the drop.
+With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
 ```js 
 pubKeys = keys.publicKeys
@@ -260,7 +254,10 @@ var dropInfo = {};
 const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
-    let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
+    let linkdropUrl = formatLinkdropUrl({
+        customURL: "https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY",
+        secretKeys: keys.secretKeys[i]
+      })
     dropInfo[pubKeys[i]] = linkdropUrl;
 }
 // Write file of all pk's and their respective linkdrops
@@ -276,7 +273,7 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/eb46ab7d01642874d6d04538dec729d36a001ada/docs-examples/keypom-js-sdk/simple-example.js#L1-L57
+https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L1-L60
 ```
 
 </TabItem>

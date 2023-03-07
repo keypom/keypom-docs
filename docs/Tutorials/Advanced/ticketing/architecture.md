@@ -9,12 +9,16 @@ Recall from earlier, the following features are needed:
 
 * No wallet is needed to enter the event or receive a POAP.
 * No wifi is needed at the door.
-* An NFT is minted on-demand for each user that attends the event.
+* An optional NFT POAP can be minted on-demand for each user that attends the event.
 * Users can optionally onboard onto NEAR if they don't have a wallet.
+
+:::info note
+The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
+:::
 
 These can be broken down one by one. First is the requirement for no wallets. This can be done with any Keypom drop, using the `create_account_and_claim` method. 
 
-Next is the no wifi requirement. This can be achieved by seperating the ticketing into two stages, admission and receiving the POAP. This allows the attendee to screenshot their ticket to enter anytime and then claim their POAP once they are connected to the internet. This can be done with a Keypom drop with 2 key-uses for each key in the drop.
+Next is the no wifi requirement. This can be achieved by seperating the ticketing into two stages, admission and receiving the optional POAP. This allows the attendee to screenshot their ticket to enter anytime and then claim their POAP once they are connected to the internet. This can be done with a Keypom drop with 2 key-uses for each key in the drop.
 
 To mint an NFT on demand, a function call drop can be used. This function call can call `nft_mint` on an NFT contract and will allow the user to create and claim their POAP anytime. 
 
@@ -43,7 +47,3 @@ A flow chart of this process can be seen below.
 </p>
 
 To do this, the [Keypom JS SDK](https://github.com/keypom/keypom-js#installation) will be used in a React app.
-
-:::info
-Two React apps will be created, one for the event organizers capable of claiming tickets and another for the attendees that is only capable of showing the QR code and sending a POAP. 
-:::

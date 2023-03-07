@@ -10,9 +10,14 @@ Recall that the drop needs the following properties:
 
 * The drop must have 2 key uses for each key.
 * A function call drop must be used.
-* The second key use should call `nft_mint`.
-* the method `create_account_and_claim` must be made available.
-* the first key use must be password protected.
+* The second key use can call `nft_mint`.
+* The method `create_account_and_claim` must be made available.
+* The first key use must be password protected.
+
+
+:::info note
+The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
+:::
 
 Similar to creating a [function call drop](../../Basics/fc-drops.md), the process for creating this drop can be broken down into two stages.
 
@@ -141,6 +146,15 @@ https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b
 :::note
 Calling `claim` here before creating the NFT Series will fail. This only applies if you choose to include a POAP using `nft_mint` in the second `claim`. 
 :::
+
+It is important that you to know the arguments for the function call in the second key use. In this case, the drop will be interfacing with an NFT contract deployed at `nft-v2.keypom.testnet`. This is a contract specifically made to work with the SDK to seamlessly allow you to create NFTs to attach to your drops. 
+
+You may have noticed that the syntax for `nft_mint` call looks slightly different from what was used in the [FC drop tutorial](../../Basics/fc-drops.md#creating-drop-with-function-call-data). This is because an NFT series is being minted. The NFT series must be defined before `claim` can be called and will require the drop ID, as you'll see in the next section. 
+
+:::info
+An NFT series can be thought of as a bucket of NFT token IDs that *all* share similar information. This information comes in the form of metadata, royalties, price etc. For more on NFT series, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
+:::
+
 
 ## Making NFT Series
 In this section, you'll be creating the series of NFTs to be used as POAPs.

@@ -43,6 +43,10 @@
   margin-bottom: 20px !important;
 }
 
+img.rounded-corners{
+  border-radius: 15px;
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

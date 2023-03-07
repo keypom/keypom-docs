@@ -18,10 +18,6 @@ These features allow for an entirely new class of non-technical attendees and cr
 In this tutorial, you'll be creating that ticketing system, and incorporating a POAP as well to further reward your community members that come out to your events. 
 
 ## Prerequisites
-:::danger IMPORTANT
-MUST MATCH SDK NAJ VERSION WITH REACT APP NAJ VERSION!
-:::
-
 
 For the advanced tutorials, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
@@ -32,21 +28,55 @@ For the advanced tutorials, you can choose to run the scripts on your own machin
 ### Creating your Project
 In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](introduction#background).
 
-First, you need to give your project a home. This can be done with `create-react-app`.
+First, navigate to your desired home folder and use the `create-near-app` command to create a new project
+``` bash
+npx create-near-app my-ticket-app
+```
+:::note
+You may realize that there is a `contract` and `frontend` folder. The `create-near-app` framework is supposed to allow you to build out a NEAR smart contract and quickly hook it up with a frontend. This tutorial will not involve writting any smart contracts, so the `contract` folder can just be ignored for now. 
+:::
 
-```bash
-npx create-react-app my-keypom-ticketing-project && cd my-ticketing-keypom-project
+You'll then need to create a `package.json` inside the `frontend` folder.
+
+``` bash
+cd frontend && npm init
 ```
 
-Next, you will need to install the Keypom JS SDK, the QR code generator and QR code reader using the following.
+Then, you can install the following libraries, including the Keypom JS SDK.
 
-```bash
-npm install keypom-js
-npm install qrcode.react
-npm install react-zxing
+``` bash
+npm install keypom-js && npm install react && npm install react-dom && npm install react-router-dom &&
+npm install qrcode.react && npm install react-zxing && npm install web-vitals
 ```
 
-Lastly, you can create the following folders and files.
+Next, you'll want to navigate to `my-ticket-app/package.json` and make the following replacement
+
+```json
+"scripts": {
+    ...
+    // Replace this line
+    "start": "npm run deploy && echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel frontend/index.html --open",
+    
+    // With this
+    "start": "cd frontend && npm run start",
+    ...
+  },
+```
+
+Then, go to the `my-ticket-app/frontend/package.json` and add the following:
+``` json
+"scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html --public-url ./"
+  },
+  "devDependencies": {
+    "crypto-browserify": "^3.12.0",
+    "stream-browserify": "^3.0.0"
+  },
+```
+
+From there, create the files that will be used to build out the functionality of the ticket app. 
+
 ```bash
 mkdir state && mv App.js state/App.js
 mkdir components && mkdir utils
@@ -56,10 +86,10 @@ touch utils/configurations.js && touch state/keyInfo.js && touch components/scan
 With these steps complete, your project folder should look like this. 
 
 ```bash
-/my-keypom-ticketing-project
-├── public
+/my-ticket-app
+├── contract
 │   └── ...
-├── src
+├── frontend
 │   └── components
 │   │    └── scanner.js
 │   │    └── qrcode.js
@@ -69,65 +99,38 @@ With these steps complete, your project folder should look like this.
 │   └── utils
 │   │    └── configurations.js
 │   │    └── createTickDrop.js
-├── node_modules
-│   └── keypom-js
-│   └── qrcode.react
-│   └── react-zxing
-│   └── ...
+│   └── node_modules
+│   │    └── keypom-js
+│   │    └── qrcode.react
+│   │    └── react-zxing
+│   │    └── react
+│   │    └── react-dom
+│   │    └── react-router-dom
+│   │    └── ...
+│   └── package.json
+│   └── package-lock.json
+├── ...
 ├── package.json
 ├── package-lock.json
 ```
 
-### Hiccups
-When creating this tutorial, there were a few issues that were present with `create-react-app`. Here are the items added manually to address them.
-
-For reference, these fixes were done February 2023. 
-<details>
-<summary>Bug fixes</summary>
-<p>
-
-#### Browserify `crypto` and `stream` inside of `package.json`
-Inside of `package.json`, the following were added to the `dependencies`
-```bash
-"dependencies": {
-    "crypto": "npm:crypto-browserify",
-    "crypto-browserify": "^3.12.0",
-    "stream": "npm:stream-browserify",
-  },
-```
-
-#### Issues with `Buffer` library and Webpack v5
-To solve issues with `Buffer` compatibility with Webpack5, the following steps were done.
-
-First was to install `buffer`
-```bash
-npm install buffer
-```
-:::info
-note that NPM libraries are case sensative. `Buffer` and `buffer` are two different libraries
-:::
-
-Next, the following was added to `index.js`
-```js
-import { Buffer } from "buffer"; global.Buffer = Buffer;
-```
-
-#### Webpack configurations
-The following was added to `node_modules/react-scripts/config/webpack.config.js`
-```js
-fallback: { 
-  "crypto": require.resolve("crypto-browserify"), 
-  "fs": false,
-  "path": false
-},,
-```
-This was done according to [this error](https://www.mongodb.com/community/forums/t/cant-resolve-crypto-in-node-modules-bson-dist-react/143227/2)
+Finally, there are a few folders/files you can copy from the [SDK Github](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app/frontend) to the `frontend` folder. These files primarily deal with styling and setup. 
+* static/img
+* App.css
+* app.test.js
+* index.css
+* index.html
+* index.js
+* logo.svg
+* reportWebVitals.js
+* setupTests.js
+* start.sh
+* styles.css
+* ui-components.js
+* yarn.lock
 
 
-</p>
-</details>
-
-
+With this setup complete, you are ready to begin building out the ticket app, starting by breaking down the problem into its functional requirements. 
 
 
 

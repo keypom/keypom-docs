@@ -1,12 +1,12 @@
 ---
-sidebar_label: 'Ticket App Code'
+sidebar_label: 'User App Code'
 ---
-# Ticket App Code
+# User App Code
 
 ## Introduction
 In the previous section, you broken down the flow and logic of the two React apps: the ticket and the scanner. You also learned what Keypom information is needed in order to facilitate the app flow. 
 
-In this tutorial, you'll learn about the actual code needed to create the ticket app for your seamless ticketing system.
+In this tutorial, you'll learn about the actual code needed to create the user app for your seamless ticketing system.
 
 :::note
 The focus of this section will be on the Keypm aspects of each script, such as getting key information and using it. 
@@ -43,9 +43,9 @@ This tutorial will be covering the code in `app.js`, `keyInfo.js`, and `qrcode.j
 
 ---
 
-## Ticket App - `App.js`
+## User App - `App.js`
 ### Setting Up
-The primary purpose of `app.js` is to display the different states of the ticket app. 
+The primary purpose of `app.js` is to display the different states of the user app. 
 
 This will involved getting the current key uses, and then rendering based on the value returned. First, a sort of `init` funciton can be declared using react's `useEffect` hook.
 
@@ -77,7 +77,7 @@ https://github.com/keypom/keypom-js/blob/b1ff9af4cf4bdef03e27c59717e771864ea412c
 ```
 
 You can see lines 1, 22, and 43 hold conditions on the current key uses.
-* **`curUse` is 1**: The ticket app should show a QR code representing the linkdrop link. The `QrCode` component is rendered by passing in the `link` state variable created earlier. 
+* **`curUse` is 1**: The user app should show a QR code representing the linkdrop link. The `QrCode` component is rendered by passing in the `link` state variable created earlier. 
 * **`curUse` is 2**: The first claim was done by the bouncer, and thus should give the user the option to claim their POAP. This is done with the same linkdrop link. 
 * **`curUse` is 0**: The second claim was used, and thus the key was depleted and deleted. Here, the user will be given resources to continue learning about NEAR. 
 * **`curUse` is anything else**: Currently this is used as a problem shooting page, just to see what the key use is.
@@ -102,10 +102,10 @@ https://github.com/keypom/keypom-js/blob/b1ff9af4cf4bdef03e27c59717e771864ea412c
 
 --- 
 
-## Ticket App - `Qrcode.js`
+## User App - `Qrcode.js`
 
 --- 
 
-## Ticket App - `Keyinfo.js`
+## User App - `Keyinfo.js`
 
 

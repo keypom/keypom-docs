@@ -60,7 +60,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 :::
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L8-L25
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L26
 ```
 
 ---
@@ -135,8 +135,12 @@ On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit`
 These parameters will be used alongisde the `createNFTSeries` SDK method.  
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L29-L60
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L30-L61
 ```
+
+:::note
+Calling `claim` here before creating the NFT Series will fail. This only applies if you choose to include a POAP using `nft_mint` in the second `claim`. 
+:::
 
 ## Making NFT Series
 In this section, you'll be creating the series of NFTs to be used as POAPs.
@@ -155,7 +159,7 @@ The `metadata` is an object with these properties:
 The code for creating the series is shown below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L63-L72
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L64-L73
 ```
 
 ---
@@ -163,13 +167,7 @@ https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe4
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
-Using the NEAR wallet, the linkdrop URL has the following standardized format:
-
-```bash
-wallet.${NETWORK}.near.org/linkdrop/${CONTRACT_ID}/${PRIVATE_KEY}
-```
-
-With this format, the following code can be written to generate a set of links for the drop.
+With the Keypom SDK, this is all neatly wrapped up for you into the function [`formatLinkdropUrl`](../../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the key you want to embed.
 
 ```js 
 pubKeys = keys.publicKeys
@@ -178,7 +176,10 @@ var dropInfo = {};
 const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
 for(var i = 0; i < keys.keyPairs.length; i++) {
-    let linkdropUrl = `https://wallet.testnet.near.org/linkdrop/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`;
+    let linkdropUrl = formatLinkdropUrl({
+        customURL: "https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY",
+        secretKeys: keys.secretKeys[i]
+      })
     dropInfo[pubKeys[i]] = linkdropUrl;
 }
 // Write file of all pk's and their respective linkdrops
@@ -187,11 +188,44 @@ console.log('Public Keys and Linkdrops: ', dropInfo)
 
 ---
 
+
+## Testing Drop Logic
+With the drop created, some code can be written to test the actual logic, to ensure that the ticket claiming process works as expected. 
+
+Recall that the drop should have the following properties:
+* First `claim` needs to be password protected, only those who know the password (event organizers/doorman) should be able to `claim`.
+* Second claim can be called without a password
+* The key is deleted after its second use and cannot be claimed again
+* Fake/Bogus keys cannot be claimed. This is to prevent people from making their own QR codes to try and enter the event
+
+To ensure the first claim is password protected, `claim` will be called without it and its expected that the current key use remains at 1. Then, `claim` will be called with the correct password, which should cause current key use to increment to 2. 
+
+```js reference
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L98-L122
+```
+
+The second `claim` should be unprotected, and should delete the key afterwards. To verify this, the following test can be used.
+```js reference
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L124-L137
+```
+Here, its expected that `getKeyInformation` will throw an error, causing the message in the catch statement to be logged. 
+
+The last two cases to be tested are claiming with a depleted key, and claiming with a fake key. The following tests can be used. Similar to the last example, its expected that both of these should throw errors.
+
+``` js reference
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L139-L163
+```
+
+With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behaviour. 
+
+---
+
+
 ## Full Code
 Now that everything has been put together, the final code can be seen below.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bc3221d1b95a88aa8bd660a4899df7667a0cfe45/docs-advanced-tutorials/ticketing/src/utils/createTickDrop.js#L1-L85
+https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L1-L166
 ```
 
 ---
@@ -201,7 +235,7 @@ Here, you'll learn how to run the code that was just covered, and what to expect
 
 To view the completed code, clone the Keypom SDK repo and visit the examples directory:
 ``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-advanced-tutorial/
+git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-advanced-tutorial/ticket-app
 ```
 To run the code you just cloned, install all the necesasry packages. 
 ```bash
@@ -209,30 +243,21 @@ npm install
 ```
 
 :::caution
-Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
+Prior to running these scripts, ensure you replace all instances of `minqi.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
 :::
 
-From there, you are able to run this FC Drop script that was made in this tutorial using the following command:
-``` bash
-npm run fc-keypom
+To run the script, use the following command:
+```bash
+node frontend/utils/createTickDrop
 ```
-:::note
-The SDK script is being tested here; use `npm run fc-near` to test the `NEAR-API-JS` script instead.
-:::
-This should return a successful drop creation and console log a Public Key and Linkdrop
+This should return a successful drop creation, console log your public keys, linkdrops, and the expected test messages.
 
 ```bash
-node src/utils/createTickDrop
-```
-
-
-
-```bash
-Receipts: tWcTTDEULKaYnj8p2jXaqxJuUj4SNTJ2ZnRjWGGmXBf, HGXUzZTq2Sb88GCeBRn3X8WQ3aYvkTA8jh3VcuuGp2L9
-        Log [v2.keypom.testnet]: Current Block Timestamp: 1677087279025680682
+Receipts: Fs29veV4FzQ7ddoSQsAxzK8XRbL1nHbXEtsJGEy9Ei5J, 9uYGoGRpiuGVXxGnYTgQDGdEHxEXGt1iQeTjENKxmu2n
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1678140717051797169
         Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
         Log [v2.keypom.testnet]: Total required storage Yocto 109950000000000000000000
-        Log [v2.keypom.testnet]: Current balance: 2.6436194, 
+        Log [v2.keypom.testnet]: Current balance: 3.6972488, 
             Required Deposit: 2.4952026, 
             total_required_storage: 0.10995,
             Drop Fee: 0, 
@@ -245,21 +270,95 @@ Receipts: tWcTTDEULKaYnj8p2jXaqxJuUj4SNTJ2ZnRjWGGmXBf, HGXUzZTq2Sb88GCeBRn3X8WQ3
             None FCs: 1,
             length: 10
             GAS to attach: 100000000000000
-        Log [v2.keypom.testnet]: New user balance 0.1484168
+        Log [v2.keypom.testnet]: New user balance 1.2020462
         Log [v2.keypom.testnet]: Fees collected 0
 Public Keys and Linkdrops:  {
-  'ed25519:ALok8t1PyC1k6GBC5Z3N1jKEMatFg1abJPpUQpFtQCzW': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/ws8gshPtT5zJBc6FfoiKXHfaQ2qey8q4n1Y91aW6q6m94UWFTMoL45NwMwtEZTXBrQ4BhLScB1K8JFVabgMj1mt',
-  'ed25519:AgfdThFSgH4Zna8ovq8q97By1od2NXn6paYPiqvyEqp6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/6DzXXf4mbCYgZiojP73js28wm6rhtWnnPduAiT5jzWQhCXaM7owvZLJKbsgYA8fZYvikHnxYXDH1zii9c1fzJPk',
-  'ed25519:Hz5ppag9ezqFGFR7ZzUXHiCP8idsvqJGjAH6k1BHN7mE': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/38iHRqVW3YKobv5PQ37fFNtyQjH5CdC53c7FacCfFwb8HHvdcBJDZWRucnm75WY9PFEgA3DHrugtdFsgUMoo7LUC',
-  'ed25519:7XTb2rFhEetv59NVYNz6jgfVXeHPG4Yq24nUdVGRG7CW': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3VvdAgpv9u23CUeyb2MLud3qu3gzEPbLGHHG3iajPdnRp8b2RxgpwhVxzbrNDqA6yegi7oGbmdGYWa9cjiuTgPK8',
-  'ed25519:7Sb5RrbC7hkcPZoH5eutyKYjj5jvdPd8WFonoAfRRzbS': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/5wkgUSKhe2YKNjBYK6njuJnwkVy2AUZvWiAfkUkutuPpsKb4iKmURnMMSB19qDhGih4a2CKp1vND8rDneSUh2MXn',
-  'ed25519:BUpvErX7wXAd16ji76yUh14Mo9eFh1cNzd3nKipinFPN': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/bsC7zHMruhK8CJ6pxyj82AHvJH3har6Ubq28HNJj1xuLzVZiAhE3uTSREMdJwzygoK8ic6gsRU4yA2vspftnZgt',
-  'ed25519:Baiqh6ezL6rJoUbJCSPWw9qXTMe2jaTzZF1DQTx1ScYj': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2rzVcJ6CbfM23Cf6o6UTHPVdist2M745YZeJWf595yUipe2Yuya95ZBSoz8sMYquAGVsEy7HhFmXKXbBn1cnKHU7',
-  'ed25519:58Q7NfdwHeDfSPEoUHiSeisQcTrgXZa25duKc18Re8Fc': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/21peaxNv5gpYy1s71VRUivkMLyM43DqBqpuZq99FQDFFWyJ3wzD7rP4VLCnQ2DLxfjVFsGEtzikZqaPGqw1gMdZL',
-  'ed25519:9qwkPn7krvqEx3RqujPLqxJBdP3bmvzhjBCsjgZUhoer': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2s9u1HttZwdgwbwYs3N61G3XnAxEz2NSSttz9usWVfxocHyQ1cid5mW1nMoDsd5j6iWXRNkJz7iymK4RSeTztkEv',
-  'ed25519:Era5gnMWVoxbJWuGBSXN377w28qrs4niEZY1K7A7NnPs': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2Sor9GN5xvwDPRWBnosg8Snn6hcxGm4Kf9gkpcDXZkXMu7SGcBj1vpoQ92pxX2ncdqs4bTCHx6H8qgB7Tm7dfXzy'
+  'ed25519:74jzMpmVAAVi4vanNzDRVkgu6nFUkxzD9GpWGb8W1VMT': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/22YdTvCuLbVcgTVQ7jmVvmPAn2qVnChzdWrX33WqKy7sPcBRc6hNR2jQWzbGKGqhfxNacMLWwTAPLvQMgB1uNCxy'
+  ],
+  'ed25519:8srzfMbwYb1S5KMUisf3LM4fkysTbnY83NnYxSD1yPak': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/SMGCEDmnfmWTH4uuKjjqkMRjez6xX2iEVRee7xxXz5wVLYpSHxFftscKRZ1dsca6FwKgvUpFhAyDgYjPk7LfMQQ'
+  ],
+  'ed25519:Gnk2z8tCeGTn92uXY4rft7R5Rvbva8YhkjCaBjedbhvB': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/639zizchXNjAW9qQHdwmBrE4hqjFsQns9b7ELVPULA6ccYZQD283kKcgs2PwiRkybih48Exxh9pMC7cpX9vyUPNj'
+  ],
+  'ed25519:2T57oiR59LWdLtdBJ1fVXrCiKu5jiG9sDD5RRgMnZkrE': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3YVkiKE8uDE5dFGDQgYQrtqD6EGVNMoQshVcrpo6jLyuoH4W2zTfogUFnKcqemSXncnowxgUPdFLemDFQRb3RD5C'
+  ],
+  'ed25519:2MJUMrC47tFYVEXsqXwbMQLj6pHBgj2EpLJSekTcZRKG': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/5vRkUDDQbLdtxph1MgKFy8cxpYzQRLPrNe7EFbxyufMK1t4ec3fgGmTaw96chJSN9AvSxSjYh9if78ZaLTTswqWJ'
+  ],
+  'ed25519:AoKtDmiKzYDw3BaHe5CwfSWU66Ja9bSaUqxAjH89ANy4': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/2bfx6a5A4fLZvu4sg8V9Rs6ZVmtb1e4jwf9oPBT5KGDHZ1gHZ4H3WPMgZQVp27b7A1iGrKPXbkpuUDdV5RMPSojk'
+  ],
+  'ed25519:HmFCfZrCc9ABdSpVqDQPkYjNMxZ5FfJMokKL6wSF35R8': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/5xi2nCMtN82fvV7deca6g5GrfHuo5192Suf8EQUFuwb19j7inUL7YyYQ58H876PFmNYC4tJjurLSYGKryhzSk5sC'
+  ],
+  'ed25519:6LVrKQn1TGTub4XFao2UAYKd6eB6F296eD6Sh4qi2CHK': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/5SNgZLHHbqMZWRSbAiy3n5WvYfmXtwXi8DfWLm6THafSsTX5vJzhQsohEkLy7b9Xiv2PtVqLvknqGQY14fxRnKB3'
+  ],
+  'ed25519:BqZR8gTVteyVDxP5dxLHARG8UKgyG2Epi1g2jzXbtsaE': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/RnsRiLVJZxRRJ36irkk555aucoKugCvzzBsNH85xRawJRDNnGGqrrXo1fDUdgxdpjmgDLbrp7amw1g9UopE7HQJ'
+  ],
+  'ed25519:71REUPYcJNMsayBRDxPHzeSzLJXDkYBh76SutP3ET4tt': [
+    'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3nrZU7RKdradZUYb6CebA2dHnh2LiS69enT3BfxBqee8W1uAtpJ8md5tnRuwkKXbUEPEazdQr8nkzSxfS74cHm3S'
+  ]
 }
 Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
+Private Key: 22YdTvCuLbVcgTVQ7jmVvmPAn2qVnChzdWrX33WqKy7sPcBRc6hNR2jQWzbGKGqhfxNacMLWwTAPLvQMgB1uNCxy
+Public Key: ed25519:74jzMpmVAAVi4vanNzDRVkgu6nFUkxzD9GpWGb8W1VMT
+Key use before claiming with wrong password: 1
+Claiming with wrong password...
+Receipt: DojTjFkNF5iDeMTx7JQxGXT27M1yHr4B8qQ9vD6SzyD7
+        Log [v2.keypom.testnet]: Beginning of process claim used gas: 478059845595 prepaid gas: 100000000000000
+        Log [v2.keypom.testnet]: passed global check
+        Log [v2.keypom.testnet]: hashed password: [227, 176, 196, 66, 152, 252, 28, 20, 154, 251, 244, 200, 153, 111, 185, 36, 39, 174, 65, 228, 100, 155, 147, 76, 164, 149, 153, 27, 120, 82, 184, 85]
+        Log [v2.keypom.testnet]: actualPass password: [153, 171, 244, 102, 240, 122, 172, 4, 9, 230, 47, 154, 140, 38, 169, 253, 39, 88, 92, 70, 202, 67, 245, 80, 84, 80, 180, 180, 118, 1, 182, 128] cur use: 1
+        Log [v2.keypom.testnet]: Incorrect password. Decrementing allowance by 1313367981790000000000. Used GAS: 3133679817900
+        Log [v2.keypom.testnet]: Allowance is now 36211892145646800000000
+        Log [v2.keypom.testnet]: Invalid claim. Returning.
+Key use after claiming with wrong password and before claiming with correct password: 1
+claiming with correct password...
+Receipt: CoiiFfyDHsgJkEJHXr1N6CsX22SBLg4BWwan3kUE42RT
+        Log [v2.keypom.testnet]: Beginning of process claim used gas: 479503406607 prepaid gas: 100000000000000
+        Log [v2.keypom.testnet]: passed global check
+        Log [v2.keypom.testnet]: hashed password: [153, 171, 244, 102, 240, 122, 172, 4, 9, 230, 47, 154, 140, 38, 169, 253, 39, 88, 92, 70, 202, 67, 245, 80, 84, 80, 180, 180, 118, 1, 182, 128]
+        Log [v2.keypom.testnet]: actualPass password: [153, 171, 244, 102, 240, 122, 172, 4, 9, 230, 47, 154, 140, 38, 169, 253, 39, 88, 92, 70, 202, 67, 245, 80, 84, 80, 180, 180, 118, 1, 182, 128] cur use: 1
+        Log [v2.keypom.testnet]: passed local check
+        Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 2 (before)
+        Log [v2.keypom.testnet]: Key has 1 uses left. Decrementing allowance by 10000000000000000000000. Allowance left: 26211892145646800000000
+        Log [v2.keypom.testnet]: Total storage freed: 0. Initial storage: 22623189. Final storage: 22623189
+        Log [v2.keypom.testnet]: Empty function call. Returning.
+Key use after claiming with correct password: 2
+Second claim with no password
+Receipts: 3ZcLpjhNFK229HSh3rRvRGks57sujt9bb5YxhHsgxj9t, HsogZHNfYVkw6sBtx1TwHXxwKjn1fjvZQRZgupTkruVK, 2DUM7ptaN4njquZJeqkxXyTRFEdDHAvieofiLxH323Ls, EYgv7eqbVApJwok4oToVf6VuEiCGH2z2HWQJE5XD4i3x
+        Log [v2.keypom.testnet]: Beginning of process claim used gas: 475708059903 prepaid gas: 100000000000000
+        Log [v2.keypom.testnet]: passed global check
+        Log [v2.keypom.testnet]: hashed password: [227, 176, 196, 66, 152, 252, 28, 20, 154, 251, 244, 200, 153, 111, 185, 36, 39, 174, 65, 228, 100, 155, 147, 76, 164, 149, 153, 27, 120, 82, 184, 85]
+        Log [v2.keypom.testnet]: actualPass password: [227, 176, 196, 66, 152, 252, 28, 20, 154, 251, 244, 200, 153, 111, 185, 36, 39, 174, 65, 228, 100, 155, 147, 76, 164, 149, 153, 27, 120, 82, 184, 85] cur use: 2
+        Log [v2.keypom.testnet]: passed local check
+        Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 1 (before)
+        Log [v2.keypom.testnet]: Key has no uses left. It will be deleted
+        Log [v2.keypom.testnet]: Key being deleted. Will refund: 1000000000000000000000
+        Log [v2.keypom.testnet]: User balance incremented by 0.001. Old: 1.2020462 new: 1.2030462
+        Log [v2.keypom.testnet]: Total storage freed: 7320000000000000000000. Initial storage: 22623189. Final storage: 22622457
+        Log [v2.keypom.testnet]: End of regular claim function: 65417266328543 prepaid gas: 100000000000000
+Receipts: 4C9r7CjrAFvXVF7PPaX1Uad2nNkCkusPuLmN3ZBP871h, DsxMBwWYDifpRFJQqEXPDJJFyoGDETKPVWDFoVw8gTyR
+        Log [v2.keypom.testnet]: Beginning of on claim Function Call used gas: 562004381091 prepaid gas: 89418751746228
+        Log [v2.keypom.testnet]: received empty string as success value
+        Log [v2.keypom.testnet]: Has function been executed via CCC: true
+        Log [v2.keypom.testnet]: Refund Amount (storage used): 0.00732. Auto withdraw: false
+        Log [v2.keypom.testnet]: User balance incremented by 0.00732. Old: 1.2030462 new: 1.2103662
+        Log [v2.keypom.testnet]: (TOP of for loop): initial receiver ID: "nft-v2.keypom.testnet" for method: "nft_mint"
+        Log [v2.keypom.testnet]: Adding claimed account ID: AccountId("minqi.testnet") to specified field: "receiver_id"
+        Log [v2.keypom.testnet]: Adding drop ID: 1678140714164 to specified field "mint_id"
+Receipts: 6YK1XKb6EAshV9dUVCCJxAm4ZkJX6B8noj2Bg6ccyHwE, FTRMTmNDWdYRgEE8rWB62iaR3X9uKzqJ49Vq92GH9VDh
+        Log [v2.keypom.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"minqi.testnet","token_ids":["305:1"]}]}
+Second claim successful. Key has been depleted and deleted
+Claim with depleted key
+Claim failed, as expected
+Claim with fake key
+Claim failed, as expected
 ```
 
 ---

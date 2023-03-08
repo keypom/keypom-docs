@@ -17,10 +17,10 @@ The full code for each script will be shown, with highlights. For React resource
 Recall, from [the beginning](introduction.md) that your code had the following outline.
 
 ```bash
-/my-keypom-ticketing-project
-├── public
+/my-ticket-app
+├── contract
 │   └── ...
-├── src
+├── frontend
 │   └── components
 │   │    └── scanner.js
 │   │    └── qrcode.js
@@ -30,11 +30,17 @@ Recall, from [the beginning](introduction.md) that your code had the following o
 │   └── utils
 │   │    └── configurations.js
 │   │    └── createTickDrop.js
-├── node_modules
-│   └── keypom-js
-│   └── qrcode.react
-│   └── react-zxing
-│   └── ...
+│   └── node_modules
+│   │    └── keypom-js
+│   │    └── qrcode.react
+│   │    └── react-zxing
+│   │    └── react
+│   │    └── react-dom
+│   │    └── react-router-dom
+│   │    └── ...
+│   └── package.json
+│   └── package-lock.json
+├── ...
 ├── package.json
 ├── package-lock.json
 ```

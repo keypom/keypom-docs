@@ -53,7 +53,7 @@ To transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events occur:
 1. From stages 1 &rarr; 2: Data must be read in; this is done with a QR code reader library which indicates when that occurs. As soon as data is read in, the app will transition from stage 1 &rarr; 2.
 2. The transition between stage 2 &rarr; 3 occurs when the `claim` function call returns. It will either return as successful or failed.
 
-After stage 3, the entire cycle will loop back to stage 1 after two seconds. 
+After stage 3, the entire cycle will loop back to stage 1 after three seconds. 
 
 :::info Event Password
 The event password will only be prompted once and before any scanning starts. If the doorman wishes to enter a different password once scanning starts, they can simply refresh the page and be prompted again. 

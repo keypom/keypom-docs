@@ -1,10 +1,10 @@
 ---
-sidebar_label: 'User App Code'
+sidebar_label: 'User Experience Code'
 ---
-# User App Code
+# User Experience Code
 
 ## Introduction
-In the previous section, you broken down the flow and logic of the two React apps: the ticket and the scanner. You also learned what Keypom information is needed in order to facilitate the app flow. 
+In the previous section, you broken down the flow and logic of the ticket app. You also learned what Keypom information is needed in order to facilitate the app flow. 
 
 In this tutorial, you'll learn about the actual code needed to create the user app for your seamless ticketing system.
 

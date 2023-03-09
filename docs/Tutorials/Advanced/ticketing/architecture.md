@@ -46,3 +46,10 @@ A flow chart of this process can be seen below.
 </p>
 
 To create this drop, the [Keypom JS SDK](https://github.com/keypom/keypom-js#installation) will be used.
+
+---
+
+## Conclusion
+In this section, you started with the desired features and converted them to requirements. You then addressed those requirements by designing the architecture of a Keypom drop. You also learned how a password protected first key use can be used to ensure the integrity of the ticketing app. 
+
+In the next section, you'll be taking the Keypom drop architecture you just created and using it to create the drop.

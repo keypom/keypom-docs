@@ -111,6 +111,7 @@ const sidebars = {
                 'Tutorials/Advanced/ticketing/react-outline',
                 'Tutorials/Advanced/ticketing/user-code',
                 'Tutorials/Advanced/ticketing/scanner-code',
+                'Tutorials/Advanced/ticketing/final',
               ],
             },
             // {

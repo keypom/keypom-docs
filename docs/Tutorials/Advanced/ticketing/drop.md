@@ -385,6 +385,6 @@ Claim failed, as expected
 
 So far, you've learned how to set up your React app, as well as break down the ticketing system into functional requirments. You then took those requirements and wrote a script to create the drop.
 
-In the next tutorial, the ticketing process will be broken down into stages. From there, the React app to reflect those states will be created.
+In the next tutorial, the ticketing process will be broken down into stages for both the user side and event organizer side. From there, the flow of the app, and the Keypom variables that control it, can be established.
 
 

@@ -164,3 +164,10 @@ The full code, including the set up, claiming, and the rendering, can be seen be
 ``` jsx reference
 https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a2/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L1-L284
 ```
+
+---
+
+## Conclusion
+In this section, you learned about the `scanner.js` component. Its primary role is to handle the data read in from the QR code reader, and `claim` the private key embedded within the QR code. It is also designed to handle different kinds of errors, such as deleted keys, and tickets that have already been scanned.  
+
+In the next section, you'll be seeing the final product of what you just built!

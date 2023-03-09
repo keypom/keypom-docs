@@ -95,3 +95,10 @@ The following list of variable are used in the scanner app:
 * `privKey`, read in from the QR code.
 * `password`, set by the doorman on app mount.
 
+---
+
+## Conclusion
+In this section, you broke down the app's flow of logic for both the user claim page, and the scanner page. You then took that information and found Keypom information that can be used to facilitate that flow. 
+
+In the following sections, you'll be applying what you just learned by going through the actual code for the claim and scanner pages. 
+

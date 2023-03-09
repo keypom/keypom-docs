@@ -145,4 +145,14 @@ To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk
 https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a2/docs-advanced-tutorials/ticket-app/frontend/state/keyInfo.js#L1-L66
 ```
 
+---
+
+## Conclusion
+In this section, you learned about the 3 components that make up the claim page: `App.js`, `Qrcode.js`, and `KeyInfo.js`.
+
+In summary, `App.js` is the "homepage" of the claim page and takes care of setting up all the state variables based on the URL and then renedering the claim page. `Qrcode.js` simply renders a QR code based on an input string. `KeyInfo` is in charge of updating all Keyom state variables whenever `App.js` re-renders. 
+
+You also went through the code for each of these components and saw the expected [render results](user-code.md#rendering). 
+
+In the next section, you'll be going through a similar process with the scanner page.
 

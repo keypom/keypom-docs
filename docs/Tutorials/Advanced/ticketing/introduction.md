@@ -4,16 +4,16 @@ sidebar_label: 'Introduction'
 # Introduction
 In this tutorial, you'll learn how to create an unparalleled ticketing experience. You'll be able to garner a large audience for your events by creating a seamless admission and onboarding experience for your community. 
 ## Background
-NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, it currently requires the attendees to have an existing wallet. This is a massive barrier to entry, particularly to non-Web3-natives and those who use ledgers. 
+NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, it currently requires the attendees to have an existing wallet. This is a massive barrier to entry, particularly to non-Web3-natives. 
 
-Keypom aims to solve these problems by allwoing for a ticketing system that has the following features.
+Keypom aims to solve these problems by empowering you to create a seamless ticketing system that has the following features.
 
 * No wallet is needed to enter the event or receive a POAP.
 * No wifi is needed at the door.
 * Users can optionally onboard onto NEAR if they don't have a wallet.
-* Users that choose to onboard can receive a Proof-of-Attendence NFT, although this is optional
+* Users that choose to onboard can receive a Proof-of-Attendence NFT, although this is optional.
 
-These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to traditional NFT ticketing;
+These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to existing NFT ticketing solutions.
 
 In this tutorial, you'll be creating a ticketing system with those features, and incorporating a POAP to further reward your community members that come out to your events. 
 
@@ -31,22 +31,22 @@ For the advanced tutorials, you can choose to run the scripts on your own machin
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
 3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
-If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app). To follow allong and build out this ticketing app with the tutorial, see the steps below. 
+If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app). To follow along and build out this ticketing app, see the steps below. 
 
 ---
 
 ## Creating your Project
 In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](architecture.md).
 
-First, navigate to your desired home folder and use the `create-near-app` command to create a new project
+First, navigate to your desired home folder and use the `create-near-app` command to create a new project.
 ``` bash
 npx create-near-app my-ticket-app
 ```
 :::note
-You may realize that there is a `contract` and `frontend` folder. The `create-near-app` framework is supposed to allow you to build out a NEAR smart contract and quickly hook it up with a frontend. This tutorial will not involve writting any smart contracts, so the `contract` folder can just be ignored for now. 
+You may realize that there is a `contract` and `frontend` folder. The `create-near-app` package allows you to build out a NEAR smart contract and quickly hook it up with a frontend. This tutorial will not involve writting any smart contracts, so the `contract` folder can be ignored. 
 :::
 
-You'll then need to create a `package.json` inside the `frontend` folder.
+You'll then need to create a `package.json` inside the `frontend` folder. You can accept all default values that NPM suggests.
 
 ``` bash
 cd frontend && npm init
@@ -59,7 +59,7 @@ npm install keypom-js && npm install react && npm install react-dom && npm insta
 npm install qrcode.react && npm install react-zxing && npm install web-vitals
 ```
 
-Next, you'll want to navigate to `my-ticket-app/package.json` and make the following replacement
+Next, you'll want to navigate to `my-ticket-app/package.json` and make the following replacement:
 
 ```json
 "scripts": {

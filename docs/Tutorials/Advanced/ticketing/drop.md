@@ -4,7 +4,7 @@ sidebar_label: 'Creating the Drop'
 # Creating the Drop
 
 ## Introduction
-In this section you'll taking the first step to creating the ticketing experience by creating the drop. This drop will be designed according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
+In this section you'll take the first step to creating the ticketing experience by designing the drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
 
 Recall that the drop needs the following properties:
 
@@ -20,9 +20,9 @@ The NFT POAP is optional to include as the event organizer. You may omit it, or 
 
 Similar to creating a [function call drop](../../Basics/fc-drops.md), the process for creating this drop can be broken down into three stages.
 
-1) Connect to the NEAR blockchain  
-2) Create drop with function call data  
-3) Make NFT series for POAPs
+1) Connect to the NEAR blockchain.  
+2) Create the drop with function call data.  
+3) Make the NFT series for POAPs.
 
 The following skeleton code can be used as a starting point:
 ``` js
@@ -136,7 +136,7 @@ On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit`
 
 These parameters will be used alongisde the [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries) SDK method.  
 
-In this case, the drop will be interfacing with an NFT contract deployed at `nft-v2.keypom.testnet`. This is a contract specifically made to work with the SDK to seamlessly allow you to create NFTs and NFT Series to attach to your drops. 
+In this case, the drop will be interfacing with an NFT contract deployed at `nft-v2.keypom.testnet`. This is a contract specifically made to work with the SDK to allow you to seamlessly create NFTs and NFT Series to attach to your drops. 
 
 :::note
 If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.
@@ -152,7 +152,7 @@ Calling `claim` here before creating the NFT Series will fail. This only applies
 
  
 
-You may have noticed that the syntax for `nft_mint` call looks slightly different from what was used in the [FC drop tutorial](../../Basics/fc-drops.md#creating-drop-with-function-call-data). This is because an NFT series is being minted. The NFT series must be defined before `claim` can be called and will require the drop ID, as you'll see in the next section. 
+You may have noticed that the syntax for the `nft_mint` function call looks slightly different from what was used in the [FC drop tutorial](../../Basics/fc-drops.md#creating-drop-with-function-call-data). This is because an NFT series is being minted. The NFT series must be defined before `claim` can be called and will require the drop ID, as you'll see in the next section. 
 
 :::info
 An NFT series can be thought of as a bucket of NFT token IDs that *all* share similar information. This information comes in the form of metadata, royalties, price etc. For more on NFT series, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
@@ -162,16 +162,16 @@ An NFT series can be thought of as a bucket of NFT token IDs that *all* share si
 ## Making NFT Series
 In this section, you'll be creating the series of NFTs to be used as POAPs.
 
-The Keypom SDK provides a function to create an NFT series specifically for function call drops, called `createNFTSeries`. It requires the following parameters: 
+The Keypom SDK provides a function to create an NFT series specifically for function call drops, called [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries). It requires the following parameters: 
 
 - `dropId`: The drop ID for the drop that should have the NFT series associated with it.  
 - `metadata`: 	The metadata that all minted NFTs will have.  
 
-The `metadata` is an object with these properties:
-* `title`: The title for the NFTs in the series
-* `description`: Description for all NFTs in the series
-* `media`: link to the media for the NFTs
-* `copies`: Number of NFTs in the series
+`metadata` is an object with these properties:
+* `title`: The title for the NFTs in the series.
+* `description`: Description for all NFTs in the series.
+* `media`: link to the media for the NFTs.
+* `copies`: Number of NFTs in the series.
 
 The code for creating the series is shown below. 
 
@@ -217,7 +217,7 @@ Recall that the drop should have the following properties:
 * The key is deleted after its second use and cannot be claimed again
 * Fake/Bogus keys cannot be claimed. This is to prevent people from making their own QR codes to try and enter the event
 
-To ensure the first claim is password protected, `claim` will be called without it and its expected that the current key use remains at 1. Then, `claim` will be called with the correct password, which should cause current key use to increment to 2. 
+To ensure the first claim is password protected, `claim` will be called without a password and its expected that the current key use remains at 1. Then, `claim` will be called with the correct password, which should cause current key use to increment to 2. 
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L98-L122
@@ -385,6 +385,6 @@ Claim failed, as expected
 
 So far, you've learned how to set up your React app, as well as break down the ticketing system into functional requirments. You then took those requirements and wrote a script to create the drop.
 
-In the next tutorial, the ticketing process will be broken down into stages. From there, the react app to reflect those states will be created.
+In the next tutorial, the ticketing process will be broken down into stages. From there, the React app to reflect those states will be created.
 
 

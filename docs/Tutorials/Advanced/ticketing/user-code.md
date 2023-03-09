@@ -53,13 +53,13 @@ This tutorial will be covering the code in `app.js`, `KeyInfo.js`, and `qrcode.j
 ### Setting Up
 The primary purpose of `app.js` is to display the different states of the claim page. This will involve getting the current key uses, and then rendering based on the value returned. 
 
-The first step is to initialize a connection to NEAR and setup all the needed state variable, which will be needed to render the page. 
+The first step is to initialize a connection to NEAR and setup all the state variables that will be needed to render the page. 
 
 ```jsx reference showLineNumbers
 https://github.com/keypom/keypom-js/blob/0035852580c8ce848571d89f31ae47a3794414d6/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L15-L59
 ```
 
-When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables (lines 40-45) for further use. Note that the URL is split by `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you will need to change those index values accordingly.
+When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables (lines 40-45) for further use. Note that the URL is split by `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
 
 Once the URL has been parsed and the resulting values stored, `connectNear` is called. This function handles the NEAR connection, as well as the Keypom connection and the linkdrop URL.
 
@@ -69,13 +69,13 @@ When connecting to NEAR, a `BrowserLocalStorageKeyStore` is used rather than an 
 
 With the NEAR connection established, your browser can now talk to the NEAR blockchain. The next step, is to call `initKeypom`. This initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. More info on the `initKeypom` function can be found [here](../../../keypom-sdk/modules#initkeypom).
 
-After the Keypom initialization is complete, the SDK function [`formatLinkdropUrl`](../../../keypom-sdk/modules.md#formatlinkdropurl) can be used to create the linkdrop link to embed in the QR code. To use this function, it simply needs a base URL, as well as the `privateKey` to be used. The returned linkdrop link is set to the state variable `link` and will be used when rendering.
+After the Keypom initialization is complete, the SDK function [`formatLinkdropUrl`](../../../keypom-sdk/modules.md#formatlinkdropurl) can be used to create the linkdrop link to embed in the QR code. To use this function, it simply needs a base URL, as well as the `privateKey` to be used. The returned linkdrop link is set to the state variable `link` and will be used to render the QR code.
 
 ### Rendering
 
 The process of rendering is simple: retrieve the key's current use number, and render the page differently based on the stages outlined in the [App Design](react-outline.md). 
 
-During this process, the `QrCode` and `KeyInfo` components are called, passing in the values and state variables defined in the [set up](user-code.md#setting-up). For the time being, you can think of the `KeyInfo` component as just a black box, where a `privKey`, `curUse` and other state variables are passed in, and those state variables get modified to change what is rendered. `QRCode` uses the `qrcode.react` library to display a QR based on a string input.
+During this process, the `QrCode` and `KeyInfo` components are called, passing in the values and state variables defined in the [set up](user-code.md#setting-up). For the time being, you can think of the `KeyInfo` component as just a black box, where a `privKey`, `curUse` and other state variables are passed in, and those state variables get modified to change what is rendered. `QRCode` uses the `qrcode.react` library to display a QR code based on a string input.
 
 The following table outlines what the page should render based on a set of conditions including the current key use. 
 
@@ -83,7 +83,7 @@ The following table outlines what the page should render based on a set of condi
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **`curUse` is 1**: The claim page should show a QR code representing the linkdrop link. The `QrCode` component is rendered by passing in the `link` state variable created earlier.                                                   | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-1.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>       |
 | **`curUse` is 2**: The first claim was done by the bouncer, and thus should give the user the option to claim their POAP. This is done with the same linkdrop link.                                                                   | <p align="center"><img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-2.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>        |
-| **`curUse` is 0**: The second claim was used, and thus the key was depleted and deleted. Here, the user will be given resources to continue learning about NEAR.                                                                      | <p align="center"><img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-3.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>        |
+| **`curUse` is 0**: The second claim was used, and thus the key was depleted and deleted. Here, the user will be given resources to continue learning about NEAR. You can choose to show anything here.                                | <p align="center"><img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-3.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>        |
 | **`curUse` is 0 **and** splitRes[3] is '' or undefined**: `splitRes[3]` is 0 or undefined indicates the private key does not exist in the URL. This is to act as a landing page for your event, you can choose to show anything here. | <p align="center"><img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-0.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>        |
 
 The code to render can be found in the exandable section below. 
@@ -121,7 +121,7 @@ https://github.com/keypom/keypom-js/blob/0035852580c8ce848571d89f31ae47a3794414d
 
 ## `Qrcode.js`
 
-`Qrcode.js` is a simple component that returns a QR code based on the string passed in. In the claim page, this is the linkdrop URL, for the doorman to scan. 
+`Qrcode.js` is a simple component that returns a QR code based on the string passed in. On the claim page, this is the linkdrop URL for the doorman to scan. 
 
 The full code can be seen below. 
 
@@ -137,7 +137,7 @@ https://github.com/keypom/keypom-js/blob/0035852580c8ce848571d89f31ae47a3794414d
 
 When `curUse` is 1 and the QR code is being rendered, its imparative to show the public key and key use, so the user has this information on hand in case the QR code becomes unreadable. 
 
-A NEAR connection is initialized, similar to the [`App.js` setup](user-code.md#setting-up). However, this time around, its done on app mount by using a React `useEffect` hook. Once the connection is initialized, another `useEffect` hook is used to update the needed Keypom state variables.
+A NEAR connection is initialized, similar to the [`App.js` setup](user-code.md#setting-up). However, this time around, its done on app mount by using a React `useEffect` hook. Once the connection is initialized, another `useEffect` hook is used to update the needed Keypom state variables whenver the `KeyInfo` component is rendered.
 
 To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
 

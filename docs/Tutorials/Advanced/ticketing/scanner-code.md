@@ -4,15 +4,15 @@ sidebar_label: 'Scanner Code'
 # Scanner Code
 
 ## Introduction
-In the previous sections, you designed the structure and components needed to meet the requirements of the ticket app. Building on that, this tutorial will guide you to learn the code needed to create the scanner app for your seamless ticketing system.
+In the previous sections, you designed the structure and components needed to meet the requirements of the ticket app and saw the code to create the user claim page. Building on that, this tutorial will guide you through the code to create the scanner app for your seamless ticketing system.
 
 :::note
-The focus of this section will be on the Keypm aspects of each script, such as getting key information and using it. 
+The focus of this section will be on the Keypom aspects of each script, such as getting key information and using it. 
 
 The full code for each script will be shown, with highlights. For React resources, see [here](https://reactjs.org/docs/hello-world.html) as a starting point.
 :::
 
-Recall, from [the beginning](introduction.md) that your code had the following outline.
+Recall, from the [introduction](introduction.md) that your code had the following outline.
 
 ```bash
 /my-ticket-app
@@ -69,28 +69,28 @@ In stage 3, a ticket may be invalid for a few reasons.
 ### `masterState` State Variable
 In order to track all these stages and possible outcomes, a `masterState` state variable will be declared. These are the corresponding values it can take on.
 
-|    **`masterState[0]`**     | **Description**                                                           |
-|-----------------------------|---------------------------------------------------------------------------|
-| `masterState[0]` == 1       | Scanner app is scanning, waiting to read in data                          |
-| `masterState[0]` == 2       | Data has been read, scanner is trying to claim                            |
-| `masterState[0]` == 3       | Successful `claim`                                                        | 
-| `masterState[0]` == 4       | Failed to `claim`: SDK returned error, likely incorrect password          | 
-| `masterState[0]` == 5       | Failed to `claim`: Ticket has been fully claimed and key has been deleted | 
-| `masterState[0]` == 6       | Failed to `claim`: The ticket has already been scanned                    | 
+|    **`masterState[0]`**     | **Description**                                                                      |
+|-----------------------------|--------------------------------------------------------------------------------------|
+| `masterState[0]` == 1       | *Stage 1:* Scanner app is scanning, waiting to read in data                          |
+| `masterState[0]` == 2       | *Stage 2:* Data has been read, scanner is trying to claim                            |
+| `masterState[0]` == 3       | *Stage 3:* Successful `claim`                                                        | 
+| `masterState[0]` == 4       | *Stage 3:* Failed to `claim`: SDK returned error, likely incorrect password          | 
+| `masterState[0]` == 5       | *Stage 3:* Failed to `claim`: Ticket has been fully claimed and key has been deleted | 
+| `masterState[0]` == 6       | *Stage 3:* Failed to `claim`: The ticket has already been scanned                    | 
 
-You may have noticed that `masterState` is an array; this is to include a "data bit" inside to indicate the instant that data has been successfully read in by the scanner. 
+You may have noticed that `masterState` is an array; this is to include a "data bit" inside to indicate that data has been successfully read in by the scanner. 
 
 |    **`masterState[1]`**         | **Description**                                   |
 |---------------------------------|---------------------------------------------------|
 | `masterState[1]` == False       | No data has been read, cannot call `claim`        |
-| `masterState[1]` == True        | Data has been read, scanner may now try to claim  |
+| `masterState[1]` == True        | Data has been read, scanner can now try to claim  |
 
 ### Initialization and Scanning
 Upon app mount, the scanner page will immediately do the following.  
 
-1) Similar to the other components covered in the previous pages, `scanner.js` requires a NEAR connection to be established in order to receive Keypom information and call `claim`.   
-2) Prompt the doormnan/event organizers for the key passwords  
-3) Begin scanning.the scanner page should always be scanning for data and immediately flip the `masterState[1]`'s "data bit" as soon as data is read.   
+1) Similar to the other components covered in the previous pages, `scanner.js` will establish a NEAR connection. This is to allow it to receive Keypom information and call `claim`.   
+2) Prompt the doorman/event organizers for the drop password  
+3) Begin scanning
 
 These features can be seen in the code snippet below. 
 ```js reference
@@ -98,16 +98,18 @@ https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a
 ```
 
 ### Claiming
-The claiming process can be controlled using a React `useEffect` hook, that runs everytime `masterState[1]` is updated to indicate a change in the data read by the scanner.The primary task of the claim process is to determine if a claim is 
+The claiming process can be controlled using a React `useEffect` hook, that runs everytime `masterState[1]` is updated, indicating that data was read by the scanner. 
+
+The primary task of the claim process is to determine if a claim is:
 
 * Successful - `masterState[0]` == 3  
-* Failed due to SDK error (likely password) - `masterState[0]` == 4  
-* Unsuccessful due to deleted key - `masterState[0]` == 6  
-* Failed due to ticket already being scanned by doorman - `masterState[0]` == 5  
+* Unsuccessful due to the key being depleted and deleted - `masterState[0]` == 6  
+* Failed due to the ticket having already been scanned by doorman - `masterState[0]` == 5  
+* Failed due to SDK error (likely an incorrect password) - `masterState[0]` == 4  
 
-This can be done by a process of elimination. Once the existence is confirmed, you must make sure the ticket has not already be sacanned. Then finally, you can attempt to `claim` and return the result of that call.
+This can be done by a process of elimination. Once the existence of the key is confirmed, you must make sure the ticket has not already be scanned. Then finally, you can attempt to `claim` and return the result of that call.
 
-First, you can check if the key still exists and has not been deleted by calling the SDK funciton `getKeyInformation`. This will return `null` if the key does not exist. This covers the case of `masterState[0]` == 6.
+First, you can check if the key still exists and has not been deleted by calling the SDK funciton [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation). This will return `null` if the key does not exist. This covers the case of `masterState[0]` == 6.
 ```js reference
 https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a2/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L73-L96
 ```
@@ -117,7 +119,7 @@ Next, the `keyInformation` returned from above can be used to determine the curr
 https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a2/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L99-L121
 ```
 
-Lastly, the current key use *after* the scanner `claim` can be used to determine if the `claim` was successful. This covers the case of `masterState[0]` == 4.
+Lastly, the current key use *after* the scanner `claim` can be used to determine if the `claim` was successful. If the current key use has been decremented, it can be confirmed that the `claim` was successful. Otherwise, the current key use value would remain the same as before `claim` was called.  This covers the case of `masterState[0]` == 4.
 ```js reference
 https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a2/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L123-L149
 ```
@@ -129,7 +131,21 @@ https://github.com/keypom/keypom-js/blob/96827e6a585a469cc8693dd0dfaf37de312958a
 
 ### Rendering
 
-The rendering part of the scanner app is relatively simple, as all the logic for states was taken care of during the claim process. The following expandable section contains the entire rendering section. 
+The rendering part of the scanner app is relatively simple, as all the logic for states was taken care of during the claim process. The following table outlines what the page should render based on the the value of `masterState[0]`, as outlined [above](scanner-code.md#masterstate-state-variable). 
+
+The focus of the renders is on the scanner frame (coloured square) and the text below it. The QR code visible is a code on a phone screen held up to the camera.
+
+|    **Condition and Description**                                                                            | **Render**                                                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `masterState[0]` == 1, *Stage 1:* Scanner app is scanning, waiting to read in data                          | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-unread.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p>    |
+| `masterState[0]` == 2, *Stage 2:* Data has been read, scanner is trying to claim                            | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claiming.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p>  |
+| `masterState[0]` == 3, *Stage 3:* Successful `claim`                                                        | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claim-good.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p>|
+| `masterState[0]` == 4, *Stage 3:* Failed to `claim`: SDK returned error, likely incorrect password          | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claim-bad.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p> |
+| `masterState[0]` == 5, *Stage 3:* Failed to `claim`: Ticket has been fully claimed and key has been deleted | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-deleted.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p>   |
+| `masterState[0]` == 6, *Stage 3:* Failed to `claim`: The ticket has already been scanned                    | <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-prior.png").default} width="60%" height="60%" alt="ticketing" class="rounded-corners"/></p>     |
+
+
+The following expandable section contains code for rendering. 
 
 <details>
 <summary>Full scanner.js rendering code</summary>

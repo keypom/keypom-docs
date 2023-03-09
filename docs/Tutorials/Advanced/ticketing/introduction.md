@@ -4,7 +4,7 @@ sidebar_label: 'Introduction'
 # Introduction
 In this tutorial, you'll learn how to create an unparalleled ticketing experience. You'll be able to garner a large audience for your events by creating a seamless admission and onboarding experience for your community. 
 ## Background
-NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, they currently require the attendees to have an existing wallet. This is a massive barrier to entry and limits the event to a more technical crowd. 
+NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, it currently requires the attendees to have an existing wallet. This is a massive barrier to entry, particularly to non-Web3-natives and those who use ledgers. 
 
 Keypom aims to solve these problems by allwoing for a ticketing system that has the following features.
 
@@ -13,9 +13,15 @@ Keypom aims to solve these problems by allwoing for a ticketing system that has 
 * Users can optionally onboard onto NEAR if they don't have a wallet.
 * Users that choose to onboard can receive a Proof-of-Attendence NFT, although this is optional
 
-These features allow for an entirely new class of non-technical attendees and create a smoother experience than traditional NFT ticketing;
+These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to traditional NFT ticketing;
 
-In this tutorial, you'll be creating that ticketing system, and incorporating a POAP as well to further reward your community members that come out to your events. 
+In this tutorial, you'll be creating a ticketing system with those features, and incorporating a POAP to further reward your community members that come out to your events. 
+
+:::info note
+The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
+:::
+
+---
 
 ## Prerequisites
 
@@ -25,8 +31,12 @@ For the advanced tutorials, you can choose to run the scripts on your own machin
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
 3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
-### Creating your Project
-In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](introduction#background).
+If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app). To follow allong and build out this ticketing app with the tutorial, see the steps below. 
+
+---
+
+## Creating your Project
+In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](architecture.md).
 
 First, navigate to your desired home folder and use the `create-near-app` command to create a new project
 ``` bash

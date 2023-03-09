@@ -11,16 +11,16 @@ With this tutorial, 1 React app with seperate scanner and claim pages will be cr
 This is also a good time to reiterate that the claimable POAP is optional; you can create a ticketing system just as effectively without the POAP, and even with your own functionality.
 
 ## Table of Contents
-| **Section **                                                                        | **Description**                                                                                             |
-|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [User App Flow](react-outline.md#user-app-flow)                                 | The different stages of claiming that the attendee will see on their device                                 |
-| [Scanner App Flow](react-outline.md#scanner-app-flow)                               | The scanner's flow of logic for the doorman                                                                 |
-| [Keypom Information](react-outline.md#keypom-information)                           | Brief overview of where different Keypom information, such as private keys and key uses, are found and used | 
+|         **Section **                                                                     | **Description**                                                                                             |
+|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [Claim Page Flow](react-outline.md#user-app-flow)                                        | The different stages of claiming that the attendee will see on their device                                 |
+| [Scanner Page Flow](react-outline.md#scanner-app-flow)                                   | The scanner's flow of logic for the doorman                                                                 |
+| [Keypom Information](react-outline.md#keypom-information)                                | Brief overview of where different Keypom information, such as private keys and key uses, are found and used | 
 
 ---
 
-## User App Flow
-The user app is for the attendees and will only consist of 3 stages.
+## Claim Page Flow
+The claim page is for the attendees and will only consist of 3 stages.
 
 <p align="center">
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/ticket-pink-rounded.png").default} width="100%" height="100%" alt="ticketing" class="rounded-corners"/>
@@ -36,9 +36,9 @@ To transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events occur:
 
 ---
 
-## Scanner App Flow
+## Scanner Page Flow
 
-The scanner app is for the doorman and consists of 3 stages.
+The scanner page is for the doorman and consists of 3 stages.
 
 <p align="center">
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/scanner-pink-rounded.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/>
@@ -63,10 +63,10 @@ The event password will only be prompted once and before any scanning starts. If
 
 ## Keypom Information
 
-There are a few key pieces of information needed from Keypom in order to allow the apps to perform as expected.
+There are a few key pieces of information needed from Keypom in order to allow the pages to perform as expected.
 
-### User App
-The major parameter that controls what React will render is `cur_key_use` for the given private key. This value will be stored in a React state variable called `curUse`. 
+### Claim Page
+The major parameter that controls what React will render is `cur_key_use` for the given private key. This value represents the key's current use number (1st use, 2nd use etc.) and will be stored in a React state variable called `curUse`. 
 
 **Stage 1 &rarr; 2:** To change between these two stages, the QR code must be scanned and claimed by the doorman using the scanner app. This will change the private key's current key use parameter, `curUse` from 1 to 2.
 
@@ -84,10 +84,10 @@ The following variables are needed to allow these state changes:
 * `pubKey`, derived from `privKey` using the SDK's `getPubFromSecret` method.
 * `privKey`, stored in user app link
 
-### Scanner App
-As the scanner app exclusively scans QR codes and then calls `claim` on their respective private keys, the app itself does not store any Keypom parameters apart from the event password, which the doorman will manually enter on app mount.
+### Scanner Page
+As the scanner page exclusively scans QR codes and then calls `claim` on their respective private keys, the app itself does not store any Keypom parameters apart from the event password, which the doorman will manually enter on app mount.
 
-The scanner app obtains the `privKey` of the QR code by scanning and parsing the obtained string. With that, it calls `claim`. In order to check if the `claim` succeeded, the scanner app will obtain the `privKey`'s `cur_key_use` in a similar fashion to the user app.
+The scanner app obtains the `privKey` by scanning the QR code and parsing the obtained string. With that, it calls `claim`. In order to check if the `claim` succeeded, the scanner app will obtain the `privKey`'s `cur_key_use` in a similar fashion to the user app.
 
 The following list of variable are used in the scanner app:
 * `curUse`, obtained from accessing the `cur_key_use` from calling `getKeyInformation` with `pubKey`

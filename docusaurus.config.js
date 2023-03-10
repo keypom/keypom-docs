@@ -65,6 +65,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         logo: {
           alt: 'MOON',
           src: 'img/newMoonCrop.svg',
+          srcDark: 'img/moon_white.png',
           href: '/'
         },
         items: [

@@ -5,7 +5,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
 <center>
-  <p class="pink-main-header-text" > Keypom Developer Docs </p>
+  <p class="pink-main-header-text"> Keypom Developer Docs </p>
 </center>
 <center>
   <p class="white-main-subheader-text" > Create Instant Web3 Experiences </p>

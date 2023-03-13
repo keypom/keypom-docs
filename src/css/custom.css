@@ -55,3 +55,8 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+html[data-theme=light] {
+  background: radial-gradient(circle at center, #ffffff 70%,  #CAF3FF 100%);
+  /* background: linear-gradient(90deg, #CAF3FF 1%, #ffffff 20%,#ffffff 80%, #CAF3FF 99%); */
+}

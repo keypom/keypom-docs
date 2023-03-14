@@ -96,14 +96,19 @@ fcData
 ├── methods
 ```
 
-- `FCConfig`: [Specific configurations](../../../keypom-sdk/interfaces/FCConfig.md) for the FC Drop.  
-- `methods`: A vector of all the functions to be called for each key use.  
+`methods` is a 2D array. For multi-use keys, each specific use can have a different set of methods that will be called. The outer array defines the vectors of functions to be called **per key use**. The inner array dictates the functions invoked on **each particular key use**.
 
-In this example, only the `methods` parameter will be defined for the sake of simplicity.
+These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
 
-`methods` is a 2D array. The outer array defines the vectors of functions to be called **per key use**. The inner array dictates the functions invoked on **each particular key use**. For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
+1. `nft_mint`
+2. `null`
+3. `create_account_advanced`, `setup`, `nft_mint` 
 
-Each inner element of `methods` represents a function call and requires the following parameters:  
+The first time the key is used, an NFT will be minted. The second use will simply advance the key and no method will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.
+
+For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
+
+Each of these inner `methods` represents a function call and requires the following parameters:  
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
@@ -111,7 +116,7 @@ Each inner element of `methods` represents a function call and requires the foll
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
 ### Tailoring to Ticketing Requirements
-
+#### Key Uses
 To ensure each key has two key uses with a passwort protected first use, the following `config` can be added to `createDrop`.
 
 ```js
@@ -129,12 +134,17 @@ passwordProtectedUses: [1],
 As disucssed in the [introduction](drop.md#introduction), the first key use should not call anything, and the second should call `nft_mint`. To do this, a value of `null` can be passed in to the first index of the `methods` array
 :::
 
-On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit` parameters, a few others will be used used in `methods` to better utilize the SDK. These parameters tell Keypom where to inject arguments. 
+#### POAP
+
+An NFT series is a set of NFTs that share the same artwork, title, description etc. The only thing that differs between tokens is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
+
+The SDK introduces a function called `createNFTSeries`, to simplify the process of creating these NFT series to attach to your drops. NFTs from series X are distinguished from those in series Y through a 
+
+On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit` parameters, a few others will be used used in `methods` to better utilize the SDK. These parameters will be used alongisde the [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries) SDK method and tell Keypom where to inject arguments. 
 
 - `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId`into when calling the function.  
 - `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.  
-
-These parameters will be used alongisde the [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries) SDK method.  
+  
 
 In this case, the drop will be interfacing with an NFT contract deployed at `nft-v2.keypom.testnet`. This is a contract specifically made to work with the SDK to allow you to seamlessly create NFTs and NFT Series to attach to your drops. 
 
@@ -150,14 +160,6 @@ https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b
 Calling `claim` here before creating the NFT Series will fail. This only applies if you choose to include a POAP using `nft_mint` in the second `claim`. 
 :::
 
- 
-
-You may have noticed that the syntax for the `nft_mint` function call looks slightly different from what was used in the [FC drop tutorial](../../Basics/fc-drops.md#creating-drop-with-function-call-data). This is because an NFT series is being minted. The NFT series must be defined before `claim` can be called and will require the drop ID, as you'll see in the next section. 
-
-:::info
-An NFT series can be thought of as a bucket of NFT token IDs that *all* share similar information. This information comes in the form of metadata, royalties, price etc. For more on NFT series, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
-:::
-
 
 ## Making NFT Series
 In this section, you'll be creating the series of NFTs to be used as POAPs.
@@ -170,7 +172,7 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 `metadata` is an object with these properties:
 * `title`: The title for the NFTs in the series.
 * `description`: Description for all NFTs in the series.
-* `media`: link to the media for the NFTs.
+* `media`: link to the artwork in the form of an IPFS CID.
 * `copies`: Number of NFTs in the series.
 
 The code for creating the series is shown below. 
@@ -179,7 +181,7 @@ The code for creating the series is shown below.
 https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L64-L73
 ```
 
-Once both the series and drop are defined, `claim` can be called and will mint the desired NFT POAP. 
+Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets. It's important to note that if the series was not created and a key was claimed, the NFT contract would panic and the key would be wasted. 
 
 ---
 
@@ -215,7 +217,7 @@ Recall that the drop should have the following properties:
 * First `claim` needs to be password protected, only those who know the password (event organizers/doorman) should be able to `claim`.
 * Second claim can be called without a password
 * The key is deleted after its second use and cannot be claimed again
-* Fake/Bogus keys cannot be claimed. This is to prevent people from making their own QR codes to try and enter the event
+* Fake keys cannot be claimed. This is to prevent people from making their own QR codes to try and enter the event
 
 To ensure the first claim is password protected, `claim` will be called without a password and its expected that the current key use remains at 1. Then, `claim` will be called with the correct password, which should cause current key use to increment to 2. 
 
@@ -269,6 +271,9 @@ To run the script, use the following command:
 node frontend/utils/createTickDrop
 ```
 This should return a successful drop creation, console log your public keys, linkdrops, and the expected test messages.
+<details>
+<summary>Drop Creation Example Output</summary>
+<p>
 
 ```bash
 Receipts: Fs29veV4FzQ7ddoSQsAxzK8XRbL1nHbXEtsJGEy9Ei5J, 9uYGoGRpiuGVXxGnYTgQDGdEHxEXGt1iQeTjENKxmu2n
@@ -378,6 +383,9 @@ Claim failed, as expected
 Claim with fake key
 Claim failed, as expected
 ```
+
+</p>
+</details>
 
 ---
 

@@ -9,9 +9,11 @@ NFT ticketing is very common in the Web3 space and is an excellent way to engage
 Keypom aims to solve these problems by empowering you to create a seamless ticketing system that has the following features.
 
 * No wallet is needed to enter the event or receive a POAP.
+* Each ticket is unique and once you've entered the event, the ticket cannot be sent to another person to gain them access
 * No wifi is needed at the door.
-* Users can optionally onboard onto NEAR if they don't have a wallet.
-* Users that choose to onboard can receive a Proof-of-Attendence NFT, although this is optional.
+* An optional NFT POAP can be minted on-demand for each user that attends the event.
+* The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
+* People that have attended the event can get setup with a NEAR wallet if they don't have one yet.
 
 These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to existing NFT ticketing solutions.
 

@@ -5,7 +5,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
 <center>
-  <p class="pink-main-header-text" > Keypom Developer Docs </p>
+  <p class="pink-main-header-text"> Keypom Developer Docs </p>
 </center>
 <center>
   <p class="white-main-subheader-text" > Create Instant Web3 Experiences </p>
@@ -23,7 +23,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
       <a href="/docs/next/exec-summary">
         <div class="card mb-3">
           <div class="card__image">
-            <img src={require("/static/img/moon-crop.png").default} alt="Learn" />
+            <img src={require("/static/img/newMoonCrop.png").default} alt="Learn" />
             <div class="card__body">
               <h3>Understanding Keypom</h3>
               Learn about the power and intricacies of Keypom
@@ -75,7 +75,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
   <Column title="Developer Documentation" size="3">
     <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
-    <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.png" />
+    <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.svg" />
     <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Learn to interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />
   </Column>
 

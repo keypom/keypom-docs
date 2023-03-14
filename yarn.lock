@@ -1533,7 +1533,7 @@
     "tslib" "^2.4.0"
     "utility-types" "^3.10.0"
 
-"@docusaurus/theme-common@^2.0.0-beta.20", "@docusaurus/theme-common@2.3.1":
+"@docusaurus/theme-common@^2.0.0-beta.20", "@docusaurus/theme-common@^2.3.1", "@docusaurus/theme-common@2.3.1":
   "integrity" "sha512-RYmYl2OR2biO+yhmW1aS5FyEvnrItPINa+0U2dMxcHpah8reSCjQ9eJGRmAgkZFchV1+aIQzXOI1K7LCW38O0g=="
   "resolved" "https://registry.npmjs.org/@docusaurus/theme-common/-/theme-common-2.3.1.tgz"
   "version" "2.3.1"

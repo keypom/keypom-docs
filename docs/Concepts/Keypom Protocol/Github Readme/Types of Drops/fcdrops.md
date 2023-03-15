@@ -220,9 +220,9 @@ The event organizer would create the links and distribute them to people however
 claim is automatically fired. This is a `null` case so nothing happens except for the fact that the key uses are decremented. At this point,
 the organizer knows that the user has clicked the link since the uses have been decremented.
 
-The next claim happens **only** when the user is at the door. Keypom would expose a QR code that can only be scanned by the bouncer's phone.
+The next claim happens **only** when the user is at the door. Keypom would expose a QR code that can only be scanned by the host's phone.
 This QR code would appear once the first link is clicked and contains the private key for the link. At the event, they wouldn't need any wifi
-to get in as they only need to show the bouncer the QR code. Once the bouncer scans it, the site would ensure that they have exactly 2 out of
+to get in as they only need to show the host the QR code. Once the host scans it, the site would ensure that they have exactly 2 out of
 the 3 uses left. If they don't, they're not let in. At that point, a use is decremented from the key and the next time they visit the
 ticket page (when they have internet), they would be able to claim the final use and be onboarded / receive a POAP.
 

@@ -214,7 +214,7 @@ console.log('Public Keys and Linkdrops: ', dropInfo)
 With the drop created, some code can be written to test the actual logic, to ensure that the ticket claiming process works as expected. 
 
 Recall that the drop should have the following properties:
-* First `claim` needs to be password protected, only those who know the password (event organizers/doorman) should be able to `claim`.
+* First `claim` needs to be password protected, only those who know the password (the host) should be able to `claim`.
 * Second claim can be called without a password
 * The key is deleted after its second use and cannot be claimed again
 * Fake keys cannot be claimed. This is to prevent people from making their own QR codes to try and enter the event

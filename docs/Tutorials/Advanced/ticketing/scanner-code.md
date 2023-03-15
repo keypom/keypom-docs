@@ -49,7 +49,7 @@ This tutorial will be covering the code in `scanner.js`.
 
 ## Scanner App - `Scanner.js`
 ### Breaking Down the Problem
-As a brief reminder, the scanner page will have the following stages, best outlined with the diagram below.
+As a brief reminder, the host scanner page will have the following stages, best outlined with the diagram below.
 
 <p align="center">
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/scanner-pink-rounded.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/>
@@ -64,14 +64,14 @@ After stage 3, the entire cycle will loop back to stage 1 after three seconds.
 In stage 3, a ticket may be invalid for a few reasons. 
 * Incorrect password/key causing the Keypom SDK to return an error when `claim` fails
 * A ticket may already be fully claimed; the user has claimed their POAP and so their private key has since been deleted
-* The ticket has already been scanned by the doorman. This means the key's current use is 2. Although this claim *can* be made, it should not. Doing so would mean the attendee loses out on the opportunity to claim their POAP.
+* The ticket has already been scanned by the host. This means the key's current use is 2. Although this claim *can* be made, it should not. Doing so would mean the attendee loses out on the opportunity to claim their POAP.
 
 ### `masterState` State Variable
 In order to track all these stages and possible outcomes, a `masterState` state variable will be declared. These are the corresponding values it can take on.
 
 |    **`masterState[0]`**     | **Description**                                                                      |
 |-----------------------------|--------------------------------------------------------------------------------------|
-| `masterState[0]` == 1       | *Stage 1:* Scanner page is scanning, waiting to read in data                         |
+| `masterState[0]` == 1       | *Stage 1:* Host scanner page is scanning, waiting to read in data                         |
 | `masterState[0]` == 2       | *Stage 2:* Data has been read, scanner is trying to claim                            |
 | `masterState[0]` == 3       | *Stage 3:* Successful `claim`                                                        | 
 | `masterState[0]` == 4       | *Stage 3:* Failed to `claim`: SDK returned error, likely incorrect password          | 
@@ -86,10 +86,10 @@ You may have noticed that `masterState` is an array; this is to include a "data 
 | `masterState[1]` == True        | Data has been read, scanner can now try to claim  |
 
 ### Initialization and Scanning
-Upon app mount, the scanner page will immediately do the following.  
+Upon app mount, the host scanner page will immediately do the following.  
 
 1) Similar to the other components covered in the previous pages, `scanner.js` will establish a NEAR connection. This is to allow it to receive Keypom information and call `claim`.   
-2) Prompt the doorman/event organizers for the drop password.  
+2) Prompt the host for the drop password.  
 3) Begin scanning.
 
 These features can be seen in the code snippet below. 
@@ -104,7 +104,7 @@ The primary task of the claim process is to determine if a claim is:
 
 * Successful - `masterState[0]` = 3.  
 * Unsuccessful due to the key being depleted and deleted - `masterState[0]` = 6.  
-* Failed due to the ticket having already been scanned by doorman - `masterState[0]` = 5.  
+* Failed due to the ticket having already been scanned by host - `masterState[0]` = 5.  
 * Failed due to SDK error (likely an incorrect password) - `masterState[0]` = 4.  
 
 This can be done by a process of elimination. Once the existence of the key is confirmed, you must make sure the ticket has not already be scanned. Then finally, you can attempt to `claim` and return the result of that call.

@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "start:typedoc": "docusaurs start --config docusaurus.config-typedoc.js",
+    "start:typedoc": "docusaurus start --config docusaurus.config-typedoc.js",
     "build": "docusaurus build",
     "build:typedoc": "docusaurus build --config docusaurus.config-typedoc.js",
     "swizzle": "docusaurus swizzle",

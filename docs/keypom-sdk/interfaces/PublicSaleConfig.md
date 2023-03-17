@@ -18,7 +18,7 @@ Which accounts are allowed to add keys? If the allowlist is empty, anyone that i
 
 #### Defined in
 
-[src/lib/types/drops.ts:170](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L170)
+[src/lib/types/drops.ts:169](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L169)
 
 ___
 
@@ -31,7 +31,7 @@ automatically withdrawn and sent to their NEAR wallet?
 
 #### Defined in
 
-[src/lib/types/drops.ts:177](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L177)
+[src/lib/types/drops.ts:176](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L176)
 
 ___
 
@@ -43,7 +43,7 @@ Which accounts are NOT allowed to add keys?
 
 #### Defined in
 
-[src/lib/types/drops.ts:172](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L172)
+[src/lib/types/drops.ts:171](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L171)
 
 ___
 
@@ -56,7 +56,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:187](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L187)
+[src/lib/types/drops.ts:186](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L186)
 
 ___
 
@@ -68,7 +68,7 @@ Maximum number of keys that can be added to this drop. If None, there is no max.
 
 #### Defined in
 
-[src/lib/types/drops.ts:162](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L162)
+[src/lib/types/drops.ts:161](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L161)
 
 ___
 
@@ -81,7 +81,7 @@ Automatically sent to the funder's balance. If None, the keys are free to the pu
 
 #### Defined in
 
-[src/lib/types/drops.ts:167](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L167)
+[src/lib/types/drops.ts:166](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L166)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/drops.ts:168](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L168)
+[src/lib/types/drops.ts:167](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L167)
 
 ___
 
@@ -104,4 +104,4 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[src/lib/types/drops.ts:182](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L182)
+[src/lib/types/drops.ts:181](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L181)

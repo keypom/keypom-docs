@@ -8,17 +8,16 @@ In this section you'll take the first step to creating the ticketing experience 
 
 Recall that the drop needs the following properties:
 
-* The drop must have 2 key uses for each key.
-* A function call drop must be used.
-* The second key use can call `nft_mint`.
-* The first key use must be password protected.
+* An FC drop must be used whereby each key has 2 uses.
+* The first key use is a `null` method that is password protected.
+* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
 
 
 :::info note
 The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
 :::
 
-Similar to creating a [function call drop](../../Basics/fc-drops.md), the process for creating this drop can be broken down into three stages.
+The process for creating this drop can be broken down into three stages.
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
@@ -74,9 +73,9 @@ In this section, you'll create the function call drop to meet the functional req
 
 Recall that the drop needs the following properties:
 
-* The drop must have 2 key uses for each key.
-* The second key use should call `nft_mint`.
-* the first key use must be password protected.
+* An FC drop must be used whereby each key has 2 uses.
+* The first key use is a `null` method that is password protected.
+* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
 
 ### Function Call Drop Basics
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
@@ -86,7 +85,7 @@ This process starts with calling the `initKeypom` function and will always be th
 After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter. 
 
 :::tip
-Recall that the private keys being generated using `createDrop` are used to store the assets. These keys are then embedded within a link.
+Recall that the private keys being generated using `createDrop` are the tickets and will be embedded into the attendee's QR code
 :::
 
 The primary task in creating the Function Call Drop is to define `fcData`. It is an object with the following properties.
@@ -96,24 +95,38 @@ fcData
 ├── methods
 ```
 
-`methods` is a 2D array. For multi-use keys, each specific use can have a different set of methods that will be called. The outer array defines the vectors of functions to be called **per key use**. The inner array dictates the functions invoked on **each particular key use**.
-
-These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
+For multi-use keys, each specific use can have a different set of methods that will be called. These methodsare executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
 
 1. `nft_mint`
 2. `null`
 3. `create_account_advanced`, `setup`, `nft_mint` 
 
-The first time the key is used, an NFT will be minted. The second use will simply advance the key and no method will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.
+The first time the key is used, an NFT will be minted. The second use will simply advance the key and nothing will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.
+.
+This is represented with a 2D array, where each inner is the set of methods per key use. The above example would be represented as:
 
-For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
+```js
+methods: [
+  [
+    "nft_mint"
+  ], 
+  null, 
+  [
+    "create_account_advanced", 
+    "setup", 
+    "nft_mint"
+  ]
+]
+```
 
-Each of these inner `methods` represents a function call and requires the following parameters:  
+Every method listed requires the following parameters:  
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
 - `args`: A stringified JSON object of all the arguments to be passsed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
+
+For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
 
 ### Tailoring to Ticketing Requirements
 #### Key Uses
@@ -136,17 +149,26 @@ As disucssed in the [introduction](drop.md#introduction), the first key use shou
 
 #### POAP
 
-An NFT series is a set of NFTs that share the same artwork, title, description etc. The only thing that differs between tokens is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
+An NFT series is a set of NFTs that share the same artwork, title, description etc. The only thing that differs between tokens is their unique ID. Series are distinguished form one another using a unique identifier such as a `SeriesId` or `mintId`. 
 
-The SDK introduces a function called `createNFTSeries`, to simplify the process of creating these NFT series to attach to your drops. NFTs from series X are distinguished from those in series Y through a 
+For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
 
-On top of the required `receiverId`, `methodName`, `args`, and `attachedDeposit` parameters, a few others will be used used in `methods` to better utilize the SDK. These parameters will be used alongisde the [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries) SDK method and tell Keypom where to inject arguments. 
+The SDK introduces a function called `createNFTSeries`, to simplify the process of creating these NFT series to attach to your drops. This function interfaces with the `nft-v2.keypom.testnet` NFT contract, which requires the following parameters when creating a series. 
 
-- `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId`into when calling the function.  
+```rust
+pub fn create_series(
+    mint_id: Option<u64>,
+    metadata: TokenMetadata,
+    royalty: Option<HashMap<AccountId, u32>>,
+)
+```
+
+In order to take full advantage of the SDK and link your drop with an NFT series, the `mint_id` must be the same as the associated `dropId`. To do this, a few additional parameters can be added to `methods`. 
+
+- `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.  
 - `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.  
-  
 
-In this case, the drop will be interfacing with an NFT contract deployed at `nft-v2.keypom.testnet`. This is a contract specifically made to work with the SDK to allow you to seamlessly create NFTs and NFT Series to attach to your drops. 
+These parameters tell Keypom where to inject frequently used identifier arguments such as `accountId` and `dropId`. In this case, by passing `"mint_id"` into `dropIdField`, you are telling the Keypom contract to send the `dropId` parameter to `mint_id` on the receiver NFT contract. This will create an NFT series for you, where the unique `mint_id` is your `dropId`. 
 
 :::note
 If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.
@@ -251,16 +273,7 @@ https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b
 ---
 
 ## Running the Script
-Here, you'll learn how to run the code that was just covered, and what to expect.
-
-To view the completed code, clone the Keypom SDK repo and visit the examples directory:
-``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-advanced-tutorial/ticket-app
-```
-To run the code you just cloned, install all the necesasry packages. 
-```bash
-npm install
-```
+Here, you'll learn how to run the code that was just covered, and what to expect. It's assumed that you have already cloned the code from the [Keypom SDK repo](https://github.com/keypom/keypom-docs).
 
 :::caution
 Prior to running these scripts, ensure you replace all instances of `minqi.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
@@ -268,7 +281,7 @@ Prior to running these scripts, ensure you replace all instances of `minqi.testn
 
 To run the script, use the following command:
 ```bash
-node frontend/utils/createTickDrop
+cd keypom-js/docs-advanced-tutorial/ticket-app && node frontend/utils/createTickDrop
 ```
 This should return a successful drop creation, console log your public keys, linkdrops, and the expected test messages.
 <details>

@@ -11,10 +11,8 @@ The NFT post-attendance gift (POAP) is optional to include as the event organize
 
 Recall from earlier, the following features are needed:
 
-
-
 ### No wallet is needed to enter 
-> No wallet is needed to enter the event or receive a POAP.
+> No wallet is needed to enter the event or receive a Proof-of-Attendence NFT, commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
 This can be done using Keypom's access keys, which once distributed, the attendee can use to create their wallet.
 
@@ -29,13 +27,13 @@ In order to satisfy the requirement that each ticket must be unique and can only
 
 When the host scans a QR code and claims the key, it shouldn't do anything more than simply reflect that the key has been used. It shouldn't transfer $NEAR to anyone or create any accounts and should be a lightweight transaction on-chain.
 
-### No wifi is needed at the door.
-> Existing NFT ticketing solutions requires wifi for attendees to burn the NFT ticket at the door.
+### Attendees are not required to have wifi at the door.
+> Attendees are not required to have wifi at the door. Existing NFT ticketing solutions requires wifi for attendees to burn the NFT ticket at the door.
 
 If the actual ticket is simply a private key that has been turned into a QR code, the attendee only needs to keep the webpage open on their phone or take a screenshot in order to gain entry to the event. This eliminates the need for everyone to have wifi as only the hosts that are scanning need wifi to claim the keys.
 
-### NFT POAP minted on-demand
-> An optional NFT POAP can be minted on-demand for each user that attends the event.
+### NFT POAP available for attendees
+> Users that choose to onboard will receive a Proof-of-Attendence NFT.
 
 In order to allow attendees to receive a wallet and an NFT, the key should be multi-use. The first use is a `null` method that gets claimed once they've been scanned by the host. After they've attended, they can claim the key once more and receive $NEAR as well as an NFT.
 
@@ -61,6 +59,6 @@ A flow chart of this process can be seen below.
 ---
 
 ## Conclusion
-In this section, you started with the desired features and converted them to requirements. You then addressed those requirements by designing the architecture of a Keypom drop. You also learned how a password protected first key use can be used to ensure the integrity of the ticketing app. 
+In this section, you learned the solutions that would help meet the required features outlined in the introduction. These included using an access key as a ticket to remove the need for attendees to have both a wallet and an internet connection at the door. You also saw how using a multi-use function call drop could allow you to add a Proof-of-Attendance NFT to gift attendees who show up to your event.
 
 In the next section, you'll be taking the Keypom drop architecture you just created and using it to create the drop.

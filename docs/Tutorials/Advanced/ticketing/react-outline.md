@@ -17,13 +17,13 @@ This page is for the attendees and will only consist of 3 stages.
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/ticket-pink.png").default} width="100%" height="100%" alt="ticketing" class="rounded-corners"/>
 </p>
 
-* **Stage 1:** Page showing a unique QR code, corresponding to the private key from their ticket.  
-* **Stage 2:** After the QR code has been scanned by the host, the user can choose to onboard to NEAR and receive a POAP.  
-* **Stage 3:** If the user chooses to claim their POAP, the third stage will show a page of **your** choice. You can choose to leave it empty or customize it with additional resources or a redirect to your own website.
+* **Stage 1, Pre-entry:** Page showing a unique QR code, corresponding to the private key from their ticket.  
+* **Stage 2, Post-entry:** After the QR code has been scanned by the host, the user can choose to onboard to NEAR and receive a POAP.  
+* **Stage 3, Post-gift:** If the user chooses to claim their POAP, the third stage will show a page of **your** choice. You can choose to leave it empty or customize it with additional resources or a redirect to your own website.
 
-To trigger a transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events must occur:
-1. [1 &rarr; 2]: The host must scan the QR code, which calls `claim` with the event password. Nobody else is able to `claim` as the password is only known by the host. If this `claim` fails, the page will stay at stage 1.
-2. [2 &rarr; 3]: The user chooses to `claim` their POAP. Once that `claim` is complete and the POAP is in their wallet, the page will transition to stage 3.
+To trigger a transition from Pre-entry to Post-entry and Post-entry and Post-gift, the following events must occur:
+1. **Pre-entry &rarr; Post-entry**: The host must scan the QR code, which calls `claim` with the event password. Nobody else is able to `claim` as the password is only known by the host. If this `claim` fails, the page will stay at pre-claim.
+2. **Post-entry &rarr; Post-gift**: The user chooses to `claim` their POAP. Once that `claim` is complete and the POAP is in their wallet, the page will transition to post-gift.
 
 ---
 
@@ -37,16 +37,16 @@ The scanner page is for the host and consists of 3 stages that repeat in a loop.
 
 The event password will only be prompted once on app mount. If the host wishes to enter a different password once scanning starts, they can simply refresh the page and be prompted again. 
 
-* **Stage 1:** A page with the camera viewport open, constantly scanning for QR codes.  
-* **Stage 2:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code to `claim` using the event password. During this time, the app will indicate it is in the process of claiming.
-* **Stage 3:** After the `claim` is processed, the page will return either as successful or a failed `claim` based on the validity of the ticket.
+* **Stage 1, Pre-claim:** A page with the camera viewport open, constantly scanning for QR codes.  
+* **Stage 2, Claiming:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code to `claim` using the event password. During this time, the app will indicate it is in the process of claiming.
+* **Stage 3, Post-claim:** After the `claim` is processed, the page will return either as successful or a failed `claim` based on the validity of the ticket.
 
-To transition from stages 1 &rarr; 2 and 2 &rarr; 3, the following events occur:
+To transition from **Pre-claim** to **Claiming** and **Claiming** to **Post-claim**, the following events occur:
 
-1. [1 &rarr; 2]: Data must be read in; this is done with a QR code reader library which indicates when that occurs. As soon as data is read in, the app will transition from stage 1 &rarr; 2.
-2. [2 &rarr; 3]: The `claim` function call returns. It will either return as successful or failed based on the validity of the ticket.
+1. **Pre-claim &rarr; Claiming:** Data must be read in; this is done with a QR code reader library which indicates when that occurs. As soon as data is read in, the app will transition from Pre-claim &rarr; Claiming.
+2. **Claiming &rarr; Post-claim:** The `claim` function call returns. It will either return as successful or failed based on the validity of the ticket.
 
-After stage 3, the entire cycle will loop back to stage 1 after three seconds. This time interval was set so the host could read any error messages that may appear. You can modify this time by changing the values passed into `timeout()`.
+After post-claim, the entire cycle will loop back to pre-claim after three seconds. This time interval was set so the host could read any error messages that may appear. You can modify this time by changing the values passed into `timeout()`.
 
 
 
@@ -59,9 +59,9 @@ There are a few key pieces of information needed from Keypom in order to allow t
 ### Claim Page
 The major parameter that controls what React will render is `cur_key_use` for the given private key. This value represents the key's current use number (1st use, 2nd use etc.) and will be stored in a React state variable called `curUse`. 
 
-**Stage 1 &rarr; 2:** To change between these two stages, the key's current use must be changed from 1 to 2. This is done when the QR code is scanned by the host.  
+**Pre-entry &rarr; Post-entry:** To change between these two stages, the key's current use must be changed from 1 to 2. This is done when the QR code is scanned by the host.  
 
-**Stage 2 &rarr; 3:** To change between these two stages, the key must be deleted and fully claimed. This happens when they claim the post attendance gifts.  
+**Post-entry &rarr; Post-gift:** To change between these two stages, the key must be deleted and fully claimed. This happens when they claim the post attendance gifts.  
 
 :::note
 Here, notice that the `curUse` returns to 0, the default value for this React state variable. This is because the key is depleted and deleted; and thus reading the actual `cur_key_use` from the Keypom contract will return an error.

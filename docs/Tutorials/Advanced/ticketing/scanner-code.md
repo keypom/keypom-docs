@@ -55,13 +55,14 @@ As a brief reminder, the host scanner page will have the following stages, best 
   <img src={require("/static/img/docs/advanced-tutorials/ticketing/scanner-pink-rounded.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/>
 </p>
 
-* **Stage 1:** A page with the camera viewport open, constantly scanning for QR codes.  
-* **Stage 2:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code to `claim` using the event password. During this time, the app will indicate it is in the process of claiming.
-* **Stage 3:** After the `claim` is processed, the page will return either as successful or a failed `claim` based on the validity of the ticket.
+* **Stage 1, Pre-claim:** A page with the camera viewport open, constantly scanning for QR codes.  
+* **Stage 2, Claiming:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code to `claim` using the event password. During this time, the app will indicate it is in the process of claiming.
+* **Stage 3, Post-claim:** After the `claim` is processed, the page will return either as successful or a failed `claim` based on the validity of the ticket.
 
-After stage 3, the entire cycle will loop back to stage 1 after three seconds. 
+After post-claim, the entire cycle will loop back to pre-claim after three seconds. This time interval was set so the host could read any error messages that may appear. You can modify this time by changing the values passed into `timeout()`.
 
-In stage 3, a ticket may be invalid for a few reasons. 
+
+In post-claim, a ticket may be invalid for a few reasons. 
 * Incorrect password/key causing the Keypom SDK to return an error when `claim` fails
 * A ticket may already be fully claimed; the user has claimed their POAP and so their private key has since been deleted
 * The ticket has already been scanned by the host. This means the key's current use is 2. Although this claim *can* be made, it should not. Doing so would mean the attendee loses out on the opportunity to claim their POAP.
@@ -69,14 +70,14 @@ In stage 3, a ticket may be invalid for a few reasons.
 ### `masterState` State Variable
 In order to track all these stages and possible outcomes, a `masterState` state variable will be declared. These are the corresponding values it can take on.
 
-|    **`masterState[0]`**     | **Description**                                                                      |
-|-----------------------------|--------------------------------------------------------------------------------------|
-| `masterState[0]` == 1       | *Stage 1:* Host scanner page is scanning, waiting to read in data                         |
-| `masterState[0]` == 2       | *Stage 2:* Data has been read, scanner is trying to claim                            |
-| `masterState[0]` == 3       | *Stage 3:* Successful `claim`                                                        | 
-| `masterState[0]` == 4       | *Stage 3:* Failed to `claim`: SDK returned error, likely incorrect password          | 
-| `masterState[0]` == 5       | *Stage 3:* Failed to `claim`: Ticket has been fully claimed and key has been deleted | 
-| `masterState[0]` == 6       | *Stage 3:* Failed to `claim`: The ticket has already been scanned                    | 
+|    **`masterState[0]`**     | **Description**                                                                         |
+|-----------------------------|-----------------------------------------------------------------------------------------|
+| `masterState[0]` == 1       | *Pre-claim:* Host scanner page is scanning, waiting to read in data                     |
+| `masterState[0]` == 2       | *Claiming:* Data has been read, scanner is trying to claim                              |
+| `masterState[0]` == 3       | *Post-claim:* Successful `claim`                                                        | 
+| `masterState[0]` == 4       | *Post-claim:* Failed to `claim`: SDK returned error, likely incorrect password          | 
+| `masterState[0]` == 5       | *Post-claim:* Failed to `claim`: Ticket has been fully claimed and key has been deleted | 
+| `masterState[0]` == 6       | *Post-claim:* Failed to `claim`: The ticket has already been scanned                    | 
 
 You may have noticed that `masterState` is an array; this is to include a "data bit" inside to indicate that data has been successfully read in by the scanner. 
 

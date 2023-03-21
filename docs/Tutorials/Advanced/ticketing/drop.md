@@ -31,6 +31,7 @@ const { KeyPair, keyStores, connect } = require("near-api-js");
 const { parseNearAmount } = require("near-api-js/lib/utils/format");
 const path = require("path");
 const homedir = require("os").homedir();
+var assert = require('assert');
 
 
 async function createTickDrop(){
@@ -63,7 +64,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 :::
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L26
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L26
 ```
 
 ---
@@ -175,7 +176,7 @@ If you wish to use a different NFT contract for your POAP, ensure you know the c
 :::
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L30-L61
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L30-L61
 ```
 
 :::note
@@ -200,17 +201,15 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 The code for creating the series is shown below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L64-L73
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L64-L73
 ```
 
 Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets. It's important to note that if the series was not created and a key was claimed, the NFT contract would panic and the key would be wasted. 
 
 ---
 
-## Creating Linkdrops
-The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
-
-With the Keypom SDK, this is all neatly wrapped up for you into the function [`formatLinkdropUrl`](../../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the key you want to embed.
+## Creating Ticket Links
+The last step in this process is to create the links themselves so that you can easily distribute the tickets to people. You can control the format of the URL, for now `localhost:1234` will be used.
 
 ```js 
 pubKeys = keys.publicKeys
@@ -218,13 +217,11 @@ pubKeys = keys.publicKeys
 var dropInfo = {};
 const {contractId: KEYPOM_CONTRACT} = getEnv()
 // Creating list of pk's and linkdrops
-for(var i = 0; i < keys.keyPairs.length; i++) {
-    let linkdropUrl = formatLinkdropUrl({
-        customURL: "https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY",
-        secretKeys: keys.secretKeys[i]
-      })
-    dropInfo[pubKeys[i]] = linkdropUrl;
-}
+ for(var i = 0; i < keys.keyPairs.length; i++) {
+    // Replace this with your desired URL format. 
+    let url = `http://localhost:1234/${KEYPOM_CONTRACT}/${keys.secretKeys[i]}`
+    dropInfo[pubKeys[i]] = url;
+}   
 // Write file of all pk's and their respective linkdrops
 console.log('Public Keys and Linkdrops: ', dropInfo)
 ```
@@ -244,18 +241,18 @@ Recall that the drop should have the following properties:
 To ensure the first claim is password protected, `claim` will be called without a password and its expected that the current key use remains at 1. Then, `claim` will be called with the correct password, which should cause current key use to increment to 2. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L98-L122
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L96-L120
 ```
 
 The second `claim` should be unprotected, and should delete the key afterwards. To verify this, the following test can be used. Here, its expected that `getKeyInformation` will throw an error, causing the message in the catch statement to be logged. 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L124-L137
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L122-L135
 ```
 
 The last two cases to be tested are claiming with a depleted key, and claiming with a fake key. The following tests can be used. Similar to the last example, its expected that both of these should throw errors.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L139-L163
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L137-L161
 ```
 
 With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behaviour. 
@@ -267,7 +264,7 @@ With the drop functionality tested, you can be confident in the logic behind the
 Now that everything has been put together, the final code can be seen below.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/5e4b4744a16c727d96d235282020c186edd0b0b5/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L1-L166
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L1-L164
 ```
 
 ---

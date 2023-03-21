@@ -91,7 +91,7 @@ Now that the ticket has been successfully scanned and claimed, you can try to do
 Same as before, hold up the QR code up to your computer camera. Once the scanner reads the data and tries to claim, you should see this resultant page.
 
 <p align="center">
-    <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-prior.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>
+    <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claim-bad.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>
 </p>
 
 ---
@@ -118,10 +118,10 @@ Now that you've claimed the POAP, the private key is now deleted. If you go back
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-3.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/>
 </p>
 
-If you try to holding up the screenshot of your QR code up to the QR reader, you will be greeted with the following page, telling you the key has been depleted and deleted.
+If you try to holding up the screenshot of your QR code up to the QR reader, you will be greeted with the following failed claim page.
 
 <p align="center">
-    <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-deleted.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>
+    <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claim-bad.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>
 </p>
 
 ---

@@ -73,7 +73,7 @@ When connecting to NEAR, a `BrowserLocalStorageKeyStore` is used rather than an 
 
 With the NEAR connection established, your browser can now talk to the NEAR blockchain. The next step, is to call `initKeypom`. This initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. More info on the `initKeypom` function can be found [here](../../../keypom-sdk/modules#initkeypom).
 
-After the Keypom initialization is complete, the QR code information can be created, using the format `${contractId}/${privKey}`. This string is set to the state variable `link` and will be used to render the QR code.
+After the Keypom initialization is complete, the QR code information can be created following the format `${contractId}/${privKey}`. This string is set to the state variable `link` and will be used to render the QR code.
 
 ### Rendering
 

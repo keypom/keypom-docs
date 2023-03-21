@@ -63,7 +63,7 @@ https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec
 You may notice that the `App` funciton appears to be cut off. This is intentional as the remainder of the code is all in this function and will be discussed in later sections. Full code can be found [here](user-code.md#full-code)
 :::
 
-When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables (lines 40-45) for further use. Note that the URL is split by `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
+When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables, `contractId` and `privKey` for further use. Note that the URL is split by first a `#` and then `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
 
 Once the URL has been parsed and the resulting values stored, `connectNear` is called. This function handles the NEAR connection, as well as the Keypom connection and the linkdrop URL.
 
@@ -73,7 +73,7 @@ When connecting to NEAR, a `BrowserLocalStorageKeyStore` is used rather than an 
 
 With the NEAR connection established, your browser can now talk to the NEAR blockchain. The next step, is to call `initKeypom`. This initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. More info on the `initKeypom` function can be found [here](../../../keypom-sdk/modules#initkeypom).
 
-After the Keypom initialization is complete, the SDK function [`formatLinkdropUrl`](../../../keypom-sdk/modules.md#formatlinkdropurl) can be used to create the linkdrop link to embed in the QR code. To use this function, it simply needs a base URL, as well as the `privateKey` to be used. The returned linkdrop link is set to the state variable `link` and will be used to render the QR code.
+After the Keypom initialization is complete, the QR code information can be created, using the format `${contractId}/${privKey}`. This string is set to the state variable `link` and will be used to render the QR code.
 
 ### Rendering
 

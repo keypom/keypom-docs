@@ -13,6 +13,7 @@ Keypom aims to solve these problems by empowering you to create a seamless ticke
 * Attendees are not required to have wifi at the door.
 * Users that choose to onboard will receive a Proof-of-Attendence NFT.
 * The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
+* People that have attended the event can get setup with a NEAR wallet if they don't have one yet.
 
 These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to existing NFT ticketing solutions.
 
@@ -39,12 +40,16 @@ If you want to reference the finished code, that can be found [here](https://git
 ## Creating your Project
 In this section, you'll prepare to create the ticketing app using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
 
-Once youve cloned the repo, you can navigate to `docs-advanced-tutorials/ticket-app-skeleton`. Here you'll find the following files.
+Simply run the following to clone the repo and navigate to `docs-advanced-tutorials/ticket-app-skeleton`
+
+```bash
+git clone https://github.com/keypom/keypom-js.git && cd keypom-js/docs-advanced-tutorials/ticket-app-skeleton
+```
+
+Here you'll find the following files required to build out your app.
 
 ```bash
 /ticket-app-skeleton
-├── contract
-│   └── ...
 ├── frontend
 │   └── components
 │   │    └── scanner.js

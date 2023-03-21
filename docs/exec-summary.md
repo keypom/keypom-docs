@@ -94,10 +94,11 @@ Here are just a few of the possibilies with Keypom
 The problem with current NFT ticketing systems is that they require users to have a wallet. This is a huge barrier to entry for people that are attending events but don’t have wallets. In addition, there is often no proof of attendance for the event as the NFT is burned in order to get into the event which requires an internet connection.
 
 Keypom aims to solve these problems by having a ticketing system that has the following features.
-* No wallet is needed to enter the event or receive a POAP.
-* No wifi is needed at the door.
-* An NFT is minted on-demand for each user that attends the event.
-* Users can optionally onboard onto NEAR if they don’t have a wallet.
+* No wallet is needed to enter the event or receive a Proof-of-Attendence NFT, commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
+* Each ticket is unique and once you've entered the event, the ticket cannot be sent to another person to gain them access
+* Attendees are not required to have wifi at the door.
+* Users that choose to onboard will receive a Proof-of-Attendence NFT.
+* The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
 
 
 In addition, some way to provide analytics to event organizers that contains information such as links that were:

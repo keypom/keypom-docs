@@ -14,16 +14,14 @@ Recall from earlier, the following features are needed:
 ### No wallet is needed to enter 
 > No wallet is needed to enter the event or receive a Proof-of-Attendence NFT, commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
-This can be done using Keypom's access keys, which once distributed, the attendee can use to create their wallet.
+This can be done using Keypom's access keys. With traditional events, you would need to burn an NFT in order to gain entry to the event. This model requires the attendee to have a valid wallet with enough $NEAR to cover transaction costs. 
 
-With traditional events, you would need to burn an NFT in order to gain entry to the event. This model requires the attendee to have a valid wallet with enough $NEAR to cover transaction costs. With a Keypom access key, all you need is a valid private key to gain entrance.
-
-This key is a simple string and can be turned into a QR code that is able to be scanned.
+With a Keypom access key, all you need is a valid private key to gain entrance. This key is a simple string and can be turned into a QR code that is able to be scanned.
 
 ### Each ticket is unique and cannot be passed-back 
 > Each ticket is unique and once you've entered the event, the ticket cannot be sent to another person to gain them access
 
-In order to satisfy the requirement that each ticket must be unique and can only be scanned once, the key can be claimed once it's scanned. To prevent ticket pass-backs, the host could check the status of the key and deny entry to the event if the ticket has already been scanned.
+In order to satisfy the requirement that each ticket must be unique and can only be scanned once, the key can be claimed once it's been scanned. To prevent ticket pass-backs, the host could check the status of the key and deny entry to the event if the ticket has already been scanned.
 
 When the host scans a QR code and claims the key, it shouldn't do anything more than simply reflect that the key has been used. It shouldn't transfer $NEAR to anyone or create any accounts and should be a lightweight transaction on-chain.
 
@@ -42,13 +40,22 @@ In order to allow attendees to receive a wallet and an NFT, the key should be mu
 
 Currently, anyone with a ticket could manually claim the key using the Keypom SDK. This means that people could receive the NFT without physically showing up. To solve this, the scanning step could be [password protected](../../../Concepts/Keypom%20Protocol/Github%20Readme/passwordprotect.md) such that only the host knows the password.
 
+### Attendees can setup new NEAR wallet
+> People that have attended the event can get setup with a NEAR wallet if they don't have one yet.
+
+With the access key the attendees receive (which act as the ticket), they are able to claim their POAP to a new or existing NEAR wallet. Since the POAP can only be claimed by those who physically attend the event, this means only those that do so can also create a new NEAR wallet. 
+
 ## Keypom Solution
 
 From above, the drop must have the following properties to function as intended:
 
 * An FC drop must be used whereby each key has 2 uses.
-* The first key use is a `null` method that is password protected.
+* The first key use is a `null` method that is password protected. 
 * The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
+
+:::tip
+The first key use being `null` will allow for a lightweight transaction on-chain to reflect the key use decrement without needing to transfer any $NEAR to anyone or create any accounts.
+:::
 
 A flow chart of this process can be seen below.
 

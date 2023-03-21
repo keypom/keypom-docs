@@ -96,14 +96,14 @@ fcData
 ├── methods
 ```
 
-For multi-use keys, each specific use can have a different set of methods that will be called. These methodsare executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
+For multi-use keys, each specific use can have a different set of methods that will be called. These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
 
 1. `nft_mint`
 2. `null`
 3. `create_account_advanced`, `setup`, `nft_mint` 
 
-The first time the key is used, an NFT will be minted. The second use will simply advance the key and nothing will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.
-.
+The first time the key is used, an NFT will be minted. The second use will simply advance the key and nothing will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.  
+
 This is represented with a 2D array, where each inner is the set of methods per key use. The above example would be represented as:
 
 ```js
@@ -120,7 +120,7 @@ methods: [
 ]
 ```
 
-Every method listed requires the following parameters:  
+Every method listed represents a function call and requires the following parameters:  
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
@@ -131,7 +131,7 @@ For more information on the `methods` parameter, please see the [TypeDocs](../..
 
 ### Tailoring to Ticketing Requirements
 #### Key Uses
-To ensure each key has two key uses with a passwort protected first use, the following `config` can be added to `createDrop`.
+To ensure each key has two key uses with a passwort protected first use, the following `config`, `basePassword` and `passwordProtectedUses` can be added to `createDrop`. For more on these parameters, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
 
 ```js
 // 2 Uses per key
@@ -144,32 +144,37 @@ basePassword: "event-password",
 passwordProtectedUses: [1],
 ```
 
-:::info
-As disucssed in the [introduction](drop.md#introduction), the first key use should not call anything, and the second should call `nft_mint`. To do this, a value of `null` can be passed in to the first index of the `methods` array
-:::
-
 #### POAP
 
 An NFT series is a set of NFTs that share the same artwork, title, description etc. The only thing that differs between tokens is their unique ID. Series are distinguished form one another using a unique identifier such as a `SeriesId` or `mintId`. 
 
 For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
 
-The SDK introduces a function called `createNFTSeries`, to simplify the process of creating these NFT series to attach to your drops. This function interfaces with the `nft-v2.keypom.testnet` NFT contract, which requires the following parameters when creating a series. 
+
+
+To mint these POAPs, an NFT series contract has been deployed at `nft-v2.keypom.testnet`. The following parameters are needed to mint an NFT on this contract. 
 
 ```rust
-pub fn create_series(
-    mint_id: Option<u64>,
-    metadata: TokenMetadata,
-    royalty: Option<HashMap<AccountId, u32>>,
+pub fn nft_mint(
+  &mut self, 
+  mint_id: U64, 
+  receiver_id: AccountId, 
+  keypom_args: KeypomArgs
 )
 ```
 
-In order to take full advantage of the SDK and link your drop with an NFT series, the `mint_id` must be the same as the associated `dropId`. To do this, a few additional parameters can be added to `methods`. 
+Here, the `mint_id` is needed to identify and tell the NFT contract which series an NFT should be minted from and `receiver_id` is needed to identify which account to send the minted NFT to. 
 
-- `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.  
+This `mint_id` is the same as the associated drop's `dropId`. In order to pass the `dropId` into `nft_mint`'s `mint_id` parameter, the following can be used.
+
+  
 - `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.  
 
-These parameters tell Keypom where to inject frequently used identifier arguments such as `accountId` and `dropId`. In this case, by passing `"mint_id"` into `dropIdField`, you are telling the Keypom contract to send the `dropId` parameter to `mint_id` on the receiver NFT contract. This will create an NFT series for you, where the unique `mint_id` is your `dropId`. 
+`nft_mint` also expects a `receiver_id`, which needs to be the attendee's account ID in order to send the POAP to the attendee. To do this, a similar parameter can be used.
+
+`accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.
+
+By passing `"mint_id"` into `dropIdField` and `"receiver_id"` into `accountIdField`, you are telling the Keypom contract to send the value of your drop's `dropId` parameter to `mint_id` and the claiming account's `accountId` to `receiver_id` on the receiver NFT contract. 
 
 :::note
 If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.
@@ -190,7 +195,12 @@ In this section, you'll be creating the series of NFTs to be used as POAPs.
 The Keypom SDK provides a function to create an NFT series specifically for function call drops, called [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries). It requires the following parameters: 
 
 - `dropId`: The drop ID for the drop that should have the NFT series associated with it.  
-- `metadata`: 	The metadata that all minted NFTs will have.  
+- `metadata`: 	The metadata that all minted NFTs will have. 
+
+:::tip
+The `dropId` provided will be used as the unique NFT series identifier, `mint_id`
+:::
+
 
 `metadata` is an object with these properties:
 * `title`: The title for the NFTs in the series.

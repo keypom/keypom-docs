@@ -25,8 +25,8 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
           <div class="card__image">
             <img src={require("/static/img/newMoonCrop.png").default} alt="Learn" />
             <div class="card__body">
-              <h3>Understanding Keypom</h3>
-              Learn about the power and intricacies of Keypom
+              <h3 class="small-bottom-padding">Understanding Keypom</h3>
+                <p class="neutraltext">Learn about the power and intricacies of Keypom</p>
             </div>
           </div>
         </div>
@@ -38,8 +38,8 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
           <div class="card__image">
             <img src={require("/static/img/docs/homepage-banner-2.png").default} alt="Examples and Tutorials" />
             <div class="card__body">
-              <h3>Build with Keypom</h3>
-                Learn how to use Keypom for your Web3 needs.
+              <h3 class="small-bottom-padding">Build with Keypom</h3>
+                <p class="neutraltext">Learn how to use Keypom for your Web3 needs.</p>
             </div>
           </div>
         </div>

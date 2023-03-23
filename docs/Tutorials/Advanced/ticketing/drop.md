@@ -23,7 +23,12 @@ The process for creating this drop can be broken down into three stages.
 2) Create the drop with function call data.  
 3) Make the NFT series for POAPs.
 
-The following skeleton code can be used as a starting point:
+Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/frontend/utils`. 
+```bash
+cd docs-advanced-tutorials/ticket-app-skeleton/frontend/utils
+```
+
+There, you can see the following skeleton code in the file `createTickDrop.js`.
 ``` js
 // Imports:
 const { initKeypom, createDrop, createNFTSeries, addToBalance } = require("keypom-js");
@@ -42,7 +47,12 @@ async function createTickDrop(){
 // STEP 3: Make NFT series for POAPs.
 }
 
-createTickDrop()
+async function main(){
+    createTickDrop()
+    // Test drop logic here
+}
+
+main()
 ```
 
 ## Getting Started
@@ -64,7 +74,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 :::
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L26
+https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L8-L26
 ```
 
 ---
@@ -93,7 +103,7 @@ The primary task in creating the Function Call Drop is to define `fcData`. It is
 
 ```bash
 fcData
-├── methods
+└── methods
 ```
 
 For multi-use keys, each specific use can have a different set of methods that will be called. These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
@@ -131,39 +141,56 @@ For more information on the `methods` parameter, please see the [TypeDocs](../..
 
 ### Tailoring to Ticketing Requirements
 #### Key Uses
-To ensure each key has two key uses with a passwort protected first use, the following `config`, `basePassword` and `passwordProtectedUses` can be added to `createDrop`. For more on these parameters, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
+To ensure each key has two key uses with a passwort protected first use, the following `config`, `basePassword` and `passwordProtectedUses` can be added to `createDrop`.
 
 ```js
-// 2 Uses per key
-config: {
-    usesPerKey: 2
-},
+await createDrop(
+  // 2 Uses per key
+  config: {
+      usesPerKey: 2
+  },
 
-// Create base password and ensure only first key use is password protected
-basePassword: "event-password",
-passwordProtectedUses: [1],
+  // Create base password and ensure only first key use is password protected
+  basePassword: "event-password",
+  passwordProtectedUses: [1],
+)
 ```
+The `basePassword` acts as the base for the custom generated password for each key and each use. It is the password that the host will need to enter to the scanner before admitting attendees. 
+
+`passwordProtectedUses` indicated the key uses that should be protected by the given password. In this case, only the first use is protected and the second use can be claimed without a password. 
+
+For more on these parameters, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
+ADD PW PROTECT EXPLANATIONS HERE
 
 #### POAP
 
-An NFT series is a set of NFTs that share the same artwork, title, description etc. The only thing that differs between tokens is their unique ID. Series are distinguished form one another using a unique identifier such as a `SeriesId` or `mintId`. 
-
-For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
+Each NFT that is given out to participants will share the same artwork, title, description etc. They will be part of the same series and the only thing that differs between them is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
 
 
-
-To mint these POAPs, an NFT series contract has been deployed at `nft-v2.keypom.testnet`. The following parameters are needed to mint an NFT on this contract. 
+To mint these NFTs, there is a contract deployed to `nft-v2.keypom.testnet`. When creating an FC drop, it is important to understand the interface of the receiver contract. In this case, the mint function has the following parameters:
 
 ```rust
 pub fn nft_mint(
   &mut self, 
   mint_id: U64, 
-  receiver_id: AccountId, 
-  keypom_args: KeypomArgs
+  receiver_id: AccountId
 )
 ```
+Here, the `mint_id` is needed to identify and tell the NFT contract which series an NFT should belong to. The `receiver_id` field is needed to identify which account should receive the minted NFT.
 
-Here, the `mint_id` is needed to identify and tell the NFT contract which series an NFT should be minted from and `receiver_id` is needed to identify which account to send the minted NFT to. 
+The `mint_id` field should be set as the drop's `dropId` and the `receiver_id` should be the attendee's NEAR `accountId`. At first glance, this might seem impossible because you don't know the attendee's accounts ahead of time. To solve this, you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
+
+The following Keypom arguments are exposed for each individual method alongside the `fcData` receiverId, methodName, attachedDeposit etc: 
+- `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.
+- `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.
+- `keyIdField` EXPLAIN
+- `funderIdField` EXPLAIN
+
+In this case, the dropIdField should be set to mint_id  and accountIdField set to receiver_id. This will result in the drop's ID being passed into the parameter mint_id and attendee's NEAR account passed into the receiver_id field.
+
+This `mint_id` is the same as the associated drop's `dropId` and the `receiver_id` needs to be the attendee's account ID. To do this, 
+
+
 
 This `mint_id` is the same as the associated drop's `dropId`. In order to pass the `dropId` into `nft_mint`'s `mint_id` parameter, the following can be used.
 
@@ -287,6 +314,11 @@ Prior to running these scripts, ensure you replace all instances of `minqi.testn
 :::
 
 To run the script, use the following command:
+```bash
+node createTickDrop
+```
+
+If you would like to run the completed script, you can run the command below:=
 ```bash
 cd keypom-js/docs-advanced-tutorial/ticket-app && node frontend/utils/createTickDrop
 ```

@@ -2,18 +2,17 @@
 sidebar_label: 'Introduction'
 ---
 # Introduction
-In this tutorial, you'll learn how to create a ticketing experience that is both able to handle large audiences and creates a seamless admission and onboarding experience for your community. 
+In this tutorial, you'll learn how to create a seamless ticketing experience that is cheaper than alternative methods and can also handle very large audiences.
 ## Background
-NFT ticketing is very common in the Web3 space and is an excellent way to engage your attendees and draw a larger audience. However, it currently requires the attendees to have an existing wallet. This is a massive barrier to entry, particularly to non-Web3-natives. 
+The most popular ticketing solutions in Web3 utilize NFT technologies. This approach, however, requires attendees to own a crypto wallet and sign transactions. This is a massive barrier to entry, particularly for users that are new to Web3. 
 
 Keypom aims to solve these problems by empowering you to create a seamless ticketing system that has the following features.
 
-* No wallet is needed to enter the event or receive a Proof-of-Attendence NFT, commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
-* Each ticket is unique and once you've entered the event, the ticket cannot be sent to another person to gain them access
-* Attendees are not required to have wifi at the door.
-* Users that choose to onboard will receive a Proof-of-Attendence NFT.
-* The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
-* People that have attended the event can get setup with a NEAR wallet if they don't have one yet.
+* Users are not required to have a wallet to enter the event.
+* Each ticket is unique and can only be used by one person.
+* Attendees are not required to have wifi to gain entry to the event.
+* Attendees that did not have a NEAR wallet can get one for free.
+* Attendees can choose to receive an NFT proving their attendence at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
 These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to existing NFT ticketing solutions.
 

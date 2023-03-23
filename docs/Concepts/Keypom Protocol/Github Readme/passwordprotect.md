@@ -228,5 +228,5 @@ Keypom will provide a seamless user experience where users can find value in app
 With Keypom's technology, users will be locked into only interacting with the dApp specified in the link. Users can't rug the application and steal the $NEAR embedded in the link. The funds are allocated for 1 thing and 1 thing only: free trials of that one specific dApp.
 
 <p align="center">
-  <img src="/static/img/trial_accounts.png" width="65%" height="65%" alt="traial accounts"/>
+  <img src={require("/static/img/trial_accounts.png").default} width="65%" height="65%" alt="trial accounts"/>
 </p>

@@ -69,6 +69,12 @@
 
 .small-bottom-padding{
   margin-bottom: 5px !important;
+  background-image: linear-gradient(90deg, #f990d4, #87daf4);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.small-bottom-padding-only{
+  margin-bottom: 5px !important;
 }
 
 .avatar__name{

@@ -20,8 +20,8 @@ Continue your learning journey with any of the pages below
       <a href="simpledrops">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Simple Drop</h3>
-            Onboarding with $NEAR.
+            <h3 class="small-bottom-padding">Simple Drop</h3>
+            <p class="neutraltext">Onboarding with $NEAR.</p>
           </div>
         </div>
       </a>
@@ -30,21 +30,20 @@ Continue your learning journey with any of the pages below
       <a href="nftdrops">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Non-Fungible Token Drops</h3>
-              Share an NFT with a link
+            <h3 class="small-bottom-padding">Non-Fungible Token Drops</h3>
+              <p class="neutraltext">Share an NFT with a link</p>
           </div>
         </div>
       </a>
     </div>
   </div>
-  <br></br>
   <div class="row">
     <div class="col">
       <a href="ftdrops">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Fungible Token Drop</h3>
-            Send users FTs
+            <h3 class="small-bottom-padding">Fungible Token Drop</h3>
+            <p class="neutraltext">Send users FTs</p>
           </div>
         </div>
       </a>
@@ -53,8 +52,8 @@ Continue your learning journey with any of the pages below
       <a href="fcdrops">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Function Call Drops</h3>
-              Onboard with Keypom's most powerful drop
+            <h3 class="small-bottom-padding">Function Call Drops</h3>
+              <p class="neutraltext">Onboard with Keypom's most powerful drop</p>
           </div>
         </div>
       </a>

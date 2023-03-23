@@ -25,8 +25,8 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
           <div class="card__image">
             <img src={require("/static/img/newMoonCrop2.png").default} alt="Learn" />
             <div class="card__body">
-              <h3 class="small-bottom-padding">Understanding Keypom</h3>
-                <p class="neutraltext">Learn about the power and intricacies of Keypom</p>
+              <h3 class="small-bottom-padding-only">Understanding Keypom</h3>
+                <p class="neutraltext">Learn about the power and features of Keypom</p>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
           <div class="card__image">
             <img src={require("/static/img/docs/homepage-banner-2.png").default} alt="Examples and Tutorials" />
             <div class="card__body">
-              <h3 class="small-bottom-padding">Build with Keypom</h3>
+              <h3 class="small-bottom-padding-only">Build with Keypom</h3>
                 <p class="neutraltext">Learn how to use Keypom for your Web3 needs.</p>
             </div>
           </div>
@@ -95,8 +95,8 @@ Explore Keypom's source code in the Github Repos.
       <a href="https://github.com/keypom/keypom">
         <div class="card h-100">
           <div class="card__body">
-            <h3>Keypom Protocol</h3>
-            Discover the inner workings of the Keypom Protocol.
+            <h3 class="small-bottom-padding-only">Keypom Protocol</h3>
+              <p class="neutraltext">Discover the inner workings of the Keypom Protocol.</p>
           </div>
         </div>
       </a>
@@ -105,8 +105,8 @@ Explore Keypom's source code in the Github Repos.
       <a href="https://github.com/keypom/keypom-js">
         <div class="card h-100">
           <div class="card__body">
-            <h3>Keypom JavaScript SDK</h3>
-              See how the SDK interacts with NEAR.
+            <h3 class="small-bottom-padding-only">Keypom JavaScript SDK</h3>
+              <p class="neutraltext">See how the SDK interacts with NEAR.</p>
           </div>
         </div>
       </a>

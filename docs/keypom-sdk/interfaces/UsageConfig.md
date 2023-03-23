@@ -10,6 +10,27 @@ Within the config, there are configurable options related to how keys can be use
 
 ## Properties
 
+### accountCreationFields
+
+ `Optional` **accountCreationFields**: `Object`
+
+When calling `create_account` on the root account, which keypom args should be attached to the payload.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `accountIdField?` | `string` | Specifies what field Keypom should auto-inject the account that claimed the drop's ID into when calling the `create_account` function. |
+| `dropIdField?` | `string` | Specifies what field Keypom should auto-inject the drop's ID into when calling the `create_account` function. |
+| `funderIdField?` | `string` | Specifies what field Keypom should auto-inject the drop funder's account ID into when calling the `create_account` function. |
+| `keyIdField?` | `string` | Specifies what field Keypom should auto-inject the key's ID into when calling the `create_account` function. |
+
+#### Defined in
+
+[src/lib/types/drops.ts:136](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L136)
+
+___
+
 ### autoDeleteDrop
 
  `Optional` **autoDeleteDrop**: `boolean`
@@ -18,7 +39,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[src/lib/types/drops.ts:150](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L150)
+[src/lib/types/drops.ts:130](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L130)
 
 ___
 
@@ -30,7 +51,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[src/lib/types/drops.ts:154](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L154)
+[src/lib/types/drops.ts:134](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L134)
 
 ___
 
@@ -42,7 +63,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[src/lib/types/drops.ts:141](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L141)
+[src/lib/types/drops.ts:121](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L121)
 
 ___
 
@@ -55,4 +76,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[src/lib/types/drops.ts:146](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/drops.ts#L146)
+[src/lib/types/drops.ts:126](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/drops.ts#L126)

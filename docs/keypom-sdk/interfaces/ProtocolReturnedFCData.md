@@ -20,4 +20,4 @@ If a given key use does not have an undefined set of methods, when it is used, a
 
 #### Defined in
 
-[src/lib/types/protocol.ts:300](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/protocol.ts#L300)
+[src/lib/types/protocol.ts:300](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/protocol.ts#L300)

@@ -18,7 +18,7 @@ Map of account IDs to approval IDs as per official NEP-178 standard (https://git
 
 #### Defined in
 
-[src/lib/types/nft.ts:28](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/nft.ts#L28)
+[src/lib/types/nft.ts:28](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/nft.ts#L28)
 
 ___
 
@@ -30,7 +30,7 @@ Metadata for the token
 
 #### Defined in
 
-[src/lib/types/nft.ts:26](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/nft.ts#L26)
+[src/lib/types/nft.ts:26](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/nft.ts#L26)
 
 ___
 
@@ -42,7 +42,7 @@ Account ID of the owner
 
 #### Defined in
 
-[src/lib/types/nft.ts:24](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/nft.ts#L24)
+[src/lib/types/nft.ts:24](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/nft.ts#L24)
 
 ___
 
@@ -54,7 +54,7 @@ A mapping of NEAR accounts to the amount each should be paid out as per official
 
 #### Defined in
 
-[src/lib/types/nft.ts:30](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/nft.ts#L30)
+[src/lib/types/nft.ts:30](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/nft.ts#L30)
 
 ___
 
@@ -66,4 +66,4 @@ String ID for the token
 
 #### Defined in
 
-[src/lib/types/nft.ts:22](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/nft.ts#L22)
+[src/lib/types/nft.ts:22](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/nft.ts#L22)

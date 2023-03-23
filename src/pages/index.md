@@ -23,7 +23,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
       <a href="/docs/next/exec-summary">
         <div class="card mb-3">
           <div class="card__image">
-            <img src={require("/static/img/newMoonCrop.png").default} alt="Learn" />
+            <img src={require("/static/img/newMoonCrop2.png").default} alt="Learn" />
             <div class="card__body">
               <h3 class="small-bottom-padding">Understanding Keypom</h3>
                 <p class="neutraltext">Learn about the power and intricacies of Keypom</p>

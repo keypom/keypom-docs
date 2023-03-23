@@ -12,8 +12,8 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       <a href="Keypom Protocol/Github Readme/Types of Drops/introduction">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Types of Drops</h3>
-            Learn about types of Keypom drops.
+            <h3 class="small-bottom-padding">Types of Drops</h3>
+            <p class="neutraltext">Learn about types of Keypom drops.</p>
           </div>
         </div>
       </a>
@@ -22,21 +22,20 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       <a href="Keypom Protocol/Github Readme/Types of Drops/customization-homepage">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Drop Configurations</h3>
-              Customize your drops.
+            <h3 class="small-bottom-padding">Drop Configurations</h3>
+              <p class="neutraltext">Customize your drops.</p>
           </div>
         </div>
       </a>
     </div>
   </div>
-  <br></br>
   <div class="row">
     <div class="col">
       <a href="Keypom Protocol/balances">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Keypom Balances</h3>
-            See how Keypom Balances can save you time.
+            <h3 class="small-bottom-padding">Keypom Balances</h3>
+            <p class="neutraltext">See how Keypom Balances can save you time.</p>
           </div>
         </div>
       </a>
@@ -45,8 +44,8 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       <a href="Keypom Protocol/Github Readme/costs">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Costs</h3>
-              Find out about Keypom's low costs.
+            <h3 class="small-bottom-padding">Costs</h3>
+              <p class="neutraltext">Find out about Keypom's low costs.</p>
           </div>
         </div>
       </a>
@@ -65,8 +64,8 @@ Here are some additional resources, and references. These may help you deepen yo
       <a href="https://github.com/keypom/keypom">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Source Code</h3>
-            Explore Keypom's smart contracts.
+            <h3 class="small-bottom-padding">Source Code</h3>
+            <p class="neutraltext">Explore Keypom's smart contracts.</p>
           </div>
         </div>
       </a>
@@ -75,21 +74,20 @@ Here are some additional resources, and references. These may help you deepen yo
       <a href="https://github.com/keypom/keypom-js">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Keypom JavaScript SDK</h3>
-              Devlve into the source code of the SDK.
+            <h3 class="small-bottom-padding">Keypom JavaScript SDK</h3>
+              <p class="neutraltext">Devlve into the source code of the SDK.</p>
           </div>
         </div>
       </a>
     </div>
   </div>
-  <br></br>
   <div class="row">
     <div class="col">
       <a href="https://docs.near.org/">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>NEAR Docs</h3>
-            Documentation and Tutorials for NEAR.
+            <h3 class="small-bottom-padding">NEAR Docs</h3>
+            <p class="neutraltext">Documentation and Tutorials for NEAR.</p>
           </div>
         </div>
       </a>
@@ -98,8 +96,8 @@ Here are some additional resources, and references. These may help you deepen yo
       <a href="https://nomicon.io/">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3>Nomicon</h3>
-              Concepts and Standards on NEAR.
+            <h3 class="small-bottom-padding">Nomicon</h3>
+              <p class="neutraltext">Concepts and Standards on NEAR.</p>
           </div>
         </div>
       </a>

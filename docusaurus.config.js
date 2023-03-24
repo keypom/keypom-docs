@@ -63,7 +63,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       image:  `img/newMoonCrop2.png`,
       metadata: [{name: 'Keypom Developer Documentation', 
                   content: 'Keypom, Documentation, NEAR, Onboarding, Web3',
-                  image: `./static/img/newMoonCrop2.png`
+                  image: './static/img/newMoonCrop2.png'
                 }],
       navbar: {
         title: '',

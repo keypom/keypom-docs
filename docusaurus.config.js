@@ -107,7 +107,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // },
         ],
       },
-      image: 'img/newMoonCrop2.png',
       footer: {
         style: 'dark',
         //position: 'center',
@@ -173,6 +172,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      image: 'img/newMoonCrop2.png',
       metadata: [
         {
           property: 'og:image',
@@ -188,7 +188,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         {
           name: 'twitter:image',
-          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+          content: 'https://min-preview-icon.keypom-docs.pages.dev/img/square-moon.png',
         }
       ],
       // algolia: {

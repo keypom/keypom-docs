@@ -184,11 +184,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         {
           name: 'twitter:title', 
-          content: 'Keypom Developer Documentation'
+          content: 'Keypom Developer Document'
         },
         {
           name: 'twitter:image',
-          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+          content: 'https://docs.keypom.xyz/img/square-moon.png',
         },
         {
           name: 'twitter:site', 

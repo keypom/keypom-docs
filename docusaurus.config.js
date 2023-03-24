@@ -157,7 +157,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 href: 'https://github.com/keypom/keypom',
               },
               {
-                label: 'Javascript SDK Github',
+                label: 'JavaScript SDK Github',
                 href: 'https://github.com/keypom/keypom-js',
               },
             ],
@@ -180,15 +180,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         {
           name: 'twitter:card', 
-          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png'
+          content: 'summary'
         },
         {
           name: 'twitter:image',
-          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+          content: 'https://docs.keypom.xyz/img/square-moon.png',
         },
         {
           name: 'twitter:site', 
-          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png'
+          content: '@keypom.xyz'
         },
       ],
       // algolia: {

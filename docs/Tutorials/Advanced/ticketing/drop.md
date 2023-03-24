@@ -180,28 +180,16 @@ Here, the `mint_id` is needed to identify and tell the NFT contract which series
 
 The `mint_id` field should be set as the drop's `dropId` and the `receiver_id` should be the attendee's NEAR `accountId`. At first glance, this might seem impossible because you don't know the attendee's accounts ahead of time. To solve this, you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
 
-The following Keypom arguments are exposed for each individual method alongside the `fcData` receiverId, methodName, attachedDeposit etc: 
-- `accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.
+The following optional Keypom arguments are exposed for each individual method in the `fcData` alongside the required receiverId, methodName, attachedDeposit etc: 
+
+
+
+- `accountIdField`: Tells Keypom where to inject the claiming account's `accountId` into when calling the function.
 - `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.
 - `keyIdField` EXPLAIN
 - `funderIdField` EXPLAIN
 
-In this case, the dropIdField should be set to mint_id  and accountIdField set to receiver_id. This will result in the drop's ID being passed into the parameter mint_id and attendee's NEAR account passed into the receiver_id field.
-
-This `mint_id` is the same as the associated drop's `dropId` and the `receiver_id` needs to be the attendee's account ID. To do this, 
-
-
-
-This `mint_id` is the same as the associated drop's `dropId`. In order to pass the `dropId` into `nft_mint`'s `mint_id` parameter, the following can be used.
-
-  
-- `dropIdField`: Specifies what field Keypom should auto-inject the drop's `dropId` into when calling the function.  
-
-`nft_mint` also expects a `receiver_id`, which needs to be the attendee's account ID in order to send the POAP to the attendee. To do this, a similar parameter can be used.
-
-`accountIdField`: Specifies what field Keypom should auto-inject the claiming account's `accountId` into when calling the function.
-
-By passing `"mint_id"` into `dropIdField` and `"receiver_id"` into `accountIdField`, you are telling the Keypom contract to send the value of your drop's `dropId` parameter to `mint_id` and the claiming account's `accountId` to `receiver_id` on the receiver NFT contract. 
+In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
 
 :::note
 If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.

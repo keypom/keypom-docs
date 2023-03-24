@@ -63,7 +63,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       image:  `img/newMoonCrop2.png`,
       metadata: [{name: 'Keypom Developer Documentation', 
                   content: 'Keypom, Documentation, NEAR, Onboarding, Web3',
-                  image: `img/newMoonCrop2.png`
+                  image: `./static/img/newMoonCrop2.png`
                 }],
       navbar: {
         title: '',
@@ -164,7 +164,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,

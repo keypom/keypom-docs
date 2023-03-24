@@ -180,7 +180,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         {
           name: 'twitter:card', 
-          content: 'summary'
+          content: 'summary_large_image'
         },
         {
           name: 'twitter:title', 
@@ -189,11 +189,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         {
           name: 'twitter:image',
           content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
-        },
-        {
-          name: 'twitter:site', 
-          content: '@keypom.xyz'
-        },
+        }
       ],
       // algolia: {
       //   // The application ID provided by Algolia

@@ -60,7 +60,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
   themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-      image:  `./static/img/newMoonCrop2.png`,
+      image:  'img/newMoonCrop2.png',
       // metadata: [{name: 'Keypom Developer Documentation', 
       //             content: 'Keypom, Documentation, NEAR, Onboarding, Web3'
       //           }],

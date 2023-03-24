@@ -178,12 +178,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           property: 'og:image',
           content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
         },
-        {name: 'twitter:card', content: 'summary_large_image'},
+        {
+          name: 'twitter:card', 
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png'
+        },
         {
           name: 'twitter:image',
           content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
         },
-        {name: 'twitter:site', content: '@keypom.xyz'},
+        {
+          name: 'twitter:site', 
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png'
+        },
       ],
       // algolia: {
       //   // The application ID provided by Algolia

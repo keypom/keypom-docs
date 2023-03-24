@@ -173,6 +173,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      metadata: [
+        {
+          property: 'og:image',
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+        },
+        {name: 'twitter:card', content: 'summary_large_image'},
+        {
+          name: 'twitter:image',
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+        },
+        {name: 'twitter:site', content: '@keypom.xyz'},
+      ],
       // algolia: {
       //   // The application ID provided by Algolia
       //   appId: "KWAT5GJATX",

@@ -182,7 +182,7 @@ const homedir = require("os").homedir();
 async function fcDropKeypom(){
 // STEP 1: Initiate a NEAR connection.
 
-// STEP 2: Create the drop with funciton call data.
+// STEP 2: Create the drop with function call data.
 }
 
 fcDropKeypom()

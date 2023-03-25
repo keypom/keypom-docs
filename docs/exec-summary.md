@@ -29,7 +29,7 @@ The concept of sending NEAR can then be expanded to allow someone to not only lo
 
 The end user journey would be that an organization or funder deposits assets (either fungible or non-fungible) into the Keypom contract and generates a unique link. This link is then given to the user that wishes to onboard onto NEAR. When the link is clicked, the user either creates a new account or uses an existing one for the assets to be automatically sent to.
 
-In the NEAR ecosystem, this process is known as a linkdrop. With Keypom, a series of identical linkdrops can be created at once and is refered to as **a drop**.
+In the NEAR ecosystem, this process is known as a linkdrop. With Keypom, a series of identical linkdrops can be created at once and is referred to as **a drop**.
 
 ### Customizable Linkdrops
 The Keypom Protocol allows for a huge variety of customizations that can be embedded into the onboarding experience. For example, as the funder, you can specify the amount of times a link can be used before it’s invalidated. Rather than someone using a link once, they can potentially use it many times and receive assets over a long period of time.

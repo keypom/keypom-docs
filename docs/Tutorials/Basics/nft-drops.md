@@ -144,7 +144,7 @@ The process of creating an NFT drop can be broken down into the following steps.
 5) Create linkdrops.  
 
 :::info
-The NFT ownership must be transfered to Keypom so that it can send the NFT to the user when they claim their drop. 
+The NFT ownership must be transferred to Keypom so that it can send the NFT to the user when they claim their drop. 
 :::
 
 The following skeleton code can be used as a starting point:
@@ -417,7 +417,7 @@ From there, you should be able to see the [`create_drop`](https://explorer.testn
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 :::note
-Recall that `nft_transfer_call` is never explicitely called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
+Recall that `nft_transfer_call` is never explicitly called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
 
 This is the SDK in action!
 :::

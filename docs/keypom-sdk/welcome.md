@@ -158,7 +158,7 @@ The core of Keypom revolves around creating drops. This is where the true power 
 
 - `account?` ([Account](https://github.com/near/near-api-js/blob/master/packages/near-api-js/src/account.ts)) - Valid NEAR account object that if passed in, will be used to sign the txn instead of the funder account.
 - `wallet?` ([BrowserWalletBehaviour | Wallet](https://github.com/near/wallet-selector/blob/main/packages/core/src/lib/wallet/wallet.types.ts)) - If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object.
-- `numKeys` (number) - Specify how many keys should be generated for the drop. If `publicKeys` is not passed in, `numKeys` number of keys are automatically created. The behaviour of this automatic creation depends on if the funder has rootEntropy set OR rootEntropy is passed in. In this case, the keys will be deterministically generated using the drop ID, key nonce, and entropy. Otherwise, each key will be generated randomly.
+- `numKeys` (number) - Specify how many keys should be generated for the drop. If `publicKeys` is not passed in, `numKeys` number of keys are automatically created. The behavior of this automatic creation depends on if the funder has rootEntropy set OR rootEntropy is passed in. In this case, the keys will be deterministically generated using the drop ID, key nonce, and entropy. Otherwise, each key will be generated randomly.
 - `publicKeys?` (string[]) - Pass in a custom set of publicKeys to add to the drop. If this is not passed in, keys will be generated based on the `numKeys` parameter.
 - `depositPerUseNEAR?` (number) - Specify how much $NEAR should be contained in each link. Unit in $NEAR (i.e `1` = 1 $NEAR)
 - `depositPerUseYocto?` (string) - Specify how much $yoctoNEAR should be contained in each link. Unit in yoctoNEAR (1 yoctoNEAR = 1e-24 $NEAR)
@@ -594,7 +594,7 @@ Receipt: uN5cwkUFXB2gY4LE8vfuCGvA8BcqaTVgoExKQGu2Cct
 
 # Costs
 
-It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *forseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
+It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *foreseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
 
 With that being said, there are several mandatory costs that must be taken into account when using Keypom. These costs are broken down into two categories: per key and per drop.
 

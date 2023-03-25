@@ -24,4 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           locale: "US"
           filter_mode: "nofilter"
-          exclude: "./yarn.lock"
+          exclude: "./yarn.lock, ./package-lock.json"

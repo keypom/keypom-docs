@@ -215,7 +215,7 @@ In this section, you'll learn about the process of creating an FC drop using the
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom). [a](../../keypom-sdk/modules.md#initkeypom)
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
 
 After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter. 
 

@@ -22,5 +22,5 @@ jobs:
         uses: reviewdog/action-misspell@v1.12.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          path: "./docs"
+          path: "../../docs"
           locale: "US"

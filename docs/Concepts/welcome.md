@@ -4,10 +4,6 @@ sidebar_label: 'Home'
 # Concepts
 Welcome to the concepts section of Keypom's developer documentation. Here you'll learn all about Keypom.
 
-sproigingle
-
-forseeable
-
 ## Major Concepts
 
 <div class="container">

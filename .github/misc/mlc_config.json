@@ -7,6 +7,12 @@
         "pattern": "^http://127.0.0.1"
       },
       {
+        "pattern": "^https://testnet.keypom.xyz/claim"
+      },
+      {
+        "pattern": "^https://example.com/token.json "
+      },
+      {
         "pattern": "^https://near.events"
       },
       {

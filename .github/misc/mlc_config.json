@@ -10,7 +10,7 @@
         "pattern": "^https://testnet.keypom.xyz/claim"
       },
       {
-        "pattern": "^https://example.com/token.json "
+        "pattern": "^https://example.com/token.json"
       },
       {
         "pattern": "^https://near.events"

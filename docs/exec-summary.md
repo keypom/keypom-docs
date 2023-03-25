@@ -1,6 +1,6 @@
 # Keypom Executive Summary
 
-> To discover the features and details of Keypom, begin your journey [here](Concepts/welcome).
+> To discover the features and details of Keypom, begin your journey [here](Concepts/welcome.md).
 
 Keypom provides **zero friction onboarding** and transactions for NEAR. We allow people to **experience** the value of blockchain technology *regardless of if they have a wallet or not*. 
 

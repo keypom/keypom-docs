@@ -5,10 +5,6 @@ sidebar_label: 'Solution Architecture'
 In this section, you'll break down the requirements of the ticketing system in order to better understand how to create a solution architecture. This means translating the features from the [ticketing introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
 
 ## Breaking Down the Problem
-:::info note
-The NFT post-attendance gift (POAP) is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
-:::
-
 Recall from earlier, the following features are needed:
 
 ### No wallet is needed to enter 
@@ -34,6 +30,10 @@ If the actual ticket is simply a private key that has been turned into a QR code
 > Users that choose to onboard will receive a Proof-of-Attendence NFT.
 
 In order to allow attendees to receive a wallet and an NFT, the key should be multi-use. The first use is a `null` method that gets claimed once they've been scanned by the host. After they've attended, they can claim the key once more and receive $NEAR as well as an NFT.
+
+:::info note
+The NFT post-attendance gift (POAP) is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
+:::
 
 ### Attendance required for POAP
 > The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.

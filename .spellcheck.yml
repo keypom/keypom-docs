@@ -4,6 +4,7 @@ matrix:
   apsell:
     mode: en
     ignore-case: true
+    mode: url
   dictionary:
     wordlists:
     - .wordlist.txt

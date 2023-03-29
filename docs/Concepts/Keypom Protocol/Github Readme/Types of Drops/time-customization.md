@@ -50,7 +50,7 @@ To do this, you would need to create two drops, one for preferred admission and 
 ## End
 *Default: none, Keys can be used anytime*  
 
-The end parameter acts as a de-activation time. This means that once the end time is reached, all the keys in the drop will be de-activated and can no longer be used. 
+The end parameter acts as a deactivation time. This means that once the end time is reached, all the keys in the drop will be deactivated and can no longer be used. 
 
 ### Use case
 Let's pretend that you are at NEARCON representing an NFT marketplace looking to onboard users onto your platform. Your strategy is to offer an exclusive NFT to users that sign up during NEARCON. 

@@ -23,6 +23,7 @@ matrix:
       - 'code'
       - 'pre'
       - 'blockquote'
+   - pyspelling.filters.url:
   sources:
   - '*.md'
   - 'docs/**/*.md'

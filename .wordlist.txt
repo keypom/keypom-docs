@@ -40,7 +40,6 @@ SDK
 github
 https
 http
-repo
 MyNearWallet
 keypairs
 NodeJS
@@ -60,9 +59,7 @@ ProtocolReturnedNonFungibleTokenObject
 ProtocolReturnedNonFungibleTokenMetadata
 ProtocolReturnedNFTData
 ProtocolReturnedMethod
-
 keypom
-NEAR’s
 linkdrops
 Linkdrops
 Keypom's

@@ -9,7 +9,7 @@ matrix:
   dictionary:
     wordlists:
     - .wordlist.txt
-    output: wordlist.dic
+    output: .wordlist.dic
     encoding: utf-8
   pipeline:
   - pyspelling.filters.markdown:

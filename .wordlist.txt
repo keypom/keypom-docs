@@ -69,9 +69,6 @@ DAO’s
 Keypom’s
 KeyStores
 NEAR's
-
-df
-ece
 fc
 js
 sdk
@@ -80,9 +77,7 @@ NFTs
 Linkrops
 nft
 funder's
-aea
 api
-bbe
 predefine
 Keypair
 pubkey
@@ -92,7 +87,6 @@ accountId
 param
 url
 Nomicon
-bc
 POAPs
 dApps
 UX
@@ -120,7 +114,6 @@ DAO's
 Multisig
 multisig
 struct
-de
 MoonNFT
 cooldown
 useable
@@ -158,11 +151,9 @@ transformTransactions
 tryInitFromLocalStorage
 verifyOwner
 Readme
-rc
 BenKurrek
 MattLockyer
 img
-io
 mattlockyer
 svg
 ux
@@ -216,7 +207,6 @@ AMPL
 wETH
 ProtocolReturnedFCData
 PasswordPerUse
-pw
 NonFungibleTokenMetadata
 camelCase
 expiresAt

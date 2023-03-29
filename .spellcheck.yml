@@ -3,9 +3,9 @@ matrix:
   expect_match: false
   apsell:
     lang: en
-    mode: url
-    ignore-case: true
-    camel-case: true
+    --ignore-case: true
+    --mode: url
+    --camel-case: true
   dictionary:
     wordlists:
     - .wordlist.txt

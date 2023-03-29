@@ -3,9 +3,9 @@ matrix:
   expect_match: false
   apsell:
     lang: en
-    --ignore-case: true
-    --mode: url
-    --camel-case: true
+    ignore-case: true
+    mode: url
+    camel-case: true
   dictionary:
     wordlists:
     - .wordlist.txt
@@ -23,6 +23,7 @@ matrix:
       - 'code'
       - 'pre'
       - 'blockquote'
+      - 'url'
   sources:
   - '*.md'
   - 'docs/**/*.md'

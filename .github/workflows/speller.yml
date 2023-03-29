@@ -1,4 +1,4 @@
-name: Spellcheck Action
+name: SpellCheck Action
 on:
   workflow_dispatch:
   pull_request:

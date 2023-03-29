@@ -242,7 +242,7 @@ Each inner element of `methods` represents a function call and requires the foll
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
-- `args`: A stringified JSON object of all the arguments to be passsed into `methodName`.  
+- `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
 In this tutorial only one function call will be made: `nft_mint` in order to lazy mint an NFT.
@@ -324,7 +324,7 @@ To view the completed code, clone the Keypom SDK repo and visit the examples dir
 ``` bash
 git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples
 ```
-To run the code you just cloned, install all the necesasry packages. 
+To run the code you just cloned, install all the necessary packages. 
 ```bash
 npm install
 ```

@@ -75,7 +75,7 @@ Here are some additional resources, and references. These may help you deepen yo
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Keypom JavaScript SDK</h3>
-              <p class="neutraltext">Devlve into the source code of the SDK.</p>
+              <p class="neutraltext">Delve into the source code of the SDK.</p>
           </div>
         </div>
       </a>

@@ -2,7 +2,7 @@
 sidebar_label: 'Usage Configurations'
 ---
 # Usage Configurations
-Usage configurations control behaviours surrounding *how* a key can be used. For example, dictating whether a key can be used to call only `claim`, or `create_account_and_claim`.  
+Usage configurations control behaviors surrounding *how* a key can be used. For example, dictating whether a key can be used to call only `claim`, or `create_account_and_claim`.  
 
 ``` rust
 pub struct UsageConfig {

@@ -4,9 +4,9 @@ sidebar_label: 'Keypom Balances'
 
 # Keypom Balances
 ## What is a Keypom Balance?
-Let's put on our imagination caps for a second; pretend you're an event host and you are in charge of ticketing for numerous events. You deduce that for the sake of organization, the best approach would be to create seperate drops for seperate events. 
+Let's put on our imagination caps for a second; pretend you're an event host and you are in charge of ticketing for numerous events. You deduce that for the sake of organization, the best approach would be to create separate drops for separate events. 
 
-Being the busy event organizer that you are, sometimes you need to create these drops and keys while on the road. As we can see in the [basic tutorials](../../Tutorials/Basics/simple-drops.md), you need to attach a deposit to every one of your function calls: everytime you create a drop, add keys, delete keys etc. This can be a real headache for a busy event organizer!
+Being the busy event organizer that you are, sometimes you need to create these drops and keys while on the road. As we can see in the [basic tutorials](../../Tutorials/Basics/simple-drops.md), you need to attach a deposit to every one of your function calls: every time you create a drop, add keys, delete keys etc. This can be a real headache for a busy event organizer!
 
 This is where the concept of a **Keypom Balance** comes in real handy!
 
@@ -32,4 +32,4 @@ pub fn get_user_balance(&self, account_id: AccountId) -> U128
 ## Use Cases
 *WIP*
 
-For example, Alice wants to add 10 $NEAR to her Keypom balance. She will do this by calling `add_to_balance` and transfering 10 $NEAR to the Keypom contract. Then, if Alice wants to create a drop that costs her 5 $NEAR, she can simply create the drop and Keypom will automatically deduct from her internal Keypom balance rather than needing to transfer 5 $NEAR to the contract.  
+For example, Alice wants to add 10 $NEAR to her Keypom balance. She will do this by calling `add_to_balance` and transferring 10 $NEAR to the Keypom contract. Then, if Alice wants to create a drop that costs her 5 $NEAR, she can simply create the drop and Keypom will automatically deduct from her internal Keypom balance rather than needing to transfer 5 $NEAR to the contract.  

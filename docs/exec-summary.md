@@ -88,7 +88,7 @@ Learn more about Keypom's Drop types below
 
 ## Use Cases
 
-Here are just a few of the possibilies with Keypom
+Here are just a few of the possibilities with Keypom
 
 ### NFT Ticketing
 The problem with current NFT ticketing systems is that they require users to have a wallet. This is a huge barrier to entry for people that are attending events but don’t have wallets. In addition, there is often no proof of attendance for the event as the NFT is burned in order to get into the event which requires an internet connection.

@@ -1498,7 +1498,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 **addToBalance**(`«destructured»`): `Promise`<`any`\>
 
 Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without
-Having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+Having to explicitly attach a deposit every time. It can be thought of like a bank account.
 
 **`Example`**
 

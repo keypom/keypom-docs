@@ -296,7 +296,7 @@ To view the completed code, clone the Keypom SDK repo and visit the examples dir
 ``` bash
 git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk/simple-example.js
 ```
-To run the code you just cloned, install all the necesasry packages. 
+To run the code you just cloned, install all the necessary packages. 
 ```bash
 npm install
 ```

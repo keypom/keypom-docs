@@ -4,7 +4,7 @@ sidebar_position: 4
 ---
 # Costs
 
-It is important to note that the Keypom contract is 100% **FEE FREE** and will remain that way for the *forseeable future*. This contract is a public good and is meant to inspire change in the NEAR ecosystem.
+It is important to note that the Keypom contract is 100% **FEE FREE** and will remain that way for the *foreseeable future*. This contract is a public good and is meant to inspire change in the NEAR ecosystem.
 
 With that being said, there are several mandatory costs that must be taken into account when using Keypom. These costs are broken down into two categories: per key and per drop.
 

@@ -58,29 +58,26 @@ https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889ce
 ---
 
 ## Host Claiming Code
-Before testing the drop logic, a utility script `hostClaim` will be introduced. This script will be used both to test the drop logic and in the host scanner page. 
 
-The primary purpose of this script is to work with the host's scanner and allow entry to attendees with valid tickets that have not yet entered the event. This means it will check for a few conditions before returning a success value. 
+In order to test the drop logic, a utility function will be created to emulate the host scanning tickets at the door. This function will be the foundation for the frontend code that will be used to claim tickets.
 
-* The ticket contains a valid key embedded in the QR code.
-* The ticket has not been scanned yet.
+The primary purpose of this function is to work with the host's scanner and allow entry to attendees with valid tickets that have not yet entered the event. This means it will check for a few conditions before returning a success value. 
+
+* The ticket is valid and has not been scanned yet.
 * The password entered by the host was correct and the claim was successful
 
-The `hostClaim` utility function receives a private key, `privKey`, and an optional `basePassword`. It defaults to a failed claim, and the failure to meet any of the above conditions causes the entire function to end early and return the failed claim. Only once all the checks have passed, does the function return a successful claim. 
-
-With this approach, it can fulfill the previous conditions using the following code.
+The `allowEntry` utility function takes in a private key, and a `basePassword`.
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/utilFunctions.js#L8-L56
 ```
 
 ## Testing Drop Logic
-With the drop created and a host claiming utility function defined, some code can be written to test the actual logic to ensure that the ticket claiming process works as expected. This will be broken down into phases, similar to the actual ticketing experience. 
 
-The [`hostClaim`](drop.md#host-claiming-code) utility function will be used to emulate the host scanning tickets at the door.
+With both the drop created utility function defined, some code can be written to test the actual logic to ensure that the ticket claiming process works as expected. This will be broken down into phases, similar to the actual ticketing experience. 
 
 ### Gaining Entry
-The first phase of the ticketing experience can be labelled as pre-entry, when the attendee is looking to enter the event. Here, you want to ensure that only the host can allow them in, meaning the first key use must only be claimable with the correct password. 
+The first phase of the ticketing experience can be labelled as `pre-entry`, when the attendee is looking to enter the event. Here, you want to ensure that only the host can allow them in, meaning the first key use must only be claimable with the correct password.
 
 The following code can be used to test this logic, following the drop creation. 
 
@@ -88,19 +85,21 @@ The following code can be used to test this logic, following the drop creation.
 https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L95-L119
 ```
 
-It's expected that after a `hostClaim` with the incorrect password, the current key use would remain at 1, while  it would increment to 2 after a successful `hostClaim`. Asserts are used to catch any discrepencies from expected behavior.
+It's expected that after claiming with the incorrect password, `allowEntry` will return `false` since the key use remains at 1. However, once the correct password is provided, the `allowEntry` function should return `true`. In the tests, an `assert` function is used to ensure the proper behaviour.
 
 ### Preventing Multiple Entries
-Once an attendee has been admitted, they may try to share their ticket, or pass the ticket back to admit multiple people. To test and prevent this, another `hostClaim` call can be made on the same key using the same parameters. If `hostClaim` correctly detects that the key has already been scanned and refuses to claim, the current key use will remain at 2.
+
+Once an attendee has been scanned into the event, they may try to give their ticket to someone else. To test and prevent this, `allowEntry` can be called multiple times on the same ticket. It is expected that the first call should return `true` but once it scannes the same ticket again, `false` should be returned.
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L121-L127
 ```
 
 ### Claiming the POAP
-The next phase of the ticketing experience is allowing the attendee to claim their POAP. As this is done on their own as opposed to using the scanner, there should be no password protecting this `claim`. This can be testing by simply calling `claim`. 
 
-If successful, its expected that the key will be depleted and deleted, as it has used up all of its key uses. This should mean any attempt to get key information using `getKeyInformation` should fail as the key no longer exists. 
+The next phase of the ticketing experience is allowing the attendee to claim their NEAR wallet and POAP. As this is done on their own as opposed to using the scanner, the use should not be password protected. This can be testing by simply calling `claim`.
+
+If successful, it's expected that the key will be deleted since it has no more uses. This should mean any attempt to get key information using `getKeyInformation` should fail as the key no longer exists.
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/afb4765d1102552348af7fe73e04ed3dd1a46079/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L130-L143

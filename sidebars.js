@@ -108,6 +108,7 @@ const sidebars = {
                 'Tutorials/Advanced/ticketing/introduction',
                 'Tutorials/Advanced/ticketing/architecture',
                 'Tutorials/Advanced/ticketing/drop',
+                'Tutorials/Advanced/ticketing/drop-test',
                 'Tutorials/Advanced/ticketing/react-outline',
                 'Tutorials/Advanced/ticketing/user-code',
                 'Tutorials/Advanced/ticketing/scanner-code',

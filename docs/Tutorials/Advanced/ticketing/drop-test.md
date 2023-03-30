@@ -1,58 +1,25 @@
 ---
 sidebar_label: 'Testing the Drop'
 ---
-# Creating the Drop
+# Testing the Drop
 
 ## Introduction
-In this section you'll take the first step to creating the ticketing experience by designing the drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
+In the last section you designed and created a drop according to the specifications you learned about in the [Solution Architecture](architecture.md#keypom-solution).
 
-Recall that the drop needs the following properties:
+Here, you'll be continuing this process by testing the drop logic. This will consist of the following stages: 
 
-* An FC drop must be used whereby each key has 2 uses.
-* The first key use is a `null` method that is password protected.
-* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
-
-
-:::info note
-The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
-:::
-
-The process for creating this drop can be broken down into three stages.
-
-1) Connect to the NEAR blockchain.  
-2) Create the drop with function call data.  
-3) Make the NFT series for POAPs.
+1) Create a utility script for the host to claim the tickets.  
+2) Simulate the entire ticketing process.
+3) Cover edge cases. 
 
 Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/frontend/utils`. 
 ```bash
 cd docs-advanced-tutorials/ticket-app-skeleton/frontend/utils
 ```
 
-There, you can see the following skeleton code in the file `createTickDrop.js`.
+There, you can see the following skeleton code in the file `utilFunctions.js`.
 ``` js reference
-https://github.com/keypom/keypom-js/blob/8b52d854bf8bc39b92e28c0150dbeceb97ad5ddf/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/createTickDrop.js#L1-L22
-```
-
-## Getting Started
-In this section, you'll be addressing the first step: connecting to NEAR. 
-
-This is done with `NEAR-API-JS` and consists of:
-
-1) Create a Keystore, which stores your access keys used to sign transactions   
-  * select a network, either `testnet` or `mainnet`  
-  * choose a location where the keypairs live, either a folder on your local machine, or in-memory      
-
-2) Define a NEAR configuration using the Keystore  
-3) Use the configuration to initialize a connection to NEAR  
-
-More information about this process can be found [here](https://docs.near.org/tools/near-api-js/quick-reference#key-store).
-
-:::note
-For simplicity, this tutorial will choose a file-based keystore and point to the `~/.near-credentials` folder on your local machine since this is where most of your keys are stored. For more information about KeyStores, visit NEAR's [official docs](https://docs.near.org/tools/near-api-js/quick-reference#key-store).
-:::
-
-```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L27
+https://github.com/keypom/keypom-js/blob/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/utilFunctions.js
 ```
 
 ---
@@ -64,7 +31,7 @@ The primary purpose of this script is to work with the host's scanner and allow 
 
 * The ticket contains a valid key embedded in the QR code.
 * The ticket has not been scanned yet.
-* The password entered by the host was correct and the claim was successful
+* The password entered by the host was correct and the claim was successful.
 
 The `hostClaim` utility function receives a private key, `privKey`, and an optional `basePassword`. It defaults to a failed claim, and the failure to meet any of the above conditions causes the entire function to end early and return the failed claim. Only once all the checks have passed, does the function return a successful claim. 
 

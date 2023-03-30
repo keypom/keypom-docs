@@ -21,20 +21,23 @@ In order to satisfy the requirement that each ticket must be unique and can only
 
 When the host scans a QR code and claims the key, it shouldn't do anything more than simply reflect that the key has been used. It shouldn't transfer $NEAR to anyone or create any accounts and should be a lightweight transaction on-chain.
 
+To do this, an FC drop with 2 key uses can be used. In addition, to ensure that only the host can 
+
 ### Attendees are not required to have wifi at the door.
 > Attendees are not required to have wifi at the door. 
 
 If the actual ticket is simply a private key that has been turned into a QR code, the attendee only needs to keep the webpage open on their phone or take a screenshot in order to gain entry to the event. This eliminates the need for everyone to have wifi as only the hosts that are scanning need wifi to claim the keys.
 
-### Attendees can setup new NEAR wallet
+### Attendees can setup a new NEAR wallet
 > Attendees that did not have a NEAR wallet can get one for free.
 
-With the access key the attendees receive (which act as the ticket), they are able to claim their POAP to a new or existing NEAR wallet. Since the POAP can only be claimed by those who physically attend the event, this means only those that do so can also create a new NEAR wallet. 
+A second key use pre-loaded with a small amount of $NEAR can be added. This $NEAR will cover costs for account creation and sponsor a few transanctions. This can be used by attendees who do not have a NEAR wallet.
+
 
 ### NFT POAP available for attendees
 > Attendees can choose to receive an NFT proving their attendence at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
-In order to allow attendees to receive a wallet and an NFT, the key should be claimable multiple times. First, when they are being scanned in by the host. Once they've attendedfter they've attended, they can claim the key once more to create a NEAR wallet and receive an NFT.
+In order to send the attendees a POAP, the second key use will mint an NFT to their new or existing NEAR wallet. 
 
 :::info note
 The NFT post-attendance gift (POAP) is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
@@ -43,16 +46,19 @@ The NFT post-attendance gift (POAP) is optional to include as the event organize
 ### Attendance required for POAP
 > The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
 
-Currently, anyone with a ticket could manually claim the key using the Keypom SDK. This means that people could receive the NFT without physically showing up. To solve this, the scanning step could be [password protected](../../../Concepts/Keypom%20Protocol/Github%20Readme/passwordprotect.md) such that only the host knows the password.
+Currently, anyone with a ticket could manually claim the key using the Keypom SDK. This means that people could receive the NFT without physically showing up. 
+
+To solve this, the first key use can be protected with a [password](../../../Concepts/Keypom%20Protocol/Github%20Readme/passwordprotect.md) that only the host knows, preventing them from receiving the NFT unless they have been let in by the host.
 
 
 ## Keypom Solution
 
 From above, the drop must have the following properties to function as intended:
 
-* An FC drop must be used whereby each key has 2 uses. 
-* The first key use is a `null` method that is password protected. 
-* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
+* A [Function Call drop](../../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) must be used and configured so that each key has 2 uses.
+* The first key use is password protected and `null`. 
+* The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
+* The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
 
 :::tip
 The first key use being `null` will allow for a lightweight transaction on-chain to reflect the key use decrement without needing to transfer any $NEAR to anyone or create any accounts.

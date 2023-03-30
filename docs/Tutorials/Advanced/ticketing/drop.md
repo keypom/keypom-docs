@@ -8,10 +8,11 @@ In this section you'll take the first step to creating the ticketing experience 
 
 Recall that the drop needs the following properties:
 
-* A FunctionCall drop must be used and configured so that each key has 2 uses.
+* A [Function Call drop](../../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) must be used and configured so that each key has 2 uses.
 * The first key use is password protected and `null` (a lightweight transaction to reflect that the key has been used).
 * The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
 * The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
+
 
 With this in mind, you can create a script to create the drop matching the above properties. This process can be broken down into three stages:
 

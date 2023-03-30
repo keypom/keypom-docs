@@ -30,6 +30,8 @@ There, you can see the following skeleton code in the file `createTickDrop.js`.
 https://github.com/keypom/keypom-js/blob/8b52d854bf8bc39b92e28c0150dbeceb97ad5ddf/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/createTickDrop.js#L1-L22
 ```
 
+---
+
 ## Connecting to NEAR
 In this section, you'll be addressing the first step which is connecting to the NEAR network. 
 
@@ -227,6 +229,7 @@ Putting it all together, the final drop structure should look something like thi
 https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L36-L61
 ```
 
+---
 
 ## Making NFT Series
 

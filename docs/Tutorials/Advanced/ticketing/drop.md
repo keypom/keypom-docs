@@ -8,20 +8,16 @@ In this section you'll take the first step to creating the ticketing experience 
 
 Recall that the drop needs the following properties:
 
-* An FC drop must be used whereby each key has 2 uses.
-* The first key use is a `null` method that is password protected.
-* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
+* A FunctionCall drop must be used and configured so that each key has 2 uses.
+* The first key use is password protected and `null` (a lightweight transaction to reflect that the key has been used).
+* The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
+* The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
 
-
-:::info note
-The NFT POAP is optional to include as the event organizer. You may omit it, or replace it with your own function call if you wish. In this tutorial, the POAP will be minted on the second key use. 
-:::
-
-The process for creating this drop can be broken down into three stages.
+With this in mind, you can create a script to create the drop matching the above properties. This process can be broken down into three stages:
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
-3) Make the NFT series for POAPs.
+3) Create the NFT collection for the post attendance gift.
 
 Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/frontend/utils`. 
 ```bash
@@ -33,23 +29,14 @@ There, you can see the following skeleton code in the file `createTickDrop.js`.
 https://github.com/keypom/keypom-js/blob/8b52d854bf8bc39b92e28c0150dbeceb97ad5ddf/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/createTickDrop.js#L1-L22
 ```
 
-## Getting Started
-In this section, you'll be addressing the first step: connecting to NEAR. 
+## Connecting to NEAR
+In this section, you'll be addressing the first step which is connecting to the NEAR network. 
 
 This is done with `NEAR-API-JS` and consists of:
 
-1) Create a Keystore, which stores your access keys used to sign transactions   
-  * select a network, either `testnet` or `mainnet`  
-  * choose a location where the keypairs live, either a folder on your local machine, or in-memory      
+* Selecting which network to connect to (testnet or mainnet).
 
-2) Define a NEAR configuration using the Keystore  
-3) Use the configuration to initialize a connection to NEAR  
-
-More information about this process can be found [here](https://docs.near.org/tools/near-api-js/quick-reference#key-store).
-
-:::note
-For simplicity, this tutorial will choose a file-based keystore and point to the `~/.near-credentials` folder on your local machine since this is where most of your keys are stored. For more information about KeyStores, visit NEAR's [official docs](https://docs.near.org/tools/near-api-js/quick-reference#key-store).
-:::
+* Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L27
@@ -57,27 +44,41 @@ https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889ce
 
 ---
 
-## Creating Drop with Function Call Data
+## Creating the Drop
 In this section, you'll create the function call drop to meet the functional requirements defined earlier.
 
-Recall that the drop needs the following properties:
-
-* An FC drop must be used whereby each key has 2 uses.
-* The first key use is a `null` method that is password protected.
-* The second key use will have $NEAR to create a new wallet and it will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
-
 ### Function Call Drop Basics
+
+#### Initializing the SDK
+
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the Keypom SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected.
 
-After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter. 
+After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter.
 
-:::tip
-Recall that the private keys being generated using `createDrop` are the tickets and will be embedded into the attendee's QR code
-:::
+```js
+// Change this to your account ID
+const FUNDER_ACCOUNT_ID = "minqi.testnet";
+const NETWORK_ID = "testnet"
+async function createTickDrop() {
+  // Initiate connection to the NEAR blockchain.
+  const CREDENTIALS_DIR = ".near-credentials";
+  const credentialsPath =  path.join(homedir, CREDENTIALS_DIR);
+  ...
+  ...
+  let near = await connect(nearConfig);
 
-The primary task in creating the Function Call Drop is to define fcData. It is an object containing a methods field that outlines what methods should be called for a given key use:
+  await initKeypom({
+      near,
+      network: NETWORK_ID
+  });
+}
+```
+
+#### Defining the Function Call Data
+
+One the SDK has been initialized and the NEAR connection established, it's time to create the function call drop. This is done by passing in `fcData` into create drop. It is an object that defines the methods that will be called for any given key use:
 
 
 ```bash
@@ -85,15 +86,15 @@ fcData
 └── methods
 ```
 
-For multi-use keys, each specific use can have a different set of methods that will be called. These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
+For multi-use keys, each specific use can have a different set of methods that will be called. These methods are executed one by one. As an example, a key with 3 uses can be seen:
 
 1. `nft_mint`
 2. `null`
-3. `create_account_advanced`, `setup`, `nft_mint` 
+3. `create_account_advanced` -> `setup` -> `nft_mint` 
 
-The first time the key is used, an NFT will be minted. The second use will simply advance the key and nothing will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.  
+The first time the key is used, an NFT will be minted. The second use will simply advance the key with nothing called. The third time the key is used, it will first call `create_account_advanced` followed by the `setup` method and then finally `nft_mint` all in the same transaction.
 
-This is represented with a 2D array, where each inner is the set of methods per key use. The above example would be represented as:
+This is represented with a 2D array, where the inner array is the set of methods per key use. The above example would be represented as:
 
 ```js
 methods: [
@@ -109,7 +110,7 @@ methods: [
 ]
 ```
 
-Every method listed represents a function call and requires the following parameters:  
+In reality, each method is not simply a string as shown above. The methods require the following parameters:
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
@@ -118,36 +119,27 @@ Every method listed represents a function call and requires the following parame
 
 For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
 
-### Tailoring to Ticketing Requirements
-#### Key Uses
-To ensure each key has two key uses with a passwort protected first use, the following `config`, `basePassword` and `passwordProtectedUses` can be added to `createDrop`.
+In summary, the `fcData` should look something like this, with a generic method for the POAP which you'll explore in the next section:
 
 ```js
-await createDrop(
-  // 2 Uses per key
-  config: {
-      usesPerKey: 2
-  },
-
-  // Create base password and ensure only first key use is password protected
-  basePassword: "event-password",
-  passwordProtectedUses: [1],
-  .
-  .
-  .
-)
+fcData: {
+    methods: [
+        null,
+        [
+            {
+                receiverId: SOME_NFT_CONTRACT,
+                methodName: "nft_mint",
+                args: SOME_ARGS,
+                attachedDeposit: SOME_DEPOSIT
+            }
+        ],
+    ]   
+}  
 ```
-As the drop creator, you have the option of creating a password and applying it to the keys in your drop. This password is unique for each key use and is comprised of multiple pieces of information. 
-
-This can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
-
-Once a key has been password protected, you must pass in `hash(basePassword + publicKey + current_key_use)` in order to successfully claim it. 
-
-With this model, if the host were to simply know the `basePassword`, it could deterministically generate this hash for any given ticket link. Furthermore, if the host was the only person who knew the password, nobody could claim the key without going through them first.
-
-For an in-depth explanation around password protected keys, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
 
 #### POAP
+
+Now that the basics for creating an FC drop have been covered, it's time to define what the second key use method data should look like
 
 Each NFT that is given out to participants will share the same artwork, title, description etc. They will be part of the same series and the only thing that differs between them is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
 
@@ -175,15 +167,65 @@ They tell Keypom where to inject certain Keypom parameters into for each functio
 
 In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
 
-The code to create this tailored functional call drop can be seen below. 
+In summary, the final `fcData` should look as follows.
 
-```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L31-L61
+```js
+fcData: {
+    methods: [
+        null,
+        [
+            {
+                receiverId: `nft-v2.keypom.testnet`,
+                methodName: "nft_mint",
+                args: "",
+                dropIdField: "mint_id",
+                accountIdField: "receiver_id",
+                attachedDeposit: parseNearAmount("0.1")
+            }
+        ],
+    ]   
+}
 ```
-
 :::note
 If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.
 :::
+
+#### Password Protected Keys
+
+To ensure each key has two uses with a password protected first use, the following `config`, `basePassword` and `passwordProtectedUses` can be added to `createDrop`.
+
+```js
+await createDrop(
+  // 2 Uses per key
+  config: {
+      usesPerKey: 2
+  },
+  // Create base password and ensure only first key use is password protected
+  basePassword: "event-password",
+  passwordProtectedUses: [1],
+  fcData: {
+    ...
+  }
+)
+```
+As the drop creator, you have the option of creating a password and applying it to the keys in your drop. This password is unique for each key use and is comprised of multiple pieces of information. 
+
+This can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
+
+Once a key has been password protected, you must pass in `hash(basePassword + publicKey + current_key_use)` in order to successfully claim it. 
+
+With this model, if the host were to simply know the `basePassword`, it could deterministically generate this hash for any given ticket link. Furthermore, if the host was the only person who knew the password, nobody could claim the key without going through them first.
+
+For an in-depth explanation around password protected keys, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
+
+### Final Drop Structure
+
+Putting it all together, the final drop structure should look something like this:
+
+```js reference
+https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L36-L61
+```
+
 
 ## Making NFT Series
 
@@ -218,6 +260,15 @@ https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889ce
 ```
 
 ---
+
+## Final Code
+
+Putting everything together, the final code for the drop should be:
+
+```js reference
+https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L90
+```
+
 
 ## Conclusion
 

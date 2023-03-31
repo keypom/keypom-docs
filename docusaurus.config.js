@@ -10,7 +10,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/moon.png',
+  favicon: 'img/moon.svg',
   organizationName: 'minqianlu', // Usually your GitHub org/user name.
   projectName: 'minqianlu.github.io', // Usually your repo name.
   trailingSlash: false,
@@ -60,11 +60,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
   themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+      // metadata: [{name: 'Keypom Developer Documentation', 
+      //             content: 'Keypom, Documentation, NEAR, Onboarding, Web3'
+      //           }],
       navbar: {
-        title: 'KEYPOM',
+        title: '',
         logo: {
           alt: 'MOON',
-          src: 'img/moon.png',
+          src: 'img/newMoonCrop.svg',
+          srcDark: 'img/moon_white.png',
+          href: '/'
         },
         items: [
           {
@@ -151,13 +156,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 href: 'https://github.com/keypom/keypom',
               },
               {
-                label: 'Javascript SDK Github',
+                label: 'JavaScript SDK Github',
                 href: 'https://github.com/keypom/keypom-js',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Keypom, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -167,6 +172,25 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      image: 'img/newMoonCrop2.png',
+      metadata: [
+        {
+          property: 'og:image',
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+        },
+        {
+          name: 'twitter:card', 
+          content: 'summary_large_image'
+        },
+        {
+          name: 'twitter:title', 
+          content: 'Keypom Developer Documentation'
+        },
+        {
+          name: 'twitter:image',
+          content: 'https://docs.keypom.xyz/img/newMoonCrop2.png',
+        }
+      ],
       // algolia: {
       //   // The application ID provided by Algolia
       //   appId: "KWAT5GJATX",

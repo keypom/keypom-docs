@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/types/params.ts:44](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L44)
+[src/lib/types/params.ts:44](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L44)
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:41](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L41)
+[src/lib/types/params.ts:41](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L41)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:43](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L43)
+[src/lib/types/params.ts:43](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L43)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:49](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L49)
+[src/lib/types/params.ts:50](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L50)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:47](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L47)
+[src/lib/types/params.ts:48](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L48)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:45](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L45)
+[src/lib/types/params.ts:45](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L45)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:48](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L48)
+[src/lib/types/params.ts:49](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L49)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:50](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L50)
+[src/lib/types/params.ts:51](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L51)
 
 ___
 
@@ -94,7 +94,17 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:40](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L40)
+[src/lib/types/params.ts:40](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L40)
+
+___
+
+### required\_gas
+
+ `Optional` **required\_gas**: `string`
+
+#### Defined in
+
+[src/lib/types/params.ts:46](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L46)
 
 ___
 
@@ -104,4 +114,4 @@ ___
 
 #### Defined in
 
-[src/lib/types/params.ts:46](https://github.com/keypom/keypom-js/blob/9d8244ce/src/lib/types/params.ts#L46)
+[src/lib/types/params.ts:47](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/params.ts#L47)

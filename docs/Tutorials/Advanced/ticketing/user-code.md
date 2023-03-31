@@ -17,22 +17,18 @@ The full code for each script will be shown, with highlights. For React resource
 Recall, from the [introduction](introduction.md) that your code had the following outline.
 
 ```bash
-/my-ticket-app
-├── contract
-│   └── ...
-├── frontend
-│   └── components
-│   │    └── scanner.js
-│   │    └── qrcode.js
-│   └── state
-│   │    └── App.js
-│   │    └── keyInfo.js
-│   └── utils
-│   │    └── configurations.js
-│   │    └── createTickDrop.js
-│   └── package.json
-├── ...
-└─ package.json
+/ticket-app-skeleton
+└── components
+│    └── scanner.js
+│    └── qrcode.js
+└── state
+│    └── App.js
+│    └── keyInfo.js
+└── utils
+│    └── allowEntry.js
+│    └── createTickDrop.js
+│    └── testTickDrop.js
+└── package.json
 ```
 
 This tutorial will be covering the code in `App.js`, `KeyInfo.js`, and `qrcode.js`.
@@ -46,10 +42,10 @@ The primary purpose of `App.js` is to display the different states of the attend
 The first step is to initialize a connection to NEAR and setup all the state variables that will be needed to render the page. 
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L15-L58
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L13-L57
 ```
 
-When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables for further use. Note that the URL is split by first a `#` and then `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
+When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables for further use.
 
 Once the URL has been parsed and the resulting values stored, `connectNear` is called. This function handles the NEAR connection, as well as the Keypom connection.
 
@@ -83,7 +79,7 @@ The code to render can be found in the exandable section below.
 <p>
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L55-L135
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L54-L134
 ```
 
 </p>
@@ -97,7 +93,7 @@ The full code, including the set up and the rendering, can be seen below.
 <p>
 
 ``` jsx reference
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L1-L143
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L1-L137
 ```
 
 </p>
@@ -112,7 +108,7 @@ https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec
 The full code can be seen below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/components/qrcode.js#L1-L22
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/components/qrcode.js#L1-L22
 ```
 
 --- 
@@ -126,7 +122,7 @@ When `curUse` is 1 and the QR code is being rendered, the public key and use num
 A `useEffect` hook is used to update the needed Keypom state variables whenver the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/state/keyInfo.js#L1-L41
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/keyInfo.js#L9-L45
 ```
 
 ---

@@ -15,22 +15,18 @@ The full code for each script will be shown, with highlights. For React resource
 Recall, from the [introduction](introduction.md) that your code had the following outline.
 
 ```bash
-/my-ticket-app
-├── contract
-│   └── ...
-├── frontend
-│   └── components
-│   │    └── scanner.js
-│   │    └── qrcode.js
-│   └── state
-│   │    └── App.js
-│   │    └── keyInfo.js
-│   └── utils
-│   │    └── configurations.js
-│   │    └── createTickDrop.js
-│   └── package.json
-├── ...
-└─ package.json
+/ticket-app-skeleton
+└── components
+│    └── scanner.js
+│    └── qrcode.js
+└── state
+│    └── App.js
+│    └── keyInfo.js
+└── utils
+│    └── allowEntry.js
+│    └── createTickDrop.js
+│    └── testTickDrop.js
+└── package.json
 ```
 
 This tutorial will be covering the code in `scanner.js`.
@@ -102,8 +98,8 @@ The primary task of the claim process is to determine if a claim is:
 
 This is accomplished using the `allowEntry` function that you created earlier. If it returns `true`, the master status stage should be set to `Stages.successClaim`. Otherwise, it should be set to `Stages.failClaim`.
 
-```js
-https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L59-L116
+```js reference
+https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L59-L96
 ```
 
 ### Rendering
@@ -126,8 +122,8 @@ The following expandable section contains code for rendering.
 <summary>Full scanner.js rendering code</summary>
 <p>
 
-``` jsx reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L147-L200
+```jsx reference
+https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L98-L151
 ```
 
 </p>
@@ -137,7 +133,7 @@ https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d3
 The full code, including the set up, claiming, and the rendering, can be seen below.
 
 ``` jsx reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L1-L201
+https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L1-L152
 ```
 
 ---

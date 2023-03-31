@@ -12,8 +12,16 @@ To run this app on your local machine, you will need a computer with working cam
 To follow along with the app on your own machine, you can clone the code from the [Keypom SDK repository](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial) and run the following command in the root folder `keypom-js/`:
 
 ``` bash
-cd docs-advanced-tutorials/ticket-app && npm install && npm start
+cd docs-advanced-tutorials/ticket-app-skeleton && yarn && yarn start
 ```
+
+:::note
+If you'd like to run the already completed code found in the `ticket-app` directory instead of the skeleton code, run:
+
+``` bash
+cd docs-advanced-tutorials/ticket-app && yarn && yarn start
+```
+:::
 
 This should bring you to the following page at `localhost:1234`
 
@@ -25,9 +33,18 @@ This should bring you to the following page at `localhost:1234`
 
 ## Starting the Claim and Scanner Pages
 
-To begin the app, first you'll need to run the create drop script and grab a private key from its output. To do this, follow the guide from the [Create Drop section](drop.md#running-the-script). You can then take your private key and modify the URL to be the following:
+To begin the app, first you'll need to run the create drop script:
+
+```bash
+yarn create-ticket-drop
 ```
-http://localhost:1234/v2.keypom.testnet/${privateKey}
+
+This will return a link:
+
+```bash
+Ticket Links:
+
+http://localhost:1234/v2.keypom.testnet/3pGPvPGiXUiMfW6TME1EPWGWHzx1FrLSLgu68UADpyjg6c9DPix1v2bxUWuY5K7ChWE5G5BNszMNTPmecTz7C15w
 ```
 
 This should bring you to the following page. Feel free to take a picture of your QR code with another device, you will need to hold this QR code up to your computer's camera later.
@@ -74,6 +91,10 @@ If you right click and inspect the page and go to the console, you should see th
 
 ### Correct Password Claim
 To enter the correct password, simply refresh the scanner page. This should prompt you for the password again. You can now enter the correct password for your private key. By default, the `createTickDrop` script you ran earlier has a password of `event-password`.
+
+```
+event-password
+```
 
 Once the correct password has been entered, you can repeat the same steps as before and try to claim your ticket by holding the QR code up to the scanner. This time around after the yellow claiming frame, you will see the following successful claim page. 
 

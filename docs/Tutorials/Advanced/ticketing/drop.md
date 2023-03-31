@@ -9,25 +9,30 @@ In this section you'll take the first step to creating the ticketing experience 
 Recall that the drop needs the following properties:
 
 * A [Function Call drop](../../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) must be used and configured so that each key has 2 uses.
-* The first key use is password protected and `null` (a lightweight transaction to reflect that the key has been used).
+* The first key use is password protected and `null` (for when the host scans attendees into the event). 
 * The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
 * The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.
 
+:::tip
+The first key use being `null` will allow for a lightweight transaction on-chain to reflect the key use decrement without needing to transfer any $NEAR to anyone or create any accounts.
+:::
 
-With this in mind, you can create a script to create the drop matching the above properties. This process can be broken down into three stages:
+
+With this in mind, the aim of this tutorial will be to write a node script that will create the drop matching the above properties. This process can be broken down into three stages:
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
 3) Create the NFT collection for the post attendance gift.
 
-Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/frontend/utils`. 
+Starting at the `keypom-js` directory, navigate to the `utils` folder and open the `createTickDrop.js` file. 
+
 ```bash
-cd docs-advanced-tutorials/ticket-app-skeleton/frontend/utils
+cd docs-advanced-tutorials/ticket-app-skeleton/utils
 ```
 
 There, you can see the following skeleton code in the file `createTickDrop.js`.
 ``` js reference
-https://github.com/keypom/keypom-js/blob/8b52d854bf8bc39b92e28c0150dbeceb97ad5ddf/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/createTickDrop.js#L1-L22
+https://github.com/keypom/keypom-js/blob/7b25963e84411b4d51f15aa926954344972d7792/docs-advanced-tutorials/ticket-app-skeleton/utils/createTickDrop.js#L16-L27
 ```
 
 ---
@@ -42,7 +47,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L27
+https://github.com/keypom/keypom-js/blob/7b25963e84411b4d51f15aa926954344972d7792/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L16-L36
 ```
 
 ---
@@ -142,9 +147,9 @@ fcData: {
 
 #### POAP
 
-Now that the basics for creating an FC drop have been covered, it's time to define what the second key use method data should look like
+Now that the basics for creating an FC drop have been covered, it's time to define what the second key use method data should look like.
 
-Each NFT that is given out to participants will share the same artwork, title, description etc. They will be part of the same series and the only thing that differs between them is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
+Each NFT that is given out to participants will share the same artwork, title, description etc. They will be part of the same series and the only thing that differs between them is their unique ID. For a full tutorial about the series contract, see NEAR's [NFT tutorial.](https://docs.near.org/tutorials/nfts/series#nft-collections-and-series)
 
 To mint these NFTs, there is a contract deployed to `nft-v2.keypom.testnet`. When creating an FC drop, it is important to understand the interface of the receiver contract. In this case, the mint function has the following parameters:
 
@@ -161,9 +166,9 @@ The `mint_id` field should be set as the drop's `dropId` and the `receiver_id` s
 
 The following optional Keypom arguments are exposed for each individual method in the `fcData` alongside the required receiverId, methodName, attachedDeposit etc. 
 
-They tell Keypom where to inject certain Keypom parameters into for each function call.
+They tell Keypom where to inject certain parameters for each function call.
 
-- `accountIdField`: The name of the account that is claiming the linkdrop
+- `accountIdField`: The name of the account that is claiming the linkdrop.
 - `dropIdField`: The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
 - `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
@@ -211,11 +216,11 @@ await createDrop(
   }
 )
 ```
-As the drop creator, you have the option of creating a password and applying it to the keys in your drop. This password is unique for each key use and is comprised of multiple pieces of information. 
+As the drop creator, you have the option of creating a password and applying it to the keys in your drop. This password is unique for each key use and comprises of a master password, the drop ID and the use (1st, 2nd, 3rd etc.)
 
-This can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
+This behaviour can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
 
-Once a key has been password protected, you must pass in `hash(basePassword + publicKey + current_key_use)` in order to successfully claim it. 
+Once a key has been password protected, you must pass in `hash(basePassword + publicKey + current_key_use)` in order to successfully claim it.
 
 With this model, if the host were to simply know the `basePassword`, it could deterministically generate this hash for any given ticket link. Furthermore, if the host was the only person who knew the password, nobody could claim the key without going through them first.
 
@@ -226,7 +231,7 @@ For an in-depth explanation around password protected keys, see the [Typedocs](.
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L36-L61
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L45-L70
 ```
 
 ---
@@ -249,7 +254,7 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 The code for creating the series is shown below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L64-L73
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L72-L81
 ```
 
 Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets.
@@ -259,8 +264,10 @@ Once both the series and drop are created, the key can be used to mint on-demand
 ## Creating Ticket Links
 The last step in this process is to create the links themselves so that you can easily distribute the tickets to people. You can control the format of the URL, for now `localhost:1234` will be used.
 
+You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
+
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L74-L85
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L83-L95
 ```
 
 ---
@@ -270,13 +277,13 @@ https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889ce
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L9-L90
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L16-L98
 ```
 
 
 ## Conclusion
 
-So far, you've broken down the ticketing system into functional requirments and used them to write a script to create the drop.
+So far, you've broken down the ticketing system into functional requirements and used them to write a script to create the drop.
 
 In the next tutorial, you'll be testing the drop you just created, starting with creating a script to emulate the host scanning a ticket. 
 

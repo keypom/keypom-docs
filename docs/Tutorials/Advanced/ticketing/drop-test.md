@@ -6,29 +6,27 @@ sidebar_label: 'Testing the Drop'
 ## Introduction
 In the last section you designed and created a drop according to the specifications you learned about in the [Solution Architecture](architecture.md#keypom-solution).
 
-Here, you'll be continuing this process by testing the drop logic. This will consist of the following stages: 
+In this tutorial, you'll create a generalized method that will determine whether or not to allow someone entry into the event. It will be used to both test the drop logic and power the core functionality of the ticketing app.
 
-1) Create a utility script for the host to claim the tickets.  
-2) Simulate the entire ticketing process.
-3) Cover edge cases. 
+Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/ticket-app-skeleton/utils` folder and open the `allowEntry.js` file.
 
-Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/frontend/utils`. 
 ```bash
-cd docs-advanced-tutorials/ticket-app-skeleton/frontend/utils
+cd docs-advanced-tutorials/ticket-app-skeleton/utils
 ```
 
-There, you can see the following skeleton code in the file `utilFunctions.js`.
+This should show the following skeleton code.
+
 ``` js reference
-https://github.com/keypom/keypom-js/blob/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils/utilFunctions.js
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app-skeleton/utils/allowEntry.js#L1-L14
 ```
 
 ---
 
 ## Host Claiming Code
 
-In order to test the drop logic, a utility function will be created to emulate the host scanning tickets at the door. This function will be the foundation for the frontend code that will be used to claim tickets.
+In order to test the drop logic, a utility function will be created to emulate the host scanning tickets at the door and will be used by the frontend.
 
-The primary purpose of this function is to work with the host's scanner and allow entry to attendees with valid tickets that have not yet entered the event. This means it will check for a few conditions before returning a success value. 
+The primary purpose of this function is to ingest a private key and password, and determine whether or not a ticket is valid. This means it will check for a few conditions before returning a success value. 
 
 * The ticket is valid and has not been scanned yet.
 * The password entered by the host was correct and the claim was successful
@@ -36,47 +34,40 @@ The primary purpose of this function is to work with the host's scanner and allo
 The `allowEntry` utility function takes in a private key, and a `basePassword`.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/63db8ff15510db8acffc849e46a0a6b1f6889cef/docs-advanced-tutorials/ticket-app/frontend/utils/utilFunctions.js#L8-L56
+https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/allowEntry.js#L9-L49
 ```
 
-## Testing Drop Logic
+## Testing Logic
+
+Now that the utility function has been created, it can be used to test the drop logic. This will be done in a new file called `testTickDrop.js` that will live in the same util directory. It will contain two different test functions:
+
+* `wrongPasswordCheck` - This will test the case where the wrong password is used to claim the ticket.
+* `doubleClaimCheck` - This is meant to check for invalid tickets. In this case, it will try to claim the same ticket twice in a row.
+  
+```js reference
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app-skeleton/utils/testTickDrop.js#L1-L26
+```
 
 With both the drop created utility function defined, some code can be written to test the actual logic to ensure that the ticket claiming process works as expected. This will be broken down into phases, similar to the actual ticketing experience. 
 
-### Gaining Entry
+### Wrong Password Check
+
 The first phase of the ticketing experience can be labelled as `pre-entry`, when the attendee is looking to enter the event. Here, you want to ensure that only the host can allow them in, meaning the first key use must only be claimable with the correct password.
 
 The following code can be used to test this logic, following the drop creation. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L95-L119
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L5-L30
 ```
 
 It's expected that after claiming with the incorrect password, `allowEntry` will return `false` since the key use remains at 1. However, once the correct password is provided, the `allowEntry` function should return `true`. In the tests, an `assert` function is used to ensure the proper behaviour.
 
 ### Preventing Multiple Entries
 
-Once an attendee has been scanned into the event, they may try to give their ticket to someone else. To test and prevent this, `allowEntry` can be called multiple times on the same ticket. It is expected that the first call should return `true` but once it scannes the same ticket again, `false` should be returned.
+Once an attendee has been scanned into the event, they may try to give their ticket to someone else. To test and prevent this, `allowEntry` can be called multiple times on the same ticket. It is expected that the first call should return `true` but once it scans the same ticket again, `false` should be returned.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L121-L127
-```
-
-### Claiming the POAP
-
-The next phase of the ticketing experience is allowing the attendee to claim their NEAR wallet and POAP. As this is done on their own as opposed to using the scanner, the use should not be password protected. This can be testing by simply calling `claim`.
-
-If successful, it's expected that the key will be deleted since it has no more uses. This should mean any attempt to get key information using `getKeyInformation` should fail as the key no longer exists.
-
-```js reference
-https://github.com/keypom/keypom-js/blob/afb4765d1102552348af7fe73e04ed3dd1a46079/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L130-L143
-```
-
-### The Edge Cases
-The last two cases to be tested are claiming with a depleted key, and claiming with a fake key. The following tests can be used. Similar to the last scenario, it's expected that both of these should throw errors.
-
-``` js reference
-https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L145-L176
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L32-L57
 ```
 
 With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behaviour. 
@@ -87,9 +78,16 @@ With the drop functionality tested, you can be confident in the logic behind the
 ## Full Code
 Now that everything has been put together, the final code can be seen below.
 
+<details>
+<summary>Full Testing Code</summary>
+<p>
+
 ```js reference
-https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997d/docs-advanced-tutorials/ticket-app/frontend/utils/createTickDrop.js#L1-L179
+https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L1-L75
 ```
+</p>
+</details>
+
 
 ---
 
@@ -97,132 +95,161 @@ https://github.com/keypom/keypom-js/blob/2ba843c79fbcbab8c97627d6b52024ec53b7997
 Here, you'll learn how to run the code that was just covered, and what to expect. It's assumed that you have already cloned the code from the [Keypom SDK repo](https://github.com/keypom/keypom-docs).
 
 :::caution
-Prior to running these scripts, ensure you replace all instances of `minqi.testnet` and its private key in the script with the credentials of your account found in your `~/.near-credentials` folder
+Prior to running these scripts, ensure you replace all instances of `minqi.testnet` with an account found in your `~/.near-credentials` folder
 :::
 
-To run the script, use the following command from the `keypom-js/docs-advanced-tutorials/ticket-app-skeleton/frontend/utils` directory:
+To run the script, run the following command inside the `keypom-js/docs-advanced-tutorials/ticket-app-skeleton` directory:
+
 ```bash
-node createTickDrop
+yarn test-ticket-drop
 ```
 
-If you would like to run the completed script, you can run the command below from the `keypom-js` directory:
+:::note
+If you'd like to run the already completed code found in the `ticket-app` directory instead of the skeleton code, run the same `yarn test-ticket-drop` command but inside of the `ticket-app` directory instead.
+:::
+
+This should return a successful test after outputting logs:
+
 ```bash
-cd docs-advanced-tutorials/ticket-app && node frontend/utils/createTickDrop
+Password Test Responses:
+Expected false, got: false
+Expected true, got: true
+
+Double Claim Test Responses:
+Expected true, got: true
+Expected false, got: false
 ```
-This should return a successful drop creation, console log your public keys, linkdrops, and the expected test messages.
+
 <details>
-<summary>Drop Creation Example Output</summary>
+<summary>Full Script Output</summary>
 <p>
 
 ```bash
-Receipts: 5JhgCP75aA1sqRzWNuTBKzNMd3g3nqG4aocoryyqzC2R, 8JVKutFDS7HqZt9wz3tLd2ByN6zYLBcUHkAZKCPgrtF6
-        Log [v2.keypom.testnet]: Current Block Timestamp: 1679957159824749662
-        Log [v2.keypom.testnet]: 21 calls with 105000000000000 attached GAS. Pow outcome: 1.8602935. Required Allowance: 20248156910387200000000
-        Log [v2.keypom.testnet]: Total required storage Yocto 108990000000000000000000
-        Log [v2.keypom.testnet]: Current balance: 4.6006428, 
-            Required Deposit: 2.5239531, 
-            total_required_storage: 0.10899,
-            Drop Fee: 0, 
+Retrying transaction v2.keypom.testnet:2JdTtqWLNqLUjBL9CYJ1qkdUtYpDLXydvnCfHiW3LG3S with new nonce.
+Receipts: DL3AwUHW22wqEvJ24Soh39Zgsa8iQhyNNKsqzfUggDCn, Dt1yEoGZ36avyKqwF82GL54emJkfmUx2AM3fUtkhC1Vv
+	Log [v2.keypom.testnet]: Current Block Timestamp: 1680294425065581261
+	Log [v2.keypom.testnet]: 21 calls with 105000000000000 attached GAS. Pow outcome: 1.8602935. Required Allowance: 20248156910387200000000
+	Log [v2.keypom.testnet]: Total required storage Yocto 16330000000000000000000
+	Log [v2.keypom.testnet]: Current balance: 3.5921299,
+            Required Deposit: 0.2578263,
+            total_required_storage: 0.01633,
+            Drop Fee: 0,
             Key Fee: 0 Total Key Fee: 0,
-            allowance: 0.0404963 total allowance: 0.4049631,
-            access key storage: 0.001 total access key storage: 0.01,
-            deposits less none FCs: 0.1 total deposits: 1 lazy registration: false,
-            deposits for FCs: 0.1 total deposits for FCs: 1,
+            allowance: 0.0404963 total allowance: 0.0404963,
+            access key storage: 0.001 total access key storage: 0.001,
+            deposits less none FCs: 0.1 total deposits: 0.1 lazy registration: false,
+            deposits for FCs: 0.1 total deposits for FCs: 0.1,
             uses per key: 2
             None FCs: 1,
-            length: 10
+            length: 1
             GAS to attach: 100000000000000
-        Log [v2.keypom.testnet]: New user balance 2.0766897
-        Log [v2.keypom.testnet]: Fees collected 0
-Public Keys and Linkdrops:  {
-  'ed25519:8UBt5JDAnyQUivd35vrrRJFiKoE7u4e5KE3dzksN6wax': [
-    'http://localhost:1234/v2.keypom.testnet/4jhgJ9i5N91KNRmBrRGHvzMxt2uLJcuwQys5ZMBHBNNAa1yvxW7uqrp77NbYC7xx323UxfdQv3kVD9nRKKAusHsW'
-  ],
-  'ed25519:BKn8sjsieNzTwk6mkH49H4E3JaQmxzY2prx9miG98f7r': [
-    'http://localhost:1234/v2.keypom.testnet/27G9DTNAUGUwAdNRt9hu1ScnyAyQc7wg75DiCSuMJFpkFtqSymWQ42Nuji6tEVTYsuR6Y1LHYwHEhvDoArDLMh9W'
-  ],
-  'ed25519:AofHhEcmyteic3sxgMQiWSzWxf5PmhffjhebcrKeFU6K': [
-    'http://localhost:1234/v2.keypom.testnet/3W2YKogGjVbAKZx6fBVFnqYiRMQmWYSdtkrkQ7obGjW3TQFF1qrqpykFELXV6L8Kbfnji2nNyaYAu8PPpgCV5Un3'
-  ],
-  'ed25519:DZ3EY8RRnTW7A5YQZxnPyn9EAEYPq32jLm7VHDa24fYP': [
-    'http://localhost:1234/v2.keypom.testnet/p8iKBAqAiLB46outV7xLyu1ConE6PqTHDJtvZd5r3D2qV7zmywDjSywartFKuDjr4oDqF8NddYo3KcVJrxQ6nc3'
-  ],
-  'ed25519:FVnPx5FL6zs4LKTYA6oWJ4PgkMG9EbToZFcbnAxxb9vT': [
-    'http://localhost:1234/v2.keypom.testnet/4Lcyspd3j3iWYdtjnRkVssr7UqgYxGTh4MCnfopJ9RRLz4SPhEmHbj2dFBNwtWz3vXtVqaYzrUcPwK7tm1vNaYEw'
-  ],
-  'ed25519:D3zTjNBmMtttJx3EkWkYoCsxm65kTqGreSsCQNqrwAGa': [
-    'http://localhost:1234/v2.keypom.testnet/5cjPgbPUwcL2LePV9gEcTSZyRKGTuXd92z2ye3w3SHSPtnPTZYgZ3NPqkzvGfJQdETH41GoAiX5LgCANrYdnTyVt'
-  ],
-  'ed25519:BCETK27WTmG4YGPHp9RPK3umuX7QykSuRsr7bfF2ZxCU': [
-    'http://localhost:1234/v2.keypom.testnet/wMn36LU15Dp29h7DX1Fu9deZorFGZ9jMtc76BbRtru5GYHcChUKc59ojVE1Nfc9V6VCL1uKw7oC3JSpq8Jmkstx'
-  ],
-  'ed25519:FUneyc8RxgWCod3WTUY4VNbfCUXc7aJkqz1oXT1VbVsQ': [
-    'http://localhost:1234/v2.keypom.testnet/nkkdy7X8J7fv21J3vVEuRQFPZYvQGi4gdnbEjbG4ZtZozQTGS4nsg87Meths6zgK1rwWDzetDcZPxhXw5axcPrr'
-  ],
-  'ed25519:DpsbYJXeZNBZzwH2i6wuZ5YUqrFojzXjytoDc2a1jYsi': [
-    'http://localhost:1234/v2.keypom.testnet/3Fn42MrTYqwYLUNuuDQ16xeViBf9ewJWGrp9yX513e7JYeA1QqURcxZ5erWKBsvw4sMBA6mwFfVQ3iNhG9F7QFMJ'
-  ],
-  'ed25519:Dw7JTenr6ifFcduktqZ5ydRri2UbHFFBeiWtPxVFKT9i': [
-    'http://localhost:1234/v2.keypom.testnet/62awbYYBWeRn6wnHHNJ1x6eMmqfa3aJjVgsf95LQ8JRgSLwn6DJqBCUo4AWEpttZYJVuaThjzPYB3Hznk5tTGbR2'
-  ]
-}
-Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
-Private Key: 4jhgJ9i5N91KNRmBrRGHvzMxt2uLJcuwQys5ZMBHBNNAa1yvxW7uqrp77NbYC7xx323UxfdQv3kVD9nRKKAusHsW
-Public Key: ed25519:8UBt5JDAnyQUivd35vrrRJFiKoE7u4e5KE3dzksN6wax
+	Log [v2.keypom.testnet]: New user balance 3.3343036
+	Log [v2.keypom.testnet]: Fees collected 0
+Retrying transaction nft-v2.keypom.testnet:2iHrE9ooY2N4kUn9eqsScAyNjXkRkUBiQdzxYsXwFawm with new nonce.
+Receipts: 6jzxKRXmGjrtSKP9V38puWLZPcDHaVYRrohtj29rsMxR, FCmjrSPxuyKEXdghJAkrz8H8AH3GaCPnceoZKuHazmrN
+	Log [v2.keypom.testnet]: Current Block Timestamp: 1680294427597789158
+	Log [v2.keypom.testnet]: 21 calls with 105000000000000 attached GAS. Pow outcome: 1.8602935. Required Allowance: 20248156910387200000000
+	Log [v2.keypom.testnet]: Total required storage Yocto 16330000000000000000000
+	Log [v2.keypom.testnet]: Current balance: 3.6040689,
+            Required Deposit: 0.2578263,
+            total_required_storage: 0.01633,
+            Drop Fee: 0,
+            Key Fee: 0 Total Key Fee: 0,
+            allowance: 0.0404963 total allowance: 0.0404963,
+            access key storage: 0.001 total access key storage: 0.001,
+            deposits less none FCs: 0.1 total deposits: 0.1 lazy registration: false,
+            deposits for FCs: 0.1 total deposits for FCs: 0.1,
+            uses per key: 2
+            None FCs: 1,
+            length: 1
+            GAS to attach: 100000000000000
+	Log [v2.keypom.testnet]: New user balance 3.3462426
+	Log [v2.keypom.testnet]: Fees collected 0
+Retrying transaction nft-v2.keypom.testnet:CysD3CnodxvarnxUpQKKWWV1x9uhjEkCbWosy1DuDo7D with new nonce.
+
+
+    Ticket Links:
+
+    http://localhost:1234/v2.keypom.testnet/3aJq6s8pNYFGbuUVG5fj7nJ9bpfKZD7iH4oak27yZnjQytcyCAFMioJEZrVJBf3itMgrs3gm8U1UszewfhXbfKUH
+
+
+
+
+    Ticket Links:
+
+    http://localhost:1234/v2.keypom.testnet/2KxZarBh9hWy7JZGDvsJhdzP8Q3JtCy7ocZ4hvohHKEsSNjxTx3LWd8EDpHNfD2du8MQVftCNJKRCp99At1qigQU
+
+
 Claiming with wrong password...
-Receipt: 8WxSwDC1acLaxZMkwK4zUQ57X4YYm2mb3LzgvoDCAV45
-        Log [v2.keypom.testnet]: Beginning of process claim used gas: 479618717607 prepaid gas: 100000000000000
-        Log [v2.keypom.testnet]: passed global check
-        Log [v2.keypom.testnet]: hashed password: [247, 168, 220, 199, 222, 213, 55, 110, 164, 90, 126, 223, 16, 37, 184, 4, 189, 186, 158, 240, 167, 175, 104, 48, 254, 111, 118, 201, 148, 144, 37, 63]
-        Log [v2.keypom.testnet]: actualPass password: [144, 154, 135, 246, 51, 113, 137, 139, 121, 193, 70, 40, 223, 50, 130, 183, 168, 41, 197, 181, 48, 104, 9, 159, 95, 204, 129, 29, 36, 25, 242, 107] cur use: 1
-        Log [v2.keypom.testnet]: Incorrect password. Decrementing allowance by 1313903824899700000000. Used GAS: 3139038248997
-        Log [v2.keypom.testnet]: Allowance is now 39182409995874700000000
-        Log [v2.keypom.testnet]: Invalid claim. Returning.
-Claim Failed: Error: Claim has failed, check password
+Receipt: BHH2ENLdWLpYDQDD8SmgbAXzVFGi9odnGwhgHxg6ifCR
+	Log [v2.keypom.testnet]: Beginning of process claim used gas: 479192976105 prepaid gas: 100000000000000
+	Log [v2.keypom.testnet]: passed global check
+	Log [v2.keypom.testnet]: hashed password: [97, 68, 238, 197, 167, 108, 73, 163, 74, 105, 140, 127, 22, 87, 3, 98, 76, 179, 110, 208, 118, 51, 58, 3, 88, 44, 22, 240, 45, 89, 85, 65]
+	Log [v2.keypom.testnet]: actualPass password: [61, 214, 44, 95, 159, 234, 2, 185, 182, 48, 134, 31, 65, 88, 184, 51, 51, 13, 201, 173, 75, 158, 56, 59, 33, 46, 185, 178, 239, 3, 44, 94] cur use: 1
+	Log [v2.keypom.testnet]: Incorrect password. Decrementing allowance by 1244250690277300000000. Used GAS: 2442506902773
+	Log [v2.keypom.testnet]: Allowance is now 39252063130497100000000
+	Log [v2.keypom.testnet]: Invalid claim. Returning.
+Claim has failed, check password
 claiming with correct password...
-Receipt: AjHEjCKRChfn9HnG4YXqW7bDbTBE6RSNn8wZefc2nQsf
-        Log [v2.keypom.testnet]: Beginning of process claim used gas: 479618717607 prepaid gas: 100000000000000
-        Log [v2.keypom.testnet]: passed global check
-        Log [v2.keypom.testnet]: hashed password: [144, 154, 135, 246, 51, 113, 137, 139, 121, 193, 70, 40, 223, 50, 130, 183, 168, 41, 197, 181, 48, 104, 9, 159, 95, 204, 129, 29, 36, 25, 242, 107]
-        Log [v2.keypom.testnet]: actualPass password: [144, 154, 135, 246, 51, 113, 137, 139, 121, 193, 70, 40, 223, 50, 130, 183, 168, 41, 197, 181, 48, 104, 9, 159, 95, 204, 129, 29, 36, 25, 242, 107] cur use: 1
-        Log [v2.keypom.testnet]: passed local check
-        Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 2 (before)
-        Log [v2.keypom.testnet]: Key has 1 uses left. Decrementing allowance by 10000000000000000000000. Allowance left: 29182409995874700000000
-        Log [v2.keypom.testnet]: Total storage freed: 0. Initial storage: 31942023. Final storage: 31942023
-        Log [v2.keypom.testnet]: Empty function call. Returning.
-Second scanner claim, should fail
-Claim Failed: Error: The Key has already been scanned
-Normal second claim with no password
-Receipts: 331MsGSg6EzL2dgqRLRYx9wZHcwrwjon6S6RCaWrPaoz, AonSdxyUcCKuknN28oG9wmS1SN5LA68RxqSdCLk6Qu1C, ASJa1QrnkNPQBqH23o5y9nQnVj8N9rRY2Dz3SD5P8LLJ, 6FKYYiKwRtHVAkHfpT9s9fit15U4B4iFmVRXyhzMTP5t
-        Log [v2.keypom.testnet]: Beginning of process claim used gas: 475823370903 prepaid gas: 100000000000000
-        Log [v2.keypom.testnet]: passed global check
-        Log [v2.keypom.testnet]: hashed password: [227, 176, 196, 66, 152, 252, 28, 20, 154, 251, 244, 200, 153, 111, 185, 36, 39, 174, 65, 228, 100, 155, 147, 76, 164, 149, 153, 27, 120, 82, 184, 85]
-        Log [v2.keypom.testnet]: actualPass password: [227, 176, 196, 66, 152, 252, 28, 20, 154, 251, 244, 200, 153, 111, 185, 36, 39, 174, 65, 228, 100, 155, 147, 76, 164, 149, 153, 27, 120, 82, 184, 85] cur use: 2
-        Log [v2.keypom.testnet]: passed local check
-        Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 1 (before)
-        Log [v2.keypom.testnet]: Key has no uses left. It will be deleted
-        Log [v2.keypom.testnet]: Key being deleted. Will refund: 1000000000000000000000
-        Log [v2.keypom.testnet]: User balance incremented by 0.001. Old: 2.0766897 new: 2.0776897
-        Log [v2.keypom.testnet]: Total storage freed: 7320000000000000000000. Initial storage: 31942023. Final storage: 31941291
-        Log [v2.keypom.testnet]: End of regular claim function: 65419517657243 prepaid gas: 100000000000000
-Receipts: Dabne31y6WnjWY3gZkitLCEduXE3WZLe4o1MXoaPrTM5, 2kgt2dgR5v37vqpU3uSknpTHuCrPJrronxqcCRqcohkG
-        Log [v2.keypom.testnet]: Beginning of on claim Function Call used gas: 562123805871 prepaid gas: 89416500417528
-        Log [v2.keypom.testnet]: received empty string as success value
-        Log [v2.keypom.testnet]: Has function been executed via CCC: true
-        Log [v2.keypom.testnet]: Refund Amount (storage used): 0.00732. Auto withdraw: false
-        Log [v2.keypom.testnet]: User balance incremented by 0.00732. Old: 2.0776897 new: 2.0850097
-        Log [v2.keypom.testnet]: (TOP of for loop): initial receiver ID: "nft-v2.keypom.testnet" for method: "nft_mint"
-        Log [v2.keypom.testnet]: Adding claimed account ID: AccountId("minqi.testnet") to specified field: "receiver_id"
-        Log [v2.keypom.testnet]: Adding drop ID: 1679957155172 to specified field "mint_id"
-Receipts: 8NTKsKcVQLRwUTzxEinxzTkMkQ1ognyN1Uh9SqkdziXD, Bs6sD4cK8YrARkfsSLU6FwLNNoeJ7KgwvhTRVzA851Q9
-        Log [v2.keypom.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"minqi.testnet","token_ids":["339:1"]}]}
-Second claim successful. Key has been depleted and deleted
-Claim with depleted key
-Claim Failed: Error: Key does not exist
-Claim failed, as expected
-Claim with fake key
-Claim Failed: Error: Key does not exist
-Claim failed, as expected
+Receipt: 4gAycg2B1jVNoJtUT3snHWDA1Ffdkxt1oPu8vH1TwoSC
+	Log [v2.keypom.testnet]: Beginning of process claim used gas: 479192976105 prepaid gas: 100000000000000
+	Log [v2.keypom.testnet]: passed global check
+	Log [v2.keypom.testnet]: hashed password: [61, 214, 44, 95, 159, 234, 2, 185, 182, 48, 134, 31, 65, 88, 184, 51, 51, 13, 201, 173, 75, 158, 56, 59, 33, 46, 185, 178, 239, 3, 44, 94]
+	Log [v2.keypom.testnet]: actualPass password: [61, 214, 44, 95, 159, 234, 2, 185, 182, 48, 134, 31, 65, 88, 184, 51, 51, 13, 201, 173, 75, 158, 56, 59, 33, 46, 185, 178, 239, 3, 44, 94] cur use: 1
+	Log [v2.keypom.testnet]: passed local check
+	Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 2 (before)
+	Log [v2.keypom.testnet]: Key has 1 uses left. Decrementing allowance by 10000000000000000000000. Allowance left: 29252063130497100000000
+	Log [v2.keypom.testnet]: Total storage freed: 0. Initial storage: 33083530. Final storage: 33083530
+	Log [v2.keypom.testnet]: Empty function call. Returning.
+Receipts: D2TGQDXYR4um28CgTt8Z1aU1LMSABMChW9MZJPfVBcpd, 7FKbgHx6eFnfMM15B1Tw7U8wpeQe2WKwYUQG7Hbqe69L
+	Log [v2.keypom.testnet]: Current Block Timestamp: 1680294442058016014
+	Log [v2.keypom.testnet]: 21 calls with 105000000000000 attached GAS. Pow outcome: 1.8602935. Required Allowance: 20248156910387200000000
+	Log [v2.keypom.testnet]: Total required storage Yocto 16330000000000000000000
+	Log [v2.keypom.testnet]: Current balance: 3.6160078,
+            Required Deposit: 0.2578263,
+            total_required_storage: 0.01633,
+            Drop Fee: 0,
+            Key Fee: 0 Total Key Fee: 0,
+            allowance: 0.0404963 total allowance: 0.0404963,
+            access key storage: 0.001 total access key storage: 0.001,
+            deposits less none FCs: 0.1 total deposits: 0.1 lazy registration: false,
+            deposits for FCs: 0.1 total deposits for FCs: 0.1,
+            uses per key: 2
+            None FCs: 1,
+            length: 1
+            GAS to attach: 100000000000000
+	Log [v2.keypom.testnet]: New user balance 3.3581815
+	Log [v2.keypom.testnet]: Fees collected 0
+
+
+    Ticket Links:
+
+    http://localhost:1234/v2.keypom.testnet/2LNJU2adYHgvyuczoNFkvdL92vuunNCESaZiWYh6cQJXcwVSJpHqgQpGVUHsEDDee2oQrSELAkRGPeYroW6hoPaN
+
+
+Claiming with correct password...
+Receipt: G7y6MWapxNwCCmCPAQ6iRWdvT292dq8hWp8ZQAnTbXwQ
+	Log [v2.keypom.testnet]: Beginning of process claim used gas: 479192976105 prepaid gas: 100000000000000
+	Log [v2.keypom.testnet]: passed global check
+	Log [v2.keypom.testnet]: hashed password: [105, 193, 27, 134, 73, 227, 30, 80, 12, 73, 201, 126, 217, 0, 80, 239, 38, 5, 216, 62, 44, 177, 19, 137, 73, 50, 159, 32, 38, 11, 59, 94]
+	Log [v2.keypom.testnet]: actualPass password: [105, 193, 27, 134, 73, 227, 30, 80, 12, 73, 201, 126, 217, 0, 80, 239, 38, 5, 216, 62, 44, 177, 19, 137, 73, 50, 159, 32, 38, 11, 59, 94] cur use: 1
+	Log [v2.keypom.testnet]: passed local check
+	Log [v2.keypom.testnet]: Key usage last used: 0 Num uses: 2 (before)
+	Log [v2.keypom.testnet]: Key has 1 uses left. Decrementing allowance by 10000000000000000000000. Allowance left: 30496313820774400000000
+	Log [v2.keypom.testnet]: Total storage freed: 0. Initial storage: 33085324. Final storage: 33085324
+	Log [v2.keypom.testnet]: Empty function call. Returning.
+claiming the same key twice...
+Key has already been scanned. Admission denied
+
+        Password Test Responses:
+        Expected false, got: false
+        Expected true, got: true
+
+        Double Claim Test Responses:
+        Expected true, got: true
+        Expected false, got: false
+
+✨  Done in 26.50s.
 ```
 
 </p>

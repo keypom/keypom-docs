@@ -200,10 +200,11 @@ are attending events but don't have wallets. In addition, there is often no proo
 to get into the event which requires an internet connection.
 
 Keypom aims to solve these problems by having a ticketing system that has the following features.
-- No wallet is needed to enter the event or receive a POAP.
-- No wifi is needed at the door.
-- An NFT is minted on-demand for each user that attends the event.
-- Users can optionally onboard onto NEAR if they don't have a wallet.
+* Users are not required to have a wallet to enter the event.
+* Each ticket is unique and can only be used by one person.
+* Attendees are not required to have wifi to gain entry to the event.
+* Attendees that did not have a NEAR wallet can get one for free.
+* Attendees can choose to receive an NFT proving their attendence at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
 In addition, some way to provide analytics to event organizers that contains information such as links that were:
 - Given out but not clicked at all.
@@ -220,9 +221,9 @@ The event organizer would create the links and distribute them to people however
 claim is automatically fired. This is a `null` case so nothing happens except for the fact that the key uses are decremented. At this point,
 the organizer knows that the user has clicked the link since the uses have been decremented.
 
-The next claim happens **only** when the user is at the door. Keypom would expose a QR code that can only be scanned by the bouncer's phone.
+The next claim happens **only** when the user is at the door. Keypom would expose a QR code that can only be scanned by the host's phone.
 This QR code would appear once the first link is clicked and contains the private key for the link. At the event, they wouldn't need any wifi
-to get in as they only need to show the bouncer the QR code. Once the bouncer scans it, the site would ensure that they have exactly 2 out of
+to get in as they only need to show the host the QR code. Once the host scans it, the site would ensure that they have exactly 2 out of
 the 3 uses left. If they don't, they're not let in. At that point, a use is decremented from the key and the next time they visit the
 ticket page (when they have internet), they would be able to claim the final use and be onboarded / receive a POAP.
 

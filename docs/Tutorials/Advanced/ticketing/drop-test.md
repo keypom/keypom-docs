@@ -107,7 +107,7 @@ node createTickDrop
 
 If you would like to run the completed script, you can run the command below from the `keypom-js` directory:
 ```bash
-cd docs-advanced-tutorial/ticket-app && node frontend/utils/createTickDrop
+cd docs-advanced-tutorials/ticket-app && node frontend/utils/createTickDrop
 ```
 This should return a successful drop creation, console log your public keys, linkdrops, and the expected test messages.
 <details>

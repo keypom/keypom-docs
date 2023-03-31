@@ -28,19 +28,9 @@ Recall, from the [introduction](introduction.md) that your code had the followin
 │   └── utils
 │   │    └── configurations.js
 │   │    └── createTickDrop.js
-│   └── node_modules
-│   │    └── keypom-js
-│   │    └── qrcode.react
-│   │    └── react-zxing
-│   │    └── react
-│   │    └── react-dom
-│   │    └── react-router-dom
-│   │    └── ...
 │   └── package.json
-│   └── package-lock.json
 ├── ...
-├── package.json
-├── package-lock.json
+└─ package.json
 ```
 
 This tutorial will be covering the code in `scanner.js`.
@@ -56,16 +46,16 @@ As a brief reminder, the host scanner page will have the following stages, best 
 </p>
 
 * **Stage 1, Pre-claim:** A page with the camera viewport open, constantly scanning for QR codes.  
-* **Stage 2, Claiming:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code to `claim` using the event password. During this time, the app will indicate it is in the process of claiming.
-* **Stage 3, Post-claim:** After the `claim` is processed, the page will return either as successful or a failed `claim` based on the validity of the ticket.
+* **Stage 2, Claiming:** Once a QR code is detected and information is scanned in, the app attempts to derive the private key from the QR code and calls `allowEntry` using the event password. During this time, the app will indicate it is in the process of claiming.
+* **Stage 3, Post-claim:** After the claim is processed, the page will indicate whether or not to admit the attendee depending on the return value of `allowEntry`.
 
 After post-claim, the entire cycle will loop back to pre-claim after three seconds. This time interval was set so the host could read any error messages that may appear. You can modify this time by changing the values passed into `timeout()`.
 
 
-In post-claim, a ticket may be invalid for a few reasons. 
-* Incorrect password/key causing the Keypom SDK to return an error when `claim` fails
-* A ticket may already be fully claimed; the user has claimed their POAP and so their private key has since been deleted
-* The ticket has already been scanned by the host. This means the key's current use is 2. Although this claim *can* be made, it should not. Doing so would mean the attendee loses out on the opportunity to claim their POAP.
+In post-claim, a `allowEntry` might have returned false for a few reasons. 
+* Incorrect password/key
+* A ticket may already be fully claimed and not exist when the host attempts to claim it.
+* The ticket has already been scanned by the host. This means the key's current use is 2.
 
 ### `masterStatus` State Variable
 In order to track all these stages and possible outcomes, a set of enums will be defined.
@@ -81,8 +71,8 @@ All these stages will be stored in a `masterStatus` state variable object.
 |------------------------|-----------------------------------------------------------------------------------------|
 | `Stages.preClaim`      | *Pre-claim:* Host scanner page is scanning, waiting to read in data                     |
 | `Stages.claiming`      | *Claiming:* Data has been read, scanner is trying to claim                              |
-| `Stages.sucessClaim`   | *Post-claim:* Successful `claim`                                                        | 
-| `Stages.failClaim`     | *Post-claim:* Failed to `claim`: Invalid password, key invalid/scanned already etc.     | 
+| `Stages.sucessClaim`   | *Post-claim:* Successful claim (`true` returned from `allowEntry`)                                                        | 
+| `Stages.failClaim`     | *Post-claim:* Failed to claim (`false` returned from `allowEntry`)  | 
 | `default`              | *Unknow State:* Display error message                                                   | 
 
 
@@ -94,12 +84,12 @@ All these stages will be stored in a `masterStatus` state variable object.
 ### Initialization and Scanning
 Upon app mount, the host scanner page will immediately do the following.  
  
-1) Prompt the host for the drop password.  
+1) Prompt the host for the base password.  
 2) Begin scanning.
 
 These features can be seen in the code snippet below. 
 ```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L29-L58
+https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L13-L57
 ```
 
 ### Claiming
@@ -110,29 +100,10 @@ The primary task of the claim process is to determine if a claim is:
 * Successful - `masterStatus.stage == Stages.successClaim` 
 * Unsuccessful - `masterStatus.stage == Stages.failClaim` 
 
-This can be done by a process of elimination. Once the existence of the key is confirmed, you must make sure the ticket has not already be scanned. Then finally, you can attempt to `claim` and return the result of that call.
+This is accomplished using the `allowEntry` function that you created earlier. If it returns `true`, the master status stage should be set to `Stages.successClaim`. Otherwise, it should be set to `Stages.failClaim`.
 
-First, you can check if the key still exists and has not been deleted by calling the SDK funciton [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation). This will return `null` if the key does not exist.
-```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L68-L75
-```
-:::note
-All of these tests are placed inside a `try...catch` statement. The errors thrown will be `console.log`'d.
-:::
-
-Next, the `keyInformation` returned from above can be used to determine the current key use. If it's 1, that means the scanner should call `claim`. If not, then the ticket has already been scanned and should not allow the scanner to double-`claim` the ticket.
-```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L77-L91
-```
-
-Lastly, the current key use *after* the scanner `claim` can be used to determine if the `claim` was successful. If the current key use has been decremented, it can be confirmed that the `claim` was successful. Otherwise, the current key use value would remain the same as before `claim` was called.
-```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L93-L117
-```
-
-Put together, this is the `useEffect` hook that claims the key and ultimately determines the components to be rendered by setting `masterStatus.stage`. 
-```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L61-L145
+```js
+https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L59-L116
 ```
 
 ### Rendering

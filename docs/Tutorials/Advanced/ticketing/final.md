@@ -9,10 +9,10 @@ To run this app on your local machine, you will need a computer with working cam
 :::
 
 ## Getting Started
-To follow along or play around with the app on your own machine, you can clone the code from the [Keypom SDK repository](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial) and run the following command in the project folder:
+To follow along with the app on your own machine, you can clone the code from the [Keypom SDK repository](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial) and run the following command in the root folder `keypom-js/`:
 
 ``` bash
-cd docs-advanced-tutorials/ticket-app && npm start
+cd docs-advanced-tutorials/ticket-app && npm install && npm start
 ```
 
 This should bring you to the following page at `localhost:1234`
@@ -30,11 +30,7 @@ To begin the app, first you'll need to run the create drop script and grab a pri
 http://localhost:1234/v2.keypom.testnet/${privateKey}
 ```
 
-:::note
-Parcel may throw errors when loading pages in this app, you can just dismiss them by clicking the X or pressing `esc`.
-:::
-
-This should bring you to the following page. Feel free to take a picture of this with another device, you will need to hold this QR code up to your computer's camera later. 
+This should bring you to the following page. Feel free to take a picture of your QR code with another device, you will need to hold this QR code up to your computer's camera later.
 
 <p align="center">
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/claim-1.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/>
@@ -42,12 +38,12 @@ This should bring you to the following page. Feel free to take a picture of this
 
 From there, you can duplicate this window and modify the URL to be:
 ```
-http://localhost:1234/scanner
+http://localhost:1234/v2.keypom.testnet/scanner
 ```
-It will immediately prompt you for a password. By default, the `createTickDrop` script you ran earlier has a password of `event-password`. 
-
- 
- **For now enter the wrong password**.
+It will immediately prompt you for a password. By default, the `createTickDrop` script you ran earlier has a password set to `event-password` but for now enter an incorrect password:
+```
+wrong-password
+``` 
  
  <p align="center">
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-unread.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>

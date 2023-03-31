@@ -30,56 +30,42 @@ Recall, from the [introduction](introduction.md) that your code had the followin
 │   └── utils
 │   │    └── configurations.js
 │   │    └── createTickDrop.js
-│   └── node_modules
-│   │    └── keypom-js
-│   │    └── qrcode.react
-│   │    └── react-zxing
-│   │    └── react
-│   │    └── react-dom
-│   │    └── react-router-dom
-│   │    └── ...
 │   └── package.json
-│   └── package-lock.json
 ├── ...
-├── package.json
-├── package-lock.json
+└─ package.json
 ```
 
-This tutorial will be covering the code in `app.js`, `KeyInfo.js`, and `qrcode.js`.
+This tutorial will be covering the code in `App.js`, `KeyInfo.js`, and `qrcode.js`.
 
 ---
 
 ## `App.js`
 ### Setting Up
-The primary purpose of `app.js` is to display the different states of the attendee ticket page. This will involve getting the current key uses, and then rendering based on the value returned. 
+The primary purpose of `App.js` is to display the different states of the attendee ticket page. This will involve getting the current key uses, and then rendering based on the value returned. 
 
 The first step is to initialize a connection to NEAR and setup all the state variables that will be needed to render the page. 
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L15-L58
+https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L15-L58
 ```
 
-:::note
-You may notice that the `App` funciton appears to be cut off. This is intentional as the remainder of the code is all in this function and will be discussed in later sections. Full code can be found [here](user-code.md#full-code)
-:::
+When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables for further use. Note that the URL is split by first a `#` and then `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
 
-When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables, `contractId` and `privKey` for further use. Note that the URL is split by first a `#` and then `/` and the index of `contractId` and `privateKey` are known. When adapting this code for your own app, you may need to change those index values accordingly.
-
-Once the URL has been parsed and the resulting values stored, `connectNear` is called. This function handles the NEAR connection, as well as the Keypom connection and the linkdrop URL.
+Once the URL has been parsed and the resulting values stored, `connectNear` is called. This function handles the NEAR connection, as well as the Keypom connection.
 
 :::note 
 When connecting to NEAR, a `BrowserLocalStorageKeyStore` is used rather than an `UnencryptedFileSystemKeyStore`. This will create a key store in the user's browser for future use. For more on key stores, see [here](https://docs.near.org/tools/near-api-js/quick-reference#key-store)
 :::
 
-With the NEAR connection established, your browser can now talk to the NEAR blockchain. The next step, is to call `initKeypom`. This initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. More info on the `initKeypom` function can be found [here](../../../keypom-sdk/modules#initkeypom).
+With the NEAR connection established, your browser can now talk to the NEAR blockchain. The next step, is to call `initKeypom`. This initializes the SDK to allow for interactions with the Keypom smart contracts.
 
-After the Keypom initialization is complete, the QR code information can be created following the format `${contractId}/${privKey}`. This string is set to the state variable `link` and will be used to render the QR code.
+After the Keypom initialization is complete, the QR code information can be created following the format `${contractId}/${privKey}`.
 
 ### Rendering
 
 The process of rendering is simple: retrieve the key's current use number, and render the page differently based on the stages outlined in the [App Design](react-outline.md). 
 
-The information is passed into both a QR code component and a KeyInfo component. For the time being, you can think of the `KeyInfo` component as just a black box, where a `privKey`, `curUse` and other state variables are passed in, and those state variables get modified to change what is rendered. `QRCode` uses the `qrcode.react` library to display a QR code based on a string input.
+The information is passed into both a QR code component and a KeyInfo component. The `KeyInfo` component takes in both the Keypom contract and private key. It then calls `getKeyInformation` and updates the `curUse` state variable accordingly. `QRCode` uses the `qrcode.react` library to display a QR code based on a string input.
 
 The following table outlines what the page should render based on a set of conditions including the current key use. 
 
@@ -97,7 +83,7 @@ The code to render can be found in the exandable section below.
 <p>
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/a79d1d7204d4b3baf659cb56909024a72fc6cec7/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L60-L138
+https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/state/App.js#L55-L135
 ```
 
 </p>

@@ -43,7 +43,7 @@ In this section, you'll prepare to create the ticketing app using the skeleton c
 Simply run the following to clone the repo and navigate to `docs-advanced-tutorials/ticket-app-skeleton`
 
 ```bash
-git clone https://github.com/keypom/keypom-js.git && cd keypom-js/docs-advanced-tutorials/ticket-app-skeleton
+git clone https://github.com/keypom/keypom-js.git && cd keypom-js/docs-advanced-tutorials/ticket-app-skeleton && yarn deps
 ```
 
 Here you'll find the following files required to build out your app.

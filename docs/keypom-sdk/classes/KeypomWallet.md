@@ -24,29 +24,9 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:29](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L29)
+[src/lib/selector/core/wallet.ts:30](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L30)
 
 ## Properties
-
-### accountId
-
- `Private` `Optional` **accountId**: `string`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L22)
-
-___
-
-### contractId
-
- `Readonly` **contractId**: `string`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:15](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L15)
-
-___
 
 ### delimiter
 
@@ -54,7 +34,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:20](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L20)
+[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L22)
 
 ___
 
@@ -64,7 +44,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L19)
+[src/lib/selector/core/wallet.ts:21](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L21)
 
 ___
 
@@ -74,27 +54,17 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:18](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L18)
+[src/lib/selector/core/wallet.ts:20](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L20)
 
 ___
 
 ### modal
 
- `Private` `Optional` **modal**: `KeypomTrialModal`
+ `Private` **modal**: `KeypomTrialModal`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L27)
-
-___
-
-### modalOptions
-
- `Private` `Optional` `Readonly` **modalOptions**: `any`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:26](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L26)
+[src/lib/selector/core/wallet.ts:28](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L28)
 
 ___
 
@@ -104,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:17](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L17)
+[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L19)
 
 ___
 
@@ -114,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:14](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L14)
+[src/lib/selector/core/wallet.ts:16](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L16)
 
 ___
 
@@ -124,7 +94,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:25](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L25)
+[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L27)
 
 ___
 
@@ -134,7 +104,27 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:23](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L23)
+[src/lib/selector/core/wallet.ts:25](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L25)
+
+___
+
+### signInContractId
+
+ `Readonly` **signInContractId**: `string`
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:17](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L17)
+
+___
+
+### trialAccountId
+
+ `Private` `Optional` **trialAccountId**: `string`
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:24](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L24)
 
 ## Methods
 
@@ -148,7 +138,21 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:141](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L141)
+[src/lib/selector/core/wallet.ts:225](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L225)
+
+___
+
+### canExitTrial
+
+`Private` **canExitTrial**(): `Promise`<`boolean`\>
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:124](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L124)
 
 ___
 
@@ -162,7 +166,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:66](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L66)
+[src/lib/selector/core/wallet.ts:67](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L67)
 
 ___
 
@@ -176,7 +180,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:57](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L57)
+[src/lib/selector/core/wallet.ts:57](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L57)
 
 ___
 
@@ -194,7 +198,7 @@ InstantLinkWalletBehaviour.getAccounts
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:172](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L172)
+[src/lib/selector/core/wallet.ts:256](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L256)
 
 ___
 
@@ -214,7 +218,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:167](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L167)
+[src/lib/selector/core/wallet.ts:251](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L251)
 
 ___
 
@@ -232,7 +236,28 @@ InstantLinkWalletBehaviour.getContractId
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:53](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L53)
+[src/lib/selector/core/wallet.ts:53](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L53)
+
+___
+
+### internalSignIn
+
+`Private` **internalSignIn**(`accountId`, `secretKey`): `Promise`<`Account`[]\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `accountId` | `any` |
+| `secretKey` | `any` |
+
+#### Returns
+
+`Promise`<`Account`[]\>
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:105](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L105)
 
 ___
 
@@ -246,27 +271,34 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:147](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L147)
+[src/lib/selector/core/wallet.ts:231](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L231)
 
 ___
 
 ### parseUrl
 
-**parseUrl**(): `undefined` \| { `trialAccountId`: `string` ; `trialSecretKey`: `string`  }
+**parseUrl**(): `undefined` \| { `accountId`: `string` ; `secretKey`: `string`  }
 
 #### Returns
 
-`undefined` \| { `trialAccountId`: `string` ; `trialSecretKey`: `string`  }
+`undefined` \| { `accountId`: `string` ; `secretKey`: `string`  }
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:104](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L104)
+[src/lib/selector/core/wallet.ts:205](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L205)
 
 ___
 
 ### showModal
 
-**showModal**(): `void`
+**showModal**(`modalType?`): `void`
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `modalType` | `Object` | `undefined` |
+| `modalType.id` | `string` | `MODAL_TYPE_IDS.TRIAL_OVER` |
 
 #### Returns
 
@@ -274,7 +306,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:62](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L62)
+[src/lib/selector/core/wallet.ts:62](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L62)
 
 ___
 
@@ -298,7 +330,7 @@ InstantLinkWalletBehaviour.signAndSendTransaction
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:263](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L263)
+[src/lib/selector/core/wallet.ts:343](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L343)
 
 ___
 
@@ -322,7 +354,7 @@ InstantLinkWalletBehaviour.signAndSendTransactions
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:286](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L286)
+[src/lib/selector/core/wallet.ts:366](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L366)
 
 ___
 
@@ -340,7 +372,7 @@ InstantLinkWalletBehaviour.signIn
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:185](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L185)
+[src/lib/selector/core/wallet.ts:269](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L269)
 
 ___
 
@@ -358,7 +390,7 @@ InstantLinkWalletBehaviour.signOut
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:157](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L157)
+[src/lib/selector/core/wallet.ts:241](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L241)
 
 ___
 
@@ -378,7 +410,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:181](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L181)
+[src/lib/selector/core/wallet.ts:265](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L265)
 
 ___
 
@@ -398,27 +430,27 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:70](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L70)
+[src/lib/selector/core/wallet.ts:71](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L71)
 
 ___
 
-### tryInitFromLocalStorage
+### validateTransactions
 
-`Private` **tryInitFromLocalStorage**(`data`): `boolean`
+`Private` **validateTransactions**(`toValidate`): `Promise`<`boolean`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `any` |
+| `toValidate` | `any` |
 
 #### Returns
 
-`boolean`
+`Promise`<`boolean`\>
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:127](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L127)
+[src/lib/selector/core/wallet.ts:150](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L150)
 
 ___
 
@@ -436,4 +468,4 @@ InstantLinkWalletBehaviour.verifyOwner
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:151](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/selector/core/wallet.ts#L151)
+[src/lib/selector/core/wallet.ts:235](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L235)

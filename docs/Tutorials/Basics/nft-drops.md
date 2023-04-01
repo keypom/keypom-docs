@@ -225,7 +225,7 @@ Function arguments for `functionCall` can be found [here](https://docs.near.org/
 
 ## Creating Drop and Transferring NFT
 
-In this section of the tutorial, you'll be creating the NFT drop and transferring the NFT to Keypom using the SDK.
+In this section of the tutorial, you'll be creating the NFT drop and transferring the NFT to Keypom using the Keypom SDK.
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
 

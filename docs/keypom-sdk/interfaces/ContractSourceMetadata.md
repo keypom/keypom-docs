@@ -19,7 +19,7 @@ Link to the specific commit and code on GitHub that is deployed to the Keypom ac
 
 #### Defined in
 
-[src/lib/types/general.ts:96](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/general.ts#L96)
+[src/lib/types/general.ts:96](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L96)
 
 ___
 
@@ -31,4 +31,4 @@ Versioning used by the Keypom developers to indicate which version of the contra
 
 #### Defined in
 
-[src/lib/types/general.ts:94](https://github.com/keypom/keypom-js/blob/98941bb9/src/lib/types/general.ts#L94)
+[src/lib/types/general.ts:94](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L94)

@@ -213,7 +213,7 @@ https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece6
 ## Creating Drop with Function Call Data
 In this section, you'll learn about the process of creating an FC drop using the SDK. 
 
-This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
+This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the Keypom SDK. 
 
 `initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
 
@@ -225,20 +225,39 @@ Recall that the private keys being generated using `createDrop` are used to stor
 In an FC Drop, the assets consist of a set of invokable methods and optional $NEAR.
 :::
 
-The primary task in creating the Function Call Drop is to define `fcData`. It is an object with the following properties.
+The primary task in creating the Function Call Drop is to define fcData. It is an object containing a methods field that outlines what methods should be called for a given key use:
+
 
 ```bash
 fcData
-├── methods
+└── methods
 ```
 
-- `methods`: A vector of all the functions to be called for each key use.  
+For multi-use keys, each specific use can have a different set of methods that will be called. These methods are executed sequentially and not in parallel. As an example, a key with 3 uses can be seen:
 
-In this example, only the `methods` parameter will be defined for the sake of simplicity.
+1. `nft_mint`
+2. `null`
+3. `create_account_advanced`, `setup`, `nft_mint` 
 
-`methods` is a 2D array. The outer array defines the vectors of functions to be called **per key use**. The inner array dictates the functions invoked on **each particular key use**. For more information on the `methods` parameter, please see the [TypeDocs](../../keypom-sdk/interfaces/Method.md)
+The first time the key is used, an NFT will be minted. The second use will simply advance the key and nothing will be called. The third time the key is used, it will first call `create_account_advanced`. Once that's finished it will call the `setup` method and then finally `nft_mint`.  
 
-Each inner element of `methods` represents a function call and requires the following parameters:  
+This is represented with a 2D array, where each inner is the set of methods per key use. The above example would be represented as:
+
+```js
+methods: [
+  [
+    "nft_mint"
+  ], 
+  null, 
+  [
+    "create_account_advanced", 
+    "setup", 
+    "nft_mint"
+  ]
+]
+```
+
+Every method listed represents a function call and requires the following parameters:   
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
@@ -404,4 +423,4 @@ This can be confirmed by visiting the "Collectibles" tab in your NEAR wallet. Yo
 ## Conclusion
 In this tutorial, you learned the how to [create a function call drop](fc-drops.md#creating-drop-with-function-call-data) using the `fcData` parameter. Once the drop was created, you constructed a valid linkdrop using the private keys in order to claim the assets.
 
-Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/homepage.md) for more challenging and practical examples.
+Now that you've had a good introduction to creating all 4 Keypom drop types, feel free to modify the scripts created or move on to the [Advanced Tutorials](../Advanced/ticketing/introduction.md) for more challenging and practical examples.

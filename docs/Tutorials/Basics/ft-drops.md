@@ -229,7 +229,7 @@ The FTs in this example have a `decimal` of 24. This is the same as 1 $NEAR -> 1
 ---
 
 ## Creating Drop and Transferring FTs
-In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom using the SDK. 
+In this section of the tutorial, you'll be creating the drop and transferring the FTs to Keypom using the Keypom SDK. 
 
 As outlined in to introduction, there are 2 tasks to complete in this section.  
 

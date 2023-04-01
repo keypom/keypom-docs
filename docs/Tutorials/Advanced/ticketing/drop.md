@@ -122,7 +122,7 @@ In reality, each method is not simply a string as shown above. The methods requi
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
-- `args`: A stringified JSON object of all the arguments to be passsed into `methodName`.  
+- `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
 For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
@@ -170,7 +170,7 @@ They tell Keypom where to inject certain parameters for each function call.
 
 - `accountIdField`: The name of the account that is claiming the linkdrop.
 - `dropIdField`: The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
-- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo#keyid), of the key that is being used to claim.
+- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
 In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
@@ -218,7 +218,7 @@ await createDrop(
 ```
 As the drop creator, you have the option of creating a password and applying it to the keys in your drop. This password is unique for each key use and comprises of a master password, the drop ID and the use (1st, 2nd, 3rd etc.)
 
-This behaviour can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
+This behavior can be applied by providing the core component, a `basePassword`, into the `createDrop` arguments. In the ticketing case, only the first use should be protected which can be achieved by passing `[1]` into the `passwordProtectedUses` parameter.
 
 Once a key has been password protected, you must pass in `hash(basePassword + publicKey + current_key_use)` in order to successfully claim it.
 

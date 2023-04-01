@@ -89,7 +89,7 @@ https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f4
 ```
 
 ### Claiming
-The claiming process can be controlled using a React `useEffect` hook, that runs everytime the data status, `masterStatus.data`, is updated, indicating that data was read by the scanner. 
+The claiming process can be controlled using a React `useEffect` hook, that runs every time the data status, `masterStatus.data`, is updated, indicating that data was read by the scanner. 
 
 The primary task of the claim process is to determine if a claim is:
 

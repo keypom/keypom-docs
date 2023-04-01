@@ -60,7 +60,7 @@ The following code can be used to test this logic, following the drop creation.
 https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L5-L30
 ```
 
-It's expected that after claiming with the incorrect password, `allowEntry` will return `false` since the key use remains at 1. However, once the correct password is provided, the `allowEntry` function should return `true`. In the tests, an `assert` function is used to ensure the proper behaviour.
+It's expected that after claiming with the incorrect password, `allowEntry` will return `false` since the key use remains at 1. However, once the correct password is provided, the `allowEntry` function should return `true`. In the tests, an `assert` function is used to ensure the proper behavior.
 
 ### Preventing Multiple Entries
 
@@ -70,7 +70,7 @@ Once an attendee has been scanned into the event, they may try to give their tic
 https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L32-L57
 ```
 
-With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behaviour. 
+With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behavior. 
 
 ---
 

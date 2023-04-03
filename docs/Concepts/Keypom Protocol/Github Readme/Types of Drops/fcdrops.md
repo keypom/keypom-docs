@@ -121,6 +121,7 @@ pub struct KeypomArgs {
     pub account_id_field: Option<String>,
     pub drop_id_field: Option<String>,
     pub key_id_field: Option<String>,
+    pub funder_id_field: Option<String>,
 }
 ```
 
@@ -140,7 +141,7 @@ In order for this to work, when creating the drop, the owner would need to speci
 such that the drop ID is correctly passed into the function.
 
 The problem with this approach is that the NFT contract has no way of knowing which arguments were sent by the **user** when the drop 
-was created `as part of the MethodData `args` and which arguments are automatically populated by the Keypom contract. There is nothing 
+was created as part of the MethodData `args` and which arguments are automatically populated by the Keypom contract. There is nothing 
 stopping a malicious user from creating a new drop that has an ID of 6 but hardcoding in the actual arguments that `series` should have 
 a value of 5. In this case, the malicious drop would have *no* `drop_id_field` and the NFT contract would have no way of knowing that the 
 `series` value is malicious.

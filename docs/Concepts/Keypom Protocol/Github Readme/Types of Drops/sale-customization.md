@@ -2,7 +2,7 @@
 sidebar_label: 'Public Sale Configurations'
 ---
 # Public Sale Configurations
-The public sale configuration gives the funder the ability to sell access keys in their drop with a variety of configurable behaviours such as the price, or a dedicated allowlist.  
+The public sale configuration gives the funder the ability to sell access keys in their drop with a variety of configurable behaviors such as the price, or a dedicated allowlist.  
 
 ## Use cases
 Public sales of access keys allow for a wide range of easier to create and more interactive events. This is done by letting you:  
@@ -86,7 +86,7 @@ In this example, pretend you are running a concert for only your closest friends
 
 Contrary to the `allowlist`, the `blocklist` specifies those that are blocked from adding keys to the drop. This is empty by default, meaning nobody is blocked.
 
-Note that the `blocklist` takes prescedent over the `allowlist`. This means that if you are on both lists, you will be blocked. 
+Note that the `blocklist` takes precedent over the `allowlist`. This means that if you are on both lists, you will be blocked. 
 
 ### Use case
 Lets pretend that you are running a concert but there are known ticket scalpers in the community. To prevent keys from being scalped and ensure your true fans get tickets to your concert, you can add the NEAR `accountID`'s of the scalpers to the `blocklist` vector.   
@@ -113,7 +113,7 @@ In this scenario, rather than sending revenues to your Keypom balance and then n
 ## Start
 *Default: None, keys can be added immediately*  
 
-The `start` parameter dictates when keys can be purhcased and added to the drop. Similar to [time configurations](time-customization.md), this is measured in non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. A sample configuration is made available below. 
+The `start` parameter dictates when keys can be purchased and added to the drop. Similar to [time configurations](time-customization.md), this is measured in non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. A sample configuration is made available below. 
 
 ### Use case
 Pretend you are an event coordinator for a popular event and have a limited capacity. To ensure fairness, you set a date and time for the sale to begin and let all your users know.
@@ -128,7 +128,7 @@ To do this, you can configure the `start` parameter.
 The `end` parameter defines when keys can no longer be purchased and added to the drop. 
 
 ### Use case
-For an upcoming event, you want to create a pre-sale of tickets for dedicated fans. To do this you can create a drop, seperate from the main ticket sale, that begins early and ends before the general admission tickets go on sale. 
+For an upcoming event, you want to create a pre-sale of tickets for dedicated fans. To do this you can create a drop, separate from the main ticket sale, that begins early and ends before the general admission tickets go on sale. 
 
 To do this, you can configure the `end` parameter.
 

@@ -2,12 +2,12 @@
 sidebar_label: 'Drop Configurations'
 ---
 # Drop Configurations
-Drop Customizations via the `DropConfig` object passed into `create_drop` can help adjust the properties and behaviours of a drop to achieve specific use-cases.
+Drop Customizations via the `DropConfig` object passed into `create_drop` can help adjust the properties and behaviors of a drop to achieve specific use-cases.
 
 From changing the amount of times a key can be used before it's deleted to setting a public sale and making profit from keys being added to your drop, understanding the power of the `DropConfig` is crucial to making the most of Keypom!
 
 :::tip
-A configuration applies to **ALL KEYS** accross a drop.  
+A configuration applies to **ALL KEYS** across a drop.  
 
 This means that if you want keys with different configurations, you must create multiple drops with their respective configurations.
 :::

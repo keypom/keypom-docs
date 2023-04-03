@@ -12,7 +12,7 @@ Keypom aims to solve these problems by empowering you to create a seamless ticke
 * Each ticket is unique and can only be used by one person.
 * Attendees are not required to have wifi to gain entry to the event.
 * Attendees that did not have a NEAR wallet can get one for free.
-* Attendees can choose to receive an NFT proving their attendence at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap). 
+* Attendees can choose to receive an NFT proving their attendance at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap). 
 * The post-attendance gifts can **only** be given to people that physically showed up to the event. You can't receive the NFT if you didn't show up.
 
 These features open the door to an entirely new class of non-technical attendees and create a smoother experience compared to existing NFT ticketing solutions.

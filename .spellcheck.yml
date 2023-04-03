@@ -1,0 +1,30 @@
+matrix:
+- name: Markdown
+  expect_match: false
+  apsell:
+    lang: en
+    ignore-case: true
+    mode: 'url'
+    camel-case: true
+  dictionary:
+    wordlists:
+    - .wordlist.txt
+    encoding: utf-8
+  pipeline:
+  - pyspelling.filters.markdown:
+      markdown_extensions:
+      - markdown.extensions.extra:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - alt
+      ignores:
+      - ':matches(code, pre)'
+      - 'code'
+      - 'pre'
+      - 'blockquote'
+  - pyspelling.filters.url:
+      urls: true
+  sources:
+  - '*.md'
+  - 'docs/**/*.md'

@@ -22,11 +22,11 @@ receive 10 $NEAR.
 
 Recurring payments are quite a common situation. If you need to send someone 10 $NEAR once a
 month for 6 months, you could create a simple drop that has a `claim_interval` of 1 month with
-a `start_timestamp` of next week. Everytime the key is used, 10 $NEAR is sent to the account. If
+a `start_timestamp` of next week. Every time the key is used, 10 $NEAR is sent to the account. If
 the contractor missed a month's payment, they can claim the key late but can never use the key more
 than what is intended.
 
-<p align="center"> <img src={require("/static/img/recurring_payments.png").default} alt="reccuring payments" width="60%"/> </p>
+<p align="center"> <img src={require("/static/img/recurring_payments.png").default} alt="recurring payments" width="60%"/> </p>
 
 ## Quick Onboarding
 

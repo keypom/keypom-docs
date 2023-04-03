@@ -77,7 +77,7 @@ Now, you can begin testing the scanner by holding the photo of the QR code up to
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claiming.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>
 </p>
 
-This should prompty return a failed claim, shown below.
+This should promptly return a failed claim, shown below.
 
 <p align="center">
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-claim-bad.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>

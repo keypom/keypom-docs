@@ -144,7 +144,7 @@ The process of creating an NFT drop can be broken down into the following steps.
 5) Create linkdrops.  
 
 :::info
-The NFT ownership must be transfered to Keypom so that it can send the NFT to the user when they claim their drop. 
+The NFT ownership must be transferred to Keypom so that it can send the NFT to the user when they claim their drop. 
 :::
 
 The following skeleton code can be used as a starting point:
@@ -229,7 +229,7 @@ In this section of the tutorial, you'll be creating the NFT drop and transferrin
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
 
 After calling `initKeypom`, the NFT Drop is created. This is done by calling `createDrop` and adding an `nftData` parameter.
 
@@ -335,7 +335,7 @@ To view the completed code, clone the Keypom SDK repo and visit the examples dir
 ``` bash
 git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk/nft-example.js
 ```
-To run the code you just cloned, install all the necesasry packages. 
+To run the code you just cloned, install all the necessary packages. 
 ```bash
 npm install
 ```
@@ -417,7 +417,7 @@ From there, you should be able to see the [`create_drop`](https://explorer.testn
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/explorer.png").default} alt="explorer transactions" width="80%"/> </p>
 
 :::note
-Recall that `nft_transfer_call` is never explicitely called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
+Recall that `nft_transfer_call` is never explicitly called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
 
 This is the SDK in action!
 :::

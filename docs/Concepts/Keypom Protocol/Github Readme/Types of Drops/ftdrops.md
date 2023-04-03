@@ -12,7 +12,7 @@ key uses.
 You can preload a drop with as many FTs as you'd like even if you don't have the keys yet. This will spike the
 `registered_uses` and then you can create keys and slowly eat away from this "total supply" overtime. If the
 drop runs out, you can send it more FTs to top up. All the keys in the FT drop will share from this supply
-and everytime a key is used, the `registered_uses` will decrement and the "total supply" will get smaller.
+and every time a key is used, the `registered_uses` will decrement and the "total supply" will get smaller.
 
 ## How does it work?
 

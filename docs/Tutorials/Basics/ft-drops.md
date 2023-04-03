@@ -239,7 +239,7 @@ As outlined in to introduction, there are 2 tasks to complete in this section.
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK.  
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
 
 Following the `initKeypom` call, the FT Drop is created. This is done by calling `createDrop` and adding an `ftData` parameter. 
 
@@ -347,7 +347,7 @@ To view the completed code, clone the Keypom SDK repo and visit the examples dir
 ``` bash
 git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples
 ```
-To run the code you just cloned, install all the necesasry packages. 
+To run the code you just cloned, install all the necessary packages. 
 ```bash
 npm install
 ```
@@ -419,7 +419,7 @@ Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.test
 Once you click the link, it will take you to the following NEAR Wallet page, where you will have the choice to claim with an existing account or create a new one. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/nw-claim.png").default} alt="NEAR Wallet claim" width="80%"/> </p>
 
-In your NEAR wallet, you should now be able to see the FT tokens that were transfered to you. 
+In your NEAR wallet, you should now be able to see the FT tokens that were transferred to you. 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/ft.png").default} alt="ft claim" width="80%"/> </p>
 
 To check the transactions, click the final link in the console log when you run the script.
@@ -432,7 +432,7 @@ From there, you should be able to see the [`create_drop`](https://explorer.testn
 
 
 :::note
-Recall that `ft_transfer_call` is never explicitely called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
+Recall that `ft_transfer_call` is never explicitly called but rather `createDrop` calls it for you; this can be seen in the explorer shown above. 
 
 This is the SDK in action!
 :::

@@ -182,7 +182,7 @@ const homedir = require("os").homedir();
 async function fcDropKeypom(){
 // STEP 1: Initiate a NEAR connection.
 
-// STEP 2: Create the drop with funciton call data.
+// STEP 2: Create the drop with function call data.
 }
 
 fcDropKeypom()
@@ -215,7 +215,7 @@ In this section, you'll learn about the process of creating an FC drop using the
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the Keypom SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
 
 After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter. 
 
@@ -261,7 +261,7 @@ Every method listed represents a function call and requires the following parame
 
 - `receiverId`: The contract receiving the function call.  
 - `methodName`: The function to be called on the receiver contract.  
-- `args`: A stringified JSON object of all the arguments to be passsed into `methodName`.  
+- `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
 In this tutorial only one function call will be made: `nft_mint` in order to lazy mint an NFT.
@@ -343,7 +343,7 @@ To view the completed code, clone the Keypom SDK repo and visit the examples dir
 ``` bash
 git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples
 ```
-To run the code you just cloned, install all the necesasry packages. 
+To run the code you just cloned, install all the necessary packages. 
 ```bash
 npm install
 ```

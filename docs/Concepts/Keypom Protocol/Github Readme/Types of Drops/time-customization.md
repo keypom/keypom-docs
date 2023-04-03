@@ -2,7 +2,7 @@
 sidebar_label: 'Time Configurations'
 ---
 # Time Configurations
-Time configurations are particularly useful in defining limits on ***when*** a key may be used. This can have a wide range of applicaitons from [Subcriptions](../../../../Tutorials/Advanced/subscriptions/introduction.md) to [Ticketing](../../../../Tutorials/Advanced/ticketing/introduction).
+Time configurations are particularly useful in defining limits on ***when*** a key may be used. This can have a wide range of applications from [Subscriptions](../../../../Tutorials/Advanced/subscriptions/introduction.md) to [Ticketing](../../../../Tutorials/Advanced/ticketing/introduction.md).
 
 ```rust
 pub struct TimeConfig {
@@ -39,18 +39,18 @@ All these time parameters are measured in non-leap-nanoseconds and can be tricky
 `Start` time is useful for any drops where you intend to restrict access until a certain time. Setting a `start` time effectively sets an activation time; a time where the keys become usable afterwards. Before a `start` time is reached, if a user tries to `claim` the key or use `create_account_and_claim`, it will not work. 
 
 ### Use case
-Let's say you are running a concert, and you want to give fans exclusive access using prefered and general admission tickets. Those with prefered admission tickets can enter anytime, even when the band is setting up. General admission, on the other hand, may only enter once the band is set up. 
+Let's say you are running a concert, and you want to give fans exclusive access using preferred and general admission tickets. Those with preferred admission tickets can enter anytime, even when the band is setting up. General admission, on the other hand, may only enter once the band is set up. 
 
-In this case, you would hand out general admission tickets with a start time in the time configurations and another set of prefered admission tickets with an earlier start time in the time configurations.
+In this case, you would hand out general admission tickets with a start time in the time configurations and another set of preferred admission tickets with an earlier start time in the time configurations.
 
-To do this, you would need to create two drops, one for prefered admission and another for general admission. This is because, as covered in the [Drop Configurations Introduction](customization-homepage.md), one set of configurations will apply to **all** keys in that drop. 
+To do this, you would need to create two drops, one for preferred admission and another for general admission. This is because, as covered in the [Drop Configurations Introduction](customization-homepage.md), one set of configurations will apply to **all** keys in that drop. 
 
 ---
 
 ## End
 *Default: none, Keys can be used anytime*  
 
-The end parameter acts as a de-activation time. This means that once the end time is reached, all the keys in the drop will be de-activated and can no longer be used. 
+The end parameter acts as a deactivation time. This means that once the end time is reached, all the keys in the drop will be deactivated and can no longer be used. 
 
 ### Use case
 Let's pretend that you are at NEARCON representing an NFT marketplace looking to onboard users onto your platform. Your strategy is to offer an exclusive NFT to users that sign up during NEARCON. 
@@ -65,7 +65,7 @@ To do this, you hand out QR codes with an NFT drop embedded in the QR code durin
 The `throttle` parameter controls how much time must pass between key uses. This works great if you want to control how frequently somebody is able to claim their assets. 
 
 ### Use case
-Pretend you are running an NFT raffle for your latest creation, the MoonNFT. For this raffle, the 20th person claiming their key will be the winner and will receive their own personalized MonnNFT. 
+Pretend you are running an NFT raffle for your latest creation, the MoonNFT. For this raffle, the 20th person claiming their key will be the winner and will receive their own personalized MoonNFT. 
 
 To protect again spam and ensure a fair playing field, you can configure the drop to have a 5 minute cooldown using the `throttle` parameter. This way, a contestant cannot spam claim the key to increase their odds of winning. 
 
@@ -84,7 +84,7 @@ With Keypom, you can give Moon a multi-use simple drop with a `throttle` paramet
 If, for one week, Moon forgets to claim, he would be able to claim twice the next week.
 
 
-The massive benefit here is that you can have a subcription service in the NEAR ecosystem and never need to expose any of your private information.
+The massive benefit here is that you can have a subscription service in the NEAR ecosystem and never need to expose any of your private information.
 
 
 ---

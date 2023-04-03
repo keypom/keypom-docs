@@ -1462,7 +1462,7 @@ console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | - |
 | › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `callableContracts` | `string`[] | The contracts that the trial account should be able to call. If there are multiple methods per contract, they need to be seperated by `:`. For example: ["nft_mint:nft_approve", "*"] |
+| › `callableContracts` | `string`[] | The contracts that the trial account should be able to call. If there are multiple methods per contract, they need to be separated by `:`. For example: ["nft_mint:nft_approve", "*"] |
 | › `callableMethods` | `string`[] | The list of methods that the trial account should be able to call on each respective contract. For multiple methods on a contract, pass in a comma separated string with no spaces (`nft_mint,nft_transfer,nft_approve`). To allow any methods to be called on the receiver contract, pass in `*`. |
 | › `config?` | [`DropConfig`](interfaces/DropConfig.md) | Allows specific drop behaviors to be configured such as the number of uses each key / link will have. |
 | › `contractBytes` | `number`[] | Bytes of the trial account smart contract |
@@ -1502,7 +1502,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 **addToBalance**(`«destructured»`): `Promise`<`any`\>
 
 Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without
-Having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+Having to explicitly attach a deposit every time. It can be thought of like a bank account.
 
 **`Example`**
 

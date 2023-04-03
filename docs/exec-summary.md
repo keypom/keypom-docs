@@ -1,6 +1,6 @@
 # Keypom Executive Summary
 
-> To discover the features and details of Keypom, begin your journey [here](Concepts/welcome).
+> To discover the features and details of Keypom, begin your journey [here](Concepts/welcome.md).
 
 Keypom provides **zero friction onboarding** and transactions for NEAR. We allow people to **experience** the value of blockchain technology *regardless of if they have a wallet or not*. 
 
@@ -29,7 +29,7 @@ The concept of sending NEAR can then be expanded to allow someone to not only lo
 
 The end user journey would be that an organization or funder deposits assets (either fungible or non-fungible) into the Keypom contract and generates a unique link. This link is then given to the user that wishes to onboard onto NEAR. When the link is clicked, the user either creates a new account or uses an existing one for the assets to be automatically sent to.
 
-In the NEAR ecosystem, this process is known as a linkdrop. With Keypom, a series of identical linkdrops can be created at once and is refered to as **a drop**.
+In the NEAR ecosystem, this process is known as a linkdrop. With Keypom, a series of identical linkdrops can be created at once and is referred to as **a drop**.
 
 ### Customizable Linkdrops
 The Keypom Protocol allows for a huge variety of customizations that can be embedded into the onboarding experience. For example, as the funder, you can specify the amount of times a link can be used before it’s invalidated. Rather than someone using a link once, they can potentially use it many times and receive assets over a long period of time.
@@ -88,7 +88,7 @@ Learn more about Keypom's Drop types below
 
 ## Use Cases
 
-Here are just a few of the possibilies with Keypom
+Here are just a few of the possibilities with Keypom
 
 ### NFT Ticketing
 The problem with current NFT ticketing systems is that they require users to have a wallet. This is a huge barrier to entry for people that are attending events but don’t have wallets. In addition, there is often no proof of attendance for the event as the NFT is burned in order to get into the event which requires an internet connection.
@@ -99,7 +99,7 @@ Keypom aims to solve these problems by having a ticketing system that has the fo
 * Each ticket is unique and can only be used by one person.
 * Attendees are not required to have wifi to gain entry to the event.
 * Attendees that did not have a NEAR wallet can get one for free.
-* Attendees can choose to receive an NFT proving their attendence at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
+* Attendees can choose to receive an NFT proving their attendance at the event. This is commonly known as a [POAP](https://academy.binance.com/en/glossary/proof-of-attendance-protocol-poap).
 
 
 In addition, some way to provide analytics to event organizers that contains information such as links that were:

@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'License and Acknowledgements'
+sidebar_label: 'License and Acknowledgments'
 sidebar_position: 10
 ---
 
@@ -7,7 +7,7 @@ sidebar_position: 10
 
 This project is licensed under the **GPL License**.
 
-# Acknowledgements
+# Acknowledgments
 
 Thanks for these awesome resources that were used during the development of the **Keypom Contract**:
 

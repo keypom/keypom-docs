@@ -119,7 +119,7 @@ https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca83
 
 When `curUse` is 1 and the QR code is being rendered, the public key and use number is shown for educational purposes.
 
-A `useEffect` hook is used to update the needed Keypom state variables whenver the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
+A `useEffect` hook is used to update the needed Keypom state variables whenever the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/keyInfo.js#L9-L45
@@ -130,7 +130,7 @@ https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca83
 ## Conclusion
 In this section, you learned about the 3 components that make up the attendee ticket page: `App.js`, `Qrcode.js`, and `KeyInfo.js`.
 
-In summary, `App.js` is the "homepage" of the attendee ticket page and takes care of setting up all the state variables based on the URL and then renedering the page. `Qrcode.js` simply renders a QR code based on an input string. `KeyInfo` is in charge of updating all Keyom state variables whenever `App.js` re-renders. 
+In summary, `App.js` is the "homepage" of the attendee ticket page and takes care of setting up all the state variables based on the URL and then rendering the page. `Qrcode.js` simply renders a QR code based on an input string. `KeyInfo` is in charge of updating all Keypom state variables whenever `App.js` re-renders. 
 
 You also went through the code for each of these components and saw the expected [render results](user-code.md#rendering). 
 

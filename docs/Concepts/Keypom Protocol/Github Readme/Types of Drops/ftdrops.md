@@ -2,6 +2,8 @@
 sidebar_label: 'Fungible Token Drops'
 sidebar_position: 4
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Fungible Token Drops
 
@@ -31,16 +33,23 @@ It's up to the owner to facilitate this process.
 Along with the default global configurations for drops, if you'd like to create a FT drop,
 you must specify the following pieces of information when the drop is created.
 
-```rust
-pub struct FTDataConfig {
-    /// The contract that the FTs live on.
-    pub contract_id: AccountId,
-    /// The account ID that will be sending the FTs to the contract.
-    pub sender_id: AccountId,
-    /// How many FTs should the contract send *each time* a key is used.
-    pub balance_per_use: U128,
-}
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/ft.ts#L4-L23
 ```
+
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L119-L123
+```
+
+</TabItem>
+</Tabs>
+
 
 By specifying this information, the drop is locked into only accepting FTs coming from the sender and contract. While
 you can send as many FTs as you'd like and can over-pay, you *must* send at **least** enough FTs in one call to cover

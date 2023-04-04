@@ -23,7 +23,6 @@ const sidebars = {
       collapsed: false,
       items: [
                 'Concepts/Keypom Protocol/overview',
-                'Concepts/Keypom Protocol/balances',
                 {
                   type: 'category',
                   label: 'Types of Drops',
@@ -39,6 +38,7 @@ const sidebars = {
                     'Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops',
                   ],
                 },
+                'Concepts/Keypom Protocol/balances',
                 {
                   type: 'category',
                   label: 'Configuring Your Drop',

@@ -1,6 +1,8 @@
 ---
 sidebar_label: 'Keypom Balances'
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Keypom Balances
 ## What is a Keypom Balance?
@@ -15,21 +17,76 @@ Every account that uses Keypom carries an internal balance (in $NEAR) on the Key
 Let's go back to your event organizer persona; this Keypom Balance allows you to simply preload your "debit card" with loads of $NEAR and then go about your business without needing to worry about transferring $NEAR for ever function call!
 ## Interacting with Balances
 There are a few functions that you can use to interact with your Keypom balance. Let's quickly run through their meanings, and then show some examples!
-```rust
-pub fn add_to_balance(&mut self)
-// Every account that interacts with the Keypom contract gets a balance assigned. This function 
-// allows you to transfer your $NEAR from your wallet to the Keypom contract to add to your balance.
 
-pub fn withdraw_from_balance(&mut self)
-// Should you overload your Keypom Balance beyond what is needed, you can withdraw your balance 
-//back into your wallet. 
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
-pub fn get_user_balance(&self, account_id: AccountId) -> U128
+```ts
+// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+export const addToBalance = async ({
+	account,
+	wallet,
+	amountNear,
+	amountYocto,
+	successUrl,
+}: {
+	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
+	account?: Account,
+	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
+	wallet?: AnyWallet,
+	/** 
+	 * Amount of tokens to add but considering the decimal amount (non human-readable).
+	 * @example
+	 * Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" 
+	*/
+	amountYocto?: string
+	/**
+	 * Human readable format for the amount of tokens to add.
+	 * @example
+	 * Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000"
+	 */
+	amountNear?: string,
+	/** When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. */
+	successUrl?: string
+})
+
+// Withdraw your balance back into your wallet. 
+export const withdrawBalance = async ({
+	account,
+	wallet
+}: {
+	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
+	account?: Account,
+	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
+	wallet?: AnyWallet,
+})
+
 //This allows you to view your own or other people's Keypom balance. This can be useful to determine 
 //if you need to top up if you are on the verge of creating a large drop
+export const getUserBalance = async ({
+	accountId
+}: { accountId: string })
 ```
 
-## Use Cases
-*WIP*
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom">
 
-For example, Alice wants to add 10 $NEAR to her Keypom balance. She will do this by calling `add_to_balance` and transferring 10 $NEAR to the Keypom contract. Then, if Alice wants to create a drop that costs her 5 $NEAR, she can simply create the drop and Keypom will automatically deduct from her internal Keypom balance rather than needing to transfer 5 $NEAR to the contract.  
+```rust
+// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+pub fn add_to_balance(&mut self)
+
+// Allows users to withdraw their balance
+pub fn withdraw_from_balance(&mut self) 
+
+// Return the current balance for a given account
+pub fn get_user_balance(&self, account_id: AccountId) -> U128
+```
+
+</TabItem>
+</Tabs>
+
+
+
+For example, Alice wants to add 10 $NEAR to her Keypom balance. She will do this by calling `addToBalance` and transferring 10 $NEAR to the Keypom contract. Then, if Alice wants to create a drop that costs her 5 $NEAR, she can simply create the drop and Keypom will automatically deduct from her internal Keypom balance rather than needing to transfer 5 $NEAR to the contract.  
+
+Once she has created the drop, she can check her balance using `getUserBalance`, which will return 5 $NEAR. Then, she can withdraw this 5 $NEAR into her NEAR wallet; this will cause her Keypom balance to go down to 0 $NEAR. 

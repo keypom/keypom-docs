@@ -2,6 +2,8 @@
 sidebar_label: 'Function Call Drops'
 sidebar_position: 5
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Function Call Drops
 
@@ -20,46 +22,50 @@ so the creation is similar to Simple drops. Once the drop is created and keys ar
 When creating the drop, you have quite a lot of customization available. At the top level, there is a FC drop global
 config similar to how the *general* config works.
 
-```rust
-pub struct FCConfig {
-    /// How much GAS should be attached to the function call if it's a regular claim.
-    /// If this is used, you *cannot* go through conventional linkdrop apps such as mynearwallet
-    /// since those *always* attach 100 TGas no matter what. In addition, you will only be able to
-    /// call `claim` if this is specified. You cannot have an `attached_gas` parameter and also
-    /// call `create_account_and_claim.
-    pub attached_gas: Option<Gas>,
-}
+
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L68-L74
 ```
 
-### Method Data
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom">
 
-In addition to the global config, the user can specify a set of what's known as `MethodData`. This represents the
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L53-L58
+```
+
+</TabItem>
+</Tabs>
+
+
+### `Method`/`MethodData`
+
+In addition to the global config, the user can specify a set of what's known as `Method`. This represents the
 information for the function being called. Within this data, there are also a few optional configurations you can use
 to extend your use cases. You'll see how powerful these can be in the use cases [section](#use-cases).
 
-```rust
-pub struct MethodData {
-    /// Contract that will be called
-    pub receiver_id: AccountId,
-    /// Method to call on receiver_id contract
-    pub method_name: String,
-    /// Arguments to pass in (stringified JSON)
-    pub args: String,
-    /// Amount of yoctoNEAR to attach along with the call
-    pub attached_deposit: U128,
-    /// Specifies what field the claiming account should go in when calling the function
-    /// If None, this isn't attached to the args
-    pub account_id_field: Option<String>,
-    /// Specifies what field the drop ID should go in when calling the function.
-    /// If Some(String), attach drop ID to args. Else, don't attach.
-    pub drop_id_field: Option<String>,
-    /// Specifies what field the key ID should go in when calling the function.
-    /// If Some(String), attach key ID to args. Else, don't attach.
-    pub key_id_field: Option<String>,
-}
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L7-L63
 ```
 
-The MethodData keeps track of the method being called, receiver, arguments, and attached deposit. In addition, there are
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L18-L48
+```
+
+</TabItem>
+</Tabs>
+
+
+`Method`/`MethodData` keeps track of the method being called, receiver, arguments, and attached deposit. In addition, there are
 some optional fields that can be used to extend the use cases. If you have a contract that requires some more context from
 Keypom such as the drop ID, key ID, or account ID that used the key, these can all be specified.
 
@@ -72,40 +78,32 @@ This logic extends to the drop ID, and key Id as well.
 
 ### Key Uses
 
-For **every key use**, you can specify a *vector* of `MethodData` which allows you to execute multiple function calls each
+For **every key use**, you can specify a *vector* of `Method`/`MethodData` which allows you to execute multiple function calls each
 time a key is used. These calls are scheduled 1 by 1 using a simple for loop. This means that most of the time, the function
 calls will be executed in the order specified in the vector but it is not *guaranteed*.
 
 It's important to note that the Gas available is split evenly between *all* the function calls and if there are too many,
 you might run into issues with not having enough Gas. You're responsible for ensuring that this doesn't happen.
 
-The vector of `MethodData` is *optional* for each key use. If a key use has `null` rather than `Some(Vector<MethodData>)`,
+The vector of `Method`/`MethodData` is *optional* for each key use. If a key use has `null` rather than `Some(Vector<MethodData>)` or `Maybe<Array<Method>>`,
 it will decrement the uses and work as normal such that the `throttle_timestamp, `start_timestamp` etc. are enforced. The only
 difference is that after the key uses are decremented and these checks are performed, the execution **finishes early**. The null
 case does **not** create an account or send *any* funds. It doesn't invoke any function calls and simply *returns once the
 checks are done*. This makes the null case act as a "burner" where you disregard any logic. This has many uses which will
 be explored in the use cases [section](#use-cases).
 
-If a key has more than 1 use, you can specify a *different vector* of `MethodData` for **each use**. As an example, you could
+If a key has more than 1 use, you can specify a *different vector* of `Method`/`MethodData` for **each use**. As an example, you could
 specify that the first use will result in a null case and the second use will result in a lazy minting function being called.
 If you have multiple uses but want them all to do the same thing, you don't have to repeat the same data. Passing in only 1
-vector of `MethodData` will result in  **all the uses** inheriting that data.
+vector of `Method`/`MethodData` will result in  **all the uses** inheriting that data.
 
 ## Security
 
 Since all FC drops will be signed by the Keypom contract, there are a few restrictions in place to avoid malicious behaviors.
 To avoid users from stealing registered assets from other drops, the following methods cannot be called via FC Drops:
 
-```rust
-/// Which methods are prohibited from being called by an FC drop
-const DEFAULT_PROHIBITED_FC_METHODS: [&str; 6] = [
-    "nft_transfer",
-    "nft_transfer_call",
-    "nft_approve",
-    "nft_transfer_payout",
-    "ft_transfer",
-    "ft_transfer_call",
-];
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/lib.rs#L926-L934
 ```
 
 In addition, the Keypom contract cannot be the receiver of any function call. This is to avoid people
@@ -114,15 +112,10 @@ from calling private methods through FC Drops.
 ### Keypom Arguments
 
 When a key is used and a function is called, there is a data structure that is **automatically** attached to the arguments.
-This is known as the `keypom_args`. It contains the information that the drop creator specified in the `MethodData`. 
+This is known as the `keypom_args`. It contains the information that the drop creator specified in the `Method`/`MethodData`. 
 
-```rust
-pub struct KeypomArgs {
-    pub account_id_field: Option<String>,
-    pub drop_id_field: Option<String>,
-    pub key_id_field: Option<String>,
-    pub funder_id_field: Option<String>,
-}
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/stage1/function_call.rs#L17-L22
 ```
 
 #### Motivation

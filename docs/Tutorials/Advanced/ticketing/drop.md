@@ -168,10 +168,10 @@ The following optional Keypom arguments are exposed for each individual method i
 
 They tell Keypom where to inject certain parameters for each function call.
 
-- `accountIdField`: The name of the account that is claiming the linkdrop.
-- `dropIdField`: The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
-- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
-- `funderIdField` the `accountId` of the person funding the drop.
+- [`accountIdField`](../../../keypom-sdk/interfaces/Method#accountidfield): The name of the account that is claiming the linkdrop.
+- [`dropIdField`](../../../keypom-sdk/interfaces/Method#dropidfield): The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
+- [`keyIdField`](../../../keypom-sdk/interfaces/Method#keyidfield) The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
+- [`funderIdField`](../../../keypom-sdk/interfaces/Method#funderidfield) the `accountId` of the person funding the drop.
 
 In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
 

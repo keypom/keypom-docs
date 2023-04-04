@@ -19,7 +19,7 @@ The amount of Gas that will be attached to the `claim` and `create_account_and_c
 
 #### Defined in
 
-[src/lib/types/general.ts:70](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L70)
+[src/lib/types/general.ts:70](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L70)
 
 ___
 
@@ -31,7 +31,7 @@ The connection instance that is part of the NEAR object
 
 #### Defined in
 
-[src/lib/types/general.ts:52](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L52)
+[src/lib/types/general.ts:52](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L52)
 
 ___
 
@@ -43,7 +43,7 @@ The NEAR Account object for the Keypom contract being used. This lets you know t
 
 #### Defined in
 
-[src/lib/types/general.ts:62](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L62)
+[src/lib/types/general.ts:62](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L62)
 
 ___
 
@@ -55,7 +55,7 @@ The account ID where the Keypom contract is deployed to.
 
 #### Defined in
 
-[src/lib/types/general.ts:72](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L72)
+[src/lib/types/general.ts:72](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L72)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:76](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L76)
+[src/lib/types/general.ts:76](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L76)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:80](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L80)
+[src/lib/types/general.ts:80](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L80)
 
 ___
 
@@ -87,7 +87,7 @@ The NEAR Account object for the Funder
 
 #### Defined in
 
-[src/lib/types/general.ts:58](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L58)
+[src/lib/types/general.ts:58](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L58)
 
 ___
 
@@ -99,7 +99,7 @@ The details for the funder such as any `rootEntropy` or their `secretKey` etc.
 
 #### Defined in
 
-[src/lib/types/general.ts:60](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L60)
+[src/lib/types/general.ts:60](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L60)
 
 ___
 
@@ -111,7 +111,7 @@ The default amount of Gas that will be attached to transactions (200 TGas).
 
 #### Defined in
 
-[src/lib/types/general.ts:66](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L66)
+[src/lib/types/general.ts:66](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L66)
 
 ___
 
@@ -123,7 +123,7 @@ The max amount of Gas that will be attached to transactions (300 TGas).
 
 #### Defined in
 
-[src/lib/types/general.ts:68](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L68)
+[src/lib/types/general.ts:68](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L68)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:78](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L78)
+[src/lib/types/general.ts:78](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L78)
 
 ___
 
@@ -145,7 +145,7 @@ Which type of KeyStore is used when locating keys and signing transactions throu
 
 #### Defined in
 
-[src/lib/types/general.ts:54](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L54)
+[src/lib/types/general.ts:54](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L54)
 
 ___
 
@@ -157,7 +157,7 @@ The specific NEAR object that contains important information such as the KeyStor
 
 #### Defined in
 
-[src/lib/types/general.ts:50](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L50)
+[src/lib/types/general.ts:50](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L50)
 
 ___
 
@@ -169,7 +169,7 @@ What network is the SDK using (`testnet` or `mainnet`)
 
 #### Defined in
 
-[src/lib/types/general.ts:56](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L56)
+[src/lib/types/general.ts:56](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L56)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:74](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L74)
+[src/lib/types/general.ts:74](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L74)
 
 ___
 
@@ -198,7 +198,7 @@ Object containing the supported Keypom contracts for both mainnet and testnet
 
 #### Defined in
 
-[src/lib/types/general.ts:82](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L82)
+[src/lib/types/general.ts:82](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L82)
 
 ___
 
@@ -208,7 +208,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:64](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L64)
+[src/lib/types/general.ts:64](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L64)
 
 ___
 
@@ -220,4 +220,4 @@ Function that allows you to invoke a view method. This takes in a `receiverId`, 
 
 #### Defined in
 
-[src/lib/types/general.ts:84](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L84)
+[src/lib/types/general.ts:84](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/general.ts#L84)

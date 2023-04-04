@@ -19,7 +19,7 @@ The account ID that the NFT contract is deployed to. This contract is where all 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:204](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L204)
+[src/lib/types/protocol.ts:204](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/protocol.ts#L204)
 
 ___
 
@@ -31,4 +31,4 @@ By default, anyone can fund your drop with NFTs. This field allows you to set a 
 
 #### Defined in
 
-[src/lib/types/protocol.ts:206](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L206)
+[src/lib/types/protocol.ts:206](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/protocol.ts#L206)

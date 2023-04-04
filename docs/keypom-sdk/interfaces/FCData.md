@@ -19,4 +19,4 @@ If a given key use does not have an undefined set of methods, when it is used, a
 
 #### Defined in
 
-[src/lib/types/fc.ts:73](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/fc.ts#L73)
+[src/lib/types/fc.ts:73](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/fc.ts#L73)

@@ -18,7 +18,7 @@ How much allowance does the key have left (measured in $yoctoNEAR). When the key
 
 #### Defined in
 
-[src/lib/types/drops.ts:25](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L25)
+[src/lib/types/drops.ts:25](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L25)
 
 ___
 
@@ -30,7 +30,7 @@ Which use is the key currently on? For single-use keys, this is always 1.
 
 #### Defined in
 
-[src/lib/types/drops.ts:16](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L16)
+[src/lib/types/drops.ts:16](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L16)
 
 ___
 
@@ -42,7 +42,7 @@ Drop ID for the specific drop that the key belongs to.
 
 #### Defined in
 
-[src/lib/types/drops.ts:11](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L11)
+[src/lib/types/drops.ts:11](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L11)
 
 ___
 
@@ -54,7 +54,7 @@ The unique ID associated to this key. IDs are *not* unique across drops but they
 
 #### Defined in
 
-[src/lib/types/drops.ts:28](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L28)
+[src/lib/types/drops.ts:28](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L28)
 
 ___
 
@@ -66,7 +66,7 @@ At what timestamp was the key last used? Measured in number of non-leap-nanoseco
 
 #### Defined in
 
-[src/lib/types/drops.ts:22](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L22)
+[src/lib/types/drops.ts:22](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L22)
 
 ___
 
@@ -78,7 +78,7 @@ Public key for this access key.
 
 #### Defined in
 
-[src/lib/types/drops.ts:13](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L13)
+[src/lib/types/drops.ts:13](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L13)
 
 ___
 
@@ -90,4 +90,4 @@ How many uses this key has left before it's deleted.
 
 #### Defined in
 
-[src/lib/types/drops.ts:19](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L19)
+[src/lib/types/drops.ts:19](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L19)

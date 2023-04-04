@@ -24,107 +24,97 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:30](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L30)
+[src/lib/selector/core/wallet.ts:31](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L31)
 
 ## Properties
 
-### delimiter
-
- `Private` `Readonly` **delimiter**: `string`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L22)
-
-___
-
-### desiredUrl
-
- `Private` `Readonly` **desiredUrl**: `string`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:21](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L21)
-
-___
-
 ### keyStore
 
- `Private` `Readonly` **keyStore**: `BrowserLocalStorageKeyStore`
+ **keyStore**: `BrowserLocalStorageKeyStore`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:20](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L20)
+[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L22)
 
 ___
 
 ### modal
 
- `Private` **modal**: `KeypomTrialModal`
+ **modal**: `KeypomTrialModal`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:28](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L28)
+[src/lib/selector/core/wallet.ts:29](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L29)
 
 ___
 
 ### near
 
- `Private` `Readonly` **near**: `Near`
+ **near**: `Near`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L19)
+[src/lib/selector/core/wallet.ts:21](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L21)
 
 ___
 
 ### networkId
 
- `Readonly` **networkId**: `string`
+ **networkId**: `string`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:16](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L16)
-
-___
-
-### publicKey
-
- `Private` `Optional` **publicKey**: `PublicKey`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L27)
-
-___
-
-### secretKey
-
- `Private` `Optional` **secretKey**: `string`
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:25](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L25)
+[src/lib/selector/core/wallet.ts:18](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L18)
 
 ___
 
 ### signInContractId
 
- `Readonly` **signInContractId**: `string`
+ **signInContractId**: `string`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:17](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L17)
+[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L19)
 
 ___
 
 ### trialAccountId
 
- `Private` `Optional` **trialAccountId**: `string`
+ `Optional` **trialAccountId**: `string`
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:24](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L24)
+[src/lib/selector/core/wallet.ts:26](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L26)
+
+___
+
+### trialBaseUrl
+
+ **trialBaseUrl**: `string`
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:23](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L23)
+
+___
+
+### trialSecretKey
+
+ `Optional` **trialSecretKey**: `string`
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L27)
+
+___
+
+### trialSplitDelim
+
+ **trialSplitDelim**: `string`
+
+#### Defined in
+
+[src/lib/selector/core/wallet.ts:24](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L24)
 
 ## Methods
 
@@ -138,21 +128,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:225](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L225)
-
-___
-
-### canExitTrial
-
-`Private` **canExitTrial**(): `Promise`<`boolean`\>
-
-#### Returns
-
-`Promise`<`boolean`\>
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:124](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L124)
+[src/lib/selector/core/wallet.ts:280](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L280)
 
 ___
 
@@ -166,7 +142,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:67](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L67)
+[src/lib/selector/core/wallet.ts:232](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L232)
 
 ___
 
@@ -180,7 +156,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:57](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L57)
+[src/lib/selector/core/wallet.ts:58](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L58)
 
 ___
 
@@ -198,7 +174,7 @@ InstantLinkWalletBehaviour.getAccounts
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:256](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L256)
+[src/lib/selector/core/wallet.ts:247](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L247)
 
 ___
 
@@ -218,7 +194,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:251](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L251)
+[src/lib/selector/core/wallet.ts:242](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L242)
 
 ___
 
@@ -236,7 +212,7 @@ InstantLinkWalletBehaviour.getContractId
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:53](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L53)
+[src/lib/selector/core/wallet.ts:54](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L54)
 
 ___
 
@@ -257,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:105](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L105)
+[src/lib/selector/core/wallet.ts:260](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L260)
 
 ___
 
@@ -271,13 +247,13 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:231](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L231)
+[src/lib/selector/core/wallet.ts:63](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L63)
 
 ___
 
 ### parseUrl
 
-**parseUrl**(): `undefined` \| { `accountId`: `string` ; `secretKey`: `string`  }
+`Private` **parseUrl**(): `undefined` \| { `accountId`: `string` ; `secretKey`: `string`  }
 
 #### Returns
 
@@ -285,7 +261,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:205](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L205)
+[src/lib/selector/core/wallet.ts:207](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L207)
 
 ___
 
@@ -306,7 +282,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:62](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L62)
+[src/lib/selector/core/wallet.ts:227](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L227)
 
 ___
 
@@ -330,7 +306,7 @@ InstantLinkWalletBehaviour.signAndSendTransaction
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:343](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L343)
+[src/lib/selector/core/wallet.ts:150](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L150)
 
 ___
 
@@ -354,7 +330,7 @@ InstantLinkWalletBehaviour.signAndSendTransactions
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:366](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L366)
+[src/lib/selector/core/wallet.ts:173](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L173)
 
 ___
 
@@ -372,7 +348,7 @@ InstantLinkWalletBehaviour.signIn
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:269](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L269)
+[src/lib/selector/core/wallet.ts:67](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L67)
 
 ___
 
@@ -390,7 +366,7 @@ InstantLinkWalletBehaviour.signOut
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:241](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L241)
+[src/lib/selector/core/wallet.ts:140](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L140)
 
 ___
 
@@ -410,47 +386,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:265](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L265)
-
-___
-
-### transformTransactions
-
-`Private` **transformTransactions**(`txns`): `Promise`<`any`[]\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txns` | `any` |
-
-#### Returns
-
-`Promise`<`any`[]\>
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:71](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L71)
-
-___
-
-### validateTransactions
-
-`Private` **validateTransactions**(`toValidate`): `Promise`<`boolean`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `toValidate` | `any` |
-
-#### Returns
-
-`Promise`<`boolean`\>
-
-#### Defined in
-
-[src/lib/selector/core/wallet.ts:150](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L150)
+[src/lib/selector/core/wallet.ts:256](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L256)
 
 ___
 
@@ -468,4 +404,4 @@ InstantLinkWalletBehaviour.verifyOwner
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:235](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/wallet.ts#L235)
+[src/lib/selector/core/wallet.ts:236](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L236)

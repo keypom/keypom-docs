@@ -18,7 +18,7 @@ Used in frontends to show the proper significant digits of a token. This concept
 
 #### Defined in
 
-[src/lib/types/ft.ts:36](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L36)
+[src/lib/types/ft.ts:36](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L36)
 
 ___
 
@@ -33,7 +33,7 @@ Recommendation: create icons that will work well with both light-mode and dark-m
 
 #### Defined in
 
-[src/lib/types/ft.ts:43](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L43)
+[src/lib/types/ft.ts:43](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L43)
 
 ___
 
@@ -45,7 +45,7 @@ The human-readable name of the token.
 
 #### Defined in
 
-[src/lib/types/ft.ts:32](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L32)
+[src/lib/types/ft.ts:32](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L32)
 
 ___
 
@@ -57,7 +57,7 @@ A link to a valid JSON file containing various keys offering supplementary detai
 
 #### Defined in
 
-[src/lib/types/ft.ts:45](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L45)
+[src/lib/types/ft.ts:45](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L45)
 
 ___
 
@@ -69,7 +69,7 @@ The base64-encoded sha256 hash of the JSON file contained in the reference field
 
 #### Defined in
 
-[src/lib/types/ft.ts:47](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L47)
+[src/lib/types/ft.ts:47](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L47)
 
 ___
 
@@ -81,7 +81,7 @@ A string. Should be ft-1.0.0 to indicate that a Fungible Token contract adheres 
 
 #### Defined in
 
-[src/lib/types/ft.ts:30](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L30)
+[src/lib/types/ft.ts:30](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L30)
 
 ___
 
@@ -93,4 +93,4 @@ The abbreviation, like wETH or AMPL.
 
 #### Defined in
 
-[src/lib/types/ft.ts:34](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/ft.ts#L34)
+[src/lib/types/ft.ts:34](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/ft.ts#L34)

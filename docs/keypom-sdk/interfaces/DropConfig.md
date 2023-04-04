@@ -20,7 +20,7 @@ It's important to note that this root account *MUST* have a smart contract deplo
 
 #### Defined in
 
-[src/lib/types/drops.ts:81](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L81)
+[src/lib/types/drops.ts:81](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L81)
 
 ___
 
@@ -32,7 +32,7 @@ Any information related to primary market sales for access keys added to this dr
 
 #### Defined in
 
-[src/lib/types/drops.ts:75](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L75)
+[src/lib/types/drops.ts:75](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L75)
 
 ___
 
@@ -44,7 +44,7 @@ Any information related to time-based configurations such as a starting date for
 
 #### Defined in
 
-[src/lib/types/drops.ts:69](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L69)
+[src/lib/types/drops.ts:69](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L69)
 
 ___
 
@@ -56,7 +56,7 @@ Any information related to how access keys are used such as which methods they c
 
 #### Defined in
 
-[src/lib/types/drops.ts:72](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L72)
+[src/lib/types/drops.ts:72](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L72)
 
 ___
 
@@ -68,4 +68,4 @@ How many uses can each key have before it's deleted. If this isn't specified, it
 
 #### Defined in
 
-[src/lib/types/drops.ts:66](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/types/drops.ts#L66)
+[src/lib/types/drops.ts:66](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L66)

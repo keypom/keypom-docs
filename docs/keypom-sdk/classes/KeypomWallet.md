@@ -24,7 +24,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:31](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L31)
+[src/lib/selector/core/wallet.ts:31](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L31)
 
 ## Properties
 
@@ -34,7 +34,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L22)
+[src/lib/selector/core/wallet.ts:22](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L22)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:29](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L29)
+[src/lib/selector/core/wallet.ts:29](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L29)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:21](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L21)
+[src/lib/selector/core/wallet.ts:21](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L21)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:18](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L18)
+[src/lib/selector/core/wallet.ts:18](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L18)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L19)
+[src/lib/selector/core/wallet.ts:19](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L19)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:26](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L26)
+[src/lib/selector/core/wallet.ts:26](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L26)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:23](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L23)
+[src/lib/selector/core/wallet.ts:23](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L23)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L27)
+[src/lib/selector/core/wallet.ts:27](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L27)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:24](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L24)
+[src/lib/selector/core/wallet.ts:24](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L24)
 
 ## Methods
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:280](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L280)
+[src/lib/selector/core/wallet.ts:280](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L280)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:232](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L232)
+[src/lib/selector/core/wallet.ts:232](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L232)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:58](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L58)
+[src/lib/selector/core/wallet.ts:58](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L58)
 
 ___
 
@@ -174,7 +174,7 @@ InstantLinkWalletBehaviour.getAccounts
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:247](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L247)
+[src/lib/selector/core/wallet.ts:247](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L247)
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:242](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L242)
+[src/lib/selector/core/wallet.ts:242](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L242)
 
 ___
 
@@ -212,7 +212,7 @@ InstantLinkWalletBehaviour.getContractId
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:54](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L54)
+[src/lib/selector/core/wallet.ts:54](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L54)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:260](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L260)
+[src/lib/selector/core/wallet.ts:260](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L260)
 
 ___
 
@@ -247,7 +247,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:63](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L63)
+[src/lib/selector/core/wallet.ts:63](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L63)
 
 ___
 
@@ -261,7 +261,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:207](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L207)
+[src/lib/selector/core/wallet.ts:207](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L207)
 
 ___
 
@@ -282,7 +282,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:227](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L227)
+[src/lib/selector/core/wallet.ts:227](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L227)
 
 ___
 
@@ -306,7 +306,7 @@ InstantLinkWalletBehaviour.signAndSendTransaction
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:150](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L150)
+[src/lib/selector/core/wallet.ts:150](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L150)
 
 ___
 
@@ -330,7 +330,7 @@ InstantLinkWalletBehaviour.signAndSendTransactions
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:173](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L173)
+[src/lib/selector/core/wallet.ts:173](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L173)
 
 ___
 
@@ -348,7 +348,7 @@ InstantLinkWalletBehaviour.signIn
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:67](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L67)
+[src/lib/selector/core/wallet.ts:67](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L67)
 
 ___
 
@@ -366,7 +366,7 @@ InstantLinkWalletBehaviour.signOut
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:140](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L140)
+[src/lib/selector/core/wallet.ts:140](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L140)
 
 ___
 
@@ -386,7 +386,7 @@ ___
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:256](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L256)
+[src/lib/selector/core/wallet.ts:256](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L256)
 
 ___
 
@@ -404,4 +404,4 @@ InstantLinkWalletBehaviour.verifyOwner
 
 #### Defined in
 
-[src/lib/selector/core/wallet.ts:236](https://github.com/keypom/keypom-js/blob/44ee5c18/src/lib/selector/core/wallet.ts#L236)
+[src/lib/selector/core/wallet.ts:236](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/wallet.ts#L236)

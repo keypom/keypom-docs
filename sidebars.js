@@ -154,6 +154,19 @@ const sidebars = {
     },
     'Tutorials/Advanced/homepage',
   ],
+  TrialAccounts: [
+    "TrialAccounts/introduction",
+    {
+      type: 'category',
+      label: 'Creating Trial Experiences',
+      collapsed: false,
+      items: [
+            'TrialAccounts/Creation/getting-started',
+            'TrialAccounts/Creation/drop-creation',
+            'TrialAccounts/Creation/integration'
+      ],
+    }
+  ],
 
     // {
     //   type: 'category',

@@ -88,6 +88,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   position: "left",
           // },
           {
+            to: "docs/next/TrialAccounts/introduction",
+            label: "🎁 Trial Accounts",
+            position: "left",
+          },
+          {
             to: "docs/next/keypom-sdk/welcome",
             label: "📚 SDK TypeDocs",
             position: "left",

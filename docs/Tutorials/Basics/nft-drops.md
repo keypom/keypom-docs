@@ -12,7 +12,7 @@ In this tutorial, you will learn how to create a non-fungible token drop from sc
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/collectibles-claimed2.png").default} alt="MyNearWallet claim" width="65%"/> </p>
 
-To learn more about the NFT drop, see the [concepts page](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/nftdrops.md)
+To learn more about the NFT drop, see the [concepts page](../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/nft-drops.md)
 
 ---
 

@@ -31,7 +31,7 @@ https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de97794
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom">
+<TabItem value="KP" label="🗝️Keypom Contract">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L53-L58
@@ -55,7 +55,7 @@ https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de97794
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom">
+<TabItem value="KP" label="🗝️Keypom Contract">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L18-L48

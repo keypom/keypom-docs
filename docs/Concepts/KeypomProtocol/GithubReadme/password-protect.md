@@ -2,6 +2,9 @@
 sidebar_label: 'Password Protected Keys'
 sidebar_position: 3
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Password Protected Keys
 
 Password protecting key uses is an extremely powerful feature that can unlock many use-cases. Keypom has baked flexibility and customization
@@ -55,15 +58,22 @@ This `SOMETHING` that is hashed can be similar to the global password per key ex
 In order to pass in the passwords per use, a new data structure is introduced so you only need to pass in passwords for the uses that have them. This is known as the 
 `JsonPasswordForUse` and is as follows:
 
-```rust
-pub struct JsonPasswordForUse {
-    /// What is the password for this use (such as `hash("mypassword1" + key1_public_key + use_number)`)
-    pub pw: String,
-    /// Which use does this pertain to
-    /// This is *zero indexed*. The first use starts at 0.
-    pub key_use: u64
-}
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L193-L198
 ```
+
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom Contract">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L152-L157
+```
+
+</TabItem>
+</Tabs>
 
 ## Adding Your First Password
 

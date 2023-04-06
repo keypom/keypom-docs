@@ -13,7 +13,7 @@ Being the simplest Keypom drop type, it acts as the foundation for the other 3 k
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/simple/nw-claim.png").default} alt="Near Wallet claim" width="100%"/> </p>
 
-To learn more about the Simple Drop, see the [concepts page](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/simpledrops.md)
+To learn more about the Simple Drop, see the [concepts page](../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/simple-drops.md)
 
 ---
 

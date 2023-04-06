@@ -14,7 +14,7 @@ In this tutorial, the function call will be to Lazy Mint an NFT.
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/nft/collectibles-claimed2.png").default} alt="NFT collectibles claim" width="65%"/> </p>
 
-To learn more about what the FC drop, see the [concepts page](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md)
+To learn more about what the FC drop, see the [concepts page](../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md)
 
 
 ---

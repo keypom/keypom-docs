@@ -39,14 +39,14 @@ In order to send the attendees a POAP, the second key use will need to not only 
 
 Currently, anyone with a ticket could manually claim the key (sign transactions) using the Keypom SDK. This means that people could first claim the `null` case and then claim the key again to receive the NFT without physically showing up.
 
-To solve this, the first key use can be protected with a [password](../../../Concepts/Keypom%20Protocol/Github%20Readme/passwordprotect.md) that only the host knows. This password will be provided when the QR code is scanned. By password protected the uses, the only way to receive the NFT even if you have the ticket, is to be physically scanned by the host.
+To solve this, the first key use can be protected with a [password](../../../Concepts/KeypomProtocol/GithubReadme/password-protect.md) that only the host knows. This password will be provided when the QR code is scanned. By password protected the uses, the only way to receive the NFT even if you have the ticket, is to be physically scanned by the host.
 
 
 ## Keypom Solution
 
 From above, the drop must have the following properties to function as intended:
 
-* A [Function Call drop](../../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) must be used and configured so that each key has 2 uses.
+* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that each key has 2 uses.
 * The first key use is password protected and `null` (for when the host scans attendees into the event). 
 * The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
 * The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.

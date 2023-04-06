@@ -9,7 +9,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="Keypom Protocol/Github Readme/Types of Drops/introduction">
+      <a href="KeypomProtocol/GithubReadme/TypesOfDrops/introduction">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Types of Drops</h3>
@@ -19,7 +19,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       </a>
     </div>
     <div class="col">
-      <a href="Keypom Protocol/Github Readme/Types of Drops/customization-homepage">
+      <a href="KeypomProtocol/GithubReadme/TypesOfDrops/customization-homepage">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Drop Configurations</h3>
@@ -31,7 +31,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
   </div>
   <div class="row">
     <div class="col">
-      <a href="Keypom Protocol/balances">
+      <a href="KeypomProtocol/balances">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Keypom Balances</h3>
@@ -41,7 +41,7 @@ Welcome to the concepts section of Keypom's developer documentation. Here you'll
       </a>
     </div>
     <div class="col">
-      <a href="Keypom Protocol/Github Readme/costs">
+      <a href="KeypomProtocol/GithubReadme/costs">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Costs</h3>

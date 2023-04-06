@@ -25,7 +25,6 @@ matrix:
       - 'blockquote'
   - pyspelling.filters.url:
       urls: true
-      url-free: false
   sources:
   - '*.md'
   - 'docs/**/*.md'

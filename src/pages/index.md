@@ -55,9 +55,9 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 <FeatureList width = "100%">
 
   <Column title="Understanding Keypom" size ="3">
-    <Feature url="../../docs/next/Concepts/Keypom%20Protocol/overview" title="What is Keypom?" subtitle="Learn the Basics of Keypom" image="docs/icons/key.png" />
-    <Feature url="../../docs/next/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction" title="Types of Drops" subtitle="Find out what you can send using Keypom" image="docs/icons/tutorials.png" />
-    <Feature url="../../docs/next/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
+    <Feature url="../../docs/next/Concepts/KeypomProtocol/overview" title="What is Keypom?" subtitle="Learn the Basics of Keypom" image="docs/icons/key.png" />
+    <Feature url="../../docs/next/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/introduction" title="Types of Drops" subtitle="Find out what you can send using Keypom" image="docs/icons/tutorials.png" />
+    <Feature url="../../docs/next/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
   </Column>
 
   <Column title="Beginner Tutorials" size="3">

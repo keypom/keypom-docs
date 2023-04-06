@@ -10,8 +10,8 @@ const sidebars = {
       // },
       collapsed: false,
       items: [
-            'Concepts/Linkdrops and Access Keys/NEAR-Access-Keys',
-            'Concepts/Linkdrops and Access Keys/LinkdropBasics',
+            'Concepts/LinkdropsAndAccessKeys/near-access-keys',
+            'Concepts/LinkdropsAndAccessKeys/linkdrop-basics',
       ],
     },
     {
@@ -22,7 +22,7 @@ const sidebars = {
       // },
       collapsed: false,
       items: [
-                'Concepts/Keypom Protocol/overview',
+                'Concepts/KeypomProtocol/overview',
                 {
                   type: 'category',
                   label: 'Types of Drops',
@@ -31,14 +31,14 @@ const sidebars = {
                   // },
                   collapsed: true,
                   items: [
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/introduction',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/simple-drops',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/nft-drops',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/ft-drops',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops',
                   ],
                 },
-                'Concepts/Keypom Protocol/balances',
+                'Concepts/KeypomProtocol/balances',
                 {
                   type: 'category',
                   label: 'Configuring Your Drop',
@@ -48,14 +48,14 @@ const sidebars = {
                   // },
                   collapsed: true,
                   items: [
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/customization-homepage',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/drop-customization',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/time-customization',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/usage-customization',
-                    'Concepts/Keypom Protocol/Github Readme/Types of Drops/sale-customization',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/customization-homepage',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/time-customization',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/usage-customization',
+                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/sale-customization',
                   ],
                 },
-                'Concepts/Keypom Protocol/Github Readme/passwordprotect',
+                'Concepts/KeypomProtocol/GithubReadme/password-protect',
                 {
                   type: 'category',
                   label: 'Overhead Items',
@@ -64,11 +64,11 @@ const sidebars = {
                   // },
                   collapsed: true,
                   items: [
-                    'Concepts/Keypom Protocol/Github Readme/costs',
-                    'Concepts/Keypom Protocol/Github Readme/Querying',
-                    'Concepts/Keypom Protocol/Github Readme/testing',
-                    'Concepts/Keypom Protocol/Github Readme/contribute',
-                    'Concepts/Keypom Protocol/Github Readme/Licenses',
+                    'Concepts/KeypomProtocol/GithubReadme/costs',
+                    'Concepts/KeypomProtocol/GithubReadme/querying',
+                    'Concepts/KeypomProtocol/GithubReadme/testing',
+                    'Concepts/KeypomProtocol/GithubReadme/contribute',
+                    'Concepts/KeypomProtocol/GithubReadme/licenses',
                   ],
                   },
                     

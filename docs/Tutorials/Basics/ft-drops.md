@@ -11,7 +11,7 @@ In this tutorial, you will learn how to create a fungible token drop from scratc
 
 <p align="center"> <img src={require("/static/img/docs/basic-tutorials/ft/ft.png").default} alt="ft claim" width="80%"/> </p>
 
-To learn more about the FT drop, see the [concepts page](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/ftdrops.md)
+To learn more about the FT drop, see the [concepts page](../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/ft-drops.md)
 
 
 ---

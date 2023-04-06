@@ -5,19 +5,19 @@ sidebar_label: "Overview"
 There are **four** types of drops, each with different types of assets. These drops can be claimed either with a brand new NEAR account or an existing one.
 
 
-| Drop Type                                 | Assets                                                                                                                         |
-| ----------------------------------------- | ------------------------------------------ |
-| [Simple Drop](simpledrops.md)             | $NEAR                                      |
-| [Non-Fungible Token Drop](nftdrops.md)    | NFT and optionally $NEAR                   |
-| [Fungible Token Drop](ftdrops.md)         | Fungible Tokens and optionally $NEAR       |
-| [Function Call Drop](fcdrops.md)          | Set of function-calls and optionally $NEAR |
+| Drop Type                                  Assets                                                                                                                                           |
+| ------------------------------------------ | ------------------------------------------ |
+| [Simple Drop](simple-drops.md)             | $NEAR                                      |
+| [Non-Fungible Token Drop](nft-drops.md)    | NFT and optionally $NEAR                   |
+| [Fungible Token Drop](ft-drops.md)         | Fungible Tokens and optionally $NEAR       |
+| [Function Call Drop](fc-drops.md)          | Set of function-calls and optionally $NEAR |
 
 Continue your learning journey with any of the pages below
 
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="simpledrops">
+      <a href="simple-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Simple Drop</h3>
@@ -27,7 +27,7 @@ Continue your learning journey with any of the pages below
       </a>
     </div>
     <div class="col">
-      <a href="nftdrops">
+      <a href="nft-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Non-Fungible Token Drops</h3>
@@ -39,7 +39,7 @@ Continue your learning journey with any of the pages below
   </div>
   <div class="row">
     <div class="col">
-      <a href="ftdrops">
+      <a href="ft-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Fungible Token Drop</h3>
@@ -49,7 +49,7 @@ Continue your learning journey with any of the pages below
       </a>
     </div>
     <div class="col">
-      <a href="fcdrops">
+      <a href="fc-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Function Call Drops</h3>

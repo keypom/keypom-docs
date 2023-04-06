@@ -1,6 +1,6 @@
 ---
 id: "modules"
-title: "keypom-js - v1.4.3"
+title: "keypom-js - v1.4.6"
 sidebar_label: "Exports"
 sidebar_position: 0.5
 custom_edit_url: null
@@ -54,7 +54,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/params.ts#L9)
+[src/lib/types/params.ts:9](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/params.ts#L9)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/general.ts#L5)
+[src/lib/types/general.ts:5](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/general.ts#L5)
 
 ## Variables
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:29](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L29)
+[src/lib/keypom-utils.ts:30](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L30)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom.ts:67](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L67)
+[src/lib/keypom.ts:67](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L67)
 
 ## Keypom SDK Environment
 
@@ -109,7 +109,7 @@ ___
 | :------ | :------ |
 | `props` | `Object` |
 | `props.children` | `ReactNode` |
-| `context?` | `any` |
+| `context?` | `any` | 
 
 #### Returns
 
@@ -133,7 +133,7 @@ The environment variables used by the Keypom library.
 
 #### Defined in
 
-[src/lib/keypom.ts:100](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L100)
+[src/lib/keypom.ts:105](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L105)
 
 ___
 
@@ -223,7 +223,7 @@ If a funder is passed in, its account object is returned. Otherwise, it null is 
 
 #### Defined in
 
-[src/lib/keypom.ts:194](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L194)
+[src/lib/keypom.ts:199](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L199)
 
 ___
 
@@ -277,7 +277,7 @@ The funder's account object is returned.
 
 #### Defined in
 
-[src/lib/keypom.ts:303](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L303)
+[src/lib/keypom.ts:308](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L308)
 
 ___
 
@@ -326,7 +326,7 @@ const { initKeypom, updateKeypomContractId, getDrops } = require("keypom-js");
 
 #### Defined in
 
-[src/lib/keypom.ts:354](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L354)
+[src/lib/keypom.ts:359](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L359)
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/decaa9d1/src/components/KeypomContext.tsx#L42)
+[src/components/KeypomContext.tsx:42](https://github.com/keypom/keypom-js/blob/29c10f94/src/components/KeypomContext.tsx#L42)
 
 ## Utility
 
@@ -371,7 +371,7 @@ console.log(accountExists); // true
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:85](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L85)
+[src/lib/keypom-utils.ts:86](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L86)
 
 ___
 
@@ -450,7 +450,7 @@ Send 3 NFTs using the funder account (not passing in any accounts into the call)
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:215](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L215)
+[src/lib/keypom-utils.ts:216](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L216)
 
 ___
 
@@ -481,7 +481,7 @@ Initiate the connection to the NEAR blockchain.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:1037](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L1037)
+[src/lib/keypom-utils.ts:1038](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L1038)
 
 ___
 
@@ -501,7 +501,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom.ts:110](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom.ts#L110)
+[src/lib/keypom.ts:115](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom.ts#L115)
 
 ___
 
@@ -608,7 +608,7 @@ console.log('linkdropUrl: ', linkdropUrl)
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:360](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L360)
+[src/lib/keypom-utils.ts:361](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L361)
 
 ___
 
@@ -728,7 +728,7 @@ console.log('Secret Keys ', keys.secretKeys);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:500](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L500)
+[src/lib/keypom-utils.ts:501](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L501)
 
 ___
 
@@ -762,7 +762,7 @@ console.log(ft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:148](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L148)
+[src/lib/keypom-utils.ts:149](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L149)
 
 ___
 
@@ -798,7 +798,7 @@ console.log(nft);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:118](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L118)
+[src/lib/keypom-utils.ts:119](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L119)
 
 ___
 
@@ -829,7 +829,7 @@ console.log(pubKey);
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:66](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L66)
+[src/lib/keypom-utils.ts:67](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L67)
 
 ___
 
@@ -849,7 +849,7 @@ ___
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:961](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L961)
+[src/lib/keypom-utils.ts:962](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L962)
 
 ___
 
@@ -883,7 +883,7 @@ let passwordForClaim = await hashPassword(basePassword + publicKey + currentUse.
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:418](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L418)
+[src/lib/keypom-utils.ts:419](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L419)
 
 ___
 
@@ -1052,7 +1052,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keys.ts#L139)
+[src/lib/keys.ts:139](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keys.ts#L139)
 
 ___
 
@@ -1177,71 +1177,7 @@ await claim({
 
 #### Defined in
 
-[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/claims.ts#L109)
-
-___
-
-### claimTrialAccountDrop
-
-**claimTrialAccountDrop**(`«destructured»`): `Promise`<`any`\>
-
-Claim a Keypom trial account drop which will create a new account, deploy and initialize the trial account contract, and setup the account with initial conditions as specified in the drop.
-
-**`Example`**
-
-Creating a trial account with any callable methods, an amount of 0.5 $NEAR and 5 keys.
-```js
-const callableContracts = [
-	`v1.social08.testnet`,
-	'guest-book.examples.keypom.testnet',
-]
-
-const {dropId, keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} 
-= await createTrialAccountDrop({
-	numKeys: 1,
-	contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
-	startingBalanceNEAR: 0.5,
-	callableContracts: callableContracts,
-	callableMethods: ['set:grant_write_permission', '*'],
-	maxAttachableNEARPerContract: callableContracts.map(() => '1'),
-	trialEndFloorNEAR: 0.33
-})
-
-const newAccountId = `${Date.now().toString()}.linkdrop-beta.keypom.testnet`
-await claimTrialAccountDrop({
-    secretKey: trialSecretKeys[0],
-    desiredAccountId: newAccountId,
-})
-
-console.log(`
-
-${JSON.stringify({
-    account_id: newAccountId,
-    public_key: trialPublicKeys[0],
-    private_key: trialSecretKeys[0]
-})}
-
-`)
-
-console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[0]}`)
-
-```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `desiredAccountId` | `string` | The account ID that will be created for the trial |
-| › `secretKey` | `string` | The private key associated with the Keypom link. This can either contain the `ed25519:` prefix or not. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/trial-accounts.ts:408](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/trial-accounts.ts#L408)
+[src/lib/claims.ts:109](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/claims.ts#L109)
 
 ___
 
@@ -1406,7 +1342,480 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/drops.ts#L154)
+[src/lib/drops.ts:154](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/drops.ts#L154)
+
+## User Balance Functions
+
+### addToBalance
+
+**addToBalance**(`«destructured»`): `Promise`<`any`\>
+
+Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without
+Having to explicitly attach a deposit every time. It can be thought of like a bank account.
+
+**`Example`**
+
+Add 1 $NEAR to the account balance
+```js
+// Initialize the SDK on testnet
+await initKeypom({
+	network: "testnet",
+	funder: {
+		accountId: "benji_demo.testnet",
+		secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
+	}
+});
+
+await addToBalance({
+    amount: "1",
+)};
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `amountNear?` | `string` | Human readable format for the amount of tokens to add. **`Example`** ```ts Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" ``` |
+| › `amountYocto?` | `string` | Amount of tokens to add but considering the decimal amount (non human-readable). **`Example`** ```ts Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" ``` |
+| › `successUrl?` | `string` | When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/balances.ts:33](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/balances.ts#L33)
+
+___
+
+### withdrawBalance
+
+**withdrawBalance**(`«destructured»`): `Promise`<`any`\>
+
+Withdraw all the $NEAR from your balance in the Keypom contract.
+
+**`Example`**
+
+Add 1 $NEAR to the account balance and then withdraw it
+```js
+// Initialize the SDK on testnet
+await initKeypom({
+	network: "testnet",
+	funder: {
+		accountId: "benji_demo.testnet",
+		secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
+	}
+});
+
+await addToBalance({
+    amount: "1",
+});
+
+await withdrawBalance({});
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/balances.ts:111](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/balances.ts#L111)
+
+## Public Sale Functions
+
+### addToSaleAllowlist
+
+**addToSaleAllowlist**(`«destructured»`): `Promise`<`any`\>
+
+Add a list of account IDs to a drop's sale allowlist. If the allowlist is empty, anyone can purchase keys. The sale object must exist in the drop's config for this to go through.
+
+**`Example`**
+
+```js
+const {dropId} = await createDrop({
+		numKeys: 0,
+		depositPerUseNEAR: 0.1,
+		config: {
+			sale: {
+				maxNumKeys: 2,
+				pricePerKeyNEAR: 1
+			}
+		}
+	});
+
+	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, true);
+
+	await addToSaleAllowlist({dropId, accountIds: ["barfoo.testnet"]});
+	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, false);
+ ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `accountIds` | `string`[] | A list of account IDs that should be added to the sale allowlist |
+| › `dropId` | `string` | The drop ID for the drop |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/sales.ts#L36)
+
+___
+
+### addToSaleBlocklist
+
+**addToSaleBlocklist**(`«destructured»`): `Promise`<`any`\>
+
+Add a list of account IDs to a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
+
+**`Example`**
+
+```js
+	const {dropId} = await createDrop({
+		numKeys: 0,
+		depositPerUseNEAR: 0.1,
+		config: {
+			sale: {
+				maxNumKeys: 2,
+				pricePerKeyNEAR: 1
+			}
+		}
+	});
+
+	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, true);
+
+	await addToSaleBlocklist({dropId, accountIds: ["foobar.testnet"]});
+	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, false);
+ ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `accountIds` | `string`[] | A list of account IDs that should be added to the sale blocklist |
+| › `dropId` | `string` | The drop ID for the drop |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/sales.ts#L190)
+
+___
+
+### removeFromSaleAllowlist
+
+**removeFromSaleAllowlist**(`«destructured»`): `Promise`<`any`\>
+
+Remove a list of account IDs from a drop's sale allowlist. If the allowlist is empty, anyone can purchase keys. The sale object must exist in the drop's config for this to go through.
+
+**`Example`**
+
+```js
+	const {dropId} = await createDrop({
+		numKeys: 0,
+		depositPerUseNEAR: 0.1,
+		config: {
+			sale: {
+				maxNumKeys: 2,
+				pricePerKeyNEAR: 1,
+				allowlist: ["foobar.testnet", "barfoo.testnet"]
+			}
+		}
+	});
+
+	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, true);
+
+	canAddKeys = await canUserAddKeys({dropId, accountId: "not_in_allowlist.testnet"});
+	t.is(canAddKeys, false);
+
+	await removeFromSaleAllowlist({dropId, accountIds: ["foobar.testnet"]});
+	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, false);
+
+	await removeFromSaleAllowlist({dropId, accountIds: ["barfoo.testnet"]});
+	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, true);
+ ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `accountIds` | `string`[] | A list of account IDs that should be removed from the sale's allowlist |
+| › `dropId` | `string` | The drop ID for the drop |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/sales.ts#L117)
+
+___
+
+### removeFromSaleBlocklist
+
+**removeFromSaleBlocklist**(`«destructured»`): `Promise`<`any`\>
+
+Remove a list of account IDs from a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
+
+**`Example`**
+
+```js
+	const {dropId} = await createDrop({
+		numKeys: 0,
+		depositPerUseNEAR: 0.1,
+		config: {
+			sale: {
+				maxNumKeys: 2,
+				pricePerKeyNEAR: 1,
+				blocklist: ["foobar.testnet"]
+			}
+		}
+	});
+
+	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, false);
+
+	canAddKeys = await canUserAddKeys({dropId, accountId: "not_in_blocklist.testnet"});
+	t.is(canAddKeys, true);
+
+	await removeFromSaleBlocklist({dropId, accountIds: ["foobar.testnet"]});
+	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
+	t.is(canAddKeys, true);
+ ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `accountIds` | `string`[] | A list of account IDs that should be removed from the sale's allowlist |
+| › `dropId` | `string` | The drop ID for the drop |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/sales.ts#L267)
+
+___
+
+### updateSale
+
+**updateSale**(`«destructured»`): `Promise`<`any`\>
+
+Remove a list of account IDs from a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
+
+**`Example`**
+
+```js
+	const {dropId} = await createDrop({
+		numKeys: 0,
+		depositPerUseNEAR: 0.1,
+		config: {
+			sale: {
+				maxNumKeys: 2,
+				pricePerKeyNEAR: 1
+			}
+		}
+	});
+
+	await updateSale({
+		dropId,
+		pricePerKeyNEAR: 2
+	})
+ ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
+| › `autoWithdrawFunds?` | `boolean` | Should the revenue generated be sent to the funder's account balance or automatically withdrawn and sent to their NEAR wallet? |
+| › `dropId` | `string` | The drop ID for the drop |
+| › `end?` | `number` | Block timestamp dictating the end of the public sale. If None, keys can be added indefinitely Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. |
+| › `maxNumKeys?` | `number` | Maximum number of keys that can be added to this drop. If None, there is no max. |
+| › `pricePerKeyNEAR?` | `number` | Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be Automatically sent to the funder's balance. If None, the keys are free to the public. |
+| › `pricePerKeyYocto?` | `string` | - |
+| › `start?` | `number` | Minimum block timestamp before the public sale starts. If None, keys can be added immediately Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. |
+| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/sales.ts#L339)
+
+## Trial Accounts
+
+### canExitTrial
+
+**canExitTrial**(`«destructured»`): `Promise`<`boolean`\>
+
+Check whether a trial account is able to exit their trial state and become a fully fledged normal account.
+
+**`Example`**
+
+Create a trial account and check whether it can immediately exit
+```js
+    await initKeypom({
+       // near,
+       network: 'testnet',
+       funder: {
+           accountId: fundingAccountId,
+           secretKey: fundingAccountSecretKey,
+       }
+   });
+
+   const callableContracts = [
+       `nft.examples.testnet`
+   ]
+
+   const {dropId, keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} 
+   = await createTrialAccountDrop({
+       numKeys: 1,
+       contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+       startingBalanceNEAR: 0.5,
+       callableContracts: callableContracts,
+       callableMethods: ['*'],
+       maxAttachableNEARPerContract: [1],
+       trialEndFloorNEAR: 0.33 + 0.3
+   })
+
+   const desiredAccountId = `${dropId}-keypom.testnet`
+   const trialSecretKey = trialSecretKeys[0]
+   await claimTrialAccountDrop({
+       desiredAccountId,
+       secretKey: trialSecretKey
+   })
+
+   const canExitTrial = await keypom.canExitTrial({
+       trialAccountId: desiredAccountId
+   })
+   console.log('canExitTrial: ', canExitTrial)
+	```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `trialAccountId` | `string` | The account ID of the trial account |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+#### Defined in
+
+[src/lib/trial-accounts/trial-active.ts:363](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/trial-accounts/trial-active.ts#L363)
+
+___
+
+### claimTrialAccountDrop
+
+**claimTrialAccountDrop**(`«destructured»`): `Promise`<`any`\>
+
+Claim a Keypom trial account drop which will create a new account, deploy and initialize the trial account contract, and setup the account with initial conditions as specified in the drop.
+
+**`Example`**
+
+Creating a trial account with any callable methods, an amount of 0.5 $NEAR and 5 keys.
+```js
+const callableContracts = [
+	`v1.social08.testnet`,
+	'guest-book.examples.keypom.testnet',
+]
+
+const {dropId, keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} 
+= await createTrialAccountDrop({
+	numKeys: 1,
+	contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+	startingBalanceNEAR: 0.5,
+	callableContracts: callableContracts,
+	callableMethods: ['set:grant_write_permission', '*'],
+	maxAttachableNEARPerContract: callableContracts.map(() => '1'),
+	trialEndFloorNEAR: 0.33
+})
+
+const newAccountId = `${Date.now().toString()}.linkdrop-beta.keypom.testnet`
+await claimTrialAccountDrop({
+    secretKey: trialSecretKeys[0],
+    desiredAccountId: newAccountId,
+})
+
+console.log(`
+
+${JSON.stringify({
+    account_id: newAccountId,
+    public_key: trialPublicKeys[0],
+    private_key: trialSecretKeys[0]
+})}
+
+`)
+
+console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[0]}`)
+
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `desiredAccountId` | `string` | The account ID that will be created for the trial |
+| › `secretKey` | `string` | The private key associated with the Keypom link. This can either contain the `ed25519:` prefix or not. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[src/lib/trial-accounts/pre-trial.ts:416](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/trial-accounts/pre-trial.ts#L416)
 
 ___
 
@@ -1493,33 +1902,71 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[src/lib/trial-accounts.ts:70](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/trial-accounts.ts#L70)
+[src/lib/trial-accounts/pre-trial.ts:73](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/trial-accounts/pre-trial.ts#L73)
 
-## User Balance Functions
+___
 
-### addToBalance
+### trialCallMethod
 
-**addToBalance**(`«destructured»`): `Promise`<`any`\>
+**trialCallMethod**(`«destructured»`): `Promise`<`FinalExecutionOutcome`[]\>
 
-Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without
-Having to explicitly attach a deposit every time. It can be thought of like a bank account.
+Execute a method using a trial account. If the trial account is in the exit state, this will throw an error. Similarly, if the given method data
+cannot be executed by the trial account (e.g. the attached deposit exceeds the trial account's restrictions), this will throw an error.
 
 **`Example`**
 
-Add 1 $NEAR to the account balance
+Using a trial account to mint a new NFT:
 ```js
-// Initialize the SDK on testnet
-await initKeypom({
-	network: "testnet",
-	funder: {
-		accountId: "benji_demo.testnet",
-		secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
-	}
-});
+    await initKeypom({
+		network: 'testnet',
+		funder: {
+			accountId: fundingAccountId,
+			secretKey: fundingAccountSecretKey,
+		}
+	});
 
-await addToBalance({
-    amount: "1",
-)};
+   const callableContracts = [
+       `nft.examples.testnet`
+   ]
+
+   const {dropId, keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} 
+   = await createTrialAccountDrop({
+       numKeys: 1,
+       contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+       startingBalanceNEAR: 0.5,
+       callableContracts: callableContracts,
+       callableMethods: ['*'],
+       maxAttachableNEARPerContract: [1],
+       trialEndFloorNEAR: 0.33 + 0.3
+   })
+
+   const desiredAccountId = `${dropId}-keypom.testnet`
+   const trialSecretKey = trialSecretKeys[0]
+   await claimTrialAccountDrop({
+       desiredAccountId,
+       secretKey: trialSecretKeys[0],
+   })
+   
+   console.log('desiredAccountId: ', desiredAccountId)
+   console.log(`trialSecretKey: ${JSON.stringify(trialSecretKey)}`)
+   
+   await trialCallMethod({
+       trialAccountId: desiredAccountId,
+       trialAccountSecretKey: trialSecretKey,
+       contractId: callableContracts[0],
+       methodName: 'nft_mint',
+       args: {
+           token_id: 'asdkasldkjasdlkajsldajsldaskjd',
+           receiver_id: 'foo.testnet',
+           metadata: {
+               title: 'test',
+               description: 'test',
+               media: 'test',
+           }
+       },
+       attachedDeposit: parseNearAmount('0.1'),
+       attachedGas: '30000000000000',
+   })
 ```
 
 #### Parameters
@@ -1527,46 +1974,115 @@ await addToBalance({
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `amountNear?` | `string` | Human readable format for the amount of tokens to add. **`Example`** ```ts Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" ``` |
-| › `amountYocto?` | `string` | Amount of tokens to add but considering the decimal amount (non human-readable). **`Example`** ```ts Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" ``` |
-| › `successUrl?` | `string` | When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+| › `args` | `Object` | The arguments to pass to the method |
+| › `attachedDeposit` | `string` | The amount of NEAR to attach to the transaction |
+| › `attachedGas` | `string` | The amount of gas to attach to the transaction |
+| › `contractId` | `string` | The contract ID of the contract to call |
+| › `methodName` | `string` | The method name to call |
+| › `trialAccountId` | `string` | The account ID of the trial account |
+| › `trialAccountSecretKey` | `string` | The secret key of the trial account |
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`FinalExecutionOutcome`[]\>
+
+The outcome of the transaction
 
 #### Defined in
 
-[src/lib/balances.ts:33](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/balances.ts#L33)
+[src/lib/trial-accounts/trial-active.ts:235](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/trial-accounts/trial-active.ts#L235)
 
 ___
 
-### withdrawBalance
+### trialSignAndSendTxns
 
-**withdrawBalance**(`«destructured»`): `Promise`<`any`\>
+**trialSignAndSendTxns**(`«destructured»`): `Promise`<`FinalExecutionOutcome`[]\>
 
-Withdraw all the $NEAR from your balance in the Keypom contract.
+Execute a transaction that can contain multiple actions using a trial account. If the trial account is in the exit state, this will throw an error. Similarly, if any action
+cannot be executed by the trial account (e.g. the attached deposit exceeds the trial account's restrictions), this will throw an error.
 
 **`Example`**
 
-Add 1 $NEAR to the account balance and then withdraw it
+Use a Trial Account to min2 
 ```js
-// Initialize the SDK on testnet
 await initKeypom({
-	network: "testnet",
-	funder: {
-		accountId: "benji_demo.testnet",
-		secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
-	}
-});
+       // near,
+       network: 'testnet',
+       funder: {
+           accountId: fundingAccountId,
+           secretKey: fundingAccountSecretKey,
+       }
+   });
 
-await addToBalance({
-    amount: "1",
-});
+   const callableContracts = [
+       `nft.examples.testnet`
+   ]
 
-await withdrawBalance({});
+   const {dropId, keys: {secretKeys: trialSecretKeys, publicKeys: trialPublicKeys}} 
+   = await createTrialAccountDrop({
+       numKeys: 1,
+       contractBytes: [...readFileSync('./test/ext-wasm/trial-accounts.wasm')],
+       startingBalanceNEAR: 0.5,
+       callableContracts: callableContracts,
+       callableMethods: ['*'],
+       maxAttachableNEARPerContract: [1],
+       trialEndFloorNEAR: 0.33 + 0.3
+   })
+
+   const desiredAccountId = `${dropId}-keypom.testnet`
+   const trialSecretKey = trialSecretKeys[0]
+   await claimTrialAccountDrop({
+       desiredAccountId,
+       secretKey: trialSecretKeys[0],
+   })
+   
+   console.log('desiredAccountId: ', desiredAccountId)
+   console.log(`trialSecretKey: ${JSON.stringify(trialSecretKey)}`)
+   const txns = [{
+       receiverId: callableContracts[0],
+       actions: [
+           {
+               type: 'FunctionCall',
+               params: {
+                   methodName: 'nft_mint',
+                   args: {
+                       token_id: 'tokenId-keypom-1',
+                       receiver_id: 'foo.testnet',
+                       metadata: {
+                           title: 'test1',
+                           description: 'test1',
+                           media: 'test1',
+                       }
+                   },
+                   gas: '30000000000000',
+                   deposit: parseNearAmount('0.1')
+               },
+           },
+           {
+               type: 'FunctionCall',
+               params: {
+                   methodName: 'nft_mint',
+                   args: {
+                       token_id: 'tokenId-keypom-2',
+                       receiver_id: 'foo.testnet',
+                       metadata: {
+                           title: 'test2',
+                           description: 'test2',
+                           media: 'test2',
+                       }
+                   },
+                   gas: '30000000000000',
+                   deposit: parseNearAmount('0.1')
+               },
+           },
+       ],
+   }];
+
+   await trialSignAndSendTxns({
+       trialAccountId: desiredAccountId,
+       trialAccountSecretKey: trialSecretKey,
+       txns
+   })
 ```
 
 #### Parameters
@@ -1574,271 +2090,19 @@ await withdrawBalance({});
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
+| › `trialAccountId` | `string` | The trial account ID to use |
+| › `trialAccountSecretKey` | `string` | The trial account secret key to use |
+| › `txns` | { `actions`: { `params`: { `args`: `Object` ; `deposit`: `string` ; `gas`: `string` ; `methodName`: `string`  } ; `type`: ``"FunctionCall"``  }[] ; `receiverId`: `string`  }[] | The transactions to execute |
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`<`FinalExecutionOutcome`[]\>
+
+The outcomes of the transactions
 
 #### Defined in
 
-[src/lib/balances.ts:111](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/balances.ts#L111)
-
-## Public Sale Functions
-
-### addToSaleAllowlist
-
-**addToSaleAllowlist**(`«destructured»`): `Promise`<`any`\>
-
-Add a list of account IDs to a drop's sale allowlist. If the allowlist is empty, anyone can purchase keys. The sale object must exist in the drop's config for this to go through.
-
-**`Example`**
-
-```js
-const {dropId} = await createDrop({
-		numKeys: 0,
-		depositPerUseNEAR: 0.1,
-		config: {
-			sale: {
-				maxNumKeys: 2,
-				pricePerKeyNEAR: 1
-			}
-		}
-	});
-
-	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, true);
-
-	await addToSaleAllowlist({dropId, accountIds: ["barfoo.testnet"]});
-	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, false);
- ```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `accountIds` | `string`[] | A list of account IDs that should be added to the sale allowlist |
-| › `dropId` | `string` | The drop ID for the drop |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/sales.ts:36](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/sales.ts#L36)
-
-___
-
-### addToSaleBlocklist
-
-**addToSaleBlocklist**(`«destructured»`): `Promise`<`any`\>
-
-Add a list of account IDs to a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
-
-**`Example`**
-
-```js
-	const {dropId} = await createDrop({
-		numKeys: 0,
-		depositPerUseNEAR: 0.1,
-		config: {
-			sale: {
-				maxNumKeys: 2,
-				pricePerKeyNEAR: 1
-			}
-		}
-	});
-
-	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, true);
-
-	await addToSaleBlocklist({dropId, accountIds: ["foobar.testnet"]});
-	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, false);
- ```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `accountIds` | `string`[] | A list of account IDs that should be added to the sale blocklist |
-| › `dropId` | `string` | The drop ID for the drop |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/sales.ts:190](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/sales.ts#L190)
-
-___
-
-### removeFromSaleAllowlist
-
-**removeFromSaleAllowlist**(`«destructured»`): `Promise`<`any`\>
-
-Remove a list of account IDs from a drop's sale allowlist. If the allowlist is empty, anyone can purchase keys. The sale object must exist in the drop's config for this to go through.
-
-**`Example`**
-
-```js
-	const {dropId} = await createDrop({
-		numKeys: 0,
-		depositPerUseNEAR: 0.1,
-		config: {
-			sale: {
-				maxNumKeys: 2,
-				pricePerKeyNEAR: 1,
-				allowlist: ["foobar.testnet", "barfoo.testnet"]
-			}
-		}
-	});
-
-	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, true);
-
-	canAddKeys = await canUserAddKeys({dropId, accountId: "not_in_allowlist.testnet"});
-	t.is(canAddKeys, false);
-
-	await removeFromSaleAllowlist({dropId, accountIds: ["foobar.testnet"]});
-	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, false);
-
-	await removeFromSaleAllowlist({dropId, accountIds: ["barfoo.testnet"]});
-	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, true);
- ```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `accountIds` | `string`[] | A list of account IDs that should be removed from the sale's allowlist |
-| › `dropId` | `string` | The drop ID for the drop |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/sales.ts:117](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/sales.ts#L117)
-
-___
-
-### removeFromSaleBlocklist
-
-**removeFromSaleBlocklist**(`«destructured»`): `Promise`<`any`\>
-
-Remove a list of account IDs from a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
-
-**`Example`**
-
-```js
-	const {dropId} = await createDrop({
-		numKeys: 0,
-		depositPerUseNEAR: 0.1,
-		config: {
-			sale: {
-				maxNumKeys: 2,
-				pricePerKeyNEAR: 1,
-				blocklist: ["foobar.testnet"]
-			}
-		}
-	});
-
-	let canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, false);
-
-	canAddKeys = await canUserAddKeys({dropId, accountId: "not_in_blocklist.testnet"});
-	t.is(canAddKeys, true);
-
-	await removeFromSaleBlocklist({dropId, accountIds: ["foobar.testnet"]});
-	canAddKeys = await canUserAddKeys({dropId, accountId: "foobar.testnet"});
-	t.is(canAddKeys, true);
- ```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `accountIds` | `string`[] | A list of account IDs that should be removed from the sale's allowlist |
-| › `dropId` | `string` | The drop ID for the drop |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/sales.ts:267](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/sales.ts#L267)
-
-___
-
-### updateSale
-
-**updateSale**(`«destructured»`): `Promise`<`any`\>
-
-Remove a list of account IDs from a drop's sale blocklist. The sale object must exist in the drop's config for this to go through.
-
-**`Example`**
-
-```js
-	const {dropId} = await createDrop({
-		numKeys: 0,
-		depositPerUseNEAR: 0.1,
-		config: {
-			sale: {
-				maxNumKeys: 2,
-				pricePerKeyNEAR: 1
-			}
-		}
-	});
-
-	await updateSale({
-		dropId,
-		pricePerKeyNEAR: 2
-	})
- ```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `account?` | `Account` | Account object that if passed in, will be used to sign the txn instead of the funder account. |
-| › `autoWithdrawFunds?` | `boolean` | Should the revenue generated be sent to the funder's account balance or automatically withdrawn and sent to their NEAR wallet? |
-| › `dropId` | `string` | The drop ID for the drop |
-| › `end?` | `number` | Block timestamp dictating the end of the public sale. If None, keys can be added indefinitely Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. |
-| › `maxNumKeys?` | `number` | Maximum number of keys that can be added to this drop. If None, there is no max. |
-| › `pricePerKeyNEAR?` | `number` | Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be Automatically sent to the funder's balance. If None, the keys are free to the public. |
-| › `pricePerKeyYocto?` | `string` | - |
-| › `start?` | `number` | Minimum block timestamp before the public sale starts. If None, keys can be added immediately Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC. |
-| › `wallet?` | `AnyWallet` | If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Defined in
-
-[src/lib/sales.ts:339](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/sales.ts#L339)
+[src/lib/trial-accounts/trial-active.ts:99](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/trial-accounts/trial-active.ts#L99)
 
 ## View Functions
 
@@ -1882,7 +2146,7 @@ Whether or not the user can add keys to the drop
 
 #### Defined in
 
-[src/lib/views.ts:795](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L795)
+[src/lib/views.ts:795](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L795)
 
 ___
 
@@ -1916,7 +2180,7 @@ The contract's source metadata
 
 #### Defined in
 
-[src/lib/views.ts:833](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L833)
+[src/lib/views.ts:833](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L833)
 
 ___
 
@@ -2002,7 +2266,7 @@ The current method data for the key
 
 #### Defined in
 
-[src/lib/views.ts:744](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L744)
+[src/lib/views.ts:744](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L744)
 
 ___
 
@@ -2094,7 +2358,7 @@ Drop information which may or may not have a keys field of type `KeyInfo` depend
 
 #### Defined in
 
-[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L314)
+[src/lib/views.ts:314](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L314)
 
 ___
 
@@ -2145,7 +2409,7 @@ Amount of drops
 
 #### Defined in
 
-[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L478)
+[src/lib/views.ts:478](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L478)
 
 ___
 
@@ -2195,7 +2459,7 @@ console.log('dropsAndKeys: ', dropsAndKeys)
 
 #### Defined in
 
-[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L521)
+[src/lib/views.ts:521](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L521)
 
 ___
 
@@ -2248,7 +2512,7 @@ The amount of yoctoNEAR that is contained within the key
 
 #### Defined in
 
-[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L48)
+[src/lib/views.ts:48](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L48)
 
 ___
 
@@ -2301,7 +2565,7 @@ Key information struct for that specific key.
 
 #### Defined in
 
-[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L169)
+[src/lib/views.ts:169](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L169)
 
 ___
 
@@ -2354,7 +2618,7 @@ Array of Key information structs for the keys passed in
 
 #### Defined in
 
-[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L222)
+[src/lib/views.ts:222](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L222)
 
 ___
 
@@ -2406,7 +2670,7 @@ Number of active keys
 
 #### Defined in
 
-[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L383)
+[src/lib/views.ts:383](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L383)
 
 ___
 
@@ -2440,7 +2704,7 @@ The amount of keys.
 
 #### Defined in
 
-[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L87)
+[src/lib/views.ts:87](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L87)
 
 ___
 
@@ -2485,7 +2749,7 @@ Vector of KeyInfo.
 
 #### Defined in
 
-[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L121)
+[src/lib/views.ts:121](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L121)
 
 ___
 
@@ -2539,7 +2803,7 @@ Vector of KeyInfo objects returned from pagination
 
 #### Defined in
 
-[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L430)
+[src/lib/views.ts:430](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L430)
 
 ___
 
@@ -2581,7 +2845,7 @@ The amount of token IDs on the drop
 
 #### Defined in
 
-[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L589)
+[src/lib/views.ts:589](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L589)
 
 ___
 
@@ -2625,7 +2889,7 @@ Vector of token IDs
 
 #### Defined in
 
-[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L626)
+[src/lib/views.ts:626](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L626)
 
 ___
 
@@ -2667,7 +2931,7 @@ The user's current balance
 
 #### Defined in
 
-[src/lib/views.ts:665](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/views.ts#L665)
+[src/lib/views.ts:665](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/views.ts#L665)
 
 ## Deleting State
 
@@ -2735,7 +2999,7 @@ console.log('numDrops: ', numDrops)
 
 #### Defined in
 
-[src/lib/drops.ts:488](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/drops.ts#L488)
+[src/lib/drops.ts:488](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/drops.ts#L488)
 
 ___
 
@@ -2787,7 +3051,7 @@ await deleteKeys({
 
 #### Defined in
 
-[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keys.ts#L375)
+[src/lib/keys.ts:375](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keys.ts#L375)
 
 ## Registering Key Uses
 
@@ -2837,7 +3101,7 @@ await ftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:706](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L706)
+[src/lib/keypom-utils.ts:707](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L707)
 
 ___
 
@@ -2886,7 +3150,7 @@ await nftTransferCall({
 
 #### Defined in
 
-[src/lib/keypom-utils.ts:801](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/keypom-utils.ts#L801)
+[src/lib/keypom-utils.ts:802](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/keypom-utils.ts#L802)
 
 ## Functions
 
@@ -2906,4 +3170,4 @@ await nftTransferCall({
 
 #### Defined in
 
-[src/lib/selector/core/setup.ts:82](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/selector/core/setup.ts#L82)
+[src/lib/selector/core/setup.ts:82](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/selector/core/setup.ts#L82)

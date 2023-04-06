@@ -109,7 +109,7 @@ ___
 | :------ | :------ |
 | `props` | `Object` |
 | `props.children` | `ReactNode` |
-| `context?` | `any` |
+| `context?` | `any` | 
 
 #### Returns
 

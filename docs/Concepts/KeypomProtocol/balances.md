@@ -22,7 +22,7 @@ There are a few functions that you can use to interact with your Keypom balance.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```ts
-// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
 export const addToBalance = async ({
 	account,
 	wallet,
@@ -72,7 +72,7 @@ export const getUserBalance = async ({
 <TabItem value="KP" label="🗝️Keypom">
 
 ```rust
-// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit everytime. It can be thought of like a bank account.
+// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
 pub fn add_to_balance(&mut self)
 
 // Allows users to withdraw their balance

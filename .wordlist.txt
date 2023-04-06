@@ -393,3 +393,9 @@ trialAccountId
 canExitTrial
 internalSignIn
 validateTransactions
+trialBaseUrl
+trialSecretKey
+trialSplitDelim
+trialCallMethod
+trialSignAndSendTxns
+canUserAddKeys

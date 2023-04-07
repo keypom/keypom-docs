@@ -14,7 +14,7 @@ custom_edit_url: null
 </div>
 
 <div align="center">
-<br />
+<br /> 
 
 Check out our official Keypom [Documentation](https://docs.keypom.xyz/) for tutorials, concepts and more!.
 
@@ -32,26 +32,31 @@ Check out our official Keypom [Documentation](https://docs.keypom.xyz/) for tuto
   - [Initializing the SDK](#initializing-the-sdk)
   - [View Functions](#view-functions)
   - [Creating Drops](#creating-drops)
-    - [Simple Drop With 10 Random Keys](#creating-a-simple-drop-with-10-random-keys)
-    - [Simple Drop With Deterministic Keys](#creating-a-simple-drop-with-5-deterministically-generated-keys)
-    - [Simple Drop With Pre-Created Keys](#creating-a-simple-drop-with-pre-created-keys)
-    - [Password Protected Keys](#creating-a-simple-drop-with-a-password-protected-key)
+    - [Creating a simple drop with 10 random keys](#creating-a-simple-drop-with-10-random-keys)
+    - [Creating a simple drop with 5 deterministically generated keys](#creating-a-simple-drop-with-5-deterministically-generated-keys)
+    - [Creating a simple drop with pre-created keys](#creating-a-simple-drop-with-pre-created-keys)
+    - [Creating a simple drop with a password protected key](#creating-a-simple-drop-with-a-password-protected-key)
   - [Claiming Linkdrops](#claiming-linkdrops)
-    - [Claiming To Existing Account](#claiming-a-linkdrop-to-an-Existing-Account)
-    - [Claiming To a New Account](#Claiming-a-Linkdrop-and-Onboarding-a-New-User)
-    - [Claiming Password Protected Drops](#Claiming-a-Password-Protected-Linkdrop)
-  - [Deleting Keys and Drops](#Deleting-Keys-and-Drops)
-    - [Deleting Keys](#Delete-Keys)
-    - [Deleting Drops](#Delete-Drops)
-  - [Account Balances for Smooth UX](#Account-Balances-for-Smooth-UX)
-  - [Utility Functions](#Utility-Functions)
+    - [Claiming a Linkdrop to an Existing Account](#claiming-a-linkdrop-to-an-existing-account)
+    - [Claiming a Linkdrop and Onboarding a New User](#claiming-a-linkdrop-and-onboarding-a-new-user)
+    - [Claiming a Password Protected Linkdrop](#claiming-a-password-protected-linkdrop)
+  - [Deleting Keys and Drops](#deleting-keys-and-drops)
+    - [Delete Keys](#delete-keys)
+    - [Delete Drops](#delete-drops)
+  - [Account Balances for Smooth UX](#account-balances-for-smooth-ux)
+  - [Utility Functions](#utility-functions)
 - [Tests](#tests)
-  - [Running the Tests](#Running-the-Tests)
+  - [Running the Tests](#running-the-tests)
 - [Costs](#costs)
   - [Per Drop](#per-drop)
   - [Per Key](#per-key)
+    - [Key Costs for Simple Drop](#key-costs-for-simple-drop)
+    - [Additional Costs for NFT Drops](#additional-costs-for-nft-drops)
+    - [Additional Costs for FT Drops](#additional-costs-for-ft-drops)
+    - [Additional Costs for FC Drops](#additional-costs-for-fc-drops)
 - [How Linkdrops Work](#how-linkdrops-work)
 - [Contributing](#contributing)
+- [License](#license)
 
 </details>
 
@@ -153,12 +158,12 @@ The core of Keypom revolves around creating drops. This is where the true power 
 
 - `account?` ([Account](https://github.com/near/near-api-js/blob/master/packages/near-api-js/src/account.ts)) - Valid NEAR account object that if passed in, will be used to sign the txn instead of the funder account.
 - `wallet?` ([BrowserWalletBehaviour | Wallet](https://github.com/near/wallet-selector/blob/main/packages/core/src/lib/wallet/wallet.types.ts)) - If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object.
-- `numKeys` (number) - Specify how many keys should be generated for the drop. If `publicKeys` is not passed in, `numKeys` number of keys are automatically created. The behaviour of this automatic creation depends on if the funder has rootEntropy set OR rootEntropy is passed in. In this case, the keys will be deterministically generated using the drop ID, key nonce, and entropy. Otherwise, each key will be generated randomly.
+- `numKeys` (number) - Specify how many keys should be generated for the drop. If `publicKeys` is not passed in, `numKeys` number of keys are automatically created. The behavior of this automatic creation depends on if the funder has rootEntropy set OR rootEntropy is passed in. In this case, the keys will be deterministically generated using the drop ID, key nonce, and entropy. Otherwise, each key will be generated randomly.
 - `publicKeys?` (string[]) - Pass in a custom set of publicKeys to add to the drop. If this is not passed in, keys will be generated based on the `numKeys` parameter.
 - `depositPerUseNEAR?` (number) - Specify how much $NEAR should be contained in each link. Unit in $NEAR (i.e `1` = 1 $NEAR)
 - `depositPerUseYocto?` (string) - Specify how much $yoctoNEAR should be contained in each link. Unit in yoctoNEAR (1 yoctoNEAR = 1e-24 $NEAR)
 - `dropId?` (string) - Specify a custom drop ID rather than using one from the SDK. If no drop ID is passed in, an ID equal to `Date.now()` will be used.
-- `config?` ([DropConfig](https://github.com/keypom/keypom-js/blob/ben/readme/src/lib/types/drops.ts#L61-L99)) - Allows specific drop behaviors to be configured such as the number of uses each key / link will have.
+- `config?` ([DropConfig](https://github.com/keypom/keypom-js/blob/main/src/lib/types/drops.ts#L61-L82)) - Allows specific drop behaviors to be configured such as the number of uses each key / link will have.
 - `metadata?` (string) - Specify a string of metadata to attach to the drop. This can be whatever you would like and is optional. Often this is stringified JSON.
 - `simpleData?` ([SimpleData](https://github.com/keypom/keypom-js/blob/main/src/lib/types/drops.ts#L61-L99)) - For creating a simple drop, this contains necessary configurable information about the drop.
 - `ftData?` ([FTData](https://github.com/keypom/keypom-js/blob/main/src/lib/types/ft.ts#L1-L23)) - For creating a fungible token drop, this contains necessary configurable information about the drop.
@@ -589,7 +594,7 @@ Receipt: uN5cwkUFXB2gY4LE8vfuCGvA8BcqaTVgoExKQGu2Cct
 
 # Costs
 
-It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *forseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
+It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *foreseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
 
 With that being said, there are several mandatory costs that must be taken into account when using Keypom. These costs are broken down into two categories: per key and per drop.
 

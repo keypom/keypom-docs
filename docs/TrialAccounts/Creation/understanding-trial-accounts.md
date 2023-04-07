@@ -18,7 +18,7 @@ To help illustrate this behaviour, the follow diagram shows the above scenario.
 
 ## Keypom Drops
 
-From the above, a Trial Account can be created by deployed a valid contract to an account that only has a limited access key on it with the correct permissions. This can all be achieved with a [Function Call drop](../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md).
+From the above, a Trial Account can be created by deployed a valid contract to an account that only has a limited access key on it with the correct permissions. This can all be achieved with a [Function Call drop](../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md).
 
 In order to create accounts ending with `.near` or `.testnet`, you'll need the `near` and `testnet` accounts to create sub-accounts. This is done by calling the `create_account` function on their contracts (the code is found [here](https://github.com/near/near-linkdrop/blob/49279e529c254fa7736465b4a39d05cb8f1e5443/src/lib.rs#L130)). This is exactly how regular linkdrops work, including [Keypom](https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/stage3/claim.rs#L129).
 

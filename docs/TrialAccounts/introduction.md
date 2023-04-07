@@ -18,7 +18,7 @@ Check out this slick [demo of Keypom Trial Accounts (4min)](https://www.youtube.
 
 The key benefit of using trial accounts is that the app developers, also referred to as the funders of the trial accounts, have granular control over the smart contracts, methods and amounts of NEAR tokens used during the trial. These rules are specified when the trial account is created and ensure that the funder **cannot be rugged by the user**.
 
-Traditionally on NEAR, [linkdrops](Concepts/Linkdrops%20and%20Access%20Keys/LinkdropBasics.md) have been used to create accounts containing $NEAR. Since this $NEAR is unlocked, users could simply take it and spend it *anywhere in the ecosystem*, exactly like giving someone cash. This defeated the purpose for app developers to provide users with a small amount of $NEAR to trial their applications.
+Traditionally on NEAR, [linkdrops](../Concepts/LinkdropsAndAccessKeys/linkdrop-basics.md) have been used to create accounts containing $NEAR. Since this $NEAR is unlocked, users could simply take it and spend it *anywhere in the ecosystem*, exactly like giving someone cash. This defeated the purpose for app developers to provide users with a small amount of $NEAR to trial their applications.
 
 With trial accounts, $NEAR is placed inside a smart contract deployed to the user's account along with rules specified by the app developer when the account is created. This means that giving away a trial account is not like giving cash, but instead **a gift card**.
 
@@ -37,17 +37,17 @@ Trial Accounts are still in early stage development and are not meant to be used
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="TrialAccounts/Creation/getting-started">
+      <a href="Creation/understanding-trial-accounts">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3 class="small-bottom-padding">Creating Trial Drops</h3>
-            <p class="neutraltext">Give users a simple link to click!</p>
+            <h3 class="small-bottom-padding">Trial Accounts</h3>
+            <p class="neutraltext">In-depth guide on Trial Accounts</p>
           </div>
         </div>
       </a>
     </div>
     <div class="col">
-      <a href="TrialAccounts/Creation/integration">
+      <a href="Creation/drop-creation">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Integrate In Your Apps</h3>

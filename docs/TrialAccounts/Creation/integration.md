@@ -2,88 +2,172 @@
 sidebar_label: 'Integrating Into Your Apps'
 ---
 
-# Keypom Trial Accounts
+# Introduction
 
-Keypom Trial Accounts are an exciting new opportunity for Web3 apps to seamlessly onboard users whether they’re completely new to crypto or seasoned veterans. With the click of a link, users require no software, wallet setup, wallet connection, and are **instantly signed into apps** with their trial account, ready to make on-chain transactions.
+In the previous tutorial, you looked at the script necessary to create the trial account drop and how simple it was. In this tutorial, you'll start a local version of the guest-book app and see how easy it is to integrate and support trial accounts.
 
-
-<p align="center">
-  <img src={require("/static/img/docs/trial-accounts/trial-landing-page.png").default} width="100%" height="15%" alt="ticketing"/>
-</p>
-
-:::info
-Check out this slick [demo of Keypom Trial Accounts (4min)](https://www.youtube.com/watch?v=rQf_wlA5eEw).
+:::warning
+The UI for trial accounts while in the guest-book app in this tutorial are NOT finalized. Benji sucks at UI design and we're getting a designer to help us out. This is just a placeholder for now and is meant to be a proof of concept.
 :::
 
-## Benefits
+## Starting the Guest Book
 
-The key benefit of using trial accounts is that the app developers, also referred to as the funders of the trial accounts, have granular control over the smart contracts, methods and amounts of NEAR tokens used during the trial. These rules are specified when the trial account is created and ensure that the funder **cannot be rugged by the user**.
+Starting at the `keypom-js` directory, navigate to the `docs-advanced-tutorials/trial-accounts/guest-book` folder and install the dependencies.
 
-Traditionally on NEAR, [linkdrops](Concepts/Linkdrops%20and%20Access%20Keys/LinkdropBasics.md) have been used to create accounts containing $NEAR. Since this $NEAR is unlocked, users could simply take it and spend it *anywhere in the ecosystem*, exactly like giving someone cash. This defeated the purpose for app developers to provide users with a small amount of $NEAR to trial their applications.
+```bash
+cd docs-advanced-tutorials/trial-accounts/guest-book && yarn install
+```
 
-With trial accounts, $NEAR is placed inside a smart contract deployed to the user's account along with rules specified by the app developer when the account is created. This means that giving away a trial account is not like giving cash, but instead **a gift card**.
+Once the dependencies have been installed, you can start the app.
 
-Trial Accounts support all types of NEAR FunctionCall actions, including those with attached deposits e.g. 1 yocto for FT and NFT transfers, making them the ideal choice as a first touch point for new users to NEAR applications.
+```bash
+yarn start
+```
 
-Our vision is for trial accounts to be the point of entry for onboarding onto any NEAR application. Once the trial is over, the user can exit to a full and unrestricted NEAR Account, retaining any assets they received during the trial period. The exit process happens through any external onboarding mechanism that supports the linkdrop standard such as FastAuth, MyNEARWallet etc.
+This should open the guest-book app in your browser and you should see the following:
 
-## Creating Trial Accounts
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/guest-book-homepage.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
 
-The basic tutorials are meant as introductory guides that will help you create your first Keypom drops and understand the differences between the [types](/Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/introduction.md) of drops and the assets they contain. All drops created in these tutorials skip [drop configurations](../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/customization-homepage.md) to keep it simple.`
+:::note
+If you're signed in already, it's because you've used the same port for another application that was left signed in. Simply sign out or open the link in a new incognito window.
+:::
+
+---
+
+## Creating the Trial Account
+
+Now that the guest-book is running, it's time to run the trial creation script. Open a new terminal and navigate to the `keypom-js` directory. Navigate to the `trial-accounts` folder and open the `create-trial-drop.js` file.
+
+```bash
+cd docs-advanced-tutorials/trial-accounts
+```
+
+From here, make sure you change the account ID that is being used to sign transactions to an account that you're currently signed in with:
+
+```js reference
+https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L13
+```
+
+In addition, change the `guestBookInstance` to whichever URL your app is running on:
+
+```js reference
+https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L67
+```
+
+Once this is finished, you can run the following command to create the trial account drop.
+
+```bash
+node create-trial-drop
+```
+
+This should output the following:
+
+```bash
+Receipts: GCQ5qw2DYfnH4otYww94sJeVT2hEaEXj58Ky3J8FKdCS, FRCyeeVGgGq1YRRkxFRApjGpDdWyxZn4LQJTDoc22SV1
+Log [v2.keypom.testnet]: Warning: Balance is less than absolute minimum for creating an account: 2840000000000000000000
+Log [v2.keypom.testnet]: Current Block Timestamp: 1680902177371759044
+Log [v2.keypom.testnet]: 31 calls with 155000000000000 attached GAS. Pow outcome: 2.5000782. Required Allowance: 39626233977241600000000
+Log [v2.keypom.testnet]: Total required storage Yocto 837110000000000000000000
+Log [v2.keypom.testnet]: Current balance: 8.0866179,
+          Required Deposit: 3.6777362,
+          total_required_storage: 0.83711,
+          Drop Fee: 0,
+          Key Fee: 0 Total Key Fee: 0,
+          allowance: 0.0396262 total allowance: 0.0396262,
+          access key storage: 0.001 total access key storage: 0.001,
+          deposits less none FCs: 0 total deposits: 0 lazy registration: false,
+          deposits for FCs: 2.8 total deposits for FCs: 2.8,
+          uses per key: 1
+          None FCs: 0,
+          length: 1
+          GAS to attach: 150000000000000
+Log [v2.keypom.testnet]: New user balance 4.4088817
+Log [v2.keypom.testnet]: Fees collected 0
 
 
-It is recommended you read through the [Getting Started](Basics/getting-started.md) guide before going into the tutorials.
+  Guest-Book App:
+http://localhost:1234/keypom-url#v2.keypom.testnet/3HbgYBvVMSfTBpXQ4fSecbPzwup2YkJPipNmT7e2iyw5MfzfMN3rHccsPddWcTGFTehCux7AbmtJiRqd78x4F57g
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <a href="Basics/simple-drops">
-        <div class="card h-100 card-body">
-          <div class="card__body">
-            <h3 class="small-bottom-padding">Simple Drop</h3>
-            <p class="neutraltext">Onboarding with $NEAR.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col">
-      <a href="Basics/nft-drops">
-        <div class="card h-100 card-body">
-          <div class="card__body">
-            <h3 class="small-bottom-padding">Non-Fungible Token Drops</h3>
-              <p class="neutraltext">Share an NFT with a link</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <a href="Basics/ft-drops">
-        <div class="card h-100 card-body">
-          <div class="card__body">
-            <h3 class="small-bottom-padding">Fungible Token Drop</h3>
-              <p class="neutraltext">Send users FTs</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col">
-      <a href="Basics/fc-drops">
-        <div class="card h-100 card-body">
-          <div class="card__body">
-            <h3 class="small-bottom-padding">Function Call Drops</h3>
-              <p class="neutraltext">Onboard with Keypom's most powerful drop</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-<br></br>
+Good Luck!
+```
 
-## Integrating Trial Accounts Into Your App
+## Using the Guest Book
 
-These tutorials are meant to provide examples of real world use cases. These can range from ticketing, to subscriptions and customized onboarding experiences.
+Now that the drop is created, it's time to create a brand new account! Open the URL and you should see the following screen:
 
-These pages are currently in progress, stay tuned!
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/claim-trial-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+Enter a username and click Submit. If the username is available, it should tell you with a browser alert. If not, simply input a new one and try again. Once the account is available, the claiming process should start.
+
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/claiming-trial-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+The claiming process should take a few seconds and then you should see the following screen:
+
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/trial-claimed-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+Once you click the button, you should be instantly signed into the guest-book app.
+
+### Signing Your First Transaction
+
+Now that you're signed in, you can instantly begin using the guest-book app. Try signing a message with `0.1 $NEAR` and see what happens!
+
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/trial-sign-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+After a few seconds, the transaction should go through and your message should show up at the bottom of the messages list! Notice how there was no redirects to the NEAR wallet for approval and no sign in.
+
+### Invalid Actions
+
+Recall that the trial account cannot attach more than 1 $NEAR to a given transaction. Try signing a message with `1.1 $NEAR` and you should be greeted with the following modal:
+
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/trial-invalid-action-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+If you then sign the message with `1 $NEAR` or less, it should go through properly.
+
+### Trial Over
+
+After you've spent `1.25 $NEAR` on the app and you try to sign another message, you should see the following trial over modal:
+
+<p align="center">
+  <img src={require("/static/img/docs/trial-accounts/trial-over-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
+</p>
+
+In this case, since FastAuth isn't complete, clicking the button will send you somewhere special.
+
+### Losing Access to Local Storage
+
+If the account were to lose access of the local storage or their computer blew up, all they would need is the original trial account link to gain access to their account again. To test this behaviour, close the app and open a brand new incognito window. Paste the original link and you should immediately be signed back into the app.
+
+## Behind the Scenes
+
+In order for the guest-book app to be fully compatible with trial accounts, it only needs to add the SDK's wallet selector plugin.
+
+```js reference
+https://github.com/keypom/keypom-js/blob/bd2a9e9c2f62f7c51419bd2e1d2cac2bd953ef60/docs-advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L41-L53
+```
+
+You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:
+- `trialBaseUrl`: The base URL that the trial account will be sent to. In the guest-book app, this is `http://localhost:1234/keypom-url#`. The full URL for any given trial account link follows `${trialBaseURL}${keypomContractId}${trialSplitDelim}${secretKey}`. By default, the `trialSplitDelim` is `/` but this can be overloaded and passed into the setup function.
+- `signInContractId`: The contract ID that regular users create access keys for when signing in.
+- `modalOptions`: Information that you can specify that will customize the modals that are shown to the user while on your app.
+
+### Customizing the Modals
+
+By default, the modals that are shown to the user can be heavily customized to match the look and feel of your website. If you brand the regular wallet selector modal, the CSS will **automatically be applied** to the trial account modals.
+
+In addition, you can specify a suite of titles and descriptions. These will be covered further in a different tutorial.
+
+## Conclusion
+
+In this tutorial, you learned how to create a link that will allow users to experience your app through a trial account. You then created a new testnet account, instantly signed into the guest-book app and went through different scenarios that a user might encounter while using your app.

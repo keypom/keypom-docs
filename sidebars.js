@@ -161,7 +161,8 @@ const sidebars = {
       label: 'Creating Trial Experiences',
       collapsed: false,
       items: [
-            'TrialAccounts/Creation/getting-started',
+          'TrialAccounts/Creation/getting-started',
+          'TrialAccounts/Creation/understanding-trial-accounts',
             'TrialAccounts/Creation/drop-creation',
             'TrialAccounts/Creation/integration'
       ],

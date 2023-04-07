@@ -15,8 +15,9 @@ In order to successfully complete the tutorials, you'll need to have the followi
 
 ---
 
-## Creating your Project
-In this section, you'll prepare to create the ticketing app using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
+## Project Structure
+
+In this section, you'll prepare the project structure that will be used in the following tutorials. The core of the project is found in the [Keypom SDK repo](https://github.com/keypom/keypom-js).
 
 First, you'll want to clone the repo:
 
@@ -24,30 +25,13 @@ First, you'll want to clone the repo:
 git clone https://github.com/keypom/keypom-js.git && cd keypom-js
 ```
 
-Second, install the dependencies for both the SDK and ticketing app skeleton code:
+Second, install the dependencies for the SDK:
 
 ```
-yarn install && cd docs-advanced-tutorials/ticket-app-skeleton && yarn
+yarn install
 ```
 
-At this point, all the dependencies should be installed and you should be in the `docs-advanced-tutorials/ticket-app-skeleton` folder. Here you'll find the following files required to build out your app.
-
-```bash
-/ticket-app-skeleton
-└── components
-│    └── scanner.js
-│    └── qrcode.js
-└── state
-│    └── App.js
-│    └── keyInfo.js
-└── utils
-│    └── allowEntry.js
-│    └── createTickDrop.js
-│    └── testTickDrop.js
-└── package.json
-```
-
-With this setup complete, you are ready to begin building out the ticket app, starting by breaking down the problem into its functional requirements. 
+At this point, all the dependencies should be installed and you're ready to move on to the next step which is creating the trial drop.
 
 
 

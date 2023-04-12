@@ -3,6 +3,8 @@ sidebar_label: 'Offboarding Trial Accounts'
 ---
 # Introduction
 
+In this tutorial, you'll learn how to support trial accounts exiting into your wallet.
+
 Trial Accounts are a great way to onboard new users to applications with the click of a link. The in-app experience is seamless but at some point, the trial must end. This process should remove all restrictions from the user's account and allow them to interact with the any app on NEAR. This process is known as offboarding and is a critical part of the user's journey.
 
 As part of the offboarding process, a full access key will be added to the account and this should be stored somewhere safe. For this reason, we wanted to make sure trial accounts could be exited into any wallet or app that supports the official linkdrop standard (e.g MyNEARWallet / FastAuth).
@@ -14,9 +16,7 @@ The desired user experience is as follows:
 4. Once your trial is over, a modal pops up with options for onboarding.
 5. Click the desired option (such as MyNEARWallet) and get redirected.
 6. Offboard with the app and get a new private key based on the option you chose (seedphrase, biometrics etc.)
-7. You're now a full, unrestricted NEAR account that can interact with the rest of the ecosystem.
-
-In this tutorial, you'll learn how to easily support offboarding using the official linkdrop standard.
+7. The trial account has now been converted into a full, unrestricted NEAR account that can interact with the rest of the ecosystem.
 
 <p align="center">
   <img src={require("/static/img/docs/trial-accounts/trial-over-guestbook.png").default} width="60%" height="15%" alt="ticketing"/>
@@ -24,7 +24,7 @@ In this tutorial, you'll learn how to easily support offboarding using the offic
 
 ## Utilizing Linkdrops
 
-Most wallets support linkdrop claiming since it leads to more opportunities for them to gain new users. This can be used to our advantage since if the trial account offboarding process is treated as a regular linkdrop, then the account can be offboarded into almost every wallet. Before learning how this is accomplished, you should first the basics of claiming linkdrops.
+Most wallets support linkdrop claiming since it leads to more opportunities for them to gain new users. This can be used to our advantage if the trial account offboarding process is treated as a regular linkdrop, then the account can be offboarded into almost every wallet. Before learning how this is accomplished, you should first understand the basics of claiming linkdrops.
 
 ### Claiming
 
@@ -44,8 +44,6 @@ function get_key_information(key: string) -> KeyInfo
 /// the `account_id`.
 function claim(account_id: string) -> Promise<boolean>
 
-
-
 /// Creates a new NEAR account and transfers all assets linked to a given public 
 /// key to the *newly created account*.
 /// 
@@ -63,33 +61,93 @@ function create_account_and_claim(new_account_id: string, new_public_key: string
 For an arbitrary linkdrop (a URL containing the contract and secret key), the flow is as follows:
 1. The user clicks a link or scans a QR code representing the linkdrop.
 2. The app calls `get_key_information` to check what's in the linkdrop.
-    - If the linkdrop was already claimed (or doesn't exist), the call will panic and the frontend indicates that the drop is invalid or claimed.
+    - If the linkdrop was already claimed (or doesn't exist), the call will panic and the frontend should indicate that the drop is invalid.
 3. Depending on what is returned from the call, the app should display what assets the user is about to claim (e.g NFTs, FTs, $NEAR etc.)
 4. The frontend exposes a form field and the user either inputs a new account or an existing one.
-5. The frontend calls `claim` or `create_account_and_claim` depending on the user's input. 
+5. If a new account is created, the frontend will call `create_account_and_claim` and pass in the new account ID and an access key that will have full access permission over the account.
+    - This key is generated based on what the app allows. For example, MyNEARWallet generates the key using a seedphrase while FastAuth generates it using biometrics.
 6. The linkdrop is claimed and the assets are sent to the user's account.
 
 ### Trial Account Linkdrops
 
 Now that the basics of linkdrop claiming have been covered, you'll look at how trial accounts can be treated as a linkdrop. From above, there are a few requirements that need to be met:
 - The URL should contain a contract and secret key
-- The contract should implement the `get_key_information` method so that frontends know when a drop is valid.
-- The contract should implement the `create_account_and_claim` method for claiming.
+- The trial contract should implement the `get_key_information` method so that frontends know when a drop is valid.
+- The trial contract should implement the `create_account_and_claim` method for claiming.
 
-The `new_public_key` that is passed into `create_account_and_claim` is added as the account's full access key and is generated on a per-app basis. For example, MyNEARWallet generates the key using a seedphrase while FastAuth generates it using biometrics. The trial account contract can use `create_account_and_claim` to perform the offboarding logic. It should take in the new public key and do the following (assuming the account can exit):
-1. Delete the limited access key used during the trial.
-2. Repay the funder for any required $NEAR
-3. Delete any state that is being used by the contract
-4. Delete the contract itself and free up all the storage
-5. Create a new access key with the `new_public_key` and give it full access to the account.
+Recall that for claiming assets to a new account, linkdrop contracts will create the account and add the public key as a full access key to the account. This access key is generated on a per-app basis. For example, MyNEARWallet generates the key using a seedphrase while FastAuth generates it using biometrics. 
 
-You'll notice that in the example above, the only parameter that was used was `new_public_key` but in the official linkdrop standard, the `create_account_and_claim` function takes two parameters:
+In the case of the trial account contract, the exact same flow can happen except the account creation is *already done*. When calling `create_account_and_claim`, the contract should accept the new public key and do the following (assuming the account can exit):
+1. Delete the existing limited access key used during the trial.
+2. Create a new access key with the `new_public_key` and give it full access to the account.
+3. Repay the funder for any required $NEAR.
+4. Delete any state that is being used by the contract.
+5. Delete the trial contract and free up all the storage.
+
+Notice that the only parameter that was *actually* used was `new_public_key` but in the official linkdrop standard, the `create_account_and_claim` function takes two parameters:
 
 ```ts
 function create_account_and_claim(new_account_id: string, new_public_key: string)
 ```
 
-This is because for regular linkdrops, it is assumed that by calling `create_account_and_claim`, the account is being created from scratch and the public key is being added as full access. In the case of trial accounts, the account *already exists* and we're simply adding the passed in public key as full access.
+The `new_account_id` field is disregarded by the trial account contract since the account already exists. You can pass in any value for this field and it will be ignored.
+
+For example, the following code could be used to completely offboard a trial account using `near-api-js`. The pseudo code is:
+1. Initialize the NEAR connection.
+2. Set the trial account key in the keystore.
+3. Get the key information and check if the account can exit the trial.
+4. Generate a random keypair that will be used as the account's new full access key.
+5. Call `create_account_and_claim` with the new public key and the required gas coming from the call to get key information.
+
+```ts
+const NETWORK_ID = 'testnet';
+// Generate a new keystore and connect to the NEAR network
+let keyStore = new keyStores.InMemoryKeyStore();  
+
+let nearConfig = {
+    networkId: NETWORK_ID,
+    keyStore: keyStore,
+    nodeUrl: `https://rpc.${NETWORK_ID}.near.org`,
+    walletUrl: `https://wallet.${NETWORK_ID}.near.org`,
+    helperUrl: `https://helper.${NETWORK_ID}.near.org`,
+    explorerUrl: `https://explorer.${NETWORK_ID}.near.org`,
+};  
+
+let near = await connect(nearConfig);
+
+// Account ID of the trial account
+const trialAccountId = "benji-demo-12345.testnet";
+
+// Trial Account Secret Key
+const trialAccountSecretKey = "5XorwuVXhTpscqddyyrRB9QVZDTn3mut9Zeu7drtdxexurhgf2V4WHJ8RyLoJppmHagMg6gcdAQrG8gJf9JA2XB"
+const keyPair = KeyPair.fromString(trialAccountSecretKey);
+await keyStore.setKey(NETWORK_ID, trialAccountId, keyPair);
+
+// Create the account object for the trial
+const trialAccountObj = new Account(near.connection, trialAccountId);
+
+// Check if the trial account is able to exit
+const keyInfo = await trialAccountObj.viewFunction(trialAccountId, 'get_key_information', {key: keyPair.getPublicKey().toString()});
+if (keyInfo.trial_data?.exit == true) {
+    // This will be the full access key for the new account
+    const newKeyPair = KeyPair.fromRandom('ed25519');
+    
+    // How much gas should be attached to the create account call
+    const requiredGas = keyInfo.required_gas;
+
+    // If the account can exit, generate a new random access key which will be used for the full access key
+    await trialAccountObj.functionCall({
+        contractId: trialAccountId, 
+        methodName: 'create_account_and_claim', 
+        args: {
+            new_account_id: "",
+            new_public_key: newKeyPair.getPublicKey().toString()
+        }, 
+        attachedDeposit: 0, 
+        gas: requiredGas
+    });
+}
+```
 
 ### Rendering Linkdrops
 

@@ -163,10 +163,11 @@ const sidebars = {
       items: [
           'TrialAccounts/Creation/getting-started',
           'TrialAccounts/Creation/understanding-trial-accounts',
-            'TrialAccounts/Creation/drop-creation',
-            'TrialAccounts/Creation/integration'
+          'TrialAccounts/Creation/drop-creation',
+          'TrialAccounts/Creation/integration'
       ],
-    }
+    },
+    "TrialAccounts/offboarding",
   ],
 
     // {

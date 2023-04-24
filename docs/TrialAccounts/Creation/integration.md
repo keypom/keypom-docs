@@ -147,7 +147,7 @@ In this case, since FastAuth isn't complete, clicking the button will send you s
 
 ### Losing Access to Local Storage
 
-If the account were to lose access of the local storage or their computer blew up, all they would need is the original trial account link to gain access to their account again. To test this behaviour, close the app and open a brand new incognito window. Paste the original link and you should immediately be signed back into the app.
+If the account were to lose access of the local storage or their computer blew up, all they would need is the original trial account link to gain access to their account again. To test this behavior, close the app and open a brand new incognito window. Paste the original link and you should immediately be signed back into the app.
 
 ## Behind the Scenes
 

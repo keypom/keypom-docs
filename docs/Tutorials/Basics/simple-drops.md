@@ -196,7 +196,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L8-L25
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/simple-example.js#L9-L27
 ```
 
 ---
@@ -223,14 +223,14 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L27-L42
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/simple-example.js#L29-L44
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/near-api-js/simple-near-example.js#L26-L51
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/near-api-js/simple-near-example.js#L29-L54
 ```
 
 </TabItem>
@@ -247,21 +247,8 @@ The last step in this process is to create the links themselves so that you can 
 
 With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
-```js 
-pubKeys = keys.publicKeys
-
-var dropInfo = {};
-const {contractId: KEYPOM_CONTRACT} = getEnv()
-// Creating list of pk's and linkdrops
-for(var i = 0; i < keys.keyPairs.length; i++) {
-    let linkdropUrl = formatLinkdropUrl({
-        customURL: "https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY",
-        secretKeys: keys.secretKeys[i]
-      })
-    dropInfo[pubKeys[i]] = linkdropUrl;
-}
-// Write file of all pk's and their respective linkdrops
-console.log('Public Keys and Linkdrops: ', dropInfo)
+```js reference
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/simple-example.js#L46-L55
 ```
 
 ---
@@ -273,14 +260,14 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/18df717151e3f5b25cae24f2d9389459b87ece68/docs-examples/keypom-js-sdk/simple-example.js#L1-L60
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/simple-example.js#L1-L60
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60f/docs-examples/near-api-js/simple-near-example.js#L1-L63
+https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/near-api-js/simple-near-example.js#L1-L66
 ```
 
 </TabItem>
@@ -292,31 +279,35 @@ https://github.com/keypom/keypom-js/blob/bbe4716ff64dd7a73a6d727a5aea518e8141f60
 ### Running the Script
 Here, you'll learn how to run the code that was just covered, and what to expect.
 
-To view the completed code, clone the Keypom SDK repo and visit the examples directory:
+To view the completed code, clone the Keypom SDK repo and visit the examples directory.
 ``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk/simple-example.js
+git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk
 ```
-To run the code you just cloned, install all the necessary packages. 
+From there, you can open the `simple-example.js` file.
+
+To run the code you just cloned, return to the `keypom-js/docs-examples` directory and install all the necessary packages. 
 ```bash
-npm install
+cd .. && yarn
 ```
 
 :::caution
 Prior to running these scripts, ensure you replace all instances of `keypom-docs-demo.testnet` in the script with the credentials of your account found in your `~/.near-credentials` folder
 :::
 
-From there, you can navigate back to the root directory and run this Simple Drop script that was made in this tutorial using the following command:
+From there, you can run this Simple Drop script that was made in this tutorial using the following command:
 ``` bash
-cd .. && npm run simple-keypom
+yarn simple-keypom
 ```
 :::note
-The SDK script is being tested here; use `npm run simple-near` to test the `NEAR-API-JS` script instead.
+The SDK script is being tested here; use `yarn simple-near` to test the `NEAR-API-JS` script instead.
 :::
 This should return a successful drop creation and console log a Public Key and Linkdrop: 
 ```bash
-Public Keys and Linkdrops:  {
-  'ed25519:JEGExQ4ARMh9tDLkYR2xDiZr5w6PLmQUCUwutGPuxCT6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3L9bZD5TMi4ajrxkAdUg2ffXpwZoudcaYmxN6Nzgoatdvubew4aWBguvyquygDDRZGvr5uwgMpvvj5PVuDW77AaY'
-}
+Public Keys:  [ 'ed25519:CsTpJ3pSZUkkcfVEsA6Fqkgz6BFgmhNfCGzPuqdj24wc' ]
+Linkdrops:  [
+  'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/CNbTQgJ83dLPvg4ibCQGH9Wi1sJhSQkh4YDXKxibXU3cn66oZP5eqLE83m5z5eTqBKxSvJzmDXH7gYTMXzMEfdk'
+]
+Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
 ```
 To see the full console log from this drop creation, see the expandable section below.
 
@@ -325,16 +316,16 @@ To see the full console log from this drop creation, see the expandable section 
 <p>
 
 ``` bash
-Receipts: AuLnQ8kdjoww8TnaNHkYezyVoALzgw7gPDqapQipuS2G, FSJnsG2NF3hoUdvPADtAeDqy9HdxRC3zKf1NCGi5LLR3
-        Log [v2.keypom.testnet]: Current Block Timestamp: 1677014682302742186
-        Log [v2.keypom.testnet]: 20 calls with 100000000000000 attached GAS. Pow outcome: 1.8061103. Required Allowance: 18762630063718400000000
-        Log [v2.keypom.testnet]: Total required storage Yocto 11130000000000000000000
-        Log [v2.keypom.testnet]: Current balance: 1.0891783, 
-            Required Deposit: 1.0308926, 
-            total_required_storage: 0.01113,
+Receipts: GZegewWCTMfpKWZ8ffpVkRb3fLYjyfnyCvqRRmwRkKSt, 3tueZ12bwu86EYEgPVaMjQJuSUNfWcwnDENQGk6jGzmo
+        Log [v2.keypom.testnet]: Current Block Timestamp: 1682352132162930850
+        Log [v2.keypom.testnet]: 21 calls with 105000000000000 attached GAS. Pow outcome: 1.8602935. Required Allowance: 20248156910387200000000
+        Log [v2.keypom.testnet]: Total required storage Yocto 11170000000000000000000
+        Log [v2.keypom.testnet]: Current balance: 8.2496314, 
+            Required Deposit: 1.0324181, 
+            total_required_storage: 0.01117,
             Drop Fee: 0, 
             Key Fee: 0 Total Key Fee: 0,
-            allowance: 0.0187626 total allowance: 0.0187626,
+            allowance: 0.0202481 total allowance: 0.0202481,
             access key storage: 0.001 total access key storage: 0.001,
             deposits less none FCs: 1 total deposits: 1 lazy registration: false,
             deposits for FCs: 0 total deposits for FCs: 0,
@@ -342,11 +333,12 @@ Receipts: AuLnQ8kdjoww8TnaNHkYezyVoALzgw7gPDqapQipuS2G, FSJnsG2NF3hoUdvPADtAeDqy
             None FCs: 0,
             length: 1
             GAS to attach: 100000000000000
-        Log [v2.keypom.testnet]: New user balance 0.0582857
+        Log [v2.keypom.testnet]: New user balance 7.2172133
         Log [v2.keypom.testnet]: Fees collected 0
-Public Keys and Linkdrops:  {
-  'ed25519:JEGExQ4ARMh9tDLkYR2xDiZr5w6PLmQUCUwutGPuxCT6': 'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/3L9bZD5TMi4ajrxkAdUg2ffXpwZoudcaYmxN6Nzgoatdvubew4aWBguvyquygDDRZGvr5uwgMpvvj5PVuDW77AaY'
-}
+Public Keys:  [ 'ed25519:CsTpJ3pSZUkkcfVEsA6Fqkgz6BFgmhNfCGzPuqdj24wc' ]
+Linkdrops:  [
+  'https://testnet.mynearwallet.com/linkdrop/v2.keypom.testnet/CNbTQgJ83dLPvg4ibCQGH9Wi1sJhSQkh4YDXKxibXU3cn66oZP5eqLE83m5z5eTqBKxSvJzmDXH7gYTMXzMEfdk'
+]
 Keypom Contract Explorer Link: explorer.testnet.near.org/accounts/v2.keypom.testnet.com
 ```
 

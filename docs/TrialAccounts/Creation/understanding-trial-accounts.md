@@ -6,11 +6,11 @@ sidebar_label: 'Understanding Trial Accounts'
 
 A Trial Account is simply an account on NEAR that has a set of pre-defined restrictions that limit the methods that it can call. This is achieved by deploying a very small no-std Rust smart contract on it (~25 kb or 0.25 $NEAR) that acts as a proxy, or middleman, for any outbound calls it makes.
 
-The contract deployed to the account exposes a method `execute` that takes a set of actions as arguments, checks whether the actions are allowed, and then executes them. To achieve this middleman behaviour, the Trial Account cannot have any full access keys (otherwise it could bypass the `execute` method, and inturn, the restrictions). The account should *only* have one limited access key that can call the `execute` method on its own contract.
+The contract deployed to the account exposes a method `execute` that takes a set of actions as arguments, checks whether the actions are allowed, and then executes them. To achieve this middleman behavior, the Trial Account cannot have any full access keys (otherwise it could bypass the `execute` method, and in turn, the restrictions). The account should *only* have one limited access key that can call the `execute` method on its own contract.
 
 Whenever a Trial Account wants to call a method on an external contract, say `nft_mint` on the `nft.examples.testnet` account, it needs to call `execute` and pass in the desired function call as arguments. The contract will then check whether those actions are allowed and if they are, it will execute the desired behavior.
 
-To help illustrate this behaviour, the follow diagram shows the above scenario.
+To help illustrate this behavior, the follow diagram shows the above scenario.
 
 <p align="center">
   <img src={require("/static/img/docs/trial-accounts/trial-account-execute-flow.png").default} width="40%" height="15%" alt="ticketing"/>
@@ -22,7 +22,7 @@ From the above, a Trial Account can be created by deployed a valid contract to a
 
 In order to create accounts ending with `.near` or `.testnet`, you'll need the `near` and `testnet` accounts to create sub-accounts. This is done by calling the `create_account` function on their contracts (the code is found [here](https://github.com/near/near-linkdrop/blob/49279e529c254fa7736465b4a39d05cb8f1e5443/src/lib.rs#L130)). This is exactly how regular linkdrops work, including [Keypom](https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/stage3/claim.rs#L129).
 
-By calling `create_account`, a new sub-account is created with a full access key. This is close to the behaviour we want for Trial Accounts but not exactly. In order to create a new account that has a limited access key and a contract deployed, you can call the `create_account_advanced` function instead of `create_account`, code found [here](https://github.com/near/near-linkdrop/blob/49279e529c254fa7736465b4a39d05cb8f1e5443/src/lib.rs#L156). This function can accept `wasm` for a contract, and limited access key arguments.
+By calling `create_account`, a new sub-account is created with a full access key. This is close to the behavior we want for Trial Accounts but not exactly. In order to create a new account that has a limited access key and a contract deployed, you can call the `create_account_advanced` function instead of `create_account`, code found [here](https://github.com/near/near-linkdrop/blob/49279e529c254fa7736465b4a39d05cb8f1e5443/src/lib.rs#L156). This function can accept `wasm` for a contract, and limited access key arguments.
 
 A Keypom function call drop can then be programmed to:
 - Call the `create_account_advanced` function.
@@ -114,7 +114,7 @@ This would satisfy the repay condition and they would be able to keep the rest o
 
 ### What Happens On Exit?
 
-When regular accounts are created on NEAR, they start with a full access key and don't have any smart contract deployed to them. This behaviour should be the same for trial accounts except they keep any assets they had during the trial state. When the account exits, the following will happen:
+When regular accounts are created on NEAR, they start with a full access key and don't have any smart contract deployed to them. This behavior should be the same for trial accounts except they keep any assets they had during the trial state. When the account exits, the following will happen:
 
 - The limited access key is removed from the account.
 - The trial contract is removed from the account.

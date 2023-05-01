@@ -42,7 +42,7 @@ Learn more about Keypom's Drop types below
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="Concepts/Keypom Protocol/Github Readme/Types of Drops/simpledrops">
+      <a href="Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/simple-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Simple Drop</h3>
@@ -52,7 +52,7 @@ Learn more about Keypom's Drop types below
       </a>
     </div>
     <div class="col">
-      <a href="Concepts/Keypom Protocol/Github Readme/Types of Drops/nftdrops">
+      <a href="Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/nft-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Non-Fungible Token Drops</h3>
@@ -64,7 +64,7 @@ Learn more about Keypom's Drop types below
   </div>
   <div class="row">
     <div class="col">
-      <a href="Concepts/Keypom Protocol/Github Readme/Types of Drops/ftdrops">
+      <a href="Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/ft-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Fungible Token Drop</h3>
@@ -74,7 +74,7 @@ Learn more about Keypom's Drop types below
       </a>
     </div>
     <div class="col">
-      <a href="Concepts/Keypom Protocol/Github Readme/Types of Drops/fcdrops">
+      <a href="Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Function Call Drops</h3>

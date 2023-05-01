@@ -27,7 +27,7 @@ When calling `create_account` on the root account, which keypom args should be a
 
 #### Defined in
 
-[src/lib/types/drops.ts:136](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L136)
+[src/lib/types/drops.ts:136](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L136)
 
 ___
 
@@ -39,7 +39,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[src/lib/types/drops.ts:130](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L130)
+[src/lib/types/drops.ts:130](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L130)
 
 ___
 
@@ -51,7 +51,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[src/lib/types/drops.ts:134](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L134)
+[src/lib/types/drops.ts:134](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L134)
 
 ___
 
@@ -63,7 +63,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[src/lib/types/drops.ts:121](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L121)
+[src/lib/types/drops.ts:121](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L121)
 
 ___
 
@@ -76,4 +76,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[src/lib/types/drops.ts:126](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/drops.ts#L126)
+[src/lib/types/drops.ts:126](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/drops.ts#L126)

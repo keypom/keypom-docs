@@ -1,6 +1,6 @@
 ---
 id: "welcome"
-title: "keypom-js - v1.4.3"
+title: "keypom-js - v1.4.6"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null
@@ -14,7 +14,7 @@ custom_edit_url: null
 </div>
 
 <div align="center">
-<br />
+<br /> 
 
 Check out our official Keypom [Documentation](https://docs.keypom.xyz/) for tutorials, concepts and more!.
 

@@ -45,11 +45,11 @@ This parameter allows you to set the number of times a user can claim a key befo
 This parameter is incredibly versatile and can be used in numerous ways. Some excellent examples are:  
 
 1. Rewards that progressively increase in value. For example, you could incentivize people to show up to all your talks at a conference. A link would be given out that needed to be physically scanned at your talk to unlock rewards. If you showed up to all the events, a jackpot prize could be claimed.  
-2. A set number of [Recurring Payments](../../Github%20Readme/Types%20of%20Drops/simpledrops.md#recurring-payments) for subscriptions or contracted/freelanced work.  
-3. A method to accurately track retention, such as [Event Turnout](../../Github%20Readme/Types%20of%20Drops/fcdrops.md#nft-ticketing)
+2. A set number of [Recurring Payments](../../GithubReadme/TypesOfDrops/simple-drops.md#recurring-payments) for subscriptions or contracted/freelanced work.  
+3. A method to accurately track retention, such as [Event Turnout](../../GithubReadme/TypesOfDrops/fc-drops.md#nft-ticketing)
 
 
-When used with [function call drops](fcdrops.md), some more complex use cases can be created, such as [Customizable Multi-Phase Onboarding](../../../../Tutorials/Advanced/customized-onboarding/introduction.md) and [Auto DAO-Registration](../../../../Tutorials/Advanced/daos/introduction.md)
+When used with [function call drops](fc-drops.md), some more complex use cases can be created, such as Customizable Multi-Phase Onboarding and [Auto DAO-Registration](../../../../Tutorials/Advanced/daos/introduction.md)
 
 ---
 

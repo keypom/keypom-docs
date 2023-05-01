@@ -5,7 +5,7 @@ sidebar_label: 'What are Drop Configurations?'
 
 What sets Keypom apart from the basic [NEAR Linkdrop](https://github.com/near/near-linkdrop)? One major aspect is that Keypom allows for LOADS of customization!
 
-This can allow for your to create linkdrops where the keys can become multi-use and controlled by start time, time between uses and much more! With these tools and Keypom's 4 drop types, you can create everything from [unique onboardings](../../../../Tutorials/Advanced/customized-onboarding/introduction.md) to [tiered and exclusive tickets](../../../../Tutorials/Advanced/ticketing/introduction.md). 
+This can allow for your to create linkdrops where the keys can become multi-use and controlled by start time, time between uses and much more! With these tools and Keypom's 4 drop types, you can create everything from unique onboardings to [tiered and exclusive tickets](../../../../Tutorials/Advanced/ticketing/introduction.md). 
 
 /Users/min/Documents/NEAR_Stuff/keypom-docs/docs/Tutorials/Advanced/ticketing/introduction.md
 

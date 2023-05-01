@@ -19,7 +19,7 @@ How much allowance does the key have left (measured in $yoctoNEAR). When the key
 
 #### Defined in
 
-[src/lib/types/protocol.ts:23](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L23)
+[src/lib/types/protocol.ts:23](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L23)
 
 ___
 
@@ -31,7 +31,7 @@ Which use is the key currently on? For single-use keys, this is always 1.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:14](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L14)
+[src/lib/types/protocol.ts:14](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L14)
 
 ___
 
@@ -43,7 +43,7 @@ Drop ID for the specific drop that the key belongs to.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:9](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L9)
+[src/lib/types/protocol.ts:9](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L9)
 
 ___
 
@@ -55,7 +55,7 @@ The unique ID associated to this key. IDs are *not* unique across drops but they
 
 #### Defined in
 
-[src/lib/types/protocol.ts:26](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L26)
+[src/lib/types/protocol.ts:26](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L26)
 
 ___
 
@@ -67,7 +67,7 @@ At what timestamp was the key last used? Measured in number of non-leap-nanoseco
 
 #### Defined in
 
-[src/lib/types/protocol.ts:20](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L20)
+[src/lib/types/protocol.ts:20](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L20)
 
 ___
 
@@ -79,7 +79,7 @@ Public key for this access key.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:11](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L11)
+[src/lib/types/protocol.ts:11](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L11)
 
 ___
 
@@ -91,4 +91,4 @@ How many uses this key has left before it's deleted.
 
 #### Defined in
 
-[src/lib/types/protocol.ts:17](https://github.com/keypom/keypom-js/blob/decaa9d1/src/lib/types/protocol.ts#L17)
+[src/lib/types/protocol.ts:17](https://github.com/keypom/keypom-js/blob/29c10f94/src/lib/types/protocol.ts#L17)

@@ -2,6 +2,8 @@
 sidebar_label: 'Non Fungible Token Drops'
 sidebar_position: 3
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Non-Fungible Token Drops
 
@@ -35,14 +37,22 @@ vector is acting like a *stack*.
 Along with the default global configurations for drops, if you'd like to create an NFT drop,
 you must specify the following pieces of information when the drop is created.
 
-```rust
-pub struct NFTDataConfig {
-    /// Which account ID will be sending the NFTs to the contract
-    pub sender_id: AccountId,
-    /// Which contract will the NFTs live on
-    pub contract_id: AccountId,
-}
+<Tabs>
+<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/nft.ts#L4-L15
 ```
+
+</TabItem>
+<TabItem value="KP" label="🗝️Keypom">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L78-L81
+```
+
+</TabItem>
+</Tabs>
 
 By specifying this information, the drop is locked into only accepting NFTs from the sender and contract.
 

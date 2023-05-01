@@ -8,7 +8,7 @@ In this section you'll take the first step to creating the ticketing experience 
 
 Recall that the drop needs the following properties:
 
-* A [Function Call drop](../../../Concepts/Keypom%20Protocol/Github%20Readme/Types%20of%20Drops/fcdrops.md) must be used and configured so that each key has 2 uses.
+* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that each key has 2 uses.
 * The first key use is password protected and `null` (for when the host scans attendees into the event). 
 * The second key use will have a small amount of $NEAR to cover account creation costs and sponsor the first few transactions.
 * The second key use will also call `nft_mint` on an NFT contract which will send the new or existing account a POAP.

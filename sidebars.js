@@ -135,6 +135,7 @@ const sidebars = {
               collapsed: true,
               items: [
                 'Tutorials/Advanced/daos/introduction',
+                'Tutorials/Advanced/daos/architecture',
               ],
             },
             {

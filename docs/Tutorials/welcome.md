@@ -63,7 +63,7 @@ It is recommended you read through the [Getting Started](Basics/getting-started.
 
 ## Advanced Tutorials
 
-These tutorials are meant to provide examples of real world use cases.
+These tutorials are meant to provide examples of real world use cases. These can range from ticketing, to seamless DAO onboarding experiences.
 
 <div class="container">
   <div class="row">
@@ -78,11 +78,11 @@ These tutorials are meant to provide examples of real world use cases.
       </a>
     </div>
     <div class="col">
-      <a href="Advanced/ticketing/introduction">
+      <a href="Advanced/daos/introduction">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3 class="small-bottom-padding">Ticketing</h3>
-            <p class="neutraltext">Supercharge your next event with Keypom.</p>
+            <h3 class="small-bottom-padding">DAO Onboarding</h3>
+            <p class="neutraltext">Effortlessly auto-register new members.</p>
           </div>
         </div>
       </a>

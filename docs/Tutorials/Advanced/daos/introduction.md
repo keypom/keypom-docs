@@ -12,19 +12,21 @@ DAOs are a raging topic in crypto and offer a suite of widely versatile on-chain
 
 Both of these act as bottlenecks in attracting new members and getting them up to speed.
 
-With Keypom, you can create a function call drop with the goal of automatically registering users into a DAO. For people that have a wallet, this will act as an easy way of registering them with the click of a link. For users that don’t have a wallet and are unfamiliar with NEAR, they can be onboarded and registered into the DAO with the same click of a link. This solution should have the following features:
+With Keypom, you can create a function call drop with the goal of automatically registering users into a DAO. For people that have a wallet, this will act as an easy way of registering them with the click of a link. For users that don’t have a wallet and are unfamiliar with NEAR, they can be onboarded and registered into the DAO with the same click of a link. This solution should have the following requirements:
 
 - Prospective members don't need an existing wallet to join the DAO. 
 - Each invitation is unique, single use, and can only be used by one person.
 - The invitations do not require council to vote and reach a quorum to approve the registrations. 
 - The drop is exclusive to your DAO and cannot be used or replicated for malicious purposes.
 
-With these features, you will be able to seamlessly register new members into your DAO while maintaining  
+With these requirements met, you will be able to seamlessly register new members into your DAO while maintaining  
 
 In this tutorial, you'll learn how to create this seamless DAO onboarding.
 
 :::info
-This tutorial will be interacting with a [Sputnik V2](https://github.com/near-daos/sputnik-dao-contract) DAO
+This tutorial will be interacting with MoonDAO, a [Sputnik V2](https://github.com/near-daos/sputnik-dao-contract) DAO
+
+<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/moondaohomepage.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>
 :::
 
 ## Prerequisites

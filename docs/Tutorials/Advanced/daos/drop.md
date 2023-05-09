@@ -18,7 +18,7 @@ With this in mind, the aim of this tutorial will be to write a node script that 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
 
-Starting at the `keypom-js` directory, navigate to the `utils` folder and open the `createTickDrop.js` file. 
+Starting at the `keypom-js` directory, navigate to the `utils` folder and open the `createDaoDrop.js` file. 
 
 ```bash
 cd docs-advanced-tutorials/dao-onboarding-skeleton
@@ -26,7 +26,7 @@ cd docs-advanced-tutorials/dao-onboarding-skeleton
 
 There, you can see the following skeleton code in the file `createDaoDrop.js`.
 ``` js reference
-https://github.com/keypom/keypom-js/blob/c6fa5e71d722126bd211ecb693cc9493cb4d426c/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27
+https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27C1
 ```
 
 ---
@@ -41,7 +41,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/c6fa5e71d722126bd211ecb693cc9493cb4d426c/docs-advanced-tutorials/dao-onboarding/createDaoDrop.js#L20-L36
+https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L20-L36
 ```
 
 ---
@@ -57,7 +57,6 @@ This process starts with calling the `initKeypom` function and will always be th
 
 `initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected.
 
-After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter.
 
 ```js
 // Change this to your account ID
@@ -72,11 +71,13 @@ async function createDaoDrop() {
   let near = await connect(nearConfig);
 
   await initKeypom({
-      near,
+    near,
       network: NETWORK_ID
   });
 }
 ```
+
+After `initKeypom` is called, the FC Drop can be created by calling `createDrop` and adding an `fcData` parameter.
 
 #### Defining the Function Call Data
 
@@ -124,7 +125,7 @@ fcData: {
 }  
 ```
 
-#### Adding Proposal and Injected Arguments
+### Adding Proposal and Injected Arguments
 As part of the function call, you will need to define the proposal itself. From the [SputnikV2 ReadMe](https://github.com/near-daos/sputnik-dao-contract#add-proposal), it can be seen that the proposal will need the following structure. 
 ```json
 {
@@ -140,11 +141,7 @@ As part of the function call, you will need to define the proposal itself. From 
 }
 ```
 
-In order to inject the claiming account's `accountId` into the `member_id` argument, `Keypom_args` can be used. 
-
-Here, the `mint_id` is needed to identify and tell the NFT contract which series an NFT should belong to. The `receiver_id` field is needed to identify which account should receive the minted NFT.
-
-The `mint_id` field should be set as the drop's `dropId` and the `receiver_id` should be the attendee's NEAR `accountId`. At first glance, this might seem impossible because you don't know the attendee's accounts ahead of time. To solve this, you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
+In order for the DAO bot to perform as expected, the `member_id` needs to be equal to the claiming account's `accountId`. To do this you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
 
 The following optional Keypom arguments are exposed for each individual method in the `fcData` alongside the required receiverId, methodName, attachedDeposit etc. 
 
@@ -155,30 +152,36 @@ They tell Keypom where to inject certain parameters for each function call.
 - `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
-In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
+In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`.
 
 In summary, the final `fcData` should look as follows.
 
 ```js
 fcData: {
     methods: [
-        null,
         [
             {
-                receiverId: `nft-v2.keypom.testnet`,
-                methodName: "nft_mint",
-                args: "",
-                dropIdField: "mint_id",
-                accountIdField: "receiver_id",
+                receiverId: DAO_BOT_CONTRACT,
+                methodName: "new_proposal",
+                args: JSON.stringify({
+                    dao_contract: DAO_CONTRACT,
+                    proposal: {
+                        description: "Add New Member",
+                        kind: {
+                            AddMemberToRole:{
+                                role: "new-onboardee-role"
+                            }
+                        }
+                    }
+                }),
+                accountIdField: "proposal.kind.AddMemberToRole.member_id",
+                // Attached deposit of 0.1 $NEAR, the Sputnik proposal deposit, for when the receiver makes this function call
                 attachedDeposit: parseNearAmount("0.1")
             }
         ],
     ]   
-}
+}   
 ```
-:::note
-If you wish to use a different NFT contract for your POAP, ensure you know the contract's interface and tailor the `methods` arguments accordingly.
-:::
 
 
 ### Final Drop Structure
@@ -186,43 +189,18 @@ If you wish to use a different NFT contract for your POAP, ensure you know the c
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L45-L70
+https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L46-L77
 ```
-
----
-
-## Making NFT Series
-
-Up until now, the drop is pointing to an NFT series that doesn't exist yet. If a key were to be claimed, the function call would throw an error. In this section, you'll be creating the series of NFTs to be used as POAPs.
-
-The Keypom SDK provides a function to create an NFT series specifically for function call drops, called [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries). It requires the following parameters: 
-
-- `dropId`: The drop ID for the drop that should have the NFT series associated with it.  
-- `metadata`: The metadata that all minted NFTs will have. 
-
-`metadata` is an object with these properties:
-* `title`: The title for the NFTs in the series.
-* `description`: Description for all NFTs in the series.
-* `media`: link to the artwork in the form of an IPFS CID.
-* `copies`: Number of NFTs in the series.
-
-The code for creating the series is shown below. 
-
-```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L72-L81
-```
-
-Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets.
 
 ---
 
 ## Creating Ticket Links
-The last step in this process is to create the links themselves so that you can easily distribute the tickets to people. You can control the format of the URL, for now `localhost:1234` will be used.
+The last step in this process is to create the links themselves so that you can easily regiter people into you DAO. You can control the format of the URL, for this case `https://testnet.mynearwallet.com/linkdrop/` will be used.
 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L83-L95
+https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L80-L85
 ```
 
 ---
@@ -232,14 +210,14 @@ https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a6272376
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L16-L98
+https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L101
 ```
 
 
 ## Conclusion
 
-So far, you've broken down the ticketing system into functional requirements and used them to write a script to create the drop.
+So far, you've broken down the DAO auto-registration tool into functional requirements and used them to write a script to create the drop.
 
-In the next tutorial, you'll be testing the drop you just created, starting with creating a script to emulate the host scanning a ticket. 
+In the next tutorial, you'll be creating the DAO bot that the FC drop you just created will be interacting with. 
 
 

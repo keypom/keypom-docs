@@ -1,7 +1,6 @@
 ---
 sidebar_label: 'Solution Architecture'
 ---
-# BE CAREFUL WITH MEMBER WORD USAGE
 # Solution Architecture
 In this section, you'll break down the requirements for DAO auto-registration in order to better understand how to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
 
@@ -39,33 +38,23 @@ This can be solved by introducing a middleman **Keypom DAO bot contract**, which
 ### Auto-registration cannot be used to attack the DAO
 > The drop is exclusive to your DAO and cannot be used or replicated for malicious purposes.  
 
-It is important that only approved DAO members can distribute these auto-registration links, otherwise malicious actors can attack and flood your DAO. By giving Keypom the ability to automatically add new members to your DAO, a serious exploit is exposed. To dive deeper, the following example can be used:
-
-EvilMoon is a malicious actor and intends on attacking the beloved MoonDAO. To do this, he creates an FC drop that calls the MoonDAO contract to add and approve an `AddMemberToRole` proposal. The desired outcome would be that this action is blocked. 
-:::danger
-Since EvilMoon is using a Keypom drop to call MoonDAO, all of his function calls will show Keypom as the predecessor. If MoonDAO had given Keypom the ability to auto-register users, then EvilMoon's calls would succeed. 
-:::
-
-To remedy this, a Keypom DAO Bot can be used. This DAO bot would be added to its own role in the DAO and given the ability to auto-register users. The key difference is the DAO bot will check if the the calls made to it are legitamte, using [`keypom_args`](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops#keypom-arguments). These auto-injected arguments can be used to ensure that the funder of the drop is an approved member, such as Council. This will prevent malicious actors from creating FC drops to target your DAO. 
-
-This way, so long as EvilMoon is not on MoonDAO council, MoonDAO will be safe from EvilMoon's malicious attacks.
+This will be discussed later in the [security vulnerability section](./security.md). For now, a simple working prototype will be made. 
 
 ## Full Solution Architecture
 From above, here are the key features that need to be implmeneted. 
 ### Keypom Solution
 On the Keypom side, an FC drop will be used to call the DAO bot. This FC drop must:
 - Only call the DAO bot once, to prevent double registration or multiple people registering with the same key. 
-- Automatically inject the drop funder into the arguments passed onto the DAO bot to ensure the funder has the permission to auto-register users
 - Send the claiming account's `accoundId` to the DAO bot when auto-registering them into the DAO. 
 
-To do all these things, a single use FC drop will be created where `funderIdField` and `accountIdField` will be used to auto-inject the funder and claimer `accountId`'s as arguments to the DAO bot. 
+To do all these things, a single use FC drop will be created where `accountIdField` will be used to auto-inject the claimer `accountId`'s as arguments to the DAO bot. 
 
 ### DAO Bot Solution
 The first aspect of the DAO bot is how it interfaces with the DAO.
  
-First and foremost, the DAO bot needs to be added as a member of the DAO and have a role where its own vote can achieve a quorum. In this tutorial and for the sake of simplicity, this will mean its own role. Next, the DAO bot must make multiple cross contract calls to the DAO in succession: first to check permissions of the funder, then to add the proposal, and finally to vote to approve the proposal.
+First and foremost, the DAO bot needs to be added as a member of the DAO and have a role where its own vote can achieve a quorum. In this tutorial and for the sake of simplicity, this will mean its own role. Next, the DAO bot must make multiple cross contract calls to the DAO in succession: first to add the proposal, then to vote to approve the proposal.
 
-The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` in order to validate the incoming function calls from Keypom FC Drops. Next, it must ensure all calls to it originate from Keypom. To do this, the DAO bot can check the predessor `accountId`. 
+The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` in order to inject the claiming account's `accountId` into the `addMemberToRole` proposal. Next, it must ensure all calls to it originate from Keypom. To do this, the DAO bot can check the predessor `accountId`. 
 
 **INSERT GRAPHIC HERE**
 

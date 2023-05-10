@@ -26,7 +26,7 @@ cd docs-advanced-tutorials/dao-onboarding-skeleton
 
 There, you can see the following skeleton code in the file `createDaoDrop.js`.
 ``` js reference
-https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27C1
+https://github.com/keypom/keypom-js/blob/50de06cab595a73ba043c352398b7f2d30d2d837/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27C1
 ```
 
 ---
@@ -41,7 +41,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L20-L36
+https://github.com/keypom/keypom-js/blob/50de06cab595a73ba043c352398b7f2d30d2d837/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L20-L36
 ```
 
 ---
@@ -189,7 +189,7 @@ fcData: {
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L46-L77
+https://github.com/keypom/keypom-js/blob/50de06cab595a73ba043c352398b7f2d30d2d837/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L46-L77
 ```
 
 ---
@@ -200,7 +200,7 @@ The last step in this process is to create the links themselves so that you can 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L80-L85
+https://github.com/keypom/keypom-js/blob/50de06cab595a73ba043c352398b7f2d30d2d837/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L80-L85
 ```
 
 ---
@@ -210,7 +210,7 @@ https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L101
+https://github.com/keypom/keypom-js/blob/50de06cab595a73ba043c352398b7f2d30d2d837/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L101
 ```
 
 

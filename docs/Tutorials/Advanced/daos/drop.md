@@ -140,6 +140,9 @@ As part of the function call, you will need to define the proposal itself. From 
   }
 }
 ```
+:::Warning
+The `role` here **must already exist** in the DAO. This is because the `AddMemberToRole` proposal from SputnikV2 only works with existing roles.
+:::
 
 In order for the DAO bot to perform as expected, the `member_id` needs to be equal to the claiming account's `accountId`. To do this you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
 

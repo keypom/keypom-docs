@@ -12,18 +12,23 @@ Recall that the DAO bot needs the following properties:
 * It must validate the `accountId` in the `AddMemberToRole` proposal was injected by Keypom.
 * The DAO Bot **must** ensure all calls to it originate from Keypom.
 
-
 With this in mind, the aim of this tutorial will be to write a Rust smart contract that will match the above properties. This process can be broken down into three stages:
 
 1. Verification of function call and arguments  
 2. Auto-registration  
 3. View Functions and Configuration  
 
+> If you wish to simply use the DAO bot without modifying it, you can move ahead to the [Final Product](./final.md) page. 
+
+### Accessing the Code
+
 For this section of the tutorial, you will need to clone a seperate [DAO bot repository](https://github.com/keypom/dao-bot/tree/main). From there you can navigate to the skeleton code folder found below. 
 
 ```bash
 cd src-skeleton
 ```
+
+This is the skeleton code and will allow you to follow along as the DAO bot is built out. If you wish to examine the completed version, that can be found in the `src` folder.
 
 In the expandable section below, you can see the skeleton code from the file `lib.rs`.
 

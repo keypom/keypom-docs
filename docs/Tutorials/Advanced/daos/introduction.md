@@ -66,19 +66,3 @@ At this point, all the dependencies should be installed and you should be in the
 ```
 
 With this setup complete, you are ready to begin building out this DAO auto-registration tool, starting by breaking down the problem into its functional requirements. 
-
-```bash
-min@Mins-MacBook-Pro-2 dao-bot % near deploy keypom-dao-bot.testnet target/wasm32-unknown-unknown/release/dao_bot.wasm
-Starting deployment. Account id: keypom-dao-bot.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: target/wasm32-unknown-unknown/release/dao_bot.wasm
-Transaction Id HvAPxQdTYeDN8U95MoS4kXE4T7nunF2T5DMztCTfShxo
-To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/HvAPxQdTYeDN8U95MoS4kXE4T7nunF2T5DMztCTfShxo
-Done deploying to keypom-dao-bot.testnet
-min@Mins-MacBook-Pro-2 dao-bot % near call keypom-dao-bot.testnet new '{"dao_contract":"moondao.sputnikv2.testnet"}' --accountId keypom-dao-bot.testnet
-Scheduling a call: keypom-dao-bot.testnet.new({"dao_contract":"moondao.sputnikv2.testnet"})
-Doing account.functionCall()
-Transaction Id F5kTg3xk2kfx8wFZCa1d7QVYUrBkfz2wKBTavvWeaeHY
-To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/F5kTg3xk2kfx8wFZCa1d7QVYUrBkfz2wKBTavvWeaeHY
-''
-```

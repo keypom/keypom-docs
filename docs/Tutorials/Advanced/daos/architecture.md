@@ -56,6 +56,4 @@ First and foremost, the DAO bot needs to be added as a member of the DAO and hav
 
 The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` in order to inject the claiming account's `accountId` into the `addMemberToRole` proposal. Next, it must ensure all calls to it originate from Keypom. To do this, the DAO bot can check the predessor `accountId`. 
 
-**INSERT GRAPHIC HERE**
-
 ![Example banner](./daobot-flow.svg)

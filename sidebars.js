@@ -138,6 +138,7 @@ const sidebars = {
                 'Tutorials/Advanced/daos/architecture',
                 'Tutorials/Advanced/daos/drop',
                 'Tutorials/Advanced/daos/daobot',
+                'Tutorials/Advanced/daos/security',
               ],
             },
             {

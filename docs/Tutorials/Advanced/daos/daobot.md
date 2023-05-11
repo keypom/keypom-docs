@@ -32,7 +32,7 @@ In the expandable section below, you can see the skeleton code from the file `li
 <p>
 
 ```rust reference
-https://github.com/keypom/dao-bot/blob/50de06cab595a73ba043c352398b7f2d30d2d837/src-skeleton/lib.rs#L2-L124
+https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-skeleton/lib.rs#L1-L123
 ```
 
 </p>
@@ -45,7 +45,7 @@ You may notice a few structs and enums predefined; these are simply present to m
 ### Contract Structure and Security
 As the DAO bot contract is meant to be used by many people, security is a high priority. In order to limit the amount of potential exploits, the contract will be simplistic and linear, with only one point of entry for incoming function calls. 
 
-This can be seen in the skeleton code, with `new_proposal` being the only public method, aside from the view method `view_keypom_contract`.
+This can be seen in the skeleton code, with `new_auto_registration` being the only public method, aside from the view method `view_keypom_contract`.
 
 ---
 
@@ -58,8 +58,9 @@ In order to ensure that account claiming the FC key is the user being auto-regis
 
 All this will be placed in the first and only point of entry into the contract, and will immiately fail if any of the requirements are not met. Putting these two together, the resultant checks can be seen below:
 
-``` rust reference
-https://github.com/keypom/dao-bot/blob/50de06cab595a73ba043c352398b7f2d30d2d837/src-v1/lib.rs#L108-L109
+``` rust
+require!(env::predecessor_account_id() == AccountId::try_from(self.keypom_contract.clone()).unwrap(), "KEYPOM MUST BE PREDECESSOR, CHECK REQUIRED VERSION USING view_keypom_contract");
+require!(keypom_args.account_id_field == Some("proposal.kind.AddMemberToRole.member_id".to_string()), "KEYPOM MUST SEND THESE ARGS");
 ```
 
 :::info
@@ -88,12 +89,12 @@ During this callback, the vote to approve the proposal is hardcoded to eliminate
 The code for this is shown below:
 
 ```rust reference
-https://github.com/keypom/dao-bot/blob/50de06cab595a73ba043c352398b7f2d30d2d837/src-v1/lib.rs#L104-L148
+https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L103-L147
 ```
 
 
 There are a few things to note here. 
-1. The additional `require!` in `new_proposal` ensures that the function call has attached enough $NEAR to cover the Sputnik [proposal bond](https://github.com/near-daos/sputnik-dao-contract#add-proposal). Documentation lists this as 1 $NEAR but the contracts deployed on testnet require just 0.1 $NEAR.  
+1. The additional `require!` in `new_auto_registration` ensures that the function call has attached enough $NEAR to cover the Sputnik [proposal bond](https://github.com/near-daos/sputnik-dao-contract#add-proposal). Documentation lists this as 1 $NEAR but the contracts deployed on testnet require just 0.1 $NEAR.  
 2. Any DAO can be used, by simply passing in the `dao_contract`
 3. The callback function is private, ensuring incoming funciton calls cannot exploit it to auto-approve malicious proposals.
 
@@ -103,7 +104,7 @@ There are a few things to note here.
 The last step in creating this DAO bot smart contract is adding a view and setter function for the `keypom_contract` state variable. For the purposes of security, only the DAO bot can change this state variable. 
 
 ```rust reference
-https://github.com/keypom/dao-bot/blob/50de06cab595a73ba043c352398b7f2d30d2d837/src-v1/lib.rs#L150-L157
+https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L149-L156
 ```
 
 The `keypom_contract` state variable is used instead of a hardcoded variable just to ensure the DAO bot contract can be updated as the Keypom protocol progresses into newer versions. 
@@ -115,7 +116,7 @@ The `keypom_contract` state variable is used instead of a hardcoded variable jus
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/dao-bot/blob/50de06cab595a73ba043c352398b7f2d30d2d837/src-v1/lib.rs#L2-L158
+https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L1-L157
 ```
 
 

@@ -2,7 +2,7 @@
 sidebar_label: 'Solution Architecture'
 ---
 # Solution Architecture
-In this section, you'll break down the requirements for DAO auto-registration in order to better understand how to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
+In this section, you'll break down the requirements for DAO auto-registration in order to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
 
 ## Breaking Down the Problem
 Recall from earlier, the following features are needed:
@@ -11,6 +11,8 @@ Recall from earlier, the following features are needed:
 > Prospective members don't need an existing wallet to join the DAO.  
 
 To facilitate this, prospoective members will receive a [Function Call linkdrop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) that communicates with the DAO. This allows members to create a new NEAR wallet and join the DAO in one seamless operation. 
+
+When claiming, the prospective member's `accountId` must be sent to the DAO for them to be auto-registered.
 
 ### Each invitation can only be used by one person.
 > Each invitation is unique, single use, and can only be used by one person. 
@@ -33,12 +35,16 @@ However, this approach introduces a technical problem. The `act_proposal` functi
 1. The function calls in Keypom FC drops are fire and forget. This means when `add_proposal` returns the `proposal_id`, this value cannot be stored and used for the following function call. 
 2. SputnikV2 does not support custom `proposal_id`'s, meaning there is no way to hard code the `proposal_id` or inject the Keypom `drop_id` as the `proposal_id` ahead of time. 
 
-This can be solved by introducing a middleman **Keypom DAO bot contract**, which is capable of receiving and using a `proposal_id`. More on the DAO bot will be discussed below. 
+This can be solved by introducing a middleman **Keypom DAO bot contract**, which is capable of receiving and using a `proposal_id`. This DAO bot would sit in its own role in the DAO and when called by a Keypom FC drop, will automatically add an `AddMemberToRole` proposal and approve it. 
+
+More on the DAO bot to come. 
 
 ### Auto-registration cannot be used to attack the DAO
 > The drop is exclusive to your DAO and cannot be used or replicated for malicious purposes.  
 
 This will be discussed later in the [security vulnerability section](./security.md). For now, a simple working prototype will be made. 
+
+---
 
 ## Full Solution Architecture
 From above, here are the key features that need to be implmeneted. 
@@ -54,6 +60,11 @@ The first aspect of the DAO bot is how it interfaces with the DAO.
  
 First and foremost, the DAO bot needs to be added as a member of the DAO and have a role where its own vote can achieve a quorum. In this tutorial and for the sake of simplicity, this will mean its own role. Next, the DAO bot must make multiple cross contract calls to the DAO in succession: first to add the proposal, then to vote to approve the proposal.
 
-The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` in order to inject the claiming account's `accountId` into the `addMemberToRole` proposal. Next, it must ensure all calls to it originate from Keypom. To do this, the DAO bot can check the predessor `accountId`. 
+The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` in order to inject the claiming account's `accountId` into the `addMemberToRole` proposal. Next, it must ensure all calls to it originate from Keypom.
 
-![Example banner](./daobot-flow.svg)
+---
+
+## Conclusion
+In this section, you broke down the auto-registration process into tangible goals for both the FC drop and the newly created DAO bot. 
+
+With these goals in mind, you can start to build out this solution!

@@ -150,6 +150,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Twitter',
                 href: 'https://twitter.com/keypomxyz',
               },
+              {
+                label: 'Telegram Builder Chat',
+                href: 'https://t.me/+OqI-cKxQU05lZDIx',
+              },
             ],
           },
           //more

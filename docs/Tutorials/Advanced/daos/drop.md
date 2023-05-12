@@ -12,13 +12,12 @@ Recall that the drop needs the following properties:
 * This use will call the DAO bot contract and inject the drop funder and claiming account's `accountId` into the arguments.  
 
 
-
-With this in mind, the aim of this tutorial will be to write a node script that will create the drop matching the above properties. This process can be broken down into three stages:
+With this in mind, the aim of this tutorial will be to write a node script that uses the Keypom SDK to create the drop matching the above properties. This process can be broken down into two stages:
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
 
-Starting at the `keypom-js` directory, navigate to the `utils` folder and open the `createDaoDrop.js` file. 
+Starting at the `keypom-js` directory, navigate to the `docs-advanced-tutorial/dao-onboarding-skeleton` folder and open the `createDaoDrop.js` file. 
 
 ```bash
 cd docs-advanced-tutorials/dao-onboarding-skeleton
@@ -28,6 +27,10 @@ There, you can see the following skeleton code in the file `createDaoDrop.js`.
 ``` js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27
 ```
+
+:::note
+WHile the skeleton code allows you to follow along and build alongside the tutorial, the completed code can be found in `docs-advanced-tutorial/dao-onboarding/createDaoDrop.js`.
+:::
 
 ---
 
@@ -133,14 +136,14 @@ As part of the function call, you will need to define the proposal itself. From 
     "description": "Add New Member",
     "kind": {
       "AddMemberToRole": {
-        "member_id": "council_member_3.testnet",
+        "member_id": "new-moon-dao-member-1.testnet",
         "role": "new-onboardee"
       }
     }
   }
 }
 ```
-:::Warning
+:::caution
 The `role` here **must already exist** in the DAO. This is because the `AddMemberToRole` proposal from SputnikV2 only works with existing roles.
 :::
 
@@ -155,7 +158,7 @@ They tell Keypom where to inject certain parameters for each function call.
 - `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
-In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`.
+In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, cause Keypom to inject the `accountId` into the proposal object under `member_id`. 
 
 In summary, the final `fcData` should look as follows.
 

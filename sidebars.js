@@ -128,7 +128,7 @@ const sidebars = {
             // },
             {
               type: 'category',
-              label: 'DAO Onboarding',
+              label: 'DAO Auto-Registration',
               // link: {
               //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
               // },

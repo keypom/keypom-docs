@@ -2,7 +2,7 @@
 sidebar_label: 'Final Product'
 ---
 # Final Product
-Welcome to the last section of this DAO auto-registration app! Here, you'll be seeing the full toolchain in action.
+Welcome to the last section of this DAO auto-registration tutorial! Here, you'll be seeing the full toolchain in action.
 
 ## Getting Started
 To follow along on your own machine, you can clone the code from the [Keypom SDK repository](https://github.com/keypom/keypom-js/tree/min/dao) and run the following command in the root folder `keypom-js/`:
@@ -22,10 +22,10 @@ cd docs-advanced-tutorials/dao-onboarding-skeleton && yarn
 ## Creating and Claiming the Drop
 From here, you are free to modify the `createDaoDrop` script however you'd like. 
 
-Most cases this would mean modifying the receiving DAO by changing the `dao_contract` argument to another SputnikV2 contract when calling the DAO bot. In this section, `moondao.sputnikv2.testnet` will be used. However, you can use any DAO you'd like, including this one.
+Most cases this would mean modifying the receiving DAO by changing the `dao_contract` argument to another SputnikV2 contract when calling the DAO bot. In this section, `moondao.sputnikv2.testnet` will be used.
 
 :::note
-As highlighted in the [drop creation](./drop.md#adding-proposal-and-injected-arguments) section, the role that you are planning to auto-register new members into must already exist!
+As highlighted in the [drop creation](./drop.md#adding-proposal-and-injected-arguments) section, the role that you are planning to auto-register new members into must already exist.
 :::
 
 Once you are happy with your changes, if any, you can run the script and get the linkdrops.
@@ -65,7 +65,7 @@ Before claiming, check the DAO policy in your Command Line using the `get_policy
 ```bash
 near view moondao.sputnikv2.testnet get_policy
 ```
-This is the output, trimmed to only show the `new_onboardee_role`'s members. This is the only role of concern as the new members will be automatically registered here.
+This is the output, trimmed to only show the `new-onboardee-role`'s members. This is the only role of concern as the FC drop has been configured to send new members here.
 ```bash
 roles:[
     { name: 'all', kind: 'Everyone', permissions: [], vote_policy: {} },
@@ -113,9 +113,9 @@ This change will not be reflected on AstroDAO, the reasons are still unclear. Ho
 ## How You Can Use DAO Bot
 This DAO bot contract you just made has been deployed to the account `keypom-dao-bot.testnet` and is open for you to use! You can create your own FC drops to interface and experiment with it. 
 
-If you are finding that you wish to make modifications to the DAO bot, the source code is found [here](https://github.com/keypom/dao-bot). You can modify to your liking and deploy the contract as you see fit. 
+If you wish to make modifications to the DAO bot, the source code is found [here](https://github.com/keypom/dao-bot). You can modify to your liking and deploy the contract as you see fit. 
 
 ## Conclusion
 In this tutorial, you learned how you can use a Keypom FC drop and a newly created DAO bot to automatically register new users into your DAO and get the onboarding process started right away. 
 
-This allows new members to focus on topics and discussions that are DAO specific rather than needing to worry about creating an account and learning the ropes of NEAR. This onboarding flow also frees up the voting members to focus on the DAOs actual tasks rather than voting to approve new members.
+This allows new members to focus on topics and discussions that are DAO specific rather than needing to worry about creating an account and learning the techical jargon of the NEAR blockchain. This onboarding flow also frees up the voting members to focus on the DAOs actual tasks rather than voting to approve new members.

@@ -6,10 +6,10 @@ sidebar_label: 'The DAO Bot'
 ## Introduction
 In this section you'll be creating the DAO bot smart contract in order to securely facilitate auto-registration into your DAO. This bot will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
 
-Recall that the DAO bot needs the following properties:
+Recall that the DAO bot needs accomplish the following:
 
 * It must make multiple cross contract calls to the DAO in succession: first to add the proposal, then to vote to approve the proposal.
-* It must validate the `accountId` in the `AddMemberToRole` proposal was injected by Keypom.
+* It must validate the `accountId` in the `AddMemberToRole` proposal that was injected by Keypom.
 * The DAO Bot **must** ensure all calls to it originate from Keypom.
 
 With this in mind, the aim of this tutorial will be to write a Rust smart contract that will match the above properties. This process can be broken down into three stages:
@@ -50,16 +50,16 @@ You may notice a few structs and enums predefined; these are simply present to m
 ### Contract Structure and Security
 As the DAO bot contract is meant to be used by many people, security is a high priority. In order to limit the amount of potential exploits, the contract will be simplistic and linear, with only one point of entry for incoming function calls. 
 
-This can be seen in the skeleton code, with `new_auto_registration` being the only public method, aside from the view method `view_keypom_contract`.
+This can be seen in the skeleton code, with `new_auto_registration` being the only public method, aside from the view method `view_keypom_contract`.Everything else needed to perform its designed task is blocked off with the `#[private]` tag. 
 
 ---
 
 ## Verification of Function Call and Arguments
-Validating the function call and arguments that are received is a crucial step in developing contracts to interface with Keypom. This ensures the legitamacy of the incoming function calls and significantly reduces the likelyhood of your contract being taken advantage of. 
+Validating the function call and arguments that are received is a crucial step in developing contracts to interface with Keypom. This ensures the legitimacy of the incoming function calls and significantly reduces the likelyhood of your contract being taken advantage of. 
 
-To validate that the function call came from Keypom, a quick check on the predecessor `accountId` can be done. This should be equal to the latest version of the Keypom, in this case V2, stored in the state variable [`keypom_contract`](./daobot.md#view-functions-and-configuration). 
+To validate that the function call came from Keypom, a quick check on the predecessor `accountId` can be done. This should be equal to the latest version of the Keypom, in this case V2. This is stored in the state variable [`keypom_contract`](./daobot.md#view-functions-and-configuration) so that it can be updated in the future. 
 
-In order to ensure that account claiming the FC key is the user being auto-registered into the DAO, you can check the `keypom_args`. Recall from the last section, the claiming account's `accountId` was being injected by setting `accountIdField` to `proposal.kind.AddMemberToRole.member_id`. You can leverage this by checking if the received `keypom_args` reflect this. 
+In order to ensure that the account claiming the FC key is the user being auto-registered into the DAO, you can check the `keypom_args`. Recall from the last section, the claiming account's `accountId` was being injected by setting `accountIdField` to `proposal.kind.AddMemberToRole.member_id`. You can leverage this by checking if the received `keypom_args` reflect this. 
 
 All this will be placed in the first and only point of entry into the contract, the `new_auto_registration` method, and will immidiately fail if any of the requirements are not met. Putting these two together, the resultant checks can be seen below:
 
@@ -69,20 +69,20 @@ require!(keypom_args.account_id_field == Some("proposal.kind.AddMemberToRole.mem
 ```
 
 :::info
-Since Keypom will reject any FC drops that attempt to hardcode the `keypom_args`, you know with 100% certainty that the arguments injected using `keypom_args` are legitamate. This allows you to simply compare the different fields of Keypom args to what's expected
+Since Keypom will reject any FC drops that attempt to hardcode the `keypom_args`, you know with 100% certainty that the arguments injected using `keypom_args` are legitimate. This allows you to simply compare the different fields of Keypom args to what's expected
 :::
 
 ---
 
 ## Auto-Registration
-The core part of the DAO bot are the cross contract calls needed to facilitate the auto-registration. For a refresher on making cross contract calls, see [NEAR docs](https://docs.near.org/develop/contracts/crosscontract)
+The core part of the DAO bot are the cross contract calls needed to facilitate the auto-registration. For a refresher on making cross contract calls, see [NEAR docs](https://docs.near.org/develop/contracts/crosscontract#snippet-sending-information).
 
 :::note Recall
 The DAO bot has been added to the DAO in its own role. This means that when the DAO bot votes to approve, it automatically reaches a quorum and passes the proposal
 :::
 
 In order to complete the auto-registration, two consecutive cross contract calls must be made.
-1. `add_proposal` - This will add the `AddMemberToRole` proposal to the DAO. It will accept the proposal sent from the FC drop.
+1. `add_proposal` - This will add the `AddMemberToRole` proposal to the DAO. It will accept the a JSON stringified proposal sent from the FC drop.
 2. `act_proposal` - Here, the DAO bot will vote to approve it's own newly added proposal.
 
 For additional information on the `add_proposal` and `act_proposal` function, see the [SputnikV2 Readme](https://github.com/near-daos/sputnik-dao-contract/blob/main/README.md)
@@ -100,7 +100,7 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 There are a few things to note here. 
 1. The additional `require!` in `new_auto_registration` ensures that the function call has attached enough $NEAR to cover the Sputnik [proposal bond](https://github.com/near-daos/sputnik-dao-contract#add-proposal). Documentation lists this as 1 $NEAR but the contracts deployed on testnet require just 0.1 $NEAR.  
-2. Any DAO can be used, by simply passing in the `dao_contract`
+2. Any DAO can be used, by simply passing in the DAO's `accountId` as the `dao_contract` argument. 
 3. The callback function is private, ensuring incoming funciton calls cannot exploit it to auto-approve malicious proposals.
 
 ---

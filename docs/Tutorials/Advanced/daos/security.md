@@ -2,26 +2,30 @@
 sidebar_label: '⚠️ DAO Bot Exploit Solution'
 ---
 # ⚠️ DAO Bot Exploit Solution
-Up to this point, the DAO bot has a **major** security exploit. In this section, you'll be learning the exploit, how to fix it and how you can diagnose similar issues when writing your contracts to interact with Keypom. 
+Up to this point, the DAO bot has a **major** security exploit. In this section, you'll be learning about the exploit, how to fix it and how you can prevent similar exploits when writing your contracts to interact with Keypom. 
 
 ---
 
 ## Breaking Down the Problem
 To illustrate the exploit, a quick example can be analyzed: 
 
-EvilMoon is a malicious actor and intends on attacking the beloved MoonDAO. His plan is to flood MoonDAO with his malicious friends. To do this, he leverages a Keypom FC drops that calls the Keypom DAO bot. This call is to auto-register members into MoonDAO using the DAO bot's `new_porposal` function. 
+Moon is a Council member on his DAO, MoonDAO. Since MoonDAO has run auto-registration onboarding campaigns before, MoonDAO has the DAO bot sitting in its own role to auto-register users. 
+
+EvilMoon is a malicious actor and intends on attacking the beloved MoonDAO. His plan is to flood MoonDAO with his malicious friends. To do this, he leverages a Keypom FC drops that calls the Keypom DAO bot. This call is to auto-register members into MoonDAO using the DAO bot's `new_auto_registration` function.
 
 From the perspective of MoonDAO, this action is unwelcomed and thus the desired outcome would be that this action is blocked.
 
 Recall that the DAO bot currently checks 2 things before performing the auto-registration:
-1. The function call come from Keypom  
+1. The function call is coming from Keypom.  
 2. The claiming account's `accountId` is injected using `accountIdField`.
 
 :::danger
-Since EvilMoon is using a Keypom drop to call MoonDAO, all of his function calls will show Keypom as the predecessor. So long as EvilMoon structures the `accountIdField` properly when creating his drop, both of these checks would pass. **This is a major exploit**
+Since EvilMoon is using a Keypom drop to call MoonDAO, all of his function calls will show Keypom as the predecessor. This passes the first check. So long as EvilMoon structures the `accountIdField` properly when creating his drop,the second check would pass as well. 
+
+This allows EvilMoon to orchestrate his takeover of MoonDAO by simply creating an FC drop to target MoonDAO. **This is a major exploit.**
 :::
 
-Currently with no additional checks in place, anybody can create an FC drop to call the DAO bot and add anyone they want into your DAO. 
+Currently with no additional checks in place, anybody can create an FC drop to call the DAO bot and add anyone they want into anybody else's DAO. 
 
 For those that are interested, a more in depth test script can be found in the expandable section below. Note this is not the focus of this section and is only for your learning.
 <details>
@@ -48,9 +52,9 @@ In order to patch this exploit, an additional check can be added.
 
 > The Keypom FC drop funder **must** hold a trusted role within the DAO. 
 
-The FC drop funder can easily be obtained using the `keypom_args`. In this case, the `new_auto_registration` function will accept a funder that is automatically injected by Keypom using `keypom_args`. This works the same way as the `accountId` check from the [last section](./daobot.md#verification-of-function-call-and-arguments). 
+The FC drop funder can be obtained using the `keypom_args`. In this case, the `new_auto_registration` function will accept a funder that is automatically injected by Keypom using `keypom_args`. This works the same way as the `accountId` check from the [last section](./daobot.md#verification-of-function-call-and-arguments). 
 
-This puts the power back in the hands of the DAO, as only their trusted members can facilitate these auto-registration campaigns. While the definition of "trusted role" can change between DAOs, for the purpose of simplicity, this will be considered the Council role. 
+This puts the power back in the hands of the DAO, as only their trusted members can facilitate these auto-registration campaigns. While the definition of "trusted role" can change between DAOs, for the purpose of simplicity this will be considered the Council role. 
 
 ![Example banner](./daobot-flow.svg)
 
@@ -205,28 +209,29 @@ View call: moondao.sputnikv2.testnet.get_policy()
 </p>
 </details>
 
-The goal here would be to find the `council` role check if the FC drop funder is included in the members within it. There are a few steps to this.
+The goal here would be to find the `council` role in the DAO policy and check if the FC drop funder is included in the members within it. There are a few steps to this.
 
 1. Verify that the drop `funder` being passed into `new_auto_registration` is coming from Keypom using `keypom_args`.  
 2. Get the DAO's policy using the SputnikV2 DAO view function `get_policy`.  
 3. Find the `council` role in the policy and determine if the funder is included as a members of that role.  
 
 ### Verifying Funder and Getting DAO Policy
-The first step here is modifying teh `new_auto_registration` function to accept a funder string. The legitamacy of this received funder can be verified by checking if the `funderIdField` within the `keypom_args` was set to `funder`. 
+The first step here is modifying the `new_auto_registration` function to accept a funder string. The legitimacy of this received funder can be verified by checking if the `funderIdField` within the `keypom_args` was set to `funder`. 
 
-Once the funder has been verified, `new_auto_registration` will call `get_policy` on the DAO contract. Finally, after `get_policy` a callback function is called to receive and parse the policy.
+Once the funder has been verified, `new_auto_registration` will call `get_policy` on the DAO contract. After `get_policy` is called, a callback function is invoked to receive and parse the policy.
 
 ``` rust reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src/lib.rs#L103-L119
 ```
 
 ### Ensuring Funder is Council
-After the policy is received, the council role is found using a filter. The role's hashset is then searched to see if the received funder exists in that set. If yes, then the auto-registration continues and `add_proposal` is called. 
+After the policy is received, the council role is found using a filter. The role's hashset is then searched to see if the received funder `accountId` exists in that set. If yes, then the auto-registration continues and `add_proposal` is called. 
 
 ```rust reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src/lib.rs#L122-L164
 ```
 
+---
 
 ## Full Code
 The code for this can be seen below: 
@@ -237,11 +242,11 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 ---
 ## Lessons Learned
-From this exploit that, there is one concept you should carry through to any of your contracts that interact with Keypom:
+From this exploit, there is one concept you should carry through to any of your contracts that interact with Keypom:
 
 **Assume people will create malicious FC drops to attack your contract**
 
-This means you must consider how to verify incoming calls from FC drops as "legitamate" or not. A great tool for this are the `keypom_args`. Use these to your advantage when developing your smart contracts. 
+This means you must consider how to verify incoming calls from FC drops as "legitimate" or not. A great tool for this job are the `keypom_args`. Use these to your advantage when developing your smart contracts. 
 
 ---
 

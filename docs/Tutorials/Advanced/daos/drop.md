@@ -4,15 +4,15 @@ sidebar_label: 'Creating the Drop'
 # Creating the Drop
 
 ## Introduction
-In this section you'll take the first step to creating your auto-registration tool by designing the drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
+In this section, you'll take the first step to creating your auto-registration tool by designing the FC drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
 
-Recall that the drop needs the following properties:
+Recall that the following properties must be met:
 
-* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that each key has 1 use.
-* This use will call the DAO bot contract and inject the drop funder and claiming account's `accountId` into the arguments.  
+* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that it can only be used once.
+* This use will call the DAO bot contract and inject the claiming account's `accountId` into the arguments.  
 
 
-With this in mind, the aim of this tutorial will be to write a node script that uses the Keypom SDK to create the drop matching the above properties. This process can be broken down into two stages:
+With this in mind, the aim of this tutorial will be to create the drop matching the above properties. This process can be broken down into two stages:
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
@@ -84,7 +84,7 @@ After `initKeypom` is called, the FC Drop can be created by calling `createDrop`
 
 #### Defining the Function Call Data
 
-One the SDK has been initialized and the NEAR connection established, it's time to create the function call drop. This is done by passing in `fcData` into create drop. It is an object that defines the methods that will be called for any given key use:
+Once the SDK has been initialized and the NEAR connection established, it's time to create the function call drop. This is done by passing in `fcData` into create drop. It is an object that defines the methods that will be called for any given key use:
 
 
 ```bash
@@ -92,7 +92,7 @@ fcData
 └── methods
 ```
 
-For this Keypom drop, only a single function call to the DAO bot will be needed. 
+For this Keypom drop, only a single function call to the DAO bot will be needed. This ensures that the DAO bot will only be called once and cannot be reused to register multiple people using one key. 
 
 ```js
 methods: [
@@ -116,6 +116,7 @@ In summary, the `fcData` should look something like this:
 ```js
 fcData: {
     methods: [
+        // First key use
         [
             {
                 receiverId: DAO_BOT,
@@ -144,10 +145,10 @@ As part of the function call, you will need to define the proposal itself. From 
 }
 ```
 :::caution
-The `role` here **must already exist** in the DAO. This is because the `AddMemberToRole` proposal from SputnikV2 only works with existing roles.
+The `role` in the proposal **must already exist** in the DAO. This is because the `AddMemberToRole` proposal from SputnikV2 only works with existing roles.
 :::
 
-In order for the DAO bot to perform as expected, the `member_id` needs to be equal to the claiming account's `accountId`. To do this you can use what's known as Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
+In order for the DAO bot to perform as expected, the `member_id` field must be equal to the claiming account's `accountId`. To do this you can use Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
 
 The following optional Keypom arguments are exposed for each individual method in the `fcData` alongside the required receiverId, methodName, attachedDeposit etc. 
 
@@ -158,7 +159,7 @@ They tell Keypom where to inject certain parameters for each function call.
 - `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
-In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, cause Keypom to inject the `accountId` into the proposal object under `member_id`. 
+In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, tell Keypom to inject the `accountId` into the proposal object's `member_id` field. 
 
 In summary, the final `fcData` should look as follows.
 
@@ -201,7 +202,7 @@ https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4
 ---
 
 ## Creating Ticket Links
-The last step in this process is to create the links themselves so that you can easily regiter people into you DAO. You can control the format of the URL, for this case `https://testnet.mynearwallet.com/linkdrop/` will be used.
+The last step in this process is to create the links themselves so that you can easily register people into your DAO. You can control the format of the URL. For this tutorial `https://testnet.mynearwallet.com/linkdrop/` will be used.
 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
@@ -213,16 +214,17 @@ https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4
 
 ## Final Code
 
-Putting everything together, the final code for the drop should be:
+Putting everything together, the final code for the drop should be as shown below:
 
 ```js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L101
 ```
 
+---
 
 ## Conclusion
 
-So far, you've broken down the DAO auto-registration tool into functional requirements and used them to write a script to create the drop.
+So far, you've broken down the DAO auto-registration tool into functional requirements. You then used them to write a script to create the accompanying drop.
 
 In the next tutorial, you'll be creating the DAO bot that the FC drop you just created will be interacting with. 
 

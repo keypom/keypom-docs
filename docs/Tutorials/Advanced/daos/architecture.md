@@ -2,51 +2,42 @@
 sidebar_label: 'Solution Architecture'
 ---
 # Solution Architecture
-In this section, you'll break down the requirements for DAO auto-registration in order to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
+In this section, you'll break down the requirements for the DAO auto-registration experience in order to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
 
----
+The two major requirements for the auto-registration experience are:
+- Members don't need an existing wallet to join the DAO. 
+- The invitations do not require a 2 step process where a council votes and reaches a quorum for every single registration.
 
-## Breaking Down the Problem
-Recall from earlier, the following features are needed:
+## Seamless Wallet Creation
 
-### No existing wallets are needed
-> Prospective members don't need an existing wallet to join the DAO.  
+Since each experience will be given out via Keypom linkdrops, the wallet creation process is handled by whatever claim platform is used (MyNEARWallet, Meteor, FastAuth etc.). This means that there is no funding required from the user's perspective which eliminates KYC, exchanges and other barriers.
 
-To facilitate this, prospoective members will receive a [Function Call linkdrop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) that communicates with the DAO. This allows members to create a new NEAR wallet and join the DAO in one seamless operation. 
+In all, the user needs to simply choose an account name and secure their wallet with whatever wallet they choose (iOS, seedphrase, biometrics etc.). It just so happens that the Keypom linkdrop is crafted such that as part of the account creation process, the new user will be automatically registered into a DAO.
 
-When claiming, the prospective member's `accountId` must be sent to the DAO for them to be auto-registered.This can be done using [`keypom_args`](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md#keypom-arguments). 
+## Single Step Registration
 
-### Each invitation can only be used by one person.
-> Each invitation is unique, single use, and can only be used by one person. 
+Most times, DAO's require a 2 step process for new members to join. The first step is to create a proposal to add the new member to the DAO. The second step is to vote on the proposal and reach a quorum. This requires that the DAO constantly monitor for incoming proposals and can lead to long wait times for people.
 
-This can be done by adding multiple keys to the drop where all the keys are single-use. This means each prospective member can only claim their key once and in turn, only be added as a DAO member once. 
+If DAOs want to register a lot of new users, this can be a massive bottleneck. Behind the scenes, what needs to happen is:
 
-### Council voting is not required
-> The invitations do not require council to vote and reach a quorum for every single registration. 
-
-With SputnikV2, all member registrations require a 2 step process. 
-
-1. An [`AddMemberToRole`](https://github.com/near-daos/sputnik-dao-contract#proposal-types) proposal is creaated.
+1. An [`AddMemberToRole`](https://github.com/near-daos/sputnik-dao-contract#proposal-types) proposal is created.
 2. A quorum of voting members, such as the DAO's council, must be reached to approve this proposal.
 
-In order to do this automatically, Keypom must be able to replicate both these steps autonomously. This means Keypom must be added to the DAO in its own role. This role must be capable of auto-registering users by adding and voting to approve `AddMemberToRole` proposals. Since Keypom is the only member in that role, the quorum is automatically reached and the proposal is then approved. 
+In order for this process to be streamlined automatically, Keypom must be able to first add a proposal and then vote / approve it as part of the linkdrop claiming process.
 
-To do this all in one step, the FC drop can call [`add_proposal`](https://github.com/near-daos/sputnik-dao-contract#add-proposal) to create a new `AddMemberToRole` proposal and then [`act_proposal`](https://github.com/near-daos/sputnik-dao-contract#approve-proposal) to vote on and approve the proposal, all in one key use.
+First, Keypom must be given a role that is capable of creating proposals for adding new members.
 
-However, this approach introduces a technical problem. The `act_proposal` function requires a `proposal_id`. This is an issue for the following reasons: 
-1. The function calls in Keypom FC drops are fire and forget. This means when `add_proposal` returns the newly created proposal's `proposal_id`, this value cannot be stored and used for the following function call. 
+For the proposal acceptance, Keypom must be given a role that can reach quorum when it votes. For the purpose of this tutorial, Keypom will be put into a special role with only 1 member. This way, whenever Keypom votes to accept the `AddMemberToRole` proposal, 100% of the members will have voted and it will be automatically accepted.
+
+To do this all in one step, a FunctionCall drop can be created that first calls [`add_proposal`](https://github.com/near-daos/sputnik-dao-contract#add-proposal) and then [`act_proposal`](https://github.com/near-daos/sputnik-dao-contract#approve-proposal) to vote on and approve the new member joining the DAO.
+
+While this works in theory, unfortunately, the `act_proposal` function requires a `proposal_id` that is returned from the `add_proposal` function. This is an issue for the following reasons: 
+1. With Keypom FC drops, there is no way to get a return value and use it to call another function.
 2. SputnikV2 does not support custom `proposal_id`'s, meaning there is no way to hard code the `proposal_id` or inject the Keypom `drop_id` as the `proposal_id` ahead of time. 
-
-This means that there is no way to ensure with 100% certainty that the `act_proposal` will be called on the correct proposal. 
 
 This can be solved by introducing a middleman **Keypom DAO bot contract**, which is capable of receiving and using a `proposal_id`. This DAO bot would sit in its own role in the DAO and when called by a Keypom FC drop, will automatically add an `AddMemberToRole` proposal and approve it. 
 
 More on the DAO bot to come. 
-
-### Auto-registration cannot be used to attack the DAO
-> The drop cannot be used for malicious purposes. 
-
-This will be discussed later in the [security vulnerability section](./security.md). For now, a simple working prototype will be made. 
 
 ---
 

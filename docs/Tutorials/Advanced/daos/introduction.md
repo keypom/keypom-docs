@@ -2,23 +2,29 @@
 sidebar_label: 'Introduction'
 ---
 # Introduction
-In this tutorial, you'll learn how to create a seamless DAO registration experience that allows you to easily onboard crypto natives and non-natives into your DAO with just a single Keypom drop!
+In this tutorial, you'll learn how to create a seamless DAO registration experience that allows you to onboard anyone directly into your DAO with the click of a link!
 
 ---
 
 ## Background
-DAOs are a raging topic in crypto and offer a vast suite versatile on-chain governance features. The problem arises with the barrier to entry for users that aren’t familiar with the specific chain they’re built on top of. Users might be very knowledgable in the DAO’s topics but 
+DAOs are a popular topic in crypto and offer powerful on-chain governance features. They work very well in most cases but there are 2 key issues that Keypom will solve.
 
-1. They might not have wallets or understand how to interact with smart contracts.
-2. To become a DAO member and contribute to the community, an [`AddMemberToRole`](https://github.com/near-daos/sputnik-dao-contract#proposal-types) proposal must be approved by an existing quorum of voting members.
+1. There is a **high barrier to entry** for an everyday user who might not have a crypto wallet.
+2. Being enrolled into the DAO is a **2 step process**. First, a proposal must be made and then it needs to be approved by an existing quorum of voting members.
 
 Both of these act as bottlenecks in attracting and onboarding new members.
 
-This is where Keypom can help. Using a function call drop you can automatically registering users into a DAO. For people that have a wallet, this will act as an easy way of registering them with the click of a link. For users that don’t have a wallet and are unfamiliar with NEAR, they can be onboarded and registered into the DAO with the same click of a link. This solution should have the following requirements:
+This is where Keypom can help. Using a [function call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md), Keypom automatically registers users into your DAO as part of the wallet creation process. Not only does this eliminate the need for a wallet, but it also bypasses the 2 step approval process. 
 
-- Prospective members don't need an existing wallet to join the DAO. 
-- Each invitation is unique, single use, and can only be used by one person.
-- The invitations do not require council to vote and reach a quorum for every single registration. 
+> **NOTE** If someone has a wallet already, they can skip the creation process and simply be registered into the DAO.
+
+
+## Requirements
+
+This tutorial will cover the following requirements to achieve a seamless onboarding experience for new users.
+
+- Members don't need an existing wallet to join the DAO. 
+- The invitations do not require a 2 step process where a council votes and reaches a quorum for every single registration.
 - The drop cannot be used for malicious purposes.
 
 With these requirements met, you will be able to seamlessly and automatically register new members into your DAO while maintaining the integrity of your DAO's members.
@@ -38,7 +44,6 @@ This tutorial will be interacting with MoonDAO, a [Sputnik V2](https://github.co
 For the this tutorial, you can choose to run the scripts on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
 3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
 If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/dao). To follow along and build out this auto-registration tool, see the steps below. 
@@ -46,7 +51,7 @@ If you want to reference the finished code, that can be found [here](https://git
 ---
 
 ## Creating your Project
-In this section, you'll prepare to create the DAO auto-registration tool using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
+In this section, you'll prepare to create the auto-registration tool using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
 
 First, you'll want to clone the repo:
 

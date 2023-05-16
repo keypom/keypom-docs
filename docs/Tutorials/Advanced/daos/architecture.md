@@ -35,14 +35,41 @@ While this works in theory, unfortunately, the `act_proposal` function requires 
 1. With Keypom FC drops, there is no way to get a return value and use it to call another function.
 2. SputnikV2 does not support custom `proposal_id`'s, meaning there is no way to hard code the `proposal_id` or inject the Keypom `drop_id` as the `proposal_id` ahead of time. 
 
-This can be solved by introducing a middleman **Keypom DAO bot contract**, which is capable of receiving and using a `proposal_id`. This DAO bot would sit in its own role in the DAO and when called by a Keypom FC drop, will automatically add an `AddMemberToRole` proposal and approve it. 
+### Middleman Solution
 
-More on the DAO bot to come. 
+Up until this point, the general flow for auto registering users is clear. An FC drop must be made that somehow invokes the `add_proposal` and `act_proposal` functions one after another. The problem with relying entirely on Keypom is that the return value for `add_proposal` must be known and used.
+
+This can be fixed by introducing a middleman which can be referred to as the DAO bot contract. Rather than calling `add_proposal` and `act_proposal` directly through the FC drop, you can instead call a single function on the middleman contract. This middleman contract will then call `add_proposal`, parse the return value and call `act_proposal` in succession.
+
+While Keypom is extremely versatile, there are cases where custom behaviour will be needed. By introducing a middleman, you can customize exactly what will happen when a key is used.
+
+In summary, rather than having the FC drop look as follows:
+
+```
+Keypom FC Drop
+1. add_proposal
+    -> DAO Contract
+    -> Returns proposal ID
+2. act_proposal (I need proposal ID somehow)
+    -> DAO Contract
+```
+
+The FC drop will instead do the following:
+```
+Keypom FC Drop
+1. Call DAO bot contract
+    1. add_proposal
+        -> DAO Contract
+        -> Returns proposal ID
+    2. Parse return value and get proposal ID
+    3. act_proposal
+        -> DAO Contract
+```
 
 ---
 
 ## Full Solution Architecture
-From above, here are the key features that need to be implmeneted. 
+From above, here are the key features that need to be implemented. 
 ### Keypom Solution
 On the Keypom side, an FC drop will be used to call the DAO bot. This FC drop must:
 - Only call the DAO bot once, to prevent double registration or multiple people registering with the same key. 

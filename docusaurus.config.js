@@ -150,6 +150,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Twitter',
                 href: 'https://twitter.com/keypomxyz',
               },
+              {
+                label: 'Telegram Builder Group',
+                href: 'https://nearbuilders.com/tg-keypom',
+              },
             ],
           },
           //more
@@ -163,6 +167,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'JavaScript SDK Github',
                 href: 'https://github.com/keypom/keypom-js',
+              },
+              {
+                label: 'Docs Examples Github',
+                href: 'https://github.com/keypom/keypom-docs-examples',
               },
             ],
           },

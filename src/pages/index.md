@@ -75,8 +75,9 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
   <Column title="Developer Documentation" size="3">
     <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
+    <Feature url="https://github.com/keypom/keypom-docs-examples" title="Tutorial Source Code" subtitle="Begin building with examples" image="docs/icons/code.png" />
     <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.svg" />
-    <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Learn to interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />
+    <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />
   </Column>
 
 

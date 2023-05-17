@@ -8,16 +8,16 @@ In the last section you designed and created a drop according to the specificati
 
 In this tutorial, you'll create a generalized method that will determine whether or not to allow someone entry into the event. It will be used to both test the drop logic and power the core functionality of the ticketing app.
 
-Starting at the `keypom-js` directory, navigate to `docs-advanced-tutorials/ticket-app-skeleton/utils` folder and open the `allowEntry.js` file.
+Starting at the `keypom-docs-examples` directory, navigate to `advanced-tutorials/ticket-app-skeleton/utils` folder and open the `allowEntry.js` file.
 
 ```bash
-cd docs-advanced-tutorials/ticket-app-skeleton/utils
+cd advanced-tutorials/ticket-app-skeleton/utils
 ```
 
 This should show the following skeleton code.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app-skeleton/utils/allowEntry.js#L1-L14
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app-skeleton/utils/allowEntry.js#L1-L14
 ```
 
 ---
@@ -34,7 +34,7 @@ The primary purpose of this function is to ingest a private key and password, an
 The `allowEntry` utility function takes in a private key, and a `basePassword`.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/allowEntry.js#L9-L49
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/allowEntry.js#L9-L49
 ```
 
 ## Testing Logic
@@ -45,7 +45,7 @@ Now that the utility function has been created, it can be used to test the drop 
 * `doubleClaimCheck` - This is meant to check for invalid tickets. In this case, it will try to claim the same ticket twice in a row.
   
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app-skeleton/utils/testTickDrop.js#L1-L26
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app-skeleton/utils/testTickDrop.js#L1-L26
 ```
 
 With both the drop created utility function defined, some code can be written to test the actual logic to ensure that the ticket claiming process works as expected. This will be broken down into phases, similar to the actual ticketing experience. 
@@ -57,7 +57,7 @@ The first phase of the ticketing experience can be labelled as `pre-entry`, when
 The following code can be used to test this logic, following the drop creation. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L5-L30
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/testTickDrop.js#L5-L30
 ```
 
 It's expected that after claiming with the incorrect password, `allowEntry` will return `false` since the key use remains at 1. However, once the correct password is provided, the `allowEntry` function should return `true`. In the tests, an `assert` function is used to ensure the proper behavior.
@@ -67,7 +67,7 @@ It's expected that after claiming with the incorrect password, `allowEntry` will
 Once an attendee has been scanned into the event, they may try to give their ticket to someone else. To test and prevent this, `allowEntry` can be called multiple times on the same ticket. It is expected that the first call should return `true` but once it scans the same ticket again, `false` should be returned.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L32-L57
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/testTickDrop.js#L32-L57
 ```
 
 With the drop functionality tested, you can be confident in the logic behind the scenes and focus on the app behavior. 
@@ -83,7 +83,7 @@ Now that everything has been put together, the final code can be seen below.
 <p>
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/utils/testTickDrop.js#L1-L75
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/testTickDrop.js#L1-L75
 ```
 </p>
 </details>
@@ -92,20 +92,20 @@ https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca83
 ---
 
 ## Running the Script
-Here, you'll learn how to run the code that was just covered, and what to expect. It's assumed that you have already cloned the code from the [Keypom SDK repo](https://github.com/keypom/keypom-docs).
+Here, you'll learn how to run the code that was just covered, and what to expect. It's assumed that you have already cloned the code from the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repo.
 
 :::caution
 Prior to running these scripts, ensure you replace all instances of `minqi.testnet` with an account found in your `~/.near-credentials` folder
 :::
 
-To run the script, run the following command inside the `keypom-js/docs-advanced-tutorials/ticket-app-skeleton` directory:
+To run the script, run the following command inside the `keypom-docs-examples/advanced-tutorials/ticket-app-skeleton` directory:
 
 ```bash
 yarn test-ticket-drop
 ```
 
 :::note
-If you'd like to run the already completed code found in the `ticket-app` directory instead of the skeleton code, run the same `yarn test-ticket-drop` command but inside of the `ticket-app` directory instead.
+If you'd like to run the already completed code found in the `ticket-app` directory instead of the skeleton code, run the same `yarn test-ticket-drop` command but inside of the `keypom-docs-examples/advanced-tutorials/ticket-app` directory instead.
 :::
 
 This should return a successful test after outputting logs:

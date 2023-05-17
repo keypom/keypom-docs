@@ -12,10 +12,10 @@ The UI for trial accounts while in the guest-book app in this tutorial are NOT f
 
 ## Starting the Guest Book
 
-Starting at the `keypom-js` directory, navigate to the `docs-advanced-tutorials/trial-accounts/guest-book` folder and install the dependencies.
+Starting at the `keypom-docs-examples` directory, navigate to the `advanced-tutorials/trial-accounts/guest-book` folder and install the dependencies.
 
 ```bash
-cd docs-advanced-tutorials/trial-accounts/guest-book && yarn install
+cd advanced-tutorials/trial-accounts/guest-book && yarn install
 ```
 
 Once the dependencies have been installed, you can start the app.
@@ -38,22 +38,22 @@ If you're signed in already, it's because you've used the same port for another 
 
 ## Creating the Trial Account
 
-Now that the guest-book is running, it's time to run the trial creation script. Open a new terminal and navigate to the `keypom-js` directory. Navigate to the `trial-accounts` folder and open the `create-trial-drop.js` file.
+Now that the guest-book is running, it's time to run the trial creation script. Open a new terminal and navigate to the `keypom-docs-examples` directory. Navigate to the `advanced-tutorials/trial-accounts` folder and open the `create-trial-drop.js` file.
 
 ```bash
-cd docs-advanced-tutorials/trial-accounts
+cd advanced-tutorials/trial-accounts
 ```
 
 From here, make sure you change the account ID that is being used to sign transactions to an account that you're currently signed in with:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L13
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/create-trial-drop.js#L10
 ```
 
 In addition, change the `guestBookInstance` to whichever URL your app is running on:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L67
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/create-trial-drop.js#L71
 ```
 
 Once this is finished, you can run the following command to create the trial account drop.
@@ -154,7 +154,7 @@ If the account were to lose access of the local storage or their computer blew u
 In order for the guest-book app to be fully compatible with trial accounts, it only needs to add the SDK's wallet selector plugin.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bd2a9e9c2f62f7c51419bd2e1d2cac2bd953ef60/docs-advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L41-L53
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L41-L54
 ```
 
 You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:

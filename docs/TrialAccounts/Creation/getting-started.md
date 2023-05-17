@@ -17,12 +17,12 @@ In order to successfully complete the tutorials, you'll need to have the followi
 
 ## Project Structure
 
-In this section, you'll prepare the project structure that will be used in the following tutorials. The core of the project is found in the [Keypom SDK repo](https://github.com/keypom/keypom-js).
+In this section, you'll prepare the project structure that will be used in the following tutorials. The core of the project is found in the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repository.
 
 First, you'll want to clone the repo:
 
 ```bash
-git clone https://github.com/keypom/keypom-js.git && cd keypom-js
+git clone https://github.com/keypom/keypom-docs-examples.git && cd keypom-docs-examples
 ```
 
 Second, install the dependencies for the SDK:

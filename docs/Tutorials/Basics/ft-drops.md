@@ -339,7 +339,7 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 ### Running the Script
 Here, you'll learn how to run the code that was just covered, and what to expect.
 
-To view the completed code, clone the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repository and navigage to the `basic-tutorials/ft-drop`.
+To view the completed code, clone the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repository and navigate to the `basic-tutorials/ft-drop`.
 ``` bash
 git clone https://github.com/keypom/keypom-docs-examples.git && cd keypom-docs-examples/basic-tutorials/ft-drop
 ```

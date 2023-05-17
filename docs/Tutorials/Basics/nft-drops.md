@@ -23,6 +23,8 @@ For the basic tutorials, you can choose to run the scripts on your own machine. 
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
 3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
 
+With this tutorial, you can either create your own script by following along, or view the completed script available in the [Keypom Documentation Examples](https://github.com/keypom/keypom-docs-examples) repo.
+
 ### Creating your Project
 In this section, you're going to create your project and install the SDK to prepare for the tutorial. If you have a completed script and have installed the SDK, you can skip [forward](simple-drops.md#breaking-down-the-problem).
 
@@ -86,7 +88,7 @@ fsutil file createnew nft-keypom.js 0
 
 Finally, the last step is to install the Keypom JS SDK.
 ```bash
-npm install keypom-js
+npm install @keypom/core
 ```
 
 After installing the SDK, your `package.json` file should now look slightly different.
@@ -108,7 +110,7 @@ After installing the SDK, your `package.json` file should now look slightly diff
   "license": "ISC",
   # highlight-start
   "dependencies": {
-    "keypom-js": "^1.4.0-rc.1"
+    "@keypom/core": "^1.0.0-rc.2"
   }
   # highlight-end
 }
@@ -125,7 +127,7 @@ With these steps complete, your project folder should look like this.
 ├── package.json
 ├── package-lock.json
 ├── node_modules
-│   └── keypom-js
+│   └── @keypom/core
 │   └── ...
 ```
 
@@ -153,15 +155,21 @@ The following skeleton code can be used as a starting point:
 // Each of the two methods to create this drop will have their own unique set of imports
 
 // Imports used in the Keypom SDK method:
-const { initKeypom, createDrop } = require("keypom-js");
-const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
-const { KeyPair, keyStores, connect } = require("near-api-js");
+const { initKeypom, createDrop, getEnv, formatLinkdropUrl } = require("@keypom/core");
+const { parseNearAmount } = require("@near-js/utils");
+const { UnencryptedFileSystemKeyStore } = require("@near-js/keystores-node");
+const { Near } = require("@near-js/wallet-account");
+const { Account } = require("@near-js/accounts");
 const path = require("path");
 const homedir = require("os").homedir();
 
 // Imports used in the NEAR-API-JS method:
-const { parseNearAmount, formatNearAmount } = require("near-api-js/lib/utils/format");
-const { KeyPair, keyStores, connect } = require("near-api-js");
+const { parseNearAmount } = require("@near-js/utils");
+const { KeyPair } = require("@near-js/crypto")
+const { UnencryptedFileSystemKeyStore } = require("@near-js/keystores-node");
+const { Near } = require("@near-js/wallet-account");
+const { Account } = require("@near-js/accounts");
+const { getRecentDropId } = require("../utils/general.js")
 const path = require("path");
 const homedir = require("os").homedir();
 
@@ -212,7 +220,7 @@ For simplicity, this tutorial will choose a file-based keystore and point to the
 The code for setting up the NEAR connection and minting the NFT is shown below. In the skeleton code, these are steps 1 and 2.
 
 ``` js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/nft-example.js#L8-L46
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L11-L49
 ```
 
 :::note
@@ -262,14 +270,14 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/nft-example.js#L48-L71
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L51-L74
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/near-api-js/nft-near-example.js#L49-L98
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-near-example.js#L52-L101
 ```
 
 </TabItem>
@@ -287,7 +295,7 @@ The last step in this process is to create the links themselves so that you can 
 With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/nft-example.js#L73-L82
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L76-L82
 ```
 
 ---
@@ -299,14 +307,14 @@ Now that everything has been put together, the final code can be seen below.
 <TabItem value="KPJS" label="🔑Keypom-JS SDK">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/keypom-js-sdk/nft-example.js#L1-L86
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L1-L89
 ```
 
 </TabItem>
 <TabItem value="NRJS" label="💻NEAR-API-JS">
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c4/docs-examples/near-api-js/nft-near-example.js#L1-L111
+https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-near-example.js#L1-L114
 ```
 
 </TabItem>
@@ -318,15 +326,15 @@ https://github.com/keypom/keypom-js/blob/90ee5677f8d89540690544a4348f431d549db0c
 ### Running the Script
 Here, you'll learn how to run the code that was just covered, and what to expect.
 
-To view the completed code, clone the Keypom SDK repo and visit the examples directory.
+To view the completed code, clone the Keypom Docs examples repo and navigage to the `basic-tutorials/nft-drop`.
 ``` bash
-git clone https://github.com/keypom/keypom-js && cd keypom-js/docs-examples/keypom-js-sdk
+git clone https://github.com/keypom/keypom-docs-examples.git && cd keypom-docs-examples/basic-tutorials/nft-drop
 ```
-From there, you can open the `nft-example.js` file.
+From there, you can and open the `nft-example.js` file.
 
-To run the code you just cloned, return to the `keypom-js/docs-examples` directory and install all the necessary packages. 
+To run the code you just cloned, return to the `keypom-docs-examples` directory and install all the necessary packages. 
 ```bash
-cd .. && yarn
+cd .. && cd .. && yarn
 ```
 
 :::caution
@@ -335,10 +343,10 @@ Prior to running these scripts, ensure you replace all instances of `keypom-docs
 
 From there, you run this NFT Drop script that was made in this tutorial using the following command:
 ``` bash
-yarn nft-keypom
+yarn basic:nft-keypom
 ```
 :::note
-The SDK script is being tested here; use `yarn nft-near` to test the `NEAR-API-JS` script instead.
+The SDK script is being tested here; use `yarn basic:nft-near` to test the `NEAR-API-JS` script instead.
 :::
 This should return a successful drop creation and console log a Public Key and Linkdrop: 
 ```bash

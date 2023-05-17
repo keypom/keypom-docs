@@ -24,15 +24,15 @@ With this in mind, the aim of this tutorial will be to write a node script that 
 2) Create the drop with function call data.  
 3) Create the NFT collection for the post attendance gift.
 
-Starting at the `keypom-js` directory, navigate to the `utils` folder and open the `createTickDrop.js` file. 
+Starting at the `keypom-docs-examples` directory, navigate to the `ticket-app-skeleton/utils` folder and open the `createTickDrop.js` file. 
 
 ```bash
-cd docs-advanced-tutorials/ticket-app-skeleton/utils
+cd advanced-tutorials/ticket-app-skeleton/utils
 ```
 
 There, you can see the following skeleton code in the file `createTickDrop.js`.
 ``` js reference
-https://github.com/keypom/keypom-js/blob/7b25963e84411b4d51f15aa926954344972d7792/docs-advanced-tutorials/ticket-app-skeleton/utils/createTickDrop.js#L16-L27
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app-skeleton/utils/createTickDrop.js#L1-L33
 ```
 
 ---
@@ -47,7 +47,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7b25963e84411b4d51f15aa926954344972d7792/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L16-L36
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L22-L38
 ```
 
 ---
@@ -75,7 +75,8 @@ async function createTickDrop() {
   const credentialsPath =  path.join(homedir, CREDENTIALS_DIR);
   ...
   ...
-  let near = await connect(nearConfig);
+  let near = new Near(nearConfig);
+  const fundingAccount = new Account(near.connection, FUNDER_ACCOUNT_ID)
 
   await initKeypom({
       near,
@@ -231,7 +232,7 @@ For an in-depth explanation around password protected keys, see the [Typedocs](.
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L45-L70
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L47-L72
 ```
 
 ---
@@ -254,7 +255,7 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 The code for creating the series is shown below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L72-L81
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L74-L83
 ```
 
 Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets.
@@ -267,7 +268,7 @@ The last step in this process is to create the links themselves so that you can 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L83-L95
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L85-L90
 ```
 
 ---
@@ -277,7 +278,7 @@ https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a6272376
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/80abe9d8d145a294ff06ef9e9a55808a62723768/docs-advanced-tutorials/ticket-app/utils/createTickDrop.js#L16-L98
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L1-L106
 ```
 
 

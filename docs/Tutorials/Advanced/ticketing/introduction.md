@@ -38,21 +38,30 @@ If you want to reference the finished code, that can be found [here](https://git
 ---
 
 ## Creating your Project
-In this section, you'll prepare to create the ticketing app using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
+In this section, you'll prepare to create the ticketing app using the skeleton code made available to you at the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repo. 
 
 First, you'll want to clone the repo:
 
 ```bash
-git clone https://github.com/keypom/keypom-js.git && cd keypom-js
+git clone https://github.com/keypom/keypom-docs-examples.git && cd keypom-docs-examples
 ```
 
-Second, install the dependencies for both the SDK and ticketing app skeleton code:
+Second, install all dependencies for the ticketing app skeleton code using the following:
 
 ```
-yarn install && cd docs-advanced-tutorials/ticket-app-skeleton && yarn
+yarn ticketing:init-skeleton && cd advanced-tutorials/ticket-app-skeleton
 ```
 
-At this point, all the dependencies should be installed and you should be in the `docs-advanced-tutorials/ticket-app-skeleton` folder. Here you'll find the following files required to build out your app.
+:::note
+To install all dependencies for the completed ticketing app, run the following:
+```
+yarn ticketing:init-complete && cd advanced-tutorials/ticket-app
+```
+:::
+
+
+
+At this point, all the dependencies should be installed and you should be in the `advanced-tutorials/ticket-app-skeleton` folder. Here you'll find the following files required to build out your app.
 
 ```bash
 /ticket-app-skeleton

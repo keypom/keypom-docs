@@ -57,7 +57,7 @@ In post-claim, a `allowEntry` might have returned false for a few reasons.
 In order to track all these stages and possible outcomes, a set of enums will be defined.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/751b830e74cc0e2e354263359e926cb15f931d30/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L15-L27
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/scanner.js#L10-L22
 ```
 
 All these stages will be stored in a `masterStatus` state variable object.
@@ -85,7 +85,7 @@ Upon app mount, the host scanner page will immediately do the following.
 
 These features can be seen in the code snippet below. 
 ```js reference
-https://github.com/keypom/keypom-js/blob/2fe9eab7d468e8195c3eae30b295577d22607f43/docs-advanced-tutorials/ticket-app/frontend/components/scanner.js#L13-L57
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/scanner.js#L9-L53
 ```
 
 ### Claiming
@@ -99,7 +99,7 @@ The primary task of the claim process is to determine if a claim is:
 This is accomplished using the `allowEntry` function that you created earlier. If it returns `true`, the master status stage should be set to `Stages.successClaim`. Otherwise, it should be set to `Stages.failClaim`.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L59-L96
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/scanner.js#L55-L92
 ```
 
 ### Rendering
@@ -123,7 +123,7 @@ The following expandable section contains code for rendering.
 <p>
 
 ```jsx reference
-https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L98-L151
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/scanner.js#L94-L147
 ```
 
 </p>
@@ -133,7 +133,7 @@ https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5
 The full code, including the set up, claiming, and the rendering, can be seen below.
 
 ``` jsx reference
-https://github.com/keypom/keypom-js/blob/7c4c0c988624b7b9ad92e9e49e2c8c5e09380c5d/docs-advanced-tutorials/ticket-app/components/scanner.js#L1-L152
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/scanner.js#L1-L148
 ```
 
 ---

@@ -343,10 +343,10 @@ Prior to running these scripts, ensure you replace all instances of `keypom-docs
 
 From there, you run this NFT Drop script that was made in this tutorial using the following command:
 ``` bash
-yarn basic:nft-keypom
+yarn basic:nft:keypom
 ```
 :::note
-The SDK script is being tested here; use `yarn basic:nft-near` to test the `NEAR-API-JS` script instead.
+The SDK script is being tested here; use `yarn basic:nft:naj` to test the `NEAR-API-JS` script instead.
 :::
 This should return a successful drop creation and console log a Public Key and Linkdrop: 
 ```bash

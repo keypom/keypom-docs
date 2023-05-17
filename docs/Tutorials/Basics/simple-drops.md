@@ -302,10 +302,10 @@ Prior to running these scripts, ensure you replace all instances of `keypom-docs
 
 From there, you can run this Simple Drop script that was made in this tutorial using the following command:
 ``` bash
-yarn basic:simple-keypom
+yarn basic:simple:keypom
 ```
 :::note
-The SDK script is being tested here; use `yarn basic:simple-near` to test the `NEAR-API-JS` script instead.
+The SDK script is being tested here; use `yarn basic:simple:naj` to test the `NEAR-API-JS` script instead.
 :::
 This should return a successful drop creation and console log a Public Key and Linkdrop: 
 ```bash

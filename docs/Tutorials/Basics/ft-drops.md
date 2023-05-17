@@ -356,10 +356,10 @@ Prior to running these scripts, ensure you replace all instances of `keypom-docs
 
 From there, you can run this FT Drop script that was made in this tutorial using the following command:
 ``` bash
-yarn basic:ft-keypom
+yarn basic:ft:keypom
 ```
 :::note
-The SDK script is being tested here; use `yarn basic:ft-near` to test the `NEAR-API-JS` script instead.
+The SDK script is being tested here; use `yarn basic:ft:naj` to test the `NEAR-API-JS` script instead.
 :::
 This should return a successful drop creation and console log a Public Key and Linkdrop
 

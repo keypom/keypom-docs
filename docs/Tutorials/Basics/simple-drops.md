@@ -111,7 +111,7 @@ After installing the SDK, your `package.json` file should now look slightly diff
   "license": "ISC",
   # highlight-start
   "dependencies": {
-    "@keypom/core": "^1.0.0-rc.2"
+    "@keypom/core": "^1.0.0"
   }
   # highlight-end
 }

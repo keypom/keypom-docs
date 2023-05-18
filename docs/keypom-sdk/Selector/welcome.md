@@ -32,26 +32,31 @@ Check out our official Keypom [Documentation](https://docs.keypom.xyz/) for tuto
   - [Initializing the SDK](#initializing-the-sdk)
   - [View Functions](#view-functions)
   - [Creating Drops](#creating-drops)
-    - [Simple Drop With 10 Random Keys](#creating-a-simple-drop-with-10-random-keys)
-    - [Simple Drop With Deterministic Keys](#creating-a-simple-drop-with-5-deterministically-generated-keys)
-    - [Simple Drop With Pre-Created Keys](#creating-a-simple-drop-with-pre-created-keys)
-    - [Password Protected Keys](#creating-a-simple-drop-with-a-password-protected-key)
+    - [Creating a simple drop with 10 random keys](#creating-a-simple-drop-with-10-random-keys)
+    - [Creating a simple drop with 5 deterministically generated keys](#creating-a-simple-drop-with-5-deterministically-generated-keys)
+    - [Creating a simple drop with pre-created keys](#creating-a-simple-drop-with-pre-created-keys)
+    - [Creating a simple drop with a password protected key](#creating-a-simple-drop-with-a-password-protected-key)
   - [Claiming Linkdrops](#claiming-linkdrops)
-    - [Claiming To Existing Account](#claiming-a-linkdrop-to-an-Existing-Account)
-    - [Claiming To a New Account](#Claiming-a-Linkdrop-and-Onboarding-a-New-User)
-    - [Claiming Password Protected Drops](#Claiming-a-Password-Protected-Linkdrop)
-  - [Deleting Keys and Drops](#Deleting-Keys-and-Drops)
-    - [Deleting Keys](#Delete-Keys)
-    - [Deleting Drops](#Delete-Drops)
-  - [Account Balances for Smooth UX](#Account-Balances-for-Smooth-UX)
-  - [Utility Functions](#Utility-Functions)
+    - [Claiming a Linkdrop to an Existing Account](#claiming-a-linkdrop-to-an-existing-account)
+    - [Claiming a Linkdrop and Onboarding a New User](#claiming-a-linkdrop-and-onboarding-a-new-user)
+    - [Claiming a Password Protected Linkdrop](#claiming-a-password-protected-linkdrop)
+  - [Deleting Keys and Drops](#deleting-keys-and-drops)
+    - [Delete Keys](#delete-keys)
+    - [Delete Drops](#delete-drops)
+  - [Account Balances for Smooth UX](#account-balances-for-smooth-ux)
+  - [Utility Functions](#utility-functions)
 - [Tests](#tests)
-  - [Running the Tests](#Running-the-Tests)
+  - [Running the Tests](#running-the-tests)
 - [Costs](#costs)
   - [Per Drop](#per-drop)
   - [Per Key](#per-key)
+    - [Key Costs for Simple Drop](#key-costs-for-simple-drop)
+    - [Additional Costs for NFT Drops](#additional-costs-for-nft-drops)
+    - [Additional Costs for FT Drops](#additional-costs-for-ft-drops)
+    - [Additional Costs for FC Drops](#additional-costs-for-fc-drops)
 - [How Linkdrops Work](#how-linkdrops-work)
 - [Contributing](#contributing)
+- [License](#license)
 
 </details>
 
@@ -589,7 +594,7 @@ Receipt: uN5cwkUFXB2gY4LE8vfuCGvA8BcqaTVgoExKQGu2Cct
 
 # Costs
 
-It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *forseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
+It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *foreseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
 
 With that being said, there are several mandatory costs that must be taken into account when using Keypom. These costs are broken down into two categories: per key and per drop.
 

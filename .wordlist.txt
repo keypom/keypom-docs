@@ -414,4 +414,18 @@ offboarded
 offboarding
 Offboarding
 offboard
+signerId
+BasicTransaction
+signInTrialAccount
+signInInstantAccount
+trialAccountSpecs
+moduleId
+instantSignInSpecs
+wrapTxnParamsForTrial
+isUnclaimedTrialDrop
+convertBasicTransaction
+viewAccessKeyData
+localnet
+accountMappingContract
+
 

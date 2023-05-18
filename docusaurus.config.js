@@ -93,7 +93,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            to: "docs/next/keypom-sdk/welcome",
+            to: "docs/next/keypom-sdk/Core/welcome",
             label: "📚 SDK TypeDocs",
             position: "left",
           },
@@ -130,7 +130,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: "📚 SDK TypeDocs",
-                to: "docs/next/keypom-sdk/welcome",
+                to: "docs/next/keypom-sdk/Core/welcome",
               },
               {
                 label: "💡 Keypom Executive Summary",

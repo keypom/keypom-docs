@@ -21,7 +21,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/fc.ts:34](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L34)
+[lib/types/fc.ts:34](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L34)
 
 ___
 
@@ -33,7 +33,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L19)
+[lib/types/fc.ts:19](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L19)
 
 ___
 
@@ -45,7 +45,7 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L23)
+[lib/types/fc.ts:23](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L23)
 
 ___
 
@@ -58,7 +58,7 @@ If this is specified, the key can ONLY be used to call `claim` and no `deposit_p
 
 #### Defined in
 
-[lib/types/fc.ts:28](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L28)
+[lib/types/fc.ts:28](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L28)
 
 ___
 
@@ -72,7 +72,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/fc.ts:40](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L40)
+[lib/types/fc.ts:40](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L40)
 
 ___
 
@@ -86,7 +86,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/fc.ts:52](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L52)
+[lib/types/fc.ts:52](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L52)
 
 ___
 
@@ -100,7 +100,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/fc.ts:46](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L46)
+[lib/types/fc.ts:46](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L46)
 
 ___
 
@@ -112,7 +112,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L15)
+[lib/types/fc.ts:15](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L15)
 
 ___
 
@@ -124,7 +124,7 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L11)
+[lib/types/fc.ts:11](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L11)
 
 ___
 
@@ -137,7 +137,7 @@ This receiver must be a valid account and non-malicious (cannot be set to the ke
 
 #### Defined in
 
-[lib/types/fc.ts:57](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L57)
+[lib/types/fc.ts:57](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L57)
 
 ___
 
@@ -150,4 +150,4 @@ By default, the user cannot provide any custom arguments
 
 #### Defined in
 
-[lib/types/fc.ts:62](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/fc.ts#L62)
+[lib/types/fc.ts:62](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/fc.ts#L62)

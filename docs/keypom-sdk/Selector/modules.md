@@ -1,6 +1,6 @@
 ---
 id: "modules"
-title: "@keypom/selector - v1.0.0"
+title: "@keypom/selector - v1.1.0"
 sidebar_label: "Exports"
 sidebar_position: 0.5
 custom_edit_url: null
@@ -28,4 +28,4 @@ custom_edit_url: null
 
 #### Defined in
 
-[core/setup.ts:92](https://github.com/keypom/keypom-js/blob/68bf90396/packages/selector/src/core/setup.ts#L92)
+[core/setup.ts:92](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/selector/src/core/setup.ts#L92)

@@ -18,7 +18,7 @@ Which accounts are allowed to add keys? If the allowlist is empty, anyone that i
 
 #### Defined in
 
-[lib/types/drops.ts:169](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L169)
+[lib/types/drops.ts:169](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L169)
 
 ___
 
@@ -31,7 +31,7 @@ automatically withdrawn and sent to their NEAR wallet?
 
 #### Defined in
 
-[lib/types/drops.ts:176](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L176)
+[lib/types/drops.ts:176](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L176)
 
 ___
 
@@ -43,7 +43,7 @@ Which accounts are NOT allowed to add keys?
 
 #### Defined in
 
-[lib/types/drops.ts:171](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L171)
+[lib/types/drops.ts:171](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L171)
 
 ___
 
@@ -56,7 +56,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[lib/types/drops.ts:186](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L186)
+[lib/types/drops.ts:186](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L186)
 
 ___
 
@@ -68,7 +68,7 @@ Maximum number of keys that can be added to this drop. If None, there is no max.
 
 #### Defined in
 
-[lib/types/drops.ts:161](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L161)
+[lib/types/drops.ts:161](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L161)
 
 ___
 
@@ -81,7 +81,7 @@ Automatically sent to the funder's balance. If None, the keys are free to the pu
 
 #### Defined in
 
-[lib/types/drops.ts:166](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L166)
+[lib/types/drops.ts:166](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L166)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-[lib/types/drops.ts:167](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L167)
+[lib/types/drops.ts:167](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L167)
 
 ___
 
@@ -104,4 +104,4 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[lib/types/drops.ts:181](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L181)
+[lib/types/drops.ts:181](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L181)

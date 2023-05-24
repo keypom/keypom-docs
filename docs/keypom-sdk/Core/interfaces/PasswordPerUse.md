@@ -18,7 +18,7 @@ Which use does the password belong to? These uses are *NOT* zero-indexed so the 
 
 #### Defined in
 
-[lib/types/drops.ts:196](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L196)
+[lib/types/drops.ts:196](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L196)
 
 ___
 
@@ -30,4 +30,4 @@ The password for this given use
 
 #### Defined in
 
-[lib/types/drops.ts:194](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/drops.ts#L194)
+[lib/types/drops.ts:194](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/drops.ts#L194)

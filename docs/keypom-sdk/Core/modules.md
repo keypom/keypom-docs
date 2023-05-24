@@ -1,6 +1,6 @@
 ---
 id: "modules"
-title: "@keypom/core - v1.0.0"
+title: "@keypom/core - v1.0.1"
 sidebar_label: "Exports"
 sidebar_position: 0.5
 custom_edit_url: null
@@ -51,7 +51,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[lib/types/params.ts:19](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/params.ts#L19)
+[lib/types/params.ts:19](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/params.ts#L19)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:12](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/general.ts#L12)
+[lib/types/general.ts:12](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L12)
 
 ## Variables
 
@@ -79,24 +79,7 @@ ___
 
 #### Defined in
 
-[lib/trial-accounts/utils.ts:13](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/utils.ts#L13)
-
-___
-
-### accountMappingContract
-
- `Const` **accountMappingContract**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `mainnet` | `string` |
-| `testnet` | `string` |
-
-#### Defined in
-
-[lib/keypom.ts:84](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L84)
+[lib/trial-accounts/utils.ts:13](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/utils.ts#L13)
 
 ___
 
@@ -126,13 +109,34 @@ ___
 
 #### Defined in
 
-[lib/keypom.ts:33](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L33)
+[lib/keypom.ts:25](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L25)
+
+## Keypom SDK Environment
+
+### accountMappingContract
+
+ `Const` **accountMappingContract**: `Object`
+
+Recovery mapping contracts used to keep track of trial account IDs for given public keys.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `mainnet` | `string` |
+| `testnet` | `string` |
+
+#### Defined in
+
+[lib/keypom.ts:93](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L93)
 
 ___
 
 ### supportedKeypomContracts
 
  `Const` **supportedKeypomContracts**: `Object`
+
+List of supported Keypom contracts that can be used with the SDK.
 
 #### Type declaration
 
@@ -153,7 +157,7 @@ ___
 
 #### Defined in
 
-[lib/keypom.ts:54](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L54)
+[lib/keypom.ts:51](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L51)
 
 ___
 
@@ -161,20 +165,233 @@ ___
 
  `Const` **supportedLinkdropClaimPages**: `Object`
 
+Official linkdrop claim pages for wallets and other applications
+
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `mainnet` | { `keypom`: `string` = 'https://keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY'; `mynearwallet`: `string` = 'https://app.mynearwallet.com/linkdrop/CONTRACT\_ID/SECRET\_KEY' } |
+| `mainnet` | { `keypom`: `string` = 'https://keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY'; `meteor`: `string` = 'https://wallet.meteorwallet.app/linkdrop/CONTRACT\_ID/SECRET\_KEY'; `mynearwallet`: `string` = 'https://app.mynearwallet.com/linkdrop/CONTRACT\_ID/SECRET\_KEY' } |
 | `mainnet.keypom` | `string` |
+| `mainnet.meteor` | `string` |
 | `mainnet.mynearwallet` | `string` |
-| `testnet` | { `keypom`: `string` = 'https://testnet.keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY'; `mynearwallet`: `string` = 'https://testnet.mynearwallet.com/linkdrop/CONTRACT\_ID/SECRET\_KEY' } |
+| `testnet` | { `keypom`: `string` = 'https://testnet.keypom.xyz/claim/CONTRACT\_ID#SECRET\_KEY'; `meteor`: `string` = 'https://wallet.meteorwallet.app/linkdrop/CONTRACT\_ID/SECRET\_KEY'; `mynearwallet`: `string` = 'https://testnet.mynearwallet.com/linkdrop/CONTRACT\_ID/SECRET\_KEY' } |
 | `testnet.keypom` | `string` |
+| `testnet.meteor` | `string` |
 | `testnet.mynearwallet` | `string` |
 
 #### Defined in
 
-[lib/keypom.ts:72](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L72)
+[lib/keypom.ts:74](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L74)
+
+___
+
+### getEnv
+
+**getEnv**(): [`EnvVars`](interfaces/EnvVars.md)
+
+#### Returns
+
+[`EnvVars`](interfaces/EnvVars.md)
+
+The environment variables used by the Keypom library.
+
+#### Defined in
+
+[lib/keypom.ts:119](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L119)
+
+___
+
+### initKeypom
+
+**initKeypom**(`«destructured»`): `Promise`<`any`\>
+
+Initializes the SDK to allow for interactions with the Keypom Protocol. By default, a new NEAR connection will be established but this can be overloaded by
+passing in an existing connection object. In either case, if a funder is passed in, the credentials will be added to the keystore to sign transactions.
+
+To update the funder account, refer to the `updateFunder` function. If you only wish to use view methods and not sign transactions, no funder account is needed.
+If you wish to update the Keypom Contract ID being used, refer to the `updateKeypomContractId` function.
+
+**`Example`**
+
+Using a pre-created NEAR connection instance with an UnencryptedFileSystemKeyStore:
+```js
+const path = require("path");
+const homedir = require("os").homedir();
+const { KeyPair, keyStores, connect } = require("near-api-js");
+const { initKeypom, getDrops } = require("keypom-js");
+
+// Establish the network we wish to work on
+const network = "testnet";
+// Get the location where the credentials are stored for our KeyStore
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = (await path).join(homedir, CREDENTIALS_DIR);
+(await path).join;
+let keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+// Establish the configuration for the connection
+let nearConfig = {
+		networkId: network,
+		keyStore,
+		nodeUrl: `https://rpc.${network}.near.org`,
+		walletUrl: `https://wallet.${network}.near.org`,
+		helperUrl: `https://helper.${network}.near.org`,
+		explorerUrl: `https://explorer.${network}.near.org`,
+};
+// Connect to the NEAR blockchain and get the connection instance
+let near = await connect(nearConfig);
+
+// Initialize the SDK for the given network and NEAR connection
+await initKeypom({
+		near,
+		network
+});
+
+// Get the drops for the given owner
+const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
+```
+
+**`Example`**
+
+Creating an entirely new NEAR connection instance by using initKeypom and passing in a funder account:
+```js
+const { initKeypom, getDrops } = require("keypom-js");
+
+// Initialize the SDK for the given network and NEAR connection
+await initKeypom({
+		network: "testnet",
+		funder: {
+			accountId: "benji_demo.testnet",
+			secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
+		}
+});
+
+// Get the drops for the given owner
+const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `«destructured»` | `Object` | - |
+| › `funder?` | [`Funder`](interfaces/Funder.md) | The account that will sign transactions to create drops and interact with the Keypom contract. This account will be added to the KeyStore if provided. If rootEntropy is provided for the funder, all access keys will be derived deterministically based off this string. |
+| › `keypomContractId?` | `string` | Instead of using the most up-to-date, default Keypom contract, you can specify a specific account ID to use. If an older version is specified, some features of the SDK might not be usable. |
+| › `near?` | `Near` | The NEAR connection instance to use. If not passed in, it will create a new one. |
+| › `network?` | `string` | The network to connect to either `mainnet` or `testnet`. If a near object is passed in, this field can be omitted |
+
+#### Returns
+
+`Promise`<`any`\>
+
+If a funder is passed in, its account object is returned. Otherwise, it null is returned.
+
+#### Defined in
+
+[lib/keypom.ts:239](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L239)
+
+___
+
+### updateFunder
+
+**updateFunder**(`funder`): `Promise`<`any`\>
+
+Once the SDK is initialized, this function allows the current funder account to be updated. Having a funder is only necessary if you wish to sign transactions on the Keypom Protocol.
+
+**`Example`**
+
+After initializing the SDK, the funder is updated.
+```js
+const path = require("path");
+const homedir = require("os").homedir();
+const { KeyPair, keyStores, connect } = require("near-api-js");
+const { initKeypom, updateFunder, getDrops } = require("keypom-js");
+
+	// Initialize the SDK for the given network and NEAR connection
+	await initKeypom({
+		network: "testnet",
+	});
+
+	// Update the current funder account
+	await updateFunder({
+		funder: {
+			accountId: "benji_demo.testnet",
+			secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
+		}
+	})
+
+	// Get the drops for the given owner
+	const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
+	console.log('dropsForOwner: ', dropsForOwner)
+
+	return;
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `funder` | `Object` | The account that will sign transactions to create drops and interact with the Keypom contract. This account will be added to the KeyStore if provided. If rootEntropy is provided for the funder, all access keys will be derived deterministically based off this string. |
+| `funder.funder` | [`Funder`](interfaces/Funder.md) | - |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The funder's account object is returned.
+
+#### Defined in
+
+[lib/keypom.ts:369](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L369)
+
+___
+
+### updateKeypomContractId
+
+**updateKeypomContractId**(`keypomContractId`): `any`
+
+This allows the desired Keypom contract ID to be set. By default, the most up-to-date Keypom contract for the given network is set during initKeypom.
+
+**`Example`**
+
+After initializing the SDK, the Keypom contract ID is updated.
+```js
+const path = require("path");
+const homedir = require("os").homedir();
+const { KeyPair, keyStores, connect } = require("near-api-js");
+const { initKeypom, updateKeypomContractId, getDrops } = require("keypom-js");
+
+	// Initialize the SDK for the given network and NEAR connection
+	await initKeypom({
+		network: "testnet",
+	});
+
+	// Update the current Keypom contract ID
+	updateKeypomContractId({
+		keypomContractId: "v1.keypom.testnet"
+	})
+
+	//Get the drops for the given owner
+	const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
+	console.log('dropsForOwner: ', dropsForOwner)
+
+	return;
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `keypomContractId` | `Object` | The account ID that should be used for the Keypom contract. |
+| `keypomContractId.keypomContractId` | `string` | - |
+
+#### Returns
+
+`any`
+
+#### Defined in
+
+[lib/keypom.ts:430](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L430)
 
 ## Utility
 
@@ -205,7 +422,7 @@ console.log(accountExists); // true
 
 #### Defined in
 
-[lib/keypom-utils.ts:87](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L87)
+[lib/keypom-utils.ts:87](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L87)
 
 ___
 
@@ -284,7 +501,7 @@ Send 3 NFTs using the funder account (not passing in any accounts into the call)
 
 #### Defined in
 
-[lib/keypom-utils.ts:227](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L227)
+[lib/keypom-utils.ts:227](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L227)
 
 ___
 
@@ -315,7 +532,7 @@ Initiate the connection to the NEAR blockchain.
 
 #### Defined in
 
-[lib/keypom-utils.ts:1162](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L1162)
+[lib/keypom-utils.ts:1162](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L1162)
 
 ___
 
@@ -335,7 +552,7 @@ ___
 
 #### Defined in
 
-[lib/keypom.ts:138](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L138)
+[lib/keypom.ts:147](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom.ts#L147)
 
 ___
 
@@ -442,7 +659,7 @@ console.log('linkdropUrl: ', linkdropUrl)
 
 #### Defined in
 
-[lib/keypom-utils.ts:384](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L384)
+[lib/keypom-utils.ts:384](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L384)
 
 ___
 
@@ -541,7 +758,7 @@ console.log('Secret Keys ', keys.secretKeys);
 
 #### Defined in
 
-[lib/keypom-utils.ts:536](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L536)
+[lib/keypom-utils.ts:536](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L536)
 
 ___
 
@@ -575,7 +792,7 @@ console.log(ft);
 
 #### Defined in
 
-[lib/keypom-utils.ts:156](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L156)
+[lib/keypom-utils.ts:156](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L156)
 
 ___
 
@@ -611,7 +828,7 @@ console.log(nft);
 
 #### Defined in
 
-[lib/keypom-utils.ts:120](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L120)
+[lib/keypom-utils.ts:120](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L120)
 
 ___
 
@@ -642,7 +859,7 @@ console.log(pubKey);
 
 #### Defined in
 
-[lib/keypom-utils.ts:68](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L68)
+[lib/keypom-utils.ts:68](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L68)
 
 ___
 
@@ -662,7 +879,7 @@ ___
 
 #### Defined in
 
-[lib/keypom-utils.ts:1073](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L1073)
+[lib/keypom-utils.ts:1073](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L1073)
 
 ___
 
@@ -696,7 +913,7 @@ let passwordForClaim = await hashPassword(basePassword + publicKey + currentUse.
 
 #### Defined in
 
-[lib/keypom-utils.ts:451](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L451)
+[lib/keypom-utils.ts:451](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L451)
 
 ___
 
@@ -731,7 +948,7 @@ console.log('isValidTrialInfo: ', isValidTrialInfo)
 
 #### Defined in
 
-[lib/keypom-utils.ts:623](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L623)
+[lib/keypom-utils.ts:623](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L623)
 
 ## Creating, And Claiming Drops
 
@@ -880,7 +1097,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[lib/keys.ts:148](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keys.ts#L148)
+[lib/keys.ts:148](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keys.ts#L148)
 
 ___
 
@@ -1005,7 +1222,7 @@ await claim({
 
 #### Defined in
 
-[lib/claims.ts:108](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/claims.ts#L108)
+[lib/claims.ts:108](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/claims.ts#L108)
 
 ___
 
@@ -1170,7 +1387,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[lib/drops.ts:176](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/drops.ts#L176)
+[lib/drops.ts:176](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/drops.ts#L176)
 
 ## User Balance Functions
 
@@ -1179,7 +1396,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 **addToBalance**(`«destructured»`): `Promise`<`any`\>
 
 Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without
-Having to explicitly attach a deposit every time. It can be thought of like a bank account.
+Having to explicitly attach a deposit everytime. It can be thought of like a bank account.
 
 **`Example`**
 
@@ -1216,7 +1433,7 @@ await addToBalance({
 
 #### Defined in
 
-[lib/balances.ts:37](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/balances.ts#L37)
+[lib/balances.ts:37](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/balances.ts#L37)
 
 ___
 
@@ -1260,7 +1477,7 @@ await withdrawBalance({});
 
 #### Defined in
 
-[lib/balances.ts:118](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/balances.ts#L118)
+[lib/balances.ts:118](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/balances.ts#L118)
 
 ## Public Sale Functions
 
@@ -1308,7 +1525,7 @@ const {dropId} = await createDrop({
 
 #### Defined in
 
-[lib/sales.ts:44](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/sales.ts#L44)
+[lib/sales.ts:44](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/sales.ts#L44)
 
 ___
 
@@ -1356,7 +1573,7 @@ Add a list of account IDs to a drop's sale blocklist. The sale object must exist
 
 #### Defined in
 
-[lib/sales.ts:224](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/sales.ts#L224)
+[lib/sales.ts:224](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/sales.ts#L224)
 
 ___
 
@@ -1412,7 +1629,7 @@ Remove a list of account IDs from a drop's sale allowlist. If the allowlist is e
 
 #### Defined in
 
-[lib/sales.ts:138](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/sales.ts#L138)
+[lib/sales.ts:138](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/sales.ts#L138)
 
 ___
 
@@ -1464,7 +1681,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[lib/sales.ts:314](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/sales.ts#L314)
+[lib/sales.ts:314](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/sales.ts#L314)
 
 ___
 
@@ -1515,7 +1732,7 @@ Remove a list of account IDs from a drop's sale blocklist. The sale object must 
 
 #### Defined in
 
-[lib/sales.ts:399](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/sales.ts#L399)
+[lib/sales.ts:399](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/sales.ts#L399)
 
 ## Trial Accounts
 
@@ -1579,7 +1796,7 @@ Create a trial account and check whether it can immediately exit
 
 #### Defined in
 
-[lib/trial-accounts/trial-active.ts:403](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/trial-active.ts#L403)
+[lib/trial-accounts/trial-active.ts:403](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/trial-active.ts#L403)
 
 ___
 
@@ -1643,7 +1860,7 @@ console.log(`http://localhost:1234/keypom-url/${newAccountId}#${trialSecretKeys[
 
 #### Defined in
 
-[lib/trial-accounts/pre-trial.ts:505](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/pre-trial.ts#L505)
+[lib/trial-accounts/pre-trial.ts:505](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/pre-trial.ts#L505)
 
 ___
 
@@ -1730,7 +1947,7 @@ Object containing: the drop ID, the responses of the execution, as well as any a
 
 #### Defined in
 
-[lib/trial-accounts/pre-trial.ts:81](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/pre-trial.ts#L81)
+[lib/trial-accounts/pre-trial.ts:81](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/pre-trial.ts#L81)
 
 ___
 
@@ -1818,7 +2035,7 @@ The outcome of the transaction
 
 #### Defined in
 
-[lib/trial-accounts/trial-active.ts:248](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/trial-active.ts#L248)
+[lib/trial-accounts/trial-active.ts:248](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/trial-active.ts#L248)
 
 ___
 
@@ -1930,7 +2147,7 @@ The outcomes of the transactions
 
 #### Defined in
 
-[lib/trial-accounts/trial-active.ts:106](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/trial-active.ts#L106)
+[lib/trial-accounts/trial-active.ts:106](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/trial-active.ts#L106)
 
 ## View Functions
 
@@ -1974,7 +2191,7 @@ Whether or not the user can add keys to the drop
 
 #### Defined in
 
-[lib/views.ts:854](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L854)
+[lib/views.ts:854](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L854)
 
 ___
 
@@ -2008,7 +2225,7 @@ The contract's source metadata
 
 #### Defined in
 
-[lib/views.ts:896](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L896)
+[lib/views.ts:896](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L896)
 
 ___
 
@@ -2094,7 +2311,7 @@ The current method data for the key
 
 #### Defined in
 
-[lib/views.ts:797](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L797)
+[lib/views.ts:797](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L797)
 
 ___
 
@@ -2186,7 +2403,7 @@ Drop information which may or may not have a keys field of type `KeyInfo` depend
 
 #### Defined in
 
-[lib/views.ts:336](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L336)
+[lib/views.ts:336](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L336)
 
 ___
 
@@ -2237,7 +2454,7 @@ Amount of drops
 
 #### Defined in
 
-[lib/views.ts:517](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L517)
+[lib/views.ts:517](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L517)
 
 ___
 
@@ -2287,7 +2504,7 @@ console.log('dropsAndKeys: ', dropsAndKeys)
 
 #### Defined in
 
-[lib/views.ts:562](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L562)
+[lib/views.ts:562](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L562)
 
 ___
 
@@ -2340,7 +2557,7 @@ The amount of yoctoNEAR that is contained within the key
 
 #### Defined in
 
-[lib/views.ts:47](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L47)
+[lib/views.ts:47](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L47)
 
 ___
 
@@ -2393,7 +2610,7 @@ Key information struct for that specific key.
 
 #### Defined in
 
-[lib/views.ts:177](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L177)
+[lib/views.ts:177](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L177)
 
 ___
 
@@ -2446,7 +2663,7 @@ Array of Key information structs for the keys passed in
 
 #### Defined in
 
-[lib/views.ts:236](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L236)
+[lib/views.ts:236](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L236)
 
 ___
 
@@ -2498,7 +2715,7 @@ Number of active keys
 
 #### Defined in
 
-[lib/views.ts:416](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L416)
+[lib/views.ts:416](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L416)
 
 ___
 
@@ -2532,7 +2749,7 @@ The amount of keys.
 
 #### Defined in
 
-[lib/views.ts:92](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L92)
+[lib/views.ts:92](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L92)
 
 ___
 
@@ -2577,7 +2794,7 @@ Vector of KeyInfo.
 
 #### Defined in
 
-[lib/views.ts:126](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L126)
+[lib/views.ts:126](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L126)
 
 ___
 
@@ -2631,7 +2848,7 @@ Vector of KeyInfo objects returned from pagination
 
 #### Defined in
 
-[lib/views.ts:465](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L465)
+[lib/views.ts:465](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L465)
 
 ___
 
@@ -2673,7 +2890,7 @@ The amount of token IDs on the drop
 
 #### Defined in
 
-[lib/views.ts:634](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L634)
+[lib/views.ts:634](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L634)
 
 ___
 
@@ -2717,7 +2934,7 @@ Vector of token IDs
 
 #### Defined in
 
-[lib/views.ts:673](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L673)
+[lib/views.ts:673](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L673)
 
 ___
 
@@ -2759,7 +2976,7 @@ The user's current balance
 
 #### Defined in
 
-[lib/views.ts:716](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/views.ts#L716)
+[lib/views.ts:716](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/views.ts#L716)
 
 ## Functions
 
@@ -2782,7 +2999,7 @@ The user's current balance
 
 #### Defined in
 
-[lib/keypom-utils.ts:1445](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L1445)
+[lib/keypom-utils.ts:1445](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L1445)
 
 ___
 
@@ -2802,7 +3019,7 @@ ___
 
 #### Defined in
 
-[lib/trial-accounts/utils.ts:232](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/utils.ts#L232)
+[lib/trial-accounts/utils.ts:232](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/utils.ts#L232)
 
 ___
 
@@ -2823,7 +3040,7 @@ ___
 
 #### Defined in
 
-[lib/trial-accounts/utils.ts:103](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/trial-accounts/utils.ts#L103)
+[lib/trial-accounts/utils.ts:103](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/trial-accounts/utils.ts#L103)
 
 ## Deleting State
 
@@ -2891,7 +3108,7 @@ console.log('numDrops: ', numDrops)
 
 #### Defined in
 
-[lib/drops.ts:598](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/drops.ts#L598)
+[lib/drops.ts:598](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/drops.ts#L598)
 
 ___
 
@@ -2943,7 +3160,7 @@ await deleteKeys({
 
 #### Defined in
 
-[lib/keys.ts:440](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keys.ts#L440)
+[lib/keys.ts:440](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keys.ts#L440)
 
 ## Registering Key Uses
 
@@ -2993,7 +3210,7 @@ await ftTransferCall({
 
 #### Defined in
 
-[lib/keypom-utils.ts:797](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L797)
+[lib/keypom-utils.ts:797](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L797)
 
 ___
 
@@ -3042,213 +3259,4 @@ await nftTransferCall({
 
 #### Defined in
 
-[lib/keypom-utils.ts:906](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom-utils.ts#L906)
-
-## Keypom SDK Environment
-
-### getEnv
-
-**getEnv**(): [`EnvVars`](interfaces/EnvVars.md)
-
-#### Returns
-
-[`EnvVars`](interfaces/EnvVars.md)
-
-The environment variables used by the Keypom library.
-
-#### Defined in
-
-[lib/keypom.ts:110](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L110)
-
-___
-
-### initKeypom
-
-**initKeypom**(`«destructured»`): `Promise`<`any`\>
-
-Initializes the SDK to allow for interactions with the Keypom Protocol. By default, a new NEAR connection will be established but this can be overloaded by
-passing in an existing connection object. In either case, if a funder is passed in, the credentials will be added to the keystore to sign transactions.
-
-To update the funder account, refer to the `updateFunder` function. If you only wish to use view methods and not sign transactions, no funder account is needed.
-If you wish to update the Keypom Contract ID being used, refer to the `updateKeypomContractId` function.
-
-**`Example`**
-
-Using a pre-created NEAR connection instance with an UnencryptedFileSystemKeyStore:
-```js
-const path = require("path");
-const homedir = require("os").homedir();
-const { KeyPair, keyStores, connect } = require("near-api-js");
-const { initKeypom, getDrops } = require("keypom-js");
-
-// Establish the network we wish to work on
-const network = "testnet";
-// Get the location where the credentials are stored for our KeyStore
-const CREDENTIALS_DIR = ".near-credentials";
-const credentialsPath = (await path).join(homedir, CREDENTIALS_DIR);
-(await path).join;
-let keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-
-// Establish the configuration for the connection
-let nearConfig = {
-		networkId: network,
-		keyStore,
-		nodeUrl: `https://rpc.${network}.near.org`,
-		walletUrl: `https://wallet.${network}.near.org`,
-		helperUrl: `https://helper.${network}.near.org`,
-		explorerUrl: `https://explorer.${network}.near.org`,
-};
-// Connect to the NEAR blockchain and get the connection instance
-let near = await connect(nearConfig);
-
-// Initialize the SDK for the given network and NEAR connection
-await initKeypom({
-		near,
-		network
-});
-
-// Get the drops for the given owner
-const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
-```
-
-**`Example`**
-
-Creating an entirely new NEAR connection instance by using initKeypom and passing in a funder account:
-```js
-const { initKeypom, getDrops } = require("keypom-js");
-
-// Initialize the SDK for the given network and NEAR connection
-await initKeypom({
-		network: "testnet",
-		funder: {
-			accountId: "benji_demo.testnet",
-			secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
-		}
-});
-
-// Get the drops for the given owner
-const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
-```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `«destructured»` | `Object` | - |
-| › `funder?` | [`Funder`](interfaces/Funder.md) | The account that will sign transactions to create drops and interact with the Keypom contract. This account will be added to the KeyStore if provided. If rootEntropy is provided for the funder, all access keys will be derived deterministically based off this string. |
-| › `keypomContractId?` | `string` | Instead of using the most up-to-date, default Keypom contract, you can specify a specific account ID to use. If an older version is specified, some features of the SDK might not be usable. |
-| › `near?` | `Near` | The NEAR connection instance to use. If not passed in, it will create a new one. |
-| › `network?` | `string` | The network to connect to either `mainnet` or `testnet`. If a near object is passed in, this field can be omitted |
-
-#### Returns
-
-`Promise`<`any`\>
-
-If a funder is passed in, its account object is returned. Otherwise, it null is returned.
-
-#### Defined in
-
-[lib/keypom.ts:230](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L230)
-
-___
-
-### updateFunder
-
-**updateFunder**(`funder`): `Promise`<`any`\>
-
-Once the SDK is initialized, this function allows the current funder account to be updated. Having a funder is only necessary if you wish to sign transactions on the Keypom Protocol.
-
-**`Example`**
-
-After initializing the SDK, the funder is updated.
-```js
-const path = require("path");
-const homedir = require("os").homedir();
-const { KeyPair, keyStores, connect } = require("near-api-js");
-const { initKeypom, updateFunder, getDrops } = require("keypom-js");
-
-	// Initialize the SDK for the given network and NEAR connection
-	await initKeypom({
-		network: "testnet",
-	});
-
-	// Update the current funder account
-	await updateFunder({
-		funder: {
-			accountId: "benji_demo.testnet",
-			secretKey: "ed25519:5yARProkcALbxaSQ66aYZMSBPWL9uPBmkoQGjV3oi2ddQDMh1teMAbz7jqNV9oVyMy7kZNREjYvWPqjcA6LW9Jb1"
-		}
-	})
-
-	// Get the drops for the given owner
-	const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
-	console.log('dropsForOwner: ', dropsForOwner)
-
-	return;
-```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `funder` | `Object` | The account that will sign transactions to create drops and interact with the Keypom contract. This account will be added to the KeyStore if provided. If rootEntropy is provided for the funder, all access keys will be derived deterministically based off this string. |
-| `funder.funder` | [`Funder`](interfaces/Funder.md) | - |
-
-#### Returns
-
-`Promise`<`any`\>
-
-The funder's account object is returned.
-
-#### Defined in
-
-[lib/keypom.ts:360](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L360)
-
-___
-
-### updateKeypomContractId
-
-**updateKeypomContractId**(`keypomContractId`): `any`
-
-This allows the desired Keypom contract ID to be set. By default, the most up-to-date Keypom contract for the given network is set during initKeypom.
-
-**`Example`**
-
-After initializing the SDK, the Keypom contract ID is updated.
-```js
-const path = require("path");
-const homedir = require("os").homedir();
-const { KeyPair, keyStores, connect } = require("near-api-js");
-const { initKeypom, updateKeypomContractId, getDrops } = require("keypom-js");
-
-	// Initialize the SDK for the given network and NEAR connection
-	await initKeypom({
-		network: "testnet",
-	});
-
-	// Update the current Keypom contract ID
-	updateKeypomContractId({
-		keypomContractId: "v1.keypom.testnet"
-	})
-
-	//Get the drops for the given owner
-	const dropsForOwner = await getDrops({accountId: "benjiman.testnet"});
-	console.log('dropsForOwner: ', dropsForOwner)
-
-	return;
-```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `keypomContractId` | `Object` | The account ID that should be used for the Keypom contract. |
-| `keypomContractId.keypomContractId` | `string` | - |
-
-#### Returns
-
-`any`
-
-#### Defined in
-
-[lib/keypom.ts:421](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/keypom.ts#L421)
+[lib/keypom-utils.ts:906](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/keypom-utils.ts#L906)

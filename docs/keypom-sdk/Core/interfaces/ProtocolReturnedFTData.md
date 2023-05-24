@@ -20,7 +20,7 @@ Example: transferring one wNEAR should be passed in as "100000000000000000000000
 
 #### Defined in
 
-[lib/types/protocol.ts:226](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L226)
+[lib/types/protocol.ts:226](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L226)
 
 ___
 
@@ -32,7 +32,7 @@ Which contract do the FTs belong to?
 
 #### Defined in
 
-[lib/types/protocol.ts:217](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L217)
+[lib/types/protocol.ts:217](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L217)
 
 ___
 
@@ -44,4 +44,4 @@ By default, anyone can fund your drop with FTs. This field allows you to set a s
 
 #### Defined in
 
-[lib/types/protocol.ts:221](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L221)
+[lib/types/protocol.ts:221](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L221)

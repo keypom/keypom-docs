@@ -28,7 +28,7 @@ When calling `create_account` on the root account, which keypom args should be a
 
 #### Defined in
 
-[lib/types/protocol.ts:141](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L141)
+[lib/types/protocol.ts:141](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L141)
 
 ___
 
@@ -40,7 +40,7 @@ When a key is used and deleted, if it results in the drop being empty, should th
 
 #### Defined in
 
-[lib/types/protocol.ts:134](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L134)
+[lib/types/protocol.ts:134](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L134)
 
 ___
 
@@ -52,7 +52,7 @@ In the case where `autoDeleteDrop` is set to true and the drop is the owner's la
 
 #### Defined in
 
-[lib/types/protocol.ts:138](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L138)
+[lib/types/protocol.ts:138](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L138)
 
 ___
 
@@ -64,7 +64,7 @@ Specify which methods can be called by the access key (either `claim` or `create
 
 #### Defined in
 
-[lib/types/protocol.ts:125](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L125)
+[lib/types/protocol.ts:125](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L125)
 
 ___
 
@@ -77,4 +77,4 @@ If this isn't specified, it defaults to false.
 
 #### Defined in
 
-[lib/types/protocol.ts:130](https://github.com/keypom/keypom-js/blob/68bf90396/packages/core/src/lib/types/protocol.ts#L130)
+[lib/types/protocol.ts:130](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L130)

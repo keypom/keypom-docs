@@ -154,13 +154,13 @@ If the account were to lose access of the local storage or their computer blew u
 In order for the guest-book app to be fully compatible with trial accounts, it only needs to add the SDK's wallet selector plugin.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be6576622d32b1/advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L46-L59
+https://github.com/keypom/keypom-docs-examples/blob/28444a492c513b8244e25ccaf067ca54f305b090/advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L45-L55
 ```
 
 You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:
-- `trialAccountSpecs.baseUrl`: The base URL that the trial account will be sent to. In the guest-book app, this is defined as `http://localhost:1234/trial-url#`. The full URL for any given trial account link follows `${baseURL}${keypomContractId}${delimiter}${secretKey}`. By default, the `trialAccountSpecs.delimiter` is `/` but this can be overloaded and passed into the setup function.
+- `trialAccountSpecs.url` and `instantSignInSpecs.url`: The base URL that the trial account and instant sign-in will be sent to. With the specification above, the full URL for any trial account will be `${url}${keypomContractId}/${secretKey}`. Similarly, the URL for any instant sign-in link will be `${url}${keypomContractId}/${secretKey}/${moduleId}`.
 - `signInContractId`: The contract ID that regular users create access keys for when signing in.
-- `modalOptions`: Information that you can specify that will customize the modals that are shown to the user while on your app.
+- [`trialAccountSpecs.modalOptions`](../../keypom-sdk/Selector/welcome.md#modal-options): Information that you can specify that will customize the modals that are shown to the user while on your app. Here, `KEYPOM_OPTIONS` from `./keypom-data` are imported and used. 
 
 ### Customizing the Modals
 

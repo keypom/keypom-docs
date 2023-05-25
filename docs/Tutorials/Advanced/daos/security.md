@@ -316,34 +316,10 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 ---
 
-For those that are interested, a more in depth test script can be found in the expandable section below. Note this is not the focus of this section and is only for your learning.
-<details>
-<summary>Additional Testing Code</summary>
-<p>
-
-One of the internal tests used to validate the DAO bot is to make sure other non-approved users cannot add new members to your DAO. The code for that is below.
-
-For reference, `minqi` is on council here but `maliciousActor` is not. The expectation is that `maliciousActor` cannot add member's to `minqi`'s DAO but that is not the case with the DAO bot in its current form.
-
-```rust reference
-https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/__tests__/auto-registration/auto-reg-tests.ava.ts#L162-L250
-```
-
-The result of this test will be a failure as `member1` will be take on the role of `new-onboardee-role` in the DAO.
-
-</p>
-</details>
-
-## Lessons Learned
-From this exploit, there is one concept you should carry through to any of your contracts that interact with Keypom:
-
-**Assume people will create malicious FC drops to attack your contract**
-
-This means you must consider how to verify incoming calls from FC drops as "legitimate" or not. A great tool for this job are the `keypom_args`. Use these to your advantage when developing your smart contracts. 
-
----
 
 ## Conclusion
+
+TODO: add hyperlinks, talk about exploit more in-depth (funderIdField, keypom args etc.) for important assets like NFTs, or DAO memberships that are gated by arguments such as a NFT's series ID or DAO contract it's important to ensure that the drop came from a trusted source and the arguments are validated.
 
 By adding this new check into the DAO bot, only approved members (such as Council) can use Keypom FC drops to create auto-registration campaigns for your DAO. This helps ensure the integrity of your DAO as you bring on more new members. 
 

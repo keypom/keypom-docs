@@ -126,7 +126,7 @@ In reality, each method is not simply a string as shown above. The methods requi
 - `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
-For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
+For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/Core/interfaces/Method.md)
 
 In summary, the `fcData` should look something like this, with a generic method for the POAP which you'll explore in the next section:
 
@@ -170,8 +170,8 @@ The following optional Keypom arguments are exposed for each individual method i
 They tell Keypom where to inject certain parameters for each function call.
 
 - `accountIdField`: The name of the account that is claiming the linkdrop.
-- `dropIdField`: The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
-- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
+- `dropIdField`: The [`dropId`](../../../keypom-sdk/Core/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
+- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/Core/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
 In this case, the `dropIdField` should be set to `mint_id`  and `accountIdField` set to `receiver_id`. This will result in the drop's ID being passed into the parameter `mint_id` and attendee's NEAR account passed into the `receiver_id` field.
@@ -225,7 +225,7 @@ Once a key has been password protected, you must pass in `hash(basePassword + pu
 
 With this model, if the host were to simply know the `basePassword`, it could deterministically generate this hash for any given ticket link. Furthermore, if the host was the only person who knew the password, nobody could claim the key without going through them first.
 
-For an in-depth explanation around password protected keys, see the [Typedocs](../../../keypom-sdk/modules.md#createdrop).
+For an in-depth explanation around password protected keys, see the [Typedocs](../../../keypom-sdk/Core/modules.md#createdrop).
 
 ### Final Drop Structure
 
@@ -241,7 +241,7 @@ https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22
 
 Up until now, the drop is pointing to an NFT series that doesn't exist yet. If a key were to be claimed, the function call would throw an error. In this section, you'll be creating the series of NFTs to be used as POAPs.
 
-The Keypom SDK provides a function to create an NFT series specifically for function call drops, called [`createNFTSeries`](../../../keypom-sdk/modules.md#createnftseries). It requires the following parameters: 
+The Keypom SDK provides a function to create an NFT series specifically for function call drops, called [`createNFTSeries`](../../../keypom-sdk/Core/modules.md#createnftseries). It requires the following parameters: 
 
 - `dropId`: The drop ID for the drop that should have the NFT series associated with it.  
 - `metadata`: The metadata that all minted NFTs will have. 

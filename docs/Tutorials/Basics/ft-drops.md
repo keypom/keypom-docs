@@ -248,7 +248,7 @@ As outlined in to introduction, there are 2 tasks to complete in this section.
 
 This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the SDK.  
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/Core/modules.md#initkeypom).
 
 Following the `initKeypom` call, the FT Drop is created. This is done by calling `createDrop` and adding an `ftData` parameter. 
 
@@ -274,7 +274,7 @@ ftData
 
 Including the `ftData` parameter categorizes this as an FT drop. Without it, the Keypom Protocol would treat this drop as a Simple Drop.
 
-More information on the `ftData` parameter can be found [here](../../keypom-sdk/interfaces/FTData.md).
+More information on the `ftData` parameter can be found [here](../../keypom-sdk/Core/interfaces/FTData.md).
 
 :::info
 So long as the funder has an adequate FT balance, all you need to do is call `createDrop` with `ftData` to create the drop.
@@ -306,7 +306,7 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
-With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
+With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/Core/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/fungible-token-drop/ft-example.js#L72-L78

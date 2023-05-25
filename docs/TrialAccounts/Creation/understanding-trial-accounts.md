@@ -31,7 +31,7 @@ A Keypom function call drop can then be programmed to:
 - Pass in the limited access key arguments to create a key that can call `execute` on the newly created account.
 - Once the account is created, Keypom will automatically call a setup method on the new account that will set the restrictions.
 
-Keypom has abstracted away all these complexities using a simple ready-made function [createTrialAccountDrop](../../keypom-sdk/modules.md#createtrialaccountdrop).
+Keypom has abstracted away all these complexities using a simple ready-made function [createTrialAccountDrop](../../keypom-sdk/Core/modules.md#createtrialaccountdrop).
 
 ## Understanding Trial Restrictions
 

@@ -58,8 +58,8 @@ The major parameter that controls what React will render is `cur_key_use` for th
 
 The following variables are needed to allow these state changes: 
 
-* `curUse`, obtained from accessing the `cur_key_use` from calling [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) with `pubKey`.
-* `pubKey`, derived from `privKey` using the SDK's [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) method.
+* `curUse`, obtained from accessing the `cur_key_use` from calling [`getKeyInformation`](../../../keypom-sdk/Core/modules.md#getkeyinformation) with `pubKey`.
+* `pubKey`, derived from `privKey` using the SDK's [`getPubFromSecret`](../../../keypom-sdk/Core/modules.md#getpubfromsecret) method.
 * `privKey`, stored in the user's app link.
 
 ### Scanner Page

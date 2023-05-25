@@ -14,12 +14,12 @@ DAOs are a popular topic in crypto and offer powerful on-chain governance featur
 
 Both of these act as bottlenecks in attracting and onboarding new members.
 
-This is where Keypom can help. Using a [function call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md), Keypom automatically registers users into your DAO as part of the wallet creation process. Not only does this eliminate the need for a wallet, but it also bypasses the 2 step approval process. 
+This is where Keypom can help. Using a [function call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md), Keypom can automatically register users into your DAO **as part of the wallet creation process**. Not only does this eliminate the need for a wallet, but it also bypasses the 2 step approval process.
 
-> **NOTE** If someone has a wallet already, they can skip the creation process and simply be registered into the DAO.
+> **NOTE** If someone has a wallet already, they can skip account creation and register their existing wallet into the DAO.
 
 
-## Requirements
+## Success Criteria
 
 This tutorial will cover the following requirements to achieve a seamless onboarding experience for new users.
 
@@ -29,10 +29,8 @@ This tutorial will cover the following requirements to achieve a seamless onboar
 
 With these requirements met, you will be able to seamlessly and automatically register new members into your DAO while maintaining the integrity of your DAO's members.
 
-In this tutorial, you'll learn how to create this seamless DAO onboarding.
-
 :::info
-This tutorial will be interacting with MoonDAO, a [Sputnik V2](https://github.com/near-daos/sputnik-dao-contract) DAO
+This tutorial will have members registered into the MoonDAO, a [Sputnik V2](https://github.com/near-daos/sputnik-dao-contract) compatible DAO. 
 
 <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/moondaohomepage.png").default} width="80%" height="80%" alt="ticketing" class="rounded-corners"/></p>
 :::
@@ -41,37 +39,35 @@ This tutorial will be interacting with MoonDAO, a [Sputnik V2](https://github.co
 
 ## Prerequisites
 
-For the this tutorial, you can choose to run the scripts on your own machine. To do so, you must have the following:
+For the this tutorial series, you can choose to follow along on your own machine. To do so, you must have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+2. [Keypom Core SDK](https://github.com/keypom/keypom-js/tree/main/packages/core#installation)
 
-If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/dao). To follow along and build out this auto-registration tool, see the steps below. 
+
+> **NOTE** If you want to reference the finished tutorial code, it can be found [here](TODO).
 
 ---
 
 ## Creating your Project
-In this section, you'll prepare to create the auto-registration tool using the skeleton code made available to you at the [Keypom SDK repo](https://github.com/keypom/keypom-js). 
+In this section, you'll install the skeleton project and get familiar with the codebase.
 
 First, you'll want to clone the repo:
 
 ```bash
-git clone https://github.com/keypom/keypom-js.git && cd keypom-js 
+git clone TODO && cd TODO
 ```
 
-Second, install the dependencies for both the SDK and DAO auto-registration skeleton code:
+Second, install the dependencies TODO
 
 ```
-yarn install && cd docs-advanced-tutorials/dao-onboarding-skeleton && yarn
+TODO
 ```
 
-At this point, all the dependencies should be installed and you should be in the `docs-advanced-tutorials/dao-onboarding-skeleton` folder. Here you'll find the following files required to build out your app.
+At this point, all the dependencies should be installed and you should be in the `TODO` folder. Here you'll find the following files required to build out your app.
 
 ```bash
-/dao-onboarding-skeleton
-└── configurations.js
-└── createDaoOnboarding.js
-└── package.json
+TODO
 ```
 
-With this setup complete, you are ready to begin building out this DAO auto-registration tool, starting by breaking down the problem into its functional requirements. 
+With this setup complete, you are ready to begin building the onboarding experience, starting by expanding upon the success criteria and breaking down the problem further.

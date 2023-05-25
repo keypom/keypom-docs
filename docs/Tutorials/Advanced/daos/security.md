@@ -1,60 +1,139 @@
 ---
-sidebar_label: '⚠️ DAO Bot Exploit Solution'
+sidebar_label: 'DAO Bot Security Concerns'
 ---
-# ⚠️ DAO Bot Exploit Solution
-Up to this point, the DAO bot has a **major** security exploit. In this section, you'll be learning about the exploit, how to fix it and how you can prevent similar exploits when writing your contracts to interact with Keypom. 
+# DAO Bot Exploit Solution
+
+Up to this point, the DAO bot has a **major** security exploit. In this section, you'll learn about the exploit, how to fix it and how you can prevent similar exploits when writing Keypom compatible contracts in the future.
 
 ---
 
 ## Breaking Down the Problem
 To illustrate the exploit, a quick example can be analyzed: 
 
-Moon is a Council member on his DAO, MoonDAO. Since MoonDAO has run auto-registration onboarding campaigns before, MoonDAO has the DAO bot sitting in its own role to auto-register users. 
+Min is a council member on MoonDAO. Since he has run onboarding campaigns through Keypom before, the DAO bot has its own role in MoonDAO.
 
-EvilMoon is a malicious actor and intends on attacking the beloved MoonDAO. His plan is to flood MoonDAO with his malicious friends. To do this, he leverages a Keypom FC drops that calls the Keypom DAO bot. This call is to auto-register members into MoonDAO using the DAO bot's `new_auto_registration` function.
+Ben is a malicious user and is jealous because he was never allowed to join MoonDAO. He intends on adding himself to MoonDAO without Min's consent.
 
-From the perspective of MoonDAO, this action is unwelcomed and thus the desired outcome would be that this action is blocked.
+To do this, he creates an identical FunctionCall drop, exactly like the one Min used. This FunctionCall drop will invoke `new_auto_registration` on the DAO bot.
 
-Recall that the DAO bot currently checks 2 things before performing the auto-registration:
-1. The function call is coming from Keypom.  
-2. The claiming account's `accountId` is injected using `accountIdField`.
+[Recall](TODO) that the DAO bot currently checks 2 things before performing the auto-registration:
+1. The function call is coming from Keypom.
+2. There is enough attached deposit to cover the proposal bond.
 
-:::danger
-Since EvilMoon is using a Keypom drop to call MoonDAO, all of his function calls will show Keypom as the predecessor. This passes the first check. So long as EvilMoon structures the `accountIdField` properly when creating his drop,the second check would pass as well. 
+Ben could create the an FC drop with the following method data, which would pass the first check. As part of the FC data, Ben would add an attached deposit of 0.1 $NEAR, which would pass the second check. 
 
-This allows EvilMoon to orchestrate his takeover of MoonDAO by simply creating an FC drop to target MoonDAO. **This is a major exploit.**
-:::
+At that point, when claimed, the checks would pass and the DAO bot would take the proposal object and pass it into the call to `add_proposal` on the MoonDAO contract.
 
-Currently with no additional checks in place, anybody can create an FC drop to call the DAO bot and add anyone they want into anybody else's DAO. 
+Since the DAO bot has the special role, it would automatically approve the proposal and Ben would be added to MoonDAO.
 
-For those that are interested, a more in depth test script can be found in the expandable section below. Note this is not the focus of this section and is only for your learning.
+In order to fix this, there needs to be a check in place to ensure that the FC drop originated from a trusted funder.
+
 <details>
-<summary>Additional Testing Code</summary>
+<summary>Ben's Malicious Drop</summary>
 <p>
 
-One of the internal tests used to validate the DAO bot is to make sure other non-approved users cannot add new members to your DAO. The code for that is below.
-
-For reference, `minqi` is on council here but `maliciousActor` is not. The expectation is that `maliciousActor` cannot add member's to `minqi`'s DAO but that is not the case with the DAO bot in its current form.
-
-```rust reference
-https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/__tests__/auto-registration/auto-reg-tests.ava.ts#L162-L250
+```js
+{
+    receiverId: DAO_BOT_CONTRACT,
+    methodName: "new_auto_registration",
+    args: JSON.stringify({
+        dao_contract: MOON_DAO, // Points to MOON DAO
+        proposal: {
+            description: "Add New Member",
+            kind: {
+                AddMemberToRole:{
+                    member_id: BEN, // Ben is adding himself!
+                    role: "new-onboardee-role"
+                }
+            }
+        }
+    }),
+    attachedDeposit: parseNearAmount("0.1")
+} 
 ```
-
-The result of this test will be a failure as `member1` will be take on the role of `new-onboardee-role` in the DAO.
 
 </p>
 </details>
 
+:::warning
+To summarize, since the DAO bot has the role to approve members *and* Keypom allows anyone to interact with the DAO bot through their own FC drops, a malicious drop could be created to add *anyone to any DAO*.
+
+To fix this, the DAO bot needs to check that the FC drop is coming from a trusted funder.
+:::
+
+## Checking the Drop Funder
+
+Since the DAO bot will need to check if the funder is trusted, the function interface for `new_auto_registration` should be updated to include a new argument, `funder`.
+
+```rs
+new_auto_registration(dao_contract: AccountId, funder: AccountId, proposal: ProposalInput)
+```
+
+In order for this funder to be passed in, the FC drop will need to be modified. [Recall](TODO) that Keypom can optionally inject important data into the outgoing arguments. This data can either be the:
+- Drop ID
+- Key ID
+- Claiming account ID
+- Drop funder ID
+
+In this case, the drop's funder ID can be injected into the `new_auto_registration` `funder` argument if the `funderIdField` is set to `funder`. Therefore, the FC drop should be modified accordingly:
+
+```js
+fcData: {
+    methods: [
+        [
+            {
+                receiverId: DAO_BOT_CONTRACT,
+                methodName: "new_auto_registration",
+                args: JSON.stringify({
+                    dao_contract: DAO_CONTRACT,
+                    proposal: {
+                        description: "Add New Member",
+                        kind: {
+                            AddMemberToRole:{
+                                role: "new-onboardee-role"
+                            }
+                        }
+                    }
+                }),
+                accountIdField: "proposal.kind.AddMemberToRole.member_id",
+                funderIdField: "funder",
+                attachedDeposit: parseNearAmount("0.1")
+            }
+        ],
+    ]   
+}   
+```
+
+This works great, but there is just one slight problem. Ben could hardcode the arguments to the method `new_auto_registration` and specify that the `funder` is Min, even though Ben created the drop.
+
+## Validating Keypom Args
+
+Validating what arguments came from Keypom, and what arguments were hardcoded by the funder is an extremely important topic to ensure the security of your smart contracts. Every time an FC drop is claimed, Keypom will *always* attach an extra parameter to the arguments of the function. This argument is `keypom_args` and is an object containing information about what was injected by Keypom. The `keypom_args` are created by Keypom and cannot be impersonated with any arguments. They are the canonical source of truth for what Keypom injected.
+
+```js
+KeypomArgs {
+    account_id_field: String | undefined
+    drop_id_field: String | undefined
+    key_id_field: String | undefined
+    funder_id_field: String | undefined
+}
+```
+
+This object is sent along any method call that Keypom makes and can be used to perform the validation. If the DAO bot contract took in the keypom args, and did an assertion that the `funder_id_field` was set to `funder`, then the exploit would be fixed. There would be *no* way for Ben to impersonate Min as the funder of the drop in order to gain access to MoonDAO.
+
+```rs
+new_auto_registration(dao_contract: AccountId, funder: AccountId, proposal: ProposalInput, keypom_args: KeypomArgs) {
+      require!(keypom_args.funder_id_field == Some("funder".to_string()), "BEN IS MALICIOUS! Funder is not Min!");
+}
+```
+
 ---
 
-## Solving the Exploit
-In order to patch this exploit, an additional check can be added.
 
-> The Keypom FC drop funder **must** hold a trusted role within the DAO. 
+## Checking If the Funder is Trusted
+At this point, the DAO bot knows the funder's account ID and has validated that they created the drop. The next step is to check if the funder holds a trusted role within the DAO.
 
-The FC drop funder can be obtained using the `keypom_args`. In this case, the `new_auto_registration` function will accept a funder that is automatically injected by Keypom using `keypom_args`. This works the same way as the `accountId` check from the [last section](./daobot.md#verification-of-function-call-and-arguments). 
-
-This puts the power back in the hands of the DAO, as only their trusted members can facilitate these auto-registration campaigns. While the definition of "trusted role" can change between DAOs, for the purpose of simplicity this will be considered the Council role. 
+While the definition of "trusted role" can change between DAOs, for this tutorial, this role will be `council`. 
 
 ![Example banner](./daobot-flow.svg)
 
@@ -63,6 +142,8 @@ If your DAO wishes to change the definition of a "trusted role", you are free to
 :::
 
 ### Approach
+
+If the DAO bot was able to query for the policy information, then it could filter through the roles and find `council`. At this point, it could simply check if the funder is a member of `council` and then initiate the auto-registration flow
 
 By looking at the [SputnikV2 contract](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/policy.rs), you can see that each DAO's `Policy` has a `roles` vector.
 ```rust
@@ -73,7 +154,7 @@ pub struct Policy {
 }
 ```
 
-This vector contains information on all of the DAO's roles, including the name of the role, and the accounts belonging to the role.
+This vector contains each role their members.
 ```rust
 pub struct RolePermission {
     /// Name of the role to display to the user.
@@ -209,23 +290,16 @@ View call: moondao.sputnikv2.testnet.get_policy()
 </p>
 </details>
 
-The goal here would be to find the `council` role in the DAO policy and check if the FC drop funder is included in the members within it. There are a few steps to this.
-
-1. Verify that the drop `funder` being passed into `new_auto_registration` is coming from Keypom using `keypom_args`.  
-2. Get the DAO's policy using the SputnikV2 DAO view function `get_policy`.  
-3. Find the `council` role in the policy and determine if the funder is included as a members of that role.  
-
 ### Verifying Funder and Getting DAO Policy
-The first step here is modifying the `new_auto_registration` function to accept a funder string. The legitimacy of this received funder can be verified by checking if the `funderIdField` within the `keypom_args` was set to `funder`. 
 
-Once the funder has been verified, `new_auto_registration` will call `get_policy` on the DAO contract. After `get_policy` is called, a callback function is invoked to receive and parse the policy.
+The first step is to call `get_policy` on the DAO contract. After `get_policy` is called, a callback function is invoked to receive and parse the policy.
 
 ``` rust reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src/lib.rs#L103-L119
 ```
 
 ### Ensuring Funder is Council
-After the policy is received, the council role is found using a filter. The role's hashset is then searched to see if the received funder `accountId` exists in that set. If yes, then the auto-registration continues and `add_proposal` is called. 
+After the policy is received, the council role is found using a filter. The role's hashset is then searched to see if the funder exists in that set. If yes, then the auto-registration continues and `add_proposal` is called. 
 
 ```rust reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src/lib.rs#L122-L164
@@ -241,6 +315,25 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 ```
 
 ---
+
+For those that are interested, a more in depth test script can be found in the expandable section below. Note this is not the focus of this section and is only for your learning.
+<details>
+<summary>Additional Testing Code</summary>
+<p>
+
+One of the internal tests used to validate the DAO bot is to make sure other non-approved users cannot add new members to your DAO. The code for that is below.
+
+For reference, `minqi` is on council here but `maliciousActor` is not. The expectation is that `maliciousActor` cannot add member's to `minqi`'s DAO but that is not the case with the DAO bot in its current form.
+
+```rust reference
+https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/__tests__/auto-registration/auto-reg-tests.ava.ts#L162-L250
+```
+
+The result of this test will be a failure as `member1` will be take on the role of `new-onboardee-role` in the DAO.
+
+</p>
+</details>
+
 ## Lessons Learned
 From this exploit, there is one concept you should carry through to any of your contracts that interact with Keypom:
 
@@ -255,3 +348,15 @@ This means you must consider how to verify incoming calls from FC drops as "legi
 By adding this new check into the DAO bot, only approved members (such as Council) can use Keypom FC drops to create auto-registration campaigns for your DAO. This helps ensure the integrity of your DAO as you bring on more new members. 
 
 In the next section, you'll be reviewing all of your work so far by testing the whole auto-registration system.
+
+
+1. add funder_id field to args of the function
+  - check if funder has some role
+  - Only if yes, continue
+
+We fixed Ben's exploit for the most part
+
+2. What if Ben just hardcoded the funder
+ - It's important to distinguish args Keypom injected, vs. args the user injected.
+ - Add keypom_args field
+ - add require(keypom_args == funder)

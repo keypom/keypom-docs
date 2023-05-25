@@ -1,28 +1,28 @@
 ---
-sidebar_label: 'The DAO Bot'
+sidebar_label: 'Designing the DAO Bot'
 ---
 # The DAO Bot
 
 ## Introduction
-In this section you'll be creating the DAO bot smart contract in order to securely facilitate auto-registration into your DAO. This bot will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
+In this section you'll be creating the middleman DAO bot contract in order to securely facilitate auto-registration into your DAO. This bot will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
 
-Recall that the DAO bot needs accomplish the following:
+## Designing the DAO Bot
 
-* It must make multiple cross contract calls to the DAO in succession: first to add the proposal, then to vote to approve the proposal.
-* It must validate the `accountId` in the `AddMemberToRole` proposal that was injected by Keypom.
-* The DAO Bot **must** ensure all calls to it originate from Keypom.
+[Recall](TODO) that the DAO bot needs accomplish the following:
 
-With this in mind, the aim of this tutorial will be to write a Rust smart contract that will match the above properties. This process can be broken down into three stages:
+1. Take in a proposal object for adding a new member to a DAO (which includes the account ID of the new member).
+2. Take in a desired DAO contract and call `add_proposal` with the proposal object.
+3. Parse the return value which should be the proposal ID and then call `act_proposal` to automatically register the new member into the DAO.
 
-1. Verification of function call and arguments  
-2. Auto-registration  
-3. View and setter functions 
+With this in mind, the aim of this tutorial will be to write a Rust smart contract that will match the above properties. This process can be broken down into two stages:
+1. Adding the proposal
+2. Approving the proposal
 
-> If you wish to simply use the DAO bot without modifying it, you can move ahead to the [Final Product](./final.md) page. 
+> If you wish to simply use the DAO bot without modifying it, you can move ahead to the [Final Product](./final.md) page.
 
 ### Accessing the Code
 
-For this section of the tutorial, you will need to clone a seperate [DAO bot repository](https://github.com/keypom/dao-bot/tree/main). From there you can navigate to the skeleton code folder found below. 
+For this section of the tutorial, you will need to clone a separate [DAO bot repository](https://github.com/keypom/dao-bot/tree/main). From there you can navigate to the skeleton code folder found below. 
 
 ```bash
 git clone https://github.com/keypom/dao-bot.git && cd src-skeleton
@@ -46,77 +46,33 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 You may notice a few structs and enums predefined; these are simply present to match the structures from the [SputnikV2 contract](https://github.com/near-daos/sputnik-dao-contract/tree/main/sputnikdao2/src) and allow the contract to work with proposal inputs. 
 
-
-### Contract Structure and Security
-As the DAO bot contract is meant to be used by many people, security is a high priority. In order to limit the amount of potential exploits, the contract will be simplistic and linear, with only one point of entry for incoming function calls. 
-
-This can be seen in the skeleton code, with `new_auto_registration` being the only public method, aside from the view method `view_keypom_contract`.Everything else needed to perform its designed task is blocked off with the `#[private]` tag. 
-
 ---
 
-## Verification of Function Call and Arguments
-Validating the function call and arguments that are received is a crucial step in developing contracts to interface with Keypom. This ensures the legitimacy of the incoming function calls and significantly reduces the likelyhood of your contract being taken advantage of. 
+## Adding the Proposal
 
-To validate that the function call came from Keypom, a quick check on the predecessor `accountId` can be done. This should be equal to the latest version of the Keypom, in this case V2. This is stored in the state variable [`keypom_contract`](./daobot.md#view-functions-and-configuration) so that it can be updated in the future. 
+Since the middleman contracts needs to call `add_proposal` on the DAO contract, this requires the use of cross-contract calls. For a refresher on making cross contract calls, see [NEAR docs](https://docs.near.org/develop/contracts/crosscontract#snippet-sending-information).
 
-In order to ensure that the account claiming the FC key is the user being auto-registered into the DAO, you can check the `keypom_args`. Recall from the last section, the claiming account's `accountId` was being injected by setting `accountIdField` to `proposal.kind.AddMemberToRole.member_id`. You can leverage this by checking if the received `keypom_args` reflect this. 
+The first thing that needs to be checked is that the attached deposit is enough to cover the add proposal cost and Keypom is the predecessor to the call. Once that's done, the DAO bot can make a cross contract call to the dao contract and call `add_proposal`, passing in the proposal object.
 
-All this will be placed in the first and only point of entry into the contract, the `new_auto_registration` method, and will immidiately fail if any of the requirements are not met. Putting these two together, the resultant checks can be seen below:
+When the `add_proposal` function finishes executing, the DAO bot can then invoke a callback method to parse the returned proposal ID and call `act_proposal`.
 
-``` rust
-require!(env::predecessor_account_id() == AccountId::try_from(self.keypom_contract.clone()).unwrap(), "KEYPOM MUST BE PREDECESSOR, CHECK REQUIRED VERSION USING view_keypom_contract");
-require!(keypom_args.account_id_field == Some("proposal.kind.AddMemberToRole.member_id".to_string()), "KEYPOM MUST SEND THESE ARGS");
-```
-
-:::info
-Since Keypom will reject any FC drops that attempt to hardcode the `keypom_args`, you know with 100% certainty that the arguments injected using `keypom_args` are legitimate. This allows you to simply compare the different fields of Keypom args to what's expected
-:::
-
----
-
-## Auto-Registration
-The core part of the DAO bot are the cross contract calls needed to facilitate the auto-registration. For a refresher on making cross contract calls, see [NEAR docs](https://docs.near.org/develop/contracts/crosscontract#snippet-sending-information).
-
-:::note Recall
-The DAO bot has been added to the DAO in its own role. This means that when the DAO bot votes to approve, it automatically reaches a quorum and passes the proposal
-:::
-
-In order to complete the auto-registration, two consecutive cross contract calls must be made.
-1. `add_proposal` - This will add the `AddMemberToRole` proposal to the DAO. It will accept the a JSON stringified proposal sent from the FC drop.
-2. `act_proposal` - Here, the DAO bot will vote to approve it's own newly added proposal.
-
-For additional information on the `add_proposal` and `act_proposal` function, see the [SputnikV2 Readme](https://github.com/near-daos/sputnik-dao-contract/blob/main/README.md)
-
-In order for `act_proposal` to be succesfully called, a `proposal_id` is needed. This is a unique identifier for the proposal that was just added, and is returned by the `add_proposal` function. Thus, the callback needs to receive and read the promise from the first function. 
-
-During this callback, the vote to approve the proposal is hardcoded to eliminate ambiguity in the DAO bot's functionality. 
-
-The code for this is shown below:
+TODO: fix reference
 
 ```rust reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L103-L147
 ```
 
+## Approving the Proposal
 
-There are a few things to note here. 
-1. The additional `require!` in `new_auto_registration` ensures that the function call has attached enough $NEAR to cover the Sputnik [proposal bond](https://github.com/near-daos/sputnik-dao-contract#add-proposal). Documentation lists this as 1 $NEAR but the contracts deployed on testnet require just 0.1 $NEAR.  
-2. Any DAO can be used, by simply passing in the DAO's `accountId` as the `dao_contract` argument. 
-3. The callback function is private, ensuring incoming funciton calls cannot exploit it to auto-approve malicious proposals.
+In the callback after the proposal has been added, the DAO bot will first check the success of the call and then parse the return value for the proposal ID.
 
----
+Using the proposal ID, the DAO bot can then make another cross contract call to the DAO contract and call `act_proposal` to approve the proposal.
 
-## View and Setter Functions
-The last step in creating this DAO bot smart contract is adding a view and setter function for the `keypom_contract` state variable. For the purposes of security, only the DAO bot can change this state variable. 
+:::note Recall
+The DAO bot has been added to the DAO in its own role. This means that when the DAO bot votes to approve, it automatically reaches a quorum and passes the proposal
+:::
 
-```rust reference
-https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L149-L156
-```
-
-The `keypom_contract` state variable is used instead of a hardcoded variable just to ensure the DAO bot contract can be updated as the Keypom protocol progresses into newer versions. By default, this is set to `v2.keypom.testnet`.
-
-``` rust reference
-https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L91-L97
-```
+TODO: add code reference
 
 ---
 
@@ -124,12 +80,15 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 Putting everything together, the final code for the DAO bot smart contract should be:
 
+TODO: update reference
 ```js reference
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src-v1/lib.rs#L1-L157
 ```
 
+TODO: add a section about security and how we'll talk about that in the next section
 
 ## Conclusion
+TODO: add to conclusion with hyperlinks and expand on what we talked about (add proposal, act proposal etc.)
 In this tutorial, you've created the all new DAO bot by analyzing the requirements given the expected high thoroughput. 
 
 In the next tutorial, you'll be testing the DAO bot, finding it's vulnerabilities and further improving it. 

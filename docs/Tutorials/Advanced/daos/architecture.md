@@ -2,7 +2,7 @@
 sidebar_label: 'Solution Architecture'
 ---
 # Solution Architecture
-In this section, you'll break down the requirements for the DAO auto-registration experience in order to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
+In this section, you'll break down the requirements for the onboarding experience in order to create a solution architecture. This means translating the features from the [introduction](introduction.md) into tangible goals for the specific Keypom drop and its configurations.
 
 The two major requirements for the auto-registration experience are:
 - Members don't need an existing wallet to join the DAO. 
@@ -10,26 +10,28 @@ The two major requirements for the auto-registration experience are:
 
 ## Seamless Wallet Creation
 
-Since each experience will be given out via Keypom linkdrops, the wallet creation process is handled by whatever claim platform is used (MyNEARWallet, Meteor, FastAuth etc.). This means that there is no funding required from the user's perspective which eliminates KYC, exchanges and other barriers.
+Since each user will be given a Keypom linkdrop, the wallet creation is handled by whatever claim platform they choose (MyNEARWallet, Meteor, FastAuth etc.). This means that there is no funding required from the user's perspective, eliminating KYC, credit cards, exchanges and other barriers.
 
-In all, the user needs to simply choose an account name and secure their wallet with whatever wallet they choose (iOS, seedphrase, biometrics etc.). It just so happens that the Keypom linkdrop is crafted such that as part of the account creation process, the new user will be automatically registered into a DAO.
+The end user experience is to simply enter an account name and secure the wallet with whatever method they choose (iOS app, seedphrase, biometrics etc.).
 
 ## Single Step Registration
 
-Most times, DAO's require a 2 step process for new members to join. The first step is to create a proposal to add the new member to the DAO. The second step is to vote on the proposal and reach a quorum. This requires that the DAO constantly monitor for incoming proposals and can lead to long wait times for people.
+DAOs require a 2 step process for members to join. The first step is to create a proposal for adding them to the DAO and the second is to vote on that proposal and reach a quorum. This means that the DAO must constantly monitor for incoming proposals, leading to long wait times for new users.
 
-If DAOs want to register a lot of new users, this can be a massive bottleneck. Behind the scenes, what needs to happen is:
+If DAOs want to mass register members, this process is very inefficient. From a technical stand-point, what happens is:
 
 1. An [`AddMemberToRole`](https://github.com/near-daos/sputnik-dao-contract#proposal-types) proposal is created.
 2. A quorum of voting members, such as the DAO's council, must be reached to approve this proposal.
 
-In order for this process to be streamlined automatically, Keypom must be able to first add a proposal and then vote / approve it as part of the linkdrop claiming process.
+### Optimizing the Approach
+
+In order for this process to be streamlined automatically, Keypom must be able to first add a proposal and then **also** approve it as **part of the linkdrop claiming process**.
 
 First, Keypom must be given a role that is capable of creating proposals for adding new members.
 
-For the proposal acceptance, Keypom must be given a role that can reach quorum when it votes. For the purpose of this tutorial, Keypom will be put into a special role with only 1 member. This way, whenever Keypom votes to accept the `AddMemberToRole` proposal, 100% of the members will have voted and it will be automatically accepted.
+Second, Keypom must be given a role that automatically reaches quorum whenever it votes. For this tutorial, that role will only have 1 member so that whenever Keypom votes to accept the `AddMemberToRole` proposal, 100% of the members will have voted and it will be automatically accepted.
 
-To do this all in one step, a FunctionCall drop can be created that first calls [`add_proposal`](https://github.com/near-daos/sputnik-dao-contract#add-proposal) and then [`act_proposal`](https://github.com/near-daos/sputnik-dao-contract#approve-proposal) to vote on and approve the new member joining the DAO.
+To combine both these features into one step, a FunctionCall drop can be created that first calls [`add_proposal`](https://github.com/near-daos/sputnik-dao-contract#add-proposal) and then [`act_proposal`](https://github.com/near-daos/sputnik-dao-contract#approve-proposal) to vote on and approve the new member joining the DAO.
 
 While this works in theory, unfortunately, the `act_proposal` function requires a `proposal_id` that is returned from the `add_proposal` function. This is an issue for the following reasons: 
 1. With Keypom FC drops, there is no way to get a return value and use it to call another function.
@@ -39,30 +41,28 @@ While this works in theory, unfortunately, the `act_proposal` function requires 
 
 Up until this point, the general flow for auto registering users is clear. An FC drop must be made that somehow invokes the `add_proposal` and `act_proposal` functions one after another. The problem with relying entirely on Keypom is that the return value for `add_proposal` must be known and used.
 
-This can be fixed by introducing a middleman which can be referred to as the DAO bot contract. Rather than calling `add_proposal` and `act_proposal` directly through the FC drop, you can instead call a single function on the middleman contract. This middleman contract will then call `add_proposal`, parse the return value and call `act_proposal` in succession.
+This can be fixed by introducing a middleman contract. Rather than calling `add_proposal` and `act_proposal` directly through the FC drop, you can instead call **a single function on the middleman contract**. Once invoked, this middleman contract will then call `add_proposal`, parse the return value and call `act_proposal` in succession.
 
 While Keypom is extremely versatile, there are cases where custom behaviour will be needed. By introducing a middleman, you can customize exactly what will happen when a key is used.
 
 In summary, rather than having the FC drop look as follows:
 
 ```
-Keypom FC Drop
-1. add_proposal
+add_proposal
     -> DAO Contract
     -> Returns proposal ID
-2. act_proposal (I need proposal ID somehow)
+act_proposal (I need proposal ID somehow)
     -> DAO Contract
 ```
 
 The FC drop will instead do the following:
 ```
-Keypom FC Drop
-1. Call DAO bot contract
-    1. add_proposal
+Call middleman contract
+    add_proposal
         -> DAO Contract
         -> Returns proposal ID
-    2. Parse return value and get proposal ID
-    3. act_proposal
+    Parse return value and get proposal ID
+    act_proposal
         -> DAO Contract
 ```
 
@@ -71,22 +71,22 @@ Keypom FC Drop
 ## Full Solution Architecture
 From above, here are the key features that need to be implemented. 
 ### Keypom Solution
-On the Keypom side, an FC drop will be used to call the DAO bot. This FC drop must:
-- Only call the DAO bot once, to prevent double registration or multiple people registering with the same key. 
-- Send the claiming account's `accoundId` to the DAO bot when auto-registering them into the DAO. 
-
-To do all these things, a single use FC drop will be created where `accountIdField` will be used to auto-inject the claimer's `accountId` as an argument to the DAO bot. 
+On the Keypom side, an FC drop will be used to call the middleman. This FC drop must:
+- Only call the DAO bot once, to prevent double registration or multiple people registering with the same key.
+- Attach the wallet address for the account that will be onboarded to the middleman contract when auto-registering them into the DAO. 
 
 ### DAO Bot Solution
-The first aspect of the DAO bot is how it interfaces with the DAO. 
 
-In order to be able to auto-register new members, it must be added as a DAO member in a role where its own vote can achieve a quorum. In this tutorial and for the sake of simplicity, this will mean its own role. Next, the DAO bot must make multiple cross contract calls to the DAO in succession: first to add the proposal, then to vote to approve the proposal.
+The middleman contract that relays the add and act proposal functions can be referred to as the DAO bot.
 
-The next aspect of the DAO bot is how it interacts with Keypom. Firstly, it must accept `keypom_args` to inject the claiming account's `accountId` into the `addMemberToRole` proposal. Next, it must ensure all calls to it originate from Keypom.These in conjunction will ensure that only Keypom FC drops can interact with the DAO bot. 
+Recall that Keypom would need to be in its own special role. This was because Keypom was the `predecessor` for the call to the DAO contract. Now that the middleman is introduced, Keypom is no longer the predecessor. For this reason, the middleman must have the special role instead.
 
 ---
 
 ## Conclusion
+
+TODO: expand on this section (we talked about a middleman, single step registration, and seamless wallet creation etc.)
+
 In this section, you broke down the auto-registration process into tangible goals for both the FC drop and the newly created DAO bot. 
 
 With these goals in mind, you can start to build out this solution!

@@ -4,32 +4,33 @@ sidebar_label: 'Creating the Drop'
 # Creating the Drop
 
 ## Introduction
-In this section, you'll take the first step to creating your auto-registration tool by designing the FC drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
+In this section, you'll take the first step to creating the DAO onboarding experience by designing the FC drop. This drop will be tailored according to the functionality and specifications found in the [Solution Architecture](architecture.md#keypom-solution).
 
 Recall that the following properties must be met:
 
-* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that it can only be used once.
-* This use will call the DAO bot contract and inject the claiming account's `accountId` into the arguments.  
-
+* A [Function Call drop](../../../Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops.md) must be used and configured so that it calls a method on the DAO bot contract.
+* The middleman contract will then invoke the `add_proposal` method, parse the return value and pass the proposal ID into the `act_proposal` method to approve.
 
 With this in mind, the aim of this tutorial will be to create the drop matching the above properties. This process can be broken down into two stages:
 
 1) Connect to the NEAR blockchain.  
 2) Create the drop with function call data.  
 
+TODO: fix this to match new docs examples
 Starting at the `keypom-js` directory, navigate to the `docs-advanced-tutorial/dao-onboarding-skeleton` folder and open the `createDaoDrop.js` file. 
 
 ```bash
 cd docs-advanced-tutorials/dao-onboarding-skeleton
 ```
 
+TODO: fix
 There, you can see the following skeleton code in the file `createDaoDrop.js`.
 ``` js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L27
 ```
 
 :::note
-WHile the skeleton code allows you to follow along and build alongside the tutorial, the completed code can be found in `docs-advanced-tutorial/dao-onboarding/createDaoDrop.js`.
+While the skeleton code allows you to follow alongside the tutorial, the completed code can be found in `TODO`.
 :::
 
 ---
@@ -43,6 +44,7 @@ This is done with `NEAR-API-JS` and consists of:
 
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
+TODO: fix
 ```js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L20-L36
 ```
@@ -56,9 +58,7 @@ In this section, you'll create the function call drop to meet the functional req
 
 #### Initializing the SDK
 
-This process starts with calling the `initKeypom` function and will always be the first function you call to interact with the Keypom SDK. 
-
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected.
+This process starts with calling the `initKeypom` function to initialize the SDK.
 
 
 ```js
@@ -68,14 +68,12 @@ const NETWORK_ID = "testnet"
 async function createDaoDrop() {
   // Initiate connection to the NEAR blockchain.
   const CREDENTIALS_DIR = ".near-credentials";
-  const credentialsPath =  path.join(homedir, CREDENTIALS_DIR);
   ...
   ...
   let near = await connect(nearConfig);
 
   await initKeypom({
     near,
-      network: NETWORK_ID
   });
 }
 ```
@@ -84,7 +82,7 @@ After `initKeypom` is called, the FC Drop can be created by calling `createDrop`
 
 #### Defining the Function Call Data
 
-Once the SDK has been initialized and the NEAR connection established, it's time to create the function call drop. This is done by passing in `fcData` into create drop. It is an object that defines the methods that will be called for any given key use:
+The `fcData` is an object that defines the methods that will be called for any given key use:
 
 
 ```bash
@@ -92,7 +90,7 @@ fcData
 └── methods
 ```
 
-For this Keypom drop, only a single function call to the DAO bot will be needed. This ensures that the DAO bot will only be called once and cannot be reused to register multiple people using one key. 
+For this Keypom drop, only a single function call will be needed which invokes a method on the middleman contract. In this tutorial, that method is called `new_auto_registration`.
 
 ```js
 methods: [
@@ -129,8 +127,11 @@ fcData: {
 }  
 ```
 
+The required arguments and attached deposits will be covered in a later section.
+
 ### Adding Proposal and Injected Arguments
-As part of the function call, you will need to define the proposal itself. From the [SputnikV2 ReadMe](https://github.com/near-daos/sputnik-dao-contract#add-proposal), it can be seen that the proposal will need the following structure. 
+
+The DAO bot will need to know what proposal to add and so that information should be passed in as arguments. From the [SputnikV2 ReadMe](https://github.com/near-daos/sputnik-dao-contract#add-proposal), it can be seen that the proposal will need the following structure. 
 ```json
 {
   "proposal": {
@@ -148,7 +149,7 @@ As part of the function call, you will need to define the proposal itself. From 
 The `role` in the proposal **must already exist** in the DAO. This is because the `AddMemberToRole` proposal from SputnikV2 only works with existing roles.
 :::
 
-In order for the DAO bot to perform as expected, the `member_id` field must be equal to the claiming account's `accountId`. To do this you can use Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
+In order for the onboarding to perform as expected, the `member_id` field must be set to the wallet address for the account that is onboarding. To do this you can use Keypom Arguments which are important pieces of information that can be passed into specified fields when a key is used.
 
 The following optional Keypom arguments are exposed for each individual method in the `fcData` alongside the required receiverId, methodName, attachedDeposit etc. 
 
@@ -159,9 +160,16 @@ They tell Keypom where to inject certain parameters for each function call.
 - `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
-In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, tell Keypom to inject the `accountId` into the proposal object's `member_id` field. 
+In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, tell Keypom to inject the `accountId` of the user claiming into the argument's proposal object under the `kind.AddMemberToRole.member_id` field. 
 
 In summary, the final `fcData` should look as follows.
+
+TODO: talk about why 0.1 $NEAR attached deposit.
+
+(similar to this):
+1. The additional `require!` in `new_auto_registration` ensures that the function call has attached enough $NEAR to cover the Sputnik [proposal bond](https://github.com/near-daos/sputnik-dao-contract#add-proposal). Documentation lists this as 1 $NEAR but the contracts deployed on testnet require just 0.1 $NEAR.  
+
+TODO: talk about dao_contract as arguments
 
 ```js
 fcData: {
@@ -195,17 +203,19 @@ fcData: {
 
 Putting it all together, the final drop structure should look something like this:
 
+TODO: fix reference
 ```js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L46-L77
 ```
 
 ---
 
-## Creating Ticket Links
-The last step in this process is to create the links themselves so that you can easily register people into your DAO. You can control the format of the URL. For this tutorial `https://testnet.mynearwallet.com/linkdrop/` will be used.
+## Creating Onboarding Links
+The last step in this process is to create the links themselves so that you can easily register people into your DAO. For this tutorial, you will make use of MyNEARWallet's linkdrop claim flow which has the following URL: `https://testnet.mynearwallet.com/linkdrop/CONTRACT_ID/SECRET_KEY` will be used.
 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
+TODO: fix URl
 ```js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L80-L85
 ```
@@ -216,13 +226,17 @@ https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4
 
 Putting everything together, the final code for the drop should be as shown below:
 
+TODO: fix URL
 ```js reference
 https://github.com/keypom/keypom-js/blob/1640dd9125ea6c8a7872cb14d3f8b7bfc8038e4f/docs-advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L101
 ```
 
+TODO: add a header explaining that this code won't work until we create the DAO bot and we'll actually run the script in another tutorial.
 ---
 
 ## Conclusion
+
+TODO: add more hyperlinks and explain more about what we did (accountId Fields, sputnik proposal as args etc...)
 
 So far, you've broken down the DAO auto-registration tool into functional requirements. You then used them to write a script to create the accompanying drop.
 

@@ -20,6 +20,9 @@ cd docs-advanced-tutorials/dao-onboarding-skeleton && yarn
 :::
 
 ## Creating and Claiming the Drop
+
+TODO: add a section about giving the BOT the necessary roles
+
 From here, you are free to modify the `createDaoDrop` script however you'd like. 
 
 Most cases this would mean modifying the receiving DAO by changing the `dao_contract` argument to another SputnikV2 contract when calling the DAO bot. In this section, `moondao.sputnikv2.testnet` will be used.
@@ -114,6 +117,8 @@ This change will not be reflected on AstroDAO, the reasons are still unclear. Ho
 This DAO bot contract you just made has been deployed to the account `keypom-dao-bot.testnet` and is open for you to use! You can create your own FC drops to interface and experiment with it. 
 
 If you wish to make modifications to the DAO bot, the source code is found [here](https://github.com/keypom/dao-bot). You can modify to your liking and deploy the contract as you see fit. 
+
+TODO: add a quick note about setter for keypom contract
 
 ## Conclusion
 In this tutorial, you learned how you can use a Keypom FC drop and a newly created DAO bot to automatically register new users into your DAO and get the onboarding process started right away. 

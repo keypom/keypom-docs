@@ -119,7 +119,7 @@ https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22
 
 When `curUse` is 1 and the QR code is being rendered, the public key and use number is shown for educational purposes.
 
-A `useEffect` hook is used to update the needed Keypom state variables whenever the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
+A `useEffect` hook is used to update the needed Keypom state variables whenever the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/Core/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/Core/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/state/keyInfo.js#L6-L42

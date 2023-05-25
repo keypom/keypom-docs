@@ -212,7 +212,7 @@ Now that the connection to the NEAR blockchain is set up, the next step is to cr
 
 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/modules.md#initkeypom).
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. If a NEAR connection is not already present, it will initialize a new one for you. More info on the `initKeypom` function can be found [here](../../keypom-sdk/Core/modules.md#initkeypom).
 
 After `initKeypom` is called, the key generation and drop creation can be done. These two tasks are combined into one function, `createDrop`. This function can be either given a set of pre-created keypairs, **or** it can generate them automatically based on the `numKeys` parameter.
 
@@ -243,7 +243,7 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 </Tabs>
 
 :::note
-All function parameters and default values for the SDK and Keypom functions can be found in the [SDK Typedocs](../../keypom-sdk/modules.md). For `NEAR-API-JS` functions, their arguments can be found [here](https://docs.near.org/tools/near-api-js/reference)
+All function parameters and default values for the SDK and Keypom functions can be found in the [SDK Typedocs](../../keypom-sdk/Core/modules.md). For `NEAR-API-JS` functions, their arguments can be found [here](https://docs.near.org/tools/near-api-js/reference)
 :::
 
 ---
@@ -251,7 +251,7 @@ All function parameters and default values for the SDK and Keypom functions can 
 ## Creating Linkdrops
 The last step in this process is to create the links themselves so that you can easily distribute the assets to people. This is done by embedding the private key, containing the $NEAR, into the link along with the Keypom contract ID.  
 
-With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
+With the Keypom SDK, this is all neatly wrapped up in the function [`formatLinkdropUrl`](../../keypom-sdk/Core/modules.md#formatlinkdropurl). You just need to provide the base URL format and the private key you wish to embed.
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-example.js#L47-L53

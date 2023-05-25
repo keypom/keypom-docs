@@ -236,7 +236,7 @@ trialOver?: {
 }
 ```
 
-You can change the titles, descriptions, button text / behaviour and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
+You can change the titles, descriptions, button text / behavior and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
 
 ## Example Trial Account Integration
 

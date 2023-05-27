@@ -40,6 +40,18 @@
         "pattern": "^https://explorer.betanet.near.org"
       },
       {
+        "pattern": "^https://helper.mainnet.near.org"
+      },
+      {
+        "pattern": "^https://rpc.mainnet.near.org"
+      },
+      {
+        "pattern": "^https://helper.testnet.near.org"
+      },
+      {
+        "pattern": "^https://wallet.meteorwallet.app/linkdrop"
+      },
+      {
         "pattern": "^https://rpc.betanet.near.org"
       },
       {

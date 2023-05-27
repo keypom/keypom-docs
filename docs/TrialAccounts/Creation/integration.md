@@ -12,10 +12,10 @@ The UI for trial accounts while in the guest-book app in this tutorial are NOT f
 
 ## Starting the Guest Book
 
-Starting at the `keypom-js` directory, navigate to the `docs-advanced-tutorials/trial-accounts/guest-book` folder and install the dependencies.
+Starting at the `keypom-docs-examples` directory, navigate to the `advanced-tutorials/trial-accounts/guest-book` folder and install the dependencies.
 
 ```bash
-cd docs-advanced-tutorials/trial-accounts/guest-book && yarn install
+cd advanced-tutorials/trial-accounts/guest-book && yarn install
 ```
 
 Once the dependencies have been installed, you can start the app.
@@ -38,22 +38,22 @@ If you're signed in already, it's because you've used the same port for another 
 
 ## Creating the Trial Account
 
-Now that the guest-book is running, it's time to run the trial creation script. Open a new terminal and navigate to the `keypom-js` directory. Navigate to the `trial-accounts` folder and open the `create-trial-drop.js` file.
+Now that the guest-book is running, it's time to run the trial creation script. Open a new terminal and navigate to the `keypom-docs-examples` directory. Navigate to the `advanced-tutorials/trial-accounts` folder and open the `create-trial-drop.js` file.
 
 ```bash
-cd docs-advanced-tutorials/trial-accounts
+cd advanced-tutorials/trial-accounts
 ```
 
 From here, make sure you change the account ID that is being used to sign transactions to an account that you're currently signed in with:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L13
+https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be6576622d32b1/advanced-tutorials/trial-accounts/create-trial-drop.js#L11
 ```
 
 In addition, change the `guestBookInstance` to whichever URL your app is running on:
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/99475afcede4d5b9ebe9d3192287ed3acb13684d/docs-advanced-tutorials/trial-accounts/create-trial-drop.js#L67
+https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be6576622d32b1/advanced-tutorials/trial-accounts/create-trial-drop.js#L70
 ```
 
 Once this is finished, you can run the following command to create the trial account drop.
@@ -88,7 +88,7 @@ Log [v2.keypom.testnet]: Fees collected 0
 
 
   Guest-Book App:
-http://localhost:1234/keypom-url#v2.keypom.testnet/3HbgYBvVMSfTBpXQ4fSecbPzwup2YkJPipNmT7e2iyw5MfzfMN3rHccsPddWcTGFTehCux7AbmtJiRqd78x4F57g
+http://localhost:1234/trial-url#v2.keypom.testnet/3HbgYBvVMSfTBpXQ4fSecbPzwup2YkJPipNmT7e2iyw5MfzfMN3rHccsPddWcTGFTehCux7AbmtJiRqd78x4F57g
 
 Good Luck!
 ```
@@ -101,7 +101,7 @@ Now that the drop is created, it's time to create a brand new account! Open the 
   <img src={require("/static/img/docs/trial-accounts/claim-trial-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
 </p>
 
-Enter a username and click Submit. If the username is available, it should tell you with a browser alert. If not, simply input a new one and try again. Once the account is available, the claiming process should start.
+Enter a valid username and click Create. This will start the claiming process.
 
 <p align="center">
   <img src={require("/static/img/docs/trial-accounts/claiming-trial-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
@@ -117,7 +117,7 @@ Once you click the button, you should be instantly signed into the guest-book ap
 
 ### Signing Your First Transaction
 
-Now that you're signed in, you can instantly begin using the guest-book app. Try signing a message with `0.1 $NEAR` and see what happens!
+Now that you're signed in, you can instantly begin using the guest-book app. Try signing a message with `0.01 $NEAR` and see what happens!
 
 <p align="center">
   <img src={require("/static/img/docs/trial-accounts/trial-sign-guestbook.png").default} width="80%" height="15%" alt="ticketing"/>
@@ -154,11 +154,11 @@ If the account were to lose access of the local storage or their computer blew u
 In order for the guest-book app to be fully compatible with trial accounts, it only needs to add the SDK's wallet selector plugin.
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/bd2a9e9c2f62f7c51419bd2e1d2cac2bd953ef60/docs-advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L41-L53
+https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be6576622d32b1/advanced-tutorials/trial-accounts/guest-book/near-wallet.js#L46-L59
 ```
 
 You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:
-- `trialBaseUrl`: The base URL that the trial account will be sent to. In the guest-book app, this is `http://localhost:1234/keypom-url#`. The full URL for any given trial account link follows `${trialBaseURL}${keypomContractId}${trialSplitDelim}${secretKey}`. By default, the `trialSplitDelim` is `/` but this can be overloaded and passed into the setup function.
+- `trialAccountSpecs.baseUrl`: The base URL that the trial account will be sent to. In the guest-book app, this is defined as `http://localhost:1234/trial-url#`. The full URL for any given trial account link follows `${baseURL}${keypomContractId}${delimiter}${secretKey}`. By default, the `trialAccountSpecs.delimiter` is `/` but this can be overloaded and passed into the setup function.
 - `signInContractId`: The contract ID that regular users create access keys for when signing in.
 - `modalOptions`: Information that you can specify that will customize the modals that are shown to the user while on your app.
 

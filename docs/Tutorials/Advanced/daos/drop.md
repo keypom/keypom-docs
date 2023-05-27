@@ -105,7 +105,7 @@ In reality, each method is not simply a string as shown above. The methods requi
 - `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
-For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/core/interfaces/Method.md)
+For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/Core/interfaces/Method.md)
 
 In summary, the `fcData` should look something like this:
 
@@ -154,8 +154,8 @@ The following optional Keypom arguments are exposed for each individual method i
 They tell Keypom where to inject certain parameters for each function call.
 
 - `accountIdField`: The name of the account that is claiming the linkdrop.
-- `dropIdField`: The [`dropId`](../../../keypom-sdk/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
-- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
+- `dropIdField`: The [`dropId`](../../../keypom-sdk/Core/interfaces/Drop.md#dropid) of the drop that the claim is being called on. 
+- `keyIdField` The unique identifier, [`keyId`](../../../keypom-sdk/Core/interfaces/KeyInfo.md#keyid), of the key that is being used to claim.
 - `funderIdField` the `accountId` of the person funding the drop.
 
 In this case, the `accountIdField` should be set to `proposal.kind.AddMemberToRole.member_id`. This will, upon the key being claimed, tell Keypom to inject the `accountId` of the user claiming into the argument's proposal object under the `kind.AddMemberToRole.member_id` field. 

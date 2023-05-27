@@ -16,7 +16,7 @@ Ben is a malicious user and is jealous because he was never allowed to join Moon
 
 To do this, he creates an identical FunctionCall drop, exactly like the one Min used. This FunctionCall drop will invoke `new_auto_registration` on the DAO bot.
 
-[Recall](TODO) that the DAO bot currently checks 2 things before performing the auto-registration:
+[Recall](daobot.md#adding-the-proposal) that the DAO bot currently checks 2 things before performing the auto-registration:
 1. The function call is coming from Keypom.
 2. There is enough attached deposit to cover the proposal bond.
 
@@ -39,7 +39,7 @@ In order to fix this, there needs to be a check in place to ensure that the FC d
     args: JSON.stringify({
         dao_contract: MOON_DAO, // Points to MOON DAO
         proposal: {
-            description: "Add New Member",
+            description: "Auto-Registering New Member",
             kind: {
                 AddMemberToRole:{
                     member_id: BEN, // Ben is adding himself!
@@ -61,7 +61,7 @@ To summarize, since the DAO bot has the role to approve members *and* Keypom all
 To fix this, the DAO bot needs to check that the FC drop is coming from a trusted funder.
 :::
 
-## Checking the Drop Funder
+## Receiving the Drop Funder
 
 Since the DAO bot will need to check if the funder is trusted, the function interface for `new_auto_registration` should be updated to include a new argument, `funder`.
 
@@ -69,7 +69,7 @@ Since the DAO bot will need to check if the funder is trusted, the function inte
 new_auto_registration(dao_contract: AccountId, funder: AccountId, proposal: ProposalInput)
 ```
 
-In order for this funder to be passed in, the FC drop will need to be modified. [Recall](TODO) that Keypom can optionally inject important data into the outgoing arguments. This data can either be the:
+In order for this funder to be passed in, the FC drop will need to be modified. [Recall](drop.md#adding-proposal-and-injected-arguments) that Keypom can optionally inject important data into the outgoing arguments. This data can either be the:
 - Drop ID
 - Key ID
 - Claiming account ID
@@ -77,31 +77,8 @@ In order for this funder to be passed in, the FC drop will need to be modified. 
 
 In this case, the drop's funder ID can be injected into the `new_auto_registration` `funder` argument if the `funderIdField` is set to `funder`. Therefore, the FC drop should be modified accordingly:
 
-```js
-fcData: {
-    methods: [
-        [
-            {
-                receiverId: DAO_BOT_CONTRACT,
-                methodName: "new_auto_registration",
-                args: JSON.stringify({
-                    dao_contract: DAO_CONTRACT,
-                    proposal: {
-                        description: "Add New Member",
-                        kind: {
-                            AddMemberToRole:{
-                                role: "new-onboardee-role"
-                            }
-                        }
-                    }
-                }),
-                accountIdField: "proposal.kind.AddMemberToRole.member_id",
-                funderIdField: "funder",
-                attachedDeposit: parseNearAmount("0.1")
-            }
-        ],
-    ]   
-}   
+```js reference
+https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/createDaoDrop.js#L56-L80
 ```
 
 This works great, but there is just one slight problem. Ben could hardcode the arguments to the method `new_auto_registration` and specify that the `funder` is Min, even though Ben created the drop.
@@ -314,25 +291,19 @@ The code for this can be seen below:
 https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/src/lib.rs#L103-L164
 ```
 
+:::info
+The full code for the completed DAO bot can be found [here](https://github.com/keypom/dao-bot/blob/main/src/lib.rs).
+:::
+
 ---
 
 
 ## Conclusion
 
-TODO: add hyperlinks, talk about exploit more in-depth (funderIdField, keypom args etc.) for important assets like NFTs, or DAO memberships that are gated by arguments such as a NFT's series ID or DAO contract it's important to ensure that the drop came from a trusted source and the arguments are validated.
+In this tutorial, you learned how people can use [malicious drops](#breaking-down-the-problem) to exploit your DAO. You then saw how you can protect yourself, by checking the incoming call's drop funder and their roles in your DAO. This started with [receiving the drop funder](#receiving-the-drop-funder) by using `keypom_args`, then [verifying injected arguments](#checking-the-drop-funder) and finally parsing the DAO policy and [checking the funder's roles](#ensuring-funder-is-council) in the DAO. 
 
-By adding this new check into the DAO bot, only approved members (such as Council) can use Keypom FC drops to create auto-registration campaigns for your DAO. This helps ensure the integrity of your DAO as you bring on more new members. 
+All of this work ensures that only approved members (such as Council) can use Keypom FC drops to create auto-registration campaigns for your DAO. This helps ensure the integrity of your DAO as you bring on more new members. 
+
+This concept and approach can be used any time where important assets or processes are gated only by arguments such as a DAO contract or NFT series ID. It is important to ensure that the incoming dorp is coming from a trusted source and that the arguments are validated as having been injected by Keypom. This will protect you from malicious actors creating identical Keypom drops to exploit your products. 
 
 In the next section, you'll be reviewing all of your work so far by testing the whole auto-registration system.
-
-
-1. add funder_id field to args of the function
-  - check if funder has some role
-  - Only if yes, continue
-
-We fixed Ben's exploit for the most part
-
-2. What if Ben just hardcoded the funder
- - It's important to distinguish args Keypom injected, vs. args the user injected.
- - Add keypom_args field
- - add require(keypom_args == funder)

@@ -45,7 +45,7 @@ For the this tutorial series, you can choose to follow along on your own machine
 2. [Keypom Core SDK](https://github.com/keypom/keypom-js/tree/main/packages/core#installation)
 
 
-> **NOTE** If you want to reference the finished tutorial code, it can be found [here](TODO).
+> **NOTE** If you want to reference the finished tutorial code, it can be found [here](https://github.com/keypom/keypom-docs-examples/tree/main/advanced-tutorials/dao-onboarding).
 
 ---
 
@@ -55,19 +55,23 @@ In this section, you'll install the skeleton project and get familiar with the c
 First, you'll want to clone the repo:
 
 ```bash
-git clone TODO && cd TODO
+git clone https://github.com/keypom/keypom-docs-examples.git && cd advanced-tutorials
 ```
 
-Second, install the dependencies TODO
+Second, install all the dependencies
 
 ```
-TODO
+yarn install && cd advanced-tutorials/dao-onboarding-skeleton && yarn
 ```
 
-At this point, all the dependencies should be installed and you should be in the `TODO` folder. Here you'll find the following files required to build out your app.
+At this point, all the dependencies should be installed and you should be in the `advanced-tutorials/dao-onboarding-skeleton` folder. Here you'll find the following files required to build out your app.
 
 ```bash
-TODO
+/dao-onboarding-skeleton
+└── configurations.js
+└── createDaoOnboarding.js
+└── package.json
+└── view-roles.js
 ```
 
 With this setup complete, you are ready to begin building the onboarding experience, starting by expanding upon the success criteria and breaking down the problem further.

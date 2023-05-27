@@ -6,7 +6,7 @@ In this section, you'll break down the requirements for the onboarding experienc
 
 The two major requirements for the auto-registration experience are:
 - Members don't need an existing wallet to join the DAO. 
-- The invitations do not require a 2 step process where a council votes and reaches a quorum for every single registration.
+- The invitations do not require a 2 step process where a council votes and reaches a quorum for every registration.
 
 ## Seamless Wallet Creation
 
@@ -25,9 +25,9 @@ If DAOs want to mass register members, this process is very inefficient. From a 
 
 ### Optimizing the Approach
 
-In order for this process to be streamlined automatically, Keypom must be able to first add a proposal and then **also** approve it as **part of the linkdrop claiming process**.
+In order for this process to be streamlined and completed automatically, Keypom must be able to first add a proposal and then **also** approve it as **part of the linkdrop claiming process**.
 
-First, Keypom must be given a role that is capable of creating proposals for adding new members.
+First, Keypom must be given a role that is capable of creating and approving proposals for adding new members.
 
 Second, Keypom must be given a role that automatically reaches quorum whenever it votes. For this tutorial, that role will only have 1 member so that whenever Keypom votes to accept the `AddMemberToRole` proposal, 100% of the members will have voted and it will be automatically accepted.
 
@@ -73,20 +73,27 @@ From above, here are the key features that need to be implemented.
 ### Keypom Solution
 On the Keypom side, an FC drop will be used to call the middleman. This FC drop must:
 - Only call the DAO bot once, to prevent double registration or multiple people registering with the same key.
+- Send the DAO bot the `AddMemberToRole` proposal object *and* the desired DAO. 
 - Attach the wallet address for the account that will be onboarded to the middleman contract when auto-registering them into the DAO. 
 
 ### DAO Bot Solution
 
 The middleman contract that relays the add and act proposal functions can be referred to as the DAO bot.
 
-Recall that Keypom would need to be in its own special role. This was because Keypom was the `predecessor` for the call to the DAO contract. Now that the middleman is introduced, Keypom is no longer the predecessor. For this reason, the middleman must have the special role instead.
+Recall that Keypom would need to be in its own special role. This was because Keypom was the `predecessor` for the `add_proposal` and `act_proposal` calls to the DAO contract. Now that the middleman is introduced, Keypom is no longer the predecessor. For this reason, the middleman DAO bot must have the special role instead.
+
+The middleman must:
+- Ensure all incoming calls are made by Keypom and have a sufficient attached deposit. 
+- Take in a proposal object for adding a new member to a DAO (which includes the account ID of the new member).
+- Take in a desired DAO contract and call `add_proposal` with the proposal object.
+- Parse the return value which should be the proposal ID and then call `act_proposal` to automatically register the new member into the DAO.
 
 ---
 
 ## Conclusion
 
-TODO: expand on this section (we talked about a middleman, single step registration, and seamless wallet creation etc.)
+In this section, you explored and expanded on all the requirements for the auto-registration process. This started with using a Keypom linkdrop to facilitate [seamless wallet creation](#seamless-wallet-creation). Then, the onboarding process was automated and streamlined by introducing a [single-step registration](#optimizing-the-approach). This was done using a FunctionCall drop that would create and approve `AddMemberToRole` proposals as part of the linkdrop claiming process. 
 
-In this section, you broke down the auto-registration process into tangible goals for both the FC drop and the newly created DAO bot. 
+However, you also saw the limitations of relying entirely on Keypom; that the `add_proposal` return value must be known and used. You solved this by introducing a [middleman contract](#middleman-solution) which would receive function calls from Keypom and execute the auto-registration. 
 
-With these goals in mind, you can start to build out this solution!
+From this analysis, you set [concrete goals](#full-solution-architecture) for the Keypom FunctionCall drop and the middleman DAO bot contract. With these goals in mind, you can start to build out this solution!

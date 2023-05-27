@@ -105,7 +105,7 @@ In reality, each method is not simply a string as shown above. The methods requi
 - `args`: A stringified JSON object of all the arguments to be passed into `methodName`.  
 - `attachedDeposit`: The yoctoNear deposit attached to the function call when the key is used.  
 
-For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/interfaces/Method.md)
+For more information on the `methods` parameter, please see the [TypeDocs](../../../keypom-sdk/core/interfaces/Method.md)
 
 In summary, the `fcData` should look something like this:
 

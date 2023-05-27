@@ -43,7 +43,7 @@ Up until this point, the general flow for auto registering users is clear. An FC
 
 This can be fixed by introducing a middleman contract. Rather than calling `add_proposal` and `act_proposal` directly through the FC drop, you can instead call **a single function on the middleman contract**. Once invoked, this middleman contract will then call `add_proposal`, parse the return value and call `act_proposal` in succession.
 
-While Keypom is extremely versatile, there are cases where custom behaviour will be needed. By introducing a middleman, you can customize exactly what will happen when a key is used.
+While Keypom is extremely versatile, there are cases where custom behavior will be needed. By introducing a middleman, you can customize exactly what will happen when a key is used.
 
 In summary, rather than having the FC drop look as follows:
 

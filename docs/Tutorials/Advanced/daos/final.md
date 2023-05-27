@@ -160,7 +160,7 @@ This DAO bot contract you just made has been deployed to the account `keypom-dao
 If you wish to make modifications to the DAO bot, the source code is found [here](https://github.com/keypom/dao-bot). You can modify to your liking and deploy the contract as you see fit. 
 
 :::note
-The following funcitons have been included in the DAO bot in case you created a drop using older versions of the Keypom contract, such as `v1-4.keypom.near`. Note that you will need to deploy the DAO bot and modify these values yourself.
+The following functions have been included in the DAO bot in case you created a drop using older versions of the Keypom contract, such as `v1-4.keypom.near`. Note that you will need to deploy the DAO bot and modify these values yourself.
 ``` rust
 pub fn change_keypom_contract(&mut self, new_contract: AccountId)
 pub fn view_keypom_contract(&self) -> AccountId

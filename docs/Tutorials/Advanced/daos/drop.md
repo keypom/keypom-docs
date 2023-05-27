@@ -233,7 +233,7 @@ This drop will not work until the DAO bot is created and deployed. The full scri
 
 So far, you've broken down the DAO auto-registration tool into functional requirements. You then used them to write a script to create the accompanying drop.
 
-This included [creating the proposal and using the `accountIdField`](#adding-proposal-and-injected-arguments) to attach the wallet address for the account that will be onboarded. You then finished that off by [creating the linkdrops](#creating-onboarding-links) to distribute to prosepective onboardees. 
+This included [creating the proposal and using the `accountIdField`](#adding-proposal-and-injected-arguments) to attach the wallet address for the account that will be onboarded. You then finished that off by [creating the linkdrops](#creating-onboarding-links) to distribute to prospective onboardees. 
 
 In the next tutorial, you'll be creating the DAO bot that the FC drop you just created will be interacting with. 
 

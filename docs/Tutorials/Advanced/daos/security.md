@@ -304,6 +304,6 @@ In this tutorial, you learned how people can use [malicious drops](#breaking-dow
 
 All of this work ensures that only approved members (such as Council) can use Keypom FC drops to create auto-registration campaigns for your DAO. This helps ensure the integrity of your DAO as you bring on more new members. 
 
-This concept and approach can be used any time where important assets or processes are gated only by arguments such as a DAO contract or NFT series ID. It is important to ensure that the incoming dorp is coming from a trusted source and that the arguments are validated as having been injected by Keypom. This will protect you from malicious actors creating identical Keypom drops to exploit your products. 
+This concept and approach can be used any time where important assets or processes are gated only by arguments such as a DAO contract or NFT series ID. It is important to ensure that the incoming drop is coming from a trusted source and that the arguments are validated as having been injected by Keypom. This will protect you from malicious actors creating identical Keypom drops to exploit your products. 
 
 In the next section, you'll be reviewing all of your work so far by testing the whole auto-registration system.

@@ -98,7 +98,7 @@ What happens if somebody else creates an identical FunctionCall drop to manipula
 
 ## Conclusion
 
-In this tutorial, you've created the all new DAO bot on function call at a time. This started with verifying the calls were coming from Keypom with a sufficient attached deposit. Then, this was followed up by [calling `add_proposal`](#adding-the-proposal) using the received proposal and DAO contract. Finally, you parsed the return value and [called `act_proposal` using the `propsal_id`](#approving-the-proposal).
+In this tutorial, you've created the all new DAO bot on function call at a time. This started with verifying the calls were coming from Keypom with a sufficient attached deposit. Then, this was followed up by [calling `add_proposal`](#adding-the-proposal) using the received proposal and DAO contract. Finally, you parsed the return value and [called `act_proposal` using the `proposal_id`](#approving-the-proposal).
 
 As hinted in the final [security section](#security-concerns), the next tutorial will involve finding the DAO bot's vulnerabilities and further improving it. 
 

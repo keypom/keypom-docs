@@ -151,7 +151,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 href: 'https://twitter.com/keypomxyz',
               },
               {
-                label: 'Telegram Builder Chat',
+                label: 'Telegram Builder Group',
                 href: 'https://nearbuilders.com/tg-keypom',
               },
             ],

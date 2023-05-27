@@ -152,7 +152,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: 'Telegram Builder Chat',
-                href: 'https://t.me/+OqI-cKxQU05lZDIx',
+                href: 'https://nearbuilders.com/tg-keypom',
               },
             ],
           },

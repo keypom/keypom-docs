@@ -93,6 +93,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
+            label: '🚀BOS',
+            to: 'docs/next/Tutorials/BOS/welcome',
+          },
+          {
             to: "docs/next/keypom-sdk/Core/welcome",
             label: "📚 SDK TypeDocs",
             position: "left",
@@ -127,6 +131,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: '💻Tutorials',
                 to: 'docs/next/Tutorials/welcome',
+              },
+              {
+                to: "docs/next/TrialAccounts/introduction",
+                label: "🎁 Trial Accounts",
+                position: "left",
+              },
+              {
+                label: '🚀BOS',
+                to: 'docs/next/Tutorials/BOS/welcome',
               },
               {
                 label: "📚 SDK TypeDocs",

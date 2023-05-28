@@ -152,7 +152,16 @@ const sidebars = {
 
       ],
     },
+    {
+      type: 'category',
+      label: 'BOS',
+      collapsed: false,
+      items: [
+            'Tutorials/BOS/welcome',
+      ],
+    },
     'Tutorials/Advanced/homepage',
+
   ],
   TrialAccounts: [
     "TrialAccounts/introduction",

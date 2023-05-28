@@ -78,11 +78,11 @@ These tutorials are meant to provide examples of real world use cases.
       </a>
     </div>
     <div class="col">
-      <a href="Advanced/ticketing/introduction">
+      <a href="Advanced/daos/introduction">
         <div class="card h-100 card-body">
           <div class="card__body">
-            <h3 class="small-bottom-padding">Ticketing</h3>
-            <p class="neutraltext">Supercharge your next event with Keypom.</p>
+            <h3 class="small-bottom-padding">DAO Onboarding</h3>
+            <p class="neutraltext">Seamless single-click onboarding for prospective members.</p>
           </div>
         </div>
       </a>
@@ -91,4 +91,4 @@ These tutorials are meant to provide examples of real world use cases.
 </div>
 <br></br>
 
-Other use cases can range from subscriptions to DAO onboarding and voting. These other advanced tutorials are currently in progress, stay tuned!
+Other use cases can range from subscriptions to DAO voting. These other advanced tutorials are currently in progress, stay tuned!

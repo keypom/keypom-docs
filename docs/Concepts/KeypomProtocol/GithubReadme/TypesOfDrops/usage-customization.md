@@ -8,14 +8,14 @@ import TabItem from '@theme/TabItem';
 Usage configurations control behaviors surrounding *how* a key can be used. For example, dictating whether a key can be used to call only `claim`, or `create_account_and_claim`.  
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
 https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L117-L154
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom Contract">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/drop_model.rs#L142-L154

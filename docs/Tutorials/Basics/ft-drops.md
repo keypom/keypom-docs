@@ -285,14 +285,14 @@ The SDK will **automatically** register Keypom on the FT contract and transfer t
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/fungible-token-drop/ft-example.js#L47-L70
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/fungible-token-drop/ft-near-example.js#L50-L115
@@ -317,14 +317,14 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 ## Full Code
 Now that everything has been put together, the final code can be seen below.
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/fungible-token-drop/ft-example.js#L1-L86
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/fungible-token-drop/ft-near-example.js#L1-L127

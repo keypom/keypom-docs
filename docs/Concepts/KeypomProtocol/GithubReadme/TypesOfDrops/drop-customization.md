@@ -17,14 +17,14 @@ This means that if you want keys with different configurations, you must create 
 
 # Understanding `DropConfig`
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
 https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L64-L82
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom Contract">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L56-L73

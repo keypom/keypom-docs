@@ -38,14 +38,14 @@ Along with the default global configurations for drops, if you'd like to create 
 you must specify the following pieces of information when the drop is created.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
 https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/nft.ts#L4-L15
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom Contract">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L78-L81

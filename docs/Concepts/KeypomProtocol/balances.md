@@ -19,7 +19,7 @@ Let's go back to your event organizer persona; this Keypom Balance allows you to
 There are a few functions that you can use to interact with your Keypom balance. Let's quickly run through their meanings, and then show some examples!
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts
 // Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
@@ -54,7 +54,7 @@ export const getUserBalance{
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom Contract">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust
 // Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.

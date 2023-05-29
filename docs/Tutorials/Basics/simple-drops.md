@@ -226,14 +226,14 @@ To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJ
 
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-example.js#L30-L45
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-near-example.js#L34-L59
@@ -263,14 +263,14 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 Now that everything has been put together, the final code can be seen below.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-example.js#L1-L61
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-near-example.js#L1-L71

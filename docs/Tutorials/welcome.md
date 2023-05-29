@@ -82,7 +82,7 @@ These tutorials are meant to provide examples of real world use cases.
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">DAO Onboarding</h3>
-            <p class="neutraltext">Seamless single-click onboarding for prospective members.</p>
+            <p class="neutraltext">Single-click onboarding into your DAO.</p>
           </div>
         </div>
       </a>

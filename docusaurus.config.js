@@ -6,13 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Keypom Docs',
   tagline: 'Web3 Onboarding',
-  url: 'https://minqianlu.github.io',
+  url: 'https://docs.keypom.xyz',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/moon.svg',
-  organizationName: 'minqianlu', // Usually your GitHub org/user name.
-  projectName: 'minqianlu.github.io', // Usually your repo name.
+  organizationName: 'Keypom', // Usually your GitHub org/user name.
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock',
   [

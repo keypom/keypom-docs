@@ -79,6 +79,7 @@ const sidebars = {
       ],
   Tutorials: [
     "Tutorials/welcome",
+    "Tutorials/Cookbook/welcome",
     {
       type: 'category',
       label: 'Basics',

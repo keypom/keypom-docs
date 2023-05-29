@@ -158,7 +158,8 @@ https://github.com/keypom/keypom-docs-examples/blob/28444a492c513b8244e25ccaf067
 ```
 
 You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:
-- `trialAccountSpecs.url` and `instantSignInSpecs.url`: The base URL that the trial account and instant sign-in will be sent to. With the specification above, the full URL for any trial account will be `${url}${keypomContractId}/${secretKey}`. Similarly, the URL for any instant sign-in link will be `${url}${keypomContractId}/${secretKey}/${moduleId}`.
+- `trialAccountSpecs.url` and `instantSignInSpecs.url`: The base URL that the trial account and instant sign-in will be sent to.
+  - You may notice the `ACCOUNT_ID` and `SECRET_KEY` markers in the URLs. These define the structure of the URL and must match the format of the links you plan to distribute. See the [TypeDocs](../../keypom-sdk/Selector/welcome.md#trial-account-specs) more information on the `ACCOUNT_ID` and `SECRET_KEY` markers.
 - `signInContractId`: The contract ID that regular users create access keys for when signing in.
 - [`trialAccountSpecs.modalOptions`](../../keypom-sdk/Selector/welcome.md#modal-options): Information that you can specify that will customize the modals that are shown to the user while on your app. Here, `KEYPOM_OPTIONS` from `./keypom-data` are imported and used. 
 

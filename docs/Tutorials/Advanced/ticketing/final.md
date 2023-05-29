@@ -9,17 +9,17 @@ To run this app on your local machine, you will need a computer with working cam
 :::
 
 ## Getting Started
-To follow along with the app on your own machine, you can clone the code from the [Keypom SDK repository](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial) and run the following command in the root folder `keypom-js/`:
+To follow along with the app on your own machine, you can clone the code from the [Keypom Docs Examples](https://github.com/keypom/keypom-docs-examples) repository and run the following command in the root folder `keypom-docs-examples/`:
 
 ``` bash
-cd docs-advanced-tutorials/ticket-app-skeleton && yarn && yarn start
+cd advanced-tutorials/ticket-app-skeleton && yarn && yarn start
 ```
 
 :::note
 If you'd like to run the already completed code found in the `ticket-app` directory instead of the skeleton code, run:
 
 ``` bash
-cd docs-advanced-tutorials/ticket-app && yarn && yarn start
+cd advanced-tutorials/ticket-app && yarn && yarn start
 ```
 :::
 
@@ -61,6 +61,8 @@ It will immediately prompt you for a password. By default, the `createTickDrop` 
 ```
 wrong-password
 ``` 
+
+Once you enter this password, the scanner should appear, shown below. 
  
  <p align="center">
     <img src={require("/static/img/docs/advanced-tutorials/ticketing/scan-unread.png").default} width="50%" height="50%" alt="ticketing" class="rounded-corners"/>

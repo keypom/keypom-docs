@@ -88,7 +88,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   position: "left",
           // },
           {
-            to: "docs/next/keypom-sdk/welcome",
+            to: "docs/next/TrialAccounts/introduction",
+            label: "🎁 Trial Accounts",
+            position: "left",
+          },
+          {
+            to: "docs/next/keypom-sdk/Core/welcome",
             label: "📚 SDK TypeDocs",
             position: "left",
           },
@@ -125,7 +130,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: "📚 SDK TypeDocs",
-                to: "docs/next/keypom-sdk/welcome",
+                to: "docs/next/keypom-sdk/Core/welcome",
               },
               {
                 label: "💡 Keypom Executive Summary",
@@ -145,6 +150,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Twitter',
                 href: 'https://twitter.com/keypomxyz',
               },
+              {
+                label: 'Telegram Builder Group',
+                href: 'https://nearbuilders.com/tg-keypom',
+              },
             ],
           },
           //more
@@ -158,6 +167,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'JavaScript SDK Github',
                 href: 'https://github.com/keypom/keypom-js',
+              },
+              {
+                label: 'Docs Examples Github',
+                href: 'https://github.com/keypom/keypom-docs-examples',
               },
             ],
           },

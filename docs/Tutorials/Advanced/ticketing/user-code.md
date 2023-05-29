@@ -42,7 +42,7 @@ The primary purpose of `App.js` is to display the different states of the attend
 The first step is to initialize a connection to NEAR and setup all the state variables that will be needed to render the page. 
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L13-L57
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/state/App.js#L13-L57
 ```
 
 When the page is loaded, the function `setup` is called and the URL is parsed for `contractId` and `privateKey`. These will be stored in their own respective state  variables for further use.
@@ -79,7 +79,7 @@ The code to render can be found in the exandable section below.
 <p>
 
 ```jsx reference showLineNumbers
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L54-L134
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/state/App.js#L54-L134
 ```
 
 </p>
@@ -93,7 +93,7 @@ The full code, including the set up and the rendering, can be seen below.
 <p>
 
 ``` jsx reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/App.js#L1-L137
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/state/App.js#L1-L136
 ```
 
 </p>
@@ -108,7 +108,7 @@ https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca83
 The full code can be seen below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/components/qrcode.js#L1-L22
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/components/qrcode.js#L1-L22
 ```
 
 --- 
@@ -119,10 +119,10 @@ https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca83
 
 When `curUse` is 1 and the QR code is being rendered, the public key and use number is shown for educational purposes.
 
-A `useEffect` hook is used to update the needed Keypom state variables whenever the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
+A `useEffect` hook is used to update the needed Keypom state variables whenever the `KeyInfo` component is rendered. To do this, two SDK functions are used: [`getPubFromSecret`](../../../keypom-sdk/Core/modules.md#getpubfromsecret) to get the public key and [`getKeyInformation`](../../../keypom-sdk/Core/modules.md#getkeyinformation) to get the current key use. This can be seen below. 
 
 ```js reference
-https://github.com/keypom/keypom-js/blob/af1e0da58129eb34f5e3580faefa48b86fcca832/docs-advanced-tutorials/ticket-app/state/keyInfo.js#L9-L45
+https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/state/keyInfo.js#L6-L42
 ```
 
 ---

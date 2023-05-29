@@ -5,9 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "start:typedoc": "docusaurus start --config docusaurus.config-typedoc.js",
     "build": "docusaurus build",
-    "build:typedoc": "docusaurus build --config docusaurus.config-typedoc.js",
+    "build:typedoc:core": "docusaurus build --config config-typedoc-core.js",
+    "build:typedoc:selector": "docusaurus build --config config-typedoc-selector.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

@@ -1,6 +1,9 @@
 ---
 sidebar_label: 'Public Sale Configurations'
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Public Sale Configurations
 The public sale configuration gives the funder the ability to sell access keys in their drop with a variety of configurable behaviors such as the price, or a dedicated allowlist.  
 
@@ -13,35 +16,22 @@ Public sales of access keys allow for a wide range of easier to create and more 
 
 The sale configurations are outlined below.
 
-```rust
-pub struct PublicSaleConfig {
-    /// Maximum number of keys that can be added to this drop. If None, there is no max.
-    pub max_num_keys: Option<u64>,
- 
-    /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
-    /// Automatically sent to the funder's balance. If None, the keys are free to the public.
-    pub price_per_key: Option<u128>,
- 
-    /// Which accounts are allowed to add keys?
-    pub allowlist: Option<LookupSet<AccountId>>,
- 
-    /// Which accounts are NOT allowed to add keys?
-    pub blocklist: Option<LookupSet<AccountId>>,
+<Tabs>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
-    /// Should the revenue generated be sent to the funder's account balance or
-    /// automatically withdrawn and sent to their NEAR wallet?
-    /// If none or false, revenue is sent to the funder's account balance
-    pub auto_withdraw_funds: Option<bool>,
+```ts reference
+https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L159-L187
+```
 
-    /// Minimum block timestamp before the public sale starts. If None, keys can be added immediately
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub start: Option<u64>,
+</TabItem>
+<TabItem value="KP" label="📚 Protocol">
 
-    /// Block timestamp dictating the end of the public sale. If None, keys can be added indefinitely
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub end: Option<u64>,
-}
-```                
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L86-L113
+```
+
+</TabItem>
+</Tabs>              
 
 ---
 

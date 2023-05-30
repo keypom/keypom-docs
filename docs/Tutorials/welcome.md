@@ -82,7 +82,7 @@ These tutorials are meant to provide examples of real world use cases. These can
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">DAO Onboarding</h3>
-            <p class="neutraltext">Effortlessly auto-register new members.</p>
+            <p class="neutraltext">Single-click onboarding into your DAO.</p>
           </div>
         </div>
       </a>
@@ -91,4 +91,4 @@ These tutorials are meant to provide examples of real world use cases. These can
 </div>
 <br></br>
 
-Other use cases can range from subscriptions to DAO onboarding and voting. These other advanced tutorials are currently in progress, stay tuned!
+Other use cases can range from subscriptions to DAO voting. These other advanced tutorials are currently in progress, stay tuned!

@@ -31,7 +31,7 @@ For the this tutorial, you can choose to run the scripts on your own machine. To
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
 
 If you want to reference the finished code, that can be found [here](https://github.com/keypom/keypom-js/tree/min/ticketing-tutorial/docs-advanced-tutorials/ticket-app). To follow along and build out this ticketing app, see the steps below. 
 

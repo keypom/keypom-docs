@@ -159,7 +159,11 @@ View call: keypom-test.sputnik-dao.near.get_policy()
 
 
 ## How You Can Use DAO Bot
-This DAO bot contract you just made has been deployed to the account `keypom-dao-bot.testnet` and `dao-bot.keypom.near` and is open for you to use! You can create your own FC drops to interface and experiment with it. 
+This DAO bot contract you just made has been deployed to the account `keypom-dao-bot.testnet` and `dao-bot.keypom.near` and is open for you to use! You can create your own [FC drops](drop.md#final-code) to interface and experiment with it. 
+
+:::caution
+Prior to using the DAO Bot, ensure that it is given a role in your DAO capable of creating and approving `AddMemberToRole` proposals. For more info, see the [solution architecture](architecture.md#optimizing-the-approach)
+:::
 
 If you wish to make modifications to the DAO bot, the source code is found [here](https://github.com/keypom/dao-bot). You can modify to your liking and deploy the contract as you see fit. 
 

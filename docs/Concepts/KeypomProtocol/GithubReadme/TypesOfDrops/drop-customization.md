@@ -1,6 +1,9 @@
 ---
 sidebar_label: 'Drop Configurations'
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Drop Configurations
 Drop Customizations via the `DropConfig` object passed into `create_drop` can help adjust the properties and behaviors of a drop to achieve specific use-cases.
 
@@ -13,25 +16,23 @@ This means that if you want keys with different configurations, you must create 
 :::
 
 # Understanding `DropConfig`
-```rust
-pub struct DropConfig {
-    /// How many uses can each key have before it's deleted. If None, default to 1.
-    pub uses_per_key: Option<u64>,
+<Tabs>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
-    // Any time based configurations
-    pub time: Option<TimeConfig>,
-    
-    // Any usage specific configurations
-    pub usage: Option<UsageConfig>,
-
-    // Public sale config options
-    pub pub_sale: Option<PublicSaleConfig>,
-
-    /// Override the global root account that sub-accounts will have (near or testnet). This allows
-    /// users to create specific drops that can create sub-accounts of a predefined root.
-    pub root_account_id: Option<AccountId>,
-}
+```ts reference
+https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L64-L82
 ```
+
+</TabItem>
+<TabItem value="KP" label="📚 Protocol">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/json_types.rs#L56-L73
+```
+
+</TabItem>
+</Tabs>
+
 For now, the focus will be `uses_per_key` and `root_account_id`. [`TimeConfig`](time-customization.md), [`UsageConfig`](usage-customization.md), and [`PublicSaleConfig`](sale-customization.md) are covered later.
 
 ---

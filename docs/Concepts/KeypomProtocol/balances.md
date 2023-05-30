@@ -19,57 +19,42 @@ Let's go back to your event organizer persona; this Keypom Balance allows you to
 There are a few functions that you can use to interact with your Keypom balance. Let's quickly run through their meanings, and then show some examples!
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts
 // Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
-export const addToBalance = async ({
-	account,
-	wallet,
-	amountNear,
-	amountYocto,
-	successUrl,
-}: {
+export const addToBalance{
 	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
 	account?: Account,
 	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
 	wallet?: AnyWallet,
-	/** 
-	 * Amount of tokens to add but considering the decimal amount (non human-readable).
-	 * @example
-	 * Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" 
-	*/
+	/** Amount of tokens to add but considering the decimal amount (non human-readable).
+	Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" */
 	amountYocto?: string
-	/**
-	 * Human readable format for the amount of tokens to add.
-	 * @example
-	 * Example: transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000"
-	 */
+	/** Human readable format for the amount of tokens to add.
+	Transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" */
 	amountNear?: string,
 	/** When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. */
 	successUrl?: string
-})
+}
 
 // Withdraw your balance back into your wallet. 
-export const withdrawBalance = async ({
-	account,
-	wallet
-}: {
+export const withdrawBalance {
 	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
 	account?: Account,
 	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
 	wallet?: AnyWallet,
-})
+}
 
 //This allows you to view your own or other people's Keypom balance. This can be useful to determine 
 //if you need to top up if you are on the verge of creating a large drop
-export const getUserBalance = async ({
-	accountId
-}: { accountId: string })
+export const getUserBalance{ 
+	accountId: string 
+}
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust
 // Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.

@@ -24,14 +24,14 @@ config similar to how the *general* config works.
 
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
 https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L68-L74
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L53-L58
@@ -48,14 +48,14 @@ information for the function being called. Within this data, there are also a fe
 to extend your use cases. You'll see how powerful these can be in the use cases [section](#use-cases).
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
 https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L7-L63
 ```
 
 </TabItem>
-<TabItem value="KP" label="🗝️Keypom">
+<TabItem value="KP" label="📚 Protocol">
 
 ```rust reference
 https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L18-L48

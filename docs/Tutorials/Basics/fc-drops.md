@@ -278,14 +278,14 @@ Including the `fcData` parameter categorizes this as an FC drop. Without it, the
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/function-call-drop/fc-example.js#L32-L71
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/function-call-drop/fc-near-example.js#L33-L82
@@ -311,14 +311,14 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 Now that everything has been put together, the final code can be seen below.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/function-call-drop/fc-example.js#L1-L86
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/function-call-drop/fc-near-example.js#L1-L95

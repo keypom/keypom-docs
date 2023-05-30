@@ -267,14 +267,14 @@ More information on the `nftData` parameter can be found [here](../../keypom-sdk
 To see what the SDK is doing behind the scenes, a `NEAR-API-JS` equivalent NodeJS script has been provided.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L51-L74
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-near-example.js#L52-L101
@@ -304,14 +304,14 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 Now that everything has been put together, the final code can be seen below.
 
 <Tabs>
-<TabItem value="KPJS" label="🔑Keypom-JS SDK">
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-example.js#L1-L89
 ```
 
 </TabItem>
-<TabItem value="NRJS" label="💻NEAR-API-JS">
+<TabItem value="NRJS" label="💻 NEAR-API-JS">
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/non-fungible-token-drop/nft-near-example.js#L1-L114

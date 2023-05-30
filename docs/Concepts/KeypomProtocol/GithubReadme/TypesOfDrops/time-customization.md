@@ -1,31 +1,28 @@
 ---
 sidebar_label: 'Time Configurations'
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Time Configurations
 Time configurations are particularly useful in defining limits on ***when*** a key may be used. This can have a wide range of applications from [Subscriptions](../../../../Tutorials/Advanced/subscriptions/introduction.md) to [Ticketing](../../../../Tutorials/Advanced/ticketing/introduction.md).
 
-```rust
-pub struct TimeConfig {
-    /// Minimum block timestamp before keys can be used. If None, keys can be used immediately
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub start: Option<u64>,
+<Tabs>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
 
-    /// Block timestamp that keys must be before. If None, keys can be used indefinitely
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub end: Option<u64>,
-
-    /// Time interval between each key use. If None, there is no delay between key uses.
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub throttle: Option<u64>,
-
-    /// Interval of time after the `start_timestamp` that must pass before a key can be used.
-    /// If multiple intervals pass, the key can be used multiple times. This has nothing to do
-    /// With the throttle timestamp. It only pertains to the start timestamp and the current
-    /// timestamp. The last_used timestamp is not taken into account.
-    /// Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
-    pub interval: Option<u64>,
-}
+```ts reference
+https://github.com/keypom/keypom-js/blob/29c10f949f02f673d4a3cecc21b0f74bca600075/src/lib/types/drops.ts#L87-L112
 ```
+
+</TabItem>
+<TabItem value="KP" label="📚 Protocol">
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/drop_model.rs#L89-L108
+```
+
+</TabItem>
+</Tabs>
 :::tip
 All these time parameters are measured in non-leap-nanoseconds and can be tricky to work with. An example struct has been provided [below](time-customization.md).
 :::  

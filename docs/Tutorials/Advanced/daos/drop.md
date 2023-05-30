@@ -194,27 +194,17 @@ fcData: {
 ```
 
 ### Gas Requirements
-The final consideration to make is the amount of gas needed to claim the drop. To determine this amount, you can test your drop by using `create_account_and_claim`. To maximize gas usage, it is important to use an `account_id` of maximum length (56 characters).
+The final consideration to make is the amount of gas needed to claim the drop. To determine this amount, you can test your drop by using `create_account_and_claim`. To maximize gas usage, it is important to use an `account_id` of maximum length (64 characters).
 
-<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/longname.png").default} alt="long name" width="80%"/> </p>
+By default, MyNearWallet will attach 100 [TGas](https://docs.near.org/concepts/basics/transactions/gas#thinking-in-gas) to linkdrop claims. This can be used as a starting point when testing your drop but if more gas is needed, it can be overriden manually.
 
-By default, MyNearWallet will attach 100[TGas](https://docs.near.org/concepts/basics/transactions/gas#thinking-in-gas) to any transaction. This can be used as a starting point when testing your drop but can be overriden manually.
+If you were to use the default 100 TGas, it would work for claims to existing wallets but would throw an error for `create_account_and_claim`. This is because the drop uses more Gas when a new account is created. This can be seen in the screenshot below. To mitigate this, you can set the required gas to be 120 TGas, which is slightly over the default.
+
+<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/fail-not-enough-gas.png").default} alt="failed txn not enough gas" width="80%"/> </p>
 
 :::note
-This test is performed after the drop and DAO bot have been created. 
+For the majority of use-cases, the 100 TGas default is more than enough. With the DAO bot, however, the middleman contract is quite complex and requires more Gas
 :::
-
-<details>
-<summary>Default Gas Test</summary>
-<p>
-
-With no gas requirement specified in the drop, you can see that the [transaction](https://explorer.testnet.near.org/transactions/AoH2PDMvtdeNqwxjMJdPE6BmVxV1TKVGhdCybL9YsyG6) fails by exceeding the prepaid gas.
-
-<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/fail-not-enough-gas.png").default} alt="failed txn not enough gas" height = "40%" width="60%"/> </p>
-
-
-</p>
-</details>
 
 To combat this, you can add a `requiredGas` argument to your `createDrop`. This will increase the overall amount of gas available to each key in your drop. 
 
@@ -230,11 +220,6 @@ let {keys, dropId} = await createDrop({
 ```
 
 With this modification, the [transaction](https://explorer.testnet.near.org/transactions/AoH2PDMvtdeNqwxjMJdPE6BmVxV1TKVGhdCybL9YsyG6) shows that the drop is claimed successfully and the user is registered into the DAO.
-
-:::note
-As of May 30th 2023, overriding MyNearWallet's 100TGas default is only available on testnet. This means `create_account_and_claim` transactions with maximum account ID length will fail on mainnet until MNW updates their mainnet service. 
-:::
-
 
 ### Final Drop Structure
 

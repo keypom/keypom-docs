@@ -5,7 +5,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Keypom Cookbook
-Welcome to the Keypom's developer documentation cookbook. Here you can explore Keypom's building blocks that help create awesome onboarding experiences.
+Welcome to the Keypom cookbook! Here you can explore Keypom's building blocks that help create awesome onboarding experiences.
+
+## Getting Started
+In this cookbook, you will get to explore different building blocks you can use for your own projects. These will range from creating a drop to working with Keypom balances and everything in between. Each of these building blocks will provide a code snippet, using the Keypom JS SDK and Rust.
+
+For the cookbook, you will need the following installed. 
+
+
+
+the Keypom JS SDK version will require you to initiate Keypom. This is done 
+
 
 ### Creating a Drop
 

@@ -63,7 +63,7 @@ It is recommended you read through the [Getting Started](Basics/getting-started.
 
 ## Advanced Tutorials
 
-These tutorials are meant to provide examples of real world use cases.
+These tutorials are meant to provide examples of real world use cases. These can range from ticketing, to seamless DAO onboarding experiences.
 
 <div class="container">
   <div class="row">

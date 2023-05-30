@@ -128,13 +128,18 @@ const sidebars = {
             // },
             {
               type: 'category',
-              label: 'DAO Onboarding',
+              label: 'DAO Auto-Registration',
               // link: {
               //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
               // },
               collapsed: true,
               items: [
                 'Tutorials/Advanced/daos/introduction',
+                'Tutorials/Advanced/daos/architecture',
+                'Tutorials/Advanced/daos/drop',
+                'Tutorials/Advanced/daos/daobot',
+                'Tutorials/Advanced/daos/security',
+                'Tutorials/Advanced/daos/final',
               ],
             },
             {

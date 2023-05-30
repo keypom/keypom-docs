@@ -24,7 +24,7 @@ cd advanced-tutorials/dao-onboarding-skeleton
 
 There, you can see the following skeleton code in the file `createDaoDrop.js`.
 ``` js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L29
+https://github.com/keypom/keypom-docs-examples/blob/2b0172fc9c537ae098b2ad9d83966e3ed9be5785/advanced-tutorials/dao-onboarding-skeleton/createDaoDrop.js#L1-L29
 ```
 
 :::note
@@ -43,7 +43,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L19-L39
+https://github.com/keypom/keypom-docs-examples/blob/2b0172fc9c537ae098b2ad9d83966e3ed9be5785/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L19-L39
 ```
 
 ---
@@ -193,13 +193,55 @@ fcData: {
 }   
 ```
 
+### Gas Requirements
+The final consideration to make is the amount of gas needed to claim the drop. To determine this amount, you can test your drop by using `create_account_and_claim`. To maximize gas usage, it is important to use an `account_id` of maximum length (56 characters).
+
+<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/longname.png").default} alt="longname" width="80%"/> </p>
+
+By default, MyNearWallet will attach 100[TGas](https://docs.near.org/concepts/basics/transactions/gas#thinking-in-gas) to any transaction. This can be used as a starting point when testing your drop but can be overriden manually.
+
+:::note
+This test is performed after the drop and DAO bot have been created. 
+:::
+
+<details>
+<summary>Default Gas Test</summary>
+<p>
+
+With no gas requirement specified in the drop, you can see that the [transaction](https://explorer.testnet.near.org/transactions/AoH2PDMvtdeNqwxjMJdPE6BmVxV1TKVGhdCybL9YsyG6) fails by exceeding the prepaid gas.
+
+<p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/fail-not-enough-gas.png").default} alt="failed txn not enough gas" height = "40%" width="60%"/> </p>
+
+
+</p>
+</details>
+
+To combat this, you can add a `requiredGas` argument to your `createDrop`. This will increase the overall amount of gas available to each key in your drop. 
+
+```js
+const TERA_GAS = 1000000000000;
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    ...
+    requiredGas: (120*TERA_GAS).toString(),
+    ...
+})
+```
+
+With this modification, the [transaction](https://explorer.testnet.near.org/transactions/AoH2PDMvtdeNqwxjMJdPE6BmVxV1TKVGhdCybL9YsyG6) shows that the drop is claimed succesfully and the user is registered into the DAO.
+
+:::note
+As of May 30th 2023, overriding MyNearWallet's 100TGas default is only available on testnet. This means `create_account_and_claim` transactions with maximum account ID length will fail on mainnet until MNW updates their mainnet service. 
+:::
+
 
 ### Final Drop Structure
 
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L49-L80
+https://github.com/keypom/keypom-docs-examples/blob/2b0172fc9c537ae098b2ad9d83966e3ed9be5785/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L48-L81
 ```
 
 ---
@@ -210,7 +252,7 @@ The last step in this process is to create the links themselves so that you can 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L83-L88
+https://github.com/keypom/keypom-docs-examples/blob/2b0172fc9c537ae098b2ad9d83966e3ed9be5785/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L84-L89
 ```
 
 ---
@@ -220,7 +262,7 @@ https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00b
 Putting everything together, the final code for the drop should be as shown below:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L104
+https://github.com/keypom/keypom-docs-examples/blob/2b0172fc9c537ae098b2ad9d83966e3ed9be5785/advanced-tutorials/dao-onboarding/pre-security/createDaoDrop.js#L1-L105
 ```
 
 :::note

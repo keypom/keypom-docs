@@ -22,7 +22,7 @@ For the basic tutorials, you can choose to run the scripts on your own machine. 
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [NEAR-API-JS](https://docs.near.org/tools/near-api-js/quick-reference#install)  
-3. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+3. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
 
 With this tutorial, you can either create your own script by following along, or view the completed script available in the [Keypom Documentation Examples](https://github.com/keypom/keypom-docs-examples) repo.
 

@@ -19,6 +19,14 @@ Welcome! This a collection of useful BOS components from both Keypom and the com
   <img src={require("/static/img/docs/bos/all-my-drops.png").default} width="85%" height="85%" alt="ticketing"/>
 </p>
 
+- [Linkdrop Plus](https://near.org/cuongdcdev.near/widget/linkdrop_plus) by [Kent - cuongdcdev](https://near.org/near/widget/ProfilePage?accountId=cuongdcdev.near)
+- <p align="center">
+  <img src={require("/static/img/docs/bos/kent-linkdrop.png").default} width="85%" height="85%" alt="ticketing"/>
+</p>
+
+- [Linkdrop Viewer](https://near.org/cuongdcdev.near/widget/linkdrop-viewer) by [Kent - cuongdcdev](https://near.org/near/widget/ProfilePage?accountId=cuongdcdev.near)
+
+
 - [DAO viewer](https://near.org/hack.near/widget/DAO.Profile?daoId=keypom-test.sputnik-dao.near)
 <p align="center">
   <img src={require("/static/img/docs/bos/dao-view.png").default} width="85%" height="85%" alt="dao-viewer"/>

@@ -11,7 +11,7 @@ In the following tutorials, you'll learn how Trial Accounts work behind the scen
 In order to successfully complete the tutorials, you'll need to have the following:
 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-2. [Keypom JS SDK](https://github.com/keypom/keypom-js#installation)
+2. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
 
 ---
 

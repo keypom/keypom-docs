@@ -159,9 +159,6 @@ https://github.com/keypom/keypom-docs-examples/blob/28444a492c513b8244e25ccaf067
 
 You'll notice that there are a couple of parameters that are passed into the `setupKeypom` function. You need to specify:
 
-The URL format that must be met in order to trigger the sign in flow.
-These define where the account ID and secret key will go for the links you plan to distribute. For more information, see the typedocs.
-
 - `trialAccountSpecs.url` and `instantSignInSpecs.url`: The URL format that must be met in order to trigger the sign-in flow.
   - You may notice the `ACCOUNT_ID` and `SECRET_KEY` markers in the URLs. These define where the account ID and secret key will go for the links you plan to distribute. For more information, see the [TypeDocs](../../keypom-sdk/Selector/welcome.md#trial-account-specs).
 - `signInContractId`: The contract ID that regular users create access keys for when signing in.

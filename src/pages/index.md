@@ -71,12 +71,12 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
     <Feature url="../../docs/next/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with seamless onboarding" image="docs/icons/dao.png" />
     <Feature url="../../docs/next/TrialAccounts/introduction" title="Trial Accounts" subtitle="Web2 Onboarding in Web3" image="docs/icons/trial-accounts.png" />
-    <Feature url="../../docs/next/Tutorials/BOS/introduction" title="Keypom on BOS" subtitle="Learn utilize Keypom in your BOS Componets" image="docs/icons/bos.png" />
+    <Feature url="../../docs/next/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Learn utilize Keypom in your BOS Componets" image="docs/icons/bos.png" />
 
   </Column>
 
   <Column title="Developer Documentation" size="3">
-    <Feature url="docs/next/keypom-sdk/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
+    <Feature url="docs/next/keypom-sdk/Core/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
     <Feature url="https://github.com/keypom/keypom-docs-examples" title="Tutorial Source Code" subtitle="Begin building with examples" image="docs/icons/code.png" />
     <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.svg" />
     <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />

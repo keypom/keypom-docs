@@ -17,7 +17,7 @@ Ensure that you have initialized Keypom using the `initKeypom` funciton prior to
 :::
 
 ### Creating a Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties. The key is what you would distribute to people while the drop is that collection of keys that you fund and own until you distribute it.
+A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -57,6 +57,7 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 ___
 
 ### Public Sale Drop
+A public sale drop is one where you can sell the access keys from a drop to other users. These keys will all have the same propoerties and can be bought by anyone unless otherwise specified using the `allowlist` and `blocklist`. The maximum number of keys in the drop can be set using `maxNumKeys`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -92,6 +93,7 @@ pub fn a() -> u8{
 ___
 
 ### Password Protecting your Drop
+Password protecting your drop prevents unauthorized people from claiming keys in your drop. A claim will fail if the password is not included in the claim transaction. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -126,6 +128,13 @@ pub fn a() -> u8{
 ___
 
 ### Keypom Args
+Keypom Args are important pieces of information injected automatically by Keypom when a key is claimed. If any attempt is made to spoof Keypom args, the claim will automatically fail. This makes the Keypom Args an untamperable source of truth. The pieces of information can include: 
+- Drop ID that the access key belongs to
+- Funder's `accountId` of the drop
+- The claiming account's `accountId`
+- The current access key's `keyId`
+
+The information are injected into the `args`, but their specific location depends on the field specified. Here, the `funderId` is being injected into an `originalOwner` field in the args, and the claiming account's `accountId` is being injected into the metadata object under the field `newOwner`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -152,7 +161,8 @@ let {keys, dropId} = await createDrop({
                             }
                         }),
                         // Injecting claiming account ID into the metadata object as originalOwner
-                        accountIdField: "metadata.originalOwner",
+                        accountIdField: "metadata.newOwner",
+                        funderIdField: "originalOwner",
                     }
                 ],
             ]   
@@ -176,19 +186,24 @@ pub fn a() -> u8{
 ___
 
 ### Delete Drop
+A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-const {keys} = await createDrop({
-    account: fundingAccount,
-    numKeys: 2,
-	config:{
-		usesPerKey: 1
-	},
-    depositPerUseNEAR: "0.1",
-});
+// Get drops for user
+let drops = await getDrops({accountId: "minqi.testnet"});
+
+// Delete the first two by drop object
+await deleteDrops({
+    drops: [drops[0], drops[1]]
+})
+
+// Delete the next two by dropId
+await deleteDrops({
+    dropIds: [drops[2].drop_id, drops[3].drop_id]
+})
 ```
 
 </TabItem>

@@ -19,6 +19,7 @@ Ensure that you have initialized Keypom using the `initKeypom` funciton prior to
 
 ### Adding Keys to a Drop
 
+
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 

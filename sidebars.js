@@ -79,7 +79,19 @@ const sidebars = {
       ],
   Tutorials: [
     "Tutorials/welcome",
-    "Tutorials/Cookbook/welcome",
+    {
+      type: 'category',
+      label: 'Keypom Cookbook',
+      collapsed: true,
+      items: [
+            "Tutorials/Cookbook/welcome",
+            "Tutorials/Cookbook/drops",
+            "Tutorials/Cookbook/keys",
+            "Tutorials/Cookbook/balances",
+            "Tutorials/Cookbook/utilities",
+                    
+      ],
+    },
     {
       type: 'category',
       label: 'Basics',

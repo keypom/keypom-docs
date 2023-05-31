@@ -52,7 +52,7 @@ It is recommended you read through the [Getting Started](Basics/getting-started.
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Function Call Drops</h3>
-              <p class="neutraltext">Onboard with Keypom's most powerful drop</p>
+              <p class="neutraltext">Keypom's most customizable drop</p>
           </div>
         </div>
       </a>

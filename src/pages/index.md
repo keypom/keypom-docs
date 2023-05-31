@@ -64,7 +64,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
     <Feature url="../../docs/next/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
     <Feature url="../../docs/next/Tutorials/Basics/ft-drops" title="Fungible Token Drop" subtitle="Send Fungible Tokens" image="docs/icons/ft.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most powerful drop" image="docs/icons/oracle.png" />
+    <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most customizable drop" image="docs/icons/oracle.png" />
   </Column>
 
   <Column title="Advanced Tutorials" size="3">
@@ -88,9 +88,8 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 
 ---
 
-## Source Code
-
-Explore Keypom's source code in the Github Repos.
+<center><h1 class="text-center big-title" > Source Code </h1></center>
+<center><h4 class="text-center big-title" > Explore Keypom's source code in the Github Repos. </h4></center>
 
 <div class="container">
   <div class="row">
@@ -110,6 +109,28 @@ Explore Keypom's source code in the Github Repos.
           <div class="card__body">
             <h3 class="small-bottom-padding-only">Keypom JavaScript SDK</h3>
               <p class="neutraltext">See how the SDK interacts with NEAR.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col">
+      <a href="https://github.com/keypom/keypom-docs-examples">
+        <div class="card h-100">
+          <div class="card__body">
+            <h3 class="small-bottom-padding-only">Tutorial Examples</h3>
+              <p class="neutraltext">Explore the code used in the tutorials</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="https://github.com/keypom/keypom-docs">
+        <div class="card h-100">
+          <div class="card__body">
+            <h3 class="small-bottom-padding-only">Keypom Developer Documentation</h3>
+              <p class="neutraltext">The code behind the docs.</p>
           </div>
         </div>
       </a>

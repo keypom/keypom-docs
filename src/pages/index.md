@@ -60,19 +60,19 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
   </Column>
 
-  <Column title="Beginner Tutorials" size="3">
-    <Feature url="../../docs/next/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/ft-drops" title="Fungible Token Drop" subtitle="Send Fungible Tokens" image="docs/icons/ft.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most customizable drop" image="docs/icons/oracle.png" />
-  </Column>
-
-  <Column title="Advanced Tutorials" size="3">
+  <Column title="Use Cases" size="3">
     <Feature url="../../docs/next/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
     <Feature url="../../docs/next/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with seamless onboarding" image="docs/icons/dao.png" />
     <Feature url="../../docs/next/TrialAccounts/introduction" title="Trial Accounts" subtitle="Web2 Onboarding in Web3" image="docs/icons/trial-accounts.png" />
     <Feature url="../../docs/next/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Learn utilize Keypom in your BOS Componets" image="docs/icons/bos.png" />
 
+  </Column>
+
+  <Column title="Beginner Tutorials" size="3">
+    <Feature url="../../docs/next/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
+    <Feature url="../../docs/next/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
+    <Feature url="../../docs/next/Tutorials/Basics/ft-drops" title="Fungible Token Drop" subtitle="Send Fungible Tokens" image="docs/icons/ft.png" />
+    <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most customizable drop" image="docs/icons/oracle.png" />
   </Column>
 
   <Column title="Developer Documentation" size="3">

@@ -79,19 +79,7 @@ const sidebars = {
       ],
   Tutorials: [
     "Tutorials/welcome",
-    {
-      type: 'category',
-      label: 'Keypom Cookbook',
-      collapsed: true,
-      items: [
-            "Tutorials/Cookbook/welcome",
-            "Tutorials/Cookbook/drops",
-            "Tutorials/Cookbook/keys",
-            "Tutorials/Cookbook/balances",
-            "Tutorials/Cookbook/utilities",
-                    
-      ],
-    },
+   
     {
       type: 'category',
       label: 'Basics',
@@ -196,6 +184,31 @@ const sidebars = {
     },
     "TrialAccounts/offboarding",
   ],
+  Cookbook: [
+    "Cookbook/welcome",,
+    {
+      type: 'category',
+      label: 'Keypom Cookbook',
+      collapsed: false,
+      items: [
+            "Cookbook/drops",
+            "Cookbook/keys",
+            "Cookbook/balances",
+            "Cookbook/utilities",
+                    
+      ],
+    },
+  ],
+
+  // Drops
+  //   NEAR
+  //   Fungible Tokens -> 1
+  //   nft - > 1
+  //   function call drop -> customized use cases, links out to simples use case
+  //   Customizations
+  //       -> Time Based
+  //       -> Blah Blah
+  //       -> Sales
 
     // {
     //   type: 'category',

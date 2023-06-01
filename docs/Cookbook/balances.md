@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Balances
-This part of the cookbook contains everything related to Keypom balances. This balance acts like a debit card, where you deposit $NEAR up front and create drop and interact with Keypom without needing to attach deposits to everything you do. For more on balances, see [here](../../Concepts/KeypomProtocol/balances.md). 
+This part of the cookbook contains everything related to Keypom balances. This balance acts like a debit card, where you deposit $NEAR up front and create drop and interact with Keypom without needing to attach deposits to everything you do. For more on balances, see [here](../Concepts/KeypomProtocol/balances.md). 
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  

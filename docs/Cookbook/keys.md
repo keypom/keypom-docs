@@ -49,6 +49,10 @@ pub fn a() -> u8{
 </TabItem>
 </Tabs>
 
+:::caution
+`addKeys` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [large drops](#creating-a-large-drop) example. 
+:::
+
 ___
 
 ### Removing Keys from a Drop

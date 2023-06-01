@@ -15,7 +15,7 @@ For the cookbook, you will need the following installed.
 ## Connection to NEAR and Initializing the SDK
 When working with the SDK, you will always need to connect to NEAR and initiate Keypom using the `initKeypom` function. This will always be the first function you call to interact with the SDK. 
 
-`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. [More info](../../keypom-sdk/Core/modules.md#initkeypom) on the `initKeypom` function.
+`initKeypom` initializes the SDK to allow for interactions with the Keypom smart contracts. Without it, none of the other SDK functions would work as expected. [More info](../keypom-sdk/Core/modules.md#initkeypom) on the `initKeypom` function.
 
 ```js reference
 https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3cfb460f88f15/basic-tutorials/simple-drop/simple-example.js#L10-L35

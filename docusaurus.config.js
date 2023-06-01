@@ -101,8 +101,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            to: "docs/next/exec-summary",
-            label: "💡 Executive Summary",
+            to: "docs/next/Cookbook/welcome",
+            label: "🧑‍🍳 Keypom Cookbook",
             position: "left",
           },
           {
@@ -145,8 +145,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 to: "docs/next/keypom-sdk/Core/welcome",
               },
               {
-                label: "💡 Keypom Executive Summary",
-                to: "docs/next/exec-summary",
+                label: "🧑‍🍳 Keypom Cookbook",
+                to: "docs/next/Cookbook/welcome",
               }
               // {
               //   label: "🤖Keypom V2",

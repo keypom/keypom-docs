@@ -78,7 +78,7 @@ In order for this funder to be passed in, the FC drop will need to be modified. 
 In this case, the drop's funder ID can be injected into the `new_auto_registration` `funder` argument if the `funderIdField` is set to `funder`. Therefore, the FC drop should be modified accordingly:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f35771e04196ebee77dfee27c00bc6adead0f1a7/advanced-tutorials/dao-onboarding/createDaoDrop.js#L56-L80
+https://github.com/keypom/keypom-docs-examples/blob/3d2ebdfdfe601bc7471a62e859682abaf9afb7cf/advanced-tutorials/dao-onboarding/createDaoDrop.js#L57-L81
 ```
 
 This works great, but there is just one slight problem. Ben could hardcode the arguments to the method `new_auto_registration` and specify that the `funder` is Min, even though Ben created the drop.

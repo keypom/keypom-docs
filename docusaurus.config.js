@@ -184,6 +184,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Docs Examples Github',
                 href: 'https://github.com/keypom/keypom-docs-examples',
               },
+              {
+                label: 'Docs Github',
+                href: 'https://github.com/keypom/keypom-docs',
+              },
             ],
           },
         ],

@@ -1,10 +1,10 @@
 ---
-sidebar_label: 'Drops'
+sidebar_label: 'Drop'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Drops
+# Drop Configurations
 This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
 ## Getting Started
 For the cookbook, you will need the following installed. 
@@ -13,7 +13,7 @@ For the cookbook, you will need the following installed.
 3. *Insert rust one here, i actually have no idea how to do that*
 
 :::info note
-Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
+Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk)
 :::
 
 ### Creating a Simple Drop

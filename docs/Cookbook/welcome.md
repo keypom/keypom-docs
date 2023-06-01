@@ -27,7 +27,7 @@ https://github.com/keypom/keypom-docs-examples/blob/8202f0ef88205bfca644ccf5d4d3
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="drops">
+      <a href="drops/NEAR">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Drops</h3>

@@ -188,16 +188,31 @@ const sidebars = {
     "Cookbook/welcome",,
     {
       type: 'category',
-      label: 'Keypom Cookbook',
+      label: 'Drops',
       collapsed: false,
       items: [
-            "Cookbook/drops",
-            "Cookbook/keys",
-            "Cookbook/balances",
-            "Cookbook/utilities",
-                    
+            "Cookbook/drops/NEAR",
+            "Cookbook/drops/nft",
+            "Cookbook/drops/ft",
+            "Cookbook/drops/fc",
+            "Cookbook/drops/trial",
+            {
+              type: 'category',
+              label: 'Configurations',
+              collapsed: true,
+              items: [
+                    "Cookbook/drops/customizations/dropConfig",
+                    "Cookbook/drops/customizations/timeConfig",
+                    "Cookbook/drops/customizations/saleConfig",
+                    "Cookbook/drops/customizations/usageConfig",
+              ],
+            },
       ],
     },
+    "Cookbook/keys",
+    "Cookbook/balances",
+    "Cookbook/utilities",
+            
   ],
 
   // Drops

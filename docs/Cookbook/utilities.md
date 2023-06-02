@@ -10,7 +10,7 @@ This part of the cookbook contains utlilities and miscleaneous common Keypom use
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
-3. *Insert rust one here, i actually have no idea how to do that*
+
 
 :::info note
 Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
@@ -34,15 +34,7 @@ const {keys} = await createDrop({
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___
@@ -64,15 +56,7 @@ const {keys} = await createDrop({
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___
@@ -94,15 +78,7 @@ const {keys} = await createDrop({
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___

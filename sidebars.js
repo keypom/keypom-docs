@@ -198,9 +198,10 @@ const sidebars = {
             "Cookbook/drops/trial",
             {
               type: 'category',
-              label: 'Configurations',
+              label: 'Customizations',
               collapsed: true,
               items: [
+                    "Cookbook/drops/customizations/password",
                     "Cookbook/drops/customizations/dropConfig",
                     "Cookbook/drops/customizations/timeConfig",
                     "Cookbook/drops/customizations/saleConfig",
@@ -211,7 +212,6 @@ const sidebars = {
     },
     "Cookbook/keys",
     "Cookbook/balances",
-    "Cookbook/utilities",
             
   ],
 

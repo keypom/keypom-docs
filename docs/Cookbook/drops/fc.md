@@ -10,14 +10,14 @@ This part of the cookbook contains everything related to drops, including creati
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
-3. *Insert rust one here, i actually have no idea how to do that*
+
 
 :::info note
-Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk)
+These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
 ### Creating a Function Call Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+A Function Call Drop allows the user to call almost any function on any NEAR smart contract when claiming. An example is shown below where the method `mint` is called on `MY_CONTRACT` with the specified `memo` and `metadata` arguments. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -53,23 +53,205 @@ console.log(keys)
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-// create keys first
+</Tabs>
 
-ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
-.create_drop({
-    // args for create drop including generated keys
+___
+
+### Creating a Multi-claim Function Call Drop
+To further expand the FC drop, you have the ability to call a different method for each claim. This is shown below, where the first use calls `mint`, the second call does nothing, and the third calls `sell`. 
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+// Creating a single key single use FC drop
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    config: {
+        usesPerKey: 1
+    },
+    depositPerUseNEAR: "0.1",
+    fcData: {
+        methods: [
+            // First key use
+            [
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "mint",
+                    args: JSON.stringify({
+                        memo: "Minted from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                }
+            ],
+            // Second key use
+            null,
+            // Third key use
+            [
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "mint",
+                    args: JSON.stringify({
+                        memo: "Sold from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                }
+            ],
+        ]   
+    }   
 })
-// callback to capture dropId
-.then(
-    Self::ext(env::current_account_id())
-    .internal_create_drop_callback()
-);
+
+console.log(keys)
 ```
 
 </TabItem>
+
+</Tabs>
+
+___
+
+### Creating a Multi-Function Call Drop
+With each `claim`, you can also call multiple functions. Note this would call each function in succession after the previous one is resolved. In the example below, the `mint`, `null` case, and `sell` functions are called during the first `claim`. 
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+// Creating a single key single use FC drop
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    config: {
+        usesPerKey: 1
+    },
+    depositPerUseNEAR: "0.1",
+    fcData: {
+        methods: [
+            // First key use
+            [
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "mint",
+                    args: JSON.stringify({
+                        memo: "Minted from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                },
+                null,
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "mint",
+                    args: JSON.stringify({
+                        memo: "Sold from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                }
+            ],
+        ]   
+    }   
+})
+
+console.log(keys)
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
+### Creating a Multi-claim Multi-Function Call Drop
+By combining the [multi-claim](#creating-a-multi-claim-function-call-drop) and [multi-function call](#creating-a-multi-function-call-drop) drops together, you can call multiple number of functions for multiple claims. As an example, a key with 3 uses can be seen:
+
+1. `nft_mint`
+2. `null`
+3. `nft_transfer`, `nft_mint`, `nft_sell`
+
+The drop for this would look like the following
+
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+// Creating a single key single use FC drop
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    config: {
+        usesPerKey: 1
+    },
+    depositPerUseNEAR: "0.1",
+    fcData: {
+        methods: [
+            // First key use
+            [
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "nft_mint",
+                    args: JSON.stringify({
+                        memo: "Minted from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                }
+            ],
+            // Second key use
+            null,
+
+            // Third key use
+            [
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "nft_transfer",
+                    args: JSON.stringify({
+                        memo: "Transfered from Keypom FC drop!"
+                        metadata: {
+                            id: 4390000
+                        }
+                    }),
+                },
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "nft_mint",
+                    args: JSON.stringify({
+                        memo: "Minted from Keypom FC drop!"
+                        metadata: {
+                            id: 4390005
+                        }
+                    }),
+                },
+                {
+                    receiverId: MY_CONTRACT,
+                    methodName: "nft_sell",
+                    args: JSON.stringify({
+                        memo: "Sold from Keypom FC drop!"
+                        metadata: {
+                            id: 4390005
+                        }
+                    }),
+                }
+            ],
+        ]   
+    }   
+})
+
+console.log(keys)
+```
+
+</TabItem>
+
 </Tabs>
 
 ___
@@ -136,15 +318,55 @@ console.log(keys)
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
+</Tabs>
+
+___
+
+### Attaching NFTs to your FC Drop
+As part of your FC drop, you can send the user an NFT. The best way to do this would be to lazy-mint them, as to not waste funds minting NFTs belonging to keys that are ultimately not claimed. 
+
+To do this, you must create an NFT series, and then include a `nft_mint` call as one of the key's function calls. The Keypom NFT contract, `nft-v2.keypom.testnet` and `nft-v2.keypom.near`, have the functionality to create a series and then mint the NFT using just the `dropId`.  
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+// Create drop with 10 keys and 2 key uses each
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 30,
+    depositPerUseNEAR: "0.1",
+    fcData: {
+        methods: [
+            [
+                {
+                    receiverId: `nft-v2.keypom.${NETWORK_ID}`,
+                    methodName: "nft_mint",
+                    args: "",
+                    dropIdField: "mint_id",
+                    accountIdField: "receiver_id",
+                    attachedDeposit: parseNearAmount("0.1")
+                }
+            ],
+        ]   
+    }   
+})
+
+await createNFTSeries({
+    account: fundingAccount,
+    dropId,
+    metadata: {
+        title: "Moon NFT Ticket!",
+        description: "A cool NFT POAP for the best dog in the world.",
+        media: "bafybeibwhlfvlytmttpcofahkukuzh24ckcamklia3vimzd4vkgnydy7nq",
+        copies: 30
+    }
+}); 
 ```
 
 </TabItem>
+
 </Tabs>
 
 ___
@@ -171,15 +393,7 @@ await deleteDrops({
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___

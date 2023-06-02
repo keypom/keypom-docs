@@ -1,10 +1,10 @@
 ---
-sidebar_label: 'Drop Configurations'
+sidebar_label: 'Password Protection'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Drop Configurations
+# Password Protection
 This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
 ## Getting Started
 For the cookbook, you will need the following installed. 
@@ -16,22 +16,20 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Multi-Use Simple Drop
-To make all the keys in the drop multi-use, you can specify `usesPerKey` in the dropConfig parameter `config`. In this example, each of the 2 keys created will have 5 uses. 
+### Password Protecting your Entire Drop
+Password protecting your drop prevents unauthorized people from claiming keys in your drop. A claim will fail if the password is not included in the claim transaction.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// Creating drop with 2 keys with 5 uses each
-const {keys} = await createDrop({
+// Create drop with 10 password protected keys and 2 key uses each
+let {keys, dropId} = await createDrop({
     account: fundingAccount,
-    numKeys: 2,
-	config:{
-		usesPerKey: 5
-	},
+    numKeys: 1,
     depositPerUseNEAR: "0.1",
-});
+    basePassword: "base-password"
+})
 
 console.log(keys)
 ```
@@ -39,29 +37,30 @@ console.log(keys)
 </TabItem>
 
 </Tabs>
-
-:::caution
-`createDrop` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [large drops](#creating-a-large-drop) example. 
-:::
 
 ___
 
-### Using a Custom Drop Root
-By specifying a custom `dropRoot`, all new accounts created using your drop will be a subaccount of the specified account. For example, all accounts created with the drop below will follow the form of `${YOUR_USERNAME}.moonpom.near`.
+### Password Protecting a Specific Key Use
+Rather than password protecting your entire drop, you may only want to protect certain key uses. A great use case of this is for [ticketing](../../../Tutorials/Advanced/ticketing/architecture.md#attendance-required-for-poap), when a bouncer would scan your ticket to claim your key and admit you into the event but only they know the password. This would prevent people admitting themselves into the event and gaining access to any POAPs and goodies available only to those who physically attend. 
+
+To specify key uses to password protect, simply add it to the `passwordProtectedUses` array. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// Creating drop with 2 keys with 5 uses each
-const {keys} = await createDrop({
+// Create drop with 10 password protected keys and 5 key uses each
+let {keys, dropId} = await createDrop({
     account: fundingAccount,
-    numKeys: 2,
-	config:{
-		dropRoot: "moonpom.near"
+    numKeys: 10,
+    config:{
+		usesPerKey: 5
 	},
     depositPerUseNEAR: "0.1",
-});
+    basePassword: "base-password"
+    // Password protect the first, third and fourth key uses
+    passwordProtectedUses: [1, 3, 4],
+})
 
 console.log(keys)
 ```
@@ -69,10 +68,6 @@ console.log(keys)
 </TabItem>
 
 </Tabs>
-
-:::caution
-the `dropRoot` account **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
-:::
 
 ___
 

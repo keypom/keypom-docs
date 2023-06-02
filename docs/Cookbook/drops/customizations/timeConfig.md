@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Time'
+sidebar_label: 'Time Configurations'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,44 +10,31 @@ This part of the cookbook contains everything related to drops, including creati
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 2. [Keypom JS SDK](https://github.com/keypom/keypom-js#getting-started)
-3. *Insert rust one here, i actually have no idea how to do that*
+
 
 :::info note
-Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk)
+These scripts will not run without the proper setup shown in the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Time Based Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+### Drop with a Start and End Time
+The drop below is only active for 5 minutes, starting 30 seconds after the drop is created. Any claims before or after that window will fail. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-
 const ONE_SECOND_NS = 1e9;
-
-myTimeConfig: {
-    // Start time is 30 seconds from now
-    start: (Date.now() * 1000000) + ONE_SECOND_NS * 30,
-
-    // End time is 5 minutes from start time
-    end: (Date.now() * 1000000) + ONE_SECOND_NS * 330,
-
-    // Time between use is 15 seconds
-    throttle: ONE_SECOND_NS * 15,
-
-    // Time after start for first use is 15 seconds
-    interval: ONE_SECOND_NS * 15,
-}
 
 // Creating timed drop with 2 single use keys
 const {keys} = await createDrop({
     account: fundingAccount,
-    numKeys: 2,
-	config:{
-		usesPerKey: 1
-	},
-    time: myTimeConfig,
+    numKeys: 1,
+    time: {
+        // Start time is 30 seconds from now
+        start: (Date.now() * 1000000) + ONE_SECOND_NS * 30,
+        // End time is 5 minutes from start time
+        end: (Date.now() * 1000000) + ONE_SECOND_NS * 330,
+    },
     depositPerUseNEAR: "0.1",
 });
 
@@ -55,124 +42,80 @@ console.log(keys)
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-// create keys first
-
-ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
-.create_drop({
-    // args for create drop including generated keys
-})
-// callback to capture dropId
-.then(
-    Self::ext(env::current_account_id())
-    .internal_create_drop_callback()
-);
-```
-
-</TabItem>
 </Tabs>
 
 ___
 
-### Password Protecting your Drop
-Password protecting your drop prevents unauthorized people from claiming keys in your drop. A claim will fail if the password is not included in the claim transaction. 
+### Time Throttled Drop
+A drop with a define time throttle will not allow consecuitive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// Create drop with 10 password protected keys and 2 key uses each
-let {keys, dropId} = await createDrop({
+const ONE_SECOND_NS = 1e9;
+
+// Creating timed drop with 2 single use keys
+const {keys} = await createDrop({
     account: fundingAccount,
-    numKeys: 10,
-    config: {
-        usesPerKey: 2
+    numKeys: 1,
+    time: {
+        // Time between use is 15 seconds
+        throttle: ONE_SECOND_NS * 15,
     },
     depositPerUseNEAR: "0.1",
-    basePassword: "base-password",
-    // only first key use will be password protected. If not specified, all uses will be protected
-    passwordProtectedUses: [1],
-})
+});
 
 console.log(keys)
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+
+### Creating Recurring Payments
+Recurring payments are quite a common situation. Say you need to send a contractor 50 $NEAR every week for 4 weeks. With Web2, you would need to provide a payment method and trust the end user with this sensitive information. 
+
+By leveraging a time configuration, you can eliminate this risk by sending them a key with limited funds attached. You could create a drop where there is one key with 4 uses, usable once a week.
+
+First is the `start` and `end` time. These define a period time for which the drop is active and can be used by the contractor, in this case 30 days after the drop is created. 
+
+Next, the `interval` parameter is specified. This is set to 1 week, meaning each week after the start time, a new `claim` is made available for the contractor. This is different from the `throttle` parameter as that uses the previous claim as a reference.
+
+**This allows the contractor to `claim` multiple times if they miss one week rather than being forced to wait a week after each claim and potentially get pushed out of the drop's 30 day validity and lose out on funds they are entitled to.**
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// What contracts can the trial account call?
-const callableContracts = [
-    'guest-book.examples.keypom.testnet',
-    'v1.social08.testnet'
-]
-// What is the maximum amount of $NEAR that can be attached to a call for each callable contract?
-// 1 NEAR for guestbook, 2 NEAR for NEAR social
-const maxAttachableNEARPerContract = [
-    '1',
-    '2'
-]
-// What methods can the trial account call?
-// Any function can be called on either contracts. 
-const callableMethods = [
-	['*'],
-    ['*']
-]
+const ONE_SECOND_NS = 1e9;
 
-const wasmDirectory = `${require('path').resolve(__dirname, '..')}/trial-accounts/ext-wasm/trial-accounts.wasm`
-const {keys} = await createTrialAccountDrop({
-	account: fundingAccount,
+// Creating timed drop with 1 key with 4 uses
+const {keys} = await createDrop({
+    account: fundingAccount,
     numKeys: 1,
-    contractBytes: [...readFileSync(wasmDirectory)],
-	// How much $NEAR should be made available to the trial account when it's created?
-    startingBalanceNEAR: 2.5,
-    callableContracts,
-    callableMethods,
-    maxAttachableNEARPerContract,
-    // repayAmountNEAR: 0.6,
-    // repayTo: "dennis.near",
-	// Once the trial account has spent this much $NEAR, the trial will be over.
-    trialEndFloorNEAR: 1.25
-})
+	config:{
+		usesPerKey: 4
+	},
+    time: {
+        // Start time is now
+        start: (Date.now() * 1000000),
+        // End time is 30 day after start time
+        end: (Date.now() * 1000000) + ONE_SECOND_NS * 2592000,
+        // Time after start for first use is 1 week
+        interval: ONE_SECOND_NS * 604800,
+    },
+    depositPerUseNEAR: "50",
+});
 
 console.log(keys)
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-// create keys first
-
-ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
-.create_drop({
-    // args for create drop including generated keys
-})
-// callback to capture dropId
-.then(
-    Self::ext(env::current_account_id())
-    .internal_create_drop_callback()
-);
-```
-
-</TabItem>
 </Tabs>
 
 ___
@@ -199,15 +142,7 @@ await deleteDrops({
 ```
 
 </TabItem>
-<TabItem value="Rust" label="Rust🦀">
 
-```rust
-pub fn a() -> u8{
-    64
-}
-```
-
-</TabItem>
 </Tabs>
 
 ___

@@ -16,19 +16,19 @@ For the cookbook, you will need the following installed.
 Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk)
 :::
 
-### Creating a Simple Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties. A simple drop allows you to send $NEAR by sharing those access keys in the form of a linkdrop. 
+### Creating a Multi-Use Simple Drop
+To make all the keys in the drop multi-use, you can specify `usesPerKey` in the dropConfig parameter `config`. In this example, each of the 2 keys created will have 5 uses. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// Creating drop with 2 single use keys
+// Creating drop with 2 keys with 5 uses each
 const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 2,
 	config:{
-		usesPerKey: 1
+		usesPerKey: 5
 	},
     depositPerUseNEAR: "0.1",
 });
@@ -62,163 +62,22 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 
 ___
 
-### Creating a Non-Fungible Token Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+### Using a Custom Drop Root
+By specifying a custom `dropRoot`, all new accounts created using your drop will be a subaccount of the specified account. For example, all accounts created with the drop below will follow the form of `${YOUR_USERNAME}.moonpom.near`.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
 
 ```js
-// Mint 1 NFT for the drop funder
-await fundingAccount.functionCall({
-	contractId: NFT_CONTRACT, 
-	methodName: 'nft_mint', 
-	args: {
-		receiver_id: YOUR_ACCOUNT,
-		metadata: {
-		    title: "My First Keypom NFT",
-		    description: "NFT from my first NFT Drop!",
-		    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-		},
-		token_id: NFT_TOKEN_ID,
+// Creating drop with 2 keys with 5 uses each
+const {keys} = await createDrop({
+    account: fundingAccount,
+    numKeys: 2,
+	config:{
+		dropRoot: "moonpom.near"
 	},
-	gas: "300000000000000",
-	// Cost to cover storage of NFT
-	attachedDeposit: parseNearAmount("0.1")
-});
-
-const { keys } = await createDrop({
-    account: fundingAccount,
-    numKeys: 1,
-    depositPerUseNEAR: "1",
-    nftData: {
-	    // NFT Contract Id that the tokens will come from
-	    contractId: NFT_CONTRACT,
-	    // Who will be sending the NFTs to the Keypom contract
-	    senderId: YOUR_ACCOUNT,
-	    // List of tokenIDs
-	    tokenIds: [NFT_TOKEN_ID]
-	}
-});
-
-console.log(keys)
-```
-
-</TabItem>
-<TabItem value="Rust" label="Rust🦀">
-
-```rust
-// create keys first
-
-ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
-.create_drop({
-    // args for create drop including generated keys
-})
-// callback to capture dropId
-.then(
-    Self::ext(env::current_account_id())
-    .internal_create_drop_callback()
-);
-```
-
-</TabItem>
-</Tabs>
-
-___
-
-### Creating a Fungible Token Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
-
-<Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
-
-```js
-// Get amount of FTs to transfer. In this scenario, we've assumed it to be 1 for one single use key.
-let amountToTransfer = parseNearAmount("1")
-let funderFungibleTokenBal = await fundingAccount.viewFunction({
-	contractId: FT_CONTRACT, 
-	methodName: 'ft_balance_of',
-	args: {
-		account_id: YOUR_ACCOUNT
-	}
-});
-
-// Check if the owner has enough FT balance to fund drop
-if (new BN(funderFungibleTokenBal).lte(new BN(amountToTransfer))){
-	throw new Error('funder does not have enough Fungible Tokens for this drop. Top up and try again.');
-}
-
-const { keys } = await createDrop({
-    account: fundingAccount,
-    numKeys: 1,
-    depositPerUseNEAR: 1,
-    ftData: {
-    	contractId: FT_CONTRACT,
-    	senderId: YOUR_ACCOUNT,
-    	// This balance per use is balance of human readable FTs per use. 
-    	amount: "1"
-		// Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
-		// ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
-    },
-});
-
-console.log(keys)
-```
-
-</TabItem>
-<TabItem value="Rust" label="Rust🦀">
-
-```rust
-// create keys first
-
-ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
-.create_drop({
-    // args for create drop including generated keys
-})
-// callback to capture dropId
-.then(
-    Self::ext(env::current_account_id())
-    .internal_create_drop_callback()
-);
-```
-
-</TabItem>
-</Tabs>
-
-___
-
-### Creating a Function Call Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
-
-<Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
-
-```js
-// Creating a single key single use FC drop
-let {keys, dropId} = await createDrop({
-    account: fundingAccount,
-    numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
-    fcData: {
-        methods: [
-            [
-                {
-                    receiverId: MY_CONTRACT,
-                    methodName: "mint",
-                    args: JSON.stringify({
-                        memo: "Called from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
-                    }),
-                }
-            ],
-        ]   
-    }   
-})
+});
 
 console.log(keys)
 ```
@@ -243,7 +102,11 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 </TabItem>
 </Tabs>
 
-___
+:::caution
+the `root_account_id` **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
+:::
+
+---
 
 ### Creating a Time Based Drop
 A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.

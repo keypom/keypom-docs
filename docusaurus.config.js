@@ -102,7 +102,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             to: "docs/next/Cookbook/welcome",
-            label: "🧑‍🍳 Keypom Cookbook",
+            label: "🧑‍🍳 Cookbook",
             position: "left",
           },
           {
@@ -145,7 +145,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 to: "docs/next/keypom-sdk/Core/welcome",
               },
               {
-                label: "🧑‍🍳 Keypom Cookbook",
+                label: "🧑‍🍳 Cookbook",
                 to: "docs/next/Cookbook/welcome",
               }
               // {

@@ -27,9 +27,6 @@ A drop is the fundemental building block of Keypom. It is a collection of access
 const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 2,
-	config:{
-		usesPerKey: 1
-	},
     depositPerUseNEAR: "0.1",
 });
 
@@ -72,9 +69,6 @@ Adding keys, either using `createDrop` or `addKeys` is limited to 50 password pr
 // Creating drop with 0 single use keys
 const {dropId} = await createDrop({
     account: fundingAccount,
-	config:{
-		usesPerKey: 1
-	},
     depositPerUseNEAR: "0.1",
 });
 

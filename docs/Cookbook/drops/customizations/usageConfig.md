@@ -107,15 +107,156 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 </Tabs>
 
 ___
+### Refunding Deposit when `Claim` is Called
+When creating keys for your drop, each is loaded with enough $NEAR to cover the cost of creating an account for each claim. If a user claims with an existing account, this deposit is lost and transferred to the user. If you wish to retain those deposits whenever `claim` is called instead of `create_account_and_claim`, you can use the following. 
 
-### Keypom Args
-Keypom Args are important pieces of information injected automatically by Keypom when a key is claimed. If any attempt is made to spoof Keypom args, the claim will automatically fail. This makes the Keypom Args an untamperable source of truth. The pieces of information can include: 
-- Drop ID that the access key belongs to
-- Funder's `accountId` of the drop
-- The claiming account's `accountId`
-- The current access key's `keyId`
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
 
-The information are injected into the `args`, but their specific location depends on the field specified. Here, the `funderId` is being injected into an `originalOwner` field in the args, and the claiming account's `accountId` is being injected into the metadata object under the field `newOwner`. 
+```js
+const { keys } = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    depositPerUseNEAR: "1",
+    config: {
+        usage:{
+            refundDeposit: true
+        }
+    }
+});
+
+console.log(keys)
+```
+
+</TabItem>
+<TabItem value="Rust" label="Rust🦀">
+
+```rust
+// create keys first
+
+ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
+.create_drop({
+    // args for create drop including generated keys
+})
+// callback to capture dropId
+.then(
+    Self::ext(env::current_account_id())
+    .internal_create_drop_callback()
+);
+```
+
+</TabItem>
+</Tabs>
+
+___
+
+### Automatically Deleting Drop when Empty
+By default, depleted drops are not deleted unless you manually delete them. To delete them automatically, include the following. 
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+const { keys } = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    depositPerUseNEAR: "1",
+    config: {
+        usage:{
+            autoDeleteDrop: true
+        }
+    }
+});
+
+console.log(keys)
+```
+
+</TabItem>
+<TabItem value="Rust" label="Rust🦀">
+
+```rust
+// create keys first
+
+ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
+.create_drop({
+    // args for create drop including generated keys
+})
+// callback to capture dropId
+.then(
+    Self::ext(env::current_account_id())
+    .internal_create_drop_callback()
+);
+```
+
+</TabItem>
+</Tabs>
+
+___
+
+### Automatically Withdrawing your Balance
+By default, withdrawing your Keypom balance back into your wallet is only done when call `withdrawBalance`. If you wish to withdraw it once all your drops have been depleted, you can turn on `autoDeleteDrop` and `autoWithdraw`.  
+
+This will ensure that once this drop is empty it is automatically deleted and, assuming it is the final drop on your account, will automatically withdraw your Keypm balance.
+
+:::note
+This will only automatically withdraw your balance if and only if the last drop you have. If you empty a this drop but it is not the last drop on your account, you will need to manually withdraw your balance. 
+:::
+
+<Tabs>
+<TabItem value="SDK" label="Keypom JS SDK🧩">
+
+```js
+const { keys } = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    depositPerUseNEAR: "1",
+    config: {
+        usage:{
+            autoDeleteDrop: true,
+            autoWithdraw: true
+        }
+    }
+});
+
+console.log(keys)
+```
+
+</TabItem>
+<TabItem value="Rust" label="Rust🦀">
+
+```rust
+// create keys first
+
+ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
+.create_drop({
+    // args for create drop including generated keys
+})
+// callback to capture dropId
+.then(
+    Self::ext(env::current_account_id())
+    .internal_create_drop_callback()
+);
+```
+
+</TabItem>
+</Tabs>
+
+___
+
+### Gatekeeping Account Creation
+When accounts are created with drops using a custom [`dropRoot`](dropConfig.md#using-a-custom-drop-root), they will be subaccounts of the `dropRoot`.
+
+If you wish to make these subaccounts exclusive, you can gatekeep this process by using `accountCreationFields` to check if the claiming account is coming from your drop. Note that the `dropRoot` account would need to expose a `create_account` function that looks similar to the following:
+
+```rust
+#[payable]
+pub fn create_account(&mut self, new_account_id: AccountId, new_public_key: PublicKey, funder: String, keypomArgs: keypom_args) -> Promise {
+        assert!(funder == EXPECTED_FUNDER && keypomArgs.funderIdField == "funder","Call must come from valid Keypom drop");
+        ...
+}
+```
+
+The following shows a drop where users can only claim with a new account, and only those using your drop can create subaccounts of `moonpom.near`
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -126,28 +267,16 @@ let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     config: {
-        usesPerKey: 1
-    },
+        usage:{
+            permissions: `create_account_and_claim`,
+            accountCreationFields: {
+                funderIdField = "funder"
+            }
+
+        }
+        dropRoot: "moonpom.near
+    }
     depositPerUseNEAR: "0.1",
-    fcData: {
-        methods: [
-            [
-                {
-                    receiverId: MY_NFT_CONTRACT,
-                    methodName: "mint",
-                    args: JSON.stringify({
-                        mint_id: MINT_ID
-                        metadata: {
-                            description: "my new NFT"
-                        }
-                    }),
-                    // Injecting claiming account ID into the metadata object as originalOwner
-                    accountIdField: "metadata.newOwner",
-                    funderIdField: "originalOwner",
-                }
-            ],
-        ]   
-    }   
 })
 
 console.log(keys)
@@ -164,6 +293,9 @@ pub fn a() -> u8{
 
 </TabItem>
 </Tabs>
+
+For more info on injected `keypom_args`, see the [`keypom_args`](../fc.md#using-and-verifying-injected-keypom-arguments) section. 
+
 
 ___
 

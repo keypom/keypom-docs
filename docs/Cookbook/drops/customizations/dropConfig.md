@@ -103,7 +103,7 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 </Tabs>
 
 :::caution
-the `root_account_id` **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
+the `dropRoot` account **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
 :::
 
 ---

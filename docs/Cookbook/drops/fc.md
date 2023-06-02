@@ -74,14 +74,30 @@ ext_keypom::ext(AccountId::try_from("v2.keypom.tesnet".to_string()).unwrap())
 
 ___
 
-### Keypom Args
-Keypom Args are important pieces of information injected automatically by Keypom when a key is claimed. If any attempt is made to spoof Keypom args, the claim will automatically fail. This makes the Keypom Args an untamperable source of truth. The pieces of information can include: 
+### Using and Verifying Injected Keypom Arguments
+Keypom Args are important pieces of information injected automatically by Keypom when a key is claimed. The pieces of information can include: 
+
 - Drop ID that the access key belongs to
 - Funder's `accountId` of the drop
 - The claiming account's `accountId`
 - The current access key's `keyId`
 
-The information are injected into the `args`, but their specific location depends on the field specified. Here, the `funderId` is being injected into an `originalOwner` field in the args, and the claiming account's `accountId` is being injected into the metadata object under the field `newOwner`. 
+The information is injected into the `args`, but their specific location depends on the field specified. Here, the `funderId` is being injected into an `originalOwner` field in the args, and the claiming account's `accountId` is being injected into the metadata object under the field `newOwner`. 
+
+In addition to the injected arguments, Keypom will also automatically send an object called `keypom_args`. This object cannot be spoofed, and any attempt to do so will cause the claim to fail. These `keypom_args` are meant for you to use to validate injected arguments. 
+
+:::info
+To validate the injected argument the receiving `mint` function should look somehting like this. 
+
+```rust
+#[payable]
+pub fn mint(&mut self, mint_id: String, originalOwner: String, metadata: data, keypomArgs: keypom_args) -> Promise {
+        assert!(originalOwner == DROP_FUNDER_ID && keypomArgs.funderIdField == "originalOwner", "Call must come from valid Keypom drop");
+        // Optionally can also validate that keypomArgs.accountIdField == "metadata.newOwner" if you want to ensure newOwner was not hardcoded. 
+        ...
+}
+```
+:::
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

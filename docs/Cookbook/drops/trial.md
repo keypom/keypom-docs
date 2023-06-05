@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Trial Account Drops
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains a quick overview on how to create a trial account drop.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,8 +16,10 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Trial Account Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+## Creating a Trial Account Drop
+When creating a trial account drop, there are 3 main parameters to define. The first is `callableContracts`, indicating what contracts the trial account can call. This will prevent rugging from the funder's perspective. Next is `maxAttachableNearPerContract` which just outlines how much $NEAR can be attached to any function call on any of the aforementioned contracts. The order of this is the same as the order defined in `callableContracts`. Lastly is the `callableMethods` parameter, which defines what methods the trial account is allowed to call on the allowed contracts. A `*` indicated anu contract is callable. 
+
+When creating the drop, the trial account's balance is then defined by its starting balance and ending balance, known as the `startingBalanceNEAR` and `trialEndFloorNEAR` respectively. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -66,7 +68,7 @@ console.log(keys)
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

@@ -41,7 +41,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           // ],
           // Please change this to your repo.
-          editUrl: 'https://github.com/keypom/keypom-docs',
+          editUrl: 'https://github.com/keypom/keypom-docs/tree/main/',
           versions: {
             current: {
               banner: 'none',

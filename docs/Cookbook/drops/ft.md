@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Fungible Token Drops
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains a quick overview on how to create an FT drop.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,8 +16,8 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Fungible Token Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+## Creating a Fungible Token Drop
+The process of creating an FT drop starts by checking if the funder has sufficient fungible tokens to actually create the drop. The `amountToTransfer` represents the total amount of FT to transfer for the entire drop. If you want to transfer 1 FT for 50 keys, `amountToTransfer` will be 50 fungible tokens. Next, this amount is compared to the funder's FT balance. Once that check is complete, then the FT drop can be created by including the `ftData`	 argument in `createDrop`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -25,6 +25,8 @@ A drop is the fundemental building block of Keypom. It is a collection of access
 ```js
 // Get amount of FTs to transfer. In this scenario, we've assumed it to be 1 for one single use key.
 let amountToTransfer = parseNearAmount("1")
+
+// Get funder's fungible token balance
 let funderFungibleTokenBal = await fundingAccount.viewFunction({
 	contractId: FT_CONTRACT, 
 	methodName: 'ft_balance_of',
@@ -61,7 +63,7 @@ console.log(keys)
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

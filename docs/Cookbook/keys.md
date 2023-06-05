@@ -17,8 +17,8 @@ Ensure that you have initialized Keypom using the `initKeypom` funciton prior to
 :::
 
 
-### Adding Keys to a Drop
-
+## Adding Keys to a Drop
+Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR.md#creating-a-large-drop), and need to add more than 100 keys to the drop. You can simply loop `addKeys` instead of being restricted by the amount of gas used when calling `createDrop`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -47,7 +47,8 @@ const {keys} = await addKeys({
 
 ___
 
-### Removing Keys from a Drop
+## Removing Keys from a Drop
+Just as keys can be added to a drop retroactively, they can also be removed. The following shows that process. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -73,7 +74,8 @@ await deleteKeys({
 
 ___
 
-### Checking Key Usage
+## Checking Key Usage
+A good usecase for checking key usage is when you want to track the progress/retention of the keys in your drop. An excellent example is the [ticketing tutorial](../Tutorials/Advanced/ticketing/architecture.md#keypom-solution) where each key use represented a different phase of the ticketing experience. To do this, you can get and parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object by calling `getKeysForDrop`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -86,6 +88,8 @@ const keyInfos = await getKeysForDrop({
 
 // Check key usage of first key
 const keyUsage = keyInfos[0].remaining_uses
+
+console.log(keyUsage)
 ```
 
 </TabItem>
@@ -94,7 +98,8 @@ const keyUsage = keyInfos[0].remaining_uses
 
 ___
 
-### Checking Key Balance 
+## Checking Key Balance 
+Similar to how checking a key usage is done, you can parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object to see a key's remaining allowance. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -106,7 +111,9 @@ const keyInfos = await getKeysForDrop({
 })
 
 // Check key usage of first key
-const keyUsage = keyInfos[0].allowance
+const keyBalance = keyInfos[0].allowance
+
+console.log(keyBalance)
 ```
 
 </TabItem>
@@ -115,7 +122,8 @@ const keyUsage = keyInfos[0].allowance
 
 ___
 
-### Check Number of Keys Remaining in a Drop
+## Check Number of Keys Remaining in a Drop
+When a key is fully depleted, it is deleted from the drop. To check the numbe of remaining keys, and thus the amount of keys to still be claimed, you can use `getKeySupplyForDrop`.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -125,6 +133,8 @@ ___
 const keySupply = await getKeySupplyForDrop({
     dropId
 })
+
+console.log(keySupply)
 ```
 
 </TabItem>

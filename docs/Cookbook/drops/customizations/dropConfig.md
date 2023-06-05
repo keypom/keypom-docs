@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Drop Configurations
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains everything related to drop configurations, including multi-use drops, and creating custom subaccounts.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,7 +16,7 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Multi-Use Simple Drop
+## Creating a Multi-Use Simple Drop
 To make all the keys in the drop multi-use, you can specify `usesPerKey` in the dropConfig parameter `config`. In this example, each of the 2 keys created will have 5 uses. 
 
 <Tabs>
@@ -46,7 +46,7 @@ console.log(keys)
 
 ___
 
-### Using a Custom Drop Root
+## Creating Custom Subaccounts
 By specifying a custom `dropRoot`, all new accounts created using your drop will be a subaccount of the specified account. For example, all accounts created with the drop below will follow the form of `${YOUR_USERNAME}.moonpom.near`.
 
 <Tabs>
@@ -76,7 +76,7 @@ the `dropRoot` account **must** have a contract deployed to it that exposes a me
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

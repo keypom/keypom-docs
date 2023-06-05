@@ -16,7 +16,8 @@ For the cookbook, you will need the following installed.
 Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
 :::
 
-### Viewing User Keypom Balances
+## Viewing User Keypom Balances
+To view your Keypom balance, you can use the following. This will allow you to decipher if you need to add more $NEAR to your balance before creating a drop. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -35,7 +36,8 @@ console.log('userBal: ', userBal)
 </Tabs>
 
 ___
-### Adding to Keypom Balances
+## Adding to Keypom Balances
+If you don't have sufficient funds to create your drop, you may add more $NEAR to your balance using the following. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -57,7 +59,8 @@ const {keys} = await createDrop({
 
 ___
 
-### Withdrawing from Keypom Balance
+## Withdrawing from Keypom Balance
+If you are confident you no longer need Keypom or simply wish to withdraw your Keypom balance back into your NEAR wallet, you can use the following:
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

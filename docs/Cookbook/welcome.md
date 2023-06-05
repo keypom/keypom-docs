@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Introduction
-Welcome to the Keypom cookbook! Here you can explore Keypom's building blocks that help create awesome onboarding experiences. The idea of these pages is for them to act as a quick reference for common use cases when using Keypom protocol. Every use case will have a corresponding code snippet, using the Keypom JS SDK and Rust. 
+Welcome to the Keypom cookbook! Here you can explore Keypom's building blocks that help create awesome onboarding experiences. The idea of these pages is for them to act as a quick reference for common use cases when using Keypom protocol. Every use case will have a corresponding code snippet, using the Keypom JS SDK. 
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  

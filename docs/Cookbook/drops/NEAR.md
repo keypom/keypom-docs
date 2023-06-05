@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Simple NEAR Drops
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains a quick guide on the simple NEAR drop.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,7 +16,7 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Simple Drop
+## Creating a Simple Drop
 A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties. A simple drop allows you to send $NEAR by sharing those access keys in the form of a linkdrop. 
 
 <Tabs>
@@ -37,12 +37,12 @@ console.log(keys)
 </Tabs>
 
 :::caution
-`createDrop` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [large drops](#creating-a-large-drop) example. 
+`createDrop` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [large drops](#creating-a-large-drop) example below. 
 :::
 
 ___
 
-### Creating a Large Drop
+## Creating a Large Drop
 Adding keys, either using `createDrop` or `addKeys` is limited to 50 password protected or 100 non-protected keys. To bypass this, the drop can be created first and then the keys can be added by looping `addKeys`.
 
 <Tabs>
@@ -72,7 +72,7 @@ for(i = 0, i < 4, i++){
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

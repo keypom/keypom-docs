@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Non-Fungible Token Drops
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains a quick overview on how to create an NFT drop.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,8 +16,8 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Non-Fungible Token Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties.
+## Creating a Non-Fungible Token Drop
+An NFT drop is created by first minting the NFTs to be sent, and then including the `token_ids` in the `nftData` argument. This examples shows a single NFT, with a one single-use key. For a larger distribution, consider using an [FC to lazy mint NFTs](fc.md#attaching-nfts-to-your-fc-drop).
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -64,7 +64,7 @@ console.log(keys)
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

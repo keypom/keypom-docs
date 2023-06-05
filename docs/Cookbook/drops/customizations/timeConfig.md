@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Time Configurations
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains everything related to time configurations, including start and end times, a time throttled drop, and using it to create a recurring payment tool.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,7 +16,7 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Drop with a Start and End Time
+## Drop with a Start and End Time
 The drop below is only active for 5 minutes, starting 30 seconds after the drop is created. Any claims before or after that window will fail. 
 
 <Tabs>
@@ -47,7 +47,7 @@ console.log(keys)
 
 ___
 
-### Time Throttled Drop
+## Time Throttled Drop
 A drop with a define time throttle will not allow consecuitive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
 
 <Tabs>
@@ -76,7 +76,7 @@ console.log(keys)
 
 ___
 
-### Creating Recurring Payments
+## Creating Recurring Payments
 Recurring payments are quite a common situation. Say you need to send a contractor 50 $NEAR every week for 4 weeks. With Web2, you would need to provide a payment method and trust the end user with this sensitive information. 
 
 By leveraging a time configuration, you can eliminate this risk by sending them a key with limited funds attached. You could create a drop where there is one key with 4 uses, usable once a week.
@@ -120,7 +120,7 @@ console.log(keys)
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

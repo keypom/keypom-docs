@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Function Call Drops
-This part of the cookbook contains everything related to drops, including creating a drop, password protecting it, and utilizing Keypom arguments.
+This part of the cookbook contains a quick overview on how to create an assortment of function call drops, using Keypom injected arguments, and attaching NFTs to your FC drop byh lazy minting them.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
@@ -16,7 +16,7 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
-### Creating a Function Call Drop
+## Creating a Function Call Drop
 A Function Call Drop allows the user to call almost any function on any NEAR smart contract when claiming. An example is shown below where the method `mint` is called on `MY_CONTRACT` with the specified `memo` and `metadata` arguments. 
 
 <Tabs>
@@ -27,9 +27,6 @@ A Function Call Drop allows the user to call almost any function on any NEAR sma
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -58,7 +55,7 @@ console.log(keys)
 
 ___
 
-### Creating a Multi-claim Function Call Drop
+## Creating a Multi-claim Function Call Drop
 To further expand the FC drop, you have the ability to call a different method for each claim. This is shown below, where the first use calls `mint`, the second call does nothing, and the third calls `sell`. 
 
 <Tabs>
@@ -69,9 +66,6 @@ To further expand the FC drop, you have the ability to call a different method f
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -116,7 +110,7 @@ console.log(keys)
 
 ___
 
-### Creating a Multi-Function Call Drop
+## Creating a Multi-Function Call Drop
 With each `claim`, you can also call multiple functions. Note this would call each function in succession after the previous one is resolved. In the example below, the `mint`, `null` case, and `sell` functions are called during the first `claim`. 
 
 <Tabs>
@@ -127,9 +121,6 @@ With each `claim`, you can also call multiple functions. Note this would call ea
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -170,7 +161,7 @@ console.log(keys)
 
 ___
 
-### Creating a Multi-claim Multi-Function Call Drop
+## Creating a Multi-claim Multi-Function Call Drop
 By combining the [multi-claim](#creating-a-multi-claim-function-call-drop) and [multi-function call](#creating-a-multi-function-call-drop) drops together, you can call multiple number of functions for multiple claims. As an example, a key with 3 uses can be seen:
 
 1. `nft_mint`
@@ -188,9 +179,6 @@ The drop for this would look like the following
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -256,7 +244,7 @@ console.log(keys)
 
 ___
 
-### Using and Verifying Injected Keypom Arguments
+## Using and Verifying Injected Keypom Arguments
 Keypom Args are important pieces of information injected automatically by Keypom when a key is claimed. The pieces of information can include: 
 
 - Drop ID that the access key belongs to
@@ -264,22 +252,7 @@ Keypom Args are important pieces of information injected automatically by Keypom
 - The claiming account's `accountId`
 - The current access key's `keyId`
 
-The information is injected into the `args`, but their specific location depends on the field specified. Here, the `funderId` is being injected into an `originalOwner` field in the args, and the claiming account's `accountId` is being injected into the metadata object under the field `newOwner`. 
-
-In addition to the injected arguments, Keypom will also automatically send an object called `keypom_args`. This object cannot be spoofed, and any attempt to do so will cause the claim to fail. These `keypom_args` are meant for you to use to validate injected arguments. 
-
-:::info
-To validate the injected argument the receiving `mint` function should look somehting like this. 
-
-```rust
-#[payable]
-pub fn mint(&mut self, mint_id: String, originalOwner: String, metadata: data, keypomArgs: keypom_args) -> Promise {
-        assert!(originalOwner == DROP_FUNDER_ID && keypomArgs.funderIdField == "originalOwner", "Call must come from valid Keypom drop");
-        // Optionally can also validate that keypomArgs.accountIdField == "metadata.newOwner" if you want to ensure newOwner was not hardcoded. 
-        ...
-}
-```
-:::
+The information is injected into the `args`, but their specific location depends on the field specified. In the example below, the `funderId` is being injected into an `originalOwner` field in the `args`, and the claiming account's `accountId` is being injected into the `metadata` object under the field `newOwner`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -289,9 +262,6 @@ pub fn mint(&mut self, mint_id: String, originalOwner: String, metadata: data, k
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    config: {
-        usesPerKey: 1
-    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -321,12 +291,28 @@ console.log(keys)
 
 </Tabs>
 
+### Verifing Injected Arguments
+In addition to the injected arguments, Keypom will also automatically send an object called `keypom_args`. This object is meant for your use to validate that certain arguments were indeed injected by Keypom. This object cannot be spoofed, and any attempt to do so will cause the claim to fail. 
+
+:::info
+To validate the injected argument the receiving `mint` function should look like this. 
+
+```rust
+#[payable]
+pub fn mint(&mut self, mint_id: String, originalOwner: String, metadata: data, keypomArgs: keypom_args) -> Promise {
+        assert!(originalOwner == DROP_FUNDER_ID && keypomArgs.funderIdField == "originalOwner", "Call must come from valid Keypom drop");
+        // Optionally can also validate that keypomArgs.accountIdField == "metadata.newOwner" if you want to ensure newOwner was not hardcoded. 
+        ...
+}
+```
+:::
+
 ___
 
-### Attaching NFTs to your FC Drop
+## Attaching NFTs to your FC Drop
 As part of your FC drop, you can send the user an NFT. The best way to do this would be to lazy-mint them, as to not waste funds minting NFTs belonging to keys that are ultimately not claimed. 
 
-To do this, you must create an NFT series, and then include a `nft_mint` call as one of the key's function calls. The Keypom NFT contract, `nft-v2.keypom.testnet` and `nft-v2.keypom.near`, have the functionality to create a series and then mint the NFT using just the `dropId`.  
+To do this, you must create an NFT series, and then include a `nft_mint` call as one of the key's function calls. The Keypom NFT contracts, `nft-v2.keypom.testnet` and `nft-v2.keypom.near`, have the functionality to create a series and then mint the NFT using just the `dropId`.  
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -371,7 +357,7 @@ await createNFTSeries({
 
 ___
 
-### Delete Drop
+## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>

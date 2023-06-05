@@ -291,7 +291,7 @@ console.log(keys)
 
 </Tabs>
 
-### Verifing Injected Arguments
+### Verifying Injected Arguments
 In addition to the injected arguments, Keypom will also automatically send an object called `keypom_args`. This object is meant for your use to validate that certain arguments were indeed injected by Keypom. This object cannot be spoofed, and any attempt to do so will cause the claim to fail. 
 
 :::info

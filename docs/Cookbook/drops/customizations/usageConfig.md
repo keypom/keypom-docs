@@ -130,7 +130,7 @@ ___
 ## Automatically Withdrawing your Balance
 By default, withdrawing your Keypom balance back into your wallet is only done when call `withdrawBalance`. If you wish to withdraw it once all your drops have been depleted, you can turn on `autoDeleteDrop` and `autoWithdraw`.  
 
-This will ensure that once this drop is empty it is automatically deleted and, assuming it is the final drop on your account, will automatically withdraw your Keypm balance.
+This will ensure that once this drop is empty it is automatically deleted and, assuming it is the final drop on your account, will automatically withdraw your Keypom balance.
 
 :::note
 This will only automatically withdraw your balance if and only if the last drop you have. If you empty a this drop but it is not the last drop on your account, you will need to manually withdraw your balance. 

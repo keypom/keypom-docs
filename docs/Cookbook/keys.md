@@ -13,7 +13,7 @@ For the cookbook, you will need the following installed.
 
 
 :::info note
-Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
+Ensure that you have initialized Keypom using the `initKeypom` function prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
 :::
 
 
@@ -75,7 +75,7 @@ await deleteKeys({
 ___
 
 ## Checking Key Usage
-A good usecase for checking key usage is when you want to track the progress/retention of the keys in your drop. An excellent example is the [ticketing tutorial](../Tutorials/Advanced/ticketing/architecture.md#keypom-solution) where each key use represented a different phase of the ticketing experience. To do this, you can get and parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object by calling `getKeysForDrop`. 
+A good use case for checking key usage is when you want to track the progress/retention of the keys in your drop. An excellent example is the [ticketing tutorial](../Tutorials/Advanced/ticketing/architecture.md#keypom-solution) where each key use represented a different phase of the ticketing experience. To do this, you can get and parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object by calling `getKeysForDrop`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

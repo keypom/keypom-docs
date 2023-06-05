@@ -17,7 +17,7 @@ These scripts will not run without the proper setup shown in the [introduction p
 :::
 
 ## Creating a Simple Drop
-A drop is the fundemental building block of Keypom. It is a collection of access keys that all share the same properties. A simple drop allows you to send $NEAR by sharing those access keys in the form of a linkdrop. 
+A drop is the fundamental building block of Keypom. It is a collection of access keys that all share the same properties. A simple drop allows you to send $NEAR by sharing those access keys in the form of a linkdrop. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

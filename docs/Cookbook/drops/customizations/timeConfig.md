@@ -48,7 +48,7 @@ console.log(keys)
 ___
 
 ## Time Throttled Drop
-A drop with a define time throttle will not allow consecuitive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
+A drop with a define time throttle will not allow consecutive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

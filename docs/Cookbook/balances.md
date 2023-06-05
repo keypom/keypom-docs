@@ -13,7 +13,7 @@ For the cookbook, you will need the following installed.
 
 
 :::info note
-Ensure that you have initialized Keypom using the `initKeypom` funciton prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
+Ensure that you have initialized Keypom using the `initKeypom` function prior to running any of the SDK examples. For more info on this, see the [introduction page](welcome.md#connection-to-near-and-initializing-the-sdk)
 :::
 
 ## Viewing User Keypom Balances

@@ -17,7 +17,7 @@ These scripts will not run without the proper setup shown in the [introduction p
 :::
 
 ## Public Sale Drop
-A public sale drop is one where you can sell the access keys from a drop to other users. These keys will all have the same propoerties and can be bought by anyone. The maximum number of keys in the drop can be set using `maxNumKeys`. 
+A public sale drop is one where you can sell the access keys from a drop to other users. These keys will all have the same properties and can be bought by anyone. The maximum number of keys in the drop can be set using `maxNumKeys`. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -47,7 +47,7 @@ ___
 ## Allowing Only Certain Users to Buy Keys
 A public sale drop can be turned into a more private sale by only allowing certain accounts to purchase keys from the drop. This is done by using the `allowlist` argument. Any `accountId` specified here will be able to buy keys from your drop. If someone not on the list tries to buy from your drop, they will be rejected. 
 
-By default, if no `allowlist` is included, then anybody can puchase a key.
+By default, if no `allowlist` is included, then anybody can purchase a key.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">
@@ -76,7 +76,7 @@ console.log(keys)
 ___
 
 ## Blocking People from your Public Sale
-To protect your public sale, you may also choose to block certain accounts from purchasing keys. This can be done by using the `blocklist` argument. This prohibts select accounts from purchasing keys from your drop. Note here that since no `allowlist` is specified, anybody can purchase keys. However, since `evil-moon.testnet` is on the blocklist, they will not be allowed to do so. This means that everybody except for `evil-moon.testnet` has permission to purchase a key. 
+To protect your public sale, you may also choose to block certain accounts from purchasing keys. This can be done by using the `blocklist` argument. This prohibits select accounts from purchasing keys from your drop. Note here that since no `allowlist` is specified, anybody can purchase keys. However, since `evil-moon.testnet` is on the blocklist, they will not be allowed to do so. This means that everybody except for `evil-moon.testnet` has permission to purchase a key. 
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Claiming Behaviour'
+sidebar_label: 'Claiming Behavior'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

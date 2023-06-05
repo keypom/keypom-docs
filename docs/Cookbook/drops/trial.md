@@ -17,7 +17,7 @@ These scripts will not run without the proper setup shown in the [introduction p
 :::
 
 ## Creating a Trial Account Drop
-When creating a trial account drop, there are 3 main parameters to define. The first is `callableContracts`, indicating what contracts the trial account can call. This will prevent rugging from the funder's perspective. Next is `maxAttachableNearPerContract` which just outlines how much $NEAR can be attached to any function call on any of the aforementioned contracts. The order of this is the same as the order defined in `callableContracts`. Lastly is the `callableMethods` parameter, which defines what methods the trial account is allowed to call on the allowed contracts. A `*` indicated anu contract is callable. 
+When creating a trial account drop, there are 3 main parameters to define. The first is `callableContracts`, indicating what contracts the trial account can call. This will prevent rugging from the funder's perspective. Next is `maxAttachableNearPerContract` which just outlines how much $NEAR can be attached to any function call on any of the aforementioned contracts. The order of this is the same as the order defined in `callableContracts`. Lastly is the `callableMethods` parameter, which defines what methods the trial account is allowed to call on the allowed contracts. A `*` indicated any contract is callable. 
 
 When creating the drop, the trial account's balance is then defined by its starting balance and ending balance, known as the `startingBalanceNEAR` and `trialEndFloorNEAR` respectively. 
 

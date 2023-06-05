@@ -5,7 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Function Call Drops
-This part of the cookbook contains a quick overview on how to create an assortment of function call drops, using Keypom injected arguments, and attaching NFTs to your FC drop byh lazy minting them.
+This part of the cookbook contains a quick overview on how to create an assortment of function call drops, using Keypom injected arguments, and attaching NFTs to your FC drop by lazy minting them.
 ## Getting Started
 For the cookbook, you will need the following installed. 
 1. [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  

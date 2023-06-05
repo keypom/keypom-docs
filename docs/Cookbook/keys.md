@@ -123,7 +123,7 @@ console.log(keyBalance)
 ___
 
 ## Check Number of Keys Remaining in a Drop
-When a key is fully depleted, it is deleted from the drop. To check the numbe of remaining keys, and thus the amount of keys to still be claimed, you can use `getKeySupplyForDrop`.
+When a key is fully depleted, it is deleted from the drop. To check the number of remaining keys, and thus the amount of keys to still be claimed, you can use `getKeySupplyForDrop`.
 
 <Tabs>
 <TabItem value="SDK" label="Keypom JS SDK🧩">

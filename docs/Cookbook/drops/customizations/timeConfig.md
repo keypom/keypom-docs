@@ -16,11 +16,15 @@ For the cookbook, you will need the following installed.
 These scripts will not run without the proper setup shown in the [introduction page](../../welcome.md#connection-to-near-and-initializing-the-sdk).
 :::
 
+:::tip
+All time values are measured in Unix Time (non-leap-nanoseconds since January 1, 1970 0:00:00 UTC). 
+:::
+
 ## Drop with a Start and End Time
 The drop below is only active for 5 minutes, starting 30 seconds after the drop is created. Any claims before or after that window will fail. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const ONE_SECOND_NS = 1e9;
@@ -51,7 +55,7 @@ ___
 A drop with a define time throttle will not allow consecutive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const ONE_SECOND_NS = 1e9;
@@ -77,7 +81,7 @@ console.log(keys)
 ___
 
 ## Creating Recurring Payments
-Recurring payments are quite a common situation. Say you need to send a contractor 50 $NEAR every week for 4 weeks. With Web2, you would need to provide a payment method and trust the end user with this sensitive information. 
+Recurring payments are quite a common situation. Say you need to send a contractor 50 $NEAR every week for 4 weeks. With Web2, they would need to provide a payment method and trust the you with this sensitive information. 
 
 By leveraging a time configuration, you can eliminate this risk by sending them a key with limited funds attached. You could create a drop where there is one key with 4 uses, usable once a week.
 
@@ -88,7 +92,7 @@ Next, the `interval` parameter is specified. This is set to 1 week, meaning each
 **This allows the contractor to `claim` multiple times if they miss one week rather than being forced to wait a week after each claim and potentially get pushed out of the drop's 30 day validity and lose out on funds they are entitled to.**
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const ONE_SECOND_NS = 1e9;
@@ -120,29 +124,3 @@ console.log(keys)
 
 ___
 
-## Delete Drop
-A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
-
-<Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
-
-```js
-// Get drops for user
-let drops = await getDrops({accountId: "minqi.testnet"});
-
-// Delete the first two by drop object
-await deleteDrops({
-    drops: [drops[0], drops[1]]
-})
-
-// Delete the next two by dropId
-await deleteDrops({
-    dropIds: [drops[2].drop_id, drops[3].drop_id]
-})
-```
-
-</TabItem>
-
-</Tabs>
-
-___

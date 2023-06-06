@@ -20,7 +20,7 @@ Ensure that you have initialized Keypom using the `initKeypom` function prior to
 To view your Keypom balance, you can use the following. This will allow you to decipher if you need to add more $NEAR to your balance before creating a drop. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Query for the drop information for a specific drop
@@ -40,7 +40,7 @@ ___
 If you don't have sufficient funds to create your drop, you may add more $NEAR to your balance using the following. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const {keys} = await createDrop({
@@ -63,7 +63,7 @@ ___
 If you are confident you no longer need Keypom or simply wish to withdraw your Keypom balance back into your NEAR wallet, you can use the following:
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const {keys} = await createDrop({

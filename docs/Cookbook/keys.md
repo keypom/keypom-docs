@@ -21,7 +21,7 @@ Ensure that you have initialized Keypom using the `initKeypom` function prior to
 Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR.md#creating-a-large-drop), and need to add more than 100 keys to the drop. You can simply loop `addKeys` instead of being restricted by the amount of gas used when calling `createDrop`. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Create an empty simple drop with no keys.
@@ -32,6 +32,7 @@ const {dropId} = await createDrop({
 
 // Add 10 completely random keys. The return value `keys` contains information about the generated keys
 const {keys} = await addKeys({
+    account: fundingAccount,
     dropId,
     numKeys: 10
 })
@@ -51,7 +52,7 @@ ___
 Just as keys can be added to a drop retroactively, they can also be removed. The following shows that process. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Create drop with 5 keys
@@ -78,7 +79,7 @@ ___
 A good use case for checking key usage is when you want to track the progress/retention of the keys in your drop. An excellent example is the [ticketing tutorial](../Tutorials/Advanced/ticketing/architecture.md#keypom-solution) where each key use represented a different phase of the ticketing experience. To do this, you can get and parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object by calling `getKeysForDrop`. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Query for the key supply for the drop that was created
@@ -102,7 +103,7 @@ ___
 Similar to how checking a key usage is done, you can parse the [`keyInfo`](../keypom-sdk/Core/interfaces/KeyInfo.md) object to see a key's remaining allowance. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Query for the key supply for the drop that was created
@@ -126,7 +127,7 @@ ___
 When a key is fully depleted, it is deleted from the drop. To check the number of remaining keys, and thus the amount of keys to still be claimed, you can use `getKeySupplyForDrop`.
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Query for the key supply for a drop

@@ -20,7 +20,7 @@ These scripts will not run without the proper setup shown in the [introduction p
 To make all the keys in the drop multi-use, you can specify `usesPerKey` in the dropConfig parameter `config`. In this example, each of the 2 keys created will have 5 uses. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Creating drop with 2 keys with 5 uses each
@@ -50,7 +50,7 @@ ___
 By specifying a custom `dropRoot`, all new accounts created using your drop will be a subaccount of the specified account. For example, all accounts created with the drop below will follow the form of `${YOUR_USERNAME}.moonpom.near`.
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Creating drop with 2 keys with 5 uses each
@@ -73,32 +73,5 @@ console.log(keys)
 :::caution
 the `dropRoot` account **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
 :::
-
-___
-
-## Delete Drop
-A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
-
-<Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
-
-```js
-// Get drops for user
-let drops = await getDrops({accountId: "minqi.testnet"});
-
-// Delete the first two by drop object
-await deleteDrops({
-    drops: [drops[0], drops[1]]
-})
-
-// Delete the next two by dropId
-await deleteDrops({
-    dropIds: [drops[2].drop_id, drops[3].drop_id]
-})
-```
-
-</TabItem>
-
-</Tabs>
 
 ___

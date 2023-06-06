@@ -22,7 +22,7 @@ When creating a trial account drop, there are 3 main parameters to define. The f
 When creating the drop, the trial account's balance is then defined by its starting balance and ending balance, known as the `startingBalanceNEAR` and `trialEndFloorNEAR` respectively. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // What contracts can the trial account call?
@@ -72,20 +72,20 @@ ___
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Get drops for user
+// Get all the drops for a given user
 let drops = await getDrops({accountId: "minqi.testnet"});
 
-// Delete the first two by drop object
+// Delete all the drops currently funded by `minqi.testnet`
 await deleteDrops({
-    drops: [drops[0], drops[1]]
+    drops
 })
 
-// Delete the next two by dropId
+// Delete 2 seperate drops given their IDs
 await deleteDrops({
-    dropIds: [drops[2].drop_id, drops[3].drop_id]
+    dropIds: ["123123123123123", "12391238012380123"]
 })
 ```
 

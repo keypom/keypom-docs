@@ -20,7 +20,7 @@ Ensure that you have initialized Keypom using the `initKeypom` function prior to
 ### Create NFT Series
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const {keys} = await createDrop({
@@ -42,7 +42,7 @@ ___
 ### Utilize DAO Bot
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const {keys} = await createDrop({
@@ -64,7 +64,7 @@ ___
 ### Create Recurring Payments
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 const {keys} = await createDrop({

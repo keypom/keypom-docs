@@ -17,10 +17,10 @@ These scripts will not run without the proper setup shown in the [introduction p
 :::
 
 ## Password Protecting your Entire Drop
-Password protecting your drop prevents unauthorized people from claiming keys in your drop. A claim will fail if the password is not included in the claim transaction.
+Password protecting your drop prevents unauthorized people from claiming keys in your drop. A claim will fail if the [*actual password*](#claiming-a-password-protected-key) (base password is NOT the claiming password) is not included in the claim transaction. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Create drop with 10 password protected keys and 2 key uses each
@@ -40,13 +40,47 @@ console.log(keys)
 
 ___
 
+## Claiming a Password-Protected Key
+When claiming a password protected key, the password is not actually the base password. The base password is just one component that is universal for all keys accross the entire drop. The actual password for each claim is different but follows the following format format:
+
+```
+hash(basePassword + publicKey + current_key_use)
+```
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+// Create drop with 10 password protected keys and 2 key uses each
+let {keys, dropId} = await createDrop({
+    account: fundingAccount,
+    numKeys: 1,
+    depositPerUseNEAR: "0.1",
+    basePassword: "base-password"
+})
+
+// Create password using base + pubkey + key use as string
+let passwordForClaim = await hashPassword(basePassword + publicKey + curUse.toString())
+// Claim with created password
+await claim({
+    secretKey: privKey,
+    password: passwordForClaim
+})
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
 ## Password Protecting a Specific Key Use
 Rather than password protecting your entire drop, you may only want to protect certain key uses. A great use case of this is for [ticketing](../../../Tutorials/Advanced/ticketing/architecture.md#attendance-required-for-poap), when a bouncer would scan your ticket to claim your key and admit you into the event but only they know the password. This would prevent people admitting themselves into the event and gaining access to any POAPs and goodies available only to those who physically attend. 
 
 To specify key uses to password protect, simply add it to the `passwordProtectedUses` array. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
 // Create drop with 10 password protected keys and 5 key uses each
@@ -75,20 +109,20 @@ ___
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 
 <Tabs>
-<TabItem value="SDK" label="Keypom JS SDK🧩">
+<TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Get drops for user
+// Get all the drops for a given user
 let drops = await getDrops({accountId: "minqi.testnet"});
 
-// Delete the first two by drop object
+// Delete all the drops currently funded by `minqi.testnet`
 await deleteDrops({
-    drops: [drops[0], drops[1]]
+    drops
 })
 
-// Delete the next two by dropId
+// Delete 2 seperate drops given their IDs
 await deleteDrops({
-    dropIds: [drops[2].drop_id, drops[3].drop_id]
+    dropIds: ["123123123123123", "12391238012380123"]
 })
 ```
 

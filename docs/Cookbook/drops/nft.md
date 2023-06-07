@@ -23,36 +23,23 @@ An NFT drop is created by first minting the NFTs to be sent, and then including 
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Mint 1 NFT for the drop funder
-await fundingAccount.functionCall({
-	contractId: NFT_CONTRACT, 
-	methodName: 'nft_mint', 
-	args: {
-		receiver_id: YOUR_ACCOUNT,
-		metadata: {
-		    title: "My First Keypom NFT",
-		    description: "NFT from my first NFT Drop!",
-		    media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-		},
-		token_id: NFT_TOKEN_ID,
-	},
-	gas: "300000000000000",
-	// Cost to cover storage of NFT
-	attachedDeposit: parseNearAmount("0.1")
-});
+// The funding account `minqi.testnet` has the token `token_123` on the contract `nft.examples.testnet`
+const NFT_CONTRACT = `nft.examples.testnet`;
+const NFT_TOKEN_ID = `token_123`;
+const SENDING_ACCOUNT = `minqi.testnet`;
 
 const { keys } = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     depositPerUseNEAR: "1",
     nftData: {
-	    // NFT Contract Id that the tokens will come from
-	    contractId: NFT_CONTRACT,
-	    // Who will be sending the NFTs to the Keypom contract
-	    senderId: YOUR_ACCOUNT,
-	    // List of tokenIDs
-	    tokenIds: [NFT_TOKEN_ID]
-	}
+        // NFT Contract Id that the tokens will come from
+        contractId: NFT_CONTRACT,
+        // Who will be sending the NFTs to the Keypom contract
+        senderId: SENDING_ACCOUNT,
+        // List of tokenIDs
+        tokenIds: [NFT_TOKEN_ID]
+    }
 });
 
 console.log(keys)

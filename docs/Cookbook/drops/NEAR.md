@@ -50,9 +50,9 @@ Adding keys, either using `createDrop` or `addKeys` is limited to 50 password pr
 
 ```js
 // Creating drop with 0 single use keys
-const {dropId} = await createDrop({
+let {dropId} = await createDrop({
     account: fundingAccount,
-    depositPerUseNEAR: "0.1",
+    depositPerUseNEAR: "0.001",
 });
 
 let numKeys = 200
@@ -71,7 +71,6 @@ while (keysAdded < numKeys) {
     keysAdded += keysToAdd;
     allSecretKeys = allSecretKeys.concat(secretKeys);
 }
-
 ```
 
 </TabItem>

@@ -23,24 +23,25 @@ A Function Call Drop allows the user to call almost any function on any NEAR sma
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
+MY_CONTRACT = "guest-book.examples.keypom.testnet"
+
 // Creating a single key single use FC drop
-let {keys, dropId} = await createDrop({
+let {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
+            // First key use
             [
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "mint",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Called from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "first"
                     }),
-                }
+                    attachedDeposit: parseNearAmount("0.001"),
+                },
             ],
         ]   
     }   
@@ -62,10 +63,15 @@ To further expand the FC drop, you have the ability to call a different method f
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
+MY_CONTRACT = "guest-book.examples.keypom.testnet"
+
 // Creating a single key single use FC drop
-let {keys, dropId} = await createDrop({
+let {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
+    config: {
+        usesPerKey: 2
+    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -73,14 +79,12 @@ let {keys, dropId} = await createDrop({
             [
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "mint",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Minted from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "first"
                     }),
-                }
+                    attachedDeposit: parseNearAmount("0.001"),
+                },
             ],
             // Second key use
             null,
@@ -88,13 +92,11 @@ let {keys, dropId} = await createDrop({
             [
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "mint",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Sold from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "first-point-five"
                     }),
+                    attachedDeposit: parseNearAmount("0.001"),
                 }
             ],
         ]   
@@ -117,8 +119,10 @@ With each `claim`, you can also call multiple functions. Note this would call ea
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
+MY_CONTRACT = "guest-book.examples.keypom.testnet"
+
 // Creating a single key single use FC drop
-let {keys, dropId} = await createDrop({
+let {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     depositPerUseNEAR: "0.1",
@@ -128,25 +132,21 @@ let {keys, dropId} = await createDrop({
             [
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "mint",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Minted from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "first"
                     }),
+                    attachedDeposit: parseNearAmount("0.001"),
                 },
-                null,
+                null
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "sell",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Sold from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "second"
                     }),
-                }
+                    attachedDeposit: parseNearAmount("0.001"),
+                },
             ],
         ]   
     }   
@@ -164,9 +164,9 @@ ___
 ## Multi-Method, Multi-Use Drop
 By combining the [multi-claim](#creating-a-multi-claim-function-call-drop) and [multi-function call](#creating-a-multi-function-call-drop) drops together, you can call multiple number of functions for multiple claims. As an example, a key with 3 uses can be seen:
 
-1. `nft_mint`
+1. `add_message`
 2. `null`
-3. `nft_transfer`, `nft_mint`, `nft_sell`
+3. `nft_mint`, `add_message`, `nft_transfer`
 
 The drop for this would look like the following
 
@@ -175,10 +175,15 @@ The drop for this would look like the following
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
+MY_CONTRACT = "guest-book.examples.keypom.testnet"
+
 // Creating a single key single use FC drop
-let {keys, dropId} = await createDrop({
+let {keys: key4} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
+    config: {
+        usesPerKey: 3
+    },
     depositPerUseNEAR: "0.1",
     fcData: {
         methods: [
@@ -186,50 +191,48 @@ let {keys, dropId} = await createDrop({
             [
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "nft_mint",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Minted from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
+                        text: "first"
                     }),
+                    attachedDeposit: parseNearAmount("0.001"),
                 }
             ],
             // Second key use
             null,
-
             // Third key use
             [
                 {
-                    receiverId: MY_CONTRACT,
-                    methodName: "nft_transfer",
-                    args: JSON.stringify({
-                        memo: "Transfered from Keypom FC drop!"
-                        metadata: {
-                            id: 4390000
-                        }
-                    }),
-                },
-                {
-                    receiverId: MY_CONTRACT,
+                    receiverId: NFT_CONTRACT,
                     methodName: "nft_mint",
                     args: JSON.stringify({
-                        memo: "Minted from Keypom FC drop!"
+                        token_id: "keypom-cookbook-1",
+                        receiver_id: "minqi.testnet",
                         metadata: {
-                            id: 4390005
-                        }
+                            title: "My Test Keypom NFT",
+                            description: "NFT from my first NFT Drop!",
+                            media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+                        },
                     }),
+                    attachedDeposit: parseNearAmount("0.001"),
                 },
                 {
                     receiverId: MY_CONTRACT,
-                    methodName: "nft_sell",
+                    methodName: "add_message",
                     args: JSON.stringify({
-                        memo: "Sold from Keypom FC drop!"
-                        metadata: {
-                            id: 4390005
-                        }
+                        text: "second"
                     }),
-                }
+                    attachedDeposit: parseNearAmount("0.001"),
+                },
+                {
+                    receiverId: NFT_CONTRACT,
+                    methodName: "nft_transfer",
+                    args: JSON.stringify({
+                        receiver_id: "benjiman.testnet
+                        token_id: "keypom-cookbook-1"
+                    }),
+                    attachedDeposit: parseNearAmount("0.001"),
+                },
             ],
         ]   
     }   
@@ -270,7 +273,7 @@ let {keys, dropId} = await createDrop({
                     receiverId: MY_NFT_CONTRACT,
                     methodName: "mint",
                     args: JSON.stringify({
-                        mint_id: MINT_ID
+                        mint_id: MINT_ID,
                         metadata: {
                             description: "my new NFT"
                         }

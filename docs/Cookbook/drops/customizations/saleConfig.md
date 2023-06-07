@@ -23,13 +23,13 @@ A public sale drop is one where you can sell the access keys from a drop to othe
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Create drop with a maximum of 100 keys that can be added by anyone
+// Create drop with a maximum of 10 keys that can be added by anyone
 const { keys, dropId } = await createDrop({
     account: fundingAccount,
     depositPerUseNEAR: 0.1,
     config: {
         sale: {
-            maxNumKeys: 100,
+            maxNumKeys: 10,
             pricePerKeyNEAR: 1
         }
     }
@@ -53,13 +53,13 @@ By default, if no `allowlist` is included, then anybody can purchase a key.
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Create drop with a maximum of 100 keys that can be added by benji and min
+// Create drop with a maximum of 10 keys that can be added by benji and min
 const { keys, dropId } = await createDrop({
     account: fundingAccount,
     depositPerUseNEAR: 0.1,
     config: {
         sale: {
-            maxNumKeys: 100,
+            maxNumKeys: 10,
             pricePerKeyNEAR: 1
             allowlist: ["benji.testnet", "minqi.testnet"]
         }
@@ -86,13 +86,13 @@ here that since no `allowlist` is specified, anybody can purchase keys. However,
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Create drop with a maximum of 100 keys that can be added anyone but evil-moon
+// Create drop with a maximum of 10 keys that can be added anyone but evil-moon
 const { keys, dropId } = await createDrop({
     account: fundingAccount,
     depositPerUseNEAR: 0.1,
     config: {
         sale: {
-            maxNumKeys: 100,
+            maxNumKeys: 10,
             pricePerKeyNEAR: 1
             blocklist: ["evil-moon.testnet"]
         }
@@ -100,6 +100,105 @@ const { keys, dropId } = await createDrop({
 });
 
 console.log(keys)
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
+## Buying Keys from a Public Sale
+If you are allowed to buy tickets from a public sale, you can simply create a new key and call `addKeys` on the public sale drop with the ticket price attached to the `extraDepositNEAR` argument.
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+// 10 $NEAR ticket price
+const TICKET_PRICE = "10"
+// Desired sale's dropId
+const SALE_DROP_ID = "1684876169052"
+
+// Generate a random key
+const {publicKeys} = await generateKeys({
+    numKeys: 1
+});
+
+await addKeys({
+    account: fundingAccount,
+    publicKeys,
+    dropId: SALE_DROP_ID,
+    extraDepositNEAR: TICKET_PRICE
+})
+```
+
+</TabItem>
+
+</Tabs>
+
+:::note
+In its the example above, anybody can buy as many tickets as they'd like within the limits of the drop. For further customization, you could build a "public sale bot" contract. 
+
+This contract would act as an entry point that users interface with and buy tickets from; allowing you to restrict the number of tickets and add further customization. To facilitate this, you would need to [create an `allowlist`](#allowing-only-certain-users-to-buy-keys) containing the bot contract. 
+:::
+
+___
+
+## Modifying Sale `allowlist`
+After your public sale drop has been created, you can modify the `allowlist` by adding or removing users from it using `addToSaleAllowlist` and `removeFromSaleAllowlist`. 
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+const {dropId} = await createDrop({
+    numKeys: 0,
+    depositPerUseNEAR: 0.1,
+    config: {
+        sale: {
+            maxNumKeys: 2,
+            pricePerKeyNEAR: 1,
+            allowlist: ["evil-moon.testnet"]
+        }
+    }
+});
+
+// Remove evil-moon from allowlist
+await removeFromSaleAllowlist({account: fundingAccount, dropId, accountIds: ["evil-moon.testnet"]});
+// Add benji and minqi to allowlist
+await addToSaleAllowlist({account: fundingAccount, dropId, accountIds: ["benji.testnet", "minqi.testnet"]});
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
+## Modifying Sale `blocklist`
+After your public sale drop has been created, you can modify the `blocklist` by adding or removing users from it using `addToSaleBlocklist` and `removeFromSaleBlocklist`. 
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+const {dropId} = await createDrop({
+    numKeys: 0,
+    depositPerUseNEAR: 0.1,
+    config: {
+        sale: {
+            maxNumKeys: 2,
+            pricePerKeyNEAR: 1,
+            blocklist: ["minqi.testnet", "benji.testnet"]
+        }
+    }
+});
+
+// Remove evil-moon benji and minqi from blocklist
+await removeFromSaleBlocklist({account: fundingAccount, dropId, accountIds: ["benji.testnet", "minqi.testnet"]});
+// Add evil-moon to blocklist
+await addToSaleBlocklist({account: fundingAccount, dropId, accountIds: ["evil-moon.testnet"]});
 ```
 
 </TabItem>

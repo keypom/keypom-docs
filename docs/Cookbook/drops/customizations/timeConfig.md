@@ -21,7 +21,7 @@ All time values are measured in Unix Time (non-leap-nanoseconds since January 1,
 :::
 
 ## Drop with a Start and End Time
-The drop below is only active for 5 minutes, starting 30 seconds after the drop is created. Any claims before or after that window will fail. 
+The drop below is only active for 1.5 minutes, starting 15 seconds after the drop is created. Any claims before or after that window will fail. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
@@ -29,15 +29,17 @@ The drop below is only active for 5 minutes, starting 30 seconds after the drop 
 ```js
 const ONE_SECOND_NS = 1e9;
 
-// Creating timed drop with 2 single use keys
-const {keys} = await createDrop({
+// Creating timed drop with 1 double use keys
+const {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    time: {
-        // Start time is 30 seconds from now
-        start: (Date.now() * 1000000) + ONE_SECOND_NS * 30,
-        // End time is 5 minutes from start time
-        end: (Date.now() * 1000000) + ONE_SECOND_NS * 330,
+    config:{
+        time: {
+            // Start time is 15 seconds from now
+            start: (Date.now() * 1000000) + ONE_SECOND_NS * 15,
+            // End time is 90 seconds from start time
+            end: (Date.now() * 1000000) + ONE_SECOND_NS * 105,
+        },
     },
     depositPerUseNEAR: "0.1",
 });
@@ -52,7 +54,7 @@ console.log(keys)
 ___
 
 ## Time Throttled Drop
-A drop with a define time throttle will not allow consecutive `claim`s on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
+A drop with a define time throttle will not allow consecutive `claims` on the same key within the indicated time. With the drop below, users can only claim their key every 15 seconds. If they try to `claim` twice in ten seconds, the second `claim` will fail as 15 seconds has not elapsed since the first `claim`. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
@@ -60,13 +62,16 @@ A drop with a define time throttle will not allow consecutive `claim`s on the sa
 ```js
 const ONE_SECOND_NS = 1e9;
 
-// Creating timed drop with 2 single use keys
+// Creating time throttled drop with a double use keys
 const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-    time: {
-        // Time between use is 15 seconds
-        throttle: ONE_SECOND_NS * 15,
+    config:{
+        usesPerKey: 2,
+        time: {
+            // Time between use is 15 seconds
+            throttle: ONE_SECOND_NS * 30,
+        },
     },
     depositPerUseNEAR: "0.1",
 });
@@ -101,16 +106,16 @@ const ONE_SECOND_NS = 1e9;
 const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
-	config:{
-		usesPerKey: 4
-	},
-    time: {
-        // Start time is now
-        start: (Date.now() * 1000000),
-        // End time is 30 day after start time
-        end: (Date.now() * 1000000) + ONE_SECOND_NS * 2592000,
-        // Time after start for first use is 1 week
-        interval: ONE_SECOND_NS * 604800,
+    config:{
+        usesPerKey: 4,
+        time: {
+            // Start time is now + 5s
+            start: (Date.now() * 1000000) + ONE_SECOND_NS * 5,
+            // End time is 30 day after start time
+            end: (Date.now() * 1000000) + ONE_SECOND_NS * 2592000,
+            // Time after start for first use is 1 week
+            interval: ONE_SECOND_NS * 604800,
+        },
     },
     depositPerUseNEAR: "50",
 });

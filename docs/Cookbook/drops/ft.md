@@ -23,23 +23,8 @@ The process of creating an FT drop starts by checking if the funder has sufficie
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Get amount of FTs to transfer. In this scenario, we've assumed it to be 1 for one single use key.
-let amountToTransfer = parseNearAmount("1")
-
-// Get funder's fungible token balance
-let funderFungibleTokenBal = await fundingAccount.viewFunction({
-	contractId: FT_CONTRACT, 
-	methodName: 'ft_balance_of',
-	args: {
-		account_id: YOUR_ACCOUNT
-	}
-});
-
-// Check if the owner has enough FT balance to fund drop
-if (new BN(funderFungibleTokenBal).lte(new BN(amountToTransfer))){
-	throw new Error('funder does not have enough Fungible Tokens for this drop. Top up and try again.');
-}
-
+// Note that drop funder must have enough FTs to fund drop.
+// If amount is "3" and there are 4 keys, Funder FT balance must be more than 12
 const { keys } = await createDrop({
     account: fundingAccount,
     numKeys: 1,

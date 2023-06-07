@@ -23,7 +23,7 @@ Password protecting your drop prevents unauthorized people from claiming keys in
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Create drop with 10 password protected keys and 2 key uses each
+// Create drop with 1 single use password protected key
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
@@ -51,19 +51,26 @@ hash(basePassword + publicKey + current_key_use)
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-// Create drop with 10 password protected keys and 2 key uses each
+let base_password = "base-password"
+
+// Create drop with 1 password protected key
 let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     depositPerUseNEAR: "0.1",
-    basePassword: "base-password"
+    basePassword: base_password
 })
 
 // Create password using base + pubkey + key use as string
-let passwordForClaim = await hashPassword(basePassword + publicKey + curUse.toString())
+const keyInfo1 = await getKeyInformation({
+    publicKey: keys.publicKeys[0]
+})
+let passwordForClaim = await hashPassword(base_password + keys.publicKeys[0] + keyInfo1.cur_key_use.toString())
+
 // Claim with created password
 await claim({
-    secretKey: privKey,
+    accountId: "minqianlu.testnet",
+    secretKey: keys.secretKeys[0],
     password: passwordForClaim
 })
 ```
@@ -91,7 +98,7 @@ let {keys, dropId} = await createDrop({
 		usesPerKey: 5
 	},
     depositPerUseNEAR: "0.1",
-    basePassword: "base-password"
+    basePassword: "base-password",
     // Password protect the first, third and fourth key uses
     passwordProtectedUses: [1, 3, 4],
 })

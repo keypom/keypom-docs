@@ -165,9 +165,18 @@ const {dropId} = await createDrop({
 });
 
 // Remove evil-moon from allowlist
-await removeFromSaleAllowlist({account: fundingAccount, dropId, accountIds: ["evil-moon.testnet"]});
+await removeFromSaleAllowlist({
+    account: fundingAccount, 
+    dropId, 
+    accountIds: ["evil-moon.testnet"]
+});
+
 // Add benji and minqi to allowlist
-await addToSaleAllowlist({account: fundingAccount, dropId, accountIds: ["benji.testnet", "minqi.testnet"]});
+await addToSaleAllowlist(
+    {account: fundingAccount, 
+    dropId, 
+    accountIds: ["benji.testnet", "minqi.testnet"]
+});
 ```
 
 </TabItem>
@@ -196,9 +205,18 @@ const {dropId} = await createDrop({
 });
 
 // Remove evil-moon benji and minqi from blocklist
-await removeFromSaleBlocklist({account: fundingAccount, dropId, accountIds: ["benji.testnet", "minqi.testnet"]});
+await removeFromSaleBlocklist({
+    account: fundingAccount, 
+    dropId, 
+    accountIds: ["benji.testnet", "minqi.testnet"]
+});
+
 // Add evil-moon to blocklist
-await addToSaleBlocklist({account: fundingAccount, dropId, accountIds: ["evil-moon.testnet"]});
+await addToSaleBlocklist({
+    account: fundingAccount, 
+    dropId, 
+    accountIds: ["evil-moon.testnet"]
+});
 ```
 
 </TabItem>

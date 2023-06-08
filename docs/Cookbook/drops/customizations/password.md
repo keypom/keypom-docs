@@ -41,7 +41,7 @@ console.log(keys)
 ___
 
 ## Claiming a Password-Protected Key
-When claiming a password protected key, the password is not actually the base password. The base password is just one component that is universal for all keys accross the entire drop. The actual password for each claim is different but follows the following format format:
+When claiming a password protected key, the password is not actually the base password. The base password is just one component that is universal for all keys across the entire drop. The actual password for each claim is different but follows the following format format:
 
 ```
 hash(basePassword + publicKey + current_key_use)

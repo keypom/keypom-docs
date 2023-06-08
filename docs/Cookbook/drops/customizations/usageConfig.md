@@ -169,7 +169,8 @@ If you wish to make these subaccounts exclusive, you can gatekeep this process b
 ```rust
 #[payable]
 pub fn create_account(&mut self, new_account_id: AccountId, new_public_key: PublicKey, funder: String, keypomArgs: keypom_args) -> Promise {
-        assert!(funder == EXPECTED_FUNDER && keypomArgs.funderIdField == "funder","Call must come from valid Keypom drop");
+        assert!(keypomArgs.funderIdField == "funder_id","Call must come from valid Keypom drop");
+        assert!(funder == EXPECTED_FUNDER == "funder_id","Funder must be approved");
         ...
 }
 ```
@@ -188,13 +189,12 @@ let {keys, dropId} = await createDrop({
         usage:{
             permissions: `create_account_and_claim`,
             accountCreationFields: {
-                funderIdField = "funder"
+                funderIdField: "funder_id"
             }
-
-        }
-        dropRoot: "moonpom.near
-    }
-    depositPerUseNEAR: "0.1",
+        },
+        dropRoot: "mint-brigade.testnet"
+    },
+    depositPerUseNEAR: "1",
 })
 
 console.log(keys)

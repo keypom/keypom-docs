@@ -58,7 +58,7 @@ const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 2,
 	config:{
-		dropRoot: "moonpom.near"
+		dropRoot: "mint-brigade.testnet"
 	},
     depositPerUseNEAR: "0.1",
 });
@@ -72,6 +72,10 @@ console.log(keys)
 
 :::caution
 the `dropRoot` account **must** have a contract deployed to it that exposes a method `create_account` to create the sub-account. A sample contract can be found [here](https://github.com/near/near-linkdrop)
+
+In addition, it is wise to [`gatekeep account creation`](usageConfig.md#gatekeeping-account-creation) to ensure that not anyone can create subaccounts of your account.
+
+For this reason, the above code **will not work** out of the box. 
 :::
 
 ___

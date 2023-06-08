@@ -25,7 +25,7 @@ To view your Keypom balance, you can use the following. This will allow you to d
 ```js
 // Query for the drop information for a specific drop
 const userBal = await getUserBalance({
-accountId: "benjiman.testnet",
+    accountId: "benjiman.testnet",
 })
 
 console.log('userBal: ', userBal)
@@ -37,19 +37,15 @@ console.log('userBal: ', userBal)
 
 ___
 ## Adding to Keypom Balances
-If you don't have sufficient funds to create your drop, you may add more $NEAR to your balance using the following. 
+If you don't have sufficient funds to create your drop, you may add more $NEAR to your balance using the following. When specifying the amount to add, you can use `amountNear` or `amountYocto` to add in NEAR or yoctoNEAR respectively. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-const {keys} = await createDrop({
-    account: fundingAccount,
-    numKeys: 2,
-	config:{
-		usesPerKey: 1
-	},
-    depositPerUseNEAR: "0.1",
+await addToBalance({
+    account: fundingAccount, 
+    amountNear: "5"
 });
 ```
 
@@ -66,14 +62,9 @@ If you are confident you no longer need Keypom or simply wish to withdraw your K
 <TabItem value="SDK" label="🔑 Keypom SDK">
 
 ```js
-const {keys} = await createDrop({
-    account: fundingAccount,
-    numKeys: 2,
-	config:{
-		usesPerKey: 1
-	},
-    depositPerUseNEAR: "0.1",
-});
+await withdrawBalance({
+    account: fundingAccount
+})
 ```
 
 </TabItem>

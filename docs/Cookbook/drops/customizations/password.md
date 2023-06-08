@@ -124,11 +124,13 @@ let drops = await getDrops({accountId: "minqi.testnet"});
 
 // Delete all the drops currently funded by `minqi.testnet`
 await deleteDrops({
+    account: fundingAccount,
     drops
 })
 
 // Delete 2 seperate drops given their IDs
 await deleteDrops({
+    account: fundingAccount,
     dropIds: ["123123123123123", "12391238012380123"]
 })
 ```

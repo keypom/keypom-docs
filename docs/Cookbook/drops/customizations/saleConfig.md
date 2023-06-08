@@ -172,8 +172,8 @@ await removeFromSaleAllowlist({
 });
 
 // Add benji and minqi to allowlist
-await addToSaleAllowlist(
-    {account: fundingAccount, 
+await addToSaleAllowlist({
+    account: fundingAccount, 
     dropId, 
     accountIds: ["benji.testnet", "minqi.testnet"]
 });

@@ -70,7 +70,7 @@ let {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     config: {
-        usesPerKey: 2
+        usesPerKey: 3
     },
     depositPerUseNEAR: "0.1",
     fcData: {
@@ -372,11 +372,13 @@ let drops = await getDrops({accountId: "minqi.testnet"});
 
 // Delete all the drops currently funded by `minqi.testnet`
 await deleteDrops({
+    account: fundingAccount,
     drops
 })
 
 // Delete 2 seperate drops given their IDs
 await deleteDrops({
+    account: fundingAccount,
     dropIds: ["123123123123123", "12391238012380123"]
 })
 ```

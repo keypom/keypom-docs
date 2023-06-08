@@ -64,6 +64,7 @@ const {keys, dropId} = await createDrop({
 
 // Delete first key from drop
 await deleteKeys({
+    account: fundingAccount,
 	dropId,
 	publicKeys: keys.publicKeys[0] // Can be wrapped in an array as well
 })

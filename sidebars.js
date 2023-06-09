@@ -79,6 +79,7 @@ const sidebars = {
       ],
   Tutorials: [
     "Tutorials/welcome",
+   
     {
       type: 'category',
       label: 'Basics',
@@ -183,6 +184,46 @@ const sidebars = {
     },
     "TrialAccounts/offboarding",
   ],
+  Cookbook: [
+    "Cookbook/welcome",,
+    {
+      type: 'category',
+      label: 'Drops',
+      collapsed: false,
+      items: [
+            "Cookbook/drops/NEAR",
+            "Cookbook/drops/nft",
+            "Cookbook/drops/ft",
+            "Cookbook/drops/fc",
+            "Cookbook/drops/trial",
+            {
+              type: 'category',
+              label: 'Customizations',
+              collapsed: true,
+              items: [
+                    "Cookbook/drops/customizations/password",
+                    "Cookbook/drops/customizations/dropConfig",
+                    "Cookbook/drops/customizations/timeConfig",
+                    "Cookbook/drops/customizations/saleConfig",
+                    "Cookbook/drops/customizations/usageConfig",
+              ],
+            },
+      ],
+    },
+    "Cookbook/keys",
+    "Cookbook/balances",
+            
+  ],
+
+  // Drops
+  //   NEAR
+  //   Fungible Tokens -> 1
+  //   nft - > 1
+  //   function call drop -> customized use cases, links out to simples use case
+  //   Customizations
+  //       -> Time Based
+  //       -> Blah Blah
+  //       -> Sales
 
     // {
     //   type: 'category',

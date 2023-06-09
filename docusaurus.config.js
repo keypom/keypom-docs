@@ -6,13 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Keypom Docs',
   tagline: 'Web3 Onboarding',
-  url: 'https://minqianlu.github.io',
+  url: 'https://docs.keypom.xyz',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/moon.svg',
-  organizationName: 'minqianlu', // Usually your GitHub org/user name.
-  projectName: 'minqianlu.github.io', // Usually your repo name.
+  organizationName: 'Keypom', // Usually your GitHub org/user name.
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock', '@saucelabs/theme-github-codeblock',
   [
@@ -42,7 +41,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           //   [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           // ],
           // Please change this to your repo.
-          editUrl: 'https://github.com/keypom/keypom-docs',
+          editUrl: 'https://github.com/keypom/keypom-docs/tree/main/',
           versions: {
             current: {
               banner: 'none',
@@ -102,8 +101,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            to: "docs/next/exec-summary",
-            label: "💡 Executive Summary",
+            to: "docs/next/Cookbook/welcome",
+            label: "🧑‍🍳 Cookbook",
             position: "left",
           },
           {
@@ -146,8 +145,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 to: "docs/next/keypom-sdk/Core/welcome",
               },
               {
-                label: "💡 Keypom Executive Summary",
-                to: "docs/next/exec-summary",
+                label: "🧑‍🍳 Cookbook",
+                to: "docs/next/Cookbook/welcome",
               }
               // {
               //   label: "🤖Keypom V2",

@@ -64,7 +64,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
     <Feature url="../../docs/next/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
     <Feature url="../../docs/next/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with seamless onboarding" image="docs/icons/dao.png" />
     <Feature url="../../docs/next/TrialAccounts/introduction" title="Trial Accounts" subtitle="Web2 Onboarding in Web3" image="docs/icons/trial-accounts.png" />
-    <Feature url="../../docs/next/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Learn utilize Keypom in your BOS Componets" image="docs/icons/bos.png" />
+    <Feature url="../../docs/next/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Use Keypom in your BOS componets" image="docs/icons/bos.png" />
 
   </Column>
 

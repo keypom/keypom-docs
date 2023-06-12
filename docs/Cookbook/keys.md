@@ -39,6 +39,19 @@ const {keys} = await addKeys({
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -71,6 +84,19 @@ await deleteKeys({
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn delete_keys(
+    &mut self,
+    drop_id: DropIdJson,
+    public_keys: Option<Vec<PublicKey>>,
+    limit: Option<u8>,
+    delete_on_empty: Option<bool>,
+)
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -92,6 +118,37 @@ const keyInfos = await getKeysForDrop({
 const keyUsage = keyInfos[0].remaining_uses
 
 console.log(keyUsage)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_key_information(
+    &self, 
+    key: PublicKey
+) -> Option<JsonKeyInfo>
+
+// pub struct JsonKeyInfo {
+//     // Drop ID for the specific drop
+//     pub drop_id: DropIdJson,
+//     pub pk: PublicKey,
+
+//     // Which use is the current key on?
+//     pub cur_key_use: u64,
+
+//     // How many uses this key has left. Once 0 is reached, the key is deleted
+//     pub remaining_uses: u64,
+
+//     // When was the last time the key was used
+//     pub last_used: u64,
+
+//     // How much allowance does the key have left. When the key is deleted, this is refunded to the funder's balance.
+//     pub allowance: u128,
+
+//     // Nonce for the current key.
+//     pub key_id: u64,
+// }
 ```
 
 </TabItem>
@@ -119,6 +176,37 @@ console.log(keyBalance)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_key_information(
+    &self, 
+    key: PublicKey
+) -> Option<JsonKeyInfo>
+
+// pub struct JsonKeyInfo {
+//     // Drop ID for the specific drop
+//     pub drop_id: DropIdJson,
+//     pub pk: PublicKey,
+
+//     // Which use is the current key on?
+//     pub cur_key_use: u64,
+
+//     // How many uses this key has left. Once 0 is reached, the key is deleted
+//     pub remaining_uses: u64,
+
+//     // When was the last time the key was used
+//     pub last_used: u64,
+
+//     // How much allowance does the key have left. When the key is deleted, this is refunded to the funder's balance.
+//     pub allowance: u128,
+
+//     // Nonce for the current key.
+//     pub key_id: u64,
+// }
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -137,6 +225,16 @@ const keySupply = await getKeySupplyForDrop({
 })
 
 console.log(keySupply)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_key_supply_for_drop(
+    &self, 
+    drop_id: DropIdJson
+) -> u64
 ```
 
 </TabItem>

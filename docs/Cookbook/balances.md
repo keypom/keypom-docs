@@ -32,6 +32,16 @@ console.log('userBal: ', userBal)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_user_balance(
+    &self, 
+    account_id: AccountId
+) -> U128
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -50,6 +60,14 @@ await addToBalance({
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+// Attached deposit will be added to predecessor's balance
+pub fn add_to_balance(&mut self)
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -65,6 +83,13 @@ If you are confident you no longer need Keypom or simply wish to withdraw your K
 await withdrawBalance({
     account: fundingAccount
 })
+```
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+// Prececessor's balance will be withdrawn to their NEAR wallet
+ pub fn add_to_balance(&mut self)
 ```
 
 </TabItem>

@@ -39,6 +39,35 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        sale:{
+            /// Maximum number of keys that can be added to this drop. If None, there is no max.
+            max_num_keys: Option<u64>,
+
+            /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
+            /// Automatically sent to the funder's balance. If None, the keys are free to the public.
+            price_per_key: Option<U128>,
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -67,6 +96,38 @@ const { keys, dropId } = await createDrop({
 });
 
 console.log(keys)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        sale:{
+            /// Maximum number of keys that can be added to this drop. If None, there is no max.
+            max_num_keys: Option<u64>,
+
+            /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
+            /// Automatically sent to the funder's balance. If None, the keys are free to the public.
+            price_per_key: Option<U128>,
+
+            /// Which accounts are allowed to add keys?
+            allowlist: Option<Vec<AccountId>>,
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
 ```
 
 </TabItem>
@@ -103,6 +164,38 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        sale:{
+            /// Maximum number of keys that can be added to this drop. If None, there is no max.
+            max_num_keys: Option<u64>,
+
+            /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
+            /// Automatically sent to the funder's balance. If None, the keys are free to the public.
+            price_per_key: Option<U128>,
+
+            /// Which accounts are NOT allowed to add keys?
+            blocklist: Option<Vec<AccountId>>,
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -131,6 +224,19 @@ await addKeys({
     dropId: SALE_DROP_ID,
     extraDepositNEAR: TICKET_PRICE
 })
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
 ```
 
 </TabItem>
@@ -180,6 +286,50 @@ await addToSaleAllowlist({
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        sale:{
+            /// Maximum number of keys that can be added to this drop. If None, there is no max.
+            max_num_keys: Option<u64>,
+
+            /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
+            /// Automatically sent to the funder's balance. If None, the keys are free to the public.
+            price_per_key: Option<U128>,
+
+            /// Which accounts are NOT allowed to add keys?
+            allowlist: Option<Vec<AccountId>>,
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+pub fn add_to_sale_allowlist(
+    &mut self,
+    drop_id: DropIdJson,
+    account_ids: Vec<AccountId>
+)
+
+pub fn remove_from_sale_allowlist(
+    &mut self,
+    drop_id: DropIdJson,
+    account_ids: Vec<AccountId>
+) 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -217,6 +367,50 @@ await addToSaleBlocklist({
     dropId, 
     accountIds: ["evil-moon.testnet"]
 });
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        sale:{
+            /// Maximum number of keys that can be added to this drop. If None, there is no max.
+            max_num_keys: Option<u64>,
+
+            /// Amount of $NEAR that the user needs to attach (if they are not the funder) on top of costs. This amount will be
+            /// Automatically sent to the funder's balance. If None, the keys are free to the public.
+            price_per_key: Option<U128>,
+
+            /// Which accounts are NOT allowed to add keys?
+            blocklist: Option<Vec<AccountId>>,
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+pub fn add_to_sale_blocklist(
+    &mut self,
+    drop_id: DropIdJson,
+    account_ids: Vec<AccountId>
+)
+
+pub fn remove_from_sale_blocklist(
+    &mut self,
+    drop_id: DropIdJson,
+    account_ids: Vec<AccountId>
+)
 ```
 
 </TabItem>

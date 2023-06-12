@@ -28,9 +28,28 @@ const {keys} = await createDrop({
     account: fundingAccount,
     numKeys: 2,
     depositPerUseNEAR: "0.1",
-});
 
+});
 console.log(keys)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
 ```
 
 </TabItem>
@@ -71,6 +90,25 @@ while (keysAdded < numKeys) {
     keysAdded += keysToAdd;
     allSecretKeys = allSecretKeys.concat(secretKeys);
 }
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
 ```
 
 </TabItem>

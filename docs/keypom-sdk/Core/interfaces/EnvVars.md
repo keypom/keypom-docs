@@ -19,7 +19,7 @@ The amount of Gas that will be attached to the `claim` and `create_account_and_c
 
 #### Defined in
 
-[lib/types/general.ts:77](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L77)
+[lib/types/general.ts:77](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L77)
 
 ___
 
@@ -31,7 +31,7 @@ The connection instance that is part of the NEAR object
 
 #### Defined in
 
-[lib/types/general.ts:59](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L59)
+[lib/types/general.ts:59](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L59)
 
 ___
 
@@ -43,7 +43,7 @@ The NEAR Account object for the Keypom contract being used. This lets you know t
 
 #### Defined in
 
-[lib/types/general.ts:69](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L69)
+[lib/types/general.ts:69](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L69)
 
 ___
 
@@ -55,7 +55,7 @@ The account ID where the Keypom contract is deployed to.
 
 #### Defined in
 
-[lib/types/general.ts:79](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L79)
+[lib/types/general.ts:79](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L79)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:83](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L83)
+[lib/types/general.ts:83](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L83)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:87](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L87)
+[lib/types/general.ts:87](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L87)
 
 ___
 
@@ -87,7 +87,7 @@ The NEAR Account object for the Funder
 
 #### Defined in
 
-[lib/types/general.ts:65](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L65)
+[lib/types/general.ts:65](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L65)
 
 ___
 
@@ -99,7 +99,7 @@ The details for the funder such as any `rootEntropy` or their `secretKey` etc.
 
 #### Defined in
 
-[lib/types/general.ts:67](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L67)
+[lib/types/general.ts:67](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L67)
 
 ___
 
@@ -111,7 +111,7 @@ The default amount of Gas that will be attached to transactions (200 TGas).
 
 #### Defined in
 
-[lib/types/general.ts:73](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L73)
+[lib/types/general.ts:73](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L73)
 
 ___
 
@@ -123,7 +123,7 @@ The max amount of Gas that will be attached to transactions (300 TGas).
 
 #### Defined in
 
-[lib/types/general.ts:75](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L75)
+[lib/types/general.ts:75](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L75)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:85](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L85)
+[lib/types/general.ts:85](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L85)
 
 ___
 
@@ -145,7 +145,7 @@ Which type of KeyStore is used when locating keys and signing transactions throu
 
 #### Defined in
 
-[lib/types/general.ts:61](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L61)
+[lib/types/general.ts:61](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L61)
 
 ___
 
@@ -157,7 +157,7 @@ The specific NEAR object that contains important information such as the KeyStor
 
 #### Defined in
 
-[lib/types/general.ts:57](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L57)
+[lib/types/general.ts:57](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L57)
 
 ___
 
@@ -169,7 +169,7 @@ What network is the SDK using (`testnet` or `mainnet`)
 
 #### Defined in
 
-[lib/types/general.ts:63](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L63)
+[lib/types/general.ts:63](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L63)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:81](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L81)
+[lib/types/general.ts:81](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L81)
 
 ___
 
@@ -198,7 +198,7 @@ Object containing the supported Keypom contracts for both mainnet and testnet
 
 #### Defined in
 
-[lib/types/general.ts:89](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L89)
+[lib/types/general.ts:89](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L89)
 
 ___
 
@@ -208,7 +208,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:71](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L71)
+[lib/types/general.ts:71](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L71)
 
 ___
 
@@ -220,4 +220,4 @@ Function that allows you to invoke a view method. This takes in a `receiverId`, 
 
 #### Defined in
 
-[lib/types/general.ts:91](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L91)
+[lib/types/general.ts:91](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L91)

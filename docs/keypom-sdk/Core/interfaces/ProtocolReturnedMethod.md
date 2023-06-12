@@ -21,7 +21,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/protocol.ts:260](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L260)
+[lib/types/protocol.ts:260](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L260)
 
 ___
 
@@ -33,7 +33,7 @@ What arguments should be passed to the method. This should be in stringified JSO
 
 #### Defined in
 
-[lib/types/protocol.ts:245](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L245)
+[lib/types/protocol.ts:245](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L245)
 
 ___
 
@@ -45,7 +45,7 @@ How much yoctoNEAR should be attached to the call.
 
 #### Defined in
 
-[lib/types/protocol.ts:249](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L249)
+[lib/types/protocol.ts:249](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L249)
 
 ___
 
@@ -58,7 +58,7 @@ If this is specified, the key can ONLY be used to call `claim` and no `deposit_p
 
 #### Defined in
 
-[lib/types/protocol.ts:254](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L254)
+[lib/types/protocol.ts:254](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L254)
 
 ___
 
@@ -72,7 +72,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/protocol.ts:266](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L266)
+[lib/types/protocol.ts:266](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L266)
 
 ___
 
@@ -86,7 +86,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/protocol.ts:278](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L278)
+[lib/types/protocol.ts:278](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L278)
 
 ___
 
@@ -100,7 +100,7 @@ To insert into nested objects, use periods to separate. For example, to insert i
 
 #### Defined in
 
-[lib/types/protocol.ts:272](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L272)
+[lib/types/protocol.ts:272](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L272)
 
 ___
 
@@ -112,7 +112,7 @@ The method that should be invoked on the `receiverId`'s contract.
 
 #### Defined in
 
-[lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L241)
+[lib/types/protocol.ts:241](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L241)
 
 ___
 
@@ -124,7 +124,7 @@ The account ID that the contract is deployed to that the method will be called o
 
 #### Defined in
 
-[lib/types/protocol.ts:237](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L237)
+[lib/types/protocol.ts:237](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L237)
 
 ___
 
@@ -137,7 +137,7 @@ This receiver must be a valid account and non-malicious (cannot be set to the ke
 
 #### Defined in
 
-[lib/types/protocol.ts:283](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L283)
+[lib/types/protocol.ts:283](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L283)
 
 ___
 
@@ -150,4 +150,4 @@ By default, the user cannot provide any custom arguments
 
 #### Defined in
 
-[lib/types/protocol.ts:288](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L288)
+[lib/types/protocol.ts:288](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L288)

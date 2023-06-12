@@ -1,6 +1,6 @@
 ---
 id: "welcome"
-title: "@keypom/selector - v1.1.0"
+title: "@keypom/selector - v1.2.0"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null
@@ -9,7 +9,7 @@ custom_edit_url: null
 <p align="center">
   <a href="https://docs.keypom.xyz/">
     <picture>
-      <img src="https://cloudflare-ipfs.com/ipfs/bafybeightypuoqly32gsrivh4efckhdv6wsefiynpnonlem6ts3ypgdm7e" width="128" />
+      <img src="https://cloudflare-ipfs.com/ipfs/bafybeightypuoqly32gsrivh4efckhdv6wsefiynpnonlem6ts3ypgdm7e" height="128">
     </picture>
     <h1 align="center">Keypom Wallet Selector</h1>
   </a>
@@ -17,16 +17,16 @@ custom_edit_url: null
 
 <p align="center">
   <a aria-label="Made by Ben Kurrek" href="https://github.com/BenKurrek">
-    <img src="https://img.shields.io/badge/MADE%20BY-Ben%20Kurrek-000000.svg?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/MADE%20BY-Ben%20Kurrek-000000.svg?style=for-the-badge">
   </a>
   <a aria-label="Made by Matt Lockyer" href="https://github.com/mattlockyer">
-    <img src="https://img.shields.io/badge/MADE%20BY-Matt%20Lockyer-000000.svg?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/MADE%20BY-Matt%20Lockyer-000000.svg?style=for-the-badge">
   </a>
   <a aria-label="License" href="https://github.com/keypom/keypom-js/blob/main/LICENSE">
-    <img alt="" src="https://img.shields.io/badge/License-GNU%20GPL-green?style=for-the-badge" />
+    <img alt="" src="https://img.shields.io/badge/License-GNU%20GPL-green?style=for-the-badge">
   </a>
   <a aria-label="Join the community" href="https://t.me/+OqI-cKxQU05lZDIx">
-    <img alt="" src="https://img.shields.io/badge/Join%20The-community-blueviolet.svg?style=for-the-badge" />
+    <img alt="" src="https://img.shields.io/badge/Join%20The-community-blueviolet.svg?style=for-the-badge">
   </a>
 </p>
 
@@ -88,6 +88,29 @@ const selector = await setupWalletSelector({
     1. How the URL should be constructed for the app to trigger the trial account sign in flow.
     2. Customizable options for the trial account modals including *all* the text such as titles, descriptions, buttons, placeholders etc. In addition, you can specify exactly which off-boarding wallets you'd like to support.
 - `instantSignInSpecs`: If specified, trial accounts will be supported on the app. The instant sign in specs dictate how the URL should be constructed for the app to trigger the instant sign in flow.
+
+### IPFS Customizations
+
+For apps that wish to customize the Keypom parameters on a per page basis or even a per user basis, they can make use of IPFS CIDs. By adding a `?cid=` parameter to the URL, Keypom will fetch the parameters from the specified CID. The contents on IPFS must be JSON that match the Keypom parameters:
+
+```json
+{
+  "networkId": "testnet", // Or "mainnet",
+  "signInContractId": CONTRACT_ID,
+  "trialAccountSpecs": {
+    "url": "vandeley_industries.com/trial-sign-in/ACCOUNT_ID#SECRET_KEY",
+    "modalOptions": KEYPOM_OPTIONS
+  },
+  "instantSignInSpecs": {
+    "url": "vandeley_industries.com/instant-sign-in/ACCOUNT_ID#SECRET_KEY"
+  }
+}
+```
+
+An example CID can be found below:
+```
+bafkreidneri4ffymscahjprlapg4j62yleli73ncwdmopnkxpgczpusqn4
+```
 
 # Keypom Trial Accounts
 
@@ -236,7 +259,7 @@ trialOver?: {
 }
 ```
 
-You can change the titles, descriptions, button text / behavior and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
+You can change the titles, descriptions, button text / behaviour and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
 
 ## Example Trial Account Integration
 

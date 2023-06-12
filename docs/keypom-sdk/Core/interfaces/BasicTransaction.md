@@ -14,7 +14,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[lib/types/general.ts:108](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L108)
+[lib/types/general.ts:108](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L108)
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:106](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L106)
+[lib/types/general.ts:106](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L106)
 
 ___
 
@@ -34,4 +34,4 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:107](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L107)
+[lib/types/general.ts:107](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L107)

@@ -18,7 +18,7 @@ Which accounts are allowed to add keys? If the allowlist is empty, anyone that i
 
 #### Defined in
 
-[lib/types/protocol.ts:173](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L173)
+[lib/types/protocol.ts:173](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L173)
 
 ___
 
@@ -31,7 +31,7 @@ automatically withdrawn and sent to their NEAR wallet?
 
 #### Defined in
 
-[lib/types/protocol.ts:180](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L180)
+[lib/types/protocol.ts:180](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L180)
 
 ___
 
@@ -43,7 +43,7 @@ Which accounts are NOT allowed to add keys?
 
 #### Defined in
 
-[lib/types/protocol.ts:175](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L175)
+[lib/types/protocol.ts:175](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L175)
 
 ___
 
@@ -56,7 +56,7 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[lib/types/protocol.ts:190](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L190)
+[lib/types/protocol.ts:190](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L190)
 
 ___
 
@@ -68,7 +68,7 @@ Maximum number of keys that can be added to this drop. If None, there is no max.
 
 #### Defined in
 
-[lib/types/protocol.ts:166](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L166)
+[lib/types/protocol.ts:166](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L166)
 
 ___
 
@@ -81,7 +81,7 @@ Automatically sent to the funder's balance. If None, the keys are free to the pu
 
 #### Defined in
 
-[lib/types/protocol.ts:171](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L171)
+[lib/types/protocol.ts:171](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L171)
 
 ___
 
@@ -94,4 +94,4 @@ Measured in number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
 
 #### Defined in
 
-[lib/types/protocol.ts:185](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/protocol.ts#L185)
+[lib/types/protocol.ts:185](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/protocol.ts#L185)

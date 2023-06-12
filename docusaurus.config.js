@@ -73,7 +73,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             to: "docs/next/Concepts/welcome",
-            label: "📖Concepts",
+            label: "📖 Concepts",
             position: "left",
           },
           {
@@ -92,7 +92,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            label: '🚀BOS',
+            label: '🚀 BOS',
             to: 'docs/next/Tutorials/BOS/welcome',
           },
           {
@@ -124,11 +124,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Docs',
             items: [
               {
-                label: '📖Concepts',
+                label: '📖 Concepts',
                 to: 'docs/next/Concepts/welcome',
               },
               {
-                label: '💻Tutorials',
+                label: '💻 Tutorials',
                 to: 'docs/next/Tutorials/welcome',
               },
               {
@@ -137,7 +137,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 position: "left",
               },
               {
-                label: '🚀BOS',
+                label: '🚀 BOS',
                 to: 'docs/next/Tutorials/BOS/welcome',
               },
               {

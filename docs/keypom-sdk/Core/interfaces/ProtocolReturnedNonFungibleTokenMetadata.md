@@ -18,7 +18,7 @@ number of copies of this set of metadata in existence when token was minted.
 
 #### Defined in
 
-[lib/types/nft.ts:46](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L46)
+[lib/types/nft.ts:46](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L46)
 
 ___
 
@@ -30,7 +30,7 @@ free-form description
 
 #### Defined in
 
-[lib/types/nft.ts:40](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L40)
+[lib/types/nft.ts:40](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L40)
 
 ___
 
@@ -42,7 +42,7 @@ When token expires, Unix epoch in milliseconds
 
 #### Defined in
 
-[lib/types/nft.ts:50](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L50)
+[lib/types/nft.ts:50](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L50)
 
 ___
 
@@ -54,7 +54,7 @@ anything extra the NFT wants to store on-chain. Can be stringified JSON.
 
 #### Defined in
 
-[lib/types/nft.ts:56](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L56)
+[lib/types/nft.ts:56](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L56)
 
 ___
 
@@ -66,7 +66,7 @@ When token was issued or minted, Unix epoch in milliseconds
 
 #### Defined in
 
-[lib/types/nft.ts:48](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L48)
+[lib/types/nft.ts:48](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L48)
 
 ___
 
@@ -78,7 +78,7 @@ URL to associated media, preferably to decentralized, content-addressed storage
 
 #### Defined in
 
-[lib/types/nft.ts:42](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L42)
+[lib/types/nft.ts:42](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L42)
 
 ___
 
@@ -90,7 +90,7 @@ Base64-encoded sha256 hash of content referenced by the `media` field. Required 
 
 #### Defined in
 
-[lib/types/nft.ts:44](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L44)
+[lib/types/nft.ts:44](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L44)
 
 ___
 
@@ -102,7 +102,7 @@ URL to an off-chain JSON file with more info.
 
 #### Defined in
 
-[lib/types/nft.ts:58](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L58)
+[lib/types/nft.ts:58](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L58)
 
 ___
 
@@ -114,7 +114,7 @@ Base64-encoded sha256 hash of JSON from reference field. Required if `reference`
 
 #### Defined in
 
-[lib/types/nft.ts:60](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L60)
+[lib/types/nft.ts:60](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L60)
 
 ___
 
@@ -126,7 +126,7 @@ When token starts being valid, Unix epoch in milliseconds
 
 #### Defined in
 
-[lib/types/nft.ts:52](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L52)
+[lib/types/nft.ts:52](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L52)
 
 ___
 
@@ -138,7 +138,7 @@ ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
 
 #### Defined in
 
-[lib/types/nft.ts:38](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L38)
+[lib/types/nft.ts:38](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L38)
 
 ___
 
@@ -150,4 +150,4 @@ When token was last updated, Unix epoch in milliseconds
 
 #### Defined in
 
-[lib/types/nft.ts:54](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/nft.ts#L54)
+[lib/types/nft.ts:54](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/nft.ts#L54)

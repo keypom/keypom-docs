@@ -18,4 +18,4 @@ If this is set to true, keys can be created and registered AFTER they've been cr
 
 #### Defined in
 
-[lib/types/simple.ts:6](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/simple.ts#L6)
+[lib/types/simple.ts:6](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/simple.ts#L6)

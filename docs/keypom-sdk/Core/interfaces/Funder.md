@@ -23,7 +23,7 @@ The account ID of the funder that will be used to sign transactions.
 
 #### Defined in
 
-[lib/types/general.ts:35](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L35)
+[lib/types/general.ts:35](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L35)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:48](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L48)
+[lib/types/general.ts:48](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L48)
 
 ___
 
@@ -48,7 +48,7 @@ keys that are auto-generated will be based off this entropy.
 
 #### Defined in
 
-[lib/types/general.ts:46](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L46)
+[lib/types/general.ts:46](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L46)
 
 ___
 
@@ -60,7 +60,7 @@ A valid private key associated with the funder's account. This can be function-c
 
 #### Defined in
 
-[lib/types/general.ts:37](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L37)
+[lib/types/general.ts:37](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L37)
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 #### Defined in
 
-[lib/types/general.ts:39](https://github.com/keypom/keypom-js/blob/53ee056a4/packages/core/src/lib/types/general.ts#L39)
+[lib/types/general.ts:39](https://github.com/keypom/keypom-js/blob/9a866ee41/packages/core/src/lib/types/general.ts#L39)

@@ -73,6 +73,35 @@ pub fn add_keys(
 
 ___
 
+## Viewing Drops by Owner
+To view all drops created by one acount, you can use the following. 
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+// Creating drop with 0 single use keys
+ const dropsForOwner = await getDrops({accountId: "minqi.testnet"});
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_drops_for_owner(
+    &self,
+    account_id: AccountId,
+    from_index: Option<U128>,
+    limit: Option<u64>,
+) -> Vec<JsonDrop> 
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
 ## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
 

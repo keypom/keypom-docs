@@ -39,15 +39,21 @@ The core package serves as a way to interact with Keypom through a set of easy t
 - Manage user balances
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
-  - [View Methods & Utility Functions Only](#view-methods--utility-functions-only)
+  - [View Methods \& Utility Functions Only](#view-methods--utility-functions-only)
   - [Funder Object](#funder-object)
-  - [Customized KeyStore & Multiple Signers](#customized-keystore--multiple-signers)
+  - [Customized KeyStore \& Multiple Signers](#customized-keystore--multiple-signers)
 - [Costs](#costs)
-    - [Per Drop](#per-drop)
-    - [Per Key](#per-key)
+  - [Per Drop](#per-drop)
+  - [Per Key](#per-key)
+    - [Key Costs for Simple Drop](#key-costs-for-simple-drop)
+    - [Additional Costs for NFT Drops](#additional-costs-for-nft-drops)
+    - [Additional Costs for FT Drops](#additional-costs-for-ft-drops)
+    - [Additional Costs for FC Drops](#additional-costs-for-fc-drops)
 - [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -155,7 +161,7 @@ console.log('keys: ', keys)
 
 # Costs
 
-It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *forseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
+It is important to note that the Keypom contracts are 100% **FEE FREE** and will remain that way for the *foreseeable future*. These contracts are a public good and are meant to inspire change in the NEAR ecosystem.
 
 With that being said, there are several mandatory costs that must be taken into account when using Keypom. These costs are broken down into two categories: per key and per drop.
 

@@ -35,16 +35,22 @@ The Keypom Wallet Selector is a package that allows apps to be fully compatible 
 - Trial Account [Demo](https://www.youtube.com/watch?v=p_NOcYbRlJw)
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
-    - [Setup Keypom Parameters](#setup-keypom-parameters)
+  - [Setup Keypom Parameters](#setup-keypom-parameters)
+    - [IPFS Customizations](#ipfs-customizations)
 - [Keypom Trial Accounts](#keypom-trial-accounts)
-    - [Trial Account Specs](#trial-account-specs)
-    - [Modal Options](#modal-options)
-    - [Example Trial Account Integration](#example-trial-account-integration)
+  - [Trial Account Specs](#trial-account-specs)
+  - [Modal Options](#modal-options)
+      - [Wallets](#wallets)
+    - [Theme And CSS](#theme-and-css)
+    - [Modal Text](#modal-text)
+  - [Example Trial Account Integration](#example-trial-account-integration)
 - [Keypom Instant Sign In Experiences](#keypom-instant-sign-in-experiences)
-    - [Instant Sign In Specs](#instant-sign-in-specs)
+  - [Instant Sign In Specs](#instant-sign-in-specs)
 - [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -259,7 +265,7 @@ trialOver?: {
 }
 ```
 
-You can change the titles, descriptions, button text / behaviour and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
+You can change the titles, descriptions, button text / behavior and more to tailor the experience to your app. Finally, you can change the text for when the user tries to perform an invalid action, or tries to spend more $NEAR than the account has available.
 
 ## Example Trial Account Integration
 

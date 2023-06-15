@@ -677,7 +677,7 @@ pub fn add_keys(
 ___
 
 ## Viewing Drops by Owner
-To view all drops created by one acount, you can use the following. 
+To view all drops created by one account, you can use the following. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">

@@ -28,7 +28,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/create-trial-drop.js#L11-L29
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L45-L61
 ```
 
 ---
@@ -59,23 +59,43 @@ async function createTrialAccount() {
 }
 ```
 
+---
+
 ## Creating the Trial Drop
 
-Now that both the SDK and NEAR connections have been established, it's time to create the drop itself. This is done using the `createTrialAccountDrop` function. You'll start by defining the restrictions that the trial account will have. You'll want the trial account to only call methods on the guest book contract and attach up to 1 $NEAR per method. In this case, the guest book contract is deployed to the `guest-book.examples.keypom.testnet` account.
+Now that both the SDK and NEAR connections have been established, it's time to create the drop itself. This is done using the `createTrialAccountDrop` function. 
+
+You'll start by defining the restrictions that the trial account will have. You'll want the trial account to only call methods on the guest book and social contracts and attach up to 1 $NEAR per method. In this case, the guest book and social contracts are deployed to the `guest-book.examples.keypom.testnet` and `v1.social08.testnet` accounts respectively.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/create-trial-drop.js#L37-L51
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L20-L34
 ```
 
 :::note
 Note that a `*` was passed in for the callable methods. This means that the trial account can call any method as long as it's on the guest book contract.
 :::
 
+In addition to specifying methods, you can also pre-claim a key so that the user receives an initialized account that can use the dApp right away. This can be done with the following:
+
+```js reference
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L82-L94
+```
+
 Once this is finished, you can create the drop itself. The account will start with `2.5 $NEAR` and will reach the floor once `1.25 $NEAR` has been spent on attached deposits and burnt gas. 
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/trial-accounts/create-trial-drop.js#L53-L67
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L69-L79
 ```
 
-In the above example, you only created 1 drop but you can create as many as you want for your users. It's super simple and the Keypom SDK has abstracted all the complexities away from you. In the next tutorial, you'll run the script and instantly sign into the guest-book app.
+---
 
+## Full Code
+
+```js reference
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L1-L133
+```
+
+---
+
+## Conclusion
+In this example, you only created 1 drop but you can create as many as you want for your users. It's super simple and the Keypom SDK has abstracted all the complexities away from you. In the next tutorial, you'll run the script and instantly sign into the guest-book app.

@@ -9,7 +9,7 @@ custom_edit_url: null
 <p align="center">
   <a href="https://docs.keypom.xyz/">
     <picture>
-      <img src="https://cloudflare-ipfs.com/ipfs/bafybeightypuoqly32gsrivh4efckhdv6wsefiynpnonlem6ts3ypgdm7e" height="128">
+      <img src="https://cloudflare-ipfs.com/ipfs/bafybeightypuoqly32gsrivh4efckhdv6wsefiynpnonlem6ts3ypgdm7e" height="128"/>
     </picture>
     <h1 align="center">Keypom Wallet Selector</h1>
   </a>
@@ -17,16 +17,16 @@ custom_edit_url: null
 
 <p align="center">
   <a aria-label="Made by Ben Kurrek" href="https://github.com/BenKurrek">
-    <img src="https://img.shields.io/badge/MADE%20BY-Ben%20Kurrek-000000.svg?style=for-the-badge">
+    <img src="https://img.shields.io/badge/MADE%20BY-Ben%20Kurrek-000000.svg?style=for-the-badge"/>
   </a>
   <a aria-label="Made by Matt Lockyer" href="https://github.com/mattlockyer">
-    <img src="https://img.shields.io/badge/MADE%20BY-Matt%20Lockyer-000000.svg?style=for-the-badge">
+    <img src="https://img.shields.io/badge/MADE%20BY-Matt%20Lockyer-000000.svg?style=for-the-badge"/>
   </a>
   <a aria-label="License" href="https://github.com/keypom/keypom-js/blob/main/LICENSE">
-    <img alt="" src="https://img.shields.io/badge/License-GNU%20GPL-green?style=for-the-badge">
+    <img alt="" src="https://img.shields.io/badge/License-GNU%20GPL-green?style=for-the-badge"/>
   </a>
   <a aria-label="Join the community" href="https://t.me/+OqI-cKxQU05lZDIx">
-    <img alt="" src="https://img.shields.io/badge/Join%20The-community-blueviolet.svg?style=for-the-badge">
+    <img alt="" src="https://img.shields.io/badge/Join%20The-community-blueviolet.svg?style=for-the-badge"/>
   </a>
 </p>
 
@@ -35,16 +35,22 @@ The Keypom Wallet Selector is a package that allows apps to be fully compatible 
 - Trial Account [Demo](https://www.youtube.com/watch?v=p_NOcYbRlJw)
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
-    - [Setup Keypom Parameters](#setup-keypom-parameters)
+  - [Setup Keypom Parameters](#setup-keypom-parameters)
+    - [IPFS Customizations](#ipfs-customizations)
 - [Keypom Trial Accounts](#keypom-trial-accounts)
-    - [Trial Account Specs](#trial-account-specs)
-    - [Modal Options](#modal-options)
-    - [Example Trial Account Integration](#example-trial-account-integration)
+  - [Trial Account Specs](#trial-account-specs)
+  - [Modal Options](#modal-options)
+      - [Wallets](#wallets)
+    - [Theme And CSS](#theme-and-css)
+    - [Modal Text](#modal-text)
+  - [Example Trial Account Integration](#example-trial-account-integration)
 - [Keypom Instant Sign In Experiences](#keypom-instant-sign-in-experiences)
-    - [Instant Sign In Specs](#instant-sign-in-specs)
+  - [Instant Sign In Specs](#instant-sign-in-specs)
 - [Contributing](#contributing)
+- [License](#license)
 
 ---
 

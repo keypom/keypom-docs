@@ -3,7 +3,8 @@ sidebar_label: 'Keypom BOS Components'
 ---
 # Keypom BOS Components
 Welcome! This a collection of useful BOS components from both Keypom and the community!
-- [My Keypom Drops Info](https://near.org/mintlu.near/widget/Keypom-Drop-Viewer)
+- [My Keypom Drops Info](https://near.org/kiskesis.near/widget/Keypom-Drop-Viewer-fork) by [Kiskesis](https://near.org/near/widget/ProfilePage?accountId=kiskesis.near). 
+  - Forked from [here](https://near.org/mintlu.near/widget/Keypom-Drop-Viewer)
 <p align="center">
     <img src={require("/static/img/docs/bos/drop-info.png").default} width="85%" height="85%" alt="ticketing"/>
 </p>

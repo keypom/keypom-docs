@@ -53,7 +53,7 @@ https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be
 In addition, change the `guestBookInstance` to whichever URL your app is running on:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/f1f634a629808f0d0943e508c2be6576622d32b1/advanced-tutorials/trial-accounts/create-trial-drop.js#L70
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L14-L19
 ```
 
 Once this is finished, you can run the following command to create the trial account drop.
@@ -168,7 +168,17 @@ You'll notice that there are a couple of parameters that are passed into the `se
 
 By default, the modals that are shown to the user can be heavily customized to match the look and feel of your website. If you brand the regular wallet selector modal, the CSS will **automatically be applied** to the trial account modals.
 
-In addition, you can specify a suite of titles and descriptions. These will be covered further in a different tutorial.
+You may also brand and customize the modal with titiles, descriptions, colours etc. using a code snippet stored on IPFS, by appending a `cid` prop to the end of the URL. This is seen below:
+
+```js reference
+https://github.com/keypom/keypom-docs-examples/blob/f71760cb9cda203c389c3927c8e0a667db345bac/advanced-tutorials/trial-accounts/create-trial-drop.js#L118-L120
+```
+
+Where the `includedCID` is
+
+```js
+const includedCID = "bafkreidneri4ffymscahjprlapg4j62yleli73ncwdmopnkxpgczpusqn4"
+```
 
 ## Conclusion
 

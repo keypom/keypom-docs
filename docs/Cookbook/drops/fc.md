@@ -51,6 +51,42 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    fc: {
+        methods:{
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -107,6 +143,61 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config: {
+        uses_per_key: u64
+    }
+    fc: {
+        methods:{
+            // First key use
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ],
+            // Second key use
+            null,
+            // Third key use
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -153,6 +244,57 @@ let {keys} = await createDrop({
 })
 
 console.log(keys)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config: {
+        uses_per_key: u64
+    }
+    fc: {
+        methods:{
+            // First key use
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                },
+                null,
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
 ```
 
 </TabItem>
@@ -242,7 +384,70 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
 
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config: {
+        uses_per_key: u64
+    }
+    fc: {
+        methods:{
+            // First key use
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ],
+            // Second key use
+            null,
+            // First key use
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                },
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+```
+</TabItem>
 </Tabs>
 
 ___
@@ -288,6 +493,54 @@ let {keys, dropId} = await createDrop({
 })
 
 console.log(keys)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    fc: {
+        methods:{
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: String,
+                    /// Method to call on receiver_id contract
+                    method_name: String,
+                    /// Arguments to pass in (stringified JSON)
+                    args: String,
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: U128,
+                    /// Specifies what field the claiming account ID should go in when calling the function
+                    /// If None, this isn't attached to the args
+                    account_id_field: Option<String>,
+                    /// Specifies what field the drop ID should go in when calling the function. To insert into nested objects, use periods to separate. For example, to insert into args.metadata.field, you would specify "metadata.field"
+                    /// If Some(String), attach drop ID to args. Else, don't attach.
+                    drop_id_field: Option<String>,
+                    /// Specifies what field the key ID should go in when calling the function. To insert into nested objects, use periods to separate. For example, to insert into args.metadata.field, you would specify "metadata.field"
+                    /// If Some(String), attach key ID to args. Else, don't attach.
+                    key_id_field: Option<String>,
+                    // Specifies what field the funder id should go in when calling the function. To insert into nested objects, use periods to separate. For example, to insert into args.metadata.field, you would specify "metadata.field"
+                    // If Some(string), attach the funder ID to the args. Else, don't attach.
+                    funder_id_field: Option<String>,
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
 ```
 
 </TabItem>
@@ -355,6 +608,98 @@ await createNFTSeries({
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    fc: {
+        methods:{
+            [
+                {
+                    /// Contract that will be called
+                    receiver_id: "nft-v2.keypom.testnet",
+                    /// Method to call on receiver_id contract
+                    method_name: "nft_mint",
+                    /// Arguments to pass in (stringified JSON)
+                    args: "",
+                    /// Amount of yoctoNEAR to attach along with the call
+                    attached_deposit: 100000000000,
+                    /// Specifies what field the claiming account ID should go in when calling the function
+                    /// If None, this isn't attached to the args
+                    account_id_field: "receiver_id",
+                    /// Specifies what field the drop ID should go in when calling the function. To insert into nested objects, use periods to separate. For example, to insert into args.metadata.field, you would specify "metadata.field"
+                    /// If Some(String), attach drop ID to args. Else, don't attach.
+                    drop_id_field: "mint_id",
+                }
+            ]
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+
+// create an NFT series using create_series on nft-v2.keypom.testnet
+// pub fn create_series(
+//     &mut self,
+//     mint_id: Option<u64>, <-- MAKE THIS YOUR DROP ID FROM ABOVE
+//     metadata: {
+//         pub title: Option<String>, // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+//         pub description: Option<String>, // free-form description
+//         pub media: Option<String>, // URL to associated media, preferably to decentralized, content-addressed storage
+//         pub media_hash: Option<Base64VecU8>, // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+//         pub copies: Option<u64>, // number of copies of this set of metadata in existence when token was minted.
+//         pub issued_at: Option<u64>, // When token was issued or minted, Unix epoch in milliseconds
+//         pub expires_at: Option<u64>, // When token expires, Unix epoch in milliseconds
+//         pub starts_at: Option<u64>, // When token starts being valid, Unix epoch in milliseconds
+//         pub updated_at: Option<u64>, // When token was last updated, Unix epoch in milliseconds
+//         pub extra: Option<String>, // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+//         pub reference: Option<String>, // URL to an off-chain JSON file with more info.
+//         pub reference_hash: Option<Base64VecU8>, // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+//     },
+//     royalty: Option<HashMap<AccountId, u32>>,
+// )
+
+```
+
+</TabItem>
+
+</Tabs>
+
+___
+
+## Viewing Drops by Owner
+To view all drops created by one account, you can use the following. 
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+// Creating drop with 0 single use keys
+ const dropsForOwner = await getDrops({accountId: "minqi.testnet"});
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn get_drops_for_owner(
+    &self,
+    account_id: AccountId,
+    from_index: Option<U128>,
+    limit: Option<u64>,
+) -> Vec<JsonDrop> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -362,6 +707,10 @@ ___
 
 ## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
+
+The Keypom contract does not have a `deleteDrops` equivalent function. Behind the scenes of the SDK, the keys are being collected, refunded and then deleted. 
+
+The first step in this process is to use `get_key_supply_for_drop`. Once the total key supply is found, 50 keys at a time are retrieved using `get_keys_for_drop` and refunding their associated assets and deleting the keys using `refund_assets` and `delete_keys` respectively. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
@@ -381,6 +730,39 @@ await deleteDrops({
     account: fundingAccount,
     dropIds: ["123123123123123", "12391238012380123"]
 })
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+// Get total number of keys
+pub fn get_key_supply_for_drop(&self, drop_id: DropIdJson) -> u64
+
+// Get 50 keys at a time, this might need to be looped depending on key supply
+pub fn get_keys_for_drop(
+    &self,
+    drop_id: DropIdJson,
+    from_index: Option<U128>,
+    limit: 50,
+) -> Vec<JsonKeyInfo>
+
+// Refund the assets in those keys
+// assets_to_refund indicated the number of assets to refund. If not specified, all assets will be attempted to be refunded. 
+pub fn refund_assets(
+    &mut self, 
+    drop_id: DropIdJson, 
+    assets_to_refund: Option<u64>
+)
+
+// Delete keys that were retrieved.
+pub fn delete_keys(
+    &mut self,
+    drop_id: DropIdJson,
+    public_keys: Option<Vec<PublicKey>>,
+    limit: Option<u8>,
+    delete_on_empty: Option<bool>,
+)
 ```
 
 </TabItem>

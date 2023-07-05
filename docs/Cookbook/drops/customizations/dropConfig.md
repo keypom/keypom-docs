@@ -37,6 +37,28 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        uses_per_key: u64
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -64,6 +86,30 @@ const {keys} = await createDrop({
 });
 
 console.log(keys)
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    config:{
+        usage:{
+            root_account_id: "mint-brigade.testnet"
+        }
+    }
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
 ```
 
 </TabItem>

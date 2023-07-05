@@ -35,6 +35,32 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    // Passwords for the keys
+    passwords_per_use: Option<Vec<Option<Vec<{
+        // What is the password for this use
+        pw: String,
+        // Which use does this pertain to
+        key_use: u64,
+    }>>>>
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -107,6 +133,46 @@ console.log(keys)
 ```
 
 </TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+pub fn create_drop(
+    &mut self,
+    // How much $NEAR should be transferred everytime a key is used? Can be 0.
+    deposit_per_use: U128,
+    // Passwords for the keys
+    passwords_per_use: [
+        [
+            {
+                pw: hash(hash("my_first_pw"))
+                key_use: 1
+            }
+        ],
+        [
+            {
+                pw: ""
+                key_use: 2
+            }
+        ],
+        [
+            {
+                pw: hash(hash("my_next_pw"))
+                key_use: 3
+            }
+        ],
+    ]
+) -> Option<DropIdJson>
+
+pub fn add_keys(
+    &mut self,
+    // Public keys to add
+    public_keys: Vec<PublicKey>,
+    // Overload the specific drop ID
+    drop_id: DropIdJson,
+) -> Option<DropIdJson> 
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -114,6 +180,10 @@ ___
 
 ## Delete Drop
 A drop can be deleted manually at any time using `deleteDrops`. This will refund all unclaimed key balances back to the drop funder's Keypom balance. 
+
+The Keypom contract does not have a `deleteDrops` equivalent function. Behind the scenes of the SDK, the keys are being collected, refunded and then deleted. 
+
+The first step in this process is to use `get_key_supply_for_drop`. Once the total key supply is found, 50 keys at a time are retrieved using `get_keys_for_drop` and refunding their associated assets and deleting the keys using `refund_assets` and `delete_keys` respectively. 
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
@@ -133,6 +203,39 @@ await deleteDrops({
     account: fundingAccount,
     dropIds: ["123123123123123", "12391238012380123"]
 })
+```
+
+</TabItem>
+<TabItem value="CONTRACT" label="🦀 Rust Function Prototypes">
+
+```rust
+// Get total number of keys
+pub fn get_key_supply_for_drop(&self, drop_id: DropIdJson) -> u64
+
+// Get 50 keys at a time, this might need to be looped depending on key supply
+pub fn get_keys_for_drop(
+    &self,
+    drop_id: DropIdJson,
+    from_index: Option<U128>,
+    limit: 50,
+) -> Vec<JsonKeyInfo>
+
+// Refund the assets in those keys
+// assets_to_refund indicated the number of assets to refund. If not specified, all assets will be attempted to be refunded. 
+pub fn refund_assets(
+    &mut self, 
+    drop_id: DropIdJson, 
+    assets_to_refund: Option<u64>
+)
+
+// Delete keys that were retrieved.
+pub fn delete_keys(
+    &mut self,
+    drop_id: DropIdJson,
+    public_keys: Option<Vec<PublicKey>>,
+    limit: Option<u8>,
+    delete_on_empty: Option<bool>,
+)
 ```
 
 </TabItem>

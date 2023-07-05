@@ -3,6 +3,14 @@ sidebar_label: 'Keypom BOS Components'
 ---
 # Keypom BOS Components
 Welcome! This a collection of useful BOS components from both Keypom and the community!
+- [Event Ticketing on BOS](https://test.near.social/#/minqi.testnet/widget/kp-ticket-homepage?tab=my-ticket-drops)
+  - Built for [ETHGlobal Waterloo](https://ethglobal.com/showcase/keypom-x-bos-event-ticketing-pow2e) by Min
+  - Special thanks to [Kent - cuongdcdev](https://near.org/near/widget/ProfilePage?accountId=cuongdcdev.near) for API support, [Elliot Bream](https://near.org/near/widget/ProfilePage?accountId=elliotbraem.near&tab=apps) for gateway support, and [Kiskesis](https://near.org/near/widget/ProfilePage?accountId=kiskesis.near) for drop-viewer frontend beautification
+<p align="center">
+    <img src={require("/static/img/docs/bos/ethwaterloo.png").default} width="85%" height="85%" alt="BOS ticketing"/>
+</p>
+
+
 - [My Keypom Drops Info](https://near.org/kiskesis.near/widget/Keypom-Drop-Viewer-fork) by [Kiskesis](https://near.org/near/widget/ProfilePage?accountId=kiskesis.near). 
   - Forked from [here](https://near.org/mintlu.near/widget/Keypom-Drop-Viewer)
 <p align="center">

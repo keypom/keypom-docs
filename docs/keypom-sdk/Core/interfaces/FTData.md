@@ -27,7 +27,7 @@ ___
 
  `Optional` **amount**: `string`
 
-Human readable format for the amount of tokens to transfer everytime the FT key is used.
+Human readable format for the amount of tokens to transfer every time the FT key is used.
 Example: transferring one wNEAR should be passed in as "1" and NOT "1000000000000000000000000"
 
 #### Defined in

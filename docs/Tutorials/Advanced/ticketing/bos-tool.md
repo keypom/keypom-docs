@@ -2,7 +2,7 @@
 sidebar_label: '🚀 BOS Version'
 ---
 # BOS Version
-During the [ETHGlobal Waterloo hackathon](https://ethglobal.com/showcase/keypom-x-bos-event-ticketing-pow2e), a chunk of this tutorial was ported over to BOS. This section is a quick guide on how to use it.
+During the [ETHGlobal Waterloo Hackathon](https://ethglobal.com/showcase/keypom-x-bos-event-ticketing-pow2e), a chunk of this tutorial was ported over to BOS. This section is a quick guide on how to use it.
 
 > If you run into any bugs or issues, don't hesitate to reach out to [Min on Telegram](https://t.me/minlu00)!
 

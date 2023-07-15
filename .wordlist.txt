@@ -460,3 +460,5 @@ CIDs
 setSpecsFromKeypomParams
 generatePerUsePasswords
 ETHGlobal
+Hackathon
+lowercased

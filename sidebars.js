@@ -75,6 +75,7 @@ const sidebars = {
                     
               ],
             },
+            `Concepts/KeypomProtocol/v3-preview`
             
       ],
   Tutorials: [

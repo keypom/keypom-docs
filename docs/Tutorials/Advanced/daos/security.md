@@ -284,6 +284,28 @@ https://github.com/keypom/dao-bot/blob/2c3a7bac8b18e1134483f0736e2ca9e2152f8509/
 
 ---
 
+## Human Gating the DAO Bot (Mainnet Only)
+With the introduction of the [SoulBound Token Standard](https://github.com/robert-zaremba/NEPs/blob/robert/nep-sbt/neps/nep-0393.md), a proof-of-humanity protocol was implemented on NEAR, known as [I-Am-Human](https://i-am-human.app/). With this came the ability to human-gate certain actions, such as self-nominating or participating in governance.
+
+As DAOs are critical in governance and community, the need to human-gate these automatic DAO registrations became a high priority. By leveraging the I-Am-Human Registry's [`is_human`](https://github.com/near-ndc/i-am-human#additional-queries) human checker, you can open up the option for you DAO auto-registrations to be human-gated using the following code to parse the `is_human` response. 
+
+``` rust reference
+https://github.com/keypom/dao-bot/blob/a19a2d29b42514a1e9d5f11c993b79f207c4a00f/src/lib.rs#L158-L180
+```
+
+:::info
+This check will only be performed **if specified in the drop**! By default, human-gating is turned **off**. 
+
+Below is an example of a drop that is human-gated. Notice the `human_only` parameter!
+:::
+
+``` js reference
+https://github.com/keypom/keypom-docs-examples/blob/290cbce2c939573dbc8cb2b03598c2b2af5f91c2/advanced-tutorials/dao-onboarding/createDaoDrop-mainnet.js#L48-L84
+```
+
+
+---
+
 ## Full Code
 The code for this can be seen below: 
 

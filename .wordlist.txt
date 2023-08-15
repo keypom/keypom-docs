@@ -466,3 +466,4 @@ Mainnet
 human-gate
 gating
 human-gating
+SoulBound

@@ -72,10 +72,6 @@ For this example, the drop will be claimed with [`keypom-dao-tutorial-member.nea
 
 <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/claim.png").default} alt="explorer claim" width="80%"/> </p>
 
-:::note
-As of May 30th 2023, claiming with a new account on mainnet might [fail due to insufficient gas](drop.md#gas-requirements). This is because MyNearWallet automatically attaches 100TGas to every transaction. The fix has been deployed to `testnet` but not yet `mainnet`.
-:::
-
 After claiming, you can check the DAO policy [here](https://near.org/hack.near/widget/DAO.Profile?daoId=keypom-test.sputnik-dao.near) in the *Policy* tab. 
 
 <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/bos.png").default} alt="bos policy" width="80%"/> </p>

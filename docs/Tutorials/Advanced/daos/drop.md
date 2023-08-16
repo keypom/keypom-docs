@@ -198,7 +198,7 @@ The final consideration to make is the amount of gas needed to claim the drop. T
 
 By default, MyNearWallet will attach 100 [TGas](https://docs.near.org/concepts/basics/transactions/gas#thinking-in-gas) to linkdrop claims. This can be used as a starting point when testing your drop but if more gas is needed, it can be overriden manually.
 
-If you were to use the default 100 TGas, it would work for claims to existing wallets but would throw an error for `create_account_and_claim`. This is because the drop uses more Gas when a new account is created. This can be seen in the screenshot below. To mitigate this, you can set the required gas to be 120 TGas, which is slightly over the default.
+If you were to use the default 100 TGas, it would work for claims to existing wallets but would throw an error for `create_account_and_claim`. This is because the drop uses more Gas when a new account is created. This can be seen in the screenshot below. To mitigate this, you can set the required gas to be 175 TGas.
 
 <p align="center"> <img src={require("/static/img/docs/advanced-tutorials/dao-auto-reg/fail-not-enough-gas.png").default} alt="failed txn not enough gas" width="80%"/> </p>
 
@@ -214,7 +214,7 @@ let {keys, dropId} = await createDrop({
     account: fundingAccount,
     numKeys: 1,
     ...
-    requiredGas: (120*TERA_GAS).toString(),
+    requiredGas: (175*TERA_GAS).toString(),
     ...
 })
 ```

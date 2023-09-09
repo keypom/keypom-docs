@@ -287,7 +287,7 @@ while (keysAdded < numKeys) {
 }
 ```
 
-For more, see [this example](../../../Cookbook/drops/NEAR#creating-a-large-drop) or 
+For more, see [this example](../../../Cookbook/drops/NEAR.md#creating-a-large-drop) or 
 
 ---
 

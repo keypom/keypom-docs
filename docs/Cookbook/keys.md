@@ -18,7 +18,7 @@ Ensure that you have initialized Keypom using the `initKeypom` function prior to
 
 
 ## Adding Keys to a Drop
-Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR#creating-a-large-drop).
+Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR.md#creating-a-large-drop).
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">

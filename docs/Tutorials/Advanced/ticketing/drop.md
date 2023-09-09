@@ -47,7 +47,7 @@ This is done with `NEAR-API-JS` and consists of:
 * Specifying the location where the keys are stored for the drop funder's account. This location is commonly in the `~/.near-credentials` folder on your local machine.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L22-L38
+https://github.com/keypom/keypom-docs-examples/blob/8b8e8bbf5fd89d8447e1b6b4533da3bb8673690c/advanced-tutorials/ticket-app/utils/createTickDrop.js#L22-L38
 ```
 
 ---
@@ -232,7 +232,7 @@ For an in-depth explanation around password protected keys, see the [Typedocs](.
 Putting it all together, the final drop structure should look something like this:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L47-L72
+https://github.com/keypom/keypom-docs-examples/blob/8b8e8bbf5fd89d8447e1b6b4533da3bb8673690c/advanced-tutorials/ticket-app/utils/createTickDrop.js#L42-L73
 ```
 
 ---
@@ -255,10 +255,39 @@ The Keypom SDK provides a function to create an NFT series specifically for func
 The code for creating the series is shown below. 
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L74-L83
+https://github.com/keypom/keypom-docs-examples/blob/8b8e8bbf5fd89d8447e1b6b4533da3bb8673690c/advanced-tutorials/ticket-app/utils/createTickDrop.js#L75-L84
 ```
 
 Once both the series and drop are created, the key can be used to mint on-demand POAPs to wallets.
+
+---
+
+## Adding More Than 50 Tickets
+Due to gas restriction, `createDrop` is limited to 50 password protected keys (tickets). Rather than create multiple drops for the same event, you can simply add more keys to a single drop. This allows you to track your event metrics using a single `dropId`.
+
+To do this, you can use the following code:
+
+```js
+// Loop to add 200 keys
+let numKeys = 200
+let keysAdded = 0;
+let allSecretKeys = [];
+while (keysAdded < numKeys) {
+    const keysToAdd = Math.min(50, numKeys - keysAdded);
+    const {secretKeys, publicKeys} = await generateKeys({
+        numKeys: keysToAdd,
+    });
+    await addKeys({
+        account: fundingAccount,
+        dropId,
+        publicKeys
+    });
+    keysAdded += keysToAdd;
+    allSecretKeys = allSecretKeys.concat(secretKeys);
+}
+```
+
+For more, see [this example](../../../Cookbook/drops/NEAR#creating-a-large-drop) or 
 
 ---
 
@@ -268,7 +297,7 @@ The last step in this process is to create the links themselves so that you can 
 You can utilize the `formatLinkdropUrl` function for convenience. It can take a custom URL that contains `CONTRACT_ID` and `SECRET_KEY` and it will replace them with the contract ID and secret keys passed in.
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L85-L90
+https://github.com/keypom/keypom-docs-examples/blob/8b8e8bbf5fd89d8447e1b6b4533da3bb8673690c/advanced-tutorials/ticket-app/utils/createTickDrop.js#L86-L91
 ```
 
 ---
@@ -278,7 +307,7 @@ https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22
 Putting everything together, the final code for the drop should be:
 
 ```js reference
-https://github.com/keypom/keypom-docs-examples/blob/4c8f86dab842c16e9c2bc6ad6f22e1eee2dced9e/advanced-tutorials/ticket-app/utils/createTickDrop.js#L1-L106
+https://github.com/keypom/keypom-docs-examples/blob/8b8e8bbf5fd89d8447e1b6b4533da3bb8673690c/advanced-tutorials/ticket-app/utils/createTickDrop.js#L1-L107
 ```
 
 

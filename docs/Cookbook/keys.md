@@ -18,7 +18,7 @@ Ensure that you have initialized Keypom using the `initKeypom` function prior to
 
 
 ## Adding Keys to a Drop
-Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR.md#creating-a-large-drop), and need to add more than 100 keys to the drop. You can simply loop `addKeys` instead of being restricted by the amount of gas used when calling `createDrop`. 
+Additional keys may be added to a drop using the `addKeys` function. This is particularly helpful when you want to [create a large drop](drops/NEAR#creating-a-large-drop).
 
 <Tabs>
 <TabItem value="SDK" label="🔑 Keypom SDK">
@@ -43,8 +43,46 @@ const {keys} = await addKeys({
 </Tabs>
 
 :::caution
-`addKeys` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [large drops](#creating-a-large-drop) example. 
+`addKeys` is limited to adding 50 password protected keys or 100 non-protected keys at a time. To add more keys, see the [example below](#adding-lots-of-keys). 
 :::
+
+___
+
+## Adding Lots of Keys
+Adding keys, either using `createDrop` or `addKeys` is limited to 50 password protected or 100 non-protected keys. To bypass this, the drop can be created first and then the keys can be added by looping `addKeys`.
+
+<Tabs>
+<TabItem value="SDK" label="🔑 Keypom SDK">
+
+```js
+// Creating drop with 0 single use keys
+let {dropId} = await createDrop({
+    account: fundingAccount,
+    depositPerUseNEAR: "0.001",
+});
+
+// Loop to add 200 keys
+let numKeys = 200
+let keysAdded = 0;
+let allSecretKeys = [];
+while (keysAdded < numKeys) {
+    const keysToAdd = Math.min(50, numKeys - keysAdded);
+    const {secretKeys, publicKeys} = await generateKeys({
+        numKeys: keysToAdd,
+    });
+    await addKeys({
+        account: fundingAccount,
+        dropId,
+        publicKeys
+    });
+    keysAdded += keysToAdd;
+    allSecretKeys = allSecretKeys.concat(secretKeys);
+}
+```
+
+</TabItem>
+
+</Tabs>
 
 ___
 

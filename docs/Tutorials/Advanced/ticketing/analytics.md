@@ -8,7 +8,7 @@ In this section you'll learn how to track your event's analytics, such as number
 1) Creating a script.  
 2) Using existing BOS tools.  
 
-The focus for now wil be the script. The next tutorial section will showcase the existing BOS tools. 
+The focus for now will be the script. The next tutorial section will showcase the existing BOS tools. 
 
 Starting at the `keypom-docs-examples` directory, navigate to the `ticket-app-skeleton/others` folder and open the `event-analytics.js` file. 
 
@@ -37,7 +37,7 @@ https://github.com/keypom/keypom-docs-examples/blob/449992de80888934dcbccfadefd8
 ---
 
 ## Getting Drop and Keys
-Here, you want to make sure you get the proper drop that represents your event. To do this, you want to use the drop's `dropId`. In order to inlcude the keys in the returned data, ensure that `withKeys` is true.
+Here, you want to make sure you get the proper drop that represents your event. To do this, you want to use the drop's `dropId`. In order to include the keys in the returned data, ensure that `withKeys` is true.
 
 
 ```js reference

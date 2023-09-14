@@ -114,6 +114,7 @@ const sidebars = {
                 'Tutorials/Advanced/ticketing/user-code',
                 'Tutorials/Advanced/ticketing/scanner-code',
                 'Tutorials/Advanced/ticketing/final',
+                'Tutorials/Advanced/ticketing/analytics',
                 'Tutorials/Advanced/ticketing/bos-tool',
               ],
             },

@@ -33,7 +33,7 @@ function UnreleasedVersionLabel({siteTitle, versionMetadata, latestVersion, to, 
         ),
       }}>
       {
-        'This is unreleased Keypom documentation for v{versionLabel}. For the lastest, select v{latestVersionLink} from the dropdown'
+        'This is unreleased Keypom documentation for v{versionLabel}. For the lastest, see v{latestVersionLink}'
       }
     </Translate>
   );
@@ -59,7 +59,7 @@ function UnmaintainedVersionLabel({siteTitle, versionMetadata, latestVersion, to
         ),
       }}>
       {
-        'You are viewing documentation for Keypom v{versionLabel}. For the lastest, select v{latestVersionLink} from the dropdown'
+        'You are viewing documentation for Keypom v{versionLabel}. For the lastest, see v{latestVersionLink}'
       }
     </Translate>
   );

@@ -113,12 +113,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: "left",
           },
           {
-            href: 'https://github.com/keypom/keypom-docs/tree/main',
-            label: 'GitHub',
+            type: 'docsVersionDropdown',
             position: 'right',
           },
           {
-            type: 'docsVersionDropdown',
+            href: 'https://github.com/keypom/keypom-docs/tree/main',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },

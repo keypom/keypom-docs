@@ -74,22 +74,22 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         items: [
           {
-            to: "docs/next/Concepts/welcome",
+            to: "docs/2.0/Concepts/welcome",
             label: "📖 Concepts",
             position: "left",
           },
           {
-            to: "docs/next/Tutorials/welcome",
+            to: "docs/2.0/Tutorials/welcome",
             label: "📚 Tutorials",
             position: "left",
           },
           {
-            to: "docs/next/KeypomV2/welcome",
+            to: "docs/2.0/KeypomV2/welcome",
             label: "🤖 Keypom V2",
             position: "left",
           },
           {
-            to: "docs/next/keypom-sdk/welcome",
+            to: "docs/2.0/keypom-sdk/welcome",
             label: "💻 SDK TypeDocs",
             position: "left",
           },
@@ -120,15 +120,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: '📖Concepts',
-                to: 'docs/next/Concepts/welcome',
+                to: 'docs/2.0/Concepts/welcome',
               },
               {
                 label: '📚Tutorials',
-                to: 'docs/next/Tutorials/welcome',
+                to: 'docs/2.0/Tutorials/welcome',
               },
               {
                 label: "🤖Keypom V2",
-                to: "docs/next/KeypomV2/welcome",
+                to: "docs/2.0/KeypomV2/welcome",
               },
             ],
           },

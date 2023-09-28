@@ -3,25 +3,41 @@ sidebar_label: 'Function Call Asset'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
 # Function Call Asset
 
-The function call asset is by far the most powerful feature that Keypom provides. FC assets allow **any** method on **any**
-contract to be executed (with some exceptions). In addition, there are a huge variety of customizations and features you can choose from when
-defining the drop that come on top of the global options. The possibilities are almost endless. State of the art NFT ticketing,
-lazy minting NFTs, auto registration into DAOs, analytics for marketing at events and much more.
+The function call asset is by far Keypom's most powerful asset class. FC assets allow **any** method on **any**
+contract to be executed (with some exceptions). In addition, there are a huge variety of customizations and features you can choose from when defining the drop that come on top of the global options. The possibilities are almost endless. State of the art NFT ticketing, lazy minting NFTs, auto registration into DAOs, analytics for marketing at events and much more.
 
 ## How does it work?
+    
+When an a key use containing a Function Call asset is claimed, Keypom will make the predetermined function call. This call works as any normal function call and has a preset receiver, method, and attached deposit but can include user specified arguments, immutable Keypom populated basis-of-truth arguments.  
 
-Unlike NFT and FT assets, the function calls must have everything paid for **upfront**. There is no two step process
-so the creation is similar to Simple assets. Once the drop is created and keys are added, you can immediately start using it.
 
-### Function Call Config
+## Structure
 
-When creating the drop, you have quite a lot of customization available. At the top level, there is a FC drop global
-config similar to how the *general* config works.
+A Function Call Asset is defined by a vector of `MethodData`, which indicates a vector of function calls. Each `MethodData` represents a single function call, meaning that since an FC asset is defined with a vector of `MethodData`, multiple function calls can be made in a single key use. 
+
+The `MethodData` object outlines the following:
+
+* `receiver_id`: The contract on the receiving end of the function call.
+* `method_name`: The desired method to be called.
+* `args`: Arguments to be included in the function call, JSON stringified. 
+* `attached_deposit`: Amount of yoctoNEAR to attach to the function call.
+* `attached_gas`: Amount of gas for this method
+* `keypom_args`: Immutable Keypom populated basis-of-truth arguments, you specify the location and Keypom will inject certain values into these JSON locations within `args`. These cannot be spoofed, for more info see [below](#keypom-arguments)
+* `receiver_to_claimer`: Boolean that allows the claimer to become the receiver
+* `user_args_rule`: Rules outlining the behaviour of user inputs and predefined `args` when claiming.
 
 
 <Tabs>
+<TabItem value="KP" label="📚 Protocol">
+
+```rust reference
+https://github.com/keypom/keypom/blob/8f9f8df397cb8cabbda30d1ddffdcddc4a733274/contract/src/assets/function_call/models.rs#L6-L26
+```
+
+</TabItem>
 <TabItem value="KPJS" label="🔑 Keypom SDK">
 
 ```ts reference
@@ -29,97 +45,55 @@ https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de97794
 ```
 
 </TabItem>
-<TabItem value="KP" label="📚 Protocol">
-
-```rust reference
-https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L53-L58
-```
-
-</TabItem>
 </Tabs>
 
+## Execution
 
-### `Method`/`MethodData`
+For **every Function Call Asset**, you can specify a *vector* of `MethodData` which allows you to execute multiple function calls for each asset. These calls are scheduled 1 by 1 using a simple for loop. This means that most of the time, the function calls will be executed in the order specified in the vector but it is not *guaranteed*.
 
-In addition to the global config, the user can specify a set of what's known as `Method`. This represents the
-information for the function being called. Within this data, there are also a few optional configurations you can use
-to extend your use cases. You'll see how powerful these can be in the use cases [section](#use-cases).
+## Injecting Keypom Arguments
+Prior to calling the function defined in each `MethodData`, the Keypom contract will **automatically** modify the outgoing arguments according to the defined `keypom_args`. 
 
-<Tabs>
-<TabItem value="KPJS" label="🔑 Keypom SDK">
+For example, if the `account_id_field` is set to `"claiming_account"`, then Keypom will inject the claiming account's IDs into the `claiming_account` field in the args. In addition, arguments can be injected into nested fields by using object dot notation; `funder_id_field: "creator.account_id"` will inject the drop funder's account ID into the `creator` object under the field `account_id`. If specified fields do not exist, Keypom will create them. 
 
-```ts reference
-https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L7-L63
-```
-
-</TabItem>
-<TabItem value="KP" label="📚 Protocol">
+When a key is used and a function is called, an data structure is **automatically** attached to the arguments, known as the `keypom_args`. It contains the information that the drop creator specified in the `MethodData.keypom_args`. 
 
 ```rust reference
-https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/models/fc_model.rs#L18-L48
+https://github.com/keypom/keypom/blob/8f9f8df397cb8cabbda30d1ddffdcddc4a733274/contract/src/assets/function_call/models.rs#L32-L45
 ```
 
-</TabItem>
-</Tabs>
 
+This additional data structure allows receiving contracts to protect themselves from malicious calls by ensuring that critical pieces of information are correct. For example, if a contract knows that `claiming_account_id` should be automatically injected and only wants to work with drops from a particular funder `moon.near`, they can check the `keypom_args`. 
 
-`Method`/`MethodData` keeps track of the method being called, receiver, arguments, and attached deposit. In addition, there are
-some optional fields that can be used to extend the use cases. If you have a contract that requires some more context from
-Keypom such as the drop ID, key ID, or account ID that used the key, these can all be specified.
+To ensure that `claiming_account_id` is being injected by Keypom rather than hardcoded, the receiving contract can check that `keypom_args.account_id_field` is set to `claiming_account_id`.
 
-We've kept it generic such that you can specify the actual argument name that these will be passed in as. For example, if you
-had a contract that would lazy mint an NFT and it required the account to be passed in as `receiver_id`, you could specify
-an `account_id_field` set to `receiver_id` such that Keypom will automatically pass in the account ID that used the key under the
-field `receiver_id`.
+To make sure that all claims come from a drop funded by `moon.near`, the drop can inject the funder's account ID using `keypom_args` into any arbitrary field such as `drop_funder`. The receiver contract can then check the value `drop_funder` is `moon.near`, **and** check that `keypom_args.funder_id_field` is set to `drop_funder`. 
 
-This logic extends to the drop ID, and key Id as well.
+:::info
+The receiver contract's validation of injected arguments per the examples given above looks like this
 
-### Key Uses
+```rust
+#[payable]
+pub fn myFunction(&mut self, mint_id: String, claiming_account_id: String, drop_funder: data, keypomArgs: keypom_args) -> Promise {
+        // Ensure arguments are correct if predecessor is Keypom
+        if(env::predecessor_account_id() == "v3.keypom.near"){
+            //Ensure claiming_account_id was not hardcoded
+            assert!(keypomArgs.account_id_field == "claiming_account_id", "Call must come from valid Keypom drop");
 
-For **every key use**, you can specify a *vector* of `Method`/`MethodData` which allows you to execute multiple function calls each
-time a key is used. These calls are scheduled 1 by 1 using a simple for loop. This means that most of the time, the function
-calls will be executed in the order specified in the vector but it is not *guaranteed*.
-
-It's important to note that the Gas available is split evenly between *all* the function calls and if there are too many,
-you might run into issues with not having enough Gas. You're responsible for ensuring that this doesn't happen.
-
-The vector of `Method`/`MethodData` is *optional* for each key use. If a key use has `null` rather than `Some(Vector<MethodData>)` or `Maybe<Array<Method>>`,
-it will decrement the uses and work as normal such that the `throttle_timestamp, `start_timestamp` etc. are enforced. The only
-difference is that after the key uses are decremented and these checks are performed, the execution **finishes early**. The null
-case does **not** create an account or send *any* funds. It doesn't invoke any function calls and simply *returns once the
-checks are done*. This makes the null case act as a "burner" where you disregard any logic. This has many uses which will
-be explored in the use cases [section](#use-cases).
-
-If a key has more than 1 use, you can specify a *different vector* of `Method`/`MethodData` for **each use**. As an example, you could
-specify that the first use will result in a null case and the second use will result in a lazy minting function being called.
-If you have multiple uses but want them all to do the same thing, you don't have to repeat the same data. Passing in only 1
-vector of `Method`/`MethodData` will result in  **all the uses** inheriting that data.
-
-## Security
-
-Since all FC assets will be signed by the Keypom contract, there are a few restrictions in place to avoid malicious behaviors.
-To avoid users from stealing registered assets from other assets, the following methods cannot be called via FC assets:
-
-```rust reference
-https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/lib.rs#L926-L934
+            // Ensure drop_funder is moon.near and not hardcoded
+            assert!(drop_funder == "moon.near" && keypomArgs.funder_id_field == "drop_funder", "Call must come from valid Keypom drop");
+        }
+        ...
+}
 ```
+:::
+  
 
-In addition, the Keypom contract cannot be the receiver of any function call. This is to avoid people
-from calling private methods through FC assets.
-
-### Keypom Arguments
-
-When a key is used and a function is called, there is a data structure that is **automatically** attached to the arguments.
-This is known as the `keypom_args`. It contains the information that the drop creator specified in the `Method`/`MethodData`. 
-
-```rust reference
-https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/stage1/function_call.rs#L17-L22
-```
-
-#### Motivation
+### Motivation
+By using these injected arguments as a source-of-truth, you can easily create **both** exclusivity and security in your Keypom experiences.
 
 Let's say there was an exclusive NFT contract that allowed the Keypom contract to mint NFTs as part of an FC drop. Only Keypom
-was given access to mint the NFTs so they could be given out as linkassets. The organizer only wanted links that were part of their
+was given access to mint the NFTs so they could be given out as linkdrops. The organizer only wanted links that were part of their
 drop to be valid. For this reason, the NFT contract would only mint if Keypom called the `nft_mint` function and there was a field 
 `series` passed in and it was equal to the drop ID created by the organizer.
 
@@ -128,7 +102,7 @@ and restrict NFTs to only be minted if:
 - `series` had a value of 5.
 - The Keypom contract was the one calling the function.
 
-In order for this to work, when creating the drop, the owner would need to specify that the`drop_id_field` was set to a value of `series`
+In order for this to work, when creating the drop, the owner would need to specify that the `drop_id_field` was set to a value of `series`
 such that the drop ID is correctly passed into the function.
 
 The problem with this approach is that the NFT contract has no way of knowing which arguments were sent by the **user** when the drop 
@@ -142,6 +116,18 @@ end of the day, Keypom will **always** send correct information to the receiving
 been sent by Keypom and what has been manually set by users, the problem is solved. In the above scenario, the NFT contract would simply add
 an assertion that the `keypom_args` had the `account_id_field` set to `Some(series)` meaning that the incoming `series` field was set by Keypom
 and not by a malicious user.
+
+## Prohibited Methods
+
+Since all function calls will be signed by the Keypom contract, there are a few restrictions in place to avoid malicious behaviors.
+To avoid users from stealing registered assets from other assets, the following methods cannot be called via FC assets:
+
+```rust reference
+https://github.com/keypom/keypom/blob/7a654aa847f2ce9dedf65755c6a08817eece4666/contract/src/lib.rs#L926-L934
+```
+
+In addition, the Keypom contract cannot be the receiver of any function call. This is to avoid people
+from calling private methods through FC assets.
 
 ## Use Cases
 

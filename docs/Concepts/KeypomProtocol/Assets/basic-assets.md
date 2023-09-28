@@ -17,9 +17,23 @@ Whenever a NEAR asset is present in a key use, the user will receive some NEAR f
 
 ### Structure
 The structure of a NEAR asset is relatively simple. All that needs to be defined is the amount. Note that if multiple NEAR assets are defined in the same use, the claiming user will receive the sum of `yoctonear` contained in all the NEAR assets.
+<Tabs>
+<TabItem value="KP" label="📚 Protocol">
+
 ```rust reference
 https://github.com/keypom/keypom/blob/8f9f8df397cb8cabbda30d1ddffdcddc4a733274/contract/src/models/external/models.rs#L30-L33
 ```
+
+</TabItem>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L68-L74
+```
+
+</TabItem>
+</Tabs>
+
 ### Funding
 In the case of NEAR assets, defining and funding are synonomous. This is because the drop creation will fail if insufficient NEAR is provided. This NEAR can come from:
 
@@ -37,9 +51,24 @@ Note that multiple different tokens can be sent at once by simply including more
 ### Structure
 When defining an NFT Asset, only one item needs to be specified:
 * `nft_contract_id`: the contract that the NFT lives on.
+
+<Tabs>
+<TabItem value="KP" label="📚 Protocol">
+
 ```rust reference
 https://github.com/keypom/keypom/blob/8f9f8df397cb8cabbda30d1ddffdcddc4a733274/contract/src/models/external/models.rs#L50-L53
 ```
+
+</TabItem>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L68-L74
+```
+
+</TabItem>
+</Tabs>
+
 ### Funding
 :::caution
 An improperly loaded NFT Asset will result in **no NFT being sent to the user**
@@ -72,9 +101,24 @@ When defining an FT Asset, a few things need to be defined:
 * *ft_amount*: The amout of Fungible Tokens to be sent. Defined in the smallest divisible unit. For more, see the token's definition of the [decimal value](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals). 
 * *registration_cost*: Specific to each FT contract, this is the cost to register the user on the FT contract. 
 
+<Tabs>
+<TabItem value="KP" label="📚 Protocol">
+
 ```rust reference
 https://github.com/keypom/keypom/blob/8a4009be98f263e93d718779983efcdac1b1a9f8/contract/src/models/external/models.rs#L38-L45
 ```
+
+</TabItem>
+<TabItem value="KPJS" label="🔑 Keypom SDK">
+
+```ts reference
+https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de977945/src/lib/types/fc.ts#L68-L74
+```
+
+</TabItem>
+</Tabs>
+
+
 ### Funding
 :::caution
 An improperly loaded FT Asset will result in **no FTs being sent to the user**

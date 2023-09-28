@@ -1,13 +1,12 @@
 ---
-sidebar_label: 'Foundational Concepts'
+sidebar_label: 'The Keypom Drop'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Foundational Concepts
-## Drops vs. Keys
-> At its core, Keypom revolves around creating **Drops** and using **Access Keys**.
+# The Keypom Drop
+> A Keypom Drop is a collection of access keys that all share the same traits - such as assets and configurations. .
 
 * ***Access Key***: A NEAR keypair, this is what each user receives to start their Keypom experience. 
   * Can have assets, such an NFT, FTs, NEAR or FunctionCalls, associated with them.  

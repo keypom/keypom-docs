@@ -36,6 +36,7 @@ const sidebars = {
                     'Concepts/KeypomProtocol/Assets/basic-assets',
                     'Concepts/KeypomProtocol/Assets/function-call',
                     'Concepts/KeypomProtocol/Assets/asset-configurations',
+                    'Concepts/KeypomProtocol/Assets/time-customization',
                   ],
                 },
                 'Concepts/KeypomProtocol/nft-keys',

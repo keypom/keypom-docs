@@ -25,6 +25,11 @@ ___
 
 Assets can be NEAR, Fungible Tokens, Non-Fungible Tokens, or FunctionCalls. Each key in a drop holds the same assets, meaning a user can receive any key from the drop and be guarenteed the same set of assets. 
 
+<Admonition type="tip" icon="💡" title="tip">
+For every use on an Access Key, the different types of assets can be mixed to create an infinite number of experiences! 
+</Admonition>
+
+
 Access Keys can have multiple uses and their assets are defined **per use**. These can be mix-and-matched to craft any experience you want. An example can be seen below:
 
 

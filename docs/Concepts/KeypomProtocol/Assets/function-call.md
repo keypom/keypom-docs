@@ -3,11 +3,18 @@ sidebar_label: 'Function Call Asset'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Function Call Asset
 
-The function call asset is by far Keypom's most powerful asset class. FC assets allow **any** method on **any**
-contract to be executed (with some exceptions). In addition, there are a huge variety of customizations and features you can choose from when defining the drop that come on top of the global options. The possibilities are almost endless. State of the art NFT ticketing, lazy minting NFTs, auto registration into DAOs, analytics for marketing at events and much more.
+<Admonition type="tip" icon="💡" title="Key Concept">
+For every use on a Key, the different types of assets can be mixed to create an infinite number of experiences! 
+</Admonition>
+
+The Function Call asset allows almost **any** method on **any** contract to be executed when claiming. 
+
+These Function Calls can be used for utility, such as NFT ticketing and auto-regtration into DAOs or can carry value such as lazy minting NFTs. Combined with the ability to define function call arguments dynamically based on user input, the FC asset becomes the most versatile and expansive Keypom asset type. 
+
 
 ## How does it work?
     

@@ -6,12 +6,26 @@ import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
 # NEAR, NFT, & FT Assets
-<Admonition type="tip" icon="💡" title="tip">
-For every use on an Access Key, the different types of assets can be mixed to create an infinite number of experiences! 
+<Admonition type="tip" icon="💡" title="Key Concept">
+For every use on a Key, the different types of assets can be mixed to create an infinite number of experiences! 
 </Admonition>
 
+## Defining vs Funding Assets
+An important distinction to be made is the difference between defining and funding assets. 
+
+:::caution
+If assets are not properly funded, your drop may not perform as expected.
+:::
+
+Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
+
+* ***Defining an Asset***: The process of creating a drop and outlining a particular asset to be available on certain set of uses.
+* ***Funding an Asset***: Transferring ownership of defined assets to Keypom so that they can be redeemed by users claiming your keys.
+
+___
+
 ## NEAR Asset
-> A NEAR Asset attaches some claimable NEAR to each use it is defined for
+> A NEAR Asset attaches some NEAR that will be deposited in the user's account when claiming
 
 Whenever a NEAR asset is present in a key use, the user will receive some NEAR for that particular key use. For example, if a key has 2 uses, and a NEAR asset is defined in the first use but not the second, then the user will only receive NEAR the first time they claim their key. 
 
@@ -43,7 +57,7 @@ In the case of NEAR assets, defining and funding are synonomous. This is because
 ___
 
 ## NFT Asset
-> A properly funded NFT Asset will allow a user to receive a Non-fungible Token
+> A properly funded NFT Asset will allow a user to receive a Non-fungible Token when claiming
 
 Whenever an NFT asset is present and properly funded in a key use, the user will receive an NFT for that particular key use. For example, if a key has 2 uses, and an NFT asset is defined in the first use but not the second, then the user will only receive an NFT the first time they claim their key. 
 

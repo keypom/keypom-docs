@@ -1,77 +1,278 @@
 ---
-sidebar_label: 'NFTs and Access Keys'
+sidebar_label: 'Tradeable Access Keys'
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
-# Keypom Balances
-## What is a Keypom Balance?
-Let's put on our imagination caps for a second; pretend you're an event host and you are in charge of ticketing for numerous events. You deduce that for the sake of organization, the best approach would be to create separate drops for separate events. 
+# Tradeable Access Keys
+## What is a Tradeable Access Key?
+<Admonition type="tip" icon="💡" title="Key Concept">
+Every Keypom access key is linked with an NFT on the contract, giving your access keys NFT buy-sell functionality!
+</Admonition>
 
-Being the busy event organizer that you are, sometimes you need to create these drops and keys while on the road. As we can see in the [basic tutorials](../../Tutorials/Basics/simple-drops.md), you need to attach a deposit to every one of your function calls: every time you create a drop, add keys, delete keys etc. This can be a real headache for a busy event organizer!
+A tradeable access key allows you to sell, transfer and buy access keys, all securely on-chain. This creates an entirely new possibility of a secondary market and economy of access keys. This is particularly relevent to the field of event ticketing, where access keys as tickets hold high intrinsic value.
 
-This is where the concept of a **Keypom Balance** comes in real handy!
+In addition, since the access keys are associated with NFTs and leveraging technology defined by the [NFT standards](https://nomicon.io/Standards/Tokens/NonFungibleToken), they can work interoperably with any popular NFT marketplaces such as [Mintbase](https://www.mintbase.xyz/). 
 
-Every account that uses Keypom carries an internal balance (in $NEAR) on the Keypom contract. Effectively, the Keypom balance is similar to a debit card. You can overload your balance and sip from it as you interact with the contract.  
+:::info
+In order to put an access key up for sale or transfer it, you must be one of the following:
+* In possesion of the keypair and use it to sign transactions
+* The key's owner, similar to the owner of an NFT
+* An approved account, as per the NFT approval standard ([NEP-178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement))
+:::
 
-Let's go back to your event organizer persona; this Keypom Balance allows you to simply preload your "debit card" with loads of $NEAR and then go about your business without needing to worry about transferring $NEAR for ever function call!
-## Interacting with Balances
-There are a few functions that you can use to interact with your Keypom balance. Let's quickly run through their meanings, and then show some examples!
+___
 
-<Tabs>
-<TabItem value="KPJS" label="🔑 Keypom SDK">
+## Owned versus Ownerless Keys
+Access Key ownership is similar to NFT ownership in that it allows you transact it directly using the owner's account. This ownership can be transferred between accounts and be forfeitted.
 
-```ts
-// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
-export const addToBalance{
-	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
-	account?: Account,
-	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
-	wallet?: AnyWallet,
-	/** Amount of tokens to add but considering the decimal amount (non human-readable).
-	Transferring one $NEAR should be passed in as "1000000000000000000000000" and NOT "1" */
-	amountYocto?: string
-	/** Human readable format for the amount of tokens to add.
-	Transferring one $NEAR should be passed in as "1" and NOT "1000000000000000000000000" */
-	amountNear?: string,
-	/** When signing with a wallet, a success URl can be included that the user will be redirected to once the transaction has been successfully signed. */
-	successUrl?: string
-}
+An ownerless access key is one that does not belong to any particular account, and thus cannot be transacted by any particular account. Rather, they can be transacted if the `nft_transfer` or `nft_approve` methods calls are signed by the access key itself. 
 
-// Withdraw your balance back into your wallet. 
-export const withdrawBalance {
-	/** Account object that if passed in, will be used to sign the txn instead of the funder account. */
-	account?: Account,
-	/** If using a browser wallet through wallet selector and that wallet should sign the transaction, pass in the object. */
-	wallet?: AnyWallet,
-}
+:::tip
+Owned and Ownerless keys have the same functionality!
+:::
 
-//This allows you to view your own or other people's Keypom balance. This can be useful to determine 
-//if you need to top up if you are on the verge of creating a large drop
-export const getUserBalance{ 
-	accountId: string 
-}
+:::danger
+PUT PROPER SCRIPTS BELOW INSTEAD OF TEST SCRIPTS
+:::
+
+### Initializing Owner
+When creating a drop with keys or adding keys to a drop, a vector of *key data* is added. 
+
+```rust reference
+https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/drop_creation/add_keys.rs#L6-L12
 ```
 
-</TabItem>
-<TabItem value="KP" label="📚 Protocol">
+This vector represents each access key and any additional data associated with it. The key data object includes a field `key_owner` for specifying an owner account ID. 
 
-```rust
-// Deposit some amount of $NEAR or yoctoNEAR$ into the Keypom contract. This amount can then be used to create drops or add keys without having to explicitly attach a deposit every time. It can be thought of like a bank account.
-pub fn add_to_balance(&mut self)
-
-// Allows users to withdraw their balance
-pub fn withdraw_from_balance(&mut self) 
-
-// Return the current balance for a given account
-pub fn get_user_balance(&self, account_id: AccountId) -> U128
+```rust reference
+https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/models/external/models.rs#L81-L92
 ```
 
-</TabItem>
-</Tabs>
+### Adding Owner
+If you added keys to the drop without an owner and wish to retroactively add owners to them, you can do so by using `nft_transfer` and sending it to the new owner. This transaction will need to be signed with the keypair that you wish to give to the new owner.
+
+Below is a modified example from our contract tests. In this example, the keyair being transferred is used to sign the `nft_transfer` transaction. 
+
+```typescript
+// **************** USE KEY *****************
+await keypomV3.setKey(keyPairs.keys[0]);
+
+// **************** TRANSFER ****************
+let newKeyPair = await generateKeyPairs(1);
+await functionCall({
+    signer: keypomV3,
+    receiver: keypomV3,
+    methodName: "nft_transfer",
+    args: {
+        token_id: found_key_info.token_id,
+        receiver_id: bob.accountId,
+        memo: newKeyPair.publicKeys[0]
+    }
+})
+```
+:::note
+The `nft_transfer` function details will be covered [below](#transferring-an-access-key)
+:::
+
+___
+
+## Transferring an Access Key
+Whether you just sold your access key or are sending it to a friend, transferring ownership of it on-chain is crucial to ensuring that the receiver is secure in knowing that the access key is ***truly*** theirs. If instead, you simply gave someone the keypair, they would have no confirmation that they actually own the key, and that you won't use it to claim the assets or experiences linked with the key.
+
+For that reason, transferring ownership of an access key is not as simple as just handing over the keypair, and rather involves leveraging `nft_transfer` to transfer on-chain ownership.
+
+```rust reference
+https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/nft_keys/nft_core.rs#L11-L17
+```
+
+In order to ensure that you, the previous owner, can no longer transact using the keypair, the access key **must** be swapped with a new keypair, provided as a `publicKey` in the `memo` field. Upon completion of the transfer, the new keypair now holds all the assets and the old keypair is no longer useable. 
+
+### Transfer to Receiver with Account
+The simplest case is the one where the receiver already has a NEAR wallet. Here, the transfer is just a normal `nft_transfer` where you include the receiver's account ID. 
+
+:::note
+Both owned and ownerless keys can use this method - either with the owner account ID or using the key itself to sign the `nft_transfer` transaction. The `token_id` can be found by calling the method [`get_key_information`](https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/views/keys.rs#L31). 
+:::
+
+Shown below is when the owner, Ali, invokes the method and transfer it to Bob. Bob then receives the keypair associated with the `publicKey` specified in the `memo` The ownerless case can be found in the exapndable section below it.
+
+```typescript
+// ************ GENERATE NEW KEY ************
+let newKeyPair = await generateKeyPairs(1);
+
+// **************** TRANSFER ****************
+await functionCall({
+    signer: ali,
+    receiver: keypomV3,
+    methodName: "nft_transfer",
+    args: {
+        token_id: found_key_info.token_id,
+        receiver_id: bob.accountId,
+        memo: newKeyPair.publicKeys[0]
+    }
+})
+```
+
+<div style={{textAlign: 'center'}}>
+  Owner invoked access key transfer
+</div>
+<br></br>
+
+<details>
+<summary>Transfer to Account using Key</summary>
+<p>
+
+The key itself can be used to sign the `nft_transfer` method.
+
+```typescript
+// **************** USE KEY *****************
+await keypomV3.setKey(keyPairs.keys[0]);
+
+// ************ GENERATE NEW KEY ************
+let newKeyPair = await generateKeyPairs(1);
+
+// **************** TRANSFER ****************
+await functionCall({
+    signer: keypomV3,
+    receiver: keypomV3,
+    methodName: "nft_transfer",
+    args: {
+        token_id: found_key_info.token_id,
+        receiver_id: bob.accountId,
+        memo: newKeyPair.publicKeys[0]
+    }
+})
+```
+
+</p>
+</details>
+
+After this transfer, the receiver Bob can use this access key or trade/sell it using the same method, signing the `nft_transfer` method with his account ID. Giving Bob the new access key keypair is not necessary as he can sign with his own account but is highly recommended.
+
+### Transfer to Receiver without Account
+In this scenario, the transfer works the same way as a receiver with an account, but with one **major** difference. The new keypair defined by the `memo`'s `publicKey` ***must*** be kept track of. This is because the receiver can only transact this access key with this keypair. 
+
+:::caution
+If the receiver does not receive the new keypair, they cannot continue to trade or sell the access key.
+:::
+
+The rest of the process is exactly the same as the previous case transfering to a receiver with an account, except no `receiverId` is specified
+
+:::note
+Both owned and ownerless keys can use this method - either with the owner account ID or using the key itself to sign the `nft_transfer` transaction. The `token_id` can be found by calling the method [`get_key_information`](https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/views/keys.rs#L31). 
+:::
+
+Shown below is when the owner, Ali, invokes the method and transfer it to no receiver account ID. The receiver should receive the keypair associated with the `publicKey` specified in the `memo` The ownerless case can be found in the exapndable section below it.
+
+```typescript
+// ************ GENERATE NEW KEY ************
+let newKeyPair = await generateKeyPairs(1);
+
+// **************** TRANSFER ****************
+await functionCall({
+    signer: ali,
+    receiver: keypomV3,
+    methodName: "nft_transfer",
+    args: {
+        token_id: found_key_info.token_id,
+        memo: newKeyPair.publicKeys[0]
+    }
+})
+```
+
+<div style={{textAlign: 'center'}}>
+  Owner invoked access key transfer
+</div>
+<br></br>
+
+<details>
+<summary>Transfer to Account using Key</summary>
+<p>
+
+The key itself can be used to sign the `nft_transfer` method.
+
+```typescript
+// **************** USE KEY *****************
+await keypomV3.setKey(keyPairs.keys[0]);
+
+// ************ GENERATE NEW KEY ************
+let newKeyPair = await generateKeyPairs(1);
+
+// **************** TRANSFER ****************
+await functionCall({
+    signer: keypomV3,
+    receiver: keypomV3,
+    methodName: "nft_transfer",
+    args: {
+        token_id: found_key_info.token_id,
+        memo: newKeyPair.publicKeys[0]
+    }
+})
+```
+
+</p>
+</details>
+
+After this transfer, the receiver Bob can use this access key or trade/sell it using the same method, signing the `nft_transfer` method with his account ID. Giving Bob the new access key keypair is not necessary as he can sign with his own account but is highly recommended.
 
 
+## Approving Marketplaces to Transact your Access Key
+In order for your access key to be listed on a marketplace, such that the marketplace can sell and transfer your key for you, you must approve them, according to the NFT approval standard, [NEP-178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement).
 
-For example, Alice wants to add 10 $NEAR to her Keypom balance. She will do this by calling `addToBalance` and transferring 10 $NEAR to the Keypom contract. Then, if Alice wants to create a drop that costs her 5 $NEAR, she can simply create the drop and Keypom will automatically deduct from her internal Keypom balance rather than needing to transfer 5 $NEAR to the contract.  
+You can generate new approvals for different accounts/marketplaces by using the `nft_approve` method shown below. 
 
-Once she has created the drop, she can check her balance using `getUserBalance`, which will return 5 $NEAR. Then, she can withdraw this 5 $NEAR into her NEAR wallet; this will cause her Keypom balance to go down to 0 $NEAR. 
+```rust reference
+https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/nft_keys/approval.rs#L7C5-L7C105
+```
+
+:::note
+Both owned and ownerless keys can use this method - either with the owner account ID or using the key itself to sign the `nft_approve` transaction. The `token_id` can be found by calling the method [`get_key_information`](https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/views/keys.rs#L31). 
+:::
+
+Shown below is when the owner invokes the method. The ownerless case can be found in the exapndable section below it.
+
+```typescript
+// **************** APPROVE ****************
+await functionCall({
+    signer: ali,
+    receiver: keypomV3,
+    methodName: "nft_approve",
+    args: {
+        token_id: token_id,
+        account_id: mintbase.accountId,
+    }
+})
+```
+
+<div style={{textAlign: 'center'}}>
+  Owner invoked access key approval
+</div>
+<br></br>
+
+
+<details>
+<summary>Approval using the Key</summary>
+<p>
+
+The key itself can be used to sign the `nft_approve` method.
+
+```typescript
+// **************** USE KEY *****************
+await keypomV3.setKey(keyPairs.keys[0]);
+
+// **************** APPROVE ****************
+await functionCall({
+    signer: keypomV3,
+    receiver: keypomV3,
+    methodName: "nft_approve",
+    args: {
+        token_id: token_id,
+        account_id: mintbase.accountId,
+    }
+})
+```
+
+</p>
+</details>

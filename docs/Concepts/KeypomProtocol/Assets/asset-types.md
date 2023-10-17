@@ -7,7 +7,10 @@ import Admonition from '@theme/Admonition';
 
 # Asset Types
 ## Basics
-> In the Keypom Protocol, an asset it something you attach to every key in your drop. When someone obtains and uses a key, they will receive the assets - either to a new or existing account.  
+
+<Admonition type="tip" icon="💡" title="Key Concept">
+In the Keypom Protocol, an asset is something that is attached to every key in your drop. When someone obtains and uses a key, they will receive the assets - either to a new or existing account. 
+</Admonition>
 
 Assets are meant to create new experience and bring value to your users. They can be one of the following: 
 
@@ -65,10 +68,10 @@ ___
 An important distinction to be made is the difference between defining and funding assets. 
 
 :::caution
-If assets are not properly funded, your drop may not perform as expected. Proper funding is highlighted in each asset type's respective concepts pages and tutorials.
+If assets are not properly funded, your drop may not perform as expected. Proper funding is defined in [next section](basic-assets.md).
 :::
 
-Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it. A more formal definition can be: 
+Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
 
-* ***Defining an Asset***: This is the process you go through when creating your drop; you outline a particular asset to be available on certain set of uses. Note that the asset is not actually present in the drop after you've defined it. 
-* ***Funding an Asset***: This happens when you send Keypom the assets required as defined in your drop. This way, Keypom has ownership and can transfer it to the user when they claim their key.
+* ***Defining an Asset***: The process of creating a drop and outlining a particular asset to be available on certain set of uses.
+* ***Funding an Asset***: Transferring ownership of defined assets to Keypom so that they can be redeemed by users claiming your keys.

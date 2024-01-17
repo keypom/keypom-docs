@@ -117,14 +117,30 @@ ___
 ## Extra Key Allowance
 > *Default: 0*
 
-An extra amount of NEAR to be added to an access key's allowance.
+An extra amount of NEAR to be added to an access key's allowance. This will give the key extra gas for all of its claims, as well as other function calls such as `nft_transfer`, and `nft_approve`.
+
+### Use Case
+Moon recognizes that his annual MoonCON conference is very popular, and that there is the potential for a hot resale market. In order to allow plenty of activity on the secondary markets such as Mintbase, Moon adds some extra allowance to each key. This allows the key to call `nft_approve` and `nft_transfer` multiple times without running out of NEAR of gas when it comes time to use the ticket and claim the assets. 
+```rust
+// 30TGas extra
+extra_allowance_per_key: 30000000000000
+```
 
 ___
 
 ## Drop Metadata
 > *Default: null*
 
-`drop_metadata` is a string that allows you to store any other information you wish to associate with the drop, such as the drop's purpose.
+`drop_metadata` is a string that allows you to store any other information you wish to associate with the drop, such as the drop's purpose. For the sake of clarity and interoperability with frontends, this is typically a stringified JSON. 
 
+### Use case
+Benji is going on a Lunch 'n' Learn tour with Moon, with ticket sales planned for every city. To facilitate a seamless experience for attendees, Benji creates a frontend hosted on BOS to sell tickets to each one of cities. In order to keep track of tickets for each city, Benji creates a number of drops, each with their own unique metadata describing the Lunch 'n Learn location and time. On the frontend, Benji can simply call `get_drop_information`, parse the returned metadata for each drop, and then render each city's ticket page according to the metadata. 
+```javascript
+drop_metadata: JSON.stringify({
+    city: "Toronto",
+    data: "June 13th 2024",
+    time: "1pm EST"
+})
+```
 ___
 

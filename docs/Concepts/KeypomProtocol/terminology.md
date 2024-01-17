@@ -7,11 +7,11 @@ import Admonition from '@theme/Admonition';
 
 # Foundational Concepts
 ## Drops vs. Keys
-> At its core, Keypom revolves around creating **Drops** and using **Access Keys**.
+> Keypom revolves around collections of **Access Keys** called **Drops**.
 
 * ***Access Key***: A NEAR keypair, this is what each user receives to start their Keypom experience. 
   * Can have assets, such an NFT, FTs, NEAR or FunctionCalls, associated with them.  
-  * When a user receives a key and claims it, they will receive those assets.  
+  * When a user receives a key and uses it, they will receive those assets.  
 * ***Drop***: A collection of access keys that all share the same traits - such as assets and configurations. 
   * As a funder, you create the drop and fund all the assets
   * You can add as many keys as you want to the drop, even after its creation.
@@ -42,7 +42,7 @@ Access Keys can have multiple uses and their assets are defined **per use**. The
 
 This means when the user claims their key for the first time, they will receive a FT, some NEAR and call a set of functions. On the second claim, they will receive an NFT while on the third and final claim, they will receive some NEAR and FTs. 
 
-This behaviour is the same accross all the keys in the drop. As the drop funder, you would need to ensure your drop has all the necessary assets to fund all of the keys. For example, if each FT asset represents 1 Go-Team Token and you have 10 keys, you would need to fund your drop with 20 Go-Team Tokens. For more on how to use each asset, see the pages below. 
+This behaviour is the same accross all the keys in the drop. As the drop funder, you would need to ensure your drop has all the necessary assets to fund all of the keys. Following the above example, if each FT asset represents 1 Go-Team Token and you have 10 keys, you would need to fund your drop with 20 Go-Team Tokens. For more on how to use each asset, see the pages below. 
 
 <div class="container">
   <div class="row">
@@ -79,7 +79,7 @@ This behaviour is the same accross all the keys in the drop. As the drop funder,
       </a>
     </div>
     <div class="col">
-      <a href="Assets/asset-configurations">
+      <a href="Assets/key-use-configurations">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Asset Configuration</h3>

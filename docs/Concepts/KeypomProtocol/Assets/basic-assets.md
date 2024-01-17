@@ -11,17 +11,17 @@ For every use on a Key, the different types of assets can be mixed to create an 
 </Admonition>
 
 ## Defining vs Funding Assets
-An important distinction to be made is the difference between defining and funding assets. 
+An important distinction to be made is the difference between defining and funding assets. Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
 
-:::caution
-If assets are not properly funded, your drop may not perform as expected.
-:::
+* ***Defining an Asset***: The process of creating a drop and outlining the behaviour expected for your keys. At this point, you've created a blueprint of your drop's expected assets but have not built it out. 
 
-Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
-
-* ***Defining an Asset***: The process of creating a drop and outlining a particular asset to be available on certain set of uses.
 * ***Funding an Asset***: Transferring ownership of defined assets to Keypom so that they can be redeemed by users claiming your keys.
 
+Once a drop's assets have been defined and funded, keys can be used properly. 
+
+:::caution
+If assets are not properly funded, users of your drop will not receive the assets promised to them. 
+:::
 ___
 
 ## NEAR Asset
@@ -61,7 +61,7 @@ ___
 
 Whenever an NFT asset is present and properly funded in a key use, the user will receive an NFT for that particular key use. For example, if a key has 2 uses, and an NFT asset is defined in the first use but not the second, then the user will only receive an NFT the first time they claim their key. 
 
-Note that multiple different tokens can be sent at once by simply including more NFT Assets.
+Note that multiple different tokens can be sent at once by defining additional NFT Assets following the structure below.
 ### Structure
 When defining an NFT Asset, only one item needs to be specified:
 * `nft_contract_id`: the contract that the NFT lives on.
@@ -92,7 +92,7 @@ In order to fund an NFT asset, you must transfer it to the Keypom contract: `v3.
 
 It is important that when transferring, you are transferring from the contract that you defined above. It is also important to include the `dropId` as a `msg`. This tells Keypom to associate the incoming NFT with your drop.
 ```js reference
-https://github.com/keypom/keypom/blob/8a4009be98f263e93d718779983efcdac1b1a9f8/__tests__/creation/nft-creation.ava.ts#L189-L199
+https://github.com/keypom/keypom/blob/b5ee9ddde16cc604fea2da83c6368e2ea3461b81/__tests__/creation/nft-creation.ava.ts#L189-L199
 ```
 In the case where you have multiple NFT Assets, you will need to transfer the appropriate number of NFTs. For example, if you have 5 keys with 2 NFT Assets each, you will need to transfer 10 NFTs to Keypom. 
 
@@ -108,7 +108,7 @@ ___
 
 Whenever an FT asset is present and properly funded in a key use, the user will receive a set amount of FTs for that particular key use. For example, if a key has 2 uses, and an FT asset is defined in the first use but not the second, then the user will only receive an the predefined amount of FTs the first time they claim their key. 
 
-Note that multiple different tokens can be sent at once by simply including more FT Assets.
+Note that multiple different tokens can be sent at once by defining additional NFT Assets following the structure below.
 ### Structure
 When defining an FT Asset, a few things need to be defined:
 * *ft_contract_id*: The Fungible Token contract.  
@@ -142,7 +142,7 @@ In order to fund a Fungible Token asset, you must transfer it to the Keypom cont
 
 It is important that when transferring, you are transferring from the contract that you defined above. It is also important to include the `dropId` as a `msg`. This tells Keypom to associate the incoming NFT with your drop.
 ```js reference
-https://github.com/keypom/keypom/blob/8a4009be98f263e93d718779983efcdac1b1a9f8/__tests__/utils/ft-utils.ts#L17-L28
+https://github.com/keypom/keypom/blob/b5ee9ddde16cc604fea2da83c6368e2ea3461b81/__tests__/utils/ft-utils.ts#L17-L28
 ```
 :::note
 Anybody can fund a drop's FT Assets

@@ -9,7 +9,9 @@ import TabItem from '@theme/TabItem';
 
 Password protecting key uses is an extremely powerful feature that can unlock many use-cases. Keypom has baked flexibility and customization
 into the contract such that almost all use-cases involving password protection can be accomplished. Whenever a key is added to a drop, it can
-have a unique password for each individual use, or it can one password for all uses in general.
+have a unique password for each individual use, a set of uses or the same password for all uses.
+
+___
 
 ## How Does It Work?
 
@@ -22,31 +24,103 @@ each key and having them remember each one, we can have them input a single **ba
 with the key's public key.
 
 This is the most scalable option as it allows the drop funder to only need to remember 1 password and they can derive all the other ones using the
-hashing algorithm and public key.
+hashing algorithm, public key, and current key use.
 
-In the above scenario, let's say the funder inputs the base password as `mypassword1`. If a user wanted to claim the first key, they would need to input
+In the above scenario, let's say the funder inputs the base password as `basepassword1`. If a user wanted to claim the first key, they would need to input
 into the contract:
 
-`hash("mypassword1" + key1_public_key)`
+`hash("basepassword1" + key1_public_key + key_use)`
 
 The funder would need to give the user this hash somehow (such as embedding it into the link or having an app that can derive it). It's important to note 
-that the funder should probably **NOT** give them the base password otherwise the user could derive the passwords for all other keys (assuming those keys have 
-the same base password).
+that the funder should probably **NOT** give them the base password otherwise the user could derive the passwords for all other keys.
+
+___
 
 ## What is Stored On-Chain?
 
-How does Keypom verify that the user passed in the correct password? If the funder were to simply pass in `hash("mypassword1" + key1_public_key)` into the
+How does Keypom verify that the user passed in the correct password? If the funder were to simply pass in `hash("mypassword1" + key1_public_key + key_use)` into the
 contract as an argument when the key is created, users could just look at the NEAR Explorer and copy that value. 
 
-Instead, the funder needs to pass in a double hash when the key is created: `hash(hash("mypassword1" + key1_public_key))`. 
+Instead, the funder needs to pass in a double hash when the key is created: `hash(hash("mypassword1" + key1_public_key + key_use))`. 
 
-This is the value that is stored on-chain and when the user tries to claim the key, they would pass in just the single hash: `hash("mypassword1" + key1_public_key)`.  
-The contract would then compute `hash(hash("mypassword1" + key1_public_key))` and compare it to the value stored on-chain. If they match, the key is claimed.
+This is the value that is stored on-chain and when the user tries to claim the key, they would pass in just the single hash: `hash("mypassword1" + key1_public_key + key_use)`.  
+The contract would then compute `hash(hash("mypassword1" + key1_public_key + key_use))` and compare it to the value stored on-chain. If they match, the key is claimed.
 
 Using this method, the base password is not exposed to the user, nobody can look on-chain or at the NEAR explorer and derive the password, and the password is unique
 across multiple keys.
 
-# Passwords Per Key Use
+___
+
+## Defining Passwords
+
+New with Keypom V3, passwords are *no longer global*. This means that differfent access keys within your drop can have entirely different passwords, or some can have passwords while others have no passwords. 
+
+This is done when adding keys to a drop, either when using `create_drop` or `add_keys`. These methods accept a **vector of keys objects** defined by the following:
+
+```rust reference
+https://github.com/keypom/keypom/blob/807fea5997987cb1a97bee838c4d2312a7faab51/contract/src/models/external/models.rs#L81-L92
+```
+
+Notice that `password_by_use` is mapped to each individual key, meaning you have control over the password design for each access key. 
+
+Here, you need to define the key use number and associated password. The password you pass in should be the double hash, `hash(hash("mypassword1" + key1_public_key + key_use))`. An example `password_by_use` implementation is shown below. 
+
+```javascript
+password_by_use = {
+    1: hash(hash(`${BASE_PASSWORD}${PUBLIC_KEY}1`))
+    3: hash(hash(`${BASE_PASSWORD}${PUBLIC_KEY}3`))
+    5: hash(hash(`${BASE_PASSWORD}${PUBLIC_KEY}5`))
+}
+```
+:::note
+Notice that not all uses are defined. Undefined uses will have no password
+:::
+
+### Example Helper Function
+You'll notice that this process of manually defining each key use password can grow tedious for each key. Below is an example helper function that was used during contract testing and NEARCON ticket generation. This function would return the record shown above.
+
+<details>
+<summary>Example Password Generation Helper Function</summary>
+<p>
+
+```javascript
+let basePassword = "my-example-password"
+let password = await generatePasswordsForKey(publicKey.toString(), [1, 3, 5], basePassword);
+
+async function generatePasswordsForKey(pubKey, usesWithPassword, basePassword) {
+    let passwords = {};
+
+    // Loop through usesWithPassword
+    for (var use of usesWithPassword) {
+      let pw = basePassword + pubKey + use.toString()
+      console.log('pw before double hash: ', pw)
+      let firstHash = hash(pw)
+      passwords[use] = hash(firstHash, true);
+    }
+    
+    console.log(`pw after double hash: ${passwords[use]}`)
+    return passwords;
+}
+
+function hash(string, double=false) {
+    if (double) {
+        return createHash('sha256').update(Buffer.from(string, 'hex')).digest('hex');
+    }
+    return createHash('sha256').update(Buffer.from(string)).digest('hex');
+}
+```
+
+</p>
+</details>
+
+
+___
+
+
+
+
+
+## OLD
 
 Unlike the passwords per key which is the same for all uses of a key, the drop creator can specify a password for each individual key use. This password follows
 the same pattern as the passwords per key in that the funder inputs a `hash(hash(SOMETHING))` and then the user would input `hash(SOMETHING)` and the contract
@@ -225,18 +299,3 @@ You want users to interact with new features of your site or join your mailing l
 You can have links where uses are ONLY unlocked if the user interacts with special parts of your site such as buying a new NFT or joining your mailing list 
 or clicking an easter egg button on your site etc.
 
-## dApp Free Trials for Users
-
-In the upcoming Keypom V2.0, dApps will be able to integrate the Keypom wallet selector plugging to allow for free trials for their users. One of the biggest pain-points with Web3 at the moment is the fact that users need to fund wallets *before* they interact with a dApp.
-
-In Web2, a user can find value in an application by using it before they go through the messy onboarding process. Why can't Web3 be the same?
-
-Keypom will allow apps to create links that will automatically sign users into their applications and give them a free trial of the app. The user will be able to interact with things, spend $NEAR, sign transactions and gather assets through the trial. A unique feature of this is that the user will *never be redirected to the NEAR wallet* to approve transactions.
-
-Keypom will provide a seamless user experience where users can find value in applications. Once the free trial is over and users have collected assets / $NEAR through interacting with the dApp, they can *THEN* choose to onboard.
-
-With Keypom's technology, users will be locked into only interacting with the dApp specified in the link. Users can't rug the application and steal the $NEAR embedded in the link. The funds are allocated for 1 thing and 1 thing only: free trials of that one specific dApp.
-
-<p align="center">
-  <img src={require("/static/img/trial_accounts.png").default} width="65%" height="65%" alt="trial accounts"/>
-</p>

@@ -1,3 +1,7 @@
+---
+sidebar_label: '💡 Keypom Executive Summary'
+---
+
 # Keypom Executive Summary
 
 > To discover the features and details of Keypom, begin your journey [here](Concepts/welcome.md).

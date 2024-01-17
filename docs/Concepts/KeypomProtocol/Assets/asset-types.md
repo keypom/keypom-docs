@@ -12,7 +12,7 @@ import Admonition from '@theme/Admonition';
 In the Keypom Protocol, an asset is something that is attached to every key in your drop. When someone obtains and uses a key, they will receive the assets - either to a new or existing account. 
 </Admonition>
 
-Assets are meant to create new experience and bring value to your users. They can be one of the following: 
+Assets are meant to create new experience and bring value to your users. There can be any number of mixed and matched assets for each key use. Assets can take on the following types: 
 
 * **NEAR**
 * **Fungible Tokens**
@@ -54,7 +54,7 @@ New with Keypom V3, you can mix-and-match and add multiple different types of as
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Function Call Assets</h3>
-              <p class="neutraltext">Supercharge your drop with any NEAR smart contract </p>
+              <p class="neutraltext">Call any NEAR smart contract </p>
           </div>
         </div>
       </a>
@@ -65,13 +65,8 @@ New with Keypom V3, you can mix-and-match and add multiple different types of as
 ___
 
 ## Defining vs Funding Assets
-An important distinction to be made is the difference between defining and funding assets. 
+An important distinction to be made is the difference between defining and funding assets. Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
 
 :::caution
-If assets are not properly funded, your drop may not perform as expected. Proper funding is defined in [next section](basic-assets.md).
+If assets are not properly funded, your drop may not perform as expected. Proper funding is formally defined in [next section](basic-assets.md).
 :::
-
-Defining an asset is similar to creating a blueprint for your drop while funding is the process of building it.
-
-* ***Defining an Asset***: The process of creating a drop and outlining a particular asset to be available on certain set of uses.
-* ***Funding an Asset***: Transferring ownership of defined assets to Keypom so that they can be redeemed by users claiming your keys.

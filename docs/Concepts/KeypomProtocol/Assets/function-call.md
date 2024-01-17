@@ -23,7 +23,7 @@ When an a key use containing a Function Call asset is claimed, Keypom will make 
 
 ## Structure
 
-A Function Call Asset is defined by a **vector of function calls**, which is *represented by a vector of `MethodData`*. Each `MethodData` represents a single function call. Since a Function Call asset is defined with a vector of `MethodData`, multiple function calls can be made in a single key use. 
+A Function Call Asset is defined by a **vector of function calls** with each call being represented by a `MethodData` object. Since a Function Call asset is defined with a vector of `MethodData`, multiple function calls can be made in a single key use. 
 
 The `MethodData` object outlines the following:
 
@@ -59,6 +59,8 @@ https://github.com/keypom/keypom-js/blob/e8c43f4219a79afb3c367296cc90b8d5de97794
 For **every Function Call Asset**, you can specify a *vector* of `MethodData` which allows you to execute multiple function calls for each asset. These calls are scheduled 1 by 1 using a simple for loop. This means that most of the time, the function calls will be executed in the order specified in the vector but it is not *guaranteed*.
 
 ## Injecting Keypom Arguments
+> Automatically injected immutable arguments acting as sources of truth
+
 Injected Keypom Arguments are arguments that are automatically populated into a function call's outgoing arguments. These arguments are immutable and cannot be spoofed, meaning they allow receiving contracts to use them as a source of truth for certain pieces of information. The following arguments can be injected automatically by Keypom:
 
 * **Claiming Account ID**: This is the account ID that is claiming that particular key use.
@@ -66,7 +68,10 @@ Injected Keypom Arguments are arguments that are automatically populated into a 
 * **Drop Funder Account ID**: The account ID of the account that created the drop, this can be useful for ensuring only trusted users can trigger certain behaviours in your receiving contract
 * **Key ID**: Each key in a drop is identified with an integer key ID. This is **unique in to that specific drop** but not accross multiple different drops. 
 
- Prior to function execution, the Keypom contract will **automatically** modify the outgoing arguments according to the defined `keypom_args`. The desired location for these arguments to be injected can be specified using the following data structure. These locations must be specified at drop creation and cannot be changed. 
+Prior to function execution, the Keypom contract will **automatically** modify the outgoing arguments according to the defined `keypom_args`. The desired location for these arguments to be injected can be specified using the following data structure. 
+:::note
+Keypom Arguments target locations must be specified at drop creation and cannot be changed. 
+:::
 
 ```rust reference
 https://github.com/keypom/keypom/blob/8f9f8df397cb8cabbda30d1ddffdcddc4a733274/contract/src/assets/function_call/models.rs#L32-L45
@@ -76,7 +81,7 @@ For example, if the `account_id_field` is set to `"claiming_account"`, then Keyp
 
 Arguments can be injected into nested fields by using object dot notation; `funder_id_field: "creator.account_id"` will inject the drop funder's account ID into the `creator` object under the field `account_id`. If specified fields do not exist, Keypom will create them. Attempting to nest into a non-object will cause the drop creation to fail. 
 
-### Protect your Contracts and Validate Information with Keypom Args
+### Protect your Receiving Contracts with Keypom Args
 Take the perspective of the receiver contract form the previous examples. If you expect a certain funder account ID under the `creator` field, how do you know that this value has actually been injected by Keypom and not maliciously hardcoded?  That is, how can you know that somebody else didn't create a malicious drop and hardcode the `creator` field to the expected value? 
 
 Here, `keypom_args` comes in handy. When a key is used and a function is called, a seperate data structure is **automatically** attached to the arguments, known as the `keypom_args`. This object contains informs the receiver contract of the arguments that have been automatically injected and the location in which they were injected. This is information that the drop creator specified in the `MethodData.keypom_args` during drop creation. 

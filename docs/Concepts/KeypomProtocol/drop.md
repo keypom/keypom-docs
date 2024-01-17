@@ -73,7 +73,7 @@ This behaviour is the same accross all the keys in the drop. As the drop funder,
       </a>
     </div>
     <div class="col">
-      <a href="Assets/asset-configurations">
+      <a href="Assets/key-use-configurations">
         <div class="card h-100 card-body">
           <div class="card__body">
             <h3 class="small-bottom-padding">Asset Configuration</h3>

@@ -24,6 +24,13 @@ In order to put an access key up for sale or transfer it, you must be one of the
 
 ___
 
+## Customizing NFTs associated with your Keys
+Since your access keys are now linked with NFTs, you can now change the NFT metadata such as media, title, description and more in accordance to the NFT standard ([NEP-177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)). This will change the way your access keys appear on NFT marketplaces. 
+
+This customization applies to **all** access keys in your drop. Details on this can be found in the NFT Key Configuration section of the [drop configurations](drop-configurations.md#nft-key-configuration) page.
+
+___
+
 ## Owned versus Ownerless Keys
 Access Key ownership is similar to NFT ownership in that it allows you transact it directly using the owner's account. This ownership can be transferred between accounts and be forfeitted.
 

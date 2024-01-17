@@ -19,7 +19,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     ({
       hashed: true,
       language: ["en"],
-      ignoreFiles: ["docs/1.1/nothing-page", "docs/nothing-page", "docs/1.2/nothing-page", "docs/next/Tutorials/Misc/sign-txn"]
+      ignoreFiles: ["docs/1.1/nothing-page", "docs/nothing-page", "docs/1.2/nothing-page", "docs/Tutorials/Misc/sign-txn"]
     }),
   ],
   ],
@@ -42,9 +42,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // ],
           // Please change this to your repo.
           editUrl: 'https://github.com/keypom/keypom-docs/tree/main/',
+          // versions: {
+          //   current: {
+          //     banner: 'none',
+          //   },
+          // },
+          lastVersion: 'current',
           versions: {
             current: {
-              banner: 'none',
+              label: '3.0',
+              badge: true
             },
           },
 
@@ -72,47 +79,48 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         items: [
           {
-            to: "docs/next/Concepts/welcome",
+            to: "docs/Concepts/welcome",
             label: "📖 Concepts",
             position: "left",
           },
           {
-            to: "docs/next/Tutorials/welcome",
+            to: "docs/Tutorials/welcome",
             label: "💻 Tutorials",
             position: "left",
           },
           // {
-          //   to: "docs/next/KeypomV2/welcome",
+          //   to: "docs/KeypomV2/welcome",
           //   label: "🤖 Keypom V2",
           //   position: "left",
           // },
           {
-            to: "docs/next/TrialAccounts/introduction",
+            to: "docs/TrialAccounts/introduction",
             label: "🎁 Trial Accounts",
             position: "left",
           },
           {
             label: '🚀 BOS',
-            to: 'docs/next/Tutorials/BOS/welcome',
+            to: 'docs/Tutorials/BOS/welcome',
           },
           {
-            to: "docs/next/keypom-sdk/Core/welcome",
+            to: "docs/keypom-sdk/Core/welcome",
             label: "📚 SDK TypeDocs",
             position: "left",
           },
           {
-            to: "docs/next/Cookbook/welcome",
+            to: "docs/Cookbook/welcome",
             label: "🧑‍🍳 Cookbook",
             position: "left",
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/keypom/keypom-docs/tree/main',
             label: 'GitHub',
             position: 'right',
           },
-          // {
-          //   type: 'docsVersionDropdown',
-          // },
         ],
       },
       footer: {
@@ -125,32 +133,32 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: '📖 Concepts',
-                to: 'docs/next/Concepts/welcome',
+                to: 'docs/Concepts/welcome',
               },
               {
                 label: '💻 Tutorials',
-                to: 'docs/next/Tutorials/welcome',
+                to: 'docs/Tutorials/welcome',
               },
               {
-                to: "docs/next/TrialAccounts/introduction",
+                to: "docs/TrialAccounts/introduction",
                 label: "🎁 Trial Accounts",
                 position: "left",
               },
               {
                 label: '🚀 BOS',
-                to: 'docs/next/Tutorials/BOS/welcome',
+                to: 'docs/Tutorials/BOS/welcome',
               },
               {
                 label: "📚 SDK TypeDocs",
-                to: "docs/next/keypom-sdk/Core/welcome",
+                to: "docs/keypom-sdk/Core/welcome",
               },
               {
                 label: "🧑‍🍳 Cookbook",
-                to: "docs/next/Cookbook/welcome",
+                to: "docs/Cookbook/welcome",
               }
               // {
               //   label: "🤖Keypom V2",
-              //   to: "docs/next/KeypomV2/welcome",
+              //   to: "docs/KeypomV2/welcome",
               // },
             ],
           },

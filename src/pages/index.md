@@ -20,7 +20,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="/docs/next/exec-summary">
+      <a href="/docs/exec-summary">
         <div class="card mb-3">
           <div class="card__image">
             <img src={require("/static/img/newMoonCrop2.png").default} alt="Learn" />
@@ -33,7 +33,7 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
       </a>
     </div>
     <div class="col col--6">
-      <a href="/docs/next/Tutorials/welcome">
+      <a href="/docs/Tutorials/welcome">
         <div class="card mb-3">
           <div class="card__image">
             <img src={require("/static/img/docs/homepage-banner-2.png").default} alt="Examples and Tutorials" />
@@ -55,28 +55,28 @@ import {FeatureList, Column, Feature} from "../components/featurelist.js"
 <FeatureList width = "100%">
 
   <Column title="Understanding Keypom" size ="3">
-    <Feature url="../../docs/next/Concepts/KeypomProtocol/overview" title="What is Keypom?" subtitle="Learn the Basics of Keypom" image="docs/icons/key.png" />
-    <Feature url="../../docs/next/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/introduction" title="Types of Drops" subtitle="Find out what you can send using Keypom" image="docs/icons/tutorials.png" />
-    <Feature url="../../docs/next/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
+    <Feature url="../../docs/Concepts/KeypomProtocol/overview" title="What is Keypom?" subtitle="Learn the Basics of Keypom" image="docs/icons/key.png" />
+    <Feature url="../../docs/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/introduction" title="Types of Drops" subtitle="Find out what you can send using Keypom" image="docs/icons/tutorials.png" />
+    <Feature url="../../docs/Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization" title="Customize your Drops" subtitle="Learn to configure your Keypom drop" image="docs/icons/update.png" />
   </Column>
 
   <Column title="Use Cases" size="3">
-    <Feature url="../../docs/next/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
-    <Feature url="../../docs/next/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with seamless onboarding" image="docs/icons/dao.png" />
-    <Feature url="../../docs/next/TrialAccounts/introduction" title="Trial Accounts" subtitle="Web2 Onboarding in Web3" image="docs/icons/trial-accounts.png" />
-    <Feature url="../../docs/next/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Use Keypom in your BOS componets" image="docs/icons/bos.png" />
+    <Feature url="../../docs/Tutorials/Advanced/ticketing/introduction" title="Ticketing" subtitle="Power your next event with Keypom" image="docs/icons/nft.png" />
+    <Feature url="../../docs/Tutorials/Advanced/daos/introduction" title="DAO Onboarding" subtitle="Level up your DAO with seamless onboarding" image="docs/icons/dao.png" />
+    <Feature url="../../docs/TrialAccounts/introduction" title="Trial Accounts" subtitle="Web2 Onboarding in Web3" image="docs/icons/trial-accounts.png" />
+    <Feature url="../../docs/Tutorials/BOS/welcome" title="Keypom on BOS" subtitle="Use Keypom in your BOS componets" image="docs/icons/bos.png" />
 
   </Column>
 
   <Column title="Beginner Tutorials" size="3">
-    <Feature url="../../docs/next/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/ft-drops" title="Fungible Token Drop" subtitle="Send Fungible Tokens" image="docs/icons/ft.png" />
-    <Feature url="../../docs/next/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most customizable drop" image="docs/icons/oracle.png" />
+    <Feature url="../../docs/Tutorials/Basics/simple-drops" title="Simple Drop" subtitle="Send $NEAR" image="docs/icons/random.png" />
+    <Feature url="../../docs/Tutorials/Basics/nft-drops" title="Non-Fungible Token Drop" subtitle="Send Non-Fungible Tokens" image="docs/icons/near_place.png" />
+    <Feature url="../../docs/Tutorials/Basics/ft-drops" title="Fungible Token Drop" subtitle="Send Fungible Tokens" image="docs/icons/ft.png" />
+    <Feature url="../../docs/Tutorials/Basics/fc-drops" title="Function Call Drop" subtitle="Keypom's most customizable drop" image="docs/icons/oracle.png" />
   </Column>
 
   <Column title="Developer Documentation" size="3">
-    <Feature url="docs/next/keypom-sdk/Core/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
+    <Feature url="docs/keypom-sdk/Core/welcome" title="Keypom TypeDocs" subtitle="Spin-up your first dApp" image="docs/icons/typedocs.png" />
     <Feature url="https://github.com/keypom/keypom-docs-examples" title="Tutorial Source Code" subtitle="Begin building with examples" image="docs/icons/code.png" />
     <Feature url="https://github.com/keypom/keypom-js" title="JavaScript SDK Repo" subtitle="Keypom SDK behind the scenes" image="moon.svg" />
     <Feature url="https://docs.near.org/tools/near-api-js/quick-reference" title="NEAR-API-JS" subtitle="Interact with NEAR using JavaScript" image="docs/icons/near-api-js.png" />

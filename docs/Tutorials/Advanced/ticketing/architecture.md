@@ -39,7 +39,7 @@ In order to send the attendees a POAP, the second key use will need to not only 
 
 Currently, anyone with a ticket could manually claim the key (sign transactions) using the Keypom SDK. This means that people could first claim the `null` case and then claim the key again to receive the NFT without physically showing up.
 
-To solve this, the first key use can be protected with a [password](../../../Concepts/KeypomProtocol/GithubReadme/password-protect.md) that only the host knows. This password will be provided when the QR code is scanned. By password protected the uses, the only way to receive the NFT even if you have the ticket, is to be physically scanned by the host.
+To solve this, the first key use can be protected with a [password](../../../Concepts/KeypomProtocol/password-protect.md) that only the host knows. This password will be provided when the QR code is scanned. By password protected the uses, the only way to receive the NFT even if you have the ticket, is to be physically scanned by the host.
 
 
 ## Keypom Solution

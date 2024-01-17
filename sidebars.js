@@ -8,7 +8,7 @@ const sidebars = {
       // link: {
       //   type: 'concepts/Linkdrops and Access Keys/linkdrop-welcome',
       // },
-      collapsed: false,
+      collapsed: true,
       items: [
             'Concepts/LinkdropsAndAccessKeys/near-access-keys',
             'Concepts/LinkdropsAndAccessKeys/linkdrop-basics',
@@ -22,40 +22,27 @@ const sidebars = {
       // },
       collapsed: false,
       items: [
-                'Concepts/KeypomProtocol/overview',
+                'Concepts/KeypomProtocol/intro-to-keypom',
+                'Concepts/KeypomProtocol/terminology',
                 {
                   type: 'category',
-                  label: 'Types of Drops',
+                  label: 'Keypom Drop Assets',
                   // link: {
                   //   item: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/introduction',
                   // },
-                  collapsed: true,
+                  collapsed: false,
                   items: [
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/introduction',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/simple-drops',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/nft-drops',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/ft-drops',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/fc-drops',
+                    'Concepts/KeypomProtocol/Assets/asset-types',
+                    'Concepts/KeypomProtocol/Assets/basic-assets',
+                    'Concepts/KeypomProtocol/Assets/function-call',
+                    'Concepts/KeypomProtocol/Assets/key-use-configurations',
+                    'Concepts/KeypomProtocol/Assets/time-customization',
                   ],
                 },
+                'Concepts/KeypomProtocol/nft-keys',
+                'Concepts/KeypomProtocol/drop-configurations',
                 'Concepts/KeypomProtocol/balances',
-                {
-                  type: 'category',
-                  label: 'Configuring Your Drop',
-                  // link: {
-                  //   type: 'doc',
-                  //   id: 'Concepts/Keypom Protocol/Github Readme/Types of Drops/customization-homepage',
-                  // },
-                  collapsed: true,
-                  items: [
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/customization-homepage',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/drop-customization',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/time-customization',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/usage-customization',
-                    'Concepts/KeypomProtocol/GithubReadme/TypesOfDrops/sale-customization',
-                  ],
-                },
-                'Concepts/KeypomProtocol/GithubReadme/password-protect',
+                'Concepts/KeypomProtocol/password-protect',
                 {
                   type: 'category',
                   label: 'Overhead Items',
